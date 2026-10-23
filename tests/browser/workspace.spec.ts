@@ -16,7 +16,9 @@ test.describe.serial('source-to-practice workspace', () => {
     const state = await (await page.request.get('/api/state')).json();
     expect(state.sources).toHaveLength(2);
     expect(state.sections).toHaveLength(109);
-    expect(state.sections.every((section: { title: string }) => section.title !== 'Maarek')).toBe(true);
+    expect(state.sections.every((section: { title: string }) => section.title !== 'Maarek')).toBe(
+      true,
+    );
     expect(state.sources.some((source: { pages: number }) => source.pages === 879)).toBe(true);
     await page.getByRole('button', { name: 'Sources 2', exact: true }).click();
     await page.screenshot({ path: '.cache/screenshots/aws-library-desktop.png', fullPage: false });
@@ -40,15 +42,13 @@ test.describe.serial('source-to-practice workspace', () => {
     await page.getByRole('button', { name: 'Create folder', exact: true }).click();
     await expect(page.getByRole('dialog')).not.toBeVisible();
     await page.getByRole('button', { name: 'Add sources', exact: true }).first().click();
-    await page
-      .locator('input[type=file]')
-      .setInputFiles({
-        name: 'networking.md',
-        mimeType: 'text/markdown',
-        buffer: Buffer.from(
-          '# Network foundations\nA virtual private cloud isolates network resources in your account.\nAn availability zone contains discrete data centers with redundant power.\nAn IAM role provides temporary credentials to applications and services.\nA route table determines where network traffic is directed.',
-        ),
-      });
+    await page.locator('input[type=file]').setInputFiles({
+      name: 'networking.md',
+      mimeType: 'text/markdown',
+      buffer: Buffer.from(
+        '# Network foundations\nA virtual private cloud isolates network resources in your account.\nAn availability zone contains discrete data centers with redundant power.\nAn IAM role provides temporary credentials to applications and services.\nA route table determines where network traffic is directed.',
+      ),
+    });
     await page.getByRole('button', { name: 'Import sources', exact: true }).click();
     await expect(page.getByRole('dialog')).not.toBeVisible();
     await page.locator('.section-row').filter({ hasText: 'Network foundations' }).click();

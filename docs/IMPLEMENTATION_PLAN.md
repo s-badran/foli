@@ -51,7 +51,7 @@ AWS .../      Existing user source materials, unchanged
 ✅ 1. Foundation: architecture, project setup, PDF extraction and section tests.
 ✅ 2. Study engine: folder import, uploads, study plans, validated generation, FSRS, progress, persistence, API tests.
 ✅ 3. Study workspace: library, section reader, cards, quizzes, plan calendar, progress, provider settings, responsive UI.
-🟡 4. Verification: real PDF import, complete browser workflows, lint/typecheck/tests/build, screenshots, README and stage commits.
+✅ 4. Verification: real PDF import, complete browser workflows, lint/typecheck/tests/build, screenshots, README and stage commits.
 
 ## MVP Acceptance
 
@@ -73,3 +73,6 @@ OCR, document annotation, nested outline editing, collaboration, accounts, cloud
 - Both actual user PDFs parsed: exam guide 30 pages / 9 sections / 40,991 characters; slide deck 879 pages / 100 sections / 426,553 characters. Original files remain unchanged and untracked.
 - Engine tests cover offline generation, model-output validation, FSRS state, plan overload, serialized persistence and end-to-end HTTP study workflow. Keys are never part of persisted data.
 - Copilot integration uses the installed SDK's empty mode, no tools, denied permissions, skipped repository instructions, and workspace-local Copilot home. No live login or paid call was attempted.
+- Final automated gates: 27 unit/API/mock-provider tests plus three passing Chromium workflows, lint, strict types, and production build. Screenshots checked at desktop and mobile sizes; actual PDF serving and persisted progress verified.
+- Running development app: http://127.0.0.1:5173 with API on port 43126. The real local store contains the two AWS PDFs, 109 sections, two labelled extractive starter packs, and a 45-minute daily plan with placeholder target 2026-12-22. No paid generation calls were made.
+- Remaining provider setup is external: the user must choose BYOK credentials or explicitly authenticate the workspace-local Copilot CLI. This does not block offline study, the implemented provider adapters, or the completed local MVP gates.

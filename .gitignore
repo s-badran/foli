@@ -1,0 +1,13 @@
+node_modules/
+.pnpm-store/
+.cache/
+dist/
+data/
+test-results/
+playwright-report/
+.env
+.env.*
+*.log
+*.pdf
+*.zip
+.DS_Store

@@ -1,0 +1,7 @@
+packages:
+  - .
+storeDir: .pnpm-store
+cacheDir: .cache/pnpm
+allowBuilds:
+  esbuild: true
+  koffi: true

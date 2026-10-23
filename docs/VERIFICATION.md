@@ -1,48 +1,55 @@
-# MVP Verification Record
+# Exam Revision Verification
 
-## Verified Locally
+## Final Gates
 
-- `pnpm check`: ESLint, strict TypeScript, 27 unit/API/provider tests, and Vite production build pass.
-- `PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e`: three serial Chromium acceptance workflows pass against isolated project-local data.
-- Both provided PDFs extract successfully: 879-page slides plus 30-page exam guide, 109 combined sections. Original binary downloads begin with `%PDF`, and previews appear in the source view.
-- A Markdown upload becomes a section, generates an offline study pack, reveals a flashcard, accepts a grade, records the next due date, scores a complete quiz, and saves reading progress.
-- Reading completion, reviews, quizzes and the dated plan survive reloads.
-- Desktop screenshots (1440 x 1000) and mobile screenshots (390 x 844) inspected. No horizontal page overflow in tested mobile overview and flashcard views. Summary text and numbered takeaways were adjusted after inspection.
-- New cards are immediately reviewable rather than waiting for a clock refresh.
-- The actual development app's Vite-to-API proxy was checked at http://127.0.0.1:5173 with API port 43126. Its real store contains both PDFs, 109 sections, two extractive starter packs and a placeholder 2026-12-22 target at 45 minutes/day. The embedded browser displayed the overview with no horizontal overflow at its 999-pixel viewport; repeatable desktop/mobile coverage remains in Playwright.
-- The test server owns `.cache/e2e-data` on port 43127; real study data is not used by tests. Browser binaries live in `.cache/ms-playwright`.
-- Git ignores PDF/ZIP materials, data, caches, IDE workspace files, and environment files. No remote or push operation was performed.
+- `pnpm check`: lint, strict TypeScript, 33 unit/API tests and production build pass.
+- `PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e`: five passing Chromium workflows using isolated `.cache/e2e-data`.
+- Desktop chapter screenshot inspected at 1440 x 1000; mobile chapter plan at 390 x 844. Mobile plan/progress overflow assertions pass.
+- No AI-provider call, authentication or subscription usage was performed.
+- Development app remains at http://127.0.0.1:5173/ with the API on port 43126.
 
-## Test Coverage
+## Real AWS Migration
 
-| Slice         | Verified Scenarios                                                                                                                                                                                                                     |
-| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Documents     | Heading boundaries, empty rejection, long-content preservation, unbroken lines, UTF-8 notes                                                                                                                                            |
-| Study content | Grounded extracts, distinct quiz options, JSON fences, malformed/incomplete model rejection                                                                                                                                            |
-| Scheduling    | FSRS persisted state, future successful reviews, invalid grades, every unread section scheduled once, overload warning, past-date rejection                                                                                            |
-| API           | Create subject, upload, persisted reload, generate, original files in hidden data directory, review/double-review prevention, quiz score, history protection, plan, completion, traversal rejection, invalid input, cascading deletion |
-| Provider mock | Source context and model ID sent, authorization forwarding, no key in result, supplement provenance, topic-only prompt, invalid JSON failure, upstream quota errors                                                                    |
-| Browser       | Real PDF import and binary viewing; full upload-to-quiz practice; plan/progress/reload and mobile layout                                                                                                                               |
+- Both original PDFs unchanged: 879-page slide deck and 30-page exam guide.
+- Main source: the fingerprint-verified supplied slide deck.
+- Supplement: exam guide, accepted at 70.6% vocabulary overlap against the 16% heuristic threshold.
+- Active material: 28 chapters, 56 lessons, 112 conceptual cards, 56 scenario questions.
+- Prior legacy records, reviews and attempts retained. The original legacy JSON is not overwritten.
+- Existing exam target and daily budget used to rebuild the plan; no exam date was guessed anew.
+- Actual data now lives beneath `data/exams/aws-certified-solutions-architect-associate--<id>/`, including sources, prompts, chapter packs, plan and progress.
 
-## Not Verified / Deliberately Deferred
+## Acceptance Workflows
 
-- Real provider response quality, spend, rate limits, and provider-specific endpoint compatibility. No paid requests were made; the OpenAI-compatible contract is exercised against a local mock.
-- GitHub Copilot login, account entitlement, model availability, and live generation. The SDK code compiles, uses supported installed API types, and denies tools, but requires your explicit authentication.
-- OCR/image-only PDFs, semantic chapter alignment, non-Chromium PDF viewers, multiple concurrent API processes, public deployment, crash/power-loss durability, and recovery from arbitrary schema-corrupt backups.
-- Study-time estimates and quiz scores are not validated predictors of exam performance.
+1. Import both real PDFs with learner onboarding; see 28 chapters; search the roadmap; use the Workspaces breadcrumb to return to the index and reopen the exam.
+2. Read an original IAM explanation, inspect source references, review a conceptual card, answer an architectural scenario, save completion, reload and inspect the original PDF.
+3. Upload an unrelated cooking document, observe a warning and exclusion, keep it excluded, change the main PDF with confirmation, preserve archived quiz/review records and switch back.
+4. Create a new workspace from a Markdown upload, retain chapter/section hierarchy, save learner settings and a tutor brief, then reload to verify persistence.
+5. Build a chapter-associated dated plan; navigate mobile plan and progress without horizontal overflow.
 
-## Dependency Notes
+## Focused Tests
 
-The production build succeeds with harmless Rollup notices about pure annotations inside the installed Zod dependency. pnpm warns that this ESLint 9 release is deprecated in favor of a newer major. These do not fail the gates; upgrading major tool versions is separate maintenance, not part of MVP behavior.
+Coverage includes legacy migration and source-copy preservation; missing-indexed-snapshot errors; Markdown chapter boundaries; main-source-only chapter ownership; unrelated-source exclusion; complete tutor pack schema/counts; distinct choices; no cloze placeholders; FSRS state; server-side scoring; retained progress; plan overload/date checks; workspace traversal rejection. Historical provider contract tests use only a local mock; they do not indicate active AI integration.
 
-The first pnpm install used the machine's existing package store before pnpm 12's workspace YAML configuration was added. Subsequent installs use the project-local store/cache. No global software was installed, no sudo command was run, and original materials were left unchanged.
+## RemNote Research
 
-## Screenshots
+Public source checked: [Guided Learn Mode](https://help.remnote.com/en/articles/15724936-guided-learn-mode).
 
-Generated, ignored artifacts under `.cache/screenshots/`:
+- Verified question: “how well do you know this content?”
+- Verified choices: “Haven't learned it yet”, “I have a basic understanding”, “Know it well and just want to review”.
+- Verified behavior: changes priority, not the underlying sections/cards.
+- Role-selection wording was not verified; Folio uses its own labels.
+- No signup account was created and no private onboarding text was claimed as verified.
 
-- `aws-library-desktop.png`
-- `section-summary-desktop.png`
-- `progress-desktop.png`
-- `overview-mobile.png`
-- `flashcards-mobile.png`
+## Limits And Residual Risk
+
+- Vocabulary overlap is not semantic relevance or contradiction detection. Short or multilingual files need manual judgment.
+- The tutor-authored pack is original foundational practice, not a professionally certified or exhaustive exam question bank. Chapter ranges are verified; every sentence is not independently source-checked.
+- Arbitrary new exams receive a source outline, not invented tutor lessons. Replacing the main source invalidates the plan and starts a new active curriculum; history remains archived.
+- Learner role/goal and the brief are saved context. The brief does not execute prompts or rewrite existing content while integration is paused.
+- Single-process per-exam writes are not a full transactional database; projection/index updates can be interrupted. Complete backups remain necessary.
+- Current harmless Zod/Rollup annotation notices do not fail the production build.
+- No push was performed. The user-configured remote remains unchanged.
+
+## Screenshot Artifacts
+
+Ignored files under `.cache/screenshots/` include `exam-chapters-desktop.png`, `exam-plan-mobile.png` and `exam-progress-mobile.png`. No source PDFs, study data or screenshots are committed.

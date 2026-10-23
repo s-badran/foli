@@ -1,99 +1,103 @@
 # Folio
 
-A local-first AI study workspace: turn PDFs, Markdown, text files, or a model-generated topic into section summaries, flashcards, quizzes, and a dated study plan. Inspired by RemNote's source-to-practice approach, with an original interface and implementation.
+Local, single-user **exam preparation**. One workspace per exam, one main source defining the chapter roadmap, and related supplementary sources in the same exam directory.
 
-## Run Locally
+**AI-provider integration is paused.** The AWS example now contains original tutor-authored study material instead of the previous extractive fill-in-the-blank demo. No API key, Copilot login or model call is needed.
 
-Requires Node.js 24+ and pnpm. No Docker, database service, account, or API key is required for the extractive practice mode.
+## Run
+
+Requires Node.js 24+ and pnpm:
 
 ```sh
 pnpm install
 pnpm dev
 ```
 
-Vite prints the browser URL, normally `http://127.0.0.1:5173`. The API listens on `http://127.0.0.1:3001`. If the API port is occupied, use `PORT=43126 pnpm dev`; Vite follows that port automatically. Both bind only to localhost.
-
-For a built, single-server version:
+Open the Vite URL, normally **http://127.0.0.1:5173/**. For the current working copy, the API runs on an alternate port:
 
 ```sh
-pnpm build
-PORT=43126 pnpm start
+PORT=43126 pnpm dev
 ```
 
-Then open `http://127.0.0.1:43126`.
+The Vite proxy follows `PORT`. Both services bind to loopback. For one built server, run `pnpm build` followed by `PORT=43126 pnpm start`, then open that port. No global install, database service or Docker is needed.
 
-## First Study Session
+## Workspaces And Sources
 
-1. Import the existing **AWS Certified Solutions Architect Associate** folder, or create a subject and upload PDF, MD, or TXT files.
-2. Open **Sources**, select a section, and generate its study pack. Use **AI settings** first for an actual LLM; the default is explicitly labelled offline extraction.
-3. Read the summary, review flashcards, and answer the quiz. Grade revealed cards **Again / Hard / Good / Easy** to schedule their next review with FSRS.
-4. Set your target date and daily minutes in **Study plan**. Mark reading complete separately from practice; **Progress** shows reading, review counts, and quiz history.
-5. Add an **AI topic** to study model knowledge without an uploaded document. Rebuild your plan after adding sources or topics.
+- The **Workspaces** breadcrumb and sidebar link open the workspace index. Choose an exam, create a new workspace or import an existing local source folder. Routes are bookmarkable and survive reloads.
+- Creating a workspace with its first PDF/MD/TXT upload creates a local exam directory. Later **Add sources** uploads inside that exam go into the same directory. An empty workspace can also be created before uploading.
+- The first source becomes the main source. In **Sources**, select **Make main source** to choose a different file. Confirmation explains that active chapters will be rebuilt, previous materials/progress archived and the dated plan cleared.
+- Only the main source defines the curriculum hierarchy. Supplementary PDFs do not append a second independent course or duplicate every chapter.
+- Added supplements receive a vocabulary-overlap check against the main source. Insufficient overlap produces a warning and excludes the file from study context. The source stays available for inspection. Explicit review can accept or exclude it.
+- Accepted sources contribute **related reading references**, selected per chapter by topic overlap. This does not assert that a supplement verifies every tutor statement. Excluding one immediately removes its related-reading links.
 
-The example PDFs contain 909 pages in total and currently produce 109 page-group sections. Their original files are never modified or committed. ZIP files are not imported or executed. PDF page ranges are shown alongside each section. Markdown and text documents split at headings and safe text boundaries.
+The relevance score is a transparent heuristic, **not** an AI judgment, semantic probability, factual verification or guarantee against hallucination. It measures shared distinctive vocabulary, uses a 16% threshold and a minimum shared-term requirement, and can misclassify short, multilingual or unusually phrased documents. Explicit review overrides remain in force until the main source changes.
 
-This working copy has already been seeded with those PDFs, two clearly labelled extractive starter packs in the exam guide, and a **placeholder target of December 22, 2026 at 45 minutes/day**. Adjust the plan to your actual exam. Local study data is ignored by Git and is not included in a fresh clone.
+## The AWS Example
 
-## Generation Options
+The actual supplied slide deck has been mapped to **28 chapters** using verified divider pages. Its fingerprint identifies this exact file; a similarly named unrelated PDF cannot silently receive AWS materials.
 
-| Provider                 | Setup                                                                     | What It Does                                                                                                             |
-| ------------------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Offline extracts         | Nothing                                                                   | Extracts statements and makes fill-in-the-blank practice. **Not AI** and not a substitute for conceptual exam questions. |
-| BYOK / OpenAI-compatible | API base URL, model ID, and provider key                                  | Generates summaries, conceptual cards, multiple-choice questions, and optional knowledge supplements.                    |
-| GitHub Copilot SDK       | Explicit workspace-local login, subscription entitlement, available model | Uses the official local SDK, with no enabled agent tools. No VS Code tokens are extracted.                               |
+The exam contains:
 
-### BYOK
+- **56 original tutor lessons**, two per chapter.
+- **112 conceptual flashcards** about design decisions, constraints and failure modes.
+- **56 original scenario questions**, one per lesson, with four choices and explained answers.
+- Per-lesson summaries, architectural trade-offs and common traps.
+- Main-source chapter page references and related supplementary reading.
+- A chapter-first dated plan, FSRS card schedules, saved quizzes and separate reading progress.
 
-Choose **BYOK** in **AI settings**. The default base URL is `https://api.openai.com/v1` and model ID is `gpt-4o-mini`; replace the ID with a model available to your account. Use an API base URL ending in the provider's API prefix, not `/chat/completions` itself.
+Topics include IAM, EC2, load balancing, RDS/Aurora, S3, Route 53, networking, messaging, containers, serverless, databases, analytics, security, disaster recovery and architectural trade-offs. These are **tutor-authored practice**, not official AWS exam questions, a comprehensive exam bank or a guarantee of exam readiness. Knowledge additions are labelled separately from source evidence. Source citations are chapter-level, not sentence-level proof.
 
-The app calls the OpenAI-compatible chat-completions API. Compatible services such as OpenRouter or a local Ollama/LM Studio server can work when they implement that contract. Local example: `http://127.0.0.1:11434/v1`, with the exact model name you installed and an empty key. A local model server is not installed by this project. Native Anthropic, Azure-specific authentication, and noncompatible provider APIs are not adapters in this MVP.
+Your real working copy has already been migrated. The slides are the main source; the 30-page exam guide is an accepted supplement (70.6% vocabulary overlap at migration). Previous records were preserved. The old December 22, 2026 target and daily time budget were used to rebuild the plan; adjust them to your actual exam.
 
-Your API key is held only in React memory and sent in a request header to the local API, which forwards it to your selected provider. It is never written to disk or study exports. Reloading clears provider settings and keys. Generating a section sends **that section's extracted text**, not your whole folder, to the selected provider. Provider data-retention policies still apply. Generation is manual per section to control cost.
+For another exam or a different main PDF, the app produces a source-based outline using explicit chapter/domain headings, or a provisional source-introduction group if no reliable boundary is found. Markdown H1 headings group subordinate sections. **It does not fabricate tutor packs for arbitrary exams.** Those need separate tutor authoring or a future generation integration. Switching back to the verified AWS deck restores its authored curriculum as a new revision.
 
-**Supplement** adds background from the model in a separate labelled block. Uploaded-source summaries and practice are instructed to remain grounded in the source. Topic-only sections are explicitly labelled model knowledge. Neither instruction nor schema validation guarantees factual accuracy; check high-stakes facts against current official documentation.
+## Learner Setup
 
-### GitHub Copilot
+Before a new upload/import you choose:
 
-The installed official `@github/copilot-sdk` is integrated. Copilot access is **not** automatic just because VS Code has a subscription. Login, your plan's permissions, available models, organization policies, usage limits, and possible premium usage all apply. No live Copilot request or login was performed during implementation.
+- **How well do you know this content?** New, basic understanding, or refresher.
+- **Which best describes you?** Professional, student, career changer, or other.
+- Your exam-preparation goal.
 
-The app isolates Copilot session/config data under `data/copilot`, denies tool permissions, enables no agent tools, and skips repository custom instructions. To opt into interactive login, install the official CLI **locally**, not globally:
+The baseline changes the initial lesson view and time allocation: new learners read first with a 25-minute lesson estimate; basic learners use 15 minutes; refreshers start with cards, use 10-minute lessons and reserve more daily practice time. These are explicit planning defaults, not measured predictions. Role and goal are saved context, not an automatic difficulty score.
 
-```sh
-pnpm add -D @github/copilot
-mkdir -p data/copilot
-COPILOT_HOME="$PWD/data/copilot" pnpm exec copilot
-```
+**Exam settings** saves the baseline and an editable exam tutor brief to the exam directory. Changing the brief does not silently rewrite existing lessons. It is stored for tutor work and later prompt integration, which remains out of scope for this revision. Rebuild the dated plan after changing the baseline or curriculum.
 
-In the interactive CLI, use `/login` and complete GitHub's browser flow yourself. Exit the CLI, select **GitHub Copilot** in the app, and supply an available model ID. The interactive login and live model entitlement remain user-side setup, not a verified part of this build. Never paste tokens into source files, chat, or documentation. Only run the login command when you intend to authenticate and use your subscription.
+The baseline wording is grounded in RemNote's public [Guided Learn Mode article](https://help.remnote.com/en/articles/15724936-guided-learn-mode). It documents “how well do you know this content?” with “Haven't learned it yet,” “I have a basic understanding,” and “Know it well and just want to review.” It says priority changes, not the underlying facts/cards. Exact role-onboarding wording could not be verified; the role labels here are Folio's own.
 
-## Stack And Layout
-
-Node.js 24, strict TypeScript, pnpm, React 19, Vite, Express 5, Zod, pdf-parse, ts-fsrs, Lucide, Vitest, and Playwright. Single-user JSON storage avoids an infrastructure dependency. There is no authentication, cloud sync, or deployment.
+## Local Directory Layout
 
 ```text
-src/
-  App.tsx             Navigation, dialogs, session-only provider configuration
-  Dashboard.tsx       Overview, source library, dated plan, progress
-  StudyView.tsx       Summary, flashcard session, quiz, original source
-  components.tsx      Shared UI primitives and clock
-  api.ts              Typed HTTP helpers
-  styles.css          Responsive workspace styles
-server/
-  index.ts            Localhost server entry point
-  app.ts              HTTP API and upload/import routes
-  documents.ts        PDF extraction and note sectioning
-  generation.ts       Offline, BYOK, and Copilot provider pipeline
-  study.ts            FSRS adapter and study-plan scheduling
-  store.ts            Serialized atomic JSON writes
-shared/models.ts      Zod generation schemas and shared contracts
-tests/                Unit, HTTP, mock-provider, and browser tests
-docs/                 Architecture, verification, and implementation plan
-data/                 Ignored study store, uploaded copies, optional login
+data/
+  study.json                         Legacy store retained unchanged when migrating
+  uploads/                           Legacy copies retained for recovery
+  exams/
+    index.json                       Active exam-directory index
+    aws-...--<workspace-id>/
+      workspace.json                 Authoritative exam snapshot
+      sources/                       Original PDF/MD/TXT copies
+      prompts/study.md               Saved exam tutor brief
+      chapters/<chapter-id>.json     Chapter and its lesson packs
+      plan.json                      Dated plan snapshot
+      progress.json                  Reading, reviews and quiz attempts
 ```
 
-See [the architecture and API map](docs/ARCHITECTURE.md), [implementation plan](docs/IMPLEMENTATION_PLAN.md), and [verification record](docs/VERIFICATION.md).
+Everything for an exam lives beneath its directory; its path appears in **Exam settings**. `workspace.json` is authoritative. Other files are readable projections written after it; edit the brief through the app rather than expecting manual file edits to be watched. Older chapter files can remain after curriculum revisions, while the authoritative snapshot identifies active chapters.
 
-## Checks
+The original workspace PDFs and ZIP archive are not changed. PDFs, archives, local study data, caches, environment files and IDE workspace files remain ignored by Git. Runtime API keys are not used in this revision.
+
+## Backup And History
+
+- Stop the API before making a consistent backup. Back up the entire `data/exams/` tree, including its index, rather than only the old global JSON file.
+- **Export study data** downloads all active-workspace records, including archived lessons and progress, but not source binary files. Back up `sources/` too for original-file previews.
+- Main-source switches archive old lessons and retain their card/quiz history. The progress page reports active curriculum progress and provides an archived-history count; exports contain full retained records.
+- Deleting a workspace removes it from the active index but leaves its exam directory and original files on disk. This is not secure erasure or an in-app undo function.
+- Legacy `data/study.json` is not overwritten by migration. Stop the server and restore a complete matching backup to roll back. There is no in-app restore screen yet.
+- One API process must own a data directory. Writes are serialized in-process and each authoritative exam file is atomically renamed; cross-exam index/projection updates are not a multi-file database transaction. Multi-process use is unsupported.
+
+## Stack And Checks
+
+Node.js, strict TypeScript, pnpm, React/Vite, Express, Zod, pdf-parse, ts-fsrs, Lucide, Vitest and Playwright. Original branding and interface; no copied proprietary RemNote code or assets.
 
 ```sh
 pnpm check
@@ -101,33 +105,26 @@ PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm exec playwright install chrom
 PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e
 ```
 
-`pnpm check` runs lint, strict type checking, unit/API/provider tests, and a production build. Browser tests start a separate server on port 43127 and use `.cache/e2e-data`; they do not change your real study progress. They import the actual example PDFs, so those files must remain in the workspace for that acceptance test. Chromium and package caches stay inside the project. No `sudo` or global installation is required. If a different machine lacks browser OS libraries, install those yourself using your system's approved process; the project never escalates privileges.
+`pnpm check` runs lint, strict types, **33 unit/API tests** and a production build. **Five Chromium workflows** cover actual PDF import, authored practice, source warnings and switching, workspace onboarding, saved settings and mobile chapter plans. Browser tests use separate data under `.cache/e2e-data`, not your exam records. See [verification](docs/VERIFICATION.md).
 
-## Data And Backups
+## Structure And Limits
 
-- `data/study.json` stores sources, sections, generated packs, plans, card schedules, reviews, and quiz attempts.
-- `data/uploads/` stores copies of original imported files. Preserve this directory with the JSON file for a complete backup.
-- **Export study data** downloads a JSON snapshot containing extracted text and progress, **not** original file binaries. For a full backup, stop the server and copy the whole `data/` directory to another directory inside your project or your own chosen backup location.
-- To restore, stop all app processes and restore the matching `study.json` and `uploads/` directory together. There is no in-app restore workflow yet.
-- Deleting a study folder deletes its active study records and progress, but leaves original workspace documents and orphaned uploaded copies untouched. This is not secure erasure.
-- Do not run multiple API processes against the same data directory. Writes are serialized within one process, not across processes. Browser tests use a separate directory.
-- Source PDFs, ZIP archives, caches, exported local state, IDE workspace files, and secrets are excluded from Git. No remote is configured or pushed.
+See [architecture and API contracts](docs/ARCHITECTURE.md) and [implementation history](docs/IMPLEMENTATION_PLAN.md).
 
-## MVP Boundaries
+- `server/store.ts`: per-exam storage and legacy migration.
+- `server/curriculum.ts`: main-source outline, tutor packs, revisions and source references.
+- `server/relevance.ts`: explainable supplementary-source overlap check.
+- `server/tutor/aws.ts`: original AWS lessons and scenario practice.
+- `src/App.tsx`: workspace index, routing, uploads and onboarding.
+- `src/Dashboard.tsx`: chapter roadmap, source review, plan, progress and settings.
+- `src/StudyView.tsx`: lesson summaries, cards, quiz feedback and source reader.
 
-This is a usable **local single-user MVP**, not a publicly deployable service. Keep it bound to loopback. It has basic validation, file limits, workspace path restrictions, and atomic writes, but intentionally lacks accounts, authorization, rate limits, TLS termination, malware scanning, multi-user isolation, and production operations.
+This remains a local single-user MVP: no accounts, public hosting controls, cloud sync, OCR, robust arbitrary-book chapter extraction, automatic weak-topic replanning or multi-user transactions. PDF uploads are limited to 60 MB each and 12 files per request. Dates use UTC days. Plans reserve review time and warn about overload but do not certify exam readiness. Fonts are optional external downloads with local fallback. Model-provider modules remain in the codebase for later work, but live generation routes and UI controls are paused; generic cloze generation is retired.
 
-- Text PDFs only. Scanned/image PDFs require external OCR. PDF sectioning uses page groups, not semantic chapter discovery; slide boundaries may not match chapters.
-- Offline practice is extractive and may include unhelpful source wording. Use a real model for higher-quality conceptual questions.
-- Study plans estimate 15 minutes per unread section and reserve 25% of daily time for review. They flag overload, but do not predict exam readiness, adapt to quiz weakness, or automatically replan after changes. Dates are scheduled using UTC days.
-- Card reviews are due-only. Generation is locked after any card/quiz history to preserve progress. Review history remains valid across reloads.
-- Generation is one section per request; no streaming, background queue, auto-retry, batch generation, or vector search. Provider requests time out after two minutes; providers may still bill timed-out requests.
-- Schemas validate structure, not knowledge. No live paid-provider call was made. BYOK's contract is tested with a local mock, and live Copilot remains unverified until you authenticate.
-- Uploaded PDF previews depend on your browser's PDF support; an **Open original** link is always available. Uploaded source files and study content may contain private/copyrighted material: do not publish them without permission.
-- Google Fonts supplies optional fonts; system sans-serif fallback works without it. PDFs are the actual visual source assets; no external stock imagery is needed.
+Git commits are local development milestones. The user has configured the remote; **never push without explicit permission**.
 
 ## Next Steps
 
-- Connect your preferred provider and try one section before generating more.
-- Adjust the starter target date and daily study budget to your actual exam.
-- Create your remote repository, then configure and push it yourself when ready.
+- Open the AWS workspace, review its first chapter and adjust your learning baseline.
+- Set your real exam date and daily budget.
+- Refine the saved tutor brief and request deeper practice for specific weak chapters.

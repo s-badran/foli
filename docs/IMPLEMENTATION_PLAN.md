@@ -10,7 +10,7 @@ The original single-PDF extraction demo is superseded by the exam-scoped revisio
 - ✅ Verified AWS slide-divider map: 28 chapters, 56 original tutor lessons, 112 conceptual cards and 56 scenario questions. No cloze fillers.
 - ✅ Linked workspace index, upload-created workspaces, learner baseline/role/goal and saved exam brief.
 - ✅ Chapter-first plan/progress UI, familiarity-aware priorities and time budgets, mobile browser verification.
-- 🟡 Final handover docs and local stage commits. Remote is configured by the user; never push without explicit permission.
+- ✅ Final handover docs and local stage commits. Remote is configured by the user; never push without explicit permission.
 
 The sections below retain the original build record for history. Current behavior and limitations are described in the revised README and exam architecture document.
 

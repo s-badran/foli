@@ -48,9 +48,9 @@ AWS .../      Existing user source materials, unchanged
 
 ## Stages
 
-🟡 1. Foundation: architecture, project setup, PDF extraction and section tests.
-⬜ 2. Study engine: folder import, uploads, study plans, validated generation, FSRS, progress, persistence, API tests.
-⬜ 3. Study workspace: library, section reader, cards, quizzes, plan calendar, progress, provider settings, responsive UI.
+✅ 1. Foundation: architecture, project setup, PDF extraction and section tests.
+✅ 2. Study engine: folder import, uploads, study plans, validated generation, FSRS, progress, persistence, API tests.
+🟡 3. Study workspace: library, section reader, cards, quizzes, plan calendar, progress, provider settings, responsive UI.
 ⬜ 4. Verification: real PDF import, complete browser workflows, lint/typecheck/tests/build, screenshots, README and stage commits.
 
 ## MVP Acceptance
@@ -66,3 +66,10 @@ AWS .../      Existing user source materials, unchanged
 ## Deferred
 
 OCR, document annotation, nested outline editing, collaboration, accounts, cloud sync, image occlusion, background worker queues, vector retrieval, PDF layout-aware chapter extraction, streaming generation, production deployment and hardening.
+
+## Implementation Record
+
+- Foundation verified with four sectioning tests, strict compilation and lint. pnpm 12 uses workspace YAML for local store configuration and build approvals. The initial install used the existing machine store before this was corrected; no global package was installed.
+- Both actual user PDFs parsed: exam guide 30 pages / 9 sections / 40,991 characters; slide deck 879 pages / 100 sections / 426,553 characters. Original files remain unchanged and untracked.
+- Engine tests cover offline generation, model-output validation, FSRS state, plan overload, serialized persistence and end-to-end HTTP study workflow. Keys are never part of persisted data.
+- Copilot integration uses the installed SDK's empty mode, no tools, denied permissions, skipped repository instructions, and workspace-local Copilot home. No live login or paid call was attempted.

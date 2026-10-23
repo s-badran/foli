@@ -1,6 +1,7 @@
 node_modules/
 .pnpm-store/
 .cache/
+.cache-test-*/
 dist/
 data/
 test-results/
@@ -10,4 +11,5 @@ playwright-report/
 *.log
 *.pdf
 *.zip
+*.code-workspace
 .DS_Store

@@ -13,10 +13,14 @@ export class Store {
 
   private async load(): Promise<StudyState> {
     try {
-      return JSON.parse(await readFile(path.join(this.directory, 'study.json'), 'utf8')) as StudyState;
+      return JSON.parse(
+        await readFile(path.join(this.directory, 'study.json'), 'utf8'),
+      ) as StudyState;
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code === 'ENOENT') return emptyState();
-      throw new Error('Study data could not be read. Restore data/study.json from a backup before continuing.');
+      throw new Error(
+        'Study data could not be read. Restore data/study.json from a backup before continuing.',
+      );
     }
   }
 

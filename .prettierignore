@@ -1,0 +1,9 @@
+node_modules
+.pnpm-store
+.cache
+data
+dist
+pnpm-lock.yaml
+test-results
+playwright-report
+AWS Certified Solutions Architect Associate

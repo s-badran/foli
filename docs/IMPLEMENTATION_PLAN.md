@@ -50,8 +50,8 @@ AWS .../      Existing user source materials, unchanged
 
 ✅ 1. Foundation: architecture, project setup, PDF extraction and section tests.
 ✅ 2. Study engine: folder import, uploads, study plans, validated generation, FSRS, progress, persistence, API tests.
-🟡 3. Study workspace: library, section reader, cards, quizzes, plan calendar, progress, provider settings, responsive UI.
-⬜ 4. Verification: real PDF import, complete browser workflows, lint/typecheck/tests/build, screenshots, README and stage commits.
+✅ 3. Study workspace: library, section reader, cards, quizzes, plan calendar, progress, provider settings, responsive UI.
+🟡 4. Verification: real PDF import, complete browser workflows, lint/typecheck/tests/build, screenshots, README and stage commits.
 
 ## MVP Acceptance
 

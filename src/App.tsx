@@ -5,19 +5,16 @@ import {
   BookOpen,
   CalendarDays,
   Check,
-  ChevronDown,
   ChevronRight,
   CircleAlert,
-  Folder,
   FolderOpen,
-  LayoutDashboard,
   Layers2,
+  LayoutGrid,
   LoaderCircle,
   Menu,
   Plus,
   Search,
   Settings2,
-  Sparkles,
   Trash2,
   TrendingUp,
   Upload,
@@ -25,43 +22,92 @@ import {
 } from 'lucide-react';
 import {
   emptyState,
-  type Folder as StudyFolder,
-  type ProviderConfig,
+  type Folder,
+  type Learner,
+  type Source,
   type StudyState,
 } from '../shared/models';
-import { api, defaultConfig, loadState, send } from './api';
-import { Modal, ProgressBar, SourceIcon, useNow } from './components';
+import { api, loadState, send } from './api';
+import { Modal, ProgressBar } from './components';
 import { Dashboard, type View } from './Dashboard';
 import { StudyView, type RunTask } from './StudyView';
 
-type Dialog = 'create' | 'import' | 'upload' | 'settings' | 'plan' | 'topic' | 'delete' | null;
+type Dialog = 'new' | 'import' | 'upload' | 'plan' | 'main' | 'accept' | 'delete' | null;
 interface LocalFolder {
   name: string;
   files: string[];
 }
 
+export function LearnerFields({ learner }: { learner?: Learner }) {
+  return (
+    <>
+      <label>
+        How well do you know this content?
+        <select name="familiarity" defaultValue={learner?.familiarity ?? 'new'}>
+          <option value="new">Haven't learned it yet</option>
+          <option value="basic">I have a basic understanding</option>
+          <option value="refresh">Know it well and just want to review</option>
+        </select>
+      </label>
+      <label>
+        Which best describes you?
+        <select name="role" defaultValue={learner?.role ?? 'professional'}>
+          <option value="professional">Professional</option>
+          <option value="student">Student</option>
+          <option value="career-change">Career changer</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+      <label>
+        Exam preparation goal
+        <textarea
+          name="goal"
+          rows={2}
+          maxLength={500}
+          defaultValue={
+            learner?.goal ?? 'Understand design trade-offs and practice exam scenarios.'
+          }
+        />
+      </label>
+    </>
+  );
+}
+
 export function App() {
-  const now = useNow();
   const [state, setState] = useState<StudyState>(emptyState);
   const [loaded, setLoaded] = useState(false);
-  const [folderId, setFolderId] = useState('');
-  const [sectionId, setSectionId] = useState('');
-  const [view, setView] = useState<View>('overview');
+  const [hash, setHash] = useState(() => window.location.hash);
   const [dialog, setDialog] = useState<Dialog>(null);
   const [localFolders, setLocalFolders] = useState<LocalFolder[]>([]);
+  const [pendingSource, setPendingSource] = useState<Source>();
   const [busy, setBusy] = useState('');
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [search, setSearch] = useState('');
   const [mobile, setMobile] = useState(false);
-  const [config, setConfig] = useState<ProviderConfig>(defaultConfig);
-  const [apiKey, setApiKey] = useState('');
-  const uploadInput = useRef<HTMLInputElement>(null);
-  const folder = state.folders.find((item) => item.id === folderId) ?? state.folders[0];
-  const sections = state.sections.filter((section) => section.folderId === folder?.id);
-  const section = sections.find((item) => item.id === sectionId);
+  const fileInput = useRef<HTMLInputElement>(null);
+  const route = hash.replace(/^#/, '').split('/');
+  const folder =
+    route[0] === 'exam' ? state.folders.find((item) => item.id === route[1]) : undefined;
+  const view: View = ['sources', 'plan', 'progress', 'settings'].includes(route[2])
+    ? (route[2] as View)
+    : 'chapters';
+  const sections = state.sections.filter(
+    (section) => section.folderId === folder?.id && !section.archived,
+  );
+  const section =
+    route[2] === 'section' ? sections.find((item) => item.id === route[3]) : undefined;
+  const chapters = state.chapters.filter((chapter) => chapter.folderId === folder?.id);
+  const completed = chapters.filter((chapter) =>
+    sections.filter((item) => item.chapterId === chapter.id).every((item) => item.read),
+  ).length;
 
   useEffect(() => {
+    const changed = () => {
+      setHash(window.location.hash);
+      setMobile(false);
+    };
+    window.addEventListener('hashchange', changed);
     let active = true;
     Promise.all([loadState(), api<LocalFolder[]>('/workspace-folders')])
       .then(([data, folders]) => {
@@ -73,22 +119,22 @@ export function App() {
       })
       .catch((cause) => {
         if (active) {
-          setError(cause instanceof Error ? cause.message : 'Cannot connect to the API.');
+          setError(cause instanceof Error ? cause.message : 'Cannot open workspace.');
           setLoaded(true);
         }
       });
     return () => {
       active = false;
+      window.removeEventListener('hashchange', changed);
     };
   }, []);
 
   const run: RunTask = async (action, success) => {
+    if (busy) return;
     setBusy(
       success?.startsWith('Imported')
-        ? 'Importing documents…'
-        : success?.startsWith('Generated')
-          ? 'Generating study pack…'
-          : 'Saving…',
+        ? 'Importing and checking sources...'
+        : 'Saving exam workspace...',
     );
     setError('');
     setNotice('');
@@ -103,35 +149,30 @@ export function App() {
     }
   };
   function navigate(next: View) {
-    setView(next);
-    setSectionId('');
-    setMobile(false);
-    setSearch('');
+    if (folder) window.location.assign(`#exam/${folder.id}/${next}`);
+  }
+  function openExam(id: string) {
+    window.location.assign(`#exam/${id}/chapters`);
   }
   function openSection(id: string) {
-    setSectionId(id);
-    setMobile(false);
+    if (folder) window.location.assign(`#exam/${folder.id}/section/${id}`);
   }
-  function selectFolder(id: string) {
-    setFolderId(id);
-    setSectionId('');
-    setSearch('');
-    setMobile(false);
-  }
-  function generate() {
-    if (!section) return;
-    void run(
-      () => api(`/sections/${section.id}/generate`, send(config, 'POST', apiKey)),
-      'Generated study pack',
-    );
+  function learnerFrom(form: FormData): Learner {
+    return {
+      familiarity: form.get('familiarity') as Learner['familiarity'],
+      role: form.get('role') as Learner['role'],
+      goal: String(form.get('goal') ?? ''),
+    };
   }
   const nav = [
-    { id: 'overview' as const, label: 'Overview', icon: LayoutDashboard },
-    { id: 'sources' as const, label: 'Sources', icon: BookOpen },
+    { id: 'chapters' as const, label: 'Chapters', icon: BookOpen },
+    { id: 'sources' as const, label: 'Sources', icon: FolderOpen },
     { id: 'plan' as const, label: 'Study plan', icon: CalendarDays },
     { id: 'progress' as const, label: 'Progress', icon: TrendingUp },
+    { id: 'settings' as const, label: 'Exam settings', icon: Settings2 },
   ];
-  const completed = sections.filter((item) => item.read).length;
+  const source = state.sources.find((item) => item.id === section?.sourceId);
+  const currentChapter = chapters.find((chapter) => chapter.id === section?.chapterId);
 
   return (
     <div className="app-shell">
@@ -143,119 +184,88 @@ export function App() {
         />
       )}
       <aside className={`sidebar ${mobile ? 'mobile-open' : ''}`}>
-        <a
-          className="brand"
-          href="#"
-          onClick={(event) => {
-            event.preventDefault();
-            navigate('overview');
-          }}
-        >
+        <a className="brand" href="#workspaces">
           <span className="brand-mark">
-            <Layers2 size={24} strokeWidth={2} />
+            <Layers2 size={24} />
           </span>
           folio<span className="brand-period">.</span>
         </a>
-        <div className="workspace-label">
-          <div className="workspace-avatar">S</div>
-          <div>
-            <strong>Study workspace</strong>
-            <span>Personal · local</span>
+        <a className="workspace-label workspace-index-link" href="#workspaces">
+          <div className="workspace-avatar">
+            <LayoutGrid size={18} />
           </div>
-          <span className="local-indicator" title="Local workspace" />
-        </div>
-        <nav className="main-nav" aria-label="Main navigation">
-          {nav.map((item) => (
-            <button
-              key={item.id}
-              className={view === item.id && !section ? 'active' : ''}
-              onClick={() => navigate(item.id)}
-            >
-              <item.icon size={18} />
-              {item.label}
-              {item.id === 'sources' && (
-                <span>
-                  {state.sources.filter((source) => source.folderId === folder?.id).length}
-                </span>
-              )}
-            </button>
-          ))}
-        </nav>
+          <div>
+            <strong>Exam workspaces</strong>
+            <span>{state.folders.length} available · local</span>
+          </div>
+          <ChevronRight size={15} />
+        </a>
+        {folder && (
+          <nav className="main-nav" aria-label="Exam navigation">
+            {nav.map((item) => (
+              <button
+                key={item.id}
+                className={view === item.id && !section ? 'active' : ''}
+                onClick={() => navigate(item.id)}
+              >
+                <item.icon size={18} />
+                {item.label}
+                {item.id === 'chapters' && <span>{chapters.length}</span>}
+              </button>
+            ))}
+          </nav>
+        )}
         <div className="sidebar-heading">
-          <span>My Subjects</span>
+          <span>Exams</span>
           <button
             className="icon-button"
-            title="Create study folder"
-            aria-label="Create study folder"
-            onClick={() => setDialog('create')}
+            title="New exam workspace"
+            aria-label="New exam workspace"
+            onClick={() => setDialog('new')}
           >
             <Plus size={16} />
           </button>
         </div>
         <div className="folder-list">
           {state.folders.map((item) => (
-            <div key={item.id}>
-              <button
-                className={`folder-button ${folder?.id === item.id ? 'selected' : ''}`}
-                onClick={() => selectFolder(item.id)}
-              >
-                {folder?.id === item.id ? <FolderOpen size={17} /> : <Folder size={17} />}
-                <span>{item.name}</span>
-                {folder?.id === item.id ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
-              </button>
-              {folder?.id === item.id &&
-                state.sources
-                  .filter((source) => source.folderId === item.id)
-                  .map((source) => (
-                    <button
-                      className="sidebar-source"
-                      key={source.id}
-                      title={source.name}
-                      onClick={() => {
-                        const first = sections.find((entry) => entry.sourceId === source.id);
-                        if (first) openSection(first.id);
-                      }}
-                    >
-                      <SourceIcon kind={source.kind} size={14} />
-                      <span>{source.name}</span>
-                    </button>
-                  ))}
-            </div>
+            <a
+              className={`folder-button ${folder?.id === item.id ? 'selected' : ''}`}
+              key={item.id}
+              href={`#exam/${item.id}/chapters`}
+            >
+              <FolderOpen size={17} />
+              <span>{item.name}</span>
+              <ChevronRight size={14} />
+            </a>
           ))}
           <button className="sidebar-import" onClick={() => setDialog('import')}>
-            <Plus size={15} /> Import workspace folder
+            <Plus size={15} /> Import existing folder
           </button>
         </div>
         {folder && (
           <div className="sidebar-progress">
             <div>
-              <span>Subject progress</span>
+              <span>Chapters completed</span>
               <strong>
-                {sections.length ? Math.round((completed / sections.length) * 100) : 0}%
+                {completed} / {chapters.length}
               </strong>
             </div>
             <ProgressBar
-              value={sections.length ? (completed / sections.length) * 100 : 0}
-              label="Subject progress"
+              value={chapters.length ? (completed / chapters.length) * 100 : 0}
+              label="Chapter progress"
             />
             <span>
-              {completed} of {sections.length} sections completed
+              {sections.filter((item) => item.read).length} lessons read · separate from quiz
+              accuracy
             </span>
           </div>
         )}
         <div className="sidebar-bottom">
-          <button onClick={() => setDialog('settings')}>
-            <Settings2 size={17} /> AI settings
-            <span
-              className={`provider-indicator ${config.provider !== 'offline' ? 'connected' : ''}`}
-            />
-          </button>
           <a href="/api/export" download>
             <ArrowDownToLine size={17} /> Export study data
           </a>
         </div>
       </aside>
-
       <main className="main-area">
         <header className="topbar">
           <div className="breadcrumbs">
@@ -267,39 +277,38 @@ export function App() {
             >
               <Menu size={20} />
             </button>
-            <span>Workspace</span>
-            <ChevronRight size={13} />
-            <strong>{folder?.name ?? 'Getting started'}</strong>
-            {section && (
+            <a className="workspace-crumb" href="#workspaces">
+              Workspaces
+            </a>
+            {folder && (
               <>
                 <ChevronRight size={13} />
-                <span className="crumb-section">Section</span>
+                <a href={`#exam/${folder.id}/chapters`}>
+                  <strong>{folder.name}</strong>
+                </a>
+              </>
+            )}
+            {currentChapter && (
+              <>
+                <ChevronRight size={13} />
+                <span className="crumb-section">Chapter {currentChapter.order}</span>
               </>
             )}
           </div>
-          <div className="topbar-tools">
+          {folder && (
             <label className="search-box">
               <Search size={16} />
               <input
-                aria-label="Search sections"
-                placeholder="Search sections…"
+                aria-label="Search chapters and lessons"
+                placeholder="Search chapters..."
                 value={search}
                 onChange={(event) => {
                   setSearch(event.target.value);
-                  setSectionId('');
-                  setView('sources');
+                  if (view !== 'chapters' || section) navigate('chapters');
                 }}
               />
             </label>
-            <button
-              className="icon-button"
-              title="AI settings"
-              aria-label="AI settings"
-              onClick={() => setDialog('settings')}
-            >
-              <Settings2 size={18} />
-            </button>
-          </div>
+          )}
         </header>
         {error && (
           <div className="toast error" role="alert">
@@ -326,33 +335,83 @@ export function App() {
         {busy && (
           <div className="busy-banner" role="status">
             <LoaderCircle size={16} />
-            <span>{busy}</span>
+            {busy}
             <span className="muted">Keep this tab open</span>
           </div>
         )}
         {!loaded ? (
           <div className="loading">
             <LoaderCircle size={24} />
-            <span>Opening your workspace…</span>
+            Opening exam workspaces...
           </div>
-        ) : section ? (
+        ) : !folder ? (
+          <div className="dashboard workspace-index">
+            <div className="welcome-label">
+              <LayoutGrid size={15} /> Exam preparation
+            </div>
+            <div className="page-title">
+              <div>
+                <h1>Your exam workspaces</h1>
+                <p className="page-subtitle">One exam, one source library, one learning path.</p>
+              </div>
+              <button className="button primary" onClick={() => setDialog('new')}>
+                <Plus size={16} /> New workspace
+              </button>
+            </div>
+            <div className="workspace-grid">
+              {state.folders.map((item) => {
+                const groups = state.chapters.filter((chapter) => chapter.folderId === item.id);
+                const lessons = state.sections.filter(
+                  (entry) => entry.folderId === item.id && !entry.archived,
+                );
+                const read = lessons.filter((entry) => entry.read).length;
+                return (
+                  <a className="exam-tile" key={item.id} href={`#exam/${item.id}/chapters`}>
+                    <div className="tile-icon">
+                      <FolderOpen size={25} />
+                    </div>
+                    <h2>{item.name}</h2>
+                    <p>
+                      {state.sources.filter((entry) => entry.folderId === item.id).length} sources ·{' '}
+                      {groups.length} chapters · {lessons.length} lessons
+                    </p>
+                    <ProgressBar
+                      value={lessons.length ? (read / lessons.length) * 100 : 0}
+                      label={`${item.name} reading progress`}
+                    />
+                    <div>
+                      <span>{read} lessons read</span>
+                      <ArrowRight size={17} />
+                    </div>
+                  </a>
+                );
+              })}
+              <button className="exam-tile add-exam" onClick={() => setDialog('new')}>
+                <Plus size={29} />
+                <h2>Prepare for another exam</h2>
+                <p>Create a workspace or upload its first source.</p>
+              </button>
+            </div>
+            <button className="text-button" onClick={() => setDialog('import')}>
+              <FolderOpen size={16} /> Import an existing local study folder
+            </button>
+          </div>
+        ) : section && source ? (
           <StudyView
             key={section.id}
             section={section}
-            source={state.sources.find((source) => source.id === section.sourceId)!}
+            source={source}
             state={state}
             busy={busy}
             run={run}
-            generate={generate}
-            onBack={() => {
-              setSectionId('');
-              setView('sources');
-            }}
+            generate={() => {}}
+            onBack={() => navigate('chapters')}
             onNext={
               sections.indexOf(section) < sections.length - 1
                 ? () => openSection(sections[sections.indexOf(section) + 1].id)
                 : undefined
             }
+            initialTab={folder.learner?.familiarity === 'refresh' ? 'cards' : 'summary'}
           />
         ) : (
           <Dashboard
@@ -363,154 +422,183 @@ export function App() {
             search={search}
             openSection={openSection}
             onUpload={() => setDialog('upload')}
-            onTopic={() => setDialog('topic')}
             onPlan={() => setDialog('plan')}
-            onImport={() => setDialog('import')}
-            onCreate={() => setDialog('create')}
+            busy={busy}
+            run={run}
+            onMain={(item) => {
+              setPendingSource(item);
+              setDialog('main');
+            }}
+            onAccept={(item) => {
+              setPendingSource(item);
+              setDialog('accept');
+            }}
           />
         )}
         <footer className="app-footer">
           <span>
-            <Layers2 size={13} /> Built for a deeper understanding.
+            <Layers2 size={13} /> Exam-focused learning
           </span>
-          <span>
-            {config.provider === 'offline'
-              ? 'Extractive mode · no AI connected'
-              : `${config.provider === 'copilot' ? 'GitHub Copilot' : 'BYOK'} · ${config.model}`}
-          </span>
+          <span>AI integration paused · tutor-authored AWS practice</span>
           {folder && (
-            <button
-              className="text-button"
-              onClick={() => setDialog('delete')}
-              title="Delete current folder"
-            >
-              <Trash2 size={13} /> Delete subject
+            <button className="text-button" onClick={() => setDialog('delete')}>
+              <Trash2 size={13} /> Delete workspace
             </button>
           )}
         </footer>
       </main>
 
-      {dialog === 'create' && (
-        <Modal title="New study folder" onClose={() => setDialog(null)}>
+      {dialog === 'new' && (
+        <Modal title="New exam workspace" onClose={() => setDialog(null)}>
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              const name = new FormData(event.currentTarget).get('name');
+              const form = new FormData(event.currentTarget);
+              const files = fileInput.current?.files;
               void run(async () => {
-                const created = await api<StudyFolder>('/folders', send({ name }));
-                setFolderId(created.id);
-                setSectionId('');
+                let result: Folder;
+                if (files?.length) {
+                  for (const file of files) form.append('files', file);
+                  result = (
+                    await api<{ folder: Folder }>('/workspaces/upload', {
+                      method: 'POST',
+                      body: form,
+                    })
+                  ).folder;
+                } else
+                  result = await api<Folder>(
+                    '/folders',
+                    send({ name: form.get('name'), learner: learnerFrom(form) }),
+                  );
                 setDialog(null);
-              }, 'Folder created');
+                openExam(result.id);
+              }, 'Exam workspace created');
             }}
           >
             <label>
-              Subject name
+              Exam name
               <input
                 name="name"
-                placeholder="e.g. AWS Solutions Architect"
+                placeholder="e.g. AWS Solutions Architect Associate"
                 maxLength={120}
                 required
                 autoFocus
               />
             </label>
+            <label>
+              First study source (optional)
+              <input ref={fileInput} type="file" multiple accept=".pdf,.md,.txt" />
+            </label>
+            <LearnerFields />
             <div className="modal-actions">
               <button type="button" className="button secondary" onClick={() => setDialog(null)}>
                 Cancel
               </button>
               <button className="button primary" disabled={!!busy}>
-                <Plus size={16} /> Create folder
+                <Plus size={16} /> Create workspace
               </button>
             </div>
           </form>
         </Modal>
       )}
       {dialog === 'import' && (
-        <Modal title="Import workspace folder" onClose={() => setDialog(null)}>
-          <div className="import-options">
-            {localFolders
-              .filter((item) => !state.folders.some((existing) => existing.name === item.name))
-              .map((item) => (
-                <button
-                  className="import-option"
-                  disabled={!!busy}
-                  key={item.name}
-                  onClick={() =>
-                    void run(async () => {
-                      const result = await api<{ folder: StudyFolder }>(
-                        '/import-workspace',
-                        send({ name: item.name }),
-                      );
-                      selectFolder(result.folder.id);
-                      setDialog(null);
-                    }, 'Imported workspace sources')
-                  }
-                >
-                  <FolderOpen size={24} />
-                  <div>
-                    <strong>{item.name}</strong>
-                    <span>
-                      {item.files.length} documents ·{' '}
-                      {item.files.map((file) => file.split('.').at(-1)?.toUpperCase()).join(', ')}
-                    </span>
-                  </div>
-                  <ArrowRight size={18} />
-                </button>
-              ))}
-            {localFolders.every((item) =>
-              state.folders.some((existing) => existing.name === item.name),
-            ) && (
-              <p className="muted">
-                No new source folders found. Create a subject and upload PDF, MD, or TXT files.
-              </p>
-            )}
-          </div>
-        </Modal>
-      )}
-      {dialog === 'upload' && (
-        <Modal title="Add study materials" onClose={() => setDialog(null)}>
+        <Modal title="Import existing exam folder" onClose={() => setDialog(null)}>
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              if (!folder || !uploadInput.current?.files?.length) return;
-              const form = new FormData();
-              for (const file of uploadInput.current.files) form.append('files', file);
+              const form = new FormData(event.currentTarget);
               void run(async () => {
-                await api(`/folders/${folder.id}/upload`, { method: 'POST', body: form });
+                const result = await api<{ folder: Folder }>(
+                  '/import-workspace',
+                  send({ name: form.get('name') }),
+                );
+                await api(
+                  `/folders/${result.folder.id}`,
+                  send({ learner: learnerFrom(form) }, 'PATCH'),
+                );
                 setDialog(null);
-              }, 'Imported study materials');
+                openExam(result.folder.id);
+              }, 'Imported exam sources');
             }}
           >
-            <label className="upload-zone">
-              <Upload size={28} />
-              <strong>Choose your study materials</strong>
-              <span>PDF, Markdown or TXT · up to 60 MB each · 12 files</span>
-              <input
-                ref={uploadInput}
-                type="file"
-                name="files"
-                multiple
-                accept=".pdf,.md,.txt"
-                required
-              />
+            <label>
+              Local source folder
+              <select name="name" required>
+                {localFolders
+                  .filter((item) => !state.folders.some((existing) => existing.name === item.name))
+                  .map((item) => (
+                    <option key={item.name} value={item.name}>
+                      {item.name} ({item.files.length} files)
+                    </option>
+                  ))}
+              </select>
             </label>
+            <LearnerFields />
             <div className="modal-actions">
               <button type="button" className="button secondary" onClick={() => setDialog(null)}>
                 Cancel
               </button>
-              <button className="button primary" disabled={!!busy || !folder}>
-                <Upload size={16} /> Import sources
+              <button
+                className="button primary"
+                disabled={
+                  !!busy ||
+                  localFolders.every((item) =>
+                    state.folders.some((existing) => existing.name === item.name),
+                  )
+                }
+              >
+                <FolderOpen size={16} /> Import exam
               </button>
             </div>
           </form>
         </Modal>
       )}
-      {dialog === 'plan' && (
-        <Modal title="Your study plan" onClose={() => setDialog(null)}>
+      {dialog === 'upload' && folder && (
+        <Modal title="Add supplementary sources" onClose={() => setDialog(null)}>
           <form
             onSubmit={(event) => {
               event.preventDefault();
-              if (!folder) return;
+              const files = fileInput.current?.files;
+              if (!files?.length) return;
+              const form = new FormData();
+              for (const file of files) form.append('files', file);
+              void run(async () => {
+                const result = await api<{ warnings: string[] }>(`/folders/${folder.id}/upload`, {
+                  method: 'POST',
+                  body: form,
+                });
+                setDialog(null);
+                navigate('sources');
+                if (result.warnings.length) setError(result.warnings.join(' '));
+              }, 'Imported exam sources');
+            }}
+          >
+            <label className="upload-zone">
+              <Upload size={28} />
+              <strong>{folder.name}</strong>
+              <span>PDF, MD or TXT · up to 60 MB each</span>
+              <input ref={fileInput} type="file" multiple accept=".pdf,.md,.txt" required />
+            </label>
+            <p className="form-note">
+              Files stay in this exam directory. Supplementary uploads are checked against its main
+              source before being used.
+            </p>
+            <div className="modal-actions">
+              <button type="button" className="button secondary" onClick={() => setDialog(null)}>
+                Cancel
+              </button>
+              <button className="button primary" disabled={!!busy}>
+                <Upload size={16} /> Add sources
+              </button>
+            </div>
+          </form>
+        </Modal>
+      )}
+      {dialog === 'plan' && folder && (
+        <Modal title="Plan your exam preparation" onClose={() => setDialog(null)}>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
               const form = new FormData(event.currentTarget);
               void run(async () => {
                 await api(
@@ -529,33 +617,28 @@ export function App() {
             }}
           >
             <label>
-              Exam or target date
+              Exam date
               <input
-                type="date"
                 name="examDate"
+                type="date"
                 required
-                defaultValue={
-                  folder?.plan?.examDate ?? new Date(now + 30 * 86400000).toISOString().slice(0, 10)
-                }
-                min={new Date(now + 86400000).toISOString().slice(0, 10)}
-                max={new Date(now + 730 * 86400000).toISOString().slice(0, 10)}
+                defaultValue={folder.plan?.examDate ?? ''}
               />
             </label>
             <label>
-              Daily study time (minutes)
+              Daily minutes
               <input
                 name="dailyMinutes"
                 type="number"
                 min={20}
                 max={480}
-                step={5}
-                defaultValue={folder?.plan?.dailyMinutes ?? 45}
+                defaultValue={folder.plan?.dailyMinutes ?? 45}
                 required
               />
             </label>
             <p className="form-note">
-              Unread sections are scheduled before your exam, with time reserved for daily review.
-              Rebuild the plan after adding new sources.
+              The plan follows chapter order and reserves review time. New learners get more reading
+              time; refreshers get more practice time.
             </p>
             <div className="modal-actions">
               <button type="button" className="button secondary" onClick={() => setDialog(null)}>
@@ -568,167 +651,71 @@ export function App() {
           </form>
         </Modal>
       )}
-      {dialog === 'topic' && (
-        <Modal title="Study a topic with AI" onClose={() => setDialog(null)}>
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              if (!folder) return;
-              const topic = new FormData(event.currentTarget).get('topic');
-              void run(async () => {
-                const created = await api<{ id: string }>(
-                  `/folders/${folder.id}/topic`,
-                  send({ ...config, topic }, 'POST', apiKey),
-                );
-                setSectionId(created.id);
-                setDialog(null);
-              }, 'Generated topic study pack');
-            }}
-          >
-            <label>
-              What would you like to learn?
-              <input
-                name="topic"
-                placeholder="e.g. AWS VPC routing and private subnets"
-                maxLength={120}
-                required
-                autoFocus
-              />
-            </label>
-            <p className="form-note">
-              Generated from model knowledge, not uploaded evidence. Verify important facts against
-              current official sources.
-            </p>
-            {config.provider === 'offline' && (
-              <div className="warning">Connect a model in AI settings to generate a topic.</div>
-            )}
-            <div className="modal-actions">
-              <button
-                type="button"
-                className="button secondary"
-                onClick={() => setDialog('settings')}
-              >
-                <Settings2 size={16} /> AI settings
-              </button>
-              <button className="button primary" disabled={!!busy || config.provider === 'offline'}>
-                <Sparkles size={16} /> Generate topic
-              </button>
-            </div>
-          </form>
-        </Modal>
-      )}
-      {dialog === 'settings' && (
-        <Modal title="AI & generation" onClose={() => setDialog(null)}>
-          <form
-            onSubmit={(event) => {
-              event.preventDefault();
-              setDialog(null);
-              setNotice('AI settings applied for this session');
-            }}
-          >
-            <label>
-              Generation provider
-              <select
-                value={config.provider}
-                onChange={(event) => {
-                  const provider = event.target.value as ProviderConfig['provider'];
-                  setConfig({
-                    ...config,
-                    provider,
-                    model: provider === 'copilot' ? 'gpt-4.1' : 'gpt-4o-mini',
-                  });
-                }}
-              >
-                <option value="offline">Offline · source extracts (not AI)</option>
-                <option value="openai">BYOK · OpenAI-compatible API</option>
-                <option value="copilot">GitHub Copilot · local SDK</option>
-              </select>
-            </label>
-            {config.provider === 'openai' && (
-              <>
-                <label>
-                  API base URL
-                  <input
-                    type="url"
-                    value={config.baseUrl}
-                    onChange={(event) => setConfig({ ...config, baseUrl: event.target.value })}
-                    required
-                    placeholder="https://api.openai.com/v1"
-                  />
-                </label>
-                <label>
-                  API key
-                  <input
-                    type="password"
-                    autoComplete="off"
-                    value={apiKey}
-                    onChange={(event) => setApiKey(event.target.value)}
-                    placeholder="Only held in memory for this session"
-                  />
-                </label>
-                <p className="form-note">
-                  Selected source text is sent to this provider. Local compatible servers may leave
-                  the key empty. Keys are never saved.
-                </p>
-              </>
-            )}
-            {config.provider !== 'offline' && (
-              <label>
-                Model ID
-                <input
-                  value={config.model}
-                  onChange={(event) => setConfig({ ...config, model: event.target.value })}
-                  required
-                  maxLength={120}
-                />
-              </label>
-            )}
-            {config.provider === 'copilot' && (
-              <p className="form-note">
-                Uses the official SDK with workspace-local authentication in data/copilot. Login is
-                a separate terminal step documented in the README. Subscription access and quota
-                apply. No tools or file access are enabled.
-              </p>
-            )}
-            {config.provider === 'offline' ? (
-              <p className="form-note">
-                Extracts key statements and fill-in-the-blank practice from your sources. No model
-                calls, no API key, no extra model knowledge.
-              </p>
-            ) : (
-              <label className="checkbox-label">
-                <input
-                  type="checkbox"
-                  checked={config.supplement}
-                  onChange={(event) => setConfig({ ...config, supplement: event.target.checked })}
-                />
-                <span>Add model-knowledge supplements, separately labelled</span>
-              </label>
-            )}
-            <div className="modal-actions">
-              <button
-                type="button"
-                className="button secondary"
-                onClick={() => {
-                  setApiKey('');
-                  setConfig(defaultConfig);
-                  setDialog(null);
-                }}
-              >
-                Reset to offline
-              </button>
-              <button className="button primary">
-                <Check size={16} /> Apply settings
-              </button>
-            </div>
-          </form>
-        </Modal>
-      )}
-      {dialog === 'delete' && (
-        <Modal title="Delete study folder?" onClose={() => setDialog(null)}>
+      {dialog === 'main' && folder && pendingSource && (
+        <Modal title="Change main source?" onClose={() => setDialog(null)}>
           <p className="form-note">
-            Delete “{folder?.name}” and all its study progress? Original workspace documents are not
-            changed. Export your study data first.
+            “{pendingSource.name}” will define this exam's chapters. Current lessons, cards and
+            progress will be archived, not deleted. The dated plan must be rebuilt. Tutor-authored
+            AWS lessons are available only for the supplied slide deck; other sources receive an
+            honest source outline, not fabricated practice.
+          </p>
+          <div className="modal-actions">
+            <button className="button secondary" onClick={() => setDialog(null)}>
+              Cancel
+            </button>
+            <button
+              className="button primary"
+              disabled={!!busy}
+              onClick={() =>
+                void run(async () => {
+                  await api(
+                    `/folders/${folder.id}/main-source`,
+                    send({ sourceId: pendingSource.id, confirmRebuild: true }, 'PUT'),
+                  );
+                  setDialog(null);
+                  navigate('chapters');
+                }, 'Main source changed; previous progress archived')
+              }
+            >
+              Change and rebuild
+            </button>
+          </div>
+        </Modal>
+      )}
+      {dialog === 'accept' && folder && pendingSource && (
+        <Modal title="Accept this supplement?" onClose={() => setDialog(null)}>
+          <p className="form-note">
+            The relevance check did not establish enough shared topic vocabulary for “
+            {pendingSource.name}”. Accept it only after reviewing its content. Acceptance is your
+            override, not evidence of factual agreement.
+          </p>
+          <div className="modal-actions">
+            <button className="button secondary" onClick={() => setDialog(null)}>
+              Keep excluded
+            </button>
+            <button
+              className="button primary"
+              disabled={!!busy}
+              onClick={() =>
+                void run(async () => {
+                  await api(
+                    `/folders/${folder.id}/sources/${pendingSource.id}`,
+                    send({ status: 'accepted' }, 'PATCH'),
+                  );
+                  setDialog(null);
+                }, 'Supplement explicitly accepted')
+              }
+            >
+              Accept after review
+            </button>
+          </div>
+        </Modal>
+      )}
+      {dialog === 'delete' && folder && (
+        <Modal title="Delete exam workspace?" onClose={() => setDialog(null)}>
+          <p className="form-note">
+            Delete the active workspace “{folder.name}”? Its source directory and original materials
+            are retained on disk for recovery. Export a backup before continuing.
           </p>
           <div className="modal-actions">
             <button className="button secondary" onClick={() => setDialog(null)}>
@@ -739,14 +726,13 @@ export function App() {
               disabled={!!busy}
               onClick={() =>
                 void run(async () => {
-                  await api(`/folders/${folder?.id}`, { method: 'DELETE' });
+                  await api(`/folders/${folder.id}`, { method: 'DELETE' });
                   setDialog(null);
-                  setSectionId('');
-                  setFolderId('');
-                }, 'Study folder deleted')
+                  window.location.hash = 'workspaces';
+                }, 'Exam workspace removed from the index')
               }
             >
-              <Trash2 size={16} /> Delete folder
+              <Trash2 size={16} /> Delete workspace
             </button>
           </div>
         </Modal>

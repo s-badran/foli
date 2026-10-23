@@ -1,5 +1,5 @@
 import { fsrs, type Card, type Grade } from 'ts-fsrs';
-import type { ScheduleCard, Section, StudyPlan } from '../shared/models';
+import type { Learner, ScheduleCard, Section, StudyPlan } from '../shared/models';
 
 export function serializeCard(card: Card): ScheduleCard {
   return { ...card, due: card.due.toISOString(), last_review: card.last_review?.toISOString() };
@@ -25,6 +25,7 @@ export function createPlan(
   examDate: string,
   dailyMinutes: number,
   now = new Date(),
+  learner?: Learner,
 ): StudyPlan {
   const today = new Date(`${dateKey(now)}T00:00:00Z`);
   const exam = new Date(`${examDate}T00:00:00Z`);
@@ -36,9 +37,20 @@ export function createPlan(
     daysAvailable > 730
   )
     throw new Error('Choose an exam date between tomorrow and two years from today.');
-  const pending = sections.filter((section) => !section.read);
-  const reviewMinutes = Math.max(5, Math.round(dailyMinutes * 0.25));
-  const slots = Math.max(1, Math.floor((dailyMinutes - reviewMinutes) / 15));
+  const pending = sections.filter((section) => !section.archived && !section.read);
+  const sectionMinutes =
+    learner?.familiarity === 'refresh'
+      ? 10
+      : learner?.familiarity === 'basic'
+        ? 15
+        : learner
+          ? 25
+          : 15;
+  const reviewMinutes = Math.max(
+    5,
+    Math.round(dailyMinutes * (learner?.familiarity === 'refresh' ? 0.45 : 0.25)),
+  );
+  const slots = Math.max(1, Math.floor((dailyMinutes - reviewMinutes) / sectionMinutes));
   const overloaded = pending.length > slots * daysAvailable;
   const assignedPerDay = Math.max(slots, Math.ceil(pending.length / daysAvailable));
   const days: StudyPlan['days'] = [];
@@ -51,16 +63,17 @@ export function createPlan(
       date: dateKey(date),
       sectionIds,
       reviewMinutes,
-      studyMinutes: sectionIds.length * 15,
+      studyMinutes: sectionIds.length * sectionMinutes,
     });
   }
   return {
     examDate,
     dailyMinutes,
     createdAt: now.toISOString(),
+    familiarity: learner?.familiarity,
     days,
     warning: overloaded
-      ? 'This schedule exceeds your daily budget. Increase your time or move the exam date. Each section budgets 15 minutes plus daily review.'
+      ? `This schedule exceeds your daily budget. Increase your time or move the exam date. Each lesson budgets ${sectionMinutes} minutes plus daily review.`
       : undefined,
   };
 }

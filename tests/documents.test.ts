@@ -2,6 +2,13 @@ import { describe, expect, it } from 'vitest';
 import { extractDocument, splitText } from '../server/documents';
 
 describe('document sectioning', () => {
+  it('keeps Markdown sections under their chapter heading', () => {
+    const sections = splitText(
+      '# Routing\n## Route tables\nRoute tables choose the next hop for traffic leaving a subnet.\n## Network controls\nSecurity groups control allowed connections to network interfaces.',
+    );
+    expect(sections).toHaveLength(2);
+    expect(sections.every((section) => section.chapterTitle === 'Routing')).toBe(true);
+  });
   it('preserves markdown section boundaries', () => {
     const sections = splitText(
       '# Networking\nA VPC isolates resources in a virtual network for your account.\n## Subnets\nA subnet is a range of IP addresses inside a single availability zone.',

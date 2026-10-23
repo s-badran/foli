@@ -25,9 +25,9 @@ export function StudyView({
   state,
   busy,
   run,
-  generate,
   onBack,
   onNext,
+  initialTab = 'summary',
 }: {
   section: Section;
   source: Source;
@@ -37,9 +37,10 @@ export function StudyView({
   generate: () => void;
   onBack: () => void;
   onNext?: () => void;
+  initialTab?: 'summary' | 'cards';
 }) {
   const now = useNow();
-  const [tab, setTab] = useState<Tab>('summary');
+  const [tab, setTab] = useState<Tab>(initialTab);
   const [revealed, setRevealed] = useState(false);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [result, setResult] = useState<QuizAttempt | null>(null);
@@ -50,8 +51,6 @@ export function StudyView({
     ) ?? [];
   const card = cards[0];
   const attempts = state.attempts.filter((attempt) => attempt.sectionId === section.id);
-  const history =
-    state.reviews.some((review) => review.sectionId === section.id) || attempts.length > 0;
   const tabs: { id: Tab; label: string; count?: number }[] = [
     { id: 'summary', label: 'Summary' },
     { id: 'cards', label: 'Flashcards', count: content?.cards.length },
@@ -62,7 +61,7 @@ export function StudyView({
   return (
     <div className="reader">
       <button className="text-button back" onClick={onBack}>
-        <ArrowLeft size={16} /> All sections
+        <ArrowLeft size={16} /> All chapters
       </button>
       <div className="source-caption">
         <SourceIcon kind={source.kind} />
@@ -92,8 +91,8 @@ export function StudyView({
       <div className="reader-meta">
         <span className={`dot ${content ? 'green' : ''}`} />
         {content
-          ? `${content.provider === 'offline' ? 'Source extracts' : source.kind === 'topic' ? 'Model knowledge' : 'AI · source-grounded'} · ${content.model}`
-          : 'Ready for a study pack'}
+          ? `${content.authorship === 'tutor-authored' ? 'Original tutor practice' : content.provider === 'offline' ? 'Legacy source extracts' : 'Source-grounded study material'} · ${content.model}`
+          : 'Source reading · tutor practice not yet authored'}
         {content && <span>Generated {displayDate(content.generatedAt)}</span>}
       </div>
       <div className="tab-row" role="tablist" aria-label="Section views">
@@ -114,14 +113,14 @@ export function StudyView({
       {!content && tab !== 'source' ? (
         <Empty
           icon={<Sparkles size={28} />}
-          title="Turn this section into practice"
+          title="Tutor practice is not yet authored for this source"
           action={
-            <button className="button primary" disabled={!!busy} onClick={generate}>
-              <Sparkles size={16} /> Generate study pack
+            <button className="button secondary" onClick={() => setTab('source')}>
+              <BookOpen size={16} /> Read main source
             </button>
           }
         >
-          <>Summary, flashcards and a quiz for this section.</>
+          <>AI integration is paused. We will not fill this lesson with generic cloze questions.</>
         </Empty>
       ) : null}
 
@@ -132,7 +131,10 @@ export function StudyView({
             {content.supplement && (
               <aside className="knowledge-note">
                 <span className="eyebrow">
-                  <Sparkles size={14} /> Model knowledge · not source evidence
+                  <Sparkles size={14} />{' '}
+                  {content.authorship === 'tutor-authored'
+                    ? 'Tutor knowledge and provenance'
+                    : 'Knowledge additions · not source evidence'}
                 </span>
                 <Markdown>{content.supplement}</Markdown>
               </aside>
@@ -141,12 +143,31 @@ export function StudyView({
               <button className="button primary" onClick={() => setTab('cards')}>
                 <Layers size={16} /> Practice flashcards <ArrowRight size={16} />
               </button>
-              {!history && (
-                <button className="text-button" disabled={!!busy} onClick={generate}>
-                  <RotateCcw size={14} /> Regenerate
-                </button>
-              )}
             </div>
+            {content.evidence && (
+              <div className="evidence-list">
+                <h3>Sources and related reading</h3>
+                {content.evidence.map((item, index) => {
+                  const reference = state.sources.find((entry) => entry.id === item.sourceId);
+                  return (
+                    reference && (
+                      <div key={index}>
+                        <a
+                          href={`/api/sources/${reference.id}/file#page=${item.pageStart ?? 1}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {reference.name}
+                          {item.pageStart ? ` · pp. ${item.pageStart}-${item.pageEnd}` : ''}{' '}
+                          <ExternalLink size={12} />
+                        </a>
+                        <p>{item.note}</p>
+                      </div>
+                    )
+                  );
+                })}
+              </div>
+            )}
           </article>
           <aside className="key-points">
             <span className="eyebrow">Key Takeaways</span>

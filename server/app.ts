@@ -1,14 +1,14 @@
 import express from 'express';
 import multer from 'multer';
-import { randomUUID } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, readFile, readdir, realpath, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { z } from 'zod';
-import { providerSchema, type Section, type Source, type StudyState } from '../shared/models';
+import { learnerSchema, type Section, type Source, type StudyState } from '../shared/models';
 import { Store } from './store';
 import { extractDocument } from './documents';
-import { generateContent } from './generation';
 import { createPlan, reviewCard } from './study';
+import { buildCurriculum, refreshRelevance, refreshSupplementLinks } from './curriculum';
 
 const extensions = new Set(['.pdf', '.md', '.txt']);
 const reserved = new Set([
@@ -47,18 +47,17 @@ export function createApp(
       callback(null, true);
     },
   });
-  const generationLocks = new Set<string>();
-
   async function importFiles(folderId: string, files: { name: string; buffer: Buffer }[]) {
-    required((await store.read()).folders, folderId);
+    const folder = required((await store.read()).folders, folderId);
     const sources: Source[] = [];
     const sections: Section[] = [];
     for (const file of files) {
       const id = randomUUID();
       const extension = path.extname(file.name).toLowerCase();
-      const extracted = await extractDocument(file.buffer, file.name);
-      await mkdir(path.join(store.directory, 'uploads'), { recursive: true });
-      await writeFile(path.join(store.directory, 'uploads', `${id}${extension}`), file.buffer, {
+      const extracted = await extractDocument(file.buffer, file.name, true);
+      const savedName = `${id}--${path.basename(file.name).replace(/[^a-zA-Z0-9._-]/g, '_')}`;
+      await mkdir(path.dirname(store.sourcePath(folder, savedName)), { recursive: true });
+      await writeFile(store.sourcePath(folder, savedName), file.buffer, {
         mode: 0o600,
       });
       sources.push({
@@ -68,7 +67,8 @@ export function createApp(
         kind: extension.slice(1) as Source['kind'],
         pages: extracted.at(-1)?.pageEnd,
         addedAt: new Date().toISOString(),
-        file: `${id}${extension}`,
+        file: savedName,
+        contentHash: createHash('sha256').update(file.buffer).digest('hex'),
       });
       sections.push(
         ...extracted.map((section) => ({
@@ -77,15 +77,35 @@ export function createApp(
           sourceId: id,
           folderId,
           read: false,
+          sourceFragment: true,
+          archived: true,
         })),
       );
     }
     await store.update((state) => {
-      required(state.folders, folderId);
+      const current = required(state.folders, folderId);
       state.sources.push(...sources);
       state.sections.push(...sections);
+      current.mainSourceId ??= sources[0]?.id;
+      refreshRelevance(state, current);
+      if (!state.chapters.some((chapter) => chapter.folderId === folderId))
+        buildCurriculum(state, current);
+      refreshSupplementLinks(state, current);
     });
-    return { sourceCount: sources.length, sectionCount: sections.length };
+    const saved = await store.read();
+    return {
+      sourceCount: sources.length,
+      sectionCount: saved.sections.filter(
+        (section) => section.folderId === folderId && !section.archived,
+      ).length,
+      warnings: saved.sources
+        .filter(
+          (source) =>
+            sources.some((item) => item.id === source.id) &&
+            source.relevance?.status === 'needs-review',
+        )
+        .map((source) => `${source.name}: ${source.relevance?.reason}`),
+    };
   }
 
   app.get('/api/health', (_request, response) => response.json({ ok: true }));
@@ -106,10 +126,141 @@ export function createApp(
     response.json(folders);
   });
   app.post('/api/folders', async (request, response) => {
-    const { name } = z.object({ name: nameSchema }).parse(request.body);
-    const folder = { id: randomUUID(), name, createdAt: new Date().toISOString() };
+    const { name, learner } = z
+      .object({ name: nameSchema, learner: learnerSchema.optional() })
+      .parse(request.body);
+    const folder = {
+      id: randomUUID(),
+      name,
+      createdAt: new Date().toISOString(),
+      learner: learner ?? learnerSchema.parse({}),
+    };
     await store.update((state) => state.folders.push(folder));
     response.status(201).json(folder);
+  });
+  app.post('/api/workspaces/upload', upload.array('files'), async (request, response) => {
+    const files = request.files as Express.Multer.File[];
+    if (!files?.length) throw new Error('Choose a PDF, Markdown or text source first.');
+    const name = nameSchema.parse(request.body.name || path.parse(files[0].originalname).name);
+    const learner = learnerSchema.parse({
+      familiarity: request.body.familiarity ?? 'new',
+      role: request.body.role ?? 'professional',
+      goal: request.body.goal ?? '',
+    });
+    const folder = { id: randomUUID(), name, createdAt: new Date().toISOString(), learner };
+    await store.update((state) => state.folders.push(folder));
+    try {
+      const result = await importFiles(
+        folder.id,
+        files.map((file) => ({
+          name: Buffer.from(file.originalname, 'latin1').toString('utf8'),
+          buffer: file.buffer,
+        })),
+      );
+      response.status(201).json({ ...result, folder });
+    } catch (error) {
+      await store.update((state) => {
+        state.folders = state.folders.filter((item) => item.id !== folder.id);
+      });
+      throw error;
+    }
+  });
+  app.patch('/api/folders/:id', async (request, response) => {
+    const settings = z
+      .object({ learner: learnerSchema.optional(), prompt: z.string().max(16000).optional() })
+      .parse(request.body);
+    const folder = await store.update((state) => {
+      const current = required(state.folders, request.params.id);
+      Object.assign(current, settings);
+      return current;
+    });
+    response.json(folder);
+  });
+  app.put('/api/folders/:id/main-source', async (request, response) => {
+    const { sourceId, confirmRebuild } = z
+      .object({ sourceId: z.string(), confirmRebuild: z.literal(true) })
+      .parse(request.body);
+    void confirmRebuild;
+    await store.update((state) => {
+      const folder = required(state.folders, request.params.id);
+      const source = required(state.sources, sourceId);
+      if (source.folderId !== folder.id || source.kind === 'topic')
+        throw new Error('Select a file belonging to this exam.');
+      folder.mainSourceId = source.id;
+      for (const item of state.sources.filter((item) => item.folderId === folder.id))
+        item.relevance = undefined;
+      refreshRelevance(state, folder);
+      buildCurriculum(state, folder);
+    });
+    response.json({
+      ok: true,
+      message:
+        'Main source changed. Previous curriculum and progress are archived; rebuild the dated plan.',
+    });
+  });
+  app.patch('/api/folders/:id/sources/:sourceId', async (request, response) => {
+    const { status } = z.object({ status: z.enum(['accepted', 'excluded']) }).parse(request.body);
+    await store.update((state) => {
+      const folder = required(state.folders, request.params.id);
+      const source = required(state.sources, request.params.sourceId);
+      if (source.folderId !== folder.id || source.id === folder.mainSourceId)
+        throw new Error('Only supplementary sources in this exam can be reviewed.');
+      if (!source.relevance) throw new Error('Run exam preparation first.');
+      source.relevance.status = status;
+      source.relevance.reason =
+        status === 'accepted'
+          ? 'Explicitly accepted by the learner after reviewing the relevance warning.'
+          : 'Excluded by the learner; never used as supplementary context.';
+      source.relevance.method = 'Learner review override';
+      refreshSupplementLinks(state, folder);
+    });
+    response.json({ ok: true });
+  });
+  app.post('/api/folders/:id/prepare', async (request, response) => {
+    const state = await store.read();
+    const folder = required(state.folders, request.params.id);
+    const sources = state.sources.filter((source) => source.folderId === folder.id);
+    const hashes = new Map<string, string>();
+    for (const source of sources)
+      if (source.file && !source.contentHash) {
+        let buffer: Buffer;
+        try {
+          buffer = await readFile(store.sourcePath(folder, source.file));
+        } catch {
+          buffer = await readFile(
+            path.join(store.directory, 'uploads', path.basename(source.file)),
+          );
+        }
+        hashes.set(source.id, createHash('sha256').update(buffer).digest('hex'));
+        const pages = await extractDocument(buffer, source.name, true);
+        await store.update((current) => {
+          for (const old of current.sections.filter(
+            (section) => section.sourceId === source.id && !section.chapterId,
+          ))
+            old.archived = true;
+          current.sections.push(
+            ...pages.map((page) => ({
+              ...page,
+              id: randomUUID(),
+              folderId: folder.id,
+              sourceId: source.id,
+              read: false,
+              sourceFragment: true,
+              archived: true,
+            })),
+          );
+        });
+      }
+    await store.update((current) => {
+      const exam = required(current.folders, folder.id);
+      for (const source of current.sources)
+        if (hashes.has(source.id)) source.contentHash = hashes.get(source.id);
+      exam.mainSourceId ??= sources[0]?.id;
+      exam.learner ??= learnerSchema.parse({});
+      refreshRelevance(current, exam);
+      buildCurriculum(current, exam);
+    });
+    response.json({ ok: true });
   });
   app.post('/api/import-workspace', async (request, response) => {
     const { name } = z.object({ name: nameSchema }).parse(request.body);
@@ -168,6 +319,7 @@ export function createApp(
       state.sections = state.sections.filter((section) => !sectionIds.has(section.id));
       state.attempts = state.attempts.filter((attempt) => !sectionIds.has(attempt.sectionId));
       state.reviews = state.reviews.filter((review) => !sectionIds.has(review.sectionId));
+      state.chapters = state.chapters.filter((chapter) => chapter.folderId !== request.params.id);
     });
     response.json({ ok: true });
   });
@@ -179,7 +331,8 @@ export function createApp(
       source.kind === 'pdf' ? 'application/pdf' : 'text/plain; charset=utf-8',
     );
     response.setHeader('X-Content-Type-Options', 'nosniff');
-    response.sendFile(path.join(store.directory, 'uploads', path.basename(source.file)), {
+    const folder = required((await store.read()).folders, source.folderId);
+    response.sendFile(store.sourcePath(folder, source.file), {
       dotfiles: 'allow',
     });
   });
@@ -191,69 +344,16 @@ export function createApp(
     response.json({ ok: true });
   });
   app.post('/api/sections/:id/generate', async (request, response) => {
-    const config = providerSchema.parse(request.body);
     const section = required((await store.read()).sections, request.params.id);
-    if (generationLocks.has(section.id)) throw new Error('This section is already generating.');
-    if (
-      section.content &&
-      ((await store.read()).reviews.some((review) => review.sectionId === section.id) ||
-        (await store.read()).attempts.some((attempt) => attempt.sectionId === section.id))
-    )
-      throw new Error(
-        'This section has study history. Generation is locked to preserve your progress.',
-      );
-    generationLocks.add(section.id);
-    try {
-      const source = required((await store.read()).sources, section.sourceId);
-      const content = await generateContent(
-        section.text,
-        section.title,
-        config,
-        request.get('x-ai-key'),
-        workspaceRoot,
-        source.kind === 'topic',
-      );
-      await store.update((state) => {
-        required(state.sections, section.id).content = content;
-      });
-      response.json(content);
-    } finally {
-      generationLocks.delete(section.id);
-    }
-  });
-  app.post('/api/folders/:id/topic', async (request, response) => {
-    const { topic, ...config } = providerSchema.extend({ topic: nameSchema }).parse(request.body);
-    required((await store.read()).folders, request.params.id);
-    const content = await generateContent(
-      '',
-      topic,
-      config,
-      request.get('x-ai-key'),
-      workspaceRoot,
-      true,
+    if (section.content?.authorship === 'tutor-authored') return response.json(section.content);
+    throw new Error(
+      'AI integration is paused. Prepare this exam from its main source; generic cloze generation has been retired.',
     );
-    const source: Source = {
-      id: randomUUID(),
-      folderId: request.params.id,
-      name: topic,
-      kind: 'topic',
-      addedAt: new Date().toISOString(),
-    };
-    const section: Section = {
-      id: randomUUID(),
-      folderId: request.params.id,
-      sourceId: source.id,
-      title: topic,
-      text: 'Model knowledge. No uploaded source supports this section. Verify important facts against current official documentation.',
-      read: false,
-      content,
-    };
-    await store.update((state) => {
-      required(state.folders, request.params.id);
-      state.sources.push(source);
-      state.sections.push(section);
-    });
-    response.status(201).json(section);
+  });
+  app.post('/api/folders/:id/topic', (_request, response) => {
+    response
+      .status(400)
+      .json({ error: 'AI integration is paused. Add sources to an exam workspace instead.' });
   });
   app.post('/api/sections/:id/cards/:cardId/review', async (request, response) => {
     const { rating } = z.object({ rating: z.number().int().min(1).max(4) }).parse(request.body);
@@ -274,7 +374,7 @@ export function createApp(
   });
   app.post('/api/sections/:id/quiz', async (request, response) => {
     const { answers } = z
-      .object({ answers: z.array(z.number().int().min(0).max(3)).min(2).max(12) })
+      .object({ answers: z.array(z.number().int().min(0).max(3)).min(1).max(12) })
       .parse(request.body);
     const result = await store.update((state) => {
       const section = required(state.sections, request.params.id);
@@ -303,10 +403,15 @@ export function createApp(
       .parse(request.body);
     const plan = await store.update((state) => {
       const folder = required(state.folders, request.params.id);
-      const sections = state.sections.filter((section) => section.folderId === folder.id);
+      const sections = state.sections.filter(
+        (section) => section.folderId === folder.id && !section.archived,
+      );
       if (!sections.length)
         throw new Error('Import sources or add a topic before creating a plan.');
-      folder.plan = createPlan(sections, examDate, dailyMinutes);
+      folder.plan = createPlan(sections, examDate, dailyMinutes, new Date(), folder.learner);
+      folder.plan.chapterIds = state.chapters
+        .filter((chapter) => chapter.folderId === folder.id)
+        .map((chapter) => chapter.id);
       return folder.plan;
     });
     response.json(plan);

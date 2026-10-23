@@ -5,6 +5,7 @@ export interface TextSection {
   text: string;
   pageStart?: number;
   pageEnd?: number;
+  chapterTitle?: string;
 }
 
 export function splitText(text: string, title = 'Notes'): TextSection[] {
@@ -13,11 +14,14 @@ export function splitText(text: string, title = 'Notes'): TextSection[] {
     throw new Error('Not enough readable text. Scanned PDFs need OCR before import.');
   const blocks = cleaned.split(/(?=^#{1,3} .+$)|\n(?=(?:Chapter|Section)\s+\d+[:.\s])/m);
   const sections: TextSection[] = [];
+  let currentChapter = title;
   for (const block of blocks) {
     if (!block.trim()) continue;
     const lines = block.trim().split('\n');
     const heading = lines[0].replace(/^#+\s*/, '').trim();
     const blockTitle = heading.length <= 120 ? heading : title;
+    if (/^#\s+/.test(lines[0]) || /^(Chapter|Part)\s+\d+/i.test(lines[0]))
+      currentChapter = blockTitle;
     const paragraphs: string[] = [];
     let remaining = block.trim();
     while (remaining.length > 5000) {
@@ -33,6 +37,7 @@ export function splitText(text: string, title = 'Notes'): TextSection[] {
       sections.push({
         title: `${blockTitle}${paragraphs.length > 1 ? ` - part ${index + 1}` : ''}`,
         text: paragraph.trim(),
+        chapterTitle: currentChapter,
       });
     }
   }
@@ -40,12 +45,29 @@ export function splitText(text: string, title = 'Notes'): TextSection[] {
   return sections;
 }
 
-export async function extractDocument(buffer: Buffer, filename: string): Promise<TextSection[]> {
+export async function extractDocument(
+  buffer: Buffer,
+  filename: string,
+  perPage = false,
+): Promise<TextSection[]> {
   if (!filename.toLowerCase().endsWith('.pdf'))
     return splitText(buffer.toString('utf8'), filename.replace(/\.[^.]+$/, ''));
   const parser = new PDFParse({ data: buffer });
   try {
     const result = await parser.getText();
+    if (perPage) {
+      const pages = result.pages
+        .filter((page) => page.text.trim().length > 5)
+        .map((page) => ({
+          title: `Page ${page.num}`,
+          text: page.text.trim(),
+          pageStart: page.num,
+          pageEnd: page.num,
+        }));
+      if (!pages.length)
+        throw new Error('No readable text found. Scanned PDFs need OCR before import.');
+      return pages;
+    }
     const lineFrequency = new Map<string, number>();
     for (const page of result.pages) {
       const uniqueLines = new Set(page.text.split('\n').map((line) => line.trim().toLowerCase()));

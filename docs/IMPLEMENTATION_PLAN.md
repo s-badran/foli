@@ -1,5 +1,19 @@
 # Folio MVP Implementation Plan
 
+## Exam Workspace Revision
+
+The original single-PDF extraction demo is superseded by the exam-scoped revision requested on 2026-10-23. AI-provider integration is paused; no runtime model calls are made by the current application routes.
+
+- ✅ Directory-owned exam state, source copies, prompts, chapter packs, plans and progress; legacy records preserved.
+- ✅ Main-source selection controls the chapter outline. Source changes require confirmation and archive previous curriculum/progress.
+- ✅ Supplement relevance scoring, warnings, explicit review and exclusions; accepted related reading linked to chapter packs.
+- ✅ Verified AWS slide-divider map: 28 chapters, 56 original tutor lessons, 112 conceptual cards and 56 scenario questions. No cloze fillers.
+- ✅ Linked workspace index, upload-created workspaces, learner baseline/role/goal and saved exam brief.
+- ✅ Chapter-first plan/progress UI, familiarity-aware priorities and time budgets, mobile browser verification.
+- 🟡 Final handover docs and local stage commits. Remote is configured by the user; never push without explicit permission.
+
+The sections below retain the original build record for history. Current behavior and limitations are described in the revised README and exam architecture document.
+
 ## Product
 
 A local-first, single-user study workspace inspired by RemNote's source-to-practice workflow. Original branding and interface; no copied proprietary code or assets. The first real dataset is the AWS Certified Solutions Architect Associate folder. PDFs and archives stay untracked.

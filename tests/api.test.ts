@@ -4,7 +4,8 @@ import path from 'node:path';
 import type { Server } from 'node:http';
 import { createApp } from '../server/app';
 import { Store } from '../server/store';
-import type { GeneratedContent, Section, StudyState } from '../shared/models';
+import { AWS_SLIDES_HASH, buildCurriculum } from '../server/curriculum';
+import { emptyState, type GeneratedContent, type Section, type StudyState } from '../shared/models';
 
 let server: Server;
 let base: string;
@@ -52,16 +53,41 @@ describe.sequential('complete local study workflow', () => {
     });
     expect(response.status).toBe(201);
     const state = (await json('/api/state')).data as StudyState;
-    section = state.sections[0];
+    section = state.sections.find((item) => !item.archived)!;
     expect(section.title).toBe('Networking');
     expect((await new Store(directory).read()).sources).toHaveLength(1);
   });
-  it('generates a usable offline study pack', async () => {
+  it('retires cloze generation and installs a tutor fixture for practice tests', async () => {
     const result = await json(`/api/sections/${section.id}/generate`, 'POST', {
       provider: 'offline',
     });
-    expect(result.status).toBe(200);
-    content = result.data;
+    expect(result.status).toBe(400);
+    const fixture = emptyState();
+    const folder = { id: 'fixture', name: 'AWS fixture', createdAt: '', mainSourceId: 'main' };
+    fixture.folders.push(folder);
+    fixture.sources.push({
+      id: 'main',
+      folderId: folder.id,
+      name: 'fixture.pdf',
+      kind: 'pdf',
+      addedAt: '',
+      contentHash: AWS_SLIDES_HASH,
+    });
+    fixture.sections.push({
+      id: 'raw',
+      folderId: folder.id,
+      sourceId: 'main',
+      title: 'Source fixture',
+      text: 'Fixture source text',
+      pageStart: 1,
+      pageEnd: 879,
+      read: false,
+    });
+    buildCurriculum(fixture, folder);
+    content = fixture.sections.find((item) => !item.archived)!.content!;
+    await new Store(directory).update((current) => {
+      current.sections.find((item) => item.id === section.id)!.content = content;
+    });
     expect(content.cards.length).toBeGreaterThan(1);
   });
   it('serves original files even when the configured data directory is hidden', async () => {
@@ -81,7 +107,7 @@ describe.sequential('complete local study workflow', () => {
     expect(attempt.data.correct).toBe(content.quiz.length);
     expect(
       (await json(`/api/sections/${section.id}/generate`, 'POST', { provider: 'offline' })).status,
-    ).toBe(400);
+    ).toBe(200);
   });
   it('creates a dated study plan and marks reading complete', async () => {
     const examDate = new Date(Date.now() + 14 * 86400000).toISOString().slice(0, 10);
@@ -90,7 +116,7 @@ describe.sequential('complete local study workflow', () => {
     ).toBe(200);
     expect((await json(`/api/sections/${section.id}`, 'PATCH', { read: true })).status).toBe(200);
     const state = (await json('/api/state')).data as StudyState;
-    expect(state.sections[0].read).toBe(true);
+    expect(state.sections.find((item) => item.id === section.id)!.read).toBe(true);
     expect(state.attempts).toHaveLength(1);
     expect(state.reviews).toHaveLength(1);
   });

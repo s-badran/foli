@@ -26,7 +26,7 @@ export const contentSchema = z.object({
         explanation: z.string().min(5).max(4000),
       }),
     )
-    .min(2)
+    .min(1)
     .max(12),
 });
 
@@ -47,6 +47,24 @@ export interface GeneratedContent {
   provider: ProviderConfig['provider'];
   model: string;
   generatedAt: string;
+  authorship?: 'tutor-authored' | 'extractive' | 'model';
+  evidence?: { sourceId: string; pageStart?: number; pageEnd?: number; note: string }[];
+}
+export const learnerSchema = z.object({
+  familiarity: z.enum(['new', 'basic', 'refresh']).default('new'),
+  role: z.enum(['student', 'professional', 'career-change', 'other']).default('professional'),
+  goal: z.string().trim().max(500).default('Prepare for the exam with scenario-based practice.'),
+});
+export type Learner = z.infer<typeof learnerSchema>;
+export interface Chapter {
+  id: string;
+  folderId: string;
+  title: string;
+  order: number;
+  sourceId: string;
+  pageStart?: number;
+  pageEnd?: number;
+  description: string;
 }
 export interface Section {
   id: string;
@@ -58,6 +76,11 @@ export interface Section {
   pageEnd?: number;
   read: boolean;
   content?: GeneratedContent;
+  chapterId?: string;
+  archived?: boolean;
+  objective?: string;
+  sourceFragment?: boolean;
+  chapterTitle?: string;
 }
 export interface Source {
   id: string;
@@ -67,6 +90,15 @@ export interface Source {
   pages?: number;
   addedAt: string;
   file?: string;
+  contentHash?: string;
+  relevance?: {
+    score: number;
+    threshold: number;
+    status: 'accepted' | 'needs-review' | 'excluded';
+    method: string;
+    sharedTerms: string[];
+    reason: string;
+  };
 }
 export interface StudyPlan {
   examDate: string;
@@ -74,12 +106,20 @@ export interface StudyPlan {
   createdAt: string;
   days: { date: string; sectionIds: string[]; reviewMinutes: number; studyMinutes: number }[];
   warning?: string;
+  chapterIds?: string[];
+  familiarity?: Learner['familiarity'];
 }
 export interface Folder {
   id: string;
   name: string;
   createdAt: string;
   plan?: StudyPlan;
+  directory?: string;
+  mainSourceId?: string;
+  learner?: Learner;
+  prompt?: string;
+  curriculumRevision?: number;
+  curriculumNote?: string;
 }
 export interface QuizAttempt {
   id: string;
@@ -102,7 +142,16 @@ export interface StudyState {
   sections: Section[];
   attempts: QuizAttempt[];
   reviews: Review[];
+  chapters: Chapter[];
 }
 export function emptyState(): StudyState {
-  return { version: 1, folders: [], sources: [], sections: [], attempts: [], reviews: [] };
+  return {
+    version: 1,
+    folders: [],
+    sources: [],
+    sections: [],
+    attempts: [],
+    reviews: [],
+    chapters: [],
+  };
 }

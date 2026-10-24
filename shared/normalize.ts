@@ -76,8 +76,27 @@ export function normalizeQuiz(raw: unknown): unknown {
   return { ...value, questions };
 }
 
+/** Models occasionally dump a long essay into the optional `notes` field; clamp it. */
+function truncateNotes(raw: unknown, max: number): unknown {
+  const value = record(raw);
+  if (!value) return raw;
+  if (typeof value.notes === 'string' && value.notes.length > max)
+    return { ...value, notes: value.notes.slice(0, max) };
+  return value;
+}
+
+export function normalizeSections(raw: unknown): unknown {
+  return truncateNotes(raw, 1000);
+}
+
+export function normalizeOutline(raw: unknown): unknown {
+  return truncateNotes(raw, 1500);
+}
+
 export function normalizeArtifact(kind: ArtifactKind, raw: unknown): unknown {
   if (kind === 'summary') return normalizeSummary(raw);
   if (kind === 'quiz') return normalizeQuiz(raw);
+  if (kind === 'sections') return normalizeSections(raw);
+  if (kind === 'outline') return normalizeOutline(raw);
   return raw;
 }

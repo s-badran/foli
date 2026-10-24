@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { normalizeArtifact, normalizeQuiz, normalizeSummary } from '../shared/normalize';
+import {
+  normalizeArtifact,
+  normalizeOutline,
+  normalizeQuiz,
+  normalizeSections,
+  normalizeSummary,
+} from '../shared/normalize';
 
 describe('normalizeSummary', () => {
   it('joins keyComparisons item arrays into a single label', () => {
@@ -61,5 +67,17 @@ describe('normalizeQuiz', () => {
       ],
     };
     expect(normalizeQuiz(quiz)).toEqual(quiz);
+  });
+});
+
+describe('notes truncation', () => {
+  it('clamps an oversized notes field to the schema limit', () => {
+    const long = 'x'.repeat(1600);
+    const sections = normalizeSections({ notes: long }) as { notes: string };
+    expect(sections.notes.length).toBe(1000);
+    const outline = normalizeOutline({ notes: long }) as { notes: string };
+    expect(outline.notes.length).toBe(1500);
+    const short = normalizeSections({ notes: 'brief' }) as { notes: string };
+    expect(short.notes).toBe('brief');
   });
 });

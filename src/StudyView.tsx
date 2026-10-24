@@ -12,7 +12,7 @@ import {
   Sparkles,
   Target,
 } from 'lucide-react';
-import type { QuizAttempt, Section, Source, StudyState } from '../shared/models';
+import type { GenerationRequest, QuizAttempt, Section, Source, StudyState } from '../shared/models';
 import { api, displayDate, send } from './api';
 import { Empty, SourceIcon, useNow } from './components';
 import { sectionPractice } from '../shared/learning';
@@ -60,6 +60,9 @@ export function StudyView({
   const hasSummary = !!content?.summary;
   const hasCards = !!content?.cards.length;
   const hasQuiz = !!content?.quiz.length;
+  const missingKinds = (['summary', 'flashcards', 'quiz'] as const).filter(
+    (kind) => !section.artifacts?.[kind],
+  );
   const groups = (content?.cards ?? []).reduce<
     Record<string, NonNullable<typeof content>['cards']>
   >(
@@ -136,6 +139,31 @@ export function StudyView({
         {content ? content.model : 'Source reading · study materials not generated yet'}
         {content && <span>Updated {displayDate(content.generatedAt)}</span>}
       </div>
+      {missingKinds.length > 0 && (
+        <div className="generate-all">
+          <button
+            className="button primary"
+            disabled={!!busy}
+            onClick={() =>
+              void run(
+                async () => {
+                  for (const kind of missingKinds) {
+                    const request = await api<GenerationRequest>(
+                      `/folders/${section.folderId}/requests`,
+                      send({ kind, targetId: section.id }),
+                    );
+                    await api(`/requests/${request.id}/run`, send({}));
+                  }
+                },
+                'Study materials generated',
+              )
+            }
+          >
+            <Sparkles size={15} /> Generate all study materials
+          </button>
+          <span className="form-note">Runs summary first, then flashcards, then quiz.</span>
+        </div>
+      )}
       {(section.objective || section.keyTopics?.length) && (
         <div className="key-topics">
           {section.objective && <p>{section.objective}</p>}

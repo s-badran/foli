@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "9235b9fe-f3d2-4098-9a35-4631aafaa3a3",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 19,
+    "title": "Databases in AWS",
+    "pageStart": 516,
+    "pageEnd": 529,
+    "description": "Choosing the right database: RDS, Aurora, ElastiCache, DynamoDB, S3, DocumentDB, Neptune, Keyspaces, QLDB and Timestream.",
+    "examFocus": [
+      "Task 3.3: selecting purpose-built databases",
+      "Task 4.3: cost-optimized database choice"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

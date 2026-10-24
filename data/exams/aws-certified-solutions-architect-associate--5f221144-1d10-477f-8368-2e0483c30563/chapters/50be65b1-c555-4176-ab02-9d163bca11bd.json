@@ -1,0 +1,223 @@
+{
+  "chapter": {
+    "id": "50be65b1-c555-4176-ab02-9d163bca11bd",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "Advanced EC2 architecture",
+    "order": 3,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 78,
+    "pageEnd": 93,
+    "description": "Placement, network performance and scalable instance access.",
+    "objectives": [
+      {
+        "id": "50be65b1-c555-4176-ab02-9d163bca11bd/Placement groups and failure domains",
+        "title": "Placement groups and failure domains",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 78,
+        "pageEnd": 93,
+        "assessment": "both"
+      },
+      {
+        "id": "50be65b1-c555-4176-ab02-9d163bca11bd/Administration without public SSH exposure",
+        "title": "Administration without public SSH exposure",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 78,
+        "pageEnd": 93,
+        "assessment": "both"
+      }
+    ],
+    "coverageStatus": "draft"
+  },
+  "sections": [
+    {
+      "id": "8243a1f5-d0aa-48ac-8046-017dd32ec8d3",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "50be65b1-c555-4176-ab02-9d163bca11bd",
+      "title": "Placement groups and failure domains",
+      "objective": "How do cluster and spread placement groups trade performance against correlated failure risk?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nAmazon \tEC2 \t– \tAssociate\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPrivate vs Public IP (IPv4)\n• \tNetworking has two sorts of IPs. IPv4 and IPv6:\n• \tIPv4: 1.160.10.240\n• \tIPv6: 3ffe:1900:4545:3:200:f8ff:fe21:67cf\n• \tIn this course, we will only be using IPv4.\n• \tIPv4 is still the most common format used online.\n• \tIPv6 is newer and solves problems for the Internet of Things (IoT).\n• \tIPv4 allows for 3.7 billion different addresses in the public space\n• \tIPv4: [0-255].[0-255].[0-255].[0-255].\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCompany B\nPrivate Network\n192.168.0.1/22\nCompany A\nPrivate Network\n192.168.0.1/22\nPrivate vs Public IP (IPv4)\nExample\nInternet Gateway (public):\n149.140.72.10\nWeb Server (public):\n79.216.59.75\nServer (public):\n211.139.37.43\nInternet Gateway (public):\n253.144.139.205\nWWW\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPrivate vs Public IP (IPv4)\nFundamental Differences\n• \tPublic IP:\n• \tPublic IP means the machine can be identified on the internet (WWW)\n• \tMust be unique across the whole web (not two machines can have the same public IP).\n• \tCan be geo-located easily\n• \tPrivate IP:\n• \tPrivate IP means the machine can only be identified on a private network only\n• \tThe IP must be unique across the private network\n• \tBUT two different private networks (two companies) can have the same IPs.\n• \tMachines connect to WWW using a NAT + internet gateway (a proxy)\n• \tOnly a specified range of IPs can be used as private IP\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic IPs\n• \tWhen you stop and then start an EC2 instance, it can change its public\nIP.\n• \tIf you need to have a fixed public IP for your instance, you need an\nElastic IP\n• \tAn Elastic IP is a public IPv4 IP you own as long as you don’t delete it\n• \tYou can attach it to one instance at a time\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic IP\n• \tWith an Elastic IP address, you can mask the failure of an instance or software\nby rapidly remapping the address to another instance in your account.\n• \tYou can only have 5 Elastic IP in your account (you can ask AWS to increase\nthat).\n• \tOverall, try to avoid using Elastic IP:\n• \tThey often reflect poor architectural decisions\n• \tInstead, use a random public IP and register a DNS name to it\n• \tOr, as we’ll see later, use a Load Balancer and don’t use a public IP\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPrivate vs Public IP (IPv4)\nIn AWS EC2 \t– \tHands On\n• \tBy default, your EC2 machine comes with:\n• \tA private IP for the internal AWS Network\n• \tA public IP, for the WWW.\n• \tWhen we are doing SSH into our EC2 machines:\n• \tWe can’t use a private IP, because we are not in the same network\n• \tWe can only use the public IP.\n• \tIf your machine is stopped and then started,\nthe public IP can change\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPlacement Groups\n• \tSometimes you want control over the EC2 Instance placement strategy\n• \tThat strategy can be defined using placement groups\n• \tWhen you create a placement group, you specify one of the following\nstrategies for the group:\n• \tCluster—clusters instances into a low-latency group in a single Availability Zone\n• \tSpread—spreads instances across underlying hardware (max 7 instances per\ngroup per AZ)\n• \tPartition—spreads instances across many different partitions (which rely on\ndifferent sets of racks) within an AZ. Scales to 100s of EC2 instances per group\n(Hadoop, Cassandra, Kafka)\n• \tPrecision time— direct access to high-precision time sources\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSame AZ\nPlacement Groups\nCluster\n• \tPros: Great network (10 Gbps bandwidth between instances with Enhanced\nNetworking enabled - recommended)\n• \tCons: If the AZ fails, all instances fails at the same time\n• \tUse case:\n• \tBig Data job that needs to complete fast\n• \tApplication that needs extremely low latency and high network throughput\nEC2 \tEC2\nEC2 \tEC2 \tEC2\nEC2 Placement group\nCluster\nLow latency\n10 Gbps network\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nUs-east-1a\nHardware 1\nPlacement Groups\nSpread • \tPros:\n• \tCan span across Availability\nZones (AZ)\n• \tReduced risk is simultaneous\nfailure\n• \tEC2 Instances are on different\nphysical hardware\n• \tCons:\n• \tLimited to 7 instances per AZ\nper placement group\n• \tUse case:\n• \tApplication that needs to\nmaximize high availability\n• \tCritical Applications where\neach instance must be isolated\nfrom failure from each other\nEC2\nHardware 2\nEC2\nUs-east-1b\nHardware 3\nEC2\nHardware 4\nEC2\nUs-east-1c\nHardware 5\nEC2\nHardware 6\nEC2\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPlacements Groups\nPartition • \tUp to 7 partitions per AZ\n• \tCan span across multiple AZs in the\nsame region\n• \tUp to 100s of EC2 instances\n• \tThe instances in a partition do not\nshare racks with the instances in the\nother partitions\n• \tA partition failure can affect many\nEC2 but won’t affect other partitions\n• \tEC2 instances get access to the\npartition information as metadata\n• \tUse cases: HDFS, HBase, Cassandra,\nKafka\nus-east-1a\nPartition 1\nEC2\nEC2\nEC2\nEC2\nPartition 2\nEC2\nEC2\nEC2\nEC2\nPartition 3\nEC2\nEC2\nEC2\nEC2\nus-east-1b\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPlacements Groups\nPrecision time\n• \tInstances placed on hardware with direct\naccess to high-precision time sources\n• \tEnhanced Amazon Time Sync Service (more\naccurate than standard NTP)\n• \tPTP Hardware Clock + hardware packet\ntimestamping (Linux only)\n• \tUse cases: distributed databases, financial\ntimestamping, event ordering\nus-east-1a\nGroup\nEC2\nEC2\nEC2\nEC2\nEnhanced\nNTP\nPTP Clock\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic Network Interfaces (ENI)\n• \tLogical component in a VPC that represents a\nvirtual network card\n• \tThe ENI can have the following attributes:\n• \tPrimary private IPv4, one or more secondary IPv4\n• \tOne Elastic IP (IPv4) per private IPv4\n• \tOne Public IPv4\n• \tOne or more security groups\n• \tA MAC address\n• \tYou can create ENI independently and attach\nthem on the fly (move them) on EC2 instances\nfor failover\n• \tBound to a specific availability zone (AZ)\nEC2\nEth0 – primary ENI\n192.168.0.31\nEth1 – secondary ENI\n192.168.0.42\nEC2\nEth0 – primary ENI\nCan be moved\nAvailability Zone\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEC2 Hibernate\n• \tWe know we can stop, terminate instances\n• \tStop – the data on disk (EBS) is kept intact in the next start\n• \tTerminate – any EBS volumes (root) also set-up to be destroyed is lost\n• \tOn start, the following happens:\n• \tFirst start: the OS boots & the EC2 User Data script is run\n• \tFollowing starts: the OS boots up\n• \tThen your application starts, caches get warmed up, and that can take time!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEC2 Hibernate\n• \tIntroducing \tEC2 Hibernate:\n• \tThe in-memory (RAM) state is preserved\n• \tThe instance boot is much faster!\n(the OS is not stopped / restarted)\n• \tUnder the hood: the RAM state is written\nto a file in the root EBS volume\n• \tThe root EBS volume must be encrypted\n• \tUse cases:\n• \tLong-running processing\n• \tSaving the RAM state\n• \tServices that take time to initialize\nRAM\nEC2 Instance\nRoot EBS Volume\n(Encrypted)\nRAM\nRAM\nRAM\nRAM\nRunning\nStopping\nStopped\nRunning\nHibernate\nShutdown\nStart\nHibernation\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEC2 Hibernate \t– \tGood to know\n• \tSupported Instance Families \t– \tC3, C4, C5, I3, M3, M4, R3, R4, T2, T3, …\n• \tInstance RAM Size \t– \tmust be \tless than 150 GB.\n• \tInstance Size \t– \tnot supported for bare metal instances.\n• \tAMI \t– \tAmazon Linux 2, Linux AMI, Ubuntu, RHEL, CentOS & Windows…\n• \tRoot Volume \t– \tmust be EBS, encrypted, not instance store, and large\n• \tAvailable for \tOn-Demand, Reserved \tand \tSpot \tInstances\n• \tAn instance can \tNOT \tbe hibernated more than 60 days",
+      "pageStart": 78,
+      "pageEnd": 93,
+      "read": false,
+      "content": {
+        "summary": "## Placement groups and failure domains\n\nA cluster placement group targets low-latency high-throughput communication in one Availability Zone. Spread placement separates a small set of instances across distinct underlying hardware.\n\n### Reasoning and trade-offs\n\nCluster placement addresses the tightly coupled network requirement. Spread and partition placement address isolation patterns rather than the strongest latency locality; cross-Region coordination increases latency. Checkpoints remain necessary because the cluster shares an AZ failure domain.\n\n### Avoid this trap\n\nA cluster placement group does not provide multi-AZ disaster resilience. Placement selection must match the workload communication pattern and failure tolerance.\n\n### Apply it\n\nAn HPC application exchanges large amounts of tightly coupled traffic between nodes and prioritizes low inter-node latency. It checkpoints results externally. Which placement is the best fit?\n\n**Recommended design:** Use a cluster placement group in one AZ with suitable networking-capable instances.\n\nCluster placement addresses the tightly coupled network requirement. Spread and partition placement address isolation patterns rather than the strongest latency locality; cross-Region coordination increases latency. Checkpoints remain necessary because the cluster shares an AZ failure domain.",
+        "keyPoints": [
+          "A cluster placement group targets low-latency high-throughput communication in one Availability Zone. Spread placement separates a small set of instances across distinct underlying hardware.",
+          "Cluster placement addresses the tightly coupled network requirement. Spread and partition placement address isolation patterns rather than the strongest latency locality; cross-Region coordination increases latency. Checkpoints remain necessary because the cluster shares an AZ failure domain.",
+          "A cluster placement group does not provide multi-AZ disaster resilience. Placement selection must match the workload communication pattern and failure tolerance."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Which placement group prioritizes low inter-node latency?",
+            "answer": "A cluster placement group.",
+            "objectiveIds": [
+              "50be65b1-c555-4176-ab02-9d163bca11bd/Placement groups and failure domains"
+            ],
+            "id": "94aebf50-40c8-4de6-8e27-3e277a871a4a",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.054Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Does cluster placement provide multi-AZ resilience?",
+            "answer": "No. A cluster placement group is within one AZ.",
+            "objectiveIds": [
+              "50be65b1-c555-4176-ab02-9d163bca11bd/Placement groups and failure domains"
+            ],
+            "id": "e9c1cd07-cbef-464d-b519-8179ed7c0aef",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.054Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "An HPC application exchanges large amounts of tightly coupled traffic between nodes and prioritizes low inter-node latency. It checkpoints results externally. Which placement is the best fit?",
+            "options": [
+              "Use a cluster placement group in one AZ with suitable networking-capable instances.",
+              "Use a spread placement group as the primary method for minimizing node-to-node latency.",
+              "Place every node in a different Region and synchronize each computation step.",
+              "Use a partition placement group solely because it guarantees the lowest network latency."
+            ],
+            "correctIndex": 0,
+            "explanation": "Cluster placement addresses the tightly coupled network requirement. Spread and partition placement address isolation patterns rather than the strongest latency locality; cross-Region coordination increases latency. Checkpoints remain necessary because the cluster shares an AZ failure domain.",
+            "objectiveIds": [
+              "50be65b1-c555-4176-ab02-9d163bca11bd/Placement groups and failure domains"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.054Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 78,
+            "pageEnd": 93,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 7,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "9b713ec6-7246-42bb-8b9d-4cfd90d9e746",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "50be65b1-c555-4176-ab02-9d163bca11bd",
+      "title": "Administration without public SSH exposure",
+      "objective": "How can operators administer private EC2 instances without opening inbound SSH?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nAmazon \tEC2 \t– \tAssociate\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPrivate vs Public IP (IPv4)\n• \tNetworking has two sorts of IPs. IPv4 and IPv6:\n• \tIPv4: 1.160.10.240\n• \tIPv6: 3ffe:1900:4545:3:200:f8ff:fe21:67cf\n• \tIn this course, we will only be using IPv4.\n• \tIPv4 is still the most common format used online.\n• \tIPv6 is newer and solves problems for the Internet of Things (IoT).\n• \tIPv4 allows for 3.7 billion different addresses in the public space\n• \tIPv4: [0-255].[0-255].[0-255].[0-255].\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCompany B\nPrivate Network\n192.168.0.1/22\nCompany A\nPrivate Network\n192.168.0.1/22\nPrivate vs Public IP (IPv4)\nExample\nInternet Gateway (public):\n149.140.72.10\nWeb Server (public):\n79.216.59.75\nServer (public):\n211.139.37.43\nInternet Gateway (public):\n253.144.139.205\nWWW\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPrivate vs Public IP (IPv4)\nFundamental Differences\n• \tPublic IP:\n• \tPublic IP means the machine can be identified on the internet (WWW)\n• \tMust be unique across the whole web (not two machines can have the same public IP).\n• \tCan be geo-located easily\n• \tPrivate IP:\n• \tPrivate IP means the machine can only be identified on a private network only\n• \tThe IP must be unique across the private network\n• \tBUT two different private networks (two companies) can have the same IPs.\n• \tMachines connect to WWW using a NAT + internet gateway (a proxy)\n• \tOnly a specified range of IPs can be used as private IP\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic IPs\n• \tWhen you stop and then start an EC2 instance, it can change its public\nIP.\n• \tIf you need to have a fixed public IP for your instance, you need an\nElastic IP\n• \tAn Elastic IP is a public IPv4 IP you own as long as you don’t delete it\n• \tYou can attach it to one instance at a time\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic IP\n• \tWith an Elastic IP address, you can mask the failure of an instance or software\nby rapidly remapping the address to another instance in your account.\n• \tYou can only have 5 Elastic IP in your account (you can ask AWS to increase\nthat).\n• \tOverall, try to avoid using Elastic IP:\n• \tThey often reflect poor architectural decisions\n• \tInstead, use a random public IP and register a DNS name to it\n• \tOr, as we’ll see later, use a Load Balancer and don’t use a public IP\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPrivate vs Public IP (IPv4)\nIn AWS EC2 \t– \tHands On\n• \tBy default, your EC2 machine comes with:\n• \tA private IP for the internal AWS Network\n• \tA public IP, for the WWW.\n• \tWhen we are doing SSH into our EC2 machines:\n• \tWe can’t use a private IP, because we are not in the same network\n• \tWe can only use the public IP.\n• \tIf your machine is stopped and then started,\nthe public IP can change\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPlacement Groups\n• \tSometimes you want control over the EC2 Instance placement strategy\n• \tThat strategy can be defined using placement groups\n• \tWhen you create a placement group, you specify one of the following\nstrategies for the group:\n• \tCluster—clusters instances into a low-latency group in a single Availability Zone\n• \tSpread—spreads instances across underlying hardware (max 7 instances per\ngroup per AZ)\n• \tPartition—spreads instances across many different partitions (which rely on\ndifferent sets of racks) within an AZ. Scales to 100s of EC2 instances per group\n(Hadoop, Cassandra, Kafka)\n• \tPrecision time— direct access to high-precision time sources\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSame AZ\nPlacement Groups\nCluster\n• \tPros: Great network (10 Gbps bandwidth between instances with Enhanced\nNetworking enabled - recommended)\n• \tCons: If the AZ fails, all instances fails at the same time\n• \tUse case:\n• \tBig Data job that needs to complete fast\n• \tApplication that needs extremely low latency and high network throughput\nEC2 \tEC2\nEC2 \tEC2 \tEC2\nEC2 Placement group\nCluster\nLow latency\n10 Gbps network\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nUs-east-1a\nHardware 1\nPlacement Groups\nSpread • \tPros:\n• \tCan span across Availability\nZones (AZ)\n• \tReduced risk is simultaneous\nfailure\n• \tEC2 Instances are on different\nphysical hardware\n• \tCons:\n• \tLimited to 7 instances per AZ\nper placement group\n• \tUse case:\n• \tApplication that needs to\nmaximize high availability\n• \tCritical Applications where\neach instance must be isolated\nfrom failure from each other\nEC2\nHardware 2\nEC2\nUs-east-1b\nHardware 3\nEC2\nHardware 4\nEC2\nUs-east-1c\nHardware 5\nEC2\nHardware 6\nEC2\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPlacements Groups\nPartition • \tUp to 7 partitions per AZ\n• \tCan span across multiple AZs in the\nsame region\n• \tUp to 100s of EC2 instances\n• \tThe instances in a partition do not\nshare racks with the instances in the\nother partitions\n• \tA partition failure can affect many\nEC2 but won’t affect other partitions\n• \tEC2 instances get access to the\npartition information as metadata\n• \tUse cases: HDFS, HBase, Cassandra,\nKafka\nus-east-1a\nPartition 1\nEC2\nEC2\nEC2\nEC2\nPartition 2\nEC2\nEC2\nEC2\nEC2\nPartition 3\nEC2\nEC2\nEC2\nEC2\nus-east-1b\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPlacements Groups\nPrecision time\n• \tInstances placed on hardware with direct\naccess to high-precision time sources\n• \tEnhanced Amazon Time Sync Service (more\naccurate than standard NTP)\n• \tPTP Hardware Clock + hardware packet\ntimestamping (Linux only)\n• \tUse cases: distributed databases, financial\ntimestamping, event ordering\nus-east-1a\nGroup\nEC2\nEC2\nEC2\nEC2\nEnhanced\nNTP\nPTP Clock\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic Network Interfaces (ENI)\n• \tLogical component in a VPC that represents a\nvirtual network card\n• \tThe ENI can have the following attributes:\n• \tPrimary private IPv4, one or more secondary IPv4\n• \tOne Elastic IP (IPv4) per private IPv4\n• \tOne Public IPv4\n• \tOne or more security groups\n• \tA MAC address\n• \tYou can create ENI independently and attach\nthem on the fly (move them) on EC2 instances\nfor failover\n• \tBound to a specific availability zone (AZ)\nEC2\nEth0 – primary ENI\n192.168.0.31\nEth1 – secondary ENI\n192.168.0.42\nEC2\nEth0 – primary ENI\nCan be moved\nAvailability Zone\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEC2 Hibernate\n• \tWe know we can stop, terminate instances\n• \tStop – the data on disk (EBS) is kept intact in the next start\n• \tTerminate – any EBS volumes (root) also set-up to be destroyed is lost\n• \tOn start, the following happens:\n• \tFirst start: the OS boots & the EC2 User Data script is run\n• \tFollowing starts: the OS boots up\n• \tThen your application starts, caches get warmed up, and that can take time!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEC2 Hibernate\n• \tIntroducing \tEC2 Hibernate:\n• \tThe in-memory (RAM) state is preserved\n• \tThe instance boot is much faster!\n(the OS is not stopped / restarted)\n• \tUnder the hood: the RAM state is written\nto a file in the root EBS volume\n• \tThe root EBS volume must be encrypted\n• \tUse cases:\n• \tLong-running processing\n• \tSaving the RAM state\n• \tServices that take time to initialize\nRAM\nEC2 Instance\nRoot EBS Volume\n(Encrypted)\nRAM\nRAM\nRAM\nRAM\nRunning\nStopping\nStopped\nRunning\nHibernate\nShutdown\nStart\nHibernation\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEC2 Hibernate \t– \tGood to know\n• \tSupported Instance Families \t– \tC3, C4, C5, I3, M3, M4, R3, R4, T2, T3, …\n• \tInstance RAM Size \t– \tmust be \tless than 150 GB.\n• \tInstance Size \t– \tnot supported for bare metal instances.\n• \tAMI \t– \tAmazon Linux 2, Linux AMI, Ubuntu, RHEL, CentOS & Windows…\n• \tRoot Volume \t– \tmust be EBS, encrypted, not instance store, and large\n• \tAvailable for \tOn-Demand, Reserved \tand \tSpot \tInstances\n• \tAn instance can \tNOT \tbe hibernated more than 60 days",
+      "pageStart": 78,
+      "pageEnd": 93,
+      "read": false,
+      "content": {
+        "summary": "## Administration without public SSH exposure\n\nUse Systems Manager Session Manager with the appropriate agent, IAM permissions and outbound connectivity through endpoints or controlled egress. Record sessions according to the security policy.\n\n### Reasoning and trade-offs\n\nSession Manager avoids inbound administration ports and uses IAM for operator authorization. Private endpoints or suitable egress must exist. Port obscurity is not access control, and an internet gateway alone does not give a private-address instance direct internet access.\n\n### Avoid this trap\n\nAn instance role alone does not create network connectivity to Systems Manager. Opening SSH to all addresses solves reachability by abandoning the access constraint.\n\n### Apply it\n\nA company prohibits public IPs and inbound administrative ports on its application instances. Operators still need audited interactive access. Which approach meets the requirement?\n\n**Recommended design:** Use Session Manager with IAM-controlled access and private connectivity to the required Systems Manager services.\n\nSession Manager avoids inbound administration ports and uses IAM for operator authorization. Private endpoints or suitable egress must exist. Port obscurity is not access control, and an internet gateway alone does not give a private-address instance direct internet access.",
+        "keyPoints": [
+          "Use Systems Manager Session Manager with the appropriate agent, IAM permissions and outbound connectivity through endpoints or controlled egress. Record sessions according to the security policy.",
+          "Session Manager avoids inbound administration ports and uses IAM for operator authorization. Private endpoints or suitable egress must exist. Port obscurity is not access control, and an internet gateway alone does not give a private-address instance direct internet access.",
+          "An instance role alone does not create network connectivity to Systems Manager. Opening SSH to all addresses solves reachability by abandoning the access constraint."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Which service supports administration without inbound SSH?",
+            "answer": "Systems Manager Session Manager.",
+            "objectiveIds": [
+              "50be65b1-c555-4176-ab02-9d163bca11bd/Administration without public SSH exposure"
+            ],
+            "id": "751abc93-1b97-498b-a5f9-19f341ce0afc",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.054Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What network path does Session Manager still need?",
+            "answer": "Connectivity to its required service endpoints, through endpoints or controlled egress.",
+            "objectiveIds": [
+              "50be65b1-c555-4176-ab02-9d163bca11bd/Administration without public SSH exposure"
+            ],
+            "id": "ee343c42-dd7f-4c52-8b57-4a27161c6a74",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.054Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A company prohibits public IPs and inbound administrative ports on its application instances. Operators still need audited interactive access. Which approach meets the requirement?",
+            "options": [
+              "Assign public IPs and restrict SSH with an unusually high port number.",
+              "Use Session Manager with IAM-controlled access and private connectivity to the required Systems Manager services.",
+              "Place a private key in each application container and tunnel through the load balancer.",
+              "Use an internet gateway without public addresses and assume it provides outbound private-instance access."
+            ],
+            "correctIndex": 1,
+            "explanation": "Session Manager avoids inbound administration ports and uses IAM for operator authorization. Private endpoints or suitable egress must exist. Port obscurity is not access control, and an internet gateway alone does not give a private-address instance direct internet access.",
+            "objectiveIds": [
+              "50be65b1-c555-4176-ab02-9d163bca11bd/Administration without public SSH exposure"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.054Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 78,
+            "pageEnd": 93,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 7,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

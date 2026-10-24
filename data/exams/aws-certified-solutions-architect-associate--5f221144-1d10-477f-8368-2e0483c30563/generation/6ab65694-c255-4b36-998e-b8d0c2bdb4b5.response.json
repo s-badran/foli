@@ -1,0 +1,108 @@
+{
+  "questions": [
+    {
+      "question": "A healthcare company must keep patient data inside Germany by law and has most users in Germany. Which factor should drive the Region choice first?",
+      "options": [
+        "Lowest price across all Regions",
+        "Compliance with data governance requirements",
+        "The Region with the most services",
+        "The Region with the most edge locations"
+      ],
+      "correctIndex": 1,
+      "explanation": "Legal data residency is a hard requirement, so compliance decides first; price, service count and edge-location count only matter among compliant Regions.",
+      "keyTopic": "Choosing a Region",
+      "kind": "scenario"
+    },
+    {
+      "question": "An application runs on instances in a single data center and must survive the loss of that facility while staying in one Region. What should the architect use?",
+      "options": [
+        "Multiple edge locations",
+        "A second Region only",
+        "Multiple Availability Zones in the Region",
+        "A larger instance in the same data center"
+      ],
+      "correctIndex": 2,
+      "explanation": "AZs are isolated data centers within a Region, so spreading across them survives a facility loss; edge locations only cache content, a second Region is beyond the requirement, and a larger instance shares the same failure.",
+      "keyTopic": "Availability Zones",
+      "kind": "scenario"
+    },
+    {
+      "question": "A team plans to use a service launched last month in us-east-1 from a smaller Region. What must they verify first?",
+      "options": [
+        "That the service is available in the target Region",
+        "That the Region has exactly six AZs",
+        "That IAM users exist in that Region",
+        "That the Region has an edge location"
+      ],
+      "correctIndex": 0,
+      "explanation": "New services and features are not in every Region, so availability must be checked; AZ count, IAM (global) and edge locations do not decide whether the service exists there.",
+      "keyTopic": "Choosing a Region",
+      "kind": "scenario"
+    },
+    {
+      "question": "Users worldwide complain about slow downloads of static images served from one Region. Which part of the global infrastructure addresses this?",
+      "options": [
+        "Additional Availability Zones",
+        "Edge locations / Points of Presence",
+        "A Region with lower pricing",
+        "More IAM roles"
+      ],
+      "correctIndex": 1,
+      "explanation": "Edge locations deliver content close to users with lower latency; more AZs or cheaper Regions do not move content closer, and IAM roles are unrelated to latency.",
+      "keyTopic": "Edge Locations",
+      "kind": "scenario"
+    },
+    {
+      "question": "Which identifier names an Availability Zone rather than a Region?",
+      "options": [
+        "eu-west-3",
+        "us-east-1",
+        "ap-southeast-2b",
+        "ap-southeast-2"
+      ],
+      "correctIndex": 2,
+      "explanation": "Appending a letter (ap-southeast-2b) identifies an AZ; the other three are Region names.",
+      "keyTopic": "Region naming",
+      "kind": "concept"
+    },
+    {
+      "question": "An engineer creates an IAM user while the console is set to eu-west-3. In which Regions can that user sign in?",
+      "options": [
+        "Only eu-west-3",
+        "All Regions, because IAM is global",
+        "Only Regions in Europe",
+        "Only Regions with the same AZ count"
+      ],
+      "correctIndex": 1,
+      "explanation": "IAM is a global service, so users are not tied to a Region; the other options wrongly treat IAM as Region-scoped.",
+      "keyTopic": "Global vs Region-scoped services",
+      "kind": "scenario"
+    },
+    {
+      "question": "Which pair is correctly matched?",
+      "options": [
+        "EC2 - global service",
+        "Route 53 - Region-scoped",
+        "CloudFront - global service",
+        "Lambda - global service"
+      ],
+      "correctIndex": 2,
+      "explanation": "CloudFront is global; EC2 and Lambda are Region-scoped and Route 53 is global, so the other pairings are reversed.",
+      "keyTopic": "Global vs Region-scoped services",
+      "kind": "comparison"
+    },
+    {
+      "question": "What is the minimum number of Availability Zones in an AWS Region?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "6"
+      ],
+      "correctIndex": 2,
+      "explanation": "Regions have a minimum of 3 AZs (usually 3, at most 6); 1 and 2 are below the minimum and 6 is the maximum.",
+      "keyTopic": "Regions",
+      "kind": "concept"
+    }
+  ]
+}

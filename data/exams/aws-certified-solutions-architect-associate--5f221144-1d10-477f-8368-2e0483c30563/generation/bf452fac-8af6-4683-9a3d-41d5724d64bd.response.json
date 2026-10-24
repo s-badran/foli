@@ -1,0 +1,45 @@
+{
+  "groups": [
+    {
+      "concept": "What AWS is",
+      "cards": [
+        {
+          "question": "What type of company is AWS?",
+          "answer": "A cloud provider",
+          "keyTopic": "AWS as a cloud provider",
+          "origin": "source"
+        },
+        {
+          "question": "How are AWS servers and services consumed?",
+          "answer": "On demand, scaling easily",
+          "keyTopic": "AWS as a cloud provider",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Use cases",
+      "cards": [
+        {
+          "question": "Name AWS cloud use cases from the course.",
+          "answer": [
+            "Enterprise IT",
+            "Backup & storage",
+            "Big data analytics",
+            "Website hosting",
+            "Mobile & social apps",
+            "Gaming"
+          ],
+          "keyTopic": "AWS cloud use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Is AWS limited to one industry?",
+          "answer": "No, it serves diverse industries",
+          "keyTopic": "AWS cloud use cases",
+          "origin": "source"
+        }
+      ]
+    }
+  ]
+}

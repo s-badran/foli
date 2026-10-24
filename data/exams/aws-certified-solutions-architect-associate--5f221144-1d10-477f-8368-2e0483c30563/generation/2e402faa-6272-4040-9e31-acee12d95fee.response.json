@@ -1,0 +1,113 @@
+{
+  "groups": [
+    {
+      "concept": "IAM roles",
+      "cards": [
+        {
+          "question": "Purpose of an IAM role for services?",
+          "answer": "Let AWS services act on your behalf",
+          "keyTopic": "IAM roles for services",
+          "origin": "source"
+        },
+        {
+          "question": "Three common role types named in the course?",
+          "answer": [
+            "EC2 instance roles",
+            "Lambda function roles",
+            "Roles for CloudFormation"
+          ],
+          "keyTopic": "IAM roles for services",
+          "origin": "source"
+        },
+        {
+          "question": "How should an app on EC2 get AWS permissions?",
+          "answer": "Through an EC2 instance role",
+          "keyTopic": "IAM roles for services",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Security tools",
+      "cards": [
+        {
+          "question": "Scope of the IAM Credentials Report?",
+          "answer": "Account level",
+          "keyTopic": "IAM Credentials Report",
+          "origin": "source"
+        },
+        {
+          "question": "What does the Credentials Report list?",
+          "answer": "All users and their credential status",
+          "keyTopic": "IAM Credentials Report",
+          "origin": "source"
+        },
+        {
+          "question": "Scope of IAM Access Advisor?",
+          "answer": "User level",
+          "keyTopic": "IAM Access Advisor",
+          "origin": "source"
+        },
+        {
+          "question": "What does Access Advisor show?",
+          "answer": "Granted services and when last accessed",
+          "keyTopic": "IAM Access Advisor",
+          "origin": "source"
+        },
+        {
+          "question": "What is Access Advisor data used for?",
+          "answer": "Revising policies toward least privilege",
+          "keyTopic": "IAM Access Advisor",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Best practices",
+      "cards": [
+        {
+          "question": "When should the root account be used?",
+          "answer": "Only for AWS account setup",
+          "keyTopic": "IAM best practices",
+          "origin": "source"
+        },
+        {
+          "question": "Mapping between physical users and AWS users?",
+          "answer": "One physical user = one AWS user",
+          "keyTopic": "IAM best practices",
+          "origin": "source"
+        },
+        {
+          "question": "Best practice for assigning permissions?",
+          "answer": "Assign to groups, add users to groups",
+          "keyTopic": "IAM best practices",
+          "origin": "source"
+        },
+        {
+          "question": "What should be used for programmatic access?",
+          "answer": "Access keys (CLI / SDK)",
+          "keyTopic": "IAM best practices",
+          "origin": "source"
+        },
+        {
+          "question": "Which two tools audit IAM permissions?",
+          "answer": "Credentials Report and Access Advisor",
+          "keyTopic": "IAM best practices",
+          "origin": "source"
+        },
+        {
+          "question": "What must never be shared?",
+          "answer": "IAM users and access keys",
+          "keyTopic": "IAM best practices",
+          "origin": "source"
+        },
+        {
+          "question": "Which authentication control should be enforced for users?",
+          "answer": "MFA",
+          "keyTopic": "IAM best practices",
+          "origin": "source"
+        }
+      ]
+    }
+  ]
+}

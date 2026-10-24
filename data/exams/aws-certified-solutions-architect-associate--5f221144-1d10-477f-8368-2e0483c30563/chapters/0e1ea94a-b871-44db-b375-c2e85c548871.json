@@ -1,0 +1,223 @@
+{
+  "chapter": {
+    "id": "0e1ea94a-b871-44db-b375-c2e85c548871",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "S3 security",
+    "order": 11,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 314,
+    "pageEnd": 336,
+    "description": "Bucket policies, encryption, public-access controls and KMS permissions.",
+    "objectives": [
+      {
+        "id": "0e1ea94a-b871-44db-b375-c2e85c548871/Authorization and encryption permissions",
+        "title": "Authorization and encryption permissions",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 314,
+        "pageEnd": 336,
+        "assessment": "both"
+      },
+      {
+        "id": "0e1ea94a-b871-44db-b375-c2e85c548871/Private origins and least exposure",
+        "title": "Private origins and least exposure",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 314,
+        "pageEnd": 336,
+        "assessment": "both"
+      }
+    ],
+    "coverageStatus": "draft"
+  },
+  "sections": [
+    {
+      "id": "5be30170-db66-4f63-af3e-43213ff03443",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "0e1ea94a-b871-44db-b375-c2e85c548871",
+      "title": "Authorization and encryption permissions",
+      "objective": "Why can an allowed S3 GetObject request fail for an SSE-KMS encrypted object?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nAmazon S3 \t– \tSecurity\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tObject Encryption\n• \tYou can encrypt objects in S3 buckets using one of the following methods\n• \tServer-Side Encryption (SSE)\n• \tServer-Side Encryption with Amazon S3-Managed Keys (SSE-S3) – Enabled by Default\n• \tServer-Side Encryption with KMS Keys stored in AWS KMS (SSE-KMS)\n• \tDual-Layer Server-Side Encryption with KMS Keys (DSSE-KMS)\n• \tServer-Side Encryption with Customer-Provided Keys (SSE-C)\n• \tClient-Side Encryption\n• \tIt’s important to understand which ones are for which situation for the exam\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 Encryption \t– \tSSE-S3\n• \tEncryption using keys handled, managed, and owned by AWS\n• \tObject is encrypted server-side\n• \tEncryption type is AES-256\n• \tMust set header \"x-amz-server-side-encryption\": \"AES256\"\n• \tEnabled by default for new buckets & new objects\nAmazon S3\nUser\nupload\nHTTP(S) + Header\nS3 Bucket\n+\nObject\nS3 Owned Key\nEncryption\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 Encryption \t– \tSSE-KMS\n• \tEncryption using keys handled and managed by AWS KMS (Key Management Service)\n• \tKMS advantages: user control + audit key usage using CloudTrail\n• \tObject is encrypted server side\n• \tMust set header \"x-amz-server-side-encryption\": \"aws:kms\"\nAmazon S3\nUser\nupload\nHTTP(S) + Header\nS3 Bucket\n+\nObject\nKMS Key\nAWS KMS\nEncryption\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSSE-KMS Limitation\n• \tIf you use SSE-KMS, you may be impacted\nby the KMS limits\n• \tWhen you upload, it calls the\nGenerateDataKey KMS API\n• \tWhen you download, it calls the Decrypt\nKMS API\n• \tCount towards the KMS quota per second\n(5500, 10000, 30000 req/s based on region)\n• \tYou can request a quota increase using the\nService Quotas Console\nKMS Key\tS3 Bucket\nUsers\nUpload / download\nSSE-KMS\nAPI call\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 Encryption \t– \tDSSE-KMS\n• \tDual-Layer Server-Side Encryption using keys handled and managed by AWS KMS\n• \tObject is encrypted twice server side: KMS Key (1st layer) + S3 Managed Key (2nd layer)\n• \tFor compliance standards requiring multi-layer encryption (higher cost & latency than SSE-KMS)\n• \tMust set header \"x-amz-server-side-encryption\": \"aws:kms:dsse\"\nAmazon S3\nUser\nupload\nHTTP(S) + Header\nS3 Bucket\n+\nObject\nKMS Key\nAWS KMS\nEncryption \tEncryption\nS3 Managed Key\n1st layer \t2nd layer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 Encryption \t– \tSSE-C\n• \tServer-Side Encryption using keys fully managed by the customer outside of AWS\n• \tAmazon S3 does NOT store the encryption key you provide\n• \tHTTPS must be used\n• \tEncryption key must provided in HTTP headers, for every HTTP request made\nAmazon S3\nUser\nupload\nHTTPS ONLY\n+ Key in Header S3 Bucket\n+\nObject\nClient-Provided Key\n+\nEncryption\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 Encryption \t– \tClient-Side Encryption\nAmazon S3\nS3 Bucket\n• \tUse client libraries such as \tAmazon S3 Client-Side Encryption Library\n• \tClients must encrypt data themselves before sending to Amazon S3\n• \tClients must decrypt data themselves when retrieving from Amazon S3\n• \tCustomer fully manages the keys and encryption cycle\n+\nFile\nClient Key\nFile\n(encrypted)\nupload\nHTTP(S)\nEncryption\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tEncryption in transit (SSL/TLS)\n• \tEncryption in flight is also called SSL/TLS\n• \tAmazon S3 exposes two endpoints:\n• \tHTTP Endpoint – non encrypted\n• \tHTTPS Endpoint – encryption in flight\n• \tHTTPS is recommended\n• \tHTTPS is mandatory for SSE-C\n• \tMost clients would use the HTTPS endpoint by default\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tForce Encryption in Transit\naws:SecureTransport\nAccount B\nS3 Bucket\n(my-bucket)\nBucket Policy\nUser\nUser\nhttp\nhttps\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tDefault Encryption vs. Bucket Policies\n• \tSSE-S3 encryption is automatically applied to new objects stored in S3 bucket\n• \tOptionally, you can “force encryption” using a bucket policy and refuse any API call\nto PUT an S3 object without encryption headers\n• \tNote: Bucket Policies are evaluated before “Default Encryption”\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat is CORS?\n• \tCross-Origin Resource Sharing (CORS)\n• \tOrigin = scheme (protocol) + host (domain) + port\n• \texample: https://www.example.com (implied port is 443 for HTTPS, 80 for HTTP)\n• \tWeb Browser \tbased mechanism to allow requests to other origins while\nvisiting the main origin\n• \tSame origin: http://example.com/app1 \t& \thttp://example.com/app2\n• \tDifferent origins: http://www.example.com & \thttp://other.example.com\n• \tThe requests won’t be fulfilled unless the other origin allows for the\nrequests, using \tCORS Headers \t(example: Access-Control-Allow-Origin)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat is CORS?\nWeb Server\n(Origin)\nhttps://www.example.com\nWeb Server\n(Cross-Origin)\nhttps://www.other.com\nWeb Browser\nHTTPS Request\nOPTIONS /\nHost: www.other.com\nOrigin: https://www.example.com\nPreflight Request\nAccess-Control-Allow-Origin: https://www.example.com\nAccess-Control-Allow-Methods: GET, PUT, DELETE\nPreflight Response\nGET /\nHost: www.other.com\nOrigin: https://www.example.com\nCORS Headers received already by the Origin\nThe Web Browser can make requests\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tCORS\n• \tIf a client makes a cross-origin request on our S3 bucket, we need to enable\nthe correct CORS headers\n• \tIt’s a popular exam question\n• \tYou can allow for a specific origin or for * (all origins)\nWeb Browser\nS3 Bucket\n(my-bucket-html)\n(Static Website Enabled)\nS3 Bucket\n(my-bucket-assets)\n(Static Website Enabled)\nGET /index.html\nHost: http://my-bucket-html.s3-website.us-west-2.amazonaws.com\nindex.html\nGET /images/coffee.jpg\nHost: http://my-bucket-assets.s3-website.us-west-2.amazonaws.com\nOrigin: http://my-bucket-html.s3-website.us-west-2.amazonaws.com\nAccess-Control-Allow-Origin: http://my-bucket-html.s3-website.us-west-2.amazonaws.com\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tMFA Delete\n• \tMFA (Multi-Factor Authentication) – force users to generate a code on a\ndevice (usually a mobile phone or hardware) before doing important\noperations on S3\n• \tMFA will be required to:\n• \tPermanently delete an object version\n• \tSuspend Versioning on the bucket\n• \tMFA won’t be required to:\n• \tEnable Versioning\n• \tList deleted versions\n• \tTo use MFA Delete, Versioning must be enabled on the bucket\n• \tOnly the bucket owner (root account) can enable/disable MFA Delete\nGoogle Authenticator\nMFA Hardware Device\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Access Logs\n• \tFor audit purpose, you may want to log all access to S3 buckets\n• \tAny request made to S3, from any account, authorized or denied,\nwill be logged into another S3 bucket\n• \tThat data can be analyzed using data analysis tools…\n• \tThe target logging bucket must be in the same AWS region\n• \tThe log format is at:\nhttps://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html\nMy-bucket\nLogging Bucket\nrequests\nLog all\nrequests\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Access Logs: Warning\n• \tDo not set your logging bucket to be the monitored bucket\n• \tIt will create a logging loop, and \tyour \tbucket will grow exponentially\nApp Bucket &\nLogging Bucket\nLogging loop\nPutObject\nDo not try this at home J\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tPre-Signed URLs\n• \tGenerate pre-signed URLs using the S3 Console, AWS CLI or SDK\n• \tURL Expiration\n• \tS3 Console – 1 min up to 720 mins (12 hours)\n• \tAWS CLI – configure expiration with --expires-in parameter in seconds\n(default 3600 secs, max. 604800 secs ~ 168 hours)\n• \tUsers given a pre-signed URL inherit the permissions of the user\nthat generated the URL for GET / PUT\n• \tExamples:\n• \tAllow only logged-in users to download a premium video from your S3\nbucket\n• \tAllow an ever-changing list of users to download files by generating URLs\ndynamically\n• \tAllow temporarily a user to upload a file to a precise location in your S3\nbucket\nS3 Bucket\n(Private)\nOwner\nUser\ngenerate\npre\n-signed URL\nURL\nURL\nURL\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Glacier Vault Lock\n• \tAdopt a WORM (Write Once Read\nMany) model\n• \tCreate a Vault Lock Policy\n• \tLock the policy for future edits\n(can no longer be changed or deleted)\n• \tHelpful for compliance and data\nretention\nObject\nVault Lock Policy\nObject can’t be deleted\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Object Lock (versioning must be enabled)\n• \tAdopt a WORM (Write Once Read Many) model\n• \tBlock an object version deletion for a specified amount of time\n• \tRetention mode - Compliance:\n• \tObject versions can't be overwritten or deleted by any user, including the root user\n• \tObjects retention modes can't be changed, and retention periods can't be shortened\n• \tRetention mode - Governance:\n• \tMost users can't overwrite or delete an object version or alter its lock settings\n• \tSome users have special permissions to change the retention or delete the object\n• \tRetention Period: protect the object for a fixed period, it can be extended\n• \tLegal Hold:\n• \tprotect the object indefinitely, independent from retention period\n• \tcan be freely placed and removed using the s3:PutObjectLegalHold IAM permission\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 \t– \tAccess Points\nS3 Bucket\n/finance/…\n/sales/…\nSimple Bucket\nPolicy\nFinance\nAccess Point\nSales\nAccess Point\nAnalytics\nAccess Point\nPolicy\nGrant R/W to\n/finance prefix\nPolicy\nGrant R/W to\n/sales prefix\nPolicy\nGrant R to\nentire bucket\nUsers\n(Finance)\nUsers\n(Sales)\nUsers\n(Analytics)\n• \tAccess Points simplify security management for S3 Buckets\n• \tEach Access Point has:\n• \tits own DNS name (Internet Origin or VPC Origin)\n• \tan access point policy (similar to bucket policy) – manage security at scale\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 \t– \tAccess Points \t– VPC Origin\n• \tWe can define the access\npoint to be accessible\nonly from within the VPC\n• \tYou must create a VPC\nEndpoint to access the\nAccess Point (Gateway\nor Interface Endpoint)\n• \tThe VPC Endpoint Policy\nmust allow access to the\ntarget bucket and Access\nPoint\nS3 Bucket\nEC2 Instance\nAccess Point\nVPC Origin\tVPC Endpoint\nVPC\nEndpoint\nPolicy\nAccess Point\nPolicy\nBucket\nPolicy\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Object Lambda\n• \tUse AWS Lambda Functions to\nchange the object before it is\nretrieved by the caller application\n• \tOnly one S3 bucket is needed, on\ntop of which we create S3 Access\nPoint and S3 Object Lambda Access\nPoints.\n• \tUse Cases:\n• \tRedacting personally identifiable\ninformation for analytics or non-\nproduction environments.\n• \tConverting across data formats, such\nas converting XML to JSON.\n• \tResizing and watermarking images on\nthe fly using caller-specific details, such\nas the user who requested the object.\nAWS Cloud\nE-Commerce\nApplication\nAnalytics\nApplication\nMarketing\nApplication\nS3 Bucket\nSupporting\nS3 Access Point\nCustomer Loyalty\nDatabase\nRedacting\nLambda Function\nEnriching\nLambda Function\nS3 Object Lambda\nAccess Point\nS3 Object Lambda\nAccess Point\nOriginal\nObject\nRedacted\nObject\nEnriched\nObject",
+      "pageStart": 314,
+      "pageEnd": 336,
+      "read": false,
+      "content": {
+        "summary": "## Authorization and encryption permissions\n\nReading an SSE-KMS object can require both S3 authorization and permission to use the KMS key. Evaluate the key policy and applicable IAM permissions as well as the bucket and object scope.\n\n### Reasoning and trade-offs\n\nKMS authorization is a separate permission layer from S3 listing and object access. Cross-account key use needs appropriate key and identity policies. Public exposure is not a valid fix, and storage class or versioning changes do not supply decrypt permission.\n\n### Avoid this trap\n\nEncryption at rest does not grant access or make a bucket private. A permissive bucket policy cannot automatically override an explicit deny or a restrictive KMS key policy.\n\n### Apply it\n\nA cross-account role can list a bucket but cannot download its SSE-KMS objects. The S3 object permission has been checked. What should be investigated next?\n\n**Recommended design:** Check the KMS key policy and the role permission to decrypt with that key.\n\nKMS authorization is a separate permission layer from S3 listing and object access. Cross-account key use needs appropriate key and identity policies. Public exposure is not a valid fix, and storage class or versioning changes do not supply decrypt permission.",
+        "keyPoints": [
+          "Reading an SSE-KMS object can require both S3 authorization and permission to use the KMS key. Evaluate the key policy and applicable IAM permissions as well as the bucket and object scope.",
+          "KMS authorization is a separate permission layer from S3 listing and object access. Cross-account key use needs appropriate key and identity policies. Public exposure is not a valid fix, and storage class or versioning changes do not supply decrypt permission.",
+          "Encryption at rest does not grant access or make a bucket private. A permissive bucket policy cannot automatically override an explicit deny or a restrictive KMS key policy."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "What extra permission may an SSE-KMS S3 read require?",
+            "answer": "Permission to decrypt with the relevant KMS key.",
+            "objectiveIds": [
+              "0e1ea94a-b871-44db-b375-c2e85c548871/Authorization and encryption permissions"
+            ],
+            "id": "93a502b3-3582-4783-aff4-267122c60528",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.131Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Does encryption at rest make a bucket private?",
+            "answer": "No. Authorization and public-access controls are separate.",
+            "objectiveIds": [
+              "0e1ea94a-b871-44db-b375-c2e85c548871/Authorization and encryption permissions"
+            ],
+            "id": "77255856-af8f-4a64-bd3b-bcc4dfab3d09",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.131Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A cross-account role can list a bucket but cannot download its SSE-KMS objects. The S3 object permission has been checked. What should be investigated next?",
+            "options": [
+              "Check the KMS key policy and the role permission to decrypt with that key.",
+              "Make the bucket publicly readable to bypass KMS authorization.",
+              "Increase the S3 storage class to one with provisioned throughput.",
+              "Disable versioning because it prevents cross-account decryption."
+            ],
+            "correctIndex": 0,
+            "explanation": "KMS authorization is a separate permission layer from S3 listing and object access. Cross-account key use needs appropriate key and identity policies. Public exposure is not a valid fix, and storage class or versioning changes do not supply decrypt permission.",
+            "objectiveIds": [
+              "0e1ea94a-b871-44db-b375-c2e85c548871/Authorization and encryption permissions"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.131Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 314,
+            "pageEnd": 336,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "320175a2-9b5c-4654-a0a8-c0977b3b3776",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "0e1ea94a-b871-44db-b375-c2e85c548871",
+      "title": "Private origins and least exposure",
+      "objective": "How can a CloudFront distribution serve private S3 content without making the bucket public?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nAmazon S3 \t– \tSecurity\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tObject Encryption\n• \tYou can encrypt objects in S3 buckets using one of the following methods\n• \tServer-Side Encryption (SSE)\n• \tServer-Side Encryption with Amazon S3-Managed Keys (SSE-S3) – Enabled by Default\n• \tServer-Side Encryption with KMS Keys stored in AWS KMS (SSE-KMS)\n• \tDual-Layer Server-Side Encryption with KMS Keys (DSSE-KMS)\n• \tServer-Side Encryption with Customer-Provided Keys (SSE-C)\n• \tClient-Side Encryption\n• \tIt’s important to understand which ones are for which situation for the exam\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 Encryption \t– \tSSE-S3\n• \tEncryption using keys handled, managed, and owned by AWS\n• \tObject is encrypted server-side\n• \tEncryption type is AES-256\n• \tMust set header \"x-amz-server-side-encryption\": \"AES256\"\n• \tEnabled by default for new buckets & new objects\nAmazon S3\nUser\nupload\nHTTP(S) + Header\nS3 Bucket\n+\nObject\nS3 Owned Key\nEncryption\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 Encryption \t– \tSSE-KMS\n• \tEncryption using keys handled and managed by AWS KMS (Key Management Service)\n• \tKMS advantages: user control + audit key usage using CloudTrail\n• \tObject is encrypted server side\n• \tMust set header \"x-amz-server-side-encryption\": \"aws:kms\"\nAmazon S3\nUser\nupload\nHTTP(S) + Header\nS3 Bucket\n+\nObject\nKMS Key\nAWS KMS\nEncryption\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSSE-KMS Limitation\n• \tIf you use SSE-KMS, you may be impacted\nby the KMS limits\n• \tWhen you upload, it calls the\nGenerateDataKey KMS API\n• \tWhen you download, it calls the Decrypt\nKMS API\n• \tCount towards the KMS quota per second\n(5500, 10000, 30000 req/s based on region)\n• \tYou can request a quota increase using the\nService Quotas Console\nKMS Key\tS3 Bucket\nUsers\nUpload / download\nSSE-KMS\nAPI call\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 Encryption \t– \tDSSE-KMS\n• \tDual-Layer Server-Side Encryption using keys handled and managed by AWS KMS\n• \tObject is encrypted twice server side: KMS Key (1st layer) + S3 Managed Key (2nd layer)\n• \tFor compliance standards requiring multi-layer encryption (higher cost & latency than SSE-KMS)\n• \tMust set header \"x-amz-server-side-encryption\": \"aws:kms:dsse\"\nAmazon S3\nUser\nupload\nHTTP(S) + Header\nS3 Bucket\n+\nObject\nKMS Key\nAWS KMS\nEncryption \tEncryption\nS3 Managed Key\n1st layer \t2nd layer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 Encryption \t– \tSSE-C\n• \tServer-Side Encryption using keys fully managed by the customer outside of AWS\n• \tAmazon S3 does NOT store the encryption key you provide\n• \tHTTPS must be used\n• \tEncryption key must provided in HTTP headers, for every HTTP request made\nAmazon S3\nUser\nupload\nHTTPS ONLY\n+ Key in Header S3 Bucket\n+\nObject\nClient-Provided Key\n+\nEncryption\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 Encryption \t– \tClient-Side Encryption\nAmazon S3\nS3 Bucket\n• \tUse client libraries such as \tAmazon S3 Client-Side Encryption Library\n• \tClients must encrypt data themselves before sending to Amazon S3\n• \tClients must decrypt data themselves when retrieving from Amazon S3\n• \tCustomer fully manages the keys and encryption cycle\n+\nFile\nClient Key\nFile\n(encrypted)\nupload\nHTTP(S)\nEncryption\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tEncryption in transit (SSL/TLS)\n• \tEncryption in flight is also called SSL/TLS\n• \tAmazon S3 exposes two endpoints:\n• \tHTTP Endpoint – non encrypted\n• \tHTTPS Endpoint – encryption in flight\n• \tHTTPS is recommended\n• \tHTTPS is mandatory for SSE-C\n• \tMost clients would use the HTTPS endpoint by default\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tForce Encryption in Transit\naws:SecureTransport\nAccount B\nS3 Bucket\n(my-bucket)\nBucket Policy\nUser\nUser\nhttp\nhttps\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tDefault Encryption vs. Bucket Policies\n• \tSSE-S3 encryption is automatically applied to new objects stored in S3 bucket\n• \tOptionally, you can “force encryption” using a bucket policy and refuse any API call\nto PUT an S3 object without encryption headers\n• \tNote: Bucket Policies are evaluated before “Default Encryption”\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat is CORS?\n• \tCross-Origin Resource Sharing (CORS)\n• \tOrigin = scheme (protocol) + host (domain) + port\n• \texample: https://www.example.com (implied port is 443 for HTTPS, 80 for HTTP)\n• \tWeb Browser \tbased mechanism to allow requests to other origins while\nvisiting the main origin\n• \tSame origin: http://example.com/app1 \t& \thttp://example.com/app2\n• \tDifferent origins: http://www.example.com & \thttp://other.example.com\n• \tThe requests won’t be fulfilled unless the other origin allows for the\nrequests, using \tCORS Headers \t(example: Access-Control-Allow-Origin)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat is CORS?\nWeb Server\n(Origin)\nhttps://www.example.com\nWeb Server\n(Cross-Origin)\nhttps://www.other.com\nWeb Browser\nHTTPS Request\nOPTIONS /\nHost: www.other.com\nOrigin: https://www.example.com\nPreflight Request\nAccess-Control-Allow-Origin: https://www.example.com\nAccess-Control-Allow-Methods: GET, PUT, DELETE\nPreflight Response\nGET /\nHost: www.other.com\nOrigin: https://www.example.com\nCORS Headers received already by the Origin\nThe Web Browser can make requests\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tCORS\n• \tIf a client makes a cross-origin request on our S3 bucket, we need to enable\nthe correct CORS headers\n• \tIt’s a popular exam question\n• \tYou can allow for a specific origin or for * (all origins)\nWeb Browser\nS3 Bucket\n(my-bucket-html)\n(Static Website Enabled)\nS3 Bucket\n(my-bucket-assets)\n(Static Website Enabled)\nGET /index.html\nHost: http://my-bucket-html.s3-website.us-west-2.amazonaws.com\nindex.html\nGET /images/coffee.jpg\nHost: http://my-bucket-assets.s3-website.us-west-2.amazonaws.com\nOrigin: http://my-bucket-html.s3-website.us-west-2.amazonaws.com\nAccess-Control-Allow-Origin: http://my-bucket-html.s3-website.us-west-2.amazonaws.com\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tMFA Delete\n• \tMFA (Multi-Factor Authentication) – force users to generate a code on a\ndevice (usually a mobile phone or hardware) before doing important\noperations on S3\n• \tMFA will be required to:\n• \tPermanently delete an object version\n• \tSuspend Versioning on the bucket\n• \tMFA won’t be required to:\n• \tEnable Versioning\n• \tList deleted versions\n• \tTo use MFA Delete, Versioning must be enabled on the bucket\n• \tOnly the bucket owner (root account) can enable/disable MFA Delete\nGoogle Authenticator\nMFA Hardware Device\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Access Logs\n• \tFor audit purpose, you may want to log all access to S3 buckets\n• \tAny request made to S3, from any account, authorized or denied,\nwill be logged into another S3 bucket\n• \tThat data can be analyzed using data analysis tools…\n• \tThe target logging bucket must be in the same AWS region\n• \tThe log format is at:\nhttps://docs.aws.amazon.com/AmazonS3/latest/dev/LogFormat.html\nMy-bucket\nLogging Bucket\nrequests\nLog all\nrequests\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Access Logs: Warning\n• \tDo not set your logging bucket to be the monitored bucket\n• \tIt will create a logging loop, and \tyour \tbucket will grow exponentially\nApp Bucket &\nLogging Bucket\nLogging loop\nPutObject\nDo not try this at home J\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tPre-Signed URLs\n• \tGenerate pre-signed URLs using the S3 Console, AWS CLI or SDK\n• \tURL Expiration\n• \tS3 Console – 1 min up to 720 mins (12 hours)\n• \tAWS CLI – configure expiration with --expires-in parameter in seconds\n(default 3600 secs, max. 604800 secs ~ 168 hours)\n• \tUsers given a pre-signed URL inherit the permissions of the user\nthat generated the URL for GET / PUT\n• \tExamples:\n• \tAllow only logged-in users to download a premium video from your S3\nbucket\n• \tAllow an ever-changing list of users to download files by generating URLs\ndynamically\n• \tAllow temporarily a user to upload a file to a precise location in your S3\nbucket\nS3 Bucket\n(Private)\nOwner\nUser\ngenerate\npre\n-signed URL\nURL\nURL\nURL\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Glacier Vault Lock\n• \tAdopt a WORM (Write Once Read\nMany) model\n• \tCreate a Vault Lock Policy\n• \tLock the policy for future edits\n(can no longer be changed or deleted)\n• \tHelpful for compliance and data\nretention\nObject\nVault Lock Policy\nObject can’t be deleted\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Object Lock (versioning must be enabled)\n• \tAdopt a WORM (Write Once Read Many) model\n• \tBlock an object version deletion for a specified amount of time\n• \tRetention mode - Compliance:\n• \tObject versions can't be overwritten or deleted by any user, including the root user\n• \tObjects retention modes can't be changed, and retention periods can't be shortened\n• \tRetention mode - Governance:\n• \tMost users can't overwrite or delete an object version or alter its lock settings\n• \tSome users have special permissions to change the retention or delete the object\n• \tRetention Period: protect the object for a fixed period, it can be extended\n• \tLegal Hold:\n• \tprotect the object indefinitely, independent from retention period\n• \tcan be freely placed and removed using the s3:PutObjectLegalHold IAM permission\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 \t– \tAccess Points\nS3 Bucket\n/finance/…\n/sales/…\nSimple Bucket\nPolicy\nFinance\nAccess Point\nSales\nAccess Point\nAnalytics\nAccess Point\nPolicy\nGrant R/W to\n/finance prefix\nPolicy\nGrant R/W to\n/sales prefix\nPolicy\nGrant R to\nentire bucket\nUsers\n(Finance)\nUsers\n(Sales)\nUsers\n(Analytics)\n• \tAccess Points simplify security management for S3 Buckets\n• \tEach Access Point has:\n• \tits own DNS name (Internet Origin or VPC Origin)\n• \tan access point policy (similar to bucket policy) – manage security at scale\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 \t– \tAccess Points \t– VPC Origin\n• \tWe can define the access\npoint to be accessible\nonly from within the VPC\n• \tYou must create a VPC\nEndpoint to access the\nAccess Point (Gateway\nor Interface Endpoint)\n• \tThe VPC Endpoint Policy\nmust allow access to the\ntarget bucket and Access\nPoint\nS3 Bucket\nEC2 Instance\nAccess Point\nVPC Origin\tVPC Endpoint\nVPC\nEndpoint\nPolicy\nAccess Point\nPolicy\nBucket\nPolicy\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Object Lambda\n• \tUse AWS Lambda Functions to\nchange the object before it is\nretrieved by the caller application\n• \tOnly one S3 bucket is needed, on\ntop of which we create S3 Access\nPoint and S3 Object Lambda Access\nPoints.\n• \tUse Cases:\n• \tRedacting personally identifiable\ninformation for analytics or non-\nproduction environments.\n• \tConverting across data formats, such\nas converting XML to JSON.\n• \tResizing and watermarking images on\nthe fly using caller-specific details, such\nas the user who requested the object.\nAWS Cloud\nE-Commerce\nApplication\nAnalytics\nApplication\nMarketing\nApplication\nS3 Bucket\nSupporting\nS3 Access Point\nCustomer Loyalty\nDatabase\nRedacting\nLambda Function\nEnriching\nLambda Function\nS3 Object Lambda\nAccess Point\nS3 Object Lambda\nAccess Point\nOriginal\nObject\nRedacted\nObject\nEnriched\nObject",
+      "pageStart": 314,
+      "pageEnd": 336,
+      "read": false,
+      "content": {
+        "summary": "## Private origins and least exposure\n\nUse a private S3 REST origin with CloudFront Origin Access Control and a scoped bucket policy. Add signed URLs or cookies when viewer authorization is also required.\n\n### Reasoning and trade-offs\n\nOAC restricts origin access to the distribution; signed viewer requests can control who uses the distribution. An obscured public bucket remains public, and website endpoints have different origin behavior from authenticated S3 REST origins.\n\n### Avoid this trap\n\nOrigin authorization and viewer authorization solve different problems. An S3 website endpoint is not the same as a private S3 REST origin protected by OAC.\n\n### Apply it\n\nA media site must distribute private S3 objects globally while preventing direct public bucket access. Which architecture fits?\n\n**Recommended design:** Use CloudFront OAC to a private S3 origin and configure viewer authorization where required.\n\nOAC restricts origin access to the distribution; signed viewer requests can control who uses the distribution. An obscured public bucket remains public, and website endpoints have different origin behavior from authenticated S3 REST origins.",
+        "keyPoints": [
+          "Use a private S3 REST origin with CloudFront Origin Access Control and a scoped bucket policy. Add signed URLs or cookies when viewer authorization is also required.",
+          "OAC restricts origin access to the distribution; signed viewer requests can control who uses the distribution. An obscured public bucket remains public, and website endpoints have different origin behavior from authenticated S3 REST origins.",
+          "Origin authorization and viewer authorization solve different problems. An S3 website endpoint is not the same as a private S3 REST origin protected by OAC."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "What authorizes CloudFront access to a private S3 REST origin?",
+            "answer": "Origin Access Control with a scoped bucket policy.",
+            "objectiveIds": [
+              "0e1ea94a-b871-44db-b375-c2e85c548871/Private origins and least exposure"
+            ],
+            "id": "1e162512-d9f5-40f4-922c-548eededfcbe",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.131Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Does origin authorization also authorize every viewer?",
+            "answer": "No. Viewer authorization is a separate control.",
+            "objectiveIds": [
+              "0e1ea94a-b871-44db-b375-c2e85c548871/Private origins and least exposure"
+            ],
+            "id": "b49cb606-191e-4f90-b06d-f5ae53a74dee",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.131Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A media site must distribute private S3 objects globally while preventing direct public bucket access. Which architecture fits?",
+            "options": [
+              "Enable public bucket reads and rely on an obscure bucket name.",
+              "Use CloudFront OAC to a private S3 origin and configure viewer authorization where required.",
+              "Use an S3 website endpoint and assume OAC will authenticate it like a REST origin.",
+              "Put permanent S3 keys in the public media URLs."
+            ],
+            "correctIndex": 1,
+            "explanation": "OAC restricts origin access to the distribution; signed viewer requests can control who uses the distribution. An obscured public bucket remains public, and website endpoints have different origin behavior from authenticated S3 REST origins.",
+            "objectiveIds": [
+              "0e1ea94a-b871-44db-b375-c2e85c548871/Private origins and least exposure"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.131Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 314,
+            "pageEnd": 336,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "9b490ee9-c8f6-49f6-9204-8d413b7ff433",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 20,
+    "title": "Data & Analytics",
+    "pageStart": 530,
+    "pageEnd": 562,
+    "description": "Athena, Redshift, OpenSearch, EMR, QuickSight, Glue, Lake Formation, Managed Flink, MSK and big data ingestion.",
+    "examFocus": [
+      "Task 3.5: data ingestion and transformation",
+      "Task 4.1: analytics storage cost"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

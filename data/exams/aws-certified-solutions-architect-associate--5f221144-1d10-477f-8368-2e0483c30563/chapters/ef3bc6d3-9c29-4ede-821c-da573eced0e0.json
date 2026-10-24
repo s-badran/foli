@@ -1,0 +1,186 @@
+{
+  "chapter": {
+    "id": "ef3bc6d3-9c29-4ede-821c-da573eced0e0",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "Serverless solution architectures",
+    "order": 17,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 494,
+    "pageEnd": 515,
+    "description": "Asynchronous flows, event retries and secure static applications."
+  },
+  "sections": [
+    {
+      "id": "6f54cc74-ed01-4559-9f5b-9a8236fccc1f",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "ef3bc6d3-9c29-4ede-821c-da573eced0e0",
+      "title": "Reliable event processing",
+      "objective": "What makes an S3-triggered processing workflow resilient to repeated events?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nServerless Architectures\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMobile application: \tMyTodoList\n• \tWe want to create a mobile application with the following requirements\n• \tExpose as REST API with HTTPS\n• \tServerless architecture\n• \tUsers should be able to directly interact with their own folder in S3\n• \tUsers should authenticate through a managed serverless service\n• \tThe users can write and read to-dos, but they mostly read them\n• \tThe database should scale, and have some high read throughput\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMobile app: REST API layer\nAmazon API Gateway\nAmazon Cognito\nAWS Lambda \tAmazon DynamoDB\nMobile\nclient\nREST HTTPS \tinvoke \tquery\nauthenticate\nVerify authentication\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMobile app: giving users access to S3\nAmazon API Gateway\nAmazon Cognito\nAWS Lambda \tAmazon DynamoDB\nAmazon S3\nMobile\nclient\nStore/retrieve files\nPermissions\nauthenticate\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMobile app: high read throughput, static data\nAmazon API Gateway\nAmazon Cognito\nAWS Lambda \tDynamoDB\nAmazon S3\nMobile\nclient\nStore/retrieve files\nPermissions\nREST HTTPS \tinvoke \tQuery / read\nauthenticate\nVerify authentication\nDAX\nCaching layer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMobile app: caching at the API Gateway\nAmazon API Gateway\nAmazon Cognito\nAWS Lambda \tDynamoDB\nAmazon S3\nMobile\nclient\nStore/retrieve files\nPermissions\nREST HTTPS \tinvoke \tQuery / read\nauthenticate\nVerify authentication\nDAX\nCaching layer\nCACHING OF RESPONSES\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIn this lecture\n• \tServerless REST API: HTTPS, API Gateway, Lambda, DynamoDB\n• \tUsing Cognito to generate temporary credentials to access S3 bucket\nwith restricted policy. App users can directly access AWS resources this\nway. Pattern can be applied to DynamoDB, Lambda…\n• \tCaching the reads on DynamoDB using DAX\n• \tCaching the REST requests at the API Gateway level\n• \tSecurity for authentication and authorization with Cognito\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nServerless hosted website: \tMyBlog.com\n• \tThis website should scale globally\n• \tBlogs are rarely written, but often read\n• \tSome of the website is purely static files, the rest is a dynamic REST API\n• \tCaching must be implement where possible\n• \tAny new users that subscribes should receive a welcome email\n• \tAny photo uploaded to the blog should have a thumbnail generated\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nServing static content, globally\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nClient\nInteraction with\nedge locations\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nServing static content, globally, securely\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nClient\nInteraction with\nedge locations\nOAC: Origin Access Control \tBucket policy\nOnly authorize from\nCloudFront Distribution\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAdding a public serverless REST API\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nClient\nInteraction with\nedge locations\nOAC: Origin Access Control \tBucket policy\nOnly authorize from\nCloudFront Distribution\nAmazon API Gateway \tAWS Lambda \tDynamoDB\nREST HTTPS \tinvoke \tQuery / read\nDAX\nCaching layer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nLeveraging DynamoDB Global Tables\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nClient\nInteraction with\nedge locations\nOAC: Origin Access Control \tBucket policy\nOnly authorize from\nCloudFront Distribution\nAmazon API Gateway \tAWS Lambda \tDynamoDB\nGlobal Tables\nREST HTTPS \tinvoke \tQuery / read\nDAX\nCaching layer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nUser Welcome email flow\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nClient\nInteraction with\nedge locations\nOAC: Origin Access Control \tBucket policy\nOnly authorize from\nCloudFront Distribution\nAmazon API Gateway \tAWS Lambda \tDynamoDB\nREST HTTPS \tinvoke \tQuery / read\nDAX\nCaching layer\nDynamoDB\nStream\nStream changes\nAWS Lambda\nInvoke lambda\nAmazon Simple\nEmail Service (SES)\nSDK to send email\nIAM Role\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nThumbnail Generation flow\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nClient\nInteraction with\nedge locations\nOAC: Origin Access Control \tBucket policy\nOnly authorize from\nCloudFront Distribution\nAmazon API Gateway \tAWS Lambda \tDynamoDB\nREST HTTPS \tinvoke \tQuery / read\nDAX\nCaching layer\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nOAC\nUpload photos\nTransfer acceleration \ttrigger\nAmazon S3\nthumbnail\nAWS Lambda\nSQS\nSNS\noptional\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Hosted Website Summary\n• \tWe’ve seen static content being distributed using CloudFront with S3\n• \tThe REST API was serverless, didn’t need Cognito because public\n• \tWe leveraged a Global DynamoDB table to serve the data globally\n• \t(we could have used Aurora Global Database)\n• \tWe enabled DynamoDB streams to trigger a Lambda function\n• \tThe lambda function had an IAM role which could use SES\n• \tSES (Simple Email Service) was used to send emails in a serverless way\n• \tS3 can trigger SQS / SNS / Lambda to notify of events\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMicro Services architecture\n• \tWe want to switch to a micro service architecture\n• \tMany services interact with each other directly using a REST API\n• \tEach architecture for each micro service may vary in form and shape\n• \tWe want a micro-service architecture so we can have a leaner\ndevelopment lifecycle for each service\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMicro Services Environment\nAmazon API Gateway \tAWS Lambda \tElastiCache\nElastic Load Balancing \tAmazon EC2\nAuto Scaling Amazon RDS\nElastic Load Balancing \tECS \tDynamoDB\nAmazon Route 53\nservice1.example.com\nservice2.example.com\nservice3.example.com\nUsers\nDNS Query\nHTTPS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDiscussions on Micro Services\n• \tYou are free to design each micro-service the way you want\n• \tSynchronous patterns: API Gateway, Load Balancers\n• \tAsynchronous patterns: SQS, Kinesis, SNS, Lambda triggers (S3)\n• \tChallenges with micro-services:\n• \trepeated overhead for creating each new microservice,\n• \tissues with optimizing server density/utilization\n• \tcomplexity of running multiple versions of multiple microservices simultaneously\n• \tproliferation of client-side code requirements to integrate with many separate services.\n• \tSome of the challenges are solved by Serverless patterns:\n• \tAPI Gateway, Lambda scale automatically and you pay per usage\n• \tYou can easily clone API, reproduce environments\n• \tGenerated client SDK through Swagger integration for the API Gateway\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSoftware updates offloading\n• \tWe have an application running on EC2, that distributes software\nupdates once in a while\n• \tWhen a new software update is out, we get a lot of request and the\ncontent is distributed in mass over the network. It’s very costly\n• \tWe don’t want to change our application, but want to optimize our cost\nand CPU, how can we do it?\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nOur application current state\nAvailability zone 1 to 3\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nAmazon Elastic\nFile System\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEasy way to fix things!\nAvailability zone 1 to 3\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nAmazon Elastic\nFile System\tAmazon CloudFront\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhy CloudFront?\n• \tNo changes to architecture\n• \tWill cache software update files at the edge\n• \tSoftware update files are not dynamic, they’re static (never changing)\n• \tOur EC2 instances aren’t serverless\n• \tBut CloudFront is, and will scale for us\n• \tOur ASG will not scale as much, and we’ll save tremendously in EC2\n• \tWe’ll also save in availability, network bandwidth cost, etc\n• \tEasy way to make an existing application more scalable and cheaper!",
+      "pageStart": 494,
+      "pageEnd": 515,
+      "read": false,
+      "content": {
+        "summary": "## Reliable event processing\n\nDesign the handler for idempotent processing, persist job state and configure appropriate retry/failure destinations for the invocation path. Treat delivery and business completion as separate concerns.\n\n### Reasoning and trade-offs\n\nDeduplicating business effects is the necessary control. Event identifiers or object version identity must fit the actual operation semantics. Removing retries can hide failed work and does not itself eliminate duplicated delivery.\n\n### Avoid this trap\n\nEvent notifications can be duplicated or arrive out of order. A successful invocation response does not prove every external side effect occurred exactly once.\n\n### Apply it\n\nAn S3 event starts thumbnail generation. Duplicate notifications sometimes cause duplicate billing records. What should change?\n\n**Recommended design:** Use a stable object/event operation key and a durable idempotency check around billing and processing state.\n\nDeduplicating business effects is the necessary control. Event identifiers or object version identity must fit the actual operation semantics. Removing retries can hide failed work and does not itself eliminate duplicated delivery.",
+        "keyPoints": [
+          "Design the handler for idempotent processing, persist job state and configure appropriate retry/failure destinations for the invocation path. Treat delivery and business completion as separate concerns.",
+          "Deduplicating business effects is the necessary control. Event identifiers or object version identity must fit the actual operation semantics. Removing retries can hide failed work and does not itself eliminate duplicated delivery.",
+          "Event notifications can be duplicated or arrive out of order. A successful invocation response does not prove every external side effect occurred exactly once."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "What makes an S3-triggered processing workflow resilient to repeated events?",
+            "answer": "Design the handler for idempotent processing, persist job state and configure appropriate retry/failure destinations for the invocation path. Treat delivery and business completion as separate concerns. Deduplicating business effects is the necessary control. Event identifiers or object version identity must fit the actual operation semantics. Removing retries can hide failed work and does not itself eliminate duplicated delivery.",
+            "id": "e17e9cdb-df76-476a-b9a0-09c086e7da5a",
+            "schedule": {
+              "due": "2026-10-23T20:38:47.383Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What failure mode or trade-off must you avoid when designing reliable event processing?",
+            "answer": "Event notifications can be duplicated or arrive out of order. A successful invocation response does not prove every external side effect occurred exactly once.",
+            "id": "3079058d-5189-46f4-9c3a-cdc7db69ae6f",
+            "schedule": {
+              "due": "2026-10-23T20:38:47.383Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "An S3 event starts thumbnail generation. Duplicate notifications sometimes cause duplicate billing records. What should change?",
+            "options": [
+              "Use a stable object/event operation key and a durable idempotency check around billing and processing state.",
+              "Assume object notifications are globally ordered and always delivered exactly once.",
+              "Disable all retries and accept silent failures.",
+              "Use a longer object key to prevent duplicate notifications."
+            ],
+            "correctIndex": 0,
+            "explanation": "Deduplicating business effects is the necessary control. Event identifiers or object version identity must fit the actual operation semantics. Removing retries can hide failed work and does not itself eliminate duplicated delivery."
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v1",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-23T20:38:47.383Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 494,
+            "pageEnd": 515,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "b52f881f-b81f-4455-ae48-153497c6703f",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "ef3bc6d3-9c29-4ede-821c-da573eced0e0",
+      "title": "Static frontend and secure API boundaries",
+      "objective": "How should a static frontend access protected backend operations without containing service secrets?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nServerless Architectures\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMobile application: \tMyTodoList\n• \tWe want to create a mobile application with the following requirements\n• \tExpose as REST API with HTTPS\n• \tServerless architecture\n• \tUsers should be able to directly interact with their own folder in S3\n• \tUsers should authenticate through a managed serverless service\n• \tThe users can write and read to-dos, but they mostly read them\n• \tThe database should scale, and have some high read throughput\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMobile app: REST API layer\nAmazon API Gateway\nAmazon Cognito\nAWS Lambda \tAmazon DynamoDB\nMobile\nclient\nREST HTTPS \tinvoke \tquery\nauthenticate\nVerify authentication\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMobile app: giving users access to S3\nAmazon API Gateway\nAmazon Cognito\nAWS Lambda \tAmazon DynamoDB\nAmazon S3\nMobile\nclient\nStore/retrieve files\nPermissions\nauthenticate\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMobile app: high read throughput, static data\nAmazon API Gateway\nAmazon Cognito\nAWS Lambda \tDynamoDB\nAmazon S3\nMobile\nclient\nStore/retrieve files\nPermissions\nREST HTTPS \tinvoke \tQuery / read\nauthenticate\nVerify authentication\nDAX\nCaching layer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMobile app: caching at the API Gateway\nAmazon API Gateway\nAmazon Cognito\nAWS Lambda \tDynamoDB\nAmazon S3\nMobile\nclient\nStore/retrieve files\nPermissions\nREST HTTPS \tinvoke \tQuery / read\nauthenticate\nVerify authentication\nDAX\nCaching layer\nCACHING OF RESPONSES\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIn this lecture\n• \tServerless REST API: HTTPS, API Gateway, Lambda, DynamoDB\n• \tUsing Cognito to generate temporary credentials to access S3 bucket\nwith restricted policy. App users can directly access AWS resources this\nway. Pattern can be applied to DynamoDB, Lambda…\n• \tCaching the reads on DynamoDB using DAX\n• \tCaching the REST requests at the API Gateway level\n• \tSecurity for authentication and authorization with Cognito\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nServerless hosted website: \tMyBlog.com\n• \tThis website should scale globally\n• \tBlogs are rarely written, but often read\n• \tSome of the website is purely static files, the rest is a dynamic REST API\n• \tCaching must be implement where possible\n• \tAny new users that subscribes should receive a welcome email\n• \tAny photo uploaded to the blog should have a thumbnail generated\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nServing static content, globally\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nClient\nInteraction with\nedge locations\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nServing static content, globally, securely\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nClient\nInteraction with\nedge locations\nOAC: Origin Access Control \tBucket policy\nOnly authorize from\nCloudFront Distribution\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAdding a public serverless REST API\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nClient\nInteraction with\nedge locations\nOAC: Origin Access Control \tBucket policy\nOnly authorize from\nCloudFront Distribution\nAmazon API Gateway \tAWS Lambda \tDynamoDB\nREST HTTPS \tinvoke \tQuery / read\nDAX\nCaching layer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nLeveraging DynamoDB Global Tables\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nClient\nInteraction with\nedge locations\nOAC: Origin Access Control \tBucket policy\nOnly authorize from\nCloudFront Distribution\nAmazon API Gateway \tAWS Lambda \tDynamoDB\nGlobal Tables\nREST HTTPS \tinvoke \tQuery / read\nDAX\nCaching layer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nUser Welcome email flow\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nClient\nInteraction with\nedge locations\nOAC: Origin Access Control \tBucket policy\nOnly authorize from\nCloudFront Distribution\nAmazon API Gateway \tAWS Lambda \tDynamoDB\nREST HTTPS \tinvoke \tQuery / read\nDAX\nCaching layer\nDynamoDB\nStream\nStream changes\nAWS Lambda\nInvoke lambda\nAmazon Simple\nEmail Service (SES)\nSDK to send email\nIAM Role\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nThumbnail Generation flow\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nClient\nInteraction with\nedge locations\nOAC: Origin Access Control \tBucket policy\nOnly authorize from\nCloudFront Distribution\nAmazon API Gateway \tAWS Lambda \tDynamoDB\nREST HTTPS \tinvoke \tQuery / read\nDAX\nCaching layer\nAmazon CloudFront\nGlobal distribution\nAmazon S3\nOAC\nUpload photos\nTransfer acceleration \ttrigger\nAmazon S3\nthumbnail\nAWS Lambda\nSQS\nSNS\noptional\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Hosted Website Summary\n• \tWe’ve seen static content being distributed using CloudFront with S3\n• \tThe REST API was serverless, didn’t need Cognito because public\n• \tWe leveraged a Global DynamoDB table to serve the data globally\n• \t(we could have used Aurora Global Database)\n• \tWe enabled DynamoDB streams to trigger a Lambda function\n• \tThe lambda function had an IAM role which could use SES\n• \tSES (Simple Email Service) was used to send emails in a serverless way\n• \tS3 can trigger SQS / SNS / Lambda to notify of events\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMicro Services architecture\n• \tWe want to switch to a micro service architecture\n• \tMany services interact with each other directly using a REST API\n• \tEach architecture for each micro service may vary in form and shape\n• \tWe want a micro-service architecture so we can have a leaner\ndevelopment lifecycle for each service\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMicro Services Environment\nAmazon API Gateway \tAWS Lambda \tElastiCache\nElastic Load Balancing \tAmazon EC2\nAuto Scaling Amazon RDS\nElastic Load Balancing \tECS \tDynamoDB\nAmazon Route 53\nservice1.example.com\nservice2.example.com\nservice3.example.com\nUsers\nDNS Query\nHTTPS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDiscussions on Micro Services\n• \tYou are free to design each micro-service the way you want\n• \tSynchronous patterns: API Gateway, Load Balancers\n• \tAsynchronous patterns: SQS, Kinesis, SNS, Lambda triggers (S3)\n• \tChallenges with micro-services:\n• \trepeated overhead for creating each new microservice,\n• \tissues with optimizing server density/utilization\n• \tcomplexity of running multiple versions of multiple microservices simultaneously\n• \tproliferation of client-side code requirements to integrate with many separate services.\n• \tSome of the challenges are solved by Serverless patterns:\n• \tAPI Gateway, Lambda scale automatically and you pay per usage\n• \tYou can easily clone API, reproduce environments\n• \tGenerated client SDK through Swagger integration for the API Gateway\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSoftware updates offloading\n• \tWe have an application running on EC2, that distributes software\nupdates once in a while\n• \tWhen a new software update is out, we get a lot of request and the\ncontent is distributed in mass over the network. It’s very costly\n• \tWe don’t want to change our application, but want to optimize our cost\nand CPU, how can we do it?\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nOur application current state\nAvailability zone 1 to 3\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nAmazon Elastic\nFile System\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEasy way to fix things!\nAvailability zone 1 to 3\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nAmazon Elastic\nFile System\tAmazon CloudFront\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhy CloudFront?\n• \tNo changes to architecture\n• \tWill cache software update files at the edge\n• \tSoftware update files are not dynamic, they’re static (never changing)\n• \tOur EC2 instances aren’t serverless\n• \tBut CloudFront is, and will scale for us\n• \tOur ASG will not scale as much, and we’ll save tremendously in EC2\n• \tWe’ll also save in availability, network bandwidth cost, etc\n• \tEasy way to make an existing application more scalable and cheaper!",
+      "pageStart": 494,
+      "pageEnd": 515,
+      "read": false,
+      "content": {
+        "summary": "## Static frontend and secure API boundaries\n\nServe static assets through an appropriate origin/CDN, authenticate users through a managed identity flow when needed, and authorize API operations at the backend. Keep service credentials out of frontend code.\n\n### Reasoning and trade-offs\n\nClients cannot keep a deployed frontend secret. Authorization belongs at the data/API boundary, and workloads should use scoped roles. CORS cannot prevent a direct HTTP client from attempting the API.\n\n### Avoid this trap\n\nA public JavaScript bundle is visible to clients. CORS is a browser policy, not a substitute for authentication or permission checks on the API.\n\n### Apply it\n\nA browser application calls an API that reads private records. The team proposes hiding an IAM secret in minified JavaScript. What is the correct correction?\n\n**Recommended design:** Use user authentication and backend authorization; let backend roles access the data without exposing service secrets.\n\nClients cannot keep a deployed frontend secret. Authorization belongs at the data/API boundary, and workloads should use scoped roles. CORS cannot prevent a direct HTTP client from attempting the API.",
+        "keyPoints": [
+          "Serve static assets through an appropriate origin/CDN, authenticate users through a managed identity flow when needed, and authorize API operations at the backend. Keep service credentials out of frontend code.",
+          "Clients cannot keep a deployed frontend secret. Authorization belongs at the data/API boundary, and workloads should use scoped roles. CORS cannot prevent a direct HTTP client from attempting the API.",
+          "A public JavaScript bundle is visible to clients. CORS is a browser policy, not a substitute for authentication or permission checks on the API."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "How should a static frontend access protected backend operations without containing service secrets?",
+            "answer": "Serve static assets through an appropriate origin/CDN, authenticate users through a managed identity flow when needed, and authorize API operations at the backend. Keep service credentials out of frontend code. Clients cannot keep a deployed frontend secret. Authorization belongs at the data/API boundary, and workloads should use scoped roles. CORS cannot prevent a direct HTTP client from attempting the API.",
+            "id": "3a65f905-9e39-4f1a-85a6-efa991f4f2f4",
+            "schedule": {
+              "due": "2026-10-23T20:38:47.383Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What failure mode or trade-off must you avoid when designing static frontend and secure api boundaries?",
+            "answer": "A public JavaScript bundle is visible to clients. CORS is a browser policy, not a substitute for authentication or permission checks on the API.",
+            "id": "979989e6-d7b8-4c03-918e-e7a14e9e64da",
+            "schedule": {
+              "due": "2026-10-23T20:38:47.383Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A browser application calls an API that reads private records. The team proposes hiding an IAM secret in minified JavaScript. What is the correct correction?",
+            "options": [
+              "Base64-encode the IAM secret before including it in the bundle.",
+              "Use user authentication and backend authorization; let backend roles access the data without exposing service secrets.",
+              "Rely only on CORS to prevent unauthorized nonbrowser clients.",
+              "Store a permanent administrative token in a public S3 configuration object."
+            ],
+            "correctIndex": 1,
+            "explanation": "Clients cannot keep a deployed frontend secret. Authorization belongs at the data/API boundary, and workloads should use scoped roles. CORS cannot prevent a direct HTTP client from attempting the API."
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v1",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-23T20:38:47.383Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 494,
+            "pageEnd": 515,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "c76ee3f2-f92d-4292-8f89-b74f41e96aff",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 22,
+    "title": "AWS Monitoring, Audit & Performance",
+    "pageStart": 578,
+    "pageEnd": 621,
+    "description": "CloudWatch metrics, logs, alarms and EventBridge, CloudTrail, and AWS Config.",
+    "examFocus": [
+      "Task 1.2: monitoring and auditing",
+      "Task 2.2: alarms and automated recovery"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

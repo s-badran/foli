@@ -1,0 +1,1 @@
+Focus on architectural reasoning, constraints, trade-offs and plausible distractors. Use the main source for chapter structure; keep knowledge additions labelled.

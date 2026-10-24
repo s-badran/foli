@@ -1,0 +1,223 @@
+{
+  "chapter": {
+    "id": "1e1b1759-f3b7-4d8e-8004-c4d07c55a655",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "Advanced identity and organizations",
+    "order": 22,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 622,
+    "pageEnd": 650,
+    "description": "Federation, IAM Identity Center, organizations and permission guardrails.",
+    "objectives": [
+      {
+        "id": "1e1b1759-f3b7-4d8e-8004-c4d07c55a655/Federation rather than account-local user sprawl",
+        "title": "Federation rather than account-local user sprawl",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 622,
+        "pageEnd": 650,
+        "assessment": "both"
+      },
+      {
+        "id": "1e1b1759-f3b7-4d8e-8004-c4d07c55a655/Organization guardrails versus permission grants",
+        "title": "Organization guardrails versus permission grants",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 622,
+        "pageEnd": 650,
+        "assessment": "both"
+      }
+    ],
+    "coverageStatus": "draft"
+  },
+  "sections": [
+    {
+      "id": "d9f6cb04-d504-420e-994d-6f2ffc867baa",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "1e1b1759-f3b7-4d8e-8004-c4d07c55a655",
+      "title": "Federation rather than account-local user sprawl",
+      "objective": "How can a workforce access multiple AWS accounts without creating separate long-lived IAM users in every account?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nAdvanced Identity in AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Organizations\n• \tGlobal service\n• \tAllows to manage multiple AWS accounts\n• \tThe main account is the management account\n• \tOther accounts are member accounts\n• \tMember accounts can only be part of one organization\n• \tConsolidated Billing across all accounts \t- \tsingle payment method\n• \tPricing benefits from aggregated usage (volume discount for EC2, S3…)\n• \tShared reserved instances and Savings Plans discounts across accounts\n• \tAPI is available to automate AWS account creation\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Organizations\nRoot Organizational Unit (OU)\nManagement Account\nOU (Dev)\nMember Accounts\nOU (Prod)\nOU (HR) \tOU (Finance)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nOrganizational Units (OU) \t- \tExamples\nBusiness Unit\nManagement\nAccount\nSales OU\nRetail OU\nFinance\nOU\nSales\nAccount 1\nSales\nAccount 2\nRetail\nAccount 1\nRetail\nAccount 2\nFinance\nAccount 1\nFinance\nAccount 2\nEnvironmental Lifecycle\nManagement\nAccount\nProd OU\nDev OU\nTest OU\nProd\nAccount 1\nProd\nAccount 2\nDev\nAccount 1\nDev\nAccount 2\nTest\nAccount 1\nTest\nAccount 2\nProject-Based\nManagement\nAccount\nProject 1\nOU\nProject 2\nOU\nProject 3\nOU\nProject 1\nAccount 1\nProject 1\nAccount 2\nProject 2\nAccount 1\nProject 2\nAccount 2\nProject 3\nAccount 1\nProject 3\nAccount 2\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Organizations\n• \tAdvantages\n• \tMulti Account vs One Account Multi VPC\n• \tUse tagging standards for billing purposes\n• \tEnable CloudTrail on all accounts, send logs to central S3 account\n• \tSend CloudWatch Logs to central logging account\n• \tEstablish Cross Account Roles for Admin purposes\n• \tSecurity: Service Control Policies (SCP)\n• \tIAM policies applied to OU or Accounts to restrict Users and Roles\n• \tThey do not apply to the management account (full admin power)\n• \tMust have an explicit allow from the root through each OU in the direct path\nto the target account (does not allow anything by default – like IAM)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSCP Hierarchy\nOU (Root)\nManagement Account\nOU (Sandbox)\nOU (Test)\nAccount A\nAccount D\nFullAWSAccess\nDeny Athena\nFullAWSAccess + Deny S3\nFullAWSAccess + Deny EC2\n• \tManagement Account\n• \tCan do anything (no SCP apply)\n• \tAccount A\n• \tCan do anything\n• \tEXCEPT S3 (explicit Deny from\nSandbox OU)\n• \tEXCEPT EC2 (explicit Deny)\n• \tAccount B & C\n• \tCan do anything\n• \tEXCEPT S3 (explicit Deny from\nSandbox OU)\n• \tAccount D\n• \tCan access EC2\n• \tProd OU & Account E & F\n• \tCan do anything\nAccount B\nAccount C\nOU (Workloads)\nOU (Prod)\nAccount E\nAccount F\nFullAWSAccess\nAllow EC2\nFullAWSAccess\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSCP Examples\nBlocklist and \tAllowlist \tstrategies\nMore examples: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_example-scps.html\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Organizations \t– Tag Policies\n• \tHelps you standardize tags across resources in an\nAWS Organization\n• \tEnsure consistent tags, audit tagged resources,\nmaintain proper resources categorization, …\n• \tYou define tag keys and their allowed values\n• \tHelps with AWS Cost Allocation Tags and\nAttribute-based Access Control\n• \tPrevent any non-compliant tagging operations on\nspecified services and resources (has no effect\non resources without tags)\n• \tGenerate a report that lists all tagged/non-\ncompliant resources\n• \tUse EventBridge to monitor non-compliant tags\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Conditions\naws:SourceIp\nrestrict the client IP from\nwhich the API calls are being made\naws:RequestedRegion\nrestrict the region the\nAPI calls are made to\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Conditions\nec2:ResourceTag\nrestrict based on tags\naws:MultiFactorAuthPresent\nto force MFA\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM for S3\n• \ts3:ListBucket \tpermission applies to\narn:aws:s3:::test\n• \t=> bucket level permission\n• \ts3:GetObject, s3:PutObject,\ns3:DeleteObject \tapplies to\narn:awn:s3:::test/*\n• \t=> object level permission\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nResource Policies & aws:PrincipalOrgID\n• \taws:PrincipalOrgID can be used in any resource policies to restrict\naccess to accounts that are member of an AWS Organization\nS3 Bucket\n(2022-financial-data)\nAWS Organization\n(o-yyyyyyyyyy)\n…\nMember Accounts\nUser outside Organization\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles vs Resource Based Policies\n• \tCross account:\n• \tattaching a resource-based policy to a resource (example: S3 bucket policy)\n• \tOR using a role as a proxy\nUser\nAccount A\nAmazon S3\nRole\nAccount B\nUser\nAccount A\nAmazon S3\nS3 Bucket\nPolicy\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles vs Resource-Based Policies\n• \tWhen you assume a role (user, application or service), you give up your original\npermissions and take the permissions assigned to the role\n• \tWhen using a resource-based policy, the principal doesn’t have to give up his\npermissions\n• \tExample: User in account A needs to scan a DynamoDB table in Account A\nand dump it in an S3 bucket in Account B.\n• \tSupported by: Amazon S3 buckets, SNS topics, SQS queues, etc…\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EventBridge \t– \tSecurity\n• \tWhen a rule runs, it needs\npermissions on the target\n• \tResource-based policy: Lambda,\nSNS, SQS, S3 buckets, API\nGateway…\n• \tIAM role: EC2 Auto Scaling,\nSystems Manager Run\nCommand, ECS task…\nEventBridge\nRule Lambda with\nResource based Policy\ne.g. Allow EventBridge\nIAM Role\nEC2 Auto Scaling\tEventBridge\nRule\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Permission Boundaries\n• \tIAM Permission Boundaries are supported for users and roles (not groups)\n• \tAdvanced feature to use a managed policy to set the maximum permissions\nan IAM entity can get.\nIAM Permission Boundary\n+\nIAM Permissions\nThrough IAM Policy\n= \tNo Permissions\tExample:\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Permission Boundaries\n• \tCan be used in combinations of\nAWS Organizations SCP\nhttps://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html\nUse cases\n• \tDelegate responsibilities to non\nadministrators within their permission\nboundaries, for example create new IAM\nusers\n• \tAllow developers to self-assign policies\nand manage their own permissions, while\nmaking sure they can’t “escalate” their\nprivileges (= make themselves admin)\n• \tUseful to restrict one specific user\n(instead of a whole account using\nOrganizations & SCP)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policy Evaluation Logic\nhttps://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nExample IAM Policy\n• \tCan you perform \tsqs:CreateQueue?\n• \tCan you perform \tsqs:DeleteQueue?\n• \tCan you perform\nec2:DescribeInstances?\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS IAM Identity Center\n(successor to AWS Single Sign-On)\n• One login (single sign-on) for all your\n• \tAWS accounts in AWS Organizations\n• \tBusiness cloud applications (e.g., Salesforce, Box, Microsoft 365, …)\n• \tSAML2.0-enabled applications\n• \tEC2 Windows Instances\n• Identity providers\n• \tBuilt-in identity store in IAM Identity Center\n• \t3rd party: Active Directory (AD), OneLogin, Okta…\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS IAM Identity Center \t– \tLogin Flow\nAWS IAM Identity Center\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS IAM Identity Center\nAWS\nOrganization\nBusiness Cloud Apps\nCustom SAML2.0-enabled Apps\nAWS IAM Identity Center\nPermission Sets\nBrowser Interface\nWindows\nEC2login\nStore / retrieve\nUser identities\nSSO\nActive Directory\nUsers & groups\n(On-premises, cloud)\nIAM Identity Center\nBuilt-in Identity Store\nAWS Cloud\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Identity Center\nAWS Organization\nManagement Account\nOU (Development)\nDev Account A\nDev Account B\nOU (Production)\nProd Account A\nProd Account B\nIAM Identity Center\n(in Management account)\nGroup (Developers)\nBob \tAlice\nPermission Set\nReadOnlyAccess\nPermission Set\nFullAccess\nassign \tassign\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS IAM Identity Center\nFine-grained Permissions and Assignments\n• \tMulti-Account Permissions\n• \tManage access across AWS accounts in your AWS Organization\n• \tPermission Sets – a collection of one or more IAM Policies\nassigned to users and groups to define AWS access\n• \tApplication Assignments\n• \tSSO access to many SAML 2.0 business applications (Salesforce,\nBox, Microsoft 365, …)\n• \tProvide required URLs, certificates, and metadata\n• \tAttribute-Based Access Control (ABAC)\n• \tFine-grained permissions based on users’ attributes stored in\nIAM Identity Center Identity Store\n• \tExample: cost center, title, locale, …\n• \tUse case: Define permissions once, then modify AWS access by\nchanging the attributes IAM Identity Center\nPermission Sets\n(DB Admins)\nAWS Organization\nDev\nAccount\nProd\nAccount\nRDS \tRDS\nDatabase\nAdmins\nAurora \tAurora\nIAM Role \tIAM Role\nassume\nPermission Sets\n(DB Admins)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat is Microsoft Active Directory (AD)?\n• \tFound on any Windows Server\nwith AD Domain Services\n• \tDatabase of \tobjects: User\nAccounts, Computers, Printers,\nFile Shares, Security Groups\n• \tCentralized security\nmanagement, create account,\nassign permissions\n• \tObjects are organized in \ttrees\n• \tA group of trees is a \tforest\nDomain Controller\nJohn\nPassword\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Directory Services\n• \tAWS Managed Microsoft AD\n• \tCreate your own AD in AWS, manage users\nlocally, supports MFA\n• \tEstablish “trust” connections with your on-\npremises AD\n• \tAD Connector\n• \tDirectory Gateway (proxy) to redirect to on-\npremises AD, supports MFA\n• \tUsers are managed on the on-premises AD\n• \tSimple AD\n• \tAD-compatible managed directory on AWS\n• \tCannot be joined with on-premises AD\nOn-prem AD \tAWS Managed AD\ntrust\nOn-prem AD \tAD Connector\nproxy\nSimple AD\nauth\tauth\nauth\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Identity Center \t– \tActive Directory Setup\n• \tConnect to an AWS Managed Microsoft AD (Directory Service)\n• \tIntegration is out of the box\n• \tConnect to a Self-Managed Directory\n• \tCreate Two-way Trust Relationship using AWS Managed Microsoft AD\n• \tCreate an AD Connector\nIAM Identity\nCenter\nAWS Managed\nMicrosoft AD\nconnect\nIAM Identity\nCenter\nAWS Managed\nMicrosoft AD\ntwo-way trust relationship\nAD Connector\nproxy\nconnect\nconnect\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Control Tower\n• \tEasy way to \tset up and govern a secure and compliant \tmulti-account\nAWS environment \tbased on best practices\n• \tAWS Control Tower \tuses AWS Organizations \tto create accounts\n• \tBenefits:\n• \tAutomate the set up of your environment in a few clicks\n• \tAutomate ongoing policy management using guardrails\n• \tDetect policy violations and remediate them\n• \tMonitor compliance through an interactive dashboard\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Control Tower \t– \tGuardrails\n• \tProvides ongoing governance for your Control Tower environment (AWS Accounts)\n• \tPreventive Guardrail – using SCPs (e.g., Restrict Regions across all your accounts)\n• \tDetective Guardrail – using AWS Config (e.g., identify untagged resources)\nAWS Control Tower\nMember\nAccounts\nGuardrail\n(Detective)\nSNS\nLambda\nmonitor un-tagged\nresources\ntrigger\n(NON_COMPLIANT)\nAdmin\nnotify\ninvoke\nremediate\n(add tags)\nAWS Config",
+      "pageStart": 622,
+      "pageEnd": 650,
+      "read": false,
+      "content": {
+        "summary": "## Federation rather than account-local user sprawl\n\nUse federation or IAM Identity Center with appropriate permission sets and identity lifecycle controls. Users obtain scoped sessions rather than managing a separate permanent key set in every account.\n\n### Reasoning and trade-offs\n\nCentral workforce federation reduces identity sprawl and supports controlled account sessions. The permission model still needs least privilege and lifecycle management; sharing root access is not an acceptable shortcut.\n\n### Avoid this trap\n\nSingle sign-on does not mean every user should be an administrator. Review account assignments, session permissions and joiner/mover/leaver processes.\n\n### Apply it\n\nA company has dozens of AWS accounts and wants centrally managed workforce access integrated with an identity provider. Which approach is appropriate?\n\n**Recommended design:** Use IAM Identity Center or supported federation with account-specific permission assignments.\n\nCentral workforce federation reduces identity sprawl and supports controlled account sessions. The permission model still needs least privilege and lifecycle management; sharing root access is not an acceptable shortcut.",
+        "keyPoints": [
+          "Use federation or IAM Identity Center with appropriate permission sets and identity lifecycle controls. Users obtain scoped sessions rather than managing a separate permanent key set in every account.",
+          "Central workforce federation reduces identity sprawl and supports controlled account sessions. The permission model still needs least privilege and lifecycle management; sharing root access is not an acceptable shortcut.",
+          "Single sign-on does not mean every user should be an administrator. Review account assignments, session permissions and joiner/mover/leaver processes."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "What reduces separate workforce identities across AWS accounts?",
+            "answer": "Federation or IAM Identity Center with scoped assignments.",
+            "objectiveIds": [
+              "1e1b1759-f3b7-4d8e-8004-c4d07c55a655/Federation rather than account-local user sprawl"
+            ],
+            "id": "096285fb-af30-4662-9f4b-5e3aa6ae6b06",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.233Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Does single sign-on imply administrator access for everyone?",
+            "answer": "No. Permission assignments must remain least-privilege.",
+            "objectiveIds": [
+              "1e1b1759-f3b7-4d8e-8004-c4d07c55a655/Federation rather than account-local user sprawl"
+            ],
+            "id": "8a5623f5-99f3-4a21-8238-1379ef77efe0",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.233Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A company has dozens of AWS accounts and wants centrally managed workforce access integrated with an identity provider. Which approach is appropriate?",
+            "options": [
+              "Create the same permanent IAM user password and key in every account.",
+              "Share the management-account root login among all employees.",
+              "Use IAM Identity Center or supported federation with account-specific permission assignments.",
+              "Make every workload role trust anonymous principals to simplify access."
+            ],
+            "correctIndex": 2,
+            "explanation": "Central workforce federation reduces identity sprawl and supports controlled account sessions. The permission model still needs least privilege and lifecycle management; sharing root access is not an acceptable shortcut.",
+            "objectiveIds": [
+              "1e1b1759-f3b7-4d8e-8004-c4d07c55a655/Federation rather than account-local user sprawl"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.233Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 622,
+            "pageEnd": 650,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2fa8f9a6-abe3-417e-8ffc-c1ee17a06769",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "1e1b1759-f3b7-4d8e-8004-c4d07c55a655",
+      "title": "Organization guardrails versus permission grants",
+      "objective": "What happens if an IAM policy allows an action but an applicable SCP denies it?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nAdvanced Identity in AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Organizations\n• \tGlobal service\n• \tAllows to manage multiple AWS accounts\n• \tThe main account is the management account\n• \tOther accounts are member accounts\n• \tMember accounts can only be part of one organization\n• \tConsolidated Billing across all accounts \t- \tsingle payment method\n• \tPricing benefits from aggregated usage (volume discount for EC2, S3…)\n• \tShared reserved instances and Savings Plans discounts across accounts\n• \tAPI is available to automate AWS account creation\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Organizations\nRoot Organizational Unit (OU)\nManagement Account\nOU (Dev)\nMember Accounts\nOU (Prod)\nOU (HR) \tOU (Finance)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nOrganizational Units (OU) \t- \tExamples\nBusiness Unit\nManagement\nAccount\nSales OU\nRetail OU\nFinance\nOU\nSales\nAccount 1\nSales\nAccount 2\nRetail\nAccount 1\nRetail\nAccount 2\nFinance\nAccount 1\nFinance\nAccount 2\nEnvironmental Lifecycle\nManagement\nAccount\nProd OU\nDev OU\nTest OU\nProd\nAccount 1\nProd\nAccount 2\nDev\nAccount 1\nDev\nAccount 2\nTest\nAccount 1\nTest\nAccount 2\nProject-Based\nManagement\nAccount\nProject 1\nOU\nProject 2\nOU\nProject 3\nOU\nProject 1\nAccount 1\nProject 1\nAccount 2\nProject 2\nAccount 1\nProject 2\nAccount 2\nProject 3\nAccount 1\nProject 3\nAccount 2\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Organizations\n• \tAdvantages\n• \tMulti Account vs One Account Multi VPC\n• \tUse tagging standards for billing purposes\n• \tEnable CloudTrail on all accounts, send logs to central S3 account\n• \tSend CloudWatch Logs to central logging account\n• \tEstablish Cross Account Roles for Admin purposes\n• \tSecurity: Service Control Policies (SCP)\n• \tIAM policies applied to OU or Accounts to restrict Users and Roles\n• \tThey do not apply to the management account (full admin power)\n• \tMust have an explicit allow from the root through each OU in the direct path\nto the target account (does not allow anything by default – like IAM)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSCP Hierarchy\nOU (Root)\nManagement Account\nOU (Sandbox)\nOU (Test)\nAccount A\nAccount D\nFullAWSAccess\nDeny Athena\nFullAWSAccess + Deny S3\nFullAWSAccess + Deny EC2\n• \tManagement Account\n• \tCan do anything (no SCP apply)\n• \tAccount A\n• \tCan do anything\n• \tEXCEPT S3 (explicit Deny from\nSandbox OU)\n• \tEXCEPT EC2 (explicit Deny)\n• \tAccount B & C\n• \tCan do anything\n• \tEXCEPT S3 (explicit Deny from\nSandbox OU)\n• \tAccount D\n• \tCan access EC2\n• \tProd OU & Account E & F\n• \tCan do anything\nAccount B\nAccount C\nOU (Workloads)\nOU (Prod)\nAccount E\nAccount F\nFullAWSAccess\nAllow EC2\nFullAWSAccess\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSCP Examples\nBlocklist and \tAllowlist \tstrategies\nMore examples: https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_example-scps.html\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Organizations \t– Tag Policies\n• \tHelps you standardize tags across resources in an\nAWS Organization\n• \tEnsure consistent tags, audit tagged resources,\nmaintain proper resources categorization, …\n• \tYou define tag keys and their allowed values\n• \tHelps with AWS Cost Allocation Tags and\nAttribute-based Access Control\n• \tPrevent any non-compliant tagging operations on\nspecified services and resources (has no effect\non resources without tags)\n• \tGenerate a report that lists all tagged/non-\ncompliant resources\n• \tUse EventBridge to monitor non-compliant tags\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Conditions\naws:SourceIp\nrestrict the client IP from\nwhich the API calls are being made\naws:RequestedRegion\nrestrict the region the\nAPI calls are made to\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Conditions\nec2:ResourceTag\nrestrict based on tags\naws:MultiFactorAuthPresent\nto force MFA\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM for S3\n• \ts3:ListBucket \tpermission applies to\narn:aws:s3:::test\n• \t=> bucket level permission\n• \ts3:GetObject, s3:PutObject,\ns3:DeleteObject \tapplies to\narn:awn:s3:::test/*\n• \t=> object level permission\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nResource Policies & aws:PrincipalOrgID\n• \taws:PrincipalOrgID can be used in any resource policies to restrict\naccess to accounts that are member of an AWS Organization\nS3 Bucket\n(2022-financial-data)\nAWS Organization\n(o-yyyyyyyyyy)\n…\nMember Accounts\nUser outside Organization\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles vs Resource Based Policies\n• \tCross account:\n• \tattaching a resource-based policy to a resource (example: S3 bucket policy)\n• \tOR using a role as a proxy\nUser\nAccount A\nAmazon S3\nRole\nAccount B\nUser\nAccount A\nAmazon S3\nS3 Bucket\nPolicy\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles vs Resource-Based Policies\n• \tWhen you assume a role (user, application or service), you give up your original\npermissions and take the permissions assigned to the role\n• \tWhen using a resource-based policy, the principal doesn’t have to give up his\npermissions\n• \tExample: User in account A needs to scan a DynamoDB table in Account A\nand dump it in an S3 bucket in Account B.\n• \tSupported by: Amazon S3 buckets, SNS topics, SQS queues, etc…\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EventBridge \t– \tSecurity\n• \tWhen a rule runs, it needs\npermissions on the target\n• \tResource-based policy: Lambda,\nSNS, SQS, S3 buckets, API\nGateway…\n• \tIAM role: EC2 Auto Scaling,\nSystems Manager Run\nCommand, ECS task…\nEventBridge\nRule Lambda with\nResource based Policy\ne.g. Allow EventBridge\nIAM Role\nEC2 Auto Scaling\tEventBridge\nRule\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Permission Boundaries\n• \tIAM Permission Boundaries are supported for users and roles (not groups)\n• \tAdvanced feature to use a managed policy to set the maximum permissions\nan IAM entity can get.\nIAM Permission Boundary\n+\nIAM Permissions\nThrough IAM Policy\n= \tNo Permissions\tExample:\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Permission Boundaries\n• \tCan be used in combinations of\nAWS Organizations SCP\nhttps://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html\nUse cases\n• \tDelegate responsibilities to non\nadministrators within their permission\nboundaries, for example create new IAM\nusers\n• \tAllow developers to self-assign policies\nand manage their own permissions, while\nmaking sure they can’t “escalate” their\nprivileges (= make themselves admin)\n• \tUseful to restrict one specific user\n(instead of a whole account using\nOrganizations & SCP)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policy Evaluation Logic\nhttps://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nExample IAM Policy\n• \tCan you perform \tsqs:CreateQueue?\n• \tCan you perform \tsqs:DeleteQueue?\n• \tCan you perform\nec2:DescribeInstances?\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS IAM Identity Center\n(successor to AWS Single Sign-On)\n• One login (single sign-on) for all your\n• \tAWS accounts in AWS Organizations\n• \tBusiness cloud applications (e.g., Salesforce, Box, Microsoft 365, …)\n• \tSAML2.0-enabled applications\n• \tEC2 Windows Instances\n• Identity providers\n• \tBuilt-in identity store in IAM Identity Center\n• \t3rd party: Active Directory (AD), OneLogin, Okta…\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS IAM Identity Center \t– \tLogin Flow\nAWS IAM Identity Center\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS IAM Identity Center\nAWS\nOrganization\nBusiness Cloud Apps\nCustom SAML2.0-enabled Apps\nAWS IAM Identity Center\nPermission Sets\nBrowser Interface\nWindows\nEC2login\nStore / retrieve\nUser identities\nSSO\nActive Directory\nUsers & groups\n(On-premises, cloud)\nIAM Identity Center\nBuilt-in Identity Store\nAWS Cloud\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Identity Center\nAWS Organization\nManagement Account\nOU (Development)\nDev Account A\nDev Account B\nOU (Production)\nProd Account A\nProd Account B\nIAM Identity Center\n(in Management account)\nGroup (Developers)\nBob \tAlice\nPermission Set\nReadOnlyAccess\nPermission Set\nFullAccess\nassign \tassign\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS IAM Identity Center\nFine-grained Permissions and Assignments\n• \tMulti-Account Permissions\n• \tManage access across AWS accounts in your AWS Organization\n• \tPermission Sets – a collection of one or more IAM Policies\nassigned to users and groups to define AWS access\n• \tApplication Assignments\n• \tSSO access to many SAML 2.0 business applications (Salesforce,\nBox, Microsoft 365, …)\n• \tProvide required URLs, certificates, and metadata\n• \tAttribute-Based Access Control (ABAC)\n• \tFine-grained permissions based on users’ attributes stored in\nIAM Identity Center Identity Store\n• \tExample: cost center, title, locale, …\n• \tUse case: Define permissions once, then modify AWS access by\nchanging the attributes IAM Identity Center\nPermission Sets\n(DB Admins)\nAWS Organization\nDev\nAccount\nProd\nAccount\nRDS \tRDS\nDatabase\nAdmins\nAurora \tAurora\nIAM Role \tIAM Role\nassume\nPermission Sets\n(DB Admins)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat is Microsoft Active Directory (AD)?\n• \tFound on any Windows Server\nwith AD Domain Services\n• \tDatabase of \tobjects: User\nAccounts, Computers, Printers,\nFile Shares, Security Groups\n• \tCentralized security\nmanagement, create account,\nassign permissions\n• \tObjects are organized in \ttrees\n• \tA group of trees is a \tforest\nDomain Controller\nJohn\nPassword\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Directory Services\n• \tAWS Managed Microsoft AD\n• \tCreate your own AD in AWS, manage users\nlocally, supports MFA\n• \tEstablish “trust” connections with your on-\npremises AD\n• \tAD Connector\n• \tDirectory Gateway (proxy) to redirect to on-\npremises AD, supports MFA\n• \tUsers are managed on the on-premises AD\n• \tSimple AD\n• \tAD-compatible managed directory on AWS\n• \tCannot be joined with on-premises AD\nOn-prem AD \tAWS Managed AD\ntrust\nOn-prem AD \tAD Connector\nproxy\nSimple AD\nauth\tauth\nauth\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Identity Center \t– \tActive Directory Setup\n• \tConnect to an AWS Managed Microsoft AD (Directory Service)\n• \tIntegration is out of the box\n• \tConnect to a Self-Managed Directory\n• \tCreate Two-way Trust Relationship using AWS Managed Microsoft AD\n• \tCreate an AD Connector\nIAM Identity\nCenter\nAWS Managed\nMicrosoft AD\nconnect\nIAM Identity\nCenter\nAWS Managed\nMicrosoft AD\ntwo-way trust relationship\nAD Connector\nproxy\nconnect\nconnect\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Control Tower\n• \tEasy way to \tset up and govern a secure and compliant \tmulti-account\nAWS environment \tbased on best practices\n• \tAWS Control Tower \tuses AWS Organizations \tto create accounts\n• \tBenefits:\n• \tAutomate the set up of your environment in a few clicks\n• \tAutomate ongoing policy management using guardrails\n• \tDetect policy violations and remediate them\n• \tMonitor compliance through an interactive dashboard\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Control Tower \t– \tGuardrails\n• \tProvides ongoing governance for your Control Tower environment (AWS Accounts)\n• \tPreventive Guardrail – using SCPs (e.g., Restrict Regions across all your accounts)\n• \tDetective Guardrail – using AWS Config (e.g., identify untagged resources)\nAWS Control Tower\nMember\nAccounts\nGuardrail\n(Detective)\nSNS\nLambda\nmonitor un-tagged\nresources\ntrigger\n(NON_COMPLIANT)\nAdmin\nnotify\ninvoke\nremediate\n(add tags)\nAWS Config",
+      "pageStart": 622,
+      "pageEnd": 650,
+      "read": false,
+      "content": {
+        "summary": "## Organization guardrails versus permission grants\n\nFor principals and actions subject to the SCP, an applicable SCP deny restricts the effective permissions even if an identity policy allows the action. SCPs do not grant access by themselves.\n\n### Reasoning and trade-offs\n\nEffective permissions are constrained by applicable guardrails. The exact principal and account scope must be checked; permissions cannot be reasoned about from an isolated Allow statement alone.\n\n### Avoid this trap\n\nDo not use an SCP Allow as a replacement for an IAM grant. Check scope and exceptions, including which account and principal types the organization policy affects.\n\n### Apply it\n\nA developer role has an IAM Allow to create resources in a prohibited Region, but an organization policy denies that operation there. What should the architect expect?\n\n**Recommended design:** The applicable organization deny prevents the operation despite the IAM Allow.\n\nEffective permissions are constrained by applicable guardrails. The exact principal and account scope must be checked; permissions cannot be reasoned about from an isolated Allow statement alone.",
+        "keyPoints": [
+          "For principals and actions subject to the SCP, an applicable SCP deny restricts the effective permissions even if an identity policy allows the action. SCPs do not grant access by themselves.",
+          "Effective permissions are constrained by applicable guardrails. The exact principal and account scope must be checked; permissions cannot be reasoned about from an isolated Allow statement alone.",
+          "Do not use an SCP Allow as a replacement for an IAM grant. Check scope and exceptions, including which account and principal types the organization policy affects."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Do service control policies grant IAM permissions?",
+            "answer": "No. They constrain the permissions available to affected principals.",
+            "objectiveIds": [
+              "1e1b1759-f3b7-4d8e-8004-c4d07c55a655/Organization guardrails versus permission grants"
+            ],
+            "id": "bbe544be-ff81-4bc9-8b68-d92918d74353",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.233Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Can an IAM Allow bypass an applicable SCP Deny?",
+            "answer": "No.",
+            "objectiveIds": [
+              "1e1b1759-f3b7-4d8e-8004-c4d07c55a655/Organization guardrails versus permission grants"
+            ],
+            "id": "4a3677ef-098e-4f5c-9cd8-1cd352dad620",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.233Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A developer role has an IAM Allow to create resources in a prohibited Region, but an organization policy denies that operation there. What should the architect expect?",
+            "options": [
+              "The identity policy always overrides every organization policy.",
+              "The operation succeeds if the developer changes the role description.",
+              "The SCP grants the action automatically if it mentions that service.",
+              "The applicable organization deny prevents the operation despite the IAM Allow."
+            ],
+            "correctIndex": 3,
+            "explanation": "Effective permissions are constrained by applicable guardrails. The exact principal and account scope must be checked; permissions cannot be reasoned about from an isolated Allow statement alone.",
+            "objectiveIds": [
+              "1e1b1759-f3b7-4d8e-8004-c4d07c55a655/Organization guardrails versus permission grants"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.233Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 622,
+            "pageEnd": 650,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

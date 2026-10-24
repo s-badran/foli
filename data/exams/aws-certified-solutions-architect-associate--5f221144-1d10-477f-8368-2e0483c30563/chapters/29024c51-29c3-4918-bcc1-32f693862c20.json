@@ -1,0 +1,186 @@
+{
+  "chapter": {
+    "id": "29024c51-29c3-4918-bcc1-32f693862c20",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "Containers on AWS",
+    "order": 15,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 416,
+    "pageEnd": 440,
+    "description": "ECS, Fargate, EKS, task roles and container load balancing."
+  },
+  "sections": [
+    {
+      "id": "77e4999d-7004-496c-ad40-65d5601e79dd",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "29024c51-29c3-4918-bcc1-32f693862c20",
+      "title": "Choosing container orchestration and capacity",
+      "objective": "What does Fargate remove, and what application responsibilities remain?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nContainers on AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat is Docker?\n• \tDocker is a software development platform to deploy apps\n• \tApps are packaged in \tcontainers \tthat can be run on any OS\n• \tApps run the same, regardless of where they’re run\n• \tAny machine\n• \tNo compatibility issues\n• \tPredictable behavior\n• \tLess work\n• \tEasier to maintain and deploy\n• \tWorks with any language, any OS, any technology\n• \tUse cases: microservices architecture, lift-and-shift apps from on-\npremises to the AWS cloud, …\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDocker on an OS\nServer (e.g., EC2 instance)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhere are Docker images stored?\n• \tDocker images are stored in Docker Repositories\n• \tDocker Hub (https://hub.docker.com)\n• \tPublic repository\n• \tFind base images for many technologies or OS (e.g., Ubuntu, MySQL, …)\n• \tAmazon ECR (Amazon Elastic Container Registry)\n• \tPrivate repository\n• \tPublic repository (Amazon ECR Public Gallery https://gallery.ecr.aws)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDocker vs. Virtual Machines\n• \tDocker is ”sort of ” a virtualization technology, but not exactly\n• \tResources are shared with the host => many containers on one server\nInfrastructure\nHost OS\nHypervisor\nApps\nGuest OS\n(VM)\nApps\nGuest OS\n(VM)\nApps\nGuest OS\n(VM)\nInfrastructure\nHost OS (EC2 Instance)\nDocker Daemon\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nGetting Started with Docker\nDockerfile\nimage\nBuild \tRun \tcontainer\nDocker Repository\nAmazon\nECR\nPush \tPull\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDocker Containers Management on AWS\n• \tAmazon Elastic Container Service (Amazon ECS)\n• \tAmazon’s own container platform\n• \tAmazon Elastic Kubernetes Service (Amazon EKS)\n• \tAmazon’s managed Kubernetes (open source)\n• \tAWS \tFargate\n• \tAmazon’s own Serverless container platform\n• \tWorks with ECS and with EKS\n• \tAmazon ECR:\n• \tStore container images\nAmazon ECS\nAWS Fargate\nAmazon EKS\nAmazon ECR\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon ECS \t- \tEC2 Launch Type\n• \tECS = Elastic Container Service\n• \tLaunch Docker containers on AWS =\nLaunch ECS Tasks on ECS Clusters\n• \tEC2 Launch Type: you must provision\n& maintain the infrastructure (the EC2\ninstances)\n• \tEach EC2 Instance must run the ECS\nAgent to register in the ECS Cluster\n• \tAWS takes care of starting / stopping\ncontainers\nAmazon ECS / ECS Cluster\nNew Docker\nContainer\nEC2 Instance \tEC2 Instance \tEC2 Instance\nECS Agent \tECS Agent \tECS Agent\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon ECS \t– \tFargate \tLaunch Type\n• \tLaunch Docker containers on AWS\n• \tYou do not provision the infrastructure\n(no EC2 instances to manage)\n• \tIt’s all Serverless!\n• \tYou just create task definitions\n• \tAWS just runs ECS Tasks for you based\non the CPU / RAM you need\n• \tTo scale, just increase the number of\ntasks. Simple \t- \tno more EC2 instances\nAWS Fargate / ECS Cluster\nNew Docker\nContainer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon ECS \t– \tIAM Roles for ECS\n• \tEC2 Instance Profile (EC2 Launch Type only):\n• \tUsed by the ECS agent\n• \tMakes API calls to ECS service\n• \tSend container logs to CloudWatch Logs\n• \tPull Docker image from ECR\n• \tReference sensitive data in Secrets Manager or\nSSM Parameter Store\n• \tECS Task Role:\n• \tAllows each task to have a specific role\n• \tUse different roles for the different ECS Services\nyou run\n• \tTask Role is defined in the task definition\nEC2 Instance\nECS Agent\nTask A\nTask B\nECS\nECR\nCloudWatch\nLogs\nEC2 Instance Profile\nS3\nDynamoDB\nECS Task A Role\nECS Task B Role\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon ECS \t– \tLoad Balancer Integrations\n• \tApplication Load Balancer supported\nand works for most use cases\n• \tNetwork Load Balancer recommended\nonly for high throughput / high\nperformance use cases, or to pair it with\nAWS Private Link\n• \tClassic Load Balancer supported but not\nrecommended (no advanced features –\nno Fargate)\nECS Cluster\nEC2 Instance\nEC2 Instance\nApplication\nLoad Balancer\nUsers\nECS Task\nECS Task\nECS Task\nECS Task\n80/443\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon \tECS \t– \tData Volumes \t(EFS)\n• \tMount EFS file systems onto ECS tasks\n• \tWorks for both EC2 and Fargate launch types\n• \tTasks running in any AZ will share the same data\nin the EFS file system\n• \tFargate + EFS = Serverless\n• \tUse cases: persistent multi-AZ shared storage for\nyour containers ECS Cluster\nEC2 Instance \tFargate\nAmazon EFS\nFile System\nmount\tmount\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon ECS \t– \tData Volumes (S3 Files)\n• \tMount S3 Files file systems onto ECS tasks (S3\nbucket exposed as a file system)\n• \tWorks for Fargate and ECS Managed Instances\n(EC2 launch type is NOT supported)\n• \tChanges sync automatically to the S3 bucket\n• \tUse cases: containers needing shared file access\nto data that already lives in S3\nECS Cluster\nManaged\nInstances\nFargate\nAmazon S3 Files\nS3 Files\nmount\tmount\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nECS Service Auto Scaling\n• \tAutomatically increase/decrease the desired number of ECS tasks\n• \tAmazon ECS Auto Scaling uses AWS Application Auto Scaling\n• \tECS Service Average CPU Utilization\n• \tECS Service Average Memory Utilization - Scale on RAM\n• \tALB Request Count Per Target – metric coming from the ALB\n• \tTarget Tracking – scale based on target value for a specific CloudWatch metric\n• \tStep Scaling – scale based on a specified CloudWatch Alarm\n• \tScheduled Scaling – scale based on a specified date/time (predictable changes)\n• \tECS Service Auto Scaling (task level) ≠ EC2 Auto Scaling (EC2 instance level)\n• \tFargate Auto Scaling is much easier to setup (because Serverless)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEC2 Launch Type \t– \tAuto Scaling EC2 Instances\n• \tAccommodate ECS Service Scaling by adding underlying EC2 Instances\n• \tAuto Scaling Group Scaling\n• \tScale your ASG based on CPU Utilization\n• \tAdd EC2 instances over time\n• \tECS Cluster Capacity Provider\n• \tUsed to automatically provision and scale the infrastructure for your ECS Tasks\n• \tCapacity Provider paired with an Auto Scaling Group\n• \tAdd EC2 Instances when you’re missing capacity (CPU, RAM…)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nECS Scaling \t– \tService CPU Usage Example\nService A\nAuto Scaling Group\nScale ECS Capacity Providers\n(optional)\nAuto Scaling\nTask 1\nTask 2\nCPU\nUsage\nCloudWatch Metric\n(ECS Service CPU Usage)\nCloudWatch Alarm\nTrigger\nScale\nTask 3\n(new)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nECS tasks invoked by Event Bridge\nClient\nUpload object\nAmazon\nEventBridge\nVPC\nRegion\nAmazon ECS Cluster\nAWS Fargate\nTask\n(new)\nS3 Bucket\nEvent\nRule: Run ECS Task\nAmazon\nDynamoDB\nSave result\nECS Task Role\n(Access S3 & DynamoDB)\nGet object\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nECS tasks invoked by Event Bridge Schedule\nAmazon\nEventBridge Amazon ECS Cluster\nAWS Fargate\nTask\n(new)\nRule: Run ECS Task\nAmazon S3\nBatch ProcessingEvery 1 hour\nECS Task Role\nAccess S3\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nECS \t– \tSQS Queue Example\nService A\nECS Service Auto Scaling\nTask 1\nTask 2\nTask 3\nSQS Queue\nMessages \tPoll for messages\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nECS \t– \tIntercept Stopped Tasks using EventBridge\nECS Task\nContainers\nexited\nEventBridge\nevent\nEvent Pattern\nSNS\ntrigger\nAdministrator\nemail\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon ECR\n• \tECR = Elastic Container Registry\n• \tStore and manage Docker images on AWS\n• \tPrivate \tand \tPublic \trepository (Amazon ECR\nPublic Gallery \thttps://gallery.ecr.aws)\n• \tFully integrated with ECS, backed by Amazon S3\n• \tAccess is controlled through IAM (permission\nerrors => policy)\n• \tSupports image vulnerability scanning, versioning,\nimage tags, image lifecycle, …\nECS Cluster\nEC2 Instance\nECR Repository\nDocker\nImage A\nDocker\nImage B\nIAM Role\npull\tpull\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EKS Overview\n• \tAmazon EKS = Amazon Elastic \tKubernetes Service\n• \tIt is a way to launch managed Kubernetes clusters on AWS\n• \tKubernetes is an open-source system for automatic deployment, scaling and\nmanagement of containerized (usually Docker) application\n• \tIt’s an alternative to ECS, similar goal but different API\n• \tEKS supports \tEC2 if you want to deploy worker nodes or \tFargate to deploy\nserverless containers\n• \tUse case: if your company is already using Kubernetes on-premises or in\nanother cloud, and wants to migrate to AWS using Kubernetes\n• \tKubernetes is cloud-agnostic (can be used in any cloud – Azure, GCP…)\n• \tFor multiple regions, deploy one EKS cluster per region\n• \tCollect logs and metrics using CloudWatch Container Insights\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPrivate subnet 3\tPrivate subnet 1 \tPrivate subnet 2\nAmazon EKS \t- \tDiagram\nAWS Cloud\nVPC\nAvailability Zone 1 \tAvailability Zone 2 \tAvailability Zone 3\nPublic subnet 1 \tPublic subnet 2 \tPublic subnet 3\nNGW \tNGW \tNGW\tELB \tELB\nEKS\nPublic\nService LB\nELB\nAuto Scaling Group\nEKS node\nEKS Pods\nEKS node\nEKS Pods\nEKS node\nEKS Pods\nEKS Worker Nodes\nEKS\nPrivate\nService LB\nELB\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EKS \t– \tNode Types\n• \tManaged Node Groups\n• \tCreates and manages Nodes (EC2 instances) for you\n• \tNodes are part of an ASG managed by EKS\n• \tSupports On-Demand or Spot Instances\n• \tSelf-Managed Nodes\n• \tNodes created by you and registered to the EKS cluster and managed by an ASG\n• \tYou can use prebuilt AMI - Amazon EKS Optimized AMI\n• \tSupports On-Demand or Spot Instances\n• \tAWS Fargate\n• \tNo maintenance required; no nodes managed\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EKS \t– \tData Volumes\n• \tNeed to specify \tStorageClass \tmanifest on your EKS cluster\n• \tLeverages a \tContainer Storage Interface (CSI) \tcompliant driver\n• \tSupport for…\n• \tAmazon EBS\n• \tAmazon EFS (works with Fargate)\n• \tAmazon FSx for Lustre\n• \tAmazon FSx for NetApp ONTAP",
+      "pageStart": 416,
+      "pageEnd": 440,
+      "read": false,
+      "content": {
+        "summary": "## Choosing container orchestration and capacity\n\nFargate manages the underlying compute capacity for supported ECS or EKS workloads. You still configure images, resource requests, networking, IAM permissions, service scaling and application resilience.\n\n### Reasoning and trade-offs\n\nECS on Fargate fits the stated operational goal without introducing unnecessary Kubernetes administration. ECR stores images rather than running them. The application still needs multiple healthy tasks and a resilient state layer.\n\n### Avoid this trap\n\nServerless capacity does not remove container image security, database state or scaling-limit concerns. Kubernetes requirements and ECS operational simplicity are separate selection factors.\n\n### Apply it\n\nA small team needs to run containerized HTTP services without managing worker-node patching. It does not require Kubernetes APIs. Which starting point minimizes infrastructure operations?\n\n**Recommended design:** Use ECS services on Fargate with appropriate load balancing and autoscaling.\n\nECS on Fargate fits the stated operational goal without introducing unnecessary Kubernetes administration. ECR stores images rather than running them. The application still needs multiple healthy tasks and a resilient state layer.",
+        "keyPoints": [
+          "Fargate manages the underlying compute capacity for supported ECS or EKS workloads. You still configure images, resource requests, networking, IAM permissions, service scaling and application resilience.",
+          "ECS on Fargate fits the stated operational goal without introducing unnecessary Kubernetes administration. ECR stores images rather than running them. The application still needs multiple healthy tasks and a resilient state layer.",
+          "Serverless capacity does not remove container image security, database state or scaling-limit concerns. Kubernetes requirements and ECS operational simplicity are separate selection factors."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "What does Fargate remove, and what application responsibilities remain?",
+            "answer": "Fargate manages the underlying compute capacity for supported ECS or EKS workloads. You still configure images, resource requests, networking, IAM permissions, service scaling and application resilience. ECS on Fargate fits the stated operational goal without introducing unnecessary Kubernetes administration. ECR stores images rather than running them. The application still needs multiple healthy tasks and a resilient state layer.",
+            "id": "0a8ba338-f2e8-4149-8c09-d45342989da2",
+            "schedule": {
+              "due": "2026-10-23T20:38:47.367Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What failure mode or trade-off must you avoid when designing choosing container orchestration and capacity?",
+            "answer": "Serverless capacity does not remove container image security, database state or scaling-limit concerns. Kubernetes requirements and ECS operational simplicity are separate selection factors.",
+            "id": "26a99aa6-75cd-4af1-8b0f-220e20e0fd6f",
+            "schedule": {
+              "due": "2026-10-23T20:38:47.367Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A small team needs to run containerized HTTP services without managing worker-node patching. It does not require Kubernetes APIs. Which starting point minimizes infrastructure operations?",
+            "options": [
+              "Use ECS services on Fargate with appropriate load balancing and autoscaling.",
+              "Build and patch a self-managed Kubernetes control plane and worker fleet.",
+              "Place every container on one manually maintained EC2 instance with no service scheduler.",
+              "Use ECR alone as the runtime that executes and scales containers."
+            ],
+            "correctIndex": 0,
+            "explanation": "ECS on Fargate fits the stated operational goal without introducing unnecessary Kubernetes administration. ECR stores images rather than running them. The application still needs multiple healthy tasks and a resilient state layer."
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v1",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-23T20:38:47.367Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 416,
+            "pageEnd": 440,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "2440d1f2-afbb-4ae0-83fd-d46ccd583607",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "29024c51-29c3-4918-bcc1-32f693862c20",
+      "title": "Task identity and scoped permissions",
+      "objective": "How do an ECS task role and task execution role differ?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nContainers on AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat is Docker?\n• \tDocker is a software development platform to deploy apps\n• \tApps are packaged in \tcontainers \tthat can be run on any OS\n• \tApps run the same, regardless of where they’re run\n• \tAny machine\n• \tNo compatibility issues\n• \tPredictable behavior\n• \tLess work\n• \tEasier to maintain and deploy\n• \tWorks with any language, any OS, any technology\n• \tUse cases: microservices architecture, lift-and-shift apps from on-\npremises to the AWS cloud, …\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDocker on an OS\nServer (e.g., EC2 instance)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhere are Docker images stored?\n• \tDocker images are stored in Docker Repositories\n• \tDocker Hub (https://hub.docker.com)\n• \tPublic repository\n• \tFind base images for many technologies or OS (e.g., Ubuntu, MySQL, …)\n• \tAmazon ECR (Amazon Elastic Container Registry)\n• \tPrivate repository\n• \tPublic repository (Amazon ECR Public Gallery https://gallery.ecr.aws)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDocker vs. Virtual Machines\n• \tDocker is ”sort of ” a virtualization technology, but not exactly\n• \tResources are shared with the host => many containers on one server\nInfrastructure\nHost OS\nHypervisor\nApps\nGuest OS\n(VM)\nApps\nGuest OS\n(VM)\nApps\nGuest OS\n(VM)\nInfrastructure\nHost OS (EC2 Instance)\nDocker Daemon\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nGetting Started with Docker\nDockerfile\nimage\nBuild \tRun \tcontainer\nDocker Repository\nAmazon\nECR\nPush \tPull\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDocker Containers Management on AWS\n• \tAmazon Elastic Container Service (Amazon ECS)\n• \tAmazon’s own container platform\n• \tAmazon Elastic Kubernetes Service (Amazon EKS)\n• \tAmazon’s managed Kubernetes (open source)\n• \tAWS \tFargate\n• \tAmazon’s own Serverless container platform\n• \tWorks with ECS and with EKS\n• \tAmazon ECR:\n• \tStore container images\nAmazon ECS\nAWS Fargate\nAmazon EKS\nAmazon ECR\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon ECS \t- \tEC2 Launch Type\n• \tECS = Elastic Container Service\n• \tLaunch Docker containers on AWS =\nLaunch ECS Tasks on ECS Clusters\n• \tEC2 Launch Type: you must provision\n& maintain the infrastructure (the EC2\ninstances)\n• \tEach EC2 Instance must run the ECS\nAgent to register in the ECS Cluster\n• \tAWS takes care of starting / stopping\ncontainers\nAmazon ECS / ECS Cluster\nNew Docker\nContainer\nEC2 Instance \tEC2 Instance \tEC2 Instance\nECS Agent \tECS Agent \tECS Agent\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon ECS \t– \tFargate \tLaunch Type\n• \tLaunch Docker containers on AWS\n• \tYou do not provision the infrastructure\n(no EC2 instances to manage)\n• \tIt’s all Serverless!\n• \tYou just create task definitions\n• \tAWS just runs ECS Tasks for you based\non the CPU / RAM you need\n• \tTo scale, just increase the number of\ntasks. Simple \t- \tno more EC2 instances\nAWS Fargate / ECS Cluster\nNew Docker\nContainer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon ECS \t– \tIAM Roles for ECS\n• \tEC2 Instance Profile (EC2 Launch Type only):\n• \tUsed by the ECS agent\n• \tMakes API calls to ECS service\n• \tSend container logs to CloudWatch Logs\n• \tPull Docker image from ECR\n• \tReference sensitive data in Secrets Manager or\nSSM Parameter Store\n• \tECS Task Role:\n• \tAllows each task to have a specific role\n• \tUse different roles for the different ECS Services\nyou run\n• \tTask Role is defined in the task definition\nEC2 Instance\nECS Agent\nTask A\nTask B\nECS\nECR\nCloudWatch\nLogs\nEC2 Instance Profile\nS3\nDynamoDB\nECS Task A Role\nECS Task B Role\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon ECS \t– \tLoad Balancer Integrations\n• \tApplication Load Balancer supported\nand works for most use cases\n• \tNetwork Load Balancer recommended\nonly for high throughput / high\nperformance use cases, or to pair it with\nAWS Private Link\n• \tClassic Load Balancer supported but not\nrecommended (no advanced features –\nno Fargate)\nECS Cluster\nEC2 Instance\nEC2 Instance\nApplication\nLoad Balancer\nUsers\nECS Task\nECS Task\nECS Task\nECS Task\n80/443\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon \tECS \t– \tData Volumes \t(EFS)\n• \tMount EFS file systems onto ECS tasks\n• \tWorks for both EC2 and Fargate launch types\n• \tTasks running in any AZ will share the same data\nin the EFS file system\n• \tFargate + EFS = Serverless\n• \tUse cases: persistent multi-AZ shared storage for\nyour containers ECS Cluster\nEC2 Instance \tFargate\nAmazon EFS\nFile System\nmount\tmount\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon ECS \t– \tData Volumes (S3 Files)\n• \tMount S3 Files file systems onto ECS tasks (S3\nbucket exposed as a file system)\n• \tWorks for Fargate and ECS Managed Instances\n(EC2 launch type is NOT supported)\n• \tChanges sync automatically to the S3 bucket\n• \tUse cases: containers needing shared file access\nto data that already lives in S3\nECS Cluster\nManaged\nInstances\nFargate\nAmazon S3 Files\nS3 Files\nmount\tmount\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nECS Service Auto Scaling\n• \tAutomatically increase/decrease the desired number of ECS tasks\n• \tAmazon ECS Auto Scaling uses AWS Application Auto Scaling\n• \tECS Service Average CPU Utilization\n• \tECS Service Average Memory Utilization - Scale on RAM\n• \tALB Request Count Per Target – metric coming from the ALB\n• \tTarget Tracking – scale based on target value for a specific CloudWatch metric\n• \tStep Scaling – scale based on a specified CloudWatch Alarm\n• \tScheduled Scaling – scale based on a specified date/time (predictable changes)\n• \tECS Service Auto Scaling (task level) ≠ EC2 Auto Scaling (EC2 instance level)\n• \tFargate Auto Scaling is much easier to setup (because Serverless)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEC2 Launch Type \t– \tAuto Scaling EC2 Instances\n• \tAccommodate ECS Service Scaling by adding underlying EC2 Instances\n• \tAuto Scaling Group Scaling\n• \tScale your ASG based on CPU Utilization\n• \tAdd EC2 instances over time\n• \tECS Cluster Capacity Provider\n• \tUsed to automatically provision and scale the infrastructure for your ECS Tasks\n• \tCapacity Provider paired with an Auto Scaling Group\n• \tAdd EC2 Instances when you’re missing capacity (CPU, RAM…)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nECS Scaling \t– \tService CPU Usage Example\nService A\nAuto Scaling Group\nScale ECS Capacity Providers\n(optional)\nAuto Scaling\nTask 1\nTask 2\nCPU\nUsage\nCloudWatch Metric\n(ECS Service CPU Usage)\nCloudWatch Alarm\nTrigger\nScale\nTask 3\n(new)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nECS tasks invoked by Event Bridge\nClient\nUpload object\nAmazon\nEventBridge\nVPC\nRegion\nAmazon ECS Cluster\nAWS Fargate\nTask\n(new)\nS3 Bucket\nEvent\nRule: Run ECS Task\nAmazon\nDynamoDB\nSave result\nECS Task Role\n(Access S3 & DynamoDB)\nGet object\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nECS tasks invoked by Event Bridge Schedule\nAmazon\nEventBridge Amazon ECS Cluster\nAWS Fargate\nTask\n(new)\nRule: Run ECS Task\nAmazon S3\nBatch ProcessingEvery 1 hour\nECS Task Role\nAccess S3\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nECS \t– \tSQS Queue Example\nService A\nECS Service Auto Scaling\nTask 1\nTask 2\nTask 3\nSQS Queue\nMessages \tPoll for messages\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nECS \t– \tIntercept Stopped Tasks using EventBridge\nECS Task\nContainers\nexited\nEventBridge\nevent\nEvent Pattern\nSNS\ntrigger\nAdministrator\nemail\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon ECR\n• \tECR = Elastic Container Registry\n• \tStore and manage Docker images on AWS\n• \tPrivate \tand \tPublic \trepository (Amazon ECR\nPublic Gallery \thttps://gallery.ecr.aws)\n• \tFully integrated with ECS, backed by Amazon S3\n• \tAccess is controlled through IAM (permission\nerrors => policy)\n• \tSupports image vulnerability scanning, versioning,\nimage tags, image lifecycle, …\nECS Cluster\nEC2 Instance\nECR Repository\nDocker\nImage A\nDocker\nImage B\nIAM Role\npull\tpull\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EKS Overview\n• \tAmazon EKS = Amazon Elastic \tKubernetes Service\n• \tIt is a way to launch managed Kubernetes clusters on AWS\n• \tKubernetes is an open-source system for automatic deployment, scaling and\nmanagement of containerized (usually Docker) application\n• \tIt’s an alternative to ECS, similar goal but different API\n• \tEKS supports \tEC2 if you want to deploy worker nodes or \tFargate to deploy\nserverless containers\n• \tUse case: if your company is already using Kubernetes on-premises or in\nanother cloud, and wants to migrate to AWS using Kubernetes\n• \tKubernetes is cloud-agnostic (can be used in any cloud – Azure, GCP…)\n• \tFor multiple regions, deploy one EKS cluster per region\n• \tCollect logs and metrics using CloudWatch Container Insights\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nPrivate subnet 3\tPrivate subnet 1 \tPrivate subnet 2\nAmazon EKS \t- \tDiagram\nAWS Cloud\nVPC\nAvailability Zone 1 \tAvailability Zone 2 \tAvailability Zone 3\nPublic subnet 1 \tPublic subnet 2 \tPublic subnet 3\nNGW \tNGW \tNGW\tELB \tELB\nEKS\nPublic\nService LB\nELB\nAuto Scaling Group\nEKS node\nEKS Pods\nEKS node\nEKS Pods\nEKS node\nEKS Pods\nEKS Worker Nodes\nEKS\nPrivate\nService LB\nELB\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EKS \t– \tNode Types\n• \tManaged Node Groups\n• \tCreates and manages Nodes (EC2 instances) for you\n• \tNodes are part of an ASG managed by EKS\n• \tSupports On-Demand or Spot Instances\n• \tSelf-Managed Nodes\n• \tNodes created by you and registered to the EKS cluster and managed by an ASG\n• \tYou can use prebuilt AMI - Amazon EKS Optimized AMI\n• \tSupports On-Demand or Spot Instances\n• \tAWS Fargate\n• \tNo maintenance required; no nodes managed\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EKS \t– \tData Volumes\n• \tNeed to specify \tStorageClass \tmanifest on your EKS cluster\n• \tLeverages a \tContainer Storage Interface (CSI) \tcompliant driver\n• \tSupport for…\n• \tAmazon EBS\n• \tAmazon EFS (works with Fargate)\n• \tAmazon FSx for Lustre\n• \tAmazon FSx for NetApp ONTAP",
+      "pageStart": 416,
+      "pageEnd": 440,
+      "read": false,
+      "content": {
+        "summary": "## Task identity and scoped permissions\n\nA task role supplies application AWS permissions. The execution role supports ECS/Fargate startup operations such as image pulls and configured log delivery. Scope each role to its responsibility.\n\n### Reasoning and trade-offs\n\nSuccessful image pull and logging demonstrate execution support, not application authorization. The task role and resource policy govern the application call, subject to additional encryption and organization constraints.\n\n### Avoid this trap\n\nGranting broad permissions to the execution role does not make it the correct application identity. Sharing a host credential across unrelated workloads weakens isolation.\n\n### Apply it\n\nA container starts successfully and sends logs, but its application cannot read an S3 prefix. Which permission should the architect inspect?\n\n**Recommended design:** The task role permission for the application S3 operation and the relevant bucket policy.\n\nSuccessful image pull and logging demonstrate execution support, not application authorization. The task role and resource policy govern the application call, subject to additional encryption and organization constraints.",
+        "keyPoints": [
+          "A task role supplies application AWS permissions. The execution role supports ECS/Fargate startup operations such as image pulls and configured log delivery. Scope each role to its responsibility.",
+          "Successful image pull and logging demonstrate execution support, not application authorization. The task role and resource policy govern the application call, subject to additional encryption and organization constraints.",
+          "Granting broad permissions to the execution role does not make it the correct application identity. Sharing a host credential across unrelated workloads weakens isolation."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "How do an ECS task role and task execution role differ?",
+            "answer": "A task role supplies application AWS permissions. The execution role supports ECS/Fargate startup operations such as image pulls and configured log delivery. Scope each role to its responsibility. Successful image pull and logging demonstrate execution support, not application authorization. The task role and resource policy govern the application call, subject to additional encryption and organization constraints.",
+            "id": "7ee6619b-b8dd-4b3d-a04a-b99daca48455",
+            "schedule": {
+              "due": "2026-10-23T20:38:47.367Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What failure mode or trade-off must you avoid when designing task identity and scoped permissions?",
+            "answer": "Granting broad permissions to the execution role does not make it the correct application identity. Sharing a host credential across unrelated workloads weakens isolation.",
+            "id": "06fb5bb8-7ca5-4957-873f-9866596f802a",
+            "schedule": {
+              "due": "2026-10-23T20:38:47.367Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A container starts successfully and sends logs, but its application cannot read an S3 prefix. Which permission should the architect inspect?",
+            "options": [
+              "Only the execution role used for pulling the image from ECR.",
+              "The task role permission for the application S3 operation and the relevant bucket policy.",
+              "The ALB listener certificate as the source of S3 authorization.",
+              "The container memory reservation, because it grants AWS API permissions."
+            ],
+            "correctIndex": 1,
+            "explanation": "Successful image pull and logging demonstrate execution support, not application authorization. The task role and resource policy govern the application call, subject to additional encryption and organization constraints."
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v1",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-23T20:38:47.367Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 416,
+            "pageEnd": 440,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

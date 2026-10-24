@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "dbbbba77-ef34-4f67-af5d-61542803a264",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 26,
+    "title": "Disaster Recovery & Migrations",
+    "pageStart": 778,
+    "pageEnd": 804,
+    "description": "RPO/RTO, DR strategies, DMS, migration services, AWS Backup and transferring large data sets.",
+    "examFocus": [
+      "Task 2.2: disaster recovery strategies",
+      "Task 4.3: migration cost and approach"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

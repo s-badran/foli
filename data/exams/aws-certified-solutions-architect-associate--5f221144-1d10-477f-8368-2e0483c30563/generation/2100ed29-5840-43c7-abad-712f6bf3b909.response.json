@@ -1,0 +1,19 @@
+{
+  "sections": [
+    {
+      "title": "AWS Cloud Overview",
+      "pageStart": 14,
+      "pageEnd": 17,
+      "keyTopics": ["AWS as a cloud provider", "AWS cloud use cases"],
+      "objective": "Explain what AWS provides as a cloud provider and recognize typical workloads it supports."
+    },
+    {
+      "title": "AWS Global Infrastructure",
+      "pageStart": 18,
+      "pageEnd": 23,
+      "keyTopics": ["Regions", "Region naming", "Choosing a Region", "Availability Zones", "Edge Locations", "Global vs Region-scoped services"],
+      "objective": "Choose an appropriate Region and distinguish Regions, Availability Zones and edge locations, including which services are global."
+    }
+  ],
+  "notes": "History and market-share slides (15-16) are kept in the overview section but carry no key topics because they are not examinable."
+}

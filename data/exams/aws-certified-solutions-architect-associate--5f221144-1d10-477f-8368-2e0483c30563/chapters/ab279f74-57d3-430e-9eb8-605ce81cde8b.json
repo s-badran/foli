@@ -1,0 +1,20 @@
+{
+  "chapter": {
+    "id": "ab279f74-57d3-430e-9eb8-605ce81cde8b",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 11,
+    "title": "Amazon S3 – Advanced",
+    "pageStart": 294,
+    "pageEnd": 313,
+    "description": "Lifecycle rules, Requester Pays, event notifications, performance, batch operations and Storage Lens.",
+    "examFocus": [
+      "Task 4.1: lifecycle transitions",
+      "Task 3.1: S3 performance",
+      "Task 2.1: event-driven integration"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

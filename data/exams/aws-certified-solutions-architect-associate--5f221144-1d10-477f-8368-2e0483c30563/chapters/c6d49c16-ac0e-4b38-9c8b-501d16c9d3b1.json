@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "c6d49c16-ac0e-4b38-9c8b-501d16c9d3b1",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 14,
+    "title": "AWS Storage Extras",
+    "pageStart": 352,
+    "pageEnd": 376,
+    "description": "Snow family, FSx variants, Storage Gateway, Transfer Family, DataSync and storage service comparison.",
+    "examFocus": [
+      "Task 3.1: choosing storage services",
+      "Task 4.1: hybrid and migration storage"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

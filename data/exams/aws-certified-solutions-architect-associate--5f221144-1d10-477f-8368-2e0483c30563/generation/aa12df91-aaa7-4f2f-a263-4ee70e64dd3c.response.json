@@ -1,0 +1,95 @@
+{
+  "questions": [
+    {
+      "question": "An application on an EC2 instance needs to read objects from S3. What is the recommended way to grant access?",
+      "options": [
+        "Store an IAM user's access keys on the instance",
+        "Attach an IAM role to the EC2 instance",
+        "Use the root account credentials",
+        "Put the instance in an IAM group"
+      ],
+      "correctIndex": 1,
+      "explanation": "An EC2 instance role lets the service act on your behalf without stored keys; stored or root credentials are insecure, and groups contain users only.",
+      "keyTopic": "IAM roles for services",
+      "kind": "scenario"
+    },
+    {
+      "question": "A security team must list every IAM user and whether each has MFA and active access keys. Which tool should they use?",
+      "options": [
+        "IAM Access Advisor",
+        "IAM Credentials Report",
+        "IAM password policy",
+        "AWS CLI profile list"
+      ],
+      "correctIndex": 1,
+      "explanation": "The Credentials Report is account-level and lists all users' credential status; Access Advisor is per user, the password policy sets rules, and CLI profiles are local configuration.",
+      "keyTopic": "IAM Credentials Report",
+      "kind": "scenario"
+    },
+    {
+      "question": "An administrator wants to remove permissions a developer has but never uses. Which tool shows the evidence?",
+      "options": [
+        "IAM Credentials Report",
+        "IAM Access Advisor",
+        "MFA device settings",
+        "The root account dashboard"
+      ],
+      "correctIndex": 1,
+      "explanation": "Access Advisor shows granted services and when they were last accessed, guiding policy tightening; the Credentials Report covers credential status, not service usage.",
+      "keyTopic": "IAM Access Advisor",
+      "kind": "scenario"
+    },
+    {
+      "question": "Two contractors share one IAM user to save time. Which best practice does this violate?",
+      "options": [
+        "Use roles for services",
+        "One physical user = one AWS user",
+        "Use access keys for the CLI",
+        "Audit with Access Advisor"
+      ],
+      "correctIndex": 1,
+      "explanation": "Each person needs their own user for accountability; the other practices are unrelated to sharing a user identity.",
+      "keyTopic": "IAM best practices",
+      "kind": "scenario"
+    },
+    {
+      "question": "A Lambda function must write to a DynamoDB table. How should it receive permissions?",
+      "options": [
+        "A Lambda function role",
+        "An IAM user with access keys in environment variables",
+        "Membership of an IAM group",
+        "The root account"
+      ],
+      "correctIndex": 0,
+      "explanation": "Lambda function roles let the service act on your behalf; embedded user keys and root are insecure, and functions cannot join IAM groups.",
+      "keyTopic": "IAM roles for services",
+      "kind": "scenario"
+    },
+    {
+      "question": "Which pairing of tool and scope is correct?",
+      "options": [
+        "Credentials Report - user level",
+        "Access Advisor - account level",
+        "Credentials Report - account level",
+        "Access Advisor - Region level"
+      ],
+      "correctIndex": 2,
+      "explanation": "The Credentials Report is account level and Access Advisor is user level; IAM is global so Region level is wrong.",
+      "keyTopic": "IAM Credentials Report",
+      "kind": "comparison"
+    },
+    {
+      "question": "Which is an IAM best practice from the course?",
+      "options": [
+        "Assign permissions directly to every user",
+        "Use the root account for daily tasks",
+        "Assign users to groups and permissions to groups",
+        "Share access keys within a team"
+      ],
+      "correctIndex": 2,
+      "explanation": "Group-based permissions are a listed best practice; direct per-user permissions, daily root use and shared keys contradict it.",
+      "keyTopic": "IAM best practices",
+      "kind": "concept"
+    }
+  ]
+}

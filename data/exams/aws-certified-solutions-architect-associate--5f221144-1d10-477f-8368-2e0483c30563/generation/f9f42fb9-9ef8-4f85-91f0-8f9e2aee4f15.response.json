@@ -1,0 +1,56 @@
+{
+  "questions": [
+    {
+      "question": "A startup expects unpredictable traffic and wants to avoid buying servers upfront. What property of AWS addresses this?",
+      "options": [
+        "On-demand resources that scale easily",
+        "Long-term hardware leasing contracts",
+        "Fixed-capacity colocation racks",
+        "Annual capacity reservations only"
+      ],
+      "correctIndex": 0,
+      "explanation": "On-demand, easily scaled resources match unpredictable load without upfront purchase; leasing, colocation and annual-only reservations all fix capacity in advance.",
+      "keyTopic": "AWS as a cloud provider",
+      "kind": "scenario"
+    },
+    {
+      "question": "A company wants to move nightly backups off its own tape library to managed cloud storage. Is this a typical AWS use case?",
+      "options": [
+        "No, AWS only hosts websites",
+        "Yes, backup and storage is a core use case",
+        "No, AWS only runs analytics",
+        "Only for gaming companies"
+      ],
+      "correctIndex": 1,
+      "explanation": "Backup and storage is listed as a core AWS use case; the other options wrongly restrict AWS to a single workload or industry.",
+      "keyTopic": "AWS cloud use cases",
+      "kind": "scenario"
+    },
+    {
+      "question": "Which statement best describes AWS?",
+      "options": [
+        "A hardware vendor selling servers",
+        "A software licence reseller",
+        "A cloud provider offering on-demand services",
+        "An internet service provider"
+      ],
+      "correctIndex": 2,
+      "explanation": "AWS provides servers and services on demand; it does not sell hardware, resell licences or provide home internet access.",
+      "keyTopic": "AWS as a cloud provider",
+      "kind": "concept"
+    },
+    {
+      "question": "Which list contains only AWS use cases named in the course?",
+      "options": [
+        "Gaming, website hosting, big data analytics",
+        "Chip manufacturing, retail checkout hardware",
+        "Telephone line installation, gaming",
+        "Physical printing, website hosting"
+      ],
+      "correctIndex": 0,
+      "explanation": "Gaming, website hosting and big data analytics are named use cases; the other lists mix in physical services AWS does not provide.",
+      "keyTopic": "AWS cloud use cases",
+      "kind": "concept"
+    }
+  ]
+}

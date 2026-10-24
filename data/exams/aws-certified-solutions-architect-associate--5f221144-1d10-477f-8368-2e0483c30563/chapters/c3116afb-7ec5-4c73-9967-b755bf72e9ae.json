@@ -1,0 +1,223 @@
+{
+  "chapter": {
+    "id": "c3116afb-7ec5-4c73-9967-b755bf72e9ae",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "Other exam services",
+    "order": 27,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 827,
+    "pageEnd": 854,
+    "description": "Batch, workflow orchestration and choosing managed abstractions.",
+    "objectives": [
+      {
+        "id": "c3116afb-7ec5-4c73-9967-b755bf72e9ae/Orchestration versus message transport",
+        "title": "Orchestration versus message transport",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 827,
+        "pageEnd": 854,
+        "assessment": "both"
+      },
+      {
+        "id": "c3116afb-7ec5-4c73-9967-b755bf72e9ae/Batch jobs and managed scheduling",
+        "title": "Batch jobs and managed scheduling",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 827,
+        "pageEnd": 854,
+        "assessment": "both"
+      }
+    ],
+    "coverageStatus": "draft"
+  },
+  "sections": [
+    {
+      "id": "b1e9226d-590d-4b0a-a023-98d64f6d6fe1",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "c3116afb-7ec5-4c73-9967-b755bf72e9ae",
+      "title": "Orchestration versus message transport",
+      "objective": "When should Step Functions be evaluated instead of implementing a multi-step workflow only with queue consumers?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nOther Services\nOverview of Services that might come up in a few questions\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat is CloudFormation\n• \tCloudFormation is a declarative way of outlining your AWS\nInfrastructure, for any resources (most of them are supported).\n• \tFor example, within a CloudFormation template, you say:\n• \tI want a security group\n• \tI want two EC2 instances using this security group\n• \tI want an S3 bucket\n• \tI want a load balancer (ELB) in front of these machines\n• \tThen CloudFormation creates those for you, in the \tright order, with the\nexact configuration \tthat you specify\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBenefits of AWS CloudFormation (1/2)\n• \tInfrastructure as code\n• \tNo resources are manually created, which is excellent for control\n• \tChanges to the infrastructure are reviewed through code\n• \tCost\n• \tEach resources within the stack is tagged with an identifier so you can easily see how\nmuch a stack costs you\n• \tYou can estimate the costs of your resources using the CloudFormation template\n• \tSavings strategy: In Dev, you could automation deletion of templates at 5 PM and\nrecreated at 8 AM, safely\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBenefits of AWS CloudFormation (2/2)\n• \tProductivity\n• \tAbility to destroy and re-create an infrastructure on the cloud on the fly\n• \tAutomated generation of Diagram for your templates!\n• \tDeclarative programming (no need to figure out ordering and orchestration)\n• \tDon’t re-invent the wheel\n• \tLeverage existing templates on the web!\n• \tLeverage the documentation\n• \tSupports (almost) all AWS resources:\n• \tEverything we’ll see in this course is supported\n• \tYou can use “custom resources” for resources that are not supported\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFormation + Infrastructure Composer\n• \tExample: WordPress CloudFormation Stack\n• \tWe can see all the \tresources\n• \tWe can see the \trelations \tbetween the components\nCloudFormation \tInfrastructure\nComposer\n+\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFormation \t– \tService Role\n• \tIAM role that allows CloudFormation to\ncreate/update/delete stack resources on your\nbehalf\n• \tGive ability to users to create/update/delete the\nstack resources even if they don’t have\npermissions to work with the resources in the\nstack\n• \tUse cases:\n• \tYou want to achieve the least privilege principle\n• \tBut you don’t want to give the user all the required\npermissions to create the stack resources\n• \tUser must have \tiam:PassRole \tpermissions\n- \tcloudformation:*\n- \tiam:PassRole\nPermissions\n- s3:*Bucket\nService Role\nUser\nTemplate\nCloudFormation\nStack\nS3 bucket\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon \tSimple Email Service (Amazon SES)\n• \tFully managed service to send emails securely, globally and at scale\n• \tAllows inbound/outbound emails\n• \tReputation dashboard, performance insights, anti-spam feedback\n• \tProvides statistics such as email deliveries, bounces, feedback loop\nresults, email open\n• \tSupports DomainKeys Identified Mail (DKIM) and Sender Policy\nFramework (SPF)\n• \tFlexible IP deployment: shared, dedicated, and customer-owned IPs\n• \tSend emails using your application using AWS Console, APIs, or SMTP\n• \tUse cases: transactional, marketing and bulk email communications\nAmazon SES\nApplication\nUsers\nAPIs\nor SMTP\nbulk emails\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon \tPinpoint\n• \tScalable 2-way (outbound/inbound) marketing\ncommunications service\n• \tSupports email, SMS, push, voice, and in-app messaging\n• \tAbility to segment and personalize messages with the\nright content to customers\n• \tPossibility to receive replies\n• \tScales to billions of messages per day\n• \tUse cases: run campaigns by sending marketing, bulk,\ntransactional SMS messages\n• \tVersus Amazon SNS or Amazon SES\n• \tIn SNS & SES you managed each message's audience,\ncontent, and delivery schedule\n• \tIn Amazon Pinpoint, you create message templates,\ndelivery schedules, highly-targeted segments, and full\ncampaigns\nSNS \tKinesis Data\nFirehose\nCloudWatch\nLogs\nAmazon\nPinpoint\nstream events\n(e.g., TEXT_SUCCESS,\nTEXT_DELIVERED, …)\nCustomers\nSMS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSystems Manager \t– \tSSM Session Manager\n• \tAllows you to start a secure shell on your EC2 and\non-premises servers\n• \tNo SSH access, bastion hosts, or SSH keys needed\n• \tNo port 22 needed (better security)\n• \tSupports Linux, macOS, and Windows\n• \tSend session log data to S3 or CloudWatch Logs\nEC2 Instance\n(SSM Agent)\nUser\nIAM\nPermissions\nExecute\ncommands\nSession\nManager\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSystems Manager \t– \tRun Command\n• \tExecute a document (= script) or just run a\ncommand\n• \tRun command across multiple instances\n(using resource groups)\n• \tNo need for SSH\n• \tCommand Output can be shown in the AWS\nConsole, sent to S3 bucket or CloudWatch\nLogs\n• \tSend notifications to SNS about command\nstatus (In progress, Success, Failed, …)\n• \tIntegrated with IAM & CloudTrail\n• \tCan be invoked using EventBridge\nEventBridge\nRun Command\nAmazon S3\nCloudWatch\nLogs\ntrigger\noutput\nAmazon SNS\t\nnotification\nEC2 Instances\n(with SSM Agent)\nEC2 Instances\n(with SSM Agent)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSystems Manager \t– \tPatch \tManager\n• \tAutomates the process of patching managed\ninstances\n• \tOS updates, applications updates, security\nupdates\n• \tSupports EC2 instances and on-premises\nservers\n• \tSupports Linux, macOS, and Windows\n• \tPatch on-demand or on a schedule using\nMaintenance Windows\n• \tScan instances and generate patch compliance\nreport (missing patches)\nAWS Console \tAWS SDK \tMaintenance\nWindows\nRun Command\nrun\nAWS-RunBatchBaseline\nEC2 Instances\n(with SSM Agent)\nEC2 Instances\n(with SSM Agent)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSystems Manager \t– \tMaintenance Windows\n• \tDefines a schedule for when to perform actions on your instances\n• \tExample: OS patching, updating drivers, installing software, …\n• \tMaintenance Window contains\n• \tSchedule\n• \tDuration\n• \tSet of registered instances\n• \tSet of registered tasks\nEC2 Instances\n(with SSM Agent)\nEC2 Instances\n(with SSM Agent)\nMaintenance Windows \tRun Command\ntrigger every 24 hour \tupdate\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSystems Manager \t- \tAutomation\n• \tSimplifies common maintenance and\ndeployment tasks of EC2 instances and other\nAWS resources\n• \tExamples: restart instances, create an AMI,\nEBS snapshot\n• \tAutomation Runbook – SSM Documents to\ndefine actions preformed on your EC2\ninstances or AWS resources (pre-defined or\ncustom)\n• \tCan be triggered using:\n• \tManually using AWS Console, AWS CLI or SDK\n• \tAmazon EventBridge\n• \tOn a schedule using Maintenance Windows\n• \tBy AWS Config for rules remediations\nAWS Console \tAWS SDK \tMaintenance\nWindows\nAmazon\nEventBridge\nSSM Automation\tRunbooks\n(automation documents)\nexecute automation\n(AWS-RestartEC2Instance)\nEC2 Instances\nAWS Resources\nEBS \tAMI \tRDS\n…\nexecute\nAWS Config\nRemediation\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCost Explorer\n• \tVisualize, understand, and manage your AWS costs and usage over time\n• \tCreate custom reports that analyze cost and usage data.\n• \tAnalyze your data at a high level: total costs and usage across all accounts\n• \tOr Monthly, hourly, resource level granularity\n• \tChoose an optimal \tSavings Plan \t(to lower prices on your bill)\n• \tForecast usage up to 18 months based on previous usage\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCost Explorer \t– \tMonthly Cost by AWS Service\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCost Explorer– \tHourly & Resource Level\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCost Explorer \t– \tSavings Plan\nAlternative to Reserved Instances\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCost Explorer \t– \tForecast Usage\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Cost Anomaly Detection\n• \tContinuously monitor your cost and usage using ML to detect unusual spends\n• \tIt learns your unique, historic spend patterns to detect one-time cost spike\nand/or continuous cost increases (you don’t need to define thresholds)\n• \tMonitor AWS services, member accounts, cost allocation tags, or cost categories\n• \tSends you the anomaly detection report with root-cause analysis\n• \tGet notified with individual alerts or daily/weekly summary (using SNS)\nAWS Cost Anomaly\nDetection\nreduce cost surprises\nwith Machine Learning\nCreate Cost Monitor\nIdentify unusual spend at\nthe granularity level\nthat you specify\nGet Alerted\nReceive alerts when\nunusual spend is detected\nAnalyze Root Cause\nAnalyze the root cause\nbehind the anomaly and\nthe impact on your costs\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Outposts\n• \tHybrid Cloud: businesses that keep an on-\npremises infrastructure alongside a cloud\ninfrastructure\n• \tTherefore, two ways of dealing with IT systems:\n• \tOne for the AWS cloud (using the AWS console,\nCLI, and AWS APIs)\n• \tOne for their on-premises infrastructure\n• \tAWS Outposts are “server racks” that offers the\nsame AWS infrastructure, services, APIs & tools\nto build your own applications on-premises just as\nin the cloud\n• \tAWS will setup and manage “Outposts Racks”\nwithin your on-premises infrastructure and you\ncan start leveraging AWS services on-premises\n• \tYou are responsible for the Outposts Rack\nphysical security\nCorporate\ndata center\nAWS\nCloud\nOn-prem\nservers\nOutposts\nRacks\nExtension of\nAWS services\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Outposts\n• \tBenefits:\n• \tLow-latency access to on-premises systems\n• \tLocal data processing\n• \tData residency\n• \tEasier migration from on-premises to the cloud\n• \tFully managed service\n• \tSome services that work on Outposts:\nAmazon EC2 \tAmazon EBS \tAmazon S3 \tAmazon EKS \tAmazon ECS \tAmazon RDS \tAmazon EMR\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Batch\n• \tFully managed \tbatch processing at \tany scale\n• \tEfficiently run 100,000s of computing batch jobs on AWS\n• \tA “batch” job is a job with a start and an end (opposed to continuous)\n• \tBatch will dynamically launch \tEC2 instances \tor \tSpot Instances\n• \tAWS Batch provisions the right amount of compute / memory\n• \tYou submit or schedule batch jobs and AWS Batch does the rest!\n• \tBatch jobs are defined as \tDocker images \tand \trun on ECS, EKS, Fargate\n• \tHelpful for cost optimizations and focusing less on the infrastructure\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Batch \t– \tSimplified Example\nTrigger\nAWS Batch\nEC2 Instance\nSpot Instance\nAmazon S3 Insert\nprocessed object\nAmazon S3\nECS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBatch vs Lambda\n• \tLambda:\n• \tTime limit\n• \tLimited runtimes\n• \tLimited temporary disk space\n• \tServerless\n• \tBatch:\n• \tNo time limit\n• \tAny runtime as long as it’s packaged as a Docker image\n• \tRely on EBS / instance store for disk space\n• \tRelies on EC2 (can be managed by AWS)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon AppFlow\n• \tFully managed integration service that enables you to securely transfer\ndata between \tSoftware-as-a-Service (SaaS) applications and AWS\n• \tSources: \tSalesforce, SAP, Zendesk, Slack, and ServiceNow\n• \tDestinations: \tAWS services like \tAmazon S3, Amazon Redshift \tor non-\nAWS such as \tSnowFlake \tand Salesforce\n• \tFrequency: on a schedule, in response to events, or on demand\n• \tData transformation \tcapabilities like filtering and validation\n• \tEncrypted \tover the public internet or privately over AWS \tPrivateLink\n• \tDon’t spend time writing the integrations and leverage APIs immediately\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon AppFlow\nAmazon\nAppFlow\nSources \tDestinations\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Amplify \t- \tweb and mobile applications\n• \tA set of tools and services that helps you develop and deploy scalable full stack web and mobile\napplications\n• \tAuthentication, Storage, API (REST, GraphQL), CI/CD, PubSub, Analytics, AI/ML Predictions,\nMonitoring, …\n• \tConnect your source code from GitHub, AWS CodeCommit, Bitbucket, GitLab, or upload directly\nAmplify backend\tFrontend\nconfigure backend\nusing\nAmplify CLI\nAmazon S3 Amazon Cognito \tAWS\nAppSync\nAPI\nGateway\nDynamoDB\tLambda\tAmazon\nSageMaker\nAmazon Lex\n…\nconnect frontend to backend\nusing\nAmplify Frontend Libraries\n… \t…\nAmplify\nConsole\nAmazon\nCloudFront\nbuild using Amplify Console\n& deploy\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nInstance \tScheduler \ton AWS\n• \tAWS solution deployed through CloudFormation\n(not a service)\n• \tAutomatically start/stop your AWS services to reduce\ncosts (up to 70%)\n• \tExample: stop company’s EC2 instances outside\nbusiness hours\n• \tSupports EC2 instances, EC2 Auto Scaling Groups, and\nRDS instances\n• \tSchedules are managed in a DynamoDB table\n• \tUses resources’ tags and Lambda to stop/start\ninstances\n• \tSupports cross-account and cross-region resources\n• \thttps://aws.amazon.com/solutions/implementations/ins\ntance-scheduler-on-aws/",
+      "pageStart": 827,
+      "pageEnd": 854,
+      "read": false,
+      "content": {
+        "summary": "## Orchestration versus message transport\n\nStep Functions coordinates supported workflow steps, state transitions, retries and error paths. Queues decouple delivery; orchestration makes the stateful business sequence explicit.\n\n### Reasoning and trade-offs\n\nThe problem is workflow coordination, not merely moving a message. Explicit states and callback patterns fit the approval sequence. External changes still need safe retry and compensation semantics.\n\n### Avoid this trap\n\nA workflow engine does not make every external side effect atomic. Design compensating actions, retries and idempotency according to the chosen workflow type and service integrations.\n\n### Apply it\n\nAn approval workflow calls several services, waits for a human decision and needs auditable branching and retries. Which service should be evaluated?\n\n**Recommended design:** Use Step Functions with a suitable callback and explicit error/retry paths.\n\nThe problem is workflow coordination, not merely moving a message. Explicit states and callback patterns fit the approval sequence. External changes still need safe retry and compensation semantics.",
+        "keyPoints": [
+          "Step Functions coordinates supported workflow steps, state transitions, retries and error paths. Queues decouple delivery; orchestration makes the stateful business sequence explicit.",
+          "The problem is workflow coordination, not merely moving a message. Explicit states and callback patterns fit the approval sequence. External changes still need safe retry and compensation semantics.",
+          "A workflow engine does not make every external side effect atomic. Design compensating actions, retries and idempotency according to the chosen workflow type and service integrations."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Which service coordinates explicit multi-step workflow states?",
+            "answer": "AWS Step Functions.",
+            "objectiveIds": [
+              "c3116afb-7ec5-4c73-9967-b755bf72e9ae/Orchestration versus message transport"
+            ],
+            "id": "7f7ad0e0-9186-4ad6-91c5-7b79837c8bbb",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.280Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Does orchestration make external side effects atomic?",
+            "answer": "No. Safe retries and compensation still need design.",
+            "objectiveIds": [
+              "c3116afb-7ec5-4c73-9967-b755bf72e9ae/Orchestration versus message transport"
+            ],
+            "id": "96956895-00d1-4678-8afd-bde7771cd822",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.280Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "An approval workflow calls several services, waits for a human decision and needs auditable branching and retries. Which service should be evaluated?",
+            "options": [
+              "Use Step Functions with a suitable callback and explicit error/retry paths.",
+              "Use one shared SQS message as the entire durable execution history with no state model.",
+              "Use an ALB listener rule to store the human approval state.",
+              "Use a DNS record TTL as the only workflow timer and audit mechanism."
+            ],
+            "correctIndex": 0,
+            "explanation": "The problem is workflow coordination, not merely moving a message. Explicit states and callback patterns fit the approval sequence. External changes still need safe retry and compensation semantics.",
+            "objectiveIds": [
+              "c3116afb-7ec5-4c73-9967-b755bf72e9ae/Orchestration versus message transport"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.280Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 827,
+            "pageEnd": 854,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 8,
+            "pageEnd": 13,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "6e9eff05-6a71-44fb-ba77-8665a856f58c",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "c3116afb-7ec5-4c73-9967-b755bf72e9ae",
+      "title": "Batch jobs and managed scheduling",
+      "objective": "What distinguishes AWS Batch from a long-running container web service?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nOther Services\nOverview of Services that might come up in a few questions\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat is CloudFormation\n• \tCloudFormation is a declarative way of outlining your AWS\nInfrastructure, for any resources (most of them are supported).\n• \tFor example, within a CloudFormation template, you say:\n• \tI want a security group\n• \tI want two EC2 instances using this security group\n• \tI want an S3 bucket\n• \tI want a load balancer (ELB) in front of these machines\n• \tThen CloudFormation creates those for you, in the \tright order, with the\nexact configuration \tthat you specify\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBenefits of AWS CloudFormation (1/2)\n• \tInfrastructure as code\n• \tNo resources are manually created, which is excellent for control\n• \tChanges to the infrastructure are reviewed through code\n• \tCost\n• \tEach resources within the stack is tagged with an identifier so you can easily see how\nmuch a stack costs you\n• \tYou can estimate the costs of your resources using the CloudFormation template\n• \tSavings strategy: In Dev, you could automation deletion of templates at 5 PM and\nrecreated at 8 AM, safely\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBenefits of AWS CloudFormation (2/2)\n• \tProductivity\n• \tAbility to destroy and re-create an infrastructure on the cloud on the fly\n• \tAutomated generation of Diagram for your templates!\n• \tDeclarative programming (no need to figure out ordering and orchestration)\n• \tDon’t re-invent the wheel\n• \tLeverage existing templates on the web!\n• \tLeverage the documentation\n• \tSupports (almost) all AWS resources:\n• \tEverything we’ll see in this course is supported\n• \tYou can use “custom resources” for resources that are not supported\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFormation + Infrastructure Composer\n• \tExample: WordPress CloudFormation Stack\n• \tWe can see all the \tresources\n• \tWe can see the \trelations \tbetween the components\nCloudFormation \tInfrastructure\nComposer\n+\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFormation \t– \tService Role\n• \tIAM role that allows CloudFormation to\ncreate/update/delete stack resources on your\nbehalf\n• \tGive ability to users to create/update/delete the\nstack resources even if they don’t have\npermissions to work with the resources in the\nstack\n• \tUse cases:\n• \tYou want to achieve the least privilege principle\n• \tBut you don’t want to give the user all the required\npermissions to create the stack resources\n• \tUser must have \tiam:PassRole \tpermissions\n- \tcloudformation:*\n- \tiam:PassRole\nPermissions\n- s3:*Bucket\nService Role\nUser\nTemplate\nCloudFormation\nStack\nS3 bucket\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon \tSimple Email Service (Amazon SES)\n• \tFully managed service to send emails securely, globally and at scale\n• \tAllows inbound/outbound emails\n• \tReputation dashboard, performance insights, anti-spam feedback\n• \tProvides statistics such as email deliveries, bounces, feedback loop\nresults, email open\n• \tSupports DomainKeys Identified Mail (DKIM) and Sender Policy\nFramework (SPF)\n• \tFlexible IP deployment: shared, dedicated, and customer-owned IPs\n• \tSend emails using your application using AWS Console, APIs, or SMTP\n• \tUse cases: transactional, marketing and bulk email communications\nAmazon SES\nApplication\nUsers\nAPIs\nor SMTP\nbulk emails\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon \tPinpoint\n• \tScalable 2-way (outbound/inbound) marketing\ncommunications service\n• \tSupports email, SMS, push, voice, and in-app messaging\n• \tAbility to segment and personalize messages with the\nright content to customers\n• \tPossibility to receive replies\n• \tScales to billions of messages per day\n• \tUse cases: run campaigns by sending marketing, bulk,\ntransactional SMS messages\n• \tVersus Amazon SNS or Amazon SES\n• \tIn SNS & SES you managed each message's audience,\ncontent, and delivery schedule\n• \tIn Amazon Pinpoint, you create message templates,\ndelivery schedules, highly-targeted segments, and full\ncampaigns\nSNS \tKinesis Data\nFirehose\nCloudWatch\nLogs\nAmazon\nPinpoint\nstream events\n(e.g., TEXT_SUCCESS,\nTEXT_DELIVERED, …)\nCustomers\nSMS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSystems Manager \t– \tSSM Session Manager\n• \tAllows you to start a secure shell on your EC2 and\non-premises servers\n• \tNo SSH access, bastion hosts, or SSH keys needed\n• \tNo port 22 needed (better security)\n• \tSupports Linux, macOS, and Windows\n• \tSend session log data to S3 or CloudWatch Logs\nEC2 Instance\n(SSM Agent)\nUser\nIAM\nPermissions\nExecute\ncommands\nSession\nManager\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSystems Manager \t– \tRun Command\n• \tExecute a document (= script) or just run a\ncommand\n• \tRun command across multiple instances\n(using resource groups)\n• \tNo need for SSH\n• \tCommand Output can be shown in the AWS\nConsole, sent to S3 bucket or CloudWatch\nLogs\n• \tSend notifications to SNS about command\nstatus (In progress, Success, Failed, …)\n• \tIntegrated with IAM & CloudTrail\n• \tCan be invoked using EventBridge\nEventBridge\nRun Command\nAmazon S3\nCloudWatch\nLogs\ntrigger\noutput\nAmazon SNS\t\nnotification\nEC2 Instances\n(with SSM Agent)\nEC2 Instances\n(with SSM Agent)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSystems Manager \t– \tPatch \tManager\n• \tAutomates the process of patching managed\ninstances\n• \tOS updates, applications updates, security\nupdates\n• \tSupports EC2 instances and on-premises\nservers\n• \tSupports Linux, macOS, and Windows\n• \tPatch on-demand or on a schedule using\nMaintenance Windows\n• \tScan instances and generate patch compliance\nreport (missing patches)\nAWS Console \tAWS SDK \tMaintenance\nWindows\nRun Command\nrun\nAWS-RunBatchBaseline\nEC2 Instances\n(with SSM Agent)\nEC2 Instances\n(with SSM Agent)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSystems Manager \t– \tMaintenance Windows\n• \tDefines a schedule for when to perform actions on your instances\n• \tExample: OS patching, updating drivers, installing software, …\n• \tMaintenance Window contains\n• \tSchedule\n• \tDuration\n• \tSet of registered instances\n• \tSet of registered tasks\nEC2 Instances\n(with SSM Agent)\nEC2 Instances\n(with SSM Agent)\nMaintenance Windows \tRun Command\ntrigger every 24 hour \tupdate\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSystems Manager \t- \tAutomation\n• \tSimplifies common maintenance and\ndeployment tasks of EC2 instances and other\nAWS resources\n• \tExamples: restart instances, create an AMI,\nEBS snapshot\n• \tAutomation Runbook – SSM Documents to\ndefine actions preformed on your EC2\ninstances or AWS resources (pre-defined or\ncustom)\n• \tCan be triggered using:\n• \tManually using AWS Console, AWS CLI or SDK\n• \tAmazon EventBridge\n• \tOn a schedule using Maintenance Windows\n• \tBy AWS Config for rules remediations\nAWS Console \tAWS SDK \tMaintenance\nWindows\nAmazon\nEventBridge\nSSM Automation\tRunbooks\n(automation documents)\nexecute automation\n(AWS-RestartEC2Instance)\nEC2 Instances\nAWS Resources\nEBS \tAMI \tRDS\n…\nexecute\nAWS Config\nRemediation\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCost Explorer\n• \tVisualize, understand, and manage your AWS costs and usage over time\n• \tCreate custom reports that analyze cost and usage data.\n• \tAnalyze your data at a high level: total costs and usage across all accounts\n• \tOr Monthly, hourly, resource level granularity\n• \tChoose an optimal \tSavings Plan \t(to lower prices on your bill)\n• \tForecast usage up to 18 months based on previous usage\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCost Explorer \t– \tMonthly Cost by AWS Service\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCost Explorer– \tHourly & Resource Level\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCost Explorer \t– \tSavings Plan\nAlternative to Reserved Instances\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCost Explorer \t– \tForecast Usage\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Cost Anomaly Detection\n• \tContinuously monitor your cost and usage using ML to detect unusual spends\n• \tIt learns your unique, historic spend patterns to detect one-time cost spike\nand/or continuous cost increases (you don’t need to define thresholds)\n• \tMonitor AWS services, member accounts, cost allocation tags, or cost categories\n• \tSends you the anomaly detection report with root-cause analysis\n• \tGet notified with individual alerts or daily/weekly summary (using SNS)\nAWS Cost Anomaly\nDetection\nreduce cost surprises\nwith Machine Learning\nCreate Cost Monitor\nIdentify unusual spend at\nthe granularity level\nthat you specify\nGet Alerted\nReceive alerts when\nunusual spend is detected\nAnalyze Root Cause\nAnalyze the root cause\nbehind the anomaly and\nthe impact on your costs\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Outposts\n• \tHybrid Cloud: businesses that keep an on-\npremises infrastructure alongside a cloud\ninfrastructure\n• \tTherefore, two ways of dealing with IT systems:\n• \tOne for the AWS cloud (using the AWS console,\nCLI, and AWS APIs)\n• \tOne for their on-premises infrastructure\n• \tAWS Outposts are “server racks” that offers the\nsame AWS infrastructure, services, APIs & tools\nto build your own applications on-premises just as\nin the cloud\n• \tAWS will setup and manage “Outposts Racks”\nwithin your on-premises infrastructure and you\ncan start leveraging AWS services on-premises\n• \tYou are responsible for the Outposts Rack\nphysical security\nCorporate\ndata center\nAWS\nCloud\nOn-prem\nservers\nOutposts\nRacks\nExtension of\nAWS services\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Outposts\n• \tBenefits:\n• \tLow-latency access to on-premises systems\n• \tLocal data processing\n• \tData residency\n• \tEasier migration from on-premises to the cloud\n• \tFully managed service\n• \tSome services that work on Outposts:\nAmazon EC2 \tAmazon EBS \tAmazon S3 \tAmazon EKS \tAmazon ECS \tAmazon RDS \tAmazon EMR\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Batch\n• \tFully managed \tbatch processing at \tany scale\n• \tEfficiently run 100,000s of computing batch jobs on AWS\n• \tA “batch” job is a job with a start and an end (opposed to continuous)\n• \tBatch will dynamically launch \tEC2 instances \tor \tSpot Instances\n• \tAWS Batch provisions the right amount of compute / memory\n• \tYou submit or schedule batch jobs and AWS Batch does the rest!\n• \tBatch jobs are defined as \tDocker images \tand \trun on ECS, EKS, Fargate\n• \tHelpful for cost optimizations and focusing less on the infrastructure\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Batch \t– \tSimplified Example\nTrigger\nAWS Batch\nEC2 Instance\nSpot Instance\nAmazon S3 Insert\nprocessed object\nAmazon S3\nECS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBatch vs Lambda\n• \tLambda:\n• \tTime limit\n• \tLimited runtimes\n• \tLimited temporary disk space\n• \tServerless\n• \tBatch:\n• \tNo time limit\n• \tAny runtime as long as it’s packaged as a Docker image\n• \tRely on EBS / instance store for disk space\n• \tRelies on EC2 (can be managed by AWS)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon AppFlow\n• \tFully managed integration service that enables you to securely transfer\ndata between \tSoftware-as-a-Service (SaaS) applications and AWS\n• \tSources: \tSalesforce, SAP, Zendesk, Slack, and ServiceNow\n• \tDestinations: \tAWS services like \tAmazon S3, Amazon Redshift \tor non-\nAWS such as \tSnowFlake \tand Salesforce\n• \tFrequency: on a schedule, in response to events, or on demand\n• \tData transformation \tcapabilities like filtering and validation\n• \tEncrypted \tover the public internet or privately over AWS \tPrivateLink\n• \tDon’t spend time writing the integrations and leverage APIs immediately\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon AppFlow\nAmazon\nAppFlow\nSources \tDestinations\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Amplify \t- \tweb and mobile applications\n• \tA set of tools and services that helps you develop and deploy scalable full stack web and mobile\napplications\n• \tAuthentication, Storage, API (REST, GraphQL), CI/CD, PubSub, Analytics, AI/ML Predictions,\nMonitoring, …\n• \tConnect your source code from GitHub, AWS CodeCommit, Bitbucket, GitLab, or upload directly\nAmplify backend\tFrontend\nconfigure backend\nusing\nAmplify CLI\nAmazon S3 Amazon Cognito \tAWS\nAppSync\nAPI\nGateway\nDynamoDB\tLambda\tAmazon\nSageMaker\nAmazon Lex\n…\nconnect frontend to backend\nusing\nAmplify Frontend Libraries\n… \t…\nAmplify\nConsole\nAmazon\nCloudFront\nbuild using Amplify Console\n& deploy\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nInstance \tScheduler \ton AWS\n• \tAWS solution deployed through CloudFormation\n(not a service)\n• \tAutomatically start/stop your AWS services to reduce\ncosts (up to 70%)\n• \tExample: stop company’s EC2 instances outside\nbusiness hours\n• \tSupports EC2 instances, EC2 Auto Scaling Groups, and\nRDS instances\n• \tSchedules are managed in a DynamoDB table\n• \tUses resources’ tags and Lambda to stop/start\ninstances\n• \tSupports cross-account and cross-region resources\n• \thttps://aws.amazon.com/solutions/implementations/ins\ntance-scheduler-on-aws/",
+      "pageStart": 827,
+      "pageEnd": 854,
+      "read": false,
+      "content": {
+        "summary": "## Batch jobs and managed scheduling\n\nBatch schedules finite jobs onto configured compute environments and queues. A web service scheduler maintains ongoing task capacity for request-serving applications; choose based on lifecycle and scheduling needs.\n\n### Reasoning and trade-offs\n\nBatch addresses finite queued compute jobs. ECR provides images, not execution scheduling. Service-style always-running capacity may waste resources when the workload consists of completed finite tasks.\n\n### Avoid this trap\n\nBatch is not a replacement for every low-latency always-on API. Job dependencies, retries, compute availability and cost strategy affect completion behavior.\n\n### Apply it\n\nA research pipeline submits thousands of independent finite container jobs and wants managed job queues plus Spot-aware compute options. Which service is a natural fit?\n\n**Recommended design:** Evaluate AWS Batch with appropriate job definitions, queues and compute environments.\n\nBatch addresses finite queued compute jobs. ECR provides images, not execution scheduling. Service-style always-running capacity may waste resources when the workload consists of completed finite tasks.",
+        "keyPoints": [
+          "Batch schedules finite jobs onto configured compute environments and queues. A web service scheduler maintains ongoing task capacity for request-serving applications; choose based on lifecycle and scheduling needs.",
+          "Batch addresses finite queued compute jobs. ECR provides images, not execution scheduling. Service-style always-running capacity may waste resources when the workload consists of completed finite tasks.",
+          "Batch is not a replacement for every low-latency always-on API. Job dependencies, retries, compute availability and cost strategy affect completion behavior."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Which service schedules finite jobs on configured compute environments?",
+            "answer": "AWS Batch.",
+            "objectiveIds": [
+              "c3116afb-7ec5-4c73-9967-b755bf72e9ae/Batch jobs and managed scheduling"
+            ],
+            "id": "f87a45b4-7051-4d58-86e9-4f726fc86fe9",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.280Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "How do finite batch jobs differ from web-service tasks?",
+            "answer": "Jobs finish; service schedulers maintain ongoing serving capacity.",
+            "objectiveIds": [
+              "c3116afb-7ec5-4c73-9967-b755bf72e9ae/Batch jobs and managed scheduling"
+            ],
+            "id": "63253d43-3c47-4d39-92f4-a72d0ad13bb2",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.280Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A research pipeline submits thousands of independent finite container jobs and wants managed job queues plus Spot-aware compute options. Which service is a natural fit?",
+            "options": [
+              "Use ECR alone as a job scheduler because it stores the container images.",
+              "Evaluate AWS Batch with appropriate job definitions, queues and compute environments.",
+              "Use Route 53 as the queue and job retry coordinator.",
+              "Keep every job permanently running behind an ALB after it has completed."
+            ],
+            "correctIndex": 1,
+            "explanation": "Batch addresses finite queued compute jobs. ECR provides images, not execution scheduling. Service-style always-running capacity may waste resources when the workload consists of completed finite tasks.",
+            "objectiveIds": [
+              "c3116afb-7ec5-4c73-9967-b755bf72e9ae/Batch jobs and managed scheduling"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.280Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 827,
+            "pageEnd": 854,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 8,
+            "pageEnd": 13,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

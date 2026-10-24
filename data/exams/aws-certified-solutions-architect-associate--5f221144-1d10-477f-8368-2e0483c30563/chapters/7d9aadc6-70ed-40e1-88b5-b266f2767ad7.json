@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "7d9aadc6-70ed-40e1-88b5-b266f2767ad7",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 24,
+    "title": "AWS Security & Encryption",
+    "pageStart": 651,
+    "pageEnd": 699,
+    "description": "KMS, CloudHSM, SSM Parameter Store, Secrets Manager, ACM, WAF, Shield, Firewall Manager, GuardDuty, Inspector and Macie.",
+    "examFocus": [
+      "Task 1.3: encryption and key management",
+      "Task 1.2: protecting workloads from threats"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

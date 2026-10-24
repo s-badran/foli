@@ -1,0 +1,94 @@
+{
+  "overview": "IAM roles give AWS services permissions to act on your behalf, so applications on AWS do not need stored user credentials. Two audit tools review IAM: the account-level Credentials Report and the user-level Access Advisor. The best-practice list summarises the whole IAM chapter and is heavily tested.",
+  "coreConcepts": [
+    {
+      "term": "IAM role",
+      "definition": "An identity with permissions that AWS services can use to perform actions on your behalf."
+    },
+    {
+      "term": "EC2 instance role",
+      "definition": "A role assigned to an EC2 instance so its applications can access AWS."
+    },
+    {
+      "term": "IAM Credentials Report",
+      "definition": "Account-level report listing all users and the status of their credentials."
+    },
+    {
+      "term": "IAM Access Advisor",
+      "definition": "User-level view of service permissions granted and when each was last accessed."
+    }
+  ],
+  "mustRemember": [
+    "Some AWS services need to perform actions on your behalf; give them permissions with IAM roles.",
+    "Common roles: EC2 instance roles, Lambda function roles, roles for CloudFormation.",
+    "Credentials Report = account level; Access Advisor = user level.",
+    "Use Access Advisor's last-accessed data to revise and tighten policies.",
+    "Best practice: one physical user = one AWS user.",
+    "Best practice: assign users to groups and permissions to groups.",
+    "Best practice: strong password policy and enforced MFA.",
+    "Best practice: use roles for AWS services and access keys for programmatic access (CLI/SDK).",
+    "Never share IAM users or access keys."
+  ],
+  "keyComparisons": [
+    {
+      "items": "Credentials Report vs Access Advisor",
+      "difference": "Report: all users' credential status account-wide. Advisor: one user's permitted services and last access."
+    },
+    {
+      "items": "IAM user vs IAM role",
+      "difference": "A user is a person with long-term credentials; a role is assumed by a service to act on your behalf."
+    }
+  ],
+  "commonMisunderstandings": [
+    "Access Advisor does not list every user's credential status; that is the Credentials Report.",
+    "Roles are not a replacement for one user per person; they give services permissions."
+  ],
+  "mentalModels": [
+    "A role is a hat an AWS service puts on to get permissions; it does not belong to a person."
+  ],
+  "whenToUse": [
+    {
+      "situation": "An application on EC2 must read from S3",
+      "use": "An EC2 instance role"
+    },
+    {
+      "situation": "Find users without MFA or with old access keys",
+      "use": "IAM Credentials Report"
+    },
+    {
+      "situation": "Remove permissions a user never uses",
+      "use": "IAM Access Advisor"
+    }
+  ],
+  "patternsToRecognize": [
+    {
+      "signal": "A service needs to act on your behalf",
+      "indicates": "An IAM role"
+    },
+    {
+      "signal": "Account-wide credential status audit",
+      "indicates": "Credentials Report"
+    },
+    {
+      "signal": "Services last accessed by a user",
+      "indicates": "Access Advisor"
+    }
+  ],
+  "examTraps": [
+    {
+      "trap": "Store access keys on an EC2 instance for its application",
+      "correction": "Attach an IAM role to the instance."
+    },
+    {
+      "trap": "Access Advisor lists all users and their credential status",
+      "correction": "That is the IAM Credentials Report."
+    },
+    {
+      "trap": "Assign permissions directly to every user",
+      "correction": "Assign users to groups and permissions to groups."
+    }
+  ],
+  "beyondSource": [
+    "Roles provide temporary credentials that rotate automatically, which is why they are preferred over access keys on AWS compute."
+  ]
+}

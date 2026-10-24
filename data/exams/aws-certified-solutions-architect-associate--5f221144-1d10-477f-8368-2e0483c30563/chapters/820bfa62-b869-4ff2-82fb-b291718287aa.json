@@ -1,0 +1,20 @@
+{
+  "chapter": {
+    "id": "820bfa62-b869-4ff2-82fb-b291718287aa",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 10,
+    "title": "Amazon S3",
+    "pageStart": 268,
+    "pageEnd": 293,
+    "description": "Buckets and objects, S3 security basics, static website hosting, versioning, replication and storage classes.",
+    "examFocus": [
+      "Task 3.1: scalable storage",
+      "Task 4.1: storage classes for cost",
+      "Task 1.1: bucket policies versus IAM"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "a6fa94d5-42b5-4ade-b03a-49a0156d358f",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 16,
+    "title": "Containers on AWS",
+    "pageStart": 416,
+    "pageEnd": 440,
+    "description": "Docker, ECS launch types and roles, ECS scaling, ECR, EKS and App Runner.",
+    "examFocus": [
+      "Task 3.2: containerized compute",
+      "Task 2.1: scalable services"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

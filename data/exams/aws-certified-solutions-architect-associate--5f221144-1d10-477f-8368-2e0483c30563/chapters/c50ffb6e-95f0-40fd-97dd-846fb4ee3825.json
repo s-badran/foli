@@ -1,0 +1,20 @@
+{
+  "chapter": {
+    "id": "c50ffb6e-95f0-40fd-97dd-846fb4ee3825",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 17,
+    "title": "Serverless Overview",
+    "pageStart": 441,
+    "pageEnd": 493,
+    "description": "Lambda, DynamoDB, API Gateway, Step Functions and Cognito.",
+    "examFocus": [
+      "Task 2.1: serverless and event-driven designs",
+      "Task 3.3: DynamoDB performance",
+      "Task 1.1: Cognito for application users"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

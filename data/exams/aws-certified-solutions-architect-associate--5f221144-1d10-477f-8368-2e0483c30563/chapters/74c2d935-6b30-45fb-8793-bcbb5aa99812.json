@@ -1,0 +1,18 @@
+{
+  "chapter": {
+    "id": "74c2d935-6b30-45fb-8793-bcbb5aa99812",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 21,
+    "title": "Machine Learning",
+    "pageStart": 563,
+    "pageEnd": 577,
+    "description": "Managed AI services: Rekognition, Transcribe, Polly, Translate, Lex, Connect, Comprehend, SageMaker, Kendra, Personalize and Textract.",
+    "examFocus": [
+      "Task 3.5: selecting managed ML services for data processing"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

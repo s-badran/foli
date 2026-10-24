@@ -1,0 +1,2411 @@
+{
+  "chapter": {
+    "id": "1a7eab28-c656-485a-8c23-f06891ebbbf5",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 2,
+    "title": "AWS Identity & Access Management (AWS IAM)",
+    "pageStart": 24,
+    "pageEnd": 40,
+    "description": "Users, groups, policies, MFA, programmatic access, roles for services, audit tools and IAM best practices.",
+    "examFocus": [
+      "Task 1.1: secure access to AWS resources",
+      "Least privilege, MFA, IAM roles versus users"
+    ],
+    "objectives": [
+      {
+        "id": "3c961255-81ad-4762-8057-270e380a5f4a::root-account",
+        "title": "Root account",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 24,
+        "pageEnd": 28,
+        "assessment": "recall"
+      },
+      {
+        "id": "3c961255-81ad-4762-8057-270e380a5f4a::iam-users",
+        "title": "IAM users",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 24,
+        "pageEnd": 28,
+        "assessment": "recall"
+      },
+      {
+        "id": "3c961255-81ad-4762-8057-270e380a5f4a::iam-groups",
+        "title": "IAM groups",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 24,
+        "pageEnd": 28,
+        "assessment": "recall"
+      },
+      {
+        "id": "3c961255-81ad-4762-8057-270e380a5f4a::iam-policies",
+        "title": "IAM policies",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 24,
+        "pageEnd": 28,
+        "assessment": "recall"
+      },
+      {
+        "id": "3c961255-81ad-4762-8057-270e380a5f4a::least-privilege",
+        "title": "Least privilege",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 24,
+        "pageEnd": 28,
+        "assessment": "recall"
+      },
+      {
+        "id": "3c961255-81ad-4762-8057-270e380a5f4a::policy-inheritance",
+        "title": "Policy inheritance",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 24,
+        "pageEnd": 28,
+        "assessment": "recall"
+      },
+      {
+        "id": "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure",
+        "title": "Policy structure",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 24,
+        "pageEnd": 28,
+        "assessment": "recall"
+      },
+      {
+        "id": "b6442afe-98d8-4032-a385-118aced7961d::password-policy",
+        "title": "Password policy",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 29,
+        "pageEnd": 36,
+        "assessment": "recall"
+      },
+      {
+        "id": "b6442afe-98d8-4032-a385-118aced7961d::multi-factor-authentication",
+        "title": "Multi-Factor Authentication",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 29,
+        "pageEnd": 36,
+        "assessment": "recall"
+      },
+      {
+        "id": "b6442afe-98d8-4032-a385-118aced7961d::mfa-device-options",
+        "title": "MFA device options",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 29,
+        "pageEnd": 36,
+        "assessment": "recall"
+      },
+      {
+        "id": "b6442afe-98d8-4032-a385-118aced7961d::access-methods",
+        "title": "Access methods",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 29,
+        "pageEnd": 36,
+        "assessment": "recall"
+      },
+      {
+        "id": "b6442afe-98d8-4032-a385-118aced7961d::access-keys",
+        "title": "Access keys",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 29,
+        "pageEnd": 36,
+        "assessment": "recall"
+      },
+      {
+        "id": "b6442afe-98d8-4032-a385-118aced7961d::aws-cli",
+        "title": "AWS CLI",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 29,
+        "pageEnd": 36,
+        "assessment": "recall"
+      },
+      {
+        "id": "b6442afe-98d8-4032-a385-118aced7961d::aws-sdk",
+        "title": "AWS SDK",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 29,
+        "pageEnd": 36,
+        "assessment": "recall"
+      },
+      {
+        "id": "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-roles-for-services",
+        "title": "IAM roles for services",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 37,
+        "pageEnd": 40,
+        "assessment": "recall"
+      },
+      {
+        "id": "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-credentials-report",
+        "title": "IAM Credentials Report",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 37,
+        "pageEnd": 40,
+        "assessment": "recall"
+      },
+      {
+        "id": "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-access-advisor",
+        "title": "IAM Access Advisor",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 37,
+        "pageEnd": 40,
+        "assessment": "recall"
+      },
+      {
+        "id": "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-best-practices",
+        "title": "IAM best practices",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 37,
+        "pageEnd": 40,
+        "assessment": "recall"
+      }
+    ],
+    "coverageStatus": "source-audited"
+  },
+  "sections": [
+    {
+      "id": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "1a7eab28-c656-485a-8c23-f06891ebbbf5",
+      "title": "IAM Users, Groups & Policies",
+      "objective": "Explain how users, groups and JSON policies grant permissions, and read the elements of a policy statement.",
+      "keyTopics": [
+        "Root account",
+        "IAM users",
+        "IAM groups",
+        "IAM policies",
+        "Least privilege",
+        "Policy inheritance",
+        "Policy structure"
+      ],
+      "pageStart": 24,
+      "pageEnd": 28,
+      "text": "[Page 24]\nAWS Identity and Access\nManagement (AWS IAM)\n\n[Page 25]\nIAM: Users & Groups\n• \tIAM = Identity and Access Management, Global service\n• \tRoot account created by default, shouldn’t be used or shared\n• \tUsers are people within your organization, and can be grouped\n• \tGroups only contain users, not other groups\n• \tUsers don’t have to belong to a group, and user can belong to multiple groups\nAlice \tBob \tCharles \tDavid \tEdward\nGroup: Developers \tGroup: Operations\nGroup\nAudit Team\nFred\n\n[Page 26]\nIAM: Permissions\n• \tUsers or Groups \tcan be\nassigned JSON documents\ncalled policies\n• \tThese policies define the\npermissions \tof the users\n• \tIn AWS you apply the \tleast\nprivilege principle: don’t give\nmore permissions than a user\nneeds\n{\n\"Version\": \t\"2012-10-17\",\n\"Statement\": [\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"ec2:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"elasticloadbalancing:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": [\n\"cloudwatch:ListMetrics\",\n\"cloudwatch:GetMetricStatistics\",\n\"cloudwatch:Describe*\"\n],\n\"Resource\": \t\"*\"\n}\n]\n}\n\n[Page 27]\nIAM Policies inheritance\nAlice \tBob \tCharles \tDavid \tEdward\nDevelopers \tOperations\nAudit Team\nFred\ninline\n\n[Page 28]\nIAM Policies Structure\n• \tConsists of\n• \tVersion: policy language version, always include “2012-10-\n17”\n• \tId: an identifier for the policy (optional)\n• \tStatement: one or more individual statements (required)\n• \tStatements consists of\n• \tSid: an identifier for the statement (optional)\n• \tEffect: whether the statement allows or denies access\n(Allow, Deny)\n• \tPrincipal: account/user/role to which this policy applied to\n• \tAction: list of actions this policy allows or denies\n• \tResource: list of resources to which the actions applied to\n• \tCondition: conditions for when this policy is in effect\n(optional)",
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nIAM is the global service that controls who can do what in an AWS account. People become users, users are organised into groups, and JSON policies attached to users or groups grant only the permissions they need.\n\n## Core Concepts\n\n- **IAM:** Identity and Access Management: a global service for users, groups, roles and permissions.\n- **Root account:** Account created by default with full access; should not be used or shared.\n- **IAM user:** An identity for one person in your organisation.\n- **IAM group:** A collection of users; groups contain users only, never other groups.\n- **IAM policy:** A JSON document defining the permissions of the users or groups it is attached to.\n- **Inline policy:** A policy attached directly to a single user rather than inherited from a group.\n- **Least privilege:** Grant no more permissions than a user needs.\n\n## Must Remember\n\n- IAM is a global service.\n- The root account is created by default and should not be used or shared.\n- Groups only contain users, not other groups.\n- A user can belong to no group or to multiple groups.\n- A user in several groups inherits the policies of all of them.\n- Policy structure: Version (always \"2012-10-17\"), optional Id, and one or more Statements.\n- Statement elements: optional Sid, Effect, Principal, Action, Resource, optional Condition.\n- Effect is either Allow or Deny.\n\n## Key Comparisons\n\n- **Group policy vs inline policy:** Group policies apply to every member; an inline policy applies only to the one user it is attached to.\n- **Action vs Resource:** Action lists the API calls; Resource lists what those calls apply to.\n\n## Common Misunderstandings\n\n- Groups cannot be nested inside other groups.\n- Users do not have to belong to a group.\n- Least privilege does not mean granting broad access for convenience.\n\n## Mental Models\n\n- User = a person, group = a team, policy = the team's permission slip in JSON.\n- Read a statement as: Effect the Principal to do Action on Resource when Condition holds.\n\n## Exceptions & Edge Cases\n\n- A user outside any group can still get permissions through an inline policy.\n\n## When to Use Which\n\n- Several people need the same permissions → **Put them in a group and attach the policy to the group**\n- One user needs a one-off extra permission → **An inline policy on that user**\n- Initial account setup only → **The root account**\n\n## Patterns to Recognize\n\n- JSON with Effect, Action and Resource → **An IAM policy statement**\n- \"Grant only what is needed\" → **Least privilege**\n\n## Exam Traps\n\n- “Use the root account for daily administration” — Create IAM users; reserve root for account setup.\n- “Groups can contain other groups” — Groups contain users only.\n- “A user can belong to only one group” — Users can belong to multiple groups.\n\n## Beyond the Source (tutor knowledge)\n\n- When Allow and an explicit Deny both apply to a request, the explicit Deny wins.",
+        "keyPoints": [
+          "IAM is a global service.",
+          "The root account is created by default and should not be used or shared.",
+          "Groups only contain users, not other groups.",
+          "A user can belong to no group or to multiple groups.",
+          "A user in several groups inherits the policies of all of them.",
+          "Policy structure: Version (always \"2012-10-17\"), optional Id, and one or more Statements.",
+          "Statement elements: optional Sid, Effect, Principal, Action, Resource, optional Condition.",
+          "Effect is either Allow or Deny."
+        ],
+        "supplement": "- When Allow and an explicit Deny both apply to a request, the explicit Deny wins.",
+        "cards": [
+          {
+            "id": "ffc00b72-e7b8-4a60-89b5-6acd9dcad6ff",
+            "question": "When is the AWS root account created?",
+            "answer": "By default, with the account",
+            "group": "Root account",
+            "keyTopic": "Root account",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::root-account"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "71620f88-ffbb-4300-8f52-2ed21d180d2f",
+            "question": "Should the root account be used or shared for daily work?",
+            "answer": "No, neither",
+            "group": "Root account",
+            "keyTopic": "Root account",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::root-account"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "618c6386-4fd1-4c55-b2ca-cf02d54dd708",
+            "question": "What does an IAM user represent?",
+            "answer": "One person in your organisation",
+            "group": "Users and groups",
+            "keyTopic": "IAM users",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::iam-users"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f668aae0-8bfa-48f3-bf16-4d558b39a005",
+            "question": "Must every IAM user belong to a group?",
+            "answer": "No",
+            "group": "Users and groups",
+            "keyTopic": "IAM users",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::iam-users"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "038811d5-a04c-468a-b554-9feeed73ab4e",
+            "question": "How many groups can one user belong to?",
+            "answer": "Multiple, or none",
+            "group": "Users and groups",
+            "keyTopic": "IAM groups",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::iam-groups"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "6bf95cab-1db4-4874-9fe3-b0d5f3a71b7b",
+            "question": "What can an IAM group contain?",
+            "answer": "Users only",
+            "group": "Users and groups",
+            "keyTopic": "IAM groups",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::iam-groups"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "75450afa-4681-4e41-b578-0071f483f748",
+            "question": "Can an IAM group contain another group?",
+            "answer": "No",
+            "group": "Users and groups",
+            "keyTopic": "IAM groups",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::iam-groups"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "bace5ed4-5ec0-4aad-b595-505675efc897",
+            "question": "In what format are IAM policies written?",
+            "answer": "JSON",
+            "group": "Policies",
+            "keyTopic": "IAM policies",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::iam-policies"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "5d2d6487-fa9e-452d-8154-444c8a3a20c5",
+            "question": "What can IAM policies be attached to (from this section)?",
+            "answer": "Users or groups",
+            "group": "Policies",
+            "keyTopic": "IAM policies",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::iam-policies"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "785eeb32-c844-4e80-ba7b-455268559a2a",
+            "question": "What does an IAM policy define?",
+            "answer": "The permissions of its users or groups",
+            "group": "Policies",
+            "keyTopic": "IAM policies",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::iam-policies"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f926e82d-60e4-4e63-a3b1-ffd89e974f43",
+            "question": "Define the least privilege principle.",
+            "answer": "Grant only the permissions a user needs",
+            "group": "Policies",
+            "keyTopic": "Least privilege",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::least-privilege"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7c525d0c-1554-4213-b854-4788b4843288",
+            "question": "Which principle forbids giving users extra permissions \"just in case\"?",
+            "answer": "Least privilege",
+            "group": "Policies",
+            "keyTopic": "Least privilege",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::least-privilege"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "084e920f-1723-46cc-b02f-53c125228d17",
+            "question": "A user is in two groups. Which policies apply?",
+            "answer": "Policies of both groups",
+            "group": "Inheritance",
+            "keyTopic": "Policy inheritance",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-inheritance"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "72fcba90-4b28-45e5-9344-f0e9dcd96fba",
+            "question": "What is a policy attached directly to one user called?",
+            "answer": "An inline policy",
+            "group": "Inheritance",
+            "keyTopic": "Policy inheritance",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-inheritance"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d2836d02-acd1-4556-a6d0-e65997d68b30",
+            "question": "Top-level elements of an IAM policy?",
+            "answer": "Version\nId (optional)\nStatement",
+            "group": "Policy structure",
+            "keyTopic": "Policy structure",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "da74bbcc-648c-4b2c-9144-2627bbc9b7b2",
+            "question": "Value always used for the policy Version?",
+            "answer": "\"2012-10-17\"",
+            "group": "Policy structure",
+            "keyTopic": "Policy structure",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c8158c5c-ec66-48b4-a45f-2eb4488c75a4",
+            "question": "Elements of a policy statement?",
+            "answer": "Sid (optional)\nEffect\nPrincipal\nAction\nResource\nCondition (optional)",
+            "group": "Policy structure",
+            "keyTopic": "Policy structure",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "5eacc520-0cf1-4fee-afea-6d6edf5cb0e8",
+            "question": "Two possible values of Effect?",
+            "answer": "Allow or Deny",
+            "group": "Policy structure",
+            "keyTopic": "Policy structure",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "8d92c41e-dc6b-4476-8e2a-d0492d2e1831",
+            "question": "Which statement element lists the API actions?",
+            "answer": "Action",
+            "group": "Policy structure",
+            "keyTopic": "Policy structure",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "926a0256-a086-4690-aede-5a8f818be262",
+            "question": "Which statement element lists what the actions apply to?",
+            "answer": "Resource",
+            "group": "Policy structure",
+            "keyTopic": "Policy structure",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b9ede6e3-1000-45e6-a718-fdb88a4c210a",
+            "question": "Which statement element names the account, user or role?",
+            "answer": "Principal",
+            "group": "Policy structure",
+            "keyTopic": "Policy structure",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "df42f9e0-20e6-4b65-bcb2-7b44b6a7e63d",
+            "question": "Which optional element restricts when a statement applies?",
+            "answer": "Condition",
+            "group": "Policy structure",
+            "keyTopic": "Policy structure",
+            "origin": "source",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.259Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Developers and operations staff share some permissions. An administrator wants a single \"Engineering\" group that contains both the Developers and Operations groups. What happens?",
+            "options": [
+              "It works; groups can be nested one level",
+              "It fails; groups can contain users only",
+              "It works only for inline policies",
+              "It works if both groups are in one Region"
+            ],
+            "correctIndex": 1,
+            "explanation": "IAM groups contain users only, so nesting fails; there is no one-level nesting, inline policies do not change this, and IAM is global so Regions are irrelevant.",
+            "keyTopic": "IAM groups",
+            "kind": "scenario",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::iam-groups"
+            ]
+          },
+          {
+            "question": "Fred belongs to no group but needs read access to one bucket. What is the most direct way to grant it?",
+            "options": [
+              "Add Fred to the root account",
+              "Attach an inline policy to Fred",
+              "Create a group containing only the bucket",
+              "Share another user's credentials"
+            ],
+            "correctIndex": 1,
+            "explanation": "An inline policy grants permissions to a single user; root access and credential sharing break least privilege, and groups cannot contain resources.",
+            "keyTopic": "Policy inheritance",
+            "kind": "scenario",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-inheritance"
+            ]
+          },
+          {
+            "question": "An auditor needs only to list and describe EC2 instances. Which policy best applies least privilege?",
+            "options": [
+              "Allow ec2:Describe* on *",
+              "Allow ec2:* on *",
+              "Allow * on *",
+              "Deny ec2:Describe* on *"
+            ],
+            "correctIndex": 0,
+            "explanation": "Describe actions grant exactly the read access needed; ec2:* and * add write permissions, and Deny would block the requirement.",
+            "keyTopic": "Least privilege",
+            "kind": "scenario",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::least-privilege"
+            ]
+          },
+          {
+            "question": "A new company opens its first AWS account. What should be done with the root account after initial setup?",
+            "options": [
+              "Share it with all administrators",
+              "Use it for daily tasks with a strong password",
+              "Avoid using it and create IAM users instead",
+              "Delete it"
+            ],
+            "correctIndex": 2,
+            "explanation": "Root should not be used or shared; create IAM users for daily work. Sharing or daily use exposes full access, and the root account cannot simply be deleted while the account exists.",
+            "keyTopic": "Root account",
+            "kind": "scenario",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::root-account"
+            ]
+          },
+          {
+            "question": "Alice is in the Developers group and the Audit group. Which permissions does she receive?",
+            "options": [
+              "Only the first group she was added to",
+              "Only her inline policies",
+              "Those of both groups",
+              "None until a single group is chosen"
+            ],
+            "correctIndex": 2,
+            "explanation": "Users inherit the policies of every group they belong to; there is no first-group or single-group rule.",
+            "keyTopic": "IAM users",
+            "kind": "scenario",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::iam-users"
+            ]
+          },
+          {
+            "question": "In a policy statement, which element specifies the API calls being allowed or denied?",
+            "options": [
+              "Resource",
+              "Action",
+              "Principal",
+              "Sid"
+            ],
+            "correctIndex": 1,
+            "explanation": "Action lists the API calls; Resource is the target, Principal the identity, and Sid only an optional statement identifier.",
+            "keyTopic": "Policy structure",
+            "kind": "concept",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
+            ]
+          },
+          {
+            "question": "Which statement about IAM policies is correct?",
+            "options": [
+              "Policies are YAML documents",
+              "Effect can be Allow or Deny",
+              "Version is optional and free-form",
+              "Condition is required in every statement"
+            ],
+            "correctIndex": 1,
+            "explanation": "Effect takes Allow or Deny; policies are JSON, Version should always be \"2012-10-17\", and Condition is optional.",
+            "keyTopic": "IAM policies",
+            "kind": "concept",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::iam-policies"
+            ]
+          },
+          {
+            "question": "Compare a group policy with an inline policy. Which is true?",
+            "options": [
+              "A group policy applies to every member; an inline policy to one user",
+              "An inline policy applies to every group",
+              "Group policies override inline policies",
+              "Inline policies can only Deny"
+            ],
+            "correctIndex": 0,
+            "explanation": "Group policies apply to all members while inline policies attach to one user; inline policies are not group-wide, there is no override ranking between them, and they can Allow or Deny.",
+            "keyTopic": "Policy inheritance",
+            "kind": "comparison",
+            "objectiveIds": [
+              "3c961255-81ad-4762-8057-270e380a5f4a::policy-inheritance"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v1",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T10:24:43.143Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 24,
+            "pageEnd": 28,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 8,
+            "pageEnd": 19,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "IAM is the global service that controls who can do what in an AWS account. People become users, users are organised into groups, and JSON policies attached to users or groups grant only the permissions they need.",
+        "coreConcepts": [
+          {
+            "term": "IAM",
+            "definition": "Identity and Access Management: a global service for users, groups, roles and permissions."
+          },
+          {
+            "term": "Root account",
+            "definition": "Account created by default with full access; should not be used or shared."
+          },
+          {
+            "term": "IAM user",
+            "definition": "An identity for one person in your organisation."
+          },
+          {
+            "term": "IAM group",
+            "definition": "A collection of users; groups contain users only, never other groups."
+          },
+          {
+            "term": "IAM policy",
+            "definition": "A JSON document defining the permissions of the users or groups it is attached to."
+          },
+          {
+            "term": "Inline policy",
+            "definition": "A policy attached directly to a single user rather than inherited from a group."
+          },
+          {
+            "term": "Least privilege",
+            "definition": "Grant no more permissions than a user needs."
+          }
+        ],
+        "mustRemember": [
+          "IAM is a global service.",
+          "The root account is created by default and should not be used or shared.",
+          "Groups only contain users, not other groups.",
+          "A user can belong to no group or to multiple groups.",
+          "A user in several groups inherits the policies of all of them.",
+          "Policy structure: Version (always \"2012-10-17\"), optional Id, and one or more Statements.",
+          "Statement elements: optional Sid, Effect, Principal, Action, Resource, optional Condition.",
+          "Effect is either Allow or Deny."
+        ],
+        "keyComparisons": [
+          {
+            "items": "Group policy vs inline policy",
+            "difference": "Group policies apply to every member; an inline policy applies only to the one user it is attached to."
+          },
+          {
+            "items": "Action vs Resource",
+            "difference": "Action lists the API calls; Resource lists what those calls apply to."
+          }
+        ],
+        "commonMisunderstandings": [
+          "Groups cannot be nested inside other groups.",
+          "Users do not have to belong to a group.",
+          "Least privilege does not mean granting broad access for convenience."
+        ],
+        "mentalModels": [
+          "User = a person, group = a team, policy = the team's permission slip in JSON.",
+          "Read a statement as: Effect the Principal to do Action on Resource when Condition holds."
+        ],
+        "edgeCases": [
+          "A user outside any group can still get permissions through an inline policy."
+        ],
+        "whenToUse": [
+          {
+            "situation": "Several people need the same permissions",
+            "use": "Put them in a group and attach the policy to the group"
+          },
+          {
+            "situation": "One user needs a one-off extra permission",
+            "use": "An inline policy on that user"
+          },
+          {
+            "situation": "Initial account setup only",
+            "use": "The root account"
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "JSON with Effect, Action and Resource",
+            "indicates": "An IAM policy statement"
+          },
+          {
+            "signal": "\"Grant only what is needed\"",
+            "indicates": "Least privilege"
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "Use the root account for daily administration",
+            "correction": "Create IAM users; reserve root for account setup."
+          },
+          {
+            "trap": "Groups can contain other groups",
+            "correction": "Groups contain users only."
+          },
+          {
+            "trap": "A user can belong to only one group",
+            "correction": "Users can belong to multiple groups."
+          }
+        ],
+        "beyondSource": [
+          "When Allow and an explicit Deny both apply to a request, the explicit Deny wins."
+        ]
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "d4f1a314-7e13-42a8-a3d7-4f609119cf3a",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:43.143Z"
+        },
+        "flashcards": {
+          "requestId": "5c683265-6a56-487f-9e71-ffd8656fe9be",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:43.259Z"
+        },
+        "quiz": {
+          "requestId": "8ccef23f-e8b3-4354-8855-f6ab40e864b8",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:43.353Z"
+        }
+      }
+    },
+    {
+      "id": "b6442afe-98d8-4032-a385-118aced7961d",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "1a7eab28-c656-485a-8c23-f06891ebbbf5",
+      "title": "Protecting & Accessing Accounts",
+      "objective": "Choose the right authentication protection and access method for console, command-line and programmatic use.",
+      "keyTopics": [
+        "Password policy",
+        "Multi-Factor Authentication",
+        "MFA device options",
+        "Access methods",
+        "Access keys",
+        "AWS CLI",
+        "AWS SDK"
+      ],
+      "pageStart": 29,
+      "pageEnd": 36,
+      "text": "[Page 29]\nIAM \t– \tPassword Policy\n• \tStrong passwords = higher security for your account\n• \tIn AWS, you can setup a password policy:\n• \tSet a minimum password length\n• \tRequire specific character types:\n• \tincluding uppercase letters\n• \tlowercase letters\n• \tnumbers\n• \tnon-alphanumeric characters\n• \tAllow all IAM users to change their own passwords\n• \tRequire users to change their password after some time (password expiration)\n• \tPrevent password re-use\n\n[Page 30]\nMulti Factor Authentication \t- \tMFA\n• \tUsers have access to your account and can possibly change\nconfigurations or delete resources in your AWS account\n• \tYou want to protect your Root Accounts and IAM users\n• \tMFA = password \tyou know \t+ security device \tyou own\n• \tMain benefit of MFA:\nif a password is stolen or hacked, the account is not compromised\nAlice\n+Password \t=> \tSuccessful login\n\n[Page 31]\nMFA devices options in AWS\nVirtual MFA device\nGoogle Authenticator\n(phone only)\nAuthy\n(phone only)\nUniversal 2nd Factor (U2F) Security Key\nYubiKey by Yubico (3rd party)\nSupport for multiple tokens on a single device. Support for multiple root and IAM users\nusing a single security key\n\n[Page 32]\nMFA devices options in AWS\nHardware Key Fob MFA Device\nProvided by Gemalto (3rd party)\nHardware Key Fob MFA Device for\nAWS GovCloud (US)\nProvided by SurePassID (3rd party)\n\n[Page 33]\nHow can users access AWS ?\n• \tTo access AWS, you have three options:\n• \tAWS Management Console (protected by password + MFA)\n• \tAWS Command Line Interface (CLI): protected by access keys\n• \tAWS Software Developer Kit (SDK) - for code: protected by access keys\n• \tAccess Keys are generated through the AWS Console\n• \tUsers manage their own access keys\n• \tAccess Keys are secret, just like a password. Don’t share them\n• \tAccess Key ID ~= username\n• \tSecret Access Key ~= password\n\n[Page 34]\nExample (Fake) Access Keys\n• \tAccess key ID: AKIASK4E37PV4983d6C\n• \tSecret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq\n• \tRemember: don’t share your access keys\n\n[Page 35]\nWhat’s the AWS CLI?\n• \tA tool that enables you to interact with AWS services using commands in\nyour command-line shell\n• \tDirect access to the public APIs of AWS services\n• \tYou can develop scripts to manage your resources\n• \tIt’s open-source \thttps://github.com/aws/aws-cli\n• \tAlternative to using AWS Management Console\n\n[Page 36]\nWhat’s the AWS SDK?\n• \tAWS Software Development Kit (AWS SDK)\n• \tLanguage-specific APIs (set of libraries)\n• \tEnables you to access and manage AWS services\nprogrammatically\n• \tEmbedded within your application\n• \tSupports\n• \tSDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js,\nC++)\n• \tMobile SDKs (Android, iOS, …)\n• \tIoT Device SDKs (Embedded C, Arduino, …)\n• \tExample: AWS CLI is built on AWS SDK for Python\nAWS SDK\nYour Application",
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nUsers are protected with a password policy and MFA, and reach AWS in three ways: the Management Console (password + MFA), the CLI and the SDK (both using access keys). Knowing which credential protects which access method is a frequent exam distinction.\n\n## Core Concepts\n\n- **Password policy:** Account rules for IAM user passwords: length, character types, change, expiration and reuse.\n- **MFA:** Multi-Factor Authentication: a password you know plus a security device you own.\n- **Virtual MFA device:** An authenticator app on a phone, such as Google Authenticator or Authy.\n- **U2F security key:** A physical key such as YubiKey; one key supports multiple root and IAM users.\n- **Hardware key fob:** A physical token generating codes, from third parties such as Gemalto (SurePassID for GovCloud).\n- **Access keys:** Access Key ID plus Secret Access Key, used by the CLI and SDK.\n- **AWS CLI:** Open-source command-line tool calling AWS public APIs, used for scripting.\n- **AWS SDK:** Language-specific libraries embedded in your application to call AWS APIs.\n\n## Must Remember\n\n- Three access methods: Management Console, CLI and SDK.\n- Console is protected by password + MFA; CLI and SDK are protected by access keys.\n- Access keys are generated through the Console and users manage their own.\n- Access Key ID is like a username; Secret Access Key is like a password.\n- Never share access keys.\n- MFA protects the account even if the password is stolen.\n- Protect the root account and IAM users with MFA.\n- The AWS CLI is built on the AWS SDK for Python.\n\n## Key Comparisons\n\n- **Console vs CLI vs SDK:** Console: browser, password + MFA. CLI: shell commands. SDK: code libraries. CLI and SDK use access keys.\n- **Access Key ID vs Secret Access Key:** The ID identifies the key (like a username); the secret signs requests (like a password).\n- **Virtual MFA vs U2F key vs hardware fob:** App on a phone vs physical USB key vs physical code-generating token.\n\n## Common Misunderstandings\n\n- Access keys are not used to sign in to the Console.\n- MFA is not only for root; IAM users should use it too.\n- A password policy does not by itself add a second factor.\n\n## Mental Models\n\n- MFA = something you know + something you have.\n- Access Key ID/Secret = username/password for programs.\n\n## Exceptions & Edge Cases\n\n- A single U2F security key can serve multiple root and IAM users.\n- GovCloud (US) has its own hardware key fob option.\n\n## When to Use Which\n\n- Automating tasks from a terminal or script → **AWS CLI with access keys**\n- Calling AWS from application code → **AWS SDK**\n- Interactive administration in a browser → **Management Console with password + MFA**\n\n## Patterns to Recognize\n\n- Password plus a device the user owns → **MFA**\n- Access Key ID and Secret Access Key → **Programmatic access via CLI or SDK**\n- Minimum length, character types, expiration, no reuse → **IAM password policy**\n\n## Exam Traps\n\n- “Use access keys to log in to the Console” — The Console uses password + MFA.\n- “Share access keys with teammates for convenience” — Access keys are secret like passwords and must not be shared.\n\n## Beyond the Source (tutor knowledge)\n\n- For applications on AWS, prefer IAM roles over long-lived access keys (covered in the next section).",
+        "keyPoints": [
+          "Three access methods: Management Console, CLI and SDK.",
+          "Console is protected by password + MFA; CLI and SDK are protected by access keys.",
+          "Access keys are generated through the Console and users manage their own.",
+          "Access Key ID is like a username; Secret Access Key is like a password.",
+          "Never share access keys.",
+          "MFA protects the account even if the password is stolen.",
+          "Protect the root account and IAM users with MFA.",
+          "The AWS CLI is built on the AWS SDK for Python."
+        ],
+        "supplement": "- For applications on AWS, prefer IAM roles over long-lived access keys (covered in the next section).",
+        "cards": [
+          {
+            "id": "0c5eccfa-ca22-4de0-a89e-f6ab2204bd74",
+            "question": "Password policy settings in IAM?",
+            "answer": "Minimum length\nRequired character types\nUsers change own password\nPassword expiration\nPrevent password reuse",
+            "group": "Password policy",
+            "keyTopic": "Password policy",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::password-policy"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "0c34378d-7a1b-4e81-9b42-efc02adfccaf",
+            "question": "Which setting forces periodic password changes?",
+            "answer": "Password expiration",
+            "group": "Password policy",
+            "keyTopic": "Password policy",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::password-policy"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "afff6aab-6180-4ed6-8944-0cdcf7c3bcbd",
+            "question": "Which setting blocks reusing old passwords?",
+            "answer": "Prevent password re-use",
+            "group": "Password policy",
+            "keyTopic": "Password policy",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::password-policy"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "3de482b5-07c6-41bd-9a5d-98083f3a39bd",
+            "question": "MFA combines which two factors?",
+            "answer": "Password you know + security device you own",
+            "group": "MFA",
+            "keyTopic": "Multi-Factor Authentication",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::multi-factor-authentication"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "da15ea9e-e187-4a42-8c5f-abdab27a1299",
+            "question": "Main benefit of MFA?",
+            "answer": "A stolen password alone cannot compromise the account",
+            "group": "MFA",
+            "keyTopic": "Multi-Factor Authentication",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::multi-factor-authentication"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "9d030e7f-e498-41c7-98db-77a82d9be971",
+            "question": "Whose accounts should MFA protect?",
+            "answer": "Root account and IAM users",
+            "group": "MFA",
+            "keyTopic": "Multi-Factor Authentication",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::multi-factor-authentication"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "3a099187-fcff-4f65-ac85-78a612381a32",
+            "question": "Two virtual MFA apps named in the course?",
+            "answer": "Google Authenticator and Authy",
+            "group": "MFA devices",
+            "keyTopic": "MFA device options",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::mfa-device-options"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1d49cb03-c08c-4590-8866-f7c2ecacdaf8",
+            "question": "Example of a U2F security key?",
+            "answer": "YubiKey",
+            "group": "MFA devices",
+            "keyTopic": "MFA device options",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::mfa-device-options"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "0323b9ed-8035-4f2b-bc63-c6cb9350e6e8",
+            "question": "Which MFA type lets one device serve multiple users?",
+            "answer": "U2F security key",
+            "group": "MFA devices",
+            "keyTopic": "MFA device options",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::mfa-device-options"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b6cd9852-623b-4c90-8d7f-6e8c5d5e4659",
+            "question": "Who provides hardware key fob MFA devices?",
+            "answer": "Third parties such as Gemalto",
+            "group": "MFA devices",
+            "keyTopic": "MFA device options",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::mfa-device-options"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1c00ad2d-3f79-4ef2-96ad-7ac91f657ea1",
+            "question": "MFA hardware fob provider for AWS GovCloud (US)?",
+            "answer": "SurePassID",
+            "group": "MFA devices",
+            "keyTopic": "MFA device options",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::mfa-device-options"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "38f11203-b55b-43b7-94fb-afa772ac8a46",
+            "question": "Three ways to access AWS?",
+            "answer": "Management Console\nAWS CLI\nAWS SDK",
+            "group": "Access methods",
+            "keyTopic": "Access methods",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::access-methods"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f0fdeb73-119e-463e-be85-3f477a7c2091",
+            "question": "What protects Management Console access?",
+            "answer": "Password + MFA",
+            "group": "Access methods",
+            "keyTopic": "Access methods",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::access-methods"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7a898f69-de0f-4e46-ac82-b16f1448740b",
+            "question": "What protects CLI and SDK access?",
+            "answer": "Access keys",
+            "group": "Access methods",
+            "keyTopic": "Access methods",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::access-methods"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b0334de9-3dfb-4f47-bd1f-591ed4deb77c",
+            "question": "Where are access keys generated?",
+            "answer": "In the AWS Console",
+            "group": "Access keys",
+            "keyTopic": "Access keys",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::access-keys"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d2ef7204-b518-42b0-b794-877c6225a48b",
+            "question": "Who manages a user's access keys?",
+            "answer": "The user",
+            "group": "Access keys",
+            "keyTopic": "Access keys",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::access-keys"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "671a9c4f-a71f-4b4f-b545-f62bb532ab53",
+            "question": "Access Key ID is comparable to what?",
+            "answer": "A username",
+            "group": "Access keys",
+            "keyTopic": "Access keys",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::access-keys"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ccd6c0ac-ea6d-4c1e-83a5-3c5271abb589",
+            "question": "Secret Access Key is comparable to what?",
+            "answer": "A password",
+            "group": "Access keys",
+            "keyTopic": "Access keys",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::access-keys"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c564f63d-37cd-4368-9a0a-b00bd790248e",
+            "question": "What does the AWS CLI interact with?",
+            "answer": "AWS public service APIs",
+            "group": "CLI and SDK",
+            "keyTopic": "AWS CLI",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::aws-cli"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f9b957a3-7288-474a-8417-0bebd2baecad",
+            "question": "Is the AWS CLI open-source?",
+            "answer": "Yes",
+            "group": "CLI and SDK",
+            "keyTopic": "AWS CLI",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::aws-cli"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7802ebad-e3f9-44c6-b31e-066c22a6b088",
+            "question": "Typical use of the AWS CLI?",
+            "answer": "Scripting management of AWS resources",
+            "group": "CLI and SDK",
+            "keyTopic": "AWS CLI",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::aws-cli"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "da5bc9ac-4b8b-4963-b4c3-8c51fe68194c",
+            "question": "What is the AWS SDK?",
+            "answer": "Language-specific libraries for calling AWS APIs",
+            "group": "CLI and SDK",
+            "keyTopic": "AWS SDK",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::aws-sdk"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ea4b1e7d-4d1d-4620-803c-643bc78cd8b9",
+            "question": "Where is the AWS SDK used?",
+            "answer": "Embedded within your application code",
+            "group": "CLI and SDK",
+            "keyTopic": "AWS SDK",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::aws-sdk"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "26138416-6dfb-4083-916f-cfa276e41a68",
+            "question": "The AWS CLI is built on which SDK?",
+            "answer": "AWS SDK for Python",
+            "group": "CLI and SDK",
+            "keyTopic": "AWS SDK",
+            "origin": "source",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::aws-sdk"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.572Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A user's console password was leaked in a phishing attack, but the attacker could not sign in. Which control most likely stopped them?",
+            "options": [
+              "A strong password policy",
+              "Multi-Factor Authentication",
+              "An access key rotation",
+              "An inline policy"
+            ],
+            "correctIndex": 1,
+            "explanation": "MFA requires a device the user owns, so a stolen password is not enough; password policy strength does not help once leaked, access keys do not protect Console sign-in, and policies govern permissions not sign-in.",
+            "keyTopic": "Multi-Factor Authentication",
+            "kind": "scenario",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::multi-factor-authentication"
+            ]
+          },
+          {
+            "question": "A DevOps engineer wants to automate nightly resource clean-up from a Linux shell script. Which access method fits?",
+            "options": [
+              "AWS Management Console",
+              "AWS CLI with access keys",
+              "An MFA hardware fob only",
+              "An IAM password policy"
+            ],
+            "correctIndex": 1,
+            "explanation": "The CLI calls AWS APIs from scripts using access keys; the Console is interactive, and MFA devices or password policies are protections, not access methods.",
+            "keyTopic": "AWS CLI",
+            "kind": "scenario",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::aws-cli"
+            ]
+          },
+          {
+            "question": "A Python application must upload files to S3 from its own code. What should the developers use?",
+            "options": [
+              "The AWS SDK embedded in the application",
+              "The Management Console",
+              "A U2F security key",
+              "The IAM credentials report"
+            ],
+            "correctIndex": 0,
+            "explanation": "The SDK provides language libraries for calling AWS from code; the Console is manual, a U2F key is an MFA device, and the credentials report is an audit tool.",
+            "keyTopic": "AWS SDK",
+            "kind": "scenario",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::aws-sdk"
+            ]
+          },
+          {
+            "question": "Security requires that IAM user passwords expire every 90 days and cannot be reused. Where is this configured?",
+            "options": [
+              "In each user's inline policy",
+              "In the IAM password policy",
+              "In the MFA device settings",
+              "In the AWS CLI configuration"
+            ],
+            "correctIndex": 1,
+            "explanation": "Expiration and reuse prevention are password policy settings; inline policies grant permissions, MFA settings manage devices, and CLI configuration stores credentials locally.",
+            "keyTopic": "Password policy",
+            "kind": "scenario",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::password-policy"
+            ]
+          },
+          {
+            "question": "An administrator manages several IAM users and the root account and wants one physical MFA device for all of them. Which option supports this?",
+            "options": [
+              "Virtual MFA app on one phone only",
+              "U2F security key such as YubiKey",
+              "A hardware key fob per account",
+              "A shared access key"
+            ],
+            "correctIndex": 1,
+            "explanation": "One U2F security key supports multiple root and IAM users; the course lists virtual apps as phone-only per device, fobs as per-device tokens, and shared access keys are not MFA.",
+            "keyTopic": "MFA device options",
+            "kind": "scenario",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::mfa-device-options"
+            ]
+          },
+          {
+            "question": "A teammate asks you to email your Secret Access Key so they can run a script. What is the correct response?",
+            "options": [
+              "Send it encrypted",
+              "Send only the Access Key ID",
+              "Refuse; access keys must never be shared",
+              "Send it and rotate it next month"
+            ],
+            "correctIndex": 2,
+            "explanation": "Access keys are secret like passwords and must not be shared; encryption, partial sharing or delayed rotation still hand someone else your identity.",
+            "keyTopic": "Access keys",
+            "kind": "scenario",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::access-keys"
+            ]
+          },
+          {
+            "question": "Which pairing of access method and protection is correct?",
+            "options": [
+              "Console - access keys",
+              "CLI - password + MFA only",
+              "SDK - access keys",
+              "Console - Secret Access Key"
+            ],
+            "correctIndex": 2,
+            "explanation": "The SDK uses access keys; the Console uses password + MFA, and the CLI also uses access keys rather than password + MFA.",
+            "keyTopic": "Access methods",
+            "kind": "comparison",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::access-methods"
+            ]
+          },
+          {
+            "question": "Which statement about access keys is correct?",
+            "options": [
+              "The Access Key ID works like a password",
+              "Access keys are generated in the Console",
+              "Access keys sign users in to the Console",
+              "AWS staff manage your access keys for you"
+            ],
+            "correctIndex": 1,
+            "explanation": "Access keys are generated through the Console and managed by the user; the ID is like a username, keys are for CLI/SDK not Console sign-in.",
+            "keyTopic": "Access keys",
+            "kind": "concept",
+            "objectiveIds": [
+              "b6442afe-98d8-4032-a385-118aced7961d::access-keys"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v1",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T10:24:43.451Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 29,
+            "pageEnd": 36,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "Users are protected with a password policy and MFA, and reach AWS in three ways: the Management Console (password + MFA), the CLI and the SDK (both using access keys). Knowing which credential protects which access method is a frequent exam distinction.",
+        "coreConcepts": [
+          {
+            "term": "Password policy",
+            "definition": "Account rules for IAM user passwords: length, character types, change, expiration and reuse."
+          },
+          {
+            "term": "MFA",
+            "definition": "Multi-Factor Authentication: a password you know plus a security device you own."
+          },
+          {
+            "term": "Virtual MFA device",
+            "definition": "An authenticator app on a phone, such as Google Authenticator or Authy."
+          },
+          {
+            "term": "U2F security key",
+            "definition": "A physical key such as YubiKey; one key supports multiple root and IAM users."
+          },
+          {
+            "term": "Hardware key fob",
+            "definition": "A physical token generating codes, from third parties such as Gemalto (SurePassID for GovCloud)."
+          },
+          {
+            "term": "Access keys",
+            "definition": "Access Key ID plus Secret Access Key, used by the CLI and SDK."
+          },
+          {
+            "term": "AWS CLI",
+            "definition": "Open-source command-line tool calling AWS public APIs, used for scripting."
+          },
+          {
+            "term": "AWS SDK",
+            "definition": "Language-specific libraries embedded in your application to call AWS APIs."
+          }
+        ],
+        "mustRemember": [
+          "Three access methods: Management Console, CLI and SDK.",
+          "Console is protected by password + MFA; CLI and SDK are protected by access keys.",
+          "Access keys are generated through the Console and users manage their own.",
+          "Access Key ID is like a username; Secret Access Key is like a password.",
+          "Never share access keys.",
+          "MFA protects the account even if the password is stolen.",
+          "Protect the root account and IAM users with MFA.",
+          "The AWS CLI is built on the AWS SDK for Python."
+        ],
+        "keyComparisons": [
+          {
+            "items": "Console vs CLI vs SDK",
+            "difference": "Console: browser, password + MFA. CLI: shell commands. SDK: code libraries. CLI and SDK use access keys."
+          },
+          {
+            "items": "Access Key ID vs Secret Access Key",
+            "difference": "The ID identifies the key (like a username); the secret signs requests (like a password)."
+          },
+          {
+            "items": "Virtual MFA vs U2F key vs hardware fob",
+            "difference": "App on a phone vs physical USB key vs physical code-generating token."
+          }
+        ],
+        "commonMisunderstandings": [
+          "Access keys are not used to sign in to the Console.",
+          "MFA is not only for root; IAM users should use it too.",
+          "A password policy does not by itself add a second factor."
+        ],
+        "mentalModels": [
+          "MFA = something you know + something you have.",
+          "Access Key ID/Secret = username/password for programs."
+        ],
+        "edgeCases": [
+          "A single U2F security key can serve multiple root and IAM users.",
+          "GovCloud (US) has its own hardware key fob option."
+        ],
+        "whenToUse": [
+          {
+            "situation": "Automating tasks from a terminal or script",
+            "use": "AWS CLI with access keys"
+          },
+          {
+            "situation": "Calling AWS from application code",
+            "use": "AWS SDK"
+          },
+          {
+            "situation": "Interactive administration in a browser",
+            "use": "Management Console with password + MFA"
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "Password plus a device the user owns",
+            "indicates": "MFA"
+          },
+          {
+            "signal": "Access Key ID and Secret Access Key",
+            "indicates": "Programmatic access via CLI or SDK"
+          },
+          {
+            "signal": "Minimum length, character types, expiration, no reuse",
+            "indicates": "IAM password policy"
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "Use access keys to log in to the Console",
+            "correction": "The Console uses password + MFA."
+          },
+          {
+            "trap": "Share access keys with teammates for convenience",
+            "correction": "Access keys are secret like passwords and must not be shared."
+          }
+        ],
+        "beyondSource": [
+          "For applications on AWS, prefer IAM roles over long-lived access keys (covered in the next section)."
+        ]
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "6c6e5d0d-9aa9-4898-a507-a2559e070a4b",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:43.451Z"
+        },
+        "flashcards": {
+          "requestId": "fa345a30-b437-4b1a-9bc3-488a6cac9dab",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:43.572Z"
+        },
+        "quiz": {
+          "requestId": "b52144d6-8169-4a3a-bf03-a670523499c6",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:43.687Z"
+        }
+      }
+    },
+    {
+      "id": "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "1a7eab28-c656-485a-8c23-f06891ebbbf5",
+      "title": "IAM Roles, Security Tools & Best Practices",
+      "objective": "Use roles to give AWS services permissions and choose the right IAM audit tool for a review.",
+      "keyTopics": [
+        "IAM roles for services",
+        "IAM Credentials Report",
+        "IAM Access Advisor",
+        "IAM best practices"
+      ],
+      "pageStart": 37,
+      "pageEnd": 40,
+      "text": "[Page 37]\nIAM Roles for Services\n• \tSome AWS service will need to\nperform actions on your behalf\n• \tTo do so, we will assign\npermissions \tto AWS services\nwith \tIAM Roles\n• \tCommon roles:\n• \tEC2 Instance Roles\n• \tLambda Function Roles\n• \tRoles for CloudFormation\nEC2 Instance\n(virtual server)\nIAM Role\nAccess AWS\n\n[Page 38]\nIAM Security Tools\n• \tIAM Credentials Report (account-level)\n• \ta report that lists all your account's users and the status of their various\ncredentials\n• \tIAM Access Advisor (user-level)\n• \tAccess advisor shows the service permissions granted to a user and when those\nservices were last accessed.\n• \tYou can use this information to revise your policies.\n\n[Page 39]\nIAM Guidelines & Best Practices\n• \tDon’t use the root account except for AWS account setup\n• \tOne physical user = One AWS \tuser\n• \tAssign users to groups \tand assign permissions to groups\n• \tCreate a \tstrong password policy\n• \tUse and enforce the use of \tMulti Factor Authentication (MFA)\n• \tCreate and use \tRoles \tfor giving permissions to AWS services\n• \tUse Access Keys for Programmatic Access (CLI / SDK)\n• \tAudit permissions of your account using IAM Credentials Report & IAM\nAccess Advisor\n• \tNever share IAM users & Access Keys\n\n[Page 40]\nIAM Section \t– \tSummary\n• \tUsers: \tmapped to a physical user, has a password for AWS Console\n• \tGroups: contains users only\n• \tPolicies: \tJSON document that outlines permissions for users or groups\n• \tRoles: \tfor EC2 instances or AWS services\n• \tSecurity: \tMFA + Password Policy\n• \tAWS CLI: manage your AWS services using the command-line\n• \tAWS SDK: manage your AWS services using a programming language\n• \tAccess Keys: \taccess AWS using the CLI or SDK\n• \tAudit: IAM Credential Reports & IAM Access Advisor",
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nIAM roles give AWS services permissions to act on your behalf, so applications on AWS do not need stored user credentials. Two audit tools review IAM: the account-level Credentials Report and the user-level Access Advisor. The best-practice list summarises the whole IAM chapter and is heavily tested.\n\n## Core Concepts\n\n- **IAM role:** An identity with permissions that AWS services can use to perform actions on your behalf.\n- **EC2 instance role:** A role assigned to an EC2 instance so its applications can access AWS.\n- **IAM Credentials Report:** Account-level report listing all users and the status of their credentials.\n- **IAM Access Advisor:** User-level view of service permissions granted and when each was last accessed.\n\n## Must Remember\n\n- Some AWS services need to perform actions on your behalf; give them permissions with IAM roles.\n- Common roles: EC2 instance roles, Lambda function roles, roles for CloudFormation.\n- Credentials Report = account level; Access Advisor = user level.\n- Use Access Advisor's last-accessed data to revise and tighten policies.\n- Best practice: one physical user = one AWS user.\n- Best practice: assign users to groups and permissions to groups.\n- Best practice: strong password policy and enforced MFA.\n- Best practice: use roles for AWS services and access keys for programmatic access (CLI/SDK).\n- Never share IAM users or access keys.\n\n## Key Comparisons\n\n- **Credentials Report vs Access Advisor:** Report: all users' credential status account-wide. Advisor: one user's permitted services and last access.\n- **IAM user vs IAM role:** A user is a person with long-term credentials; a role is assumed by a service to act on your behalf.\n\n## Common Misunderstandings\n\n- Access Advisor does not list every user's credential status; that is the Credentials Report.\n- Roles are not a replacement for one user per person; they give services permissions.\n\n## Mental Models\n\n- A role is a hat an AWS service puts on to get permissions; it does not belong to a person.\n\n## When to Use Which\n\n- An application on EC2 must read from S3 → **An EC2 instance role**\n- Find users without MFA or with old access keys → **IAM Credentials Report**\n- Remove permissions a user never uses → **IAM Access Advisor**\n\n## Patterns to Recognize\n\n- A service needs to act on your behalf → **An IAM role**\n- Account-wide credential status audit → **Credentials Report**\n- Services last accessed by a user → **Access Advisor**\n\n## Exam Traps\n\n- “Store access keys on an EC2 instance for its application” — Attach an IAM role to the instance.\n- “Access Advisor lists all users and their credential status” — That is the IAM Credentials Report.\n- “Assign permissions directly to every user” — Assign users to groups and permissions to groups.\n\n## Beyond the Source (tutor knowledge)\n\n- Roles provide temporary credentials that rotate automatically, which is why they are preferred over access keys on AWS compute.",
+        "keyPoints": [
+          "Some AWS services need to perform actions on your behalf; give them permissions with IAM roles.",
+          "Common roles: EC2 instance roles, Lambda function roles, roles for CloudFormation.",
+          "Credentials Report = account level; Access Advisor = user level.",
+          "Use Access Advisor's last-accessed data to revise and tighten policies.",
+          "Best practice: one physical user = one AWS user.",
+          "Best practice: assign users to groups and permissions to groups.",
+          "Best practice: strong password policy and enforced MFA.",
+          "Best practice: use roles for AWS services and access keys for programmatic access (CLI/SDK).",
+          "Never share IAM users or access keys."
+        ],
+        "supplement": "- Roles provide temporary credentials that rotate automatically, which is why they are preferred over access keys on AWS compute.",
+        "cards": [
+          {
+            "id": "58d51a94-935f-4d97-b50d-b8038e36e6dc",
+            "question": "Purpose of an IAM role for services?",
+            "answer": "Let AWS services act on your behalf",
+            "group": "IAM roles",
+            "keyTopic": "IAM roles for services",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-roles-for-services"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "8bff4dab-b93c-4f08-a525-a68e7a7a55f2",
+            "question": "Three common role types named in the course?",
+            "answer": "EC2 instance roles\nLambda function roles\nRoles for CloudFormation",
+            "group": "IAM roles",
+            "keyTopic": "IAM roles for services",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-roles-for-services"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "cb5cc094-5496-45bd-a1fb-aa3c6b651d23",
+            "question": "How should an app on EC2 get AWS permissions?",
+            "answer": "Through an EC2 instance role",
+            "group": "IAM roles",
+            "keyTopic": "IAM roles for services",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-roles-for-services"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "40980a53-c1f3-4597-b5d6-8c21fdc07c55",
+            "question": "Scope of the IAM Credentials Report?",
+            "answer": "Account level",
+            "group": "Security tools",
+            "keyTopic": "IAM Credentials Report",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-credentials-report"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "89f8ea84-76ab-4634-809c-f3e9e1b5f337",
+            "question": "What does the Credentials Report list?",
+            "answer": "All users and their credential status",
+            "group": "Security tools",
+            "keyTopic": "IAM Credentials Report",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-credentials-report"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b6f5a0cb-76a1-4f46-88eb-b69a239a11b2",
+            "question": "Scope of IAM Access Advisor?",
+            "answer": "User level",
+            "group": "Security tools",
+            "keyTopic": "IAM Access Advisor",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-access-advisor"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "cb23ec7d-965f-400a-b2f3-815a9da67ec5",
+            "question": "What does Access Advisor show?",
+            "answer": "Granted services and when last accessed",
+            "group": "Security tools",
+            "keyTopic": "IAM Access Advisor",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-access-advisor"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "dc2a1b91-83ee-4ec8-a308-07c932ee217d",
+            "question": "What is Access Advisor data used for?",
+            "answer": "Revising policies toward least privilege",
+            "group": "Security tools",
+            "keyTopic": "IAM Access Advisor",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-access-advisor"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a2f1decc-dcdf-4c75-99ab-4c56d91c726c",
+            "question": "When should the root account be used?",
+            "answer": "Only for AWS account setup",
+            "group": "Best practices",
+            "keyTopic": "IAM best practices",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-best-practices"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b19d64df-3f05-4bc7-b242-cd34a4478c80",
+            "question": "Mapping between physical users and AWS users?",
+            "answer": "One physical user = one AWS user",
+            "group": "Best practices",
+            "keyTopic": "IAM best practices",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-best-practices"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "0834dc09-f7c7-45a6-b1ba-eafdc4c1cf55",
+            "question": "Best practice for assigning permissions?",
+            "answer": "Assign to groups, add users to groups",
+            "group": "Best practices",
+            "keyTopic": "IAM best practices",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-best-practices"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "653cf022-3594-4fe7-994a-30fae6bcf00e",
+            "question": "What should be used for programmatic access?",
+            "answer": "Access keys (CLI / SDK)",
+            "group": "Best practices",
+            "keyTopic": "IAM best practices",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-best-practices"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "696f7db9-0a95-44f2-9bf5-9dddd43c07ed",
+            "question": "Which two tools audit IAM permissions?",
+            "answer": "Credentials Report and Access Advisor",
+            "group": "Best practices",
+            "keyTopic": "IAM best practices",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-best-practices"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "62511dfa-e908-4a9b-9ea4-f25cce608002",
+            "question": "What must never be shared?",
+            "answer": "IAM users and access keys",
+            "group": "Best practices",
+            "keyTopic": "IAM best practices",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-best-practices"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "36d7df7c-2f76-4af4-8407-265da474b4bb",
+            "question": "Which authentication control should be enforced for users?",
+            "answer": "MFA",
+            "group": "Best practices",
+            "keyTopic": "IAM best practices",
+            "origin": "source",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-best-practices"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:43.954Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "An application on an EC2 instance needs to read objects from S3. What is the recommended way to grant access?",
+            "options": [
+              "Store an IAM user's access keys on the instance",
+              "Attach an IAM role to the EC2 instance",
+              "Use the root account credentials",
+              "Put the instance in an IAM group"
+            ],
+            "correctIndex": 1,
+            "explanation": "An EC2 instance role lets the service act on your behalf without stored keys; stored or root credentials are insecure, and groups contain users only.",
+            "keyTopic": "IAM roles for services",
+            "kind": "scenario",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-roles-for-services"
+            ]
+          },
+          {
+            "question": "A security team must list every IAM user and whether each has MFA and active access keys. Which tool should they use?",
+            "options": [
+              "IAM Access Advisor",
+              "IAM Credentials Report",
+              "IAM password policy",
+              "AWS CLI profile list"
+            ],
+            "correctIndex": 1,
+            "explanation": "The Credentials Report is account-level and lists all users' credential status; Access Advisor is per user, the password policy sets rules, and CLI profiles are local configuration.",
+            "keyTopic": "IAM Credentials Report",
+            "kind": "scenario",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-credentials-report"
+            ]
+          },
+          {
+            "question": "An administrator wants to remove permissions a developer has but never uses. Which tool shows the evidence?",
+            "options": [
+              "IAM Credentials Report",
+              "IAM Access Advisor",
+              "MFA device settings",
+              "The root account dashboard"
+            ],
+            "correctIndex": 1,
+            "explanation": "Access Advisor shows granted services and when they were last accessed, guiding policy tightening; the Credentials Report covers credential status, not service usage.",
+            "keyTopic": "IAM Access Advisor",
+            "kind": "scenario",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-access-advisor"
+            ]
+          },
+          {
+            "question": "Two contractors share one IAM user to save time. Which best practice does this violate?",
+            "options": [
+              "Use roles for services",
+              "One physical user = one AWS user",
+              "Use access keys for the CLI",
+              "Audit with Access Advisor"
+            ],
+            "correctIndex": 1,
+            "explanation": "Each person needs their own user for accountability; the other practices are unrelated to sharing a user identity.",
+            "keyTopic": "IAM best practices",
+            "kind": "scenario",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-best-practices"
+            ]
+          },
+          {
+            "question": "A Lambda function must write to a DynamoDB table. How should it receive permissions?",
+            "options": [
+              "A Lambda function role",
+              "An IAM user with access keys in environment variables",
+              "Membership of an IAM group",
+              "The root account"
+            ],
+            "correctIndex": 0,
+            "explanation": "Lambda function roles let the service act on your behalf; embedded user keys and root are insecure, and functions cannot join IAM groups.",
+            "keyTopic": "IAM roles for services",
+            "kind": "scenario",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-roles-for-services"
+            ]
+          },
+          {
+            "question": "Which pairing of tool and scope is correct?",
+            "options": [
+              "Credentials Report - user level",
+              "Access Advisor - account level",
+              "Credentials Report - account level",
+              "Access Advisor - Region level"
+            ],
+            "correctIndex": 2,
+            "explanation": "The Credentials Report is account level and Access Advisor is user level; IAM is global so Region level is wrong.",
+            "keyTopic": "IAM Credentials Report",
+            "kind": "comparison",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-credentials-report"
+            ]
+          },
+          {
+            "question": "Which is an IAM best practice from the course?",
+            "options": [
+              "Assign permissions directly to every user",
+              "Use the root account for daily tasks",
+              "Assign users to groups and permissions to groups",
+              "Share access keys within a team"
+            ],
+            "correctIndex": 2,
+            "explanation": "Group-based permissions are a listed best practice; direct per-user permissions, daily root use and shared keys contradict it.",
+            "keyTopic": "IAM best practices",
+            "kind": "concept",
+            "objectiveIds": [
+              "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138::iam-best-practices"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v1",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T10:24:43.820Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 37,
+            "pageEnd": 40,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "IAM roles give AWS services permissions to act on your behalf, so applications on AWS do not need stored user credentials. Two audit tools review IAM: the account-level Credentials Report and the user-level Access Advisor. The best-practice list summarises the whole IAM chapter and is heavily tested.",
+        "coreConcepts": [
+          {
+            "term": "IAM role",
+            "definition": "An identity with permissions that AWS services can use to perform actions on your behalf."
+          },
+          {
+            "term": "EC2 instance role",
+            "definition": "A role assigned to an EC2 instance so its applications can access AWS."
+          },
+          {
+            "term": "IAM Credentials Report",
+            "definition": "Account-level report listing all users and the status of their credentials."
+          },
+          {
+            "term": "IAM Access Advisor",
+            "definition": "User-level view of service permissions granted and when each was last accessed."
+          }
+        ],
+        "mustRemember": [
+          "Some AWS services need to perform actions on your behalf; give them permissions with IAM roles.",
+          "Common roles: EC2 instance roles, Lambda function roles, roles for CloudFormation.",
+          "Credentials Report = account level; Access Advisor = user level.",
+          "Use Access Advisor's last-accessed data to revise and tighten policies.",
+          "Best practice: one physical user = one AWS user.",
+          "Best practice: assign users to groups and permissions to groups.",
+          "Best practice: strong password policy and enforced MFA.",
+          "Best practice: use roles for AWS services and access keys for programmatic access (CLI/SDK).",
+          "Never share IAM users or access keys."
+        ],
+        "keyComparisons": [
+          {
+            "items": "Credentials Report vs Access Advisor",
+            "difference": "Report: all users' credential status account-wide. Advisor: one user's permitted services and last access."
+          },
+          {
+            "items": "IAM user vs IAM role",
+            "difference": "A user is a person with long-term credentials; a role is assumed by a service to act on your behalf."
+          }
+        ],
+        "commonMisunderstandings": [
+          "Access Advisor does not list every user's credential status; that is the Credentials Report.",
+          "Roles are not a replacement for one user per person; they give services permissions."
+        ],
+        "mentalModels": [
+          "A role is a hat an AWS service puts on to get permissions; it does not belong to a person."
+        ],
+        "edgeCases": [],
+        "whenToUse": [
+          {
+            "situation": "An application on EC2 must read from S3",
+            "use": "An EC2 instance role"
+          },
+          {
+            "situation": "Find users without MFA or with old access keys",
+            "use": "IAM Credentials Report"
+          },
+          {
+            "situation": "Remove permissions a user never uses",
+            "use": "IAM Access Advisor"
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "A service needs to act on your behalf",
+            "indicates": "An IAM role"
+          },
+          {
+            "signal": "Account-wide credential status audit",
+            "indicates": "Credentials Report"
+          },
+          {
+            "signal": "Services last accessed by a user",
+            "indicates": "Access Advisor"
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "Store access keys on an EC2 instance for its application",
+            "correction": "Attach an IAM role to the instance."
+          },
+          {
+            "trap": "Access Advisor lists all users and their credential status",
+            "correction": "That is the IAM Credentials Report."
+          },
+          {
+            "trap": "Assign permissions directly to every user",
+            "correction": "Assign users to groups and permissions to groups."
+          }
+        ],
+        "beyondSource": [
+          "Roles provide temporary credentials that rotate automatically, which is why they are preferred over access keys on AWS compute."
+        ]
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "1e02ba69-904b-438d-92ce-f6db46241859",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:43.820Z"
+        },
+        "flashcards": {
+          "requestId": "2e402faa-6272-4040-9e31-acee12d95fee",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:43.954Z"
+        },
+        "quiz": {
+          "requestId": "aa12df91-aaa7-4f2f-a263-4ee70e64dd3c",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:44.092Z"
+        }
+      }
+    }
+  ]
+}

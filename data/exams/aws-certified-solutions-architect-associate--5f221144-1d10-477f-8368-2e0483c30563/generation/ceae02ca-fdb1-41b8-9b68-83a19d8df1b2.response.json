@@ -1,0 +1,73 @@
+{
+  "sections": [
+    {
+      "title": "EBS Volumes, Delete-on-Termination and Snapshots",
+      "pageStart": 94,
+      "pageEnd": 100,
+      "keyTopics": [
+        "EBS as network drive",
+        "EBS bound to one AZ",
+        "EBS attached to one instance",
+        "Provisioned capacity and IOPS billing",
+        "Snapshot to move volume across AZ",
+        "Delete on Termination attribute",
+        "Root volume deleted by default",
+        "EBS Snapshot Archive",
+        "Snapshot Recycle Bin retention",
+        "Fast Snapshot Restore"
+      ],
+      "objective": "Explain how EBS volumes attach, are locked to an AZ, are billed, and how snapshots, archive tier, recycle bin and FSR solve backup, migration and restore-latency requirements."
+    },
+    {
+      "title": "AMIs and EC2 Instance Store",
+      "pageStart": 101,
+      "pageEnd": 104,
+      "keyTopics": [
+        "AMI definition and regional scope",
+        "AMI types: public, own, Marketplace",
+        "AMI creation process",
+        "Instance store ephemeral storage",
+        "Instance store high IOPS",
+        "Instance store buffer and cache use cases",
+        "Instance store data loss risk"
+      ],
+      "objective": "Choose between AMI-based pre-packaged launches and EC2 Instance Store for high-IOPS, ephemeral workloads, and state why instance store data is lost on stop or hardware failure."
+    },
+    {
+      "title": "EBS Volume Types and Multi-Attach",
+      "pageStart": 105,
+      "pageEnd": 110,
+      "keyTopics": [
+        "Six EBS volume types",
+        "Boot volume support by type",
+        "gp3 baseline and independent IOPS",
+        "gp2 IOPS-to-size ratio",
+        "io1 and io2 Block Express PIOPS",
+        "st1 and sc1 HDD throughput",
+        "HDD cannot be boot volume",
+        "EBS Multi-Attach io1/io2",
+        "Cluster-aware file system requirement"
+      ],
+      "objective": "Select the EBS volume type matching IOPS, throughput, latency and cost needs, and decide when io1/io2 Multi-Attach with a cluster-aware file system is appropriate."
+    },
+    {
+      "title": "EBS Encryption and Amazon EFS",
+      "pageStart": 111,
+      "pageEnd": 118,
+      "keyTopics": [
+        "EBS encryption at rest and in flight",
+        "KMS AES-256 keys",
+        "Encrypting an unencrypted volume via snapshot",
+        "EFS managed NFS multi-AZ",
+        "EFS Linux-only POSIX",
+        "EFS performance modes",
+        "EFS throughput modes",
+        "EFS storage classes and lifecycle",
+        "EFS One Zone and IA",
+        "EBS vs EFS vs Instance Store"
+      ],
+      "objective": "Explain EBS encryption at rest and its snapshot-based re-encryption path, then choose EFS versus EBS versus Instance Store based on multi-AZ sharing, OS compatibility, performance mode and cost."
+    }
+  ],
+  "notes": "Page 109 is a summary slide linking to AWS docs; folded into the volume-types section. Page 104 is a diagram-only slide about instance store IOPS, kept with pages 103/105 context. Exam emphasis: Task 3.1 high-performance storage (instance store vs gp3 vs io2 latency/IOPS), Task 4.1 cost (gp3 vs gp2 sizing, st1/sc1 vs SSD, EFS IA/Archive, Snapshot Archive), Task 1.3 encryption at rest (KMS, snapshot copy encryption, EFS encryption). Distractors to expect: attaching an EBS volume across AZs, HDD as boot volume, Windows on EFS, gp2 IOPS raised independently of size, Multi-Attach on gp3."
+}

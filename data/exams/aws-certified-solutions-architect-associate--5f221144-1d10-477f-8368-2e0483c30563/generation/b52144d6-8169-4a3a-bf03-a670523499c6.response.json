@@ -1,0 +1,108 @@
+{
+  "questions": [
+    {
+      "question": "A user's console password was leaked in a phishing attack, but the attacker could not sign in. Which control most likely stopped them?",
+      "options": [
+        "A strong password policy",
+        "Multi-Factor Authentication",
+        "An access key rotation",
+        "An inline policy"
+      ],
+      "correctIndex": 1,
+      "explanation": "MFA requires a device the user owns, so a stolen password is not enough; password policy strength does not help once leaked, access keys do not protect Console sign-in, and policies govern permissions not sign-in.",
+      "keyTopic": "Multi-Factor Authentication",
+      "kind": "scenario"
+    },
+    {
+      "question": "A DevOps engineer wants to automate nightly resource clean-up from a Linux shell script. Which access method fits?",
+      "options": [
+        "AWS Management Console",
+        "AWS CLI with access keys",
+        "An MFA hardware fob only",
+        "An IAM password policy"
+      ],
+      "correctIndex": 1,
+      "explanation": "The CLI calls AWS APIs from scripts using access keys; the Console is interactive, and MFA devices or password policies are protections, not access methods.",
+      "keyTopic": "AWS CLI",
+      "kind": "scenario"
+    },
+    {
+      "question": "A Python application must upload files to S3 from its own code. What should the developers use?",
+      "options": [
+        "The AWS SDK embedded in the application",
+        "The Management Console",
+        "A U2F security key",
+        "The IAM credentials report"
+      ],
+      "correctIndex": 0,
+      "explanation": "The SDK provides language libraries for calling AWS from code; the Console is manual, a U2F key is an MFA device, and the credentials report is an audit tool.",
+      "keyTopic": "AWS SDK",
+      "kind": "scenario"
+    },
+    {
+      "question": "Security requires that IAM user passwords expire every 90 days and cannot be reused. Where is this configured?",
+      "options": [
+        "In each user's inline policy",
+        "In the IAM password policy",
+        "In the MFA device settings",
+        "In the AWS CLI configuration"
+      ],
+      "correctIndex": 1,
+      "explanation": "Expiration and reuse prevention are password policy settings; inline policies grant permissions, MFA settings manage devices, and CLI configuration stores credentials locally.",
+      "keyTopic": "Password policy",
+      "kind": "scenario"
+    },
+    {
+      "question": "An administrator manages several IAM users and the root account and wants one physical MFA device for all of them. Which option supports this?",
+      "options": [
+        "Virtual MFA app on one phone only",
+        "U2F security key such as YubiKey",
+        "A hardware key fob per account",
+        "A shared access key"
+      ],
+      "correctIndex": 1,
+      "explanation": "One U2F security key supports multiple root and IAM users; the course lists virtual apps as phone-only per device, fobs as per-device tokens, and shared access keys are not MFA.",
+      "keyTopic": "MFA device options",
+      "kind": "scenario"
+    },
+    {
+      "question": "A teammate asks you to email your Secret Access Key so they can run a script. What is the correct response?",
+      "options": [
+        "Send it encrypted",
+        "Send only the Access Key ID",
+        "Refuse; access keys must never be shared",
+        "Send it and rotate it next month"
+      ],
+      "correctIndex": 2,
+      "explanation": "Access keys are secret like passwords and must not be shared; encryption, partial sharing or delayed rotation still hand someone else your identity.",
+      "keyTopic": "Access keys",
+      "kind": "scenario"
+    },
+    {
+      "question": "Which pairing of access method and protection is correct?",
+      "options": [
+        "Console - access keys",
+        "CLI - password + MFA only",
+        "SDK - access keys",
+        "Console - Secret Access Key"
+      ],
+      "correctIndex": 2,
+      "explanation": "The SDK uses access keys; the Console uses password + MFA, and the CLI also uses access keys rather than password + MFA.",
+      "keyTopic": "Access methods",
+      "kind": "comparison"
+    },
+    {
+      "question": "Which statement about access keys is correct?",
+      "options": [
+        "The Access Key ID works like a password",
+        "Access keys are generated in the Console",
+        "Access keys sign users in to the Console",
+        "AWS staff manage your access keys for you"
+      ],
+      "correctIndex": 1,
+      "explanation": "Access keys are generated through the Console and managed by the user; the ID is like a username, keys are for CLI/SDK not Console sign-in.",
+      "keyTopic": "Access keys",
+      "kind": "concept"
+    }
+  ]
+}

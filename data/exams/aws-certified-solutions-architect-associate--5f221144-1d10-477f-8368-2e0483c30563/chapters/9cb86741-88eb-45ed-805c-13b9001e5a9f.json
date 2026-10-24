@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "9cb86741-88eb-45ed-805c-13b9001e5a9f",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 8,
+    "title": "Amazon Route 53",
+    "pageStart": 194,
+    "pageEnd": 227,
+    "description": "DNS fundamentals, record types, TTL, alias records, routing policies, health checks and hybrid DNS.",
+    "examFocus": [
+      "Task 2.2: DNS failover and health checks",
+      "Task 3.4: latency and geolocation routing"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

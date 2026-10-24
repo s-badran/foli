@@ -1,0 +1,99 @@
+{
+  "sections": [
+    {
+      "title": "EC2 Fundamentals, Sizing Options and User Data",
+      "pageStart": 42,
+      "pageEnd": 45,
+      "keyTopics": [
+        "EC2 as IaaS: renting VMs",
+        "EBS, ELB and ASG as part of EC2",
+        "OS, CPU, RAM sizing options",
+        "EBS/EFS vs EC2 Instance Store storage",
+        "Network card speed and public IP",
+        "Security group firewall rules",
+        "EC2 User Data bootstrapping",
+        "User Data runs once at first start as root"
+      ],
+      "objective": "Identify the configuration options available when launching an EC2 instance and explain what EC2 User Data does, when it runs, and under which user."
+    },
+    {
+      "title": "EC2 Instance Types and Naming Convention",
+      "pageStart": 46,
+      "pageEnd": 51,
+      "keyTopics": [
+        "Instance naming: class, generation, size",
+        "General Purpose (t2.micro, balanced)",
+        "Compute Optimized use cases",
+        "Memory Optimized use cases",
+        "Storage Optimized use cases",
+        "Accelerated Computing and HPC Optimized families",
+        "vCPU, memory, storage, network, EBS bandwidth specs"
+      ],
+      "objective": "Select the appropriate EC2 instance family and size for a given workload (batch processing, in-memory cache, OLTP, web server) and decode the m5.2xlarge naming convention."
+    },
+    {
+      "title": "Security Groups: Rules, Defaults and Referencing",
+      "pageStart": 52,
+      "pageEnd": 57,
+      "keyTopics": [
+        "Security groups as stateful-less firewall",
+        "Inbound vs outbound rules",
+        "Rules by IP range or by security group",
+        "Attach to multiple instances, region/VPC scope",
+        "Inbound blocked by default, outbound allowed by default",
+        "Timeout vs connection refused diagnosis",
+        "Security group referencing other security groups",
+        "Classic ports: 22, 21, 80, 443, 3389"
+      ],
+      "objective": "Design and troubleshoot security group rules, distinguish timeout from connection-refused symptoms, and choose safe default and port configurations for web and SSH access."
+    },
+    {
+      "title": "Connecting to EC2: SSH, Putty and EC2 Instance Connect",
+      "pageStart": 58,
+      "pageEnd": 63,
+      "keyTopics": [
+        "SSH tool per OS: Mac, Linux, Windows, Putty",
+        "EC2 Instance Connect in-browser",
+        "Instance Connect uses temporary key, Amazon Linux 2",
+        "Port 22 must be open for Instance Connect",
+        "SSH config ~/.ssh/config",
+        "SSH troubleshooting escalation path"
+      ],
+      "objective": "Choose the right method to connect to a Linux EC2 instance for a given client OS and explain the prerequisites and limits of EC2 Instance Connect."
+    },
+    {
+      "title": "EC2 Purchasing Options Compared",
+      "pageStart": 64,
+      "pageEnd": 73,
+      "keyTopics": [
+        "On-Demand: per-second billing, no commitment",
+        "Reserved Instances: 1 or 3 years, attributes fixed",
+        "Convertible Reserved: change type, family, OS, scope, tenancy",
+        "Savings Plans: $/hour commitment, flexible size/OS/tenancy",
+        "Spot: up to 90% off, can be lost",
+        "Dedicated Hosts: BYOL, compliance, most expensive",
+        "Dedicated Instances: no control over placement",
+        "Capacity Reservations: specific AZ, no discount",
+        "Hotel analogy and price comparison (m4.large)"
+      ],
+      "objective": "Match workloads (steady-state database, batch jobs, licensed software, short-term AZ-bound) to the correct EC2 purchasing option and justify the trade-off between cost and reliability."
+    },
+    {
+      "title": "Spot Instances, Requests and Spot Fleets",
+      "pageStart": 74,
+      "pageEnd": 77,
+      "keyTopics": [
+        "Max spot price vs current spot price",
+        "Two-minute grace period on interruption",
+        "Cancel open/active/disabled spot requests",
+        "Cancelling request does not terminate instances",
+        "Spot Fleets: Spot plus optional On-Demand",
+        "Launch pools: type, OS, AZ",
+        "Strategies: lowestPrice, diversified, capacityOptimized",
+        "priceCapacityOptimized recommended"
+      ],
+      "objective": "Explain how Spot requests are priced and interrupted, how to terminate Spot instances correctly, and select the right Spot Fleet allocation strategy for cost, availability or capacity needs."
+    }
+  ],
+  "notes": "Page 41 is a title slide and page 45 a hands-on launch demo; both are merged or skipped. Exam guide emphasis: Task 3.2/4.2 make instance family selection and purchasing-option trade-offs the most tested items — expect distractors that swap Reserved vs Savings Plans flexibility and Capacity Resat Reservations vs Reserved pricing. Task 1.2 makes security groups high-value: remember timeout = security group, refused = application; inbound denied by default, outbound allowed by default. Discount percentages (72%, 66%, 90%) are illustrative only; do not memorize exact figures. Spot Fleet strategies and the cancel-then-terminate sequence are common scenario traps. Background: Spot Fleet is largely superseded by EC2 Auto Scaling mixed-instance policies, but the allocation strategy names remain examinable."
+}

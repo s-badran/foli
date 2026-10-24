@@ -1,0 +1,30 @@
+{
+  "overview": "AWS is a cloud provider: it offers servers and managed services on demand that scale easily, so teams build applications without owning hardware. The history and market-share slides are context only; the exam tests what the services do, not AWS business facts.",
+  "coreConcepts": [
+    {
+      "term": "Cloud provider",
+      "definition": "A company that rents compute, storage and managed services on demand over the internet."
+    },
+    {
+      "term": "On-demand",
+      "definition": "Resources are provisioned when needed and released when not, paying only for use."
+    },
+    {
+      "term": "Scalability",
+      "definition": "Ability to grow or shrink capacity easily as load changes."
+    }
+  ],
+  "mustRemember": [
+    "AWS provides servers and services you use on demand and scale easily.",
+    "Use cases span enterprise IT, backup and storage, big data analytics, website hosting, mobile and social apps, and gaming."
+  ],
+  "mentalModels": [
+    "Think of AWS as renting a data center by the minute instead of buying one."
+  ],
+  "examTraps": [
+    {
+      "trap": "Memorise AWS revenue and market-share figures",
+      "correction": "Business statistics are not tested; focus on what services do and when to use them."
+    }
+  ]
+}

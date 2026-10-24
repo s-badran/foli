@@ -1,0 +1,115 @@
+{
+  "overview": "Users are protected with a password policy and MFA, and reach AWS in three ways: the Management Console (password + MFA), the CLI and the SDK (both using access keys). Knowing which credential protects which access method is a frequent exam distinction.",
+  "coreConcepts": [
+    {
+      "term": "Password policy",
+      "definition": "Account rules for IAM user passwords: length, character types, change, expiration and reuse."
+    },
+    {
+      "term": "MFA",
+      "definition": "Multi-Factor Authentication: a password you know plus a security device you own."
+    },
+    {
+      "term": "Virtual MFA device",
+      "definition": "An authenticator app on a phone, such as Google Authenticator or Authy."
+    },
+    {
+      "term": "U2F security key",
+      "definition": "A physical key such as YubiKey; one key supports multiple root and IAM users."
+    },
+    {
+      "term": "Hardware key fob",
+      "definition": "A physical token generating codes, from third parties such as Gemalto (SurePassID for GovCloud)."
+    },
+    {
+      "term": "Access keys",
+      "definition": "Access Key ID plus Secret Access Key, used by the CLI and SDK."
+    },
+    {
+      "term": "AWS CLI",
+      "definition": "Open-source command-line tool calling AWS public APIs, used for scripting."
+    },
+    {
+      "term": "AWS SDK",
+      "definition": "Language-specific libraries embedded in your application to call AWS APIs."
+    }
+  ],
+  "mustRemember": [
+    "Three access methods: Management Console, CLI and SDK.",
+    "Console is protected by password + MFA; CLI and SDK are protected by access keys.",
+    "Access keys are generated through the Console and users manage their own.",
+    "Access Key ID is like a username; Secret Access Key is like a password.",
+    "Never share access keys.",
+    "MFA protects the account even if the password is stolen.",
+    "Protect the root account and IAM users with MFA.",
+    "The AWS CLI is built on the AWS SDK for Python."
+  ],
+  "keyComparisons": [
+    {
+      "items": "Console vs CLI vs SDK",
+      "difference": "Console: browser, password + MFA. CLI: shell commands. SDK: code libraries. CLI and SDK use access keys."
+    },
+    {
+      "items": "Access Key ID vs Secret Access Key",
+      "difference": "The ID identifies the key (like a username); the secret signs requests (like a password)."
+    },
+    {
+      "items": "Virtual MFA vs U2F key vs hardware fob",
+      "difference": "App on a phone vs physical USB key vs physical code-generating token."
+    }
+  ],
+  "commonMisunderstandings": [
+    "Access keys are not used to sign in to the Console.",
+    "MFA is not only for root; IAM users should use it too.",
+    "A password policy does not by itself add a second factor."
+  ],
+  "mentalModels": [
+    "MFA = something you know + something you have.",
+    "Access Key ID/Secret = username/password for programs."
+  ],
+  "edgeCases": [
+    "A single U2F security key can serve multiple root and IAM users.",
+    "GovCloud (US) has its own hardware key fob option."
+  ],
+  "whenToUse": [
+    {
+      "situation": "Automating tasks from a terminal or script",
+      "use": "AWS CLI with access keys"
+    },
+    {
+      "situation": "Calling AWS from application code",
+      "use": "AWS SDK"
+    },
+    {
+      "situation": "Interactive administration in a browser",
+      "use": "Management Console with password + MFA"
+    }
+  ],
+  "patternsToRecognize": [
+    {
+      "signal": "Password plus a device the user owns",
+      "indicates": "MFA"
+    },
+    {
+      "signal": "Access Key ID and Secret Access Key",
+      "indicates": "Programmatic access via CLI or SDK"
+    },
+    {
+      "signal": "Minimum length, character types, expiration, no reuse",
+      "indicates": "IAM password policy"
+    }
+  ],
+  "examTraps": [
+    {
+      "trap": "Use access keys to log in to the Console",
+      "correction": "The Console uses password + MFA."
+    },
+    {
+      "trap": "Share access keys with teammates for convenience",
+      "correction": "Access keys are secret like passwords and must not be shared."
+    }
+  ],
+  "beyondSource": [
+    "For applications on AWS, prefer IAM roles over long-lived access keys (covered in the next section)."
+  ]
+}

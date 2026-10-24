@@ -1,0 +1,18 @@
+{
+  "chapter": {
+    "id": "d1dd98e8-b5d5-4f02-b0c4-12780453950f",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 29,
+    "title": "White Papers & Architectures",
+    "pageStart": 855,
+    "pageEnd": 861,
+    "description": "Well-Architected Framework pillars, Trusted Advisor and reference architectures.",
+    "examFocus": [
+      "All domains: reasoning with the Well-Architected pillars"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

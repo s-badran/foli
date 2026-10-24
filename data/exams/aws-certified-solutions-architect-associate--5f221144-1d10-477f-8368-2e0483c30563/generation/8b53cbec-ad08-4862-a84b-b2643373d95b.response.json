@@ -1,0 +1,111 @@
+{
+  "overview": "AWS infrastructure is organised into Regions, each made of isolated Availability Zones built from data centers, plus edge locations close to users. Choosing a Region and spreading across AZs underpins every availability, latency and compliance question.",
+  "coreConcepts": [
+    {
+      "term": "Region",
+      "definition": "A geographic area containing a cluster of data centers, named like us-east-1 or eu-west-3."
+    },
+    {
+      "term": "Availability Zone (AZ)",
+      "definition": "One or more discrete data centers with redundant power, networking and connectivity inside a Region."
+    },
+    {
+      "term": "Edge location / Point of Presence",
+      "definition": "A site close to end users that delivers content with lower latency."
+    },
+    {
+      "term": "Global service",
+      "definition": "A service not tied to one Region, such as IAM, Route 53, CloudFront and WAF."
+    },
+    {
+      "term": "Region-scoped service",
+      "definition": "A service whose resources live in one Region, such as EC2, Elastic Beanstalk, Lambda and Rekognition."
+    }
+  ],
+  "mustRemember": [
+    "Most AWS services are Region-scoped.",
+    "A Region usually has 3 AZs: minimum 3, maximum 6.",
+    "AZ names add a letter to the Region name, e.g. ap-southeast-2a.",
+    "AZs are isolated from each other but linked with high-bandwidth, ultra-low-latency networking.",
+    "Data never leaves a Region without your explicit permission.",
+    "Not every service or feature is available in every Region.",
+    "Pricing varies from Region to Region.",
+    "AWS has 400+ Points of Presence in 90+ cities across 40+ countries."
+  ],
+  "keyComparisons": [
+    {
+      "items": "Region vs Availability Zone",
+      "difference": "A Region is a geographic area; an AZ is an isolated set of data centers inside it."
+    },
+    {
+      "items": "Availability Zone vs edge location",
+      "difference": "AZs run your workloads; edge locations cache and deliver content near users."
+    },
+    {
+      "items": "Global vs Region-scoped service",
+      "difference": "Global services such as IAM span all Regions; EC2 resources exist in one Region."
+    }
+  ],
+  "commonMisunderstandings": [
+    "An Availability Zone is not a Region; each Region contains multiple AZs.",
+    "An AZ is not always a single building; it is one or more data centers.",
+    "Launching in any Region does not guarantee every service is available there."
+  ],
+  "mentalModels": [
+    "Region = city, AZ = separate neighbourhoods with their own power, edge location = local delivery point.",
+    "Spreading across AZs protects against a single-site disaster inside one Region."
+  ],
+  "edgeCases": [
+    "A Region has at least 3 AZs, so multi-AZ designs are always possible within one Region."
+  ],
+  "whenToUse": [
+    {
+      "situation": "Data must stay in a specific country by law",
+      "use": "A Region in that jurisdiction (compliance first)"
+    },
+    {
+      "situation": "Users are concentrated in one geography",
+      "use": "The Region closest to them for lower latency"
+    },
+    {
+      "situation": "A needed service is new",
+      "use": "Check it is available in the target Region"
+    },
+    {
+      "situation": "Budget is the main constraint",
+      "use": "Compare Region pricing pages"
+    }
+  ],
+  "patternsToRecognize": [
+    {
+      "signal": "Names like us-east-1 or eu-west-3",
+      "indicates": "A Region"
+    },
+    {
+      "signal": "Names like ap-southeast-2a",
+      "indicates": "An Availability Zone"
+    },
+    {
+      "signal": "IAM, Route 53, CloudFront, WAF",
+      "indicates": "Global services"
+    },
+    {
+      "signal": "Lower latency content delivery worldwide",
+      "indicates": "Edge locations / Points of Presence"
+    }
+  ],
+  "examTraps": [
+    {
+      "trap": "An Availability Zone contains multiple Regions",
+      "correction": "A Region contains multiple AZs."
+    },
+    {
+      "trap": "IAM users must be created per Region",
+      "correction": "IAM is global."
+    },
+    {
+      "trap": "Pick the cheapest Region even if data residency rules apply",
+      "correction": "Compliance requirements come first."
+    }
+  ]
+}

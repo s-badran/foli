@@ -1,0 +1,26 @@
+{
+  "sections": [
+    {
+      "title": "IAM Users, Groups & Policies",
+      "pageStart": 24,
+      "pageEnd": 28,
+      "keyTopics": ["Root account", "IAM users", "IAM groups", "IAM policies", "Least privilege", "Policy inheritance", "Policy structure"],
+      "objective": "Explain how users, groups and JSON policies grant permissions, and read the elements of a policy statement."
+    },
+    {
+      "title": "Protecting & Accessing Accounts",
+      "pageStart": 29,
+      "pageEnd": 36,
+      "keyTopics": ["Password policy", "Multi-Factor Authentication", "MFA device options", "Access methods", "Access keys", "AWS CLI", "AWS SDK"],
+      "objective": "Choose the right authentication protection and access method for console, command-line and programmatic use."
+    },
+    {
+      "title": "IAM Roles, Security Tools & Best Practices",
+      "pageStart": 37,
+      "pageEnd": 40,
+      "keyTopics": ["IAM roles for services", "IAM Credentials Report", "IAM Access Advisor", "IAM best practices"],
+      "objective": "Use roles to give AWS services permissions and choose the right IAM audit tool for a review."
+    }
+  ],
+  "notes": ""
+}

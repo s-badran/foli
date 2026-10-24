@@ -3,7 +3,12 @@ node_modules/
 .cache/
 .cache-test-*/
 dist/
-data/
+# Generated study materials are tracked; only original sources, legacy copies
+# and rendered prompts (regenerable) stay out of git.
+data/uploads/
+data/study.json
+data/exams/*/sources/
+data/exams/*/generation/*.prompt.md
 test-results/
 playwright-report/
 .env

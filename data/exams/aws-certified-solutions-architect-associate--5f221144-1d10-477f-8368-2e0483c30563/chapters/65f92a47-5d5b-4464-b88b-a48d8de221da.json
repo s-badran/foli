@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "65f92a47-5d5b-4464-b88b-a48d8de221da",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 9,
+    "title": "Classic Solutions Architecture",
+    "pageStart": 228,
+    "pageEnd": 267,
+    "description": "Step-by-step evolution of stateless and stateful web applications, and Elastic Beanstalk.",
+    "examFocus": [
+      "Task 2.1: scalable web architectures",
+      "Task 2.2: removing single points of failure"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

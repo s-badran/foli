@@ -1,0 +1,106 @@
+{
+  "overview": "IAM is the global service that controls who can do what in an AWS account. People become users, users are organised into groups, and JSON policies attached to users or groups grant only the permissions they need.",
+  "coreConcepts": [
+    {
+      "term": "IAM",
+      "definition": "Identity and Access Management: a global service for users, groups, roles and permissions."
+    },
+    {
+      "term": "Root account",
+      "definition": "Account created by default with full access; should not be used or shared."
+    },
+    {
+      "term": "IAM user",
+      "definition": "An identity for one person in your organisation."
+    },
+    {
+      "term": "IAM group",
+      "definition": "A collection of users; groups contain users only, never other groups."
+    },
+    {
+      "term": "IAM policy",
+      "definition": "A JSON document defining the permissions of the users or groups it is attached to."
+    },
+    {
+      "term": "Inline policy",
+      "definition": "A policy attached directly to a single user rather than inherited from a group."
+    },
+    {
+      "term": "Least privilege",
+      "definition": "Grant no more permissions than a user needs."
+    }
+  ],
+  "mustRemember": [
+    "IAM is a global service.",
+    "The root account is created by default and should not be used or shared.",
+    "Groups only contain users, not other groups.",
+    "A user can belong to no group or to multiple groups.",
+    "A user in several groups inherits the policies of all of them.",
+    "Policy structure: Version (always \"2012-10-17\"), optional Id, and one or more Statements.",
+    "Statement elements: optional Sid, Effect, Principal, Action, Resource, optional Condition.",
+    "Effect is either Allow or Deny."
+  ],
+  "keyComparisons": [
+    {
+      "items": "Group policy vs inline policy",
+      "difference": "Group policies apply to every member; an inline policy applies only to the one user it is attached to."
+    },
+    {
+      "items": "Action vs Resource",
+      "difference": "Action lists the API calls; Resource lists what those calls apply to."
+    }
+  ],
+  "commonMisunderstandings": [
+    "Groups cannot be nested inside other groups.",
+    "Users do not have to belong to a group.",
+    "Least privilege does not mean granting broad access for convenience."
+  ],
+  "mentalModels": [
+    "User = a person, group = a team, policy = the team's permission slip in JSON.",
+    "Read a statement as: Effect the Principal to do Action on Resource when Condition holds."
+  ],
+  "edgeCases": [
+    "A user outside any group can still get permissions through an inline policy."
+  ],
+  "whenToUse": [
+    {
+      "situation": "Several people need the same permissions",
+      "use": "Put them in a group and attach the policy to the group"
+    },
+    {
+      "situation": "One user needs a one-off extra permission",
+      "use": "An inline policy on that user"
+    },
+    {
+      "situation": "Initial account setup only",
+      "use": "The root account"
+    }
+  ],
+  "patternsToRecognize": [
+    {
+      "signal": "JSON with Effect, Action and Resource",
+      "indicates": "An IAM policy statement"
+    },
+    {
+      "signal": "\"Grant only what is needed\"",
+      "indicates": "Least privilege"
+    }
+  ],
+  "examTraps": [
+    {
+      "trap": "Use the root account for daily administration",
+      "correction": "Create IAM users; reserve root for account setup."
+    },
+    {
+      "trap": "Groups can contain other groups",
+      "correction": "Groups contain users only."
+    },
+    {
+      "trap": "A user can belong to only one group",
+      "correction": "Users can belong to multiple groups."
+    }
+  ],
+  "beyondSource": [
+    "When Allow and an explicit Deny both apply to a request, the explicit Deny wins."
+  ]
+}

@@ -1,0 +1,402 @@
+{
+  "chapter": {
+    "id": "9a4c5ff5-9296-4e67-b0f3-b11f7cc0afb4",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 5,
+    "title": "Amazon EC2 – Instance Storage",
+    "pageStart": 94,
+    "pageEnd": 118,
+    "description": "EBS volumes and snapshots, AMIs, instance store, EBS volume types, Multi-Attach, encryption and EFS.",
+    "examFocus": [
+      "Task 3.1: high-performing storage",
+      "Task 4.1: cost-optimized storage",
+      "Task 1.3: data encryption at rest"
+    ],
+    "objectives": [
+      {
+        "id": "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-as-network-drive",
+        "title": "EBS as network drive",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 94,
+        "pageEnd": 100,
+        "assessment": "recall"
+      },
+      {
+        "id": "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-bound-to-one-az",
+        "title": "EBS bound to one AZ",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 94,
+        "pageEnd": 100,
+        "assessment": "recall"
+      },
+      {
+        "id": "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-attached-to-one-instance",
+        "title": "EBS attached to one instance",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 94,
+        "pageEnd": 100,
+        "assessment": "recall"
+      },
+      {
+        "id": "afef90a5-a64e-435c-a6e7-d7fa3a572495::provisioned-capacity-and-iops-billing",
+        "title": "Provisioned capacity and IOPS billing",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 94,
+        "pageEnd": 100,
+        "assessment": "recall"
+      },
+      {
+        "id": "afef90a5-a64e-435c-a6e7-d7fa3a572495::snapshot-to-move-volume-across-az",
+        "title": "Snapshot to move volume across AZ",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 94,
+        "pageEnd": 100,
+        "assessment": "recall"
+      },
+      {
+        "id": "afef90a5-a64e-435c-a6e7-d7fa3a572495::delete-on-termination-attribute",
+        "title": "Delete on Termination attribute",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 94,
+        "pageEnd": 100,
+        "assessment": "recall"
+      },
+      {
+        "id": "afef90a5-a64e-435c-a6e7-d7fa3a572495::root-volume-deleted-by-default",
+        "title": "Root volume deleted by default",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 94,
+        "pageEnd": 100,
+        "assessment": "recall"
+      },
+      {
+        "id": "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-snapshot-archive",
+        "title": "EBS Snapshot Archive",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 94,
+        "pageEnd": 100,
+        "assessment": "recall"
+      },
+      {
+        "id": "afef90a5-a64e-435c-a6e7-d7fa3a572495::snapshot-recycle-bin-retention",
+        "title": "Snapshot Recycle Bin retention",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 94,
+        "pageEnd": 100,
+        "assessment": "recall"
+      },
+      {
+        "id": "afef90a5-a64e-435c-a6e7-d7fa3a572495::fast-snapshot-restore",
+        "title": "Fast Snapshot Restore",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 94,
+        "pageEnd": 100,
+        "assessment": "recall"
+      },
+      {
+        "id": "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc::ami-definition-and-regional-scope",
+        "title": "AMI definition and regional scope",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 101,
+        "pageEnd": 104,
+        "assessment": "recall"
+      },
+      {
+        "id": "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc::ami-types-public-own-marketplace",
+        "title": "AMI types: public, own, Marketplace",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 101,
+        "pageEnd": 104,
+        "assessment": "recall"
+      },
+      {
+        "id": "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc::ami-creation-process",
+        "title": "AMI creation process",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 101,
+        "pageEnd": 104,
+        "assessment": "recall"
+      },
+      {
+        "id": "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc::instance-store-ephemeral-storage",
+        "title": "Instance store ephemeral storage",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 101,
+        "pageEnd": 104,
+        "assessment": "recall"
+      },
+      {
+        "id": "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc::instance-store-high-iops",
+        "title": "Instance store high IOPS",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 101,
+        "pageEnd": 104,
+        "assessment": "recall"
+      },
+      {
+        "id": "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc::instance-store-buffer-and-cache-use-cases",
+        "title": "Instance store buffer and cache use cases",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 101,
+        "pageEnd": 104,
+        "assessment": "recall"
+      },
+      {
+        "id": "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc::instance-store-data-loss-risk",
+        "title": "Instance store data loss risk",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 101,
+        "pageEnd": 104,
+        "assessment": "recall"
+      },
+      {
+        "id": "ed33fcd5-70d5-4e71-abe7-1d9675526507::six-ebs-volume-types",
+        "title": "Six EBS volume types",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 105,
+        "pageEnd": 110,
+        "assessment": "recall"
+      },
+      {
+        "id": "ed33fcd5-70d5-4e71-abe7-1d9675526507::boot-volume-support-by-type",
+        "title": "Boot volume support by type",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 105,
+        "pageEnd": 110,
+        "assessment": "recall"
+      },
+      {
+        "id": "ed33fcd5-70d5-4e71-abe7-1d9675526507::gp3-baseline-and-independent-iops",
+        "title": "gp3 baseline and independent IOPS",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 105,
+        "pageEnd": 110,
+        "assessment": "recall"
+      },
+      {
+        "id": "ed33fcd5-70d5-4e71-abe7-1d9675526507::gp2-iops-to-size-ratio",
+        "title": "gp2 IOPS-to-size ratio",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 105,
+        "pageEnd": 110,
+        "assessment": "recall"
+      },
+      {
+        "id": "ed33fcd5-70d5-4e71-abe7-1d9675526507::io1-and-io2-block-express-piops",
+        "title": "io1 and io2 Block Express PIOPS",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 105,
+        "pageEnd": 110,
+        "assessment": "recall"
+      },
+      {
+        "id": "ed33fcd5-70d5-4e71-abe7-1d9675526507::st1-and-sc1-hdd-throughput",
+        "title": "st1 and sc1 HDD throughput",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 105,
+        "pageEnd": 110,
+        "assessment": "recall"
+      },
+      {
+        "id": "ed33fcd5-70d5-4e71-abe7-1d9675526507::hdd-cannot-be-boot-volume",
+        "title": "HDD cannot be boot volume",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 105,
+        "pageEnd": 110,
+        "assessment": "recall"
+      },
+      {
+        "id": "ed33fcd5-70d5-4e71-abe7-1d9675526507::ebs-multi-attach-io1-io2",
+        "title": "EBS Multi-Attach io1/io2",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 105,
+        "pageEnd": 110,
+        "assessment": "recall"
+      },
+      {
+        "id": "ed33fcd5-70d5-4e71-abe7-1d9675526507::cluster-aware-file-system-requirement",
+        "title": "Cluster-aware file system requirement",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 105,
+        "pageEnd": 110,
+        "assessment": "recall"
+      },
+      {
+        "id": "ce3b1758-c794-4125-ada4-98e0c2231e33::ebs-encryption-at-rest-and-in-flight",
+        "title": "EBS encryption at rest and in flight",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 111,
+        "pageEnd": 118,
+        "assessment": "recall"
+      },
+      {
+        "id": "ce3b1758-c794-4125-ada4-98e0c2231e33::kms-aes-256-keys",
+        "title": "KMS AES-256 keys",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 111,
+        "pageEnd": 118,
+        "assessment": "recall"
+      },
+      {
+        "id": "ce3b1758-c794-4125-ada4-98e0c2231e33::encrypting-an-unencrypted-volume-via-snapshot",
+        "title": "Encrypting an unencrypted volume via snapshot",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 111,
+        "pageEnd": 118,
+        "assessment": "recall"
+      },
+      {
+        "id": "ce3b1758-c794-4125-ada4-98e0c2231e33::efs-managed-nfs-multi-az",
+        "title": "EFS managed NFS multi-AZ",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 111,
+        "pageEnd": 118,
+        "assessment": "recall"
+      },
+      {
+        "id": "ce3b1758-c794-4125-ada4-98e0c2231e33::efs-linux-only-posix",
+        "title": "EFS Linux-only POSIX",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 111,
+        "pageEnd": 118,
+        "assessment": "recall"
+      },
+      {
+        "id": "ce3b1758-c794-4125-ada4-98e0c2231e33::efs-performance-modes",
+        "title": "EFS performance modes",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 111,
+        "pageEnd": 118,
+        "assessment": "recall"
+      },
+      {
+        "id": "ce3b1758-c794-4125-ada4-98e0c2231e33::efs-throughput-modes",
+        "title": "EFS throughput modes",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 111,
+        "pageEnd": 118,
+        "assessment": "recall"
+      },
+      {
+        "id": "ce3b1758-c794-4125-ada4-98e0c2231e33::efs-storage-classes-and-lifecycle",
+        "title": "EFS storage classes and lifecycle",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 111,
+        "pageEnd": 118,
+        "assessment": "recall"
+      },
+      {
+        "id": "ce3b1758-c794-4125-ada4-98e0c2231e33::efs-one-zone-and-ia",
+        "title": "EFS One Zone and IA",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 111,
+        "pageEnd": 118,
+        "assessment": "recall"
+      },
+      {
+        "id": "ce3b1758-c794-4125-ada4-98e0c2231e33::ebs-vs-efs-vs-instance-store",
+        "title": "EBS vs EFS vs Instance Store",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 111,
+        "pageEnd": 118,
+        "assessment": "recall"
+      }
+    ],
+    "coverageStatus": "source-audited"
+  },
+  "sections": [
+    {
+      "id": "afef90a5-a64e-435c-a6e7-d7fa3a572495",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "9a4c5ff5-9296-4e67-b0f3-b11f7cc0afb4",
+      "title": "EBS Volumes, Delete-on-Termination and Snapshots",
+      "objective": "Explain how EBS volumes attach, are locked to an AZ, are billed, and how snapshots, archive tier, recycle bin and FSR solve backup, migration and restore-latency requirements.",
+      "keyTopics": [
+        "EBS as network drive",
+        "EBS bound to one AZ",
+        "EBS attached to one instance",
+        "Provisioned capacity and IOPS billing",
+        "Snapshot to move volume across AZ",
+        "Delete on Termination attribute",
+        "Root volume deleted by default",
+        "EBS Snapshot Archive",
+        "Snapshot Recycle Bin retention",
+        "Fast Snapshot Restore"
+      ],
+      "pageStart": 94,
+      "pageEnd": 100,
+      "text": "[Page 94]\nAmazon EC2 \t– \tInstance Storage\n\n[Page 95]\nWhat’s an EBS Volume?\n• \tAn \tEBS (Elastic Block Store) Volume \tis a \tnetwork \tdrive you can attach\nto your instances while they run\n• \tIt allows your instances to persist data, even after their termination\n• \tThey can only be mounted to one instance at a time (at the CCP level)\n• \tThey are bound to \ta specific availability zone\n• \tAnalogy: Think of them as a “network USB stick”\n\n[Page 96]\nEBS Volume\n• \tIt’s a network drive (i.e. not a physical drive)\n• \tIt uses the network to communicate the instance, which means there might be a bit of\nlatency\n• \tIt can be detached from an EC2 instance and attached to another one quickly\n• \tIt’s locked to an Availability Zone (AZ)\n• \tAn EBS Volume in us-east-1a cannot be attached to us-east-1b\n• \tTo move a volume across, you first need to snapshot it\n• \tHave a provisioned capacity (size in GBs, and IOPS)\n• \tYou get billed for all the provisioned capacity\n• \tYou can increase the capacity of the drive over time\n\n[Page 97]\nUS-EAST-1B\tUS-EAST-1A\nEBS Volume \t- \tExample\nEBS\n(10 GB)\nEBS\n(100 GB)\nEBS\n(50 GB)\nEBS\n(50 GB)\nEBS\n(10 GB)\nunattached\n\n[Page 98]\nEBS \t– \tDelete on Termination attribute\n• \tControls the EBS behaviour when an EC2 instance terminates\n• \tBy default, the root EBS volume is deleted (attribute enabled)\n• \tBy default, any other attached EBS volume is not deleted (attribute disabled)\n• \tThis can be controlled by the AWS console / AWS CLI\n• \tUse case: preserve root volume when instance is terminated\n\n[Page 99]\nEBS Snapshots\n• \tMake a backup (snapshot) of your EBS volume at a point in time\n• \tNot necessary to detach volume to do snapshot, but recommended\n• \tCan copy snapshots across AZ or Region\nUS-EAST-1A\nEBS\n(50 GB)\nUS-EAST-1B\nEBS\n(50 GB)\nEBS Snapshot\nsnapshot \trestore\n\n[Page 100]\nEBS Snapshots Features\n• \tEBS Snapshot Archive\n• \tMove a Snapshot to an ”archive tier” that is\n75% cheaper\n• \tTakes within 24 to 72 hours for restoring the\narchive\n• \tRecycle Bin for EBS Snapshots\n• \tSetup rules to retain deleted snapshots so you\ncan recover them after an accidental deletion\n• \tSpecify retention (from 1 day to 1 year)\n• \tFast Snapshot Restore (FSR)\n• \tForce full initialization of snapshot to have no\nlatency on the first use ($$$)\nEBS Snapshot EBS Snapshot\nArchive\narchive\nEBS Snapshot \tRecycle Bin\ndelete",
+      "read": false
+    },
+    {
+      "id": "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "9a4c5ff5-9296-4e67-b0f3-b11f7cc0afb4",
+      "title": "AMIs and EC2 Instance Store",
+      "objective": "Choose between AMI-based pre-packaged launches and EC2 Instance Store for high-IOPS, ephemeral workloads, and state why instance store data is lost on stop or hardware failure.",
+      "keyTopics": [
+        "AMI definition and regional scope",
+        "AMI types: public, own, Marketplace",
+        "AMI creation process",
+        "Instance store ephemeral storage",
+        "Instance store high IOPS",
+        "Instance store buffer and cache use cases",
+        "Instance store data loss risk"
+      ],
+      "pageStart": 101,
+      "pageEnd": 104,
+      "text": "[Page 101]\nAMI Overview\n• \tAMI = Amazon Machine Image\n• \tAMI are a \tcustomization \tof an EC2 instance\n• \tYou add your own software, configuration, operating system, monitoring…\n• \tFaster boot / configuration time because all your software is pre-packaged\n• \tAMI are built for a \tspecific region \t(and can be copied across regions)\n• \tYou can launch EC2 instances from:\n• \tA Public AMI: AWS provided\n• \tYour own AMI: you make and maintain them yourself\n• \tAn AWS Marketplace AMI: an AMI someone else made (and potentially sells)\n\n[Page 102]\nAMI Process (from an EC2 instance)\n• \tStart an EC2 instance and customize it\n• \tStop the instance (for data integrity)\n• \tBuild an AMI \t– \tthis will also create EBS snapshots\n• \tLaunch instances from other AMIs\nUS-EAST-1A \tUS-EAST-1B\nCustom AMI\nCreate AMI\nLaunch\nfrom AMI\n\n[Page 103]\nEC2 Instance Store\n• \tEBS volumes are \tnetwork drives \twith good but “limited” performance\n• \tIf you need a high-performance hardware disk, use EC2 Instance Store\n• \tBetter I/O performance\n• \tEC2 Instance Store lose their storage if they’re stopped (ephemeral)\n• \tGood for buffer / cache / scratch data / temporary content\n• \tRisk of data loss if hardware fails\n• \tBackups and Replication are your responsibility\n\n[Page 104]\nLocal EC2 Instance Store Very high IOPS",
+      "read": false
+    },
+    {
+      "id": "ed33fcd5-70d5-4e71-abe7-1d9675526507",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "9a4c5ff5-9296-4e67-b0f3-b11f7cc0afb4",
+      "title": "EBS Volume Types and Multi-Attach",
+      "objective": "Select the EBS volume type matching IOPS, throughput, latency and cost needs, and decide when io1/io2 Multi-Attach with a cluster-aware file system is appropriate.",
+      "keyTopics": [
+        "Six EBS volume types",
+        "Boot volume support by type",
+        "gp3 baseline and independent IOPS",
+        "gp2 IOPS-to-size ratio",
+        "io1 and io2 Block Express PIOPS",
+        "st1 and sc1 HDD throughput",
+        "HDD cannot be boot volume",
+        "EBS Multi-Attach io1/io2",
+        "Cluster-aware file system requirement"
+      ],
+      "pageStart": 105,
+      "pageEnd": 110,
+      "text": "[Page 105]\nEBS Volume Types\n• \tEBS Volumes come in 6 types\n• \tgp2 / gp3 (SSD): General purpose SSD volume that balances price and performance for\na wide variety of workloads\n• \tio1 / io2 Block Express (SSD): Highest-performance SSD volume for mission-critical\nlow-latency or high-throughput workloads\n• \tst1 (HDD): Low cost HDD volume designed for frequently accessed, throughput-\nintensive workloads\n• \tsc1 (HDD): Lowest cost HDD volume designed for less frequently accessed workloads\n• \tEBS Volumes are characterized in Size | Throughput | IOPS (I/O Ops Per Sec)\n• \tWhen in doubt always consult the AWS documentation – it’s good!\n• \tOnly gp2/gp3 and io1/io2 Block Express can be used as boot volumes\n\n[Page 106]\nEBS Volume Types Use cases\nGeneral Purpose SSD\n• \tCost effective storage, low-latency\n• \tSystem boot volumes, Virtual desktops, Development and test\nenvironments, medium-sized databases, transactional workloads…\n• \tgp3 \t(1 GiB \t- \t64 TiB)\n• \tBaseline of 3,000 IOPS and throughput of 125 MiB/s\n• \tCan increase IOPS up to 80,000 and throughput up to 2000 MiB/s independently\n• \tgp2 \t(1 GiB \t- \t16 TiB)\n• \tSmall gp2 volumes can burst IOPS to 3,000\n• \tSize of the volume and IOPS are linked, max IOPS is 16,000\n• \t3 IOPS per GiB, means at 5,334 GiB we are at the max IOPS\n\n[Page 107]\nEBS Volume Types Use cases\nProvisioned IOPS (PIOPS) SSD\n• \tCritical business applications with sustained IOPS performance\n• \tOr applications that need more than 80,000 IOPS\n• \tGreat for \tdatabases workloads \t(sensitive to storage perf and consistency)\n• \tio1 \t(4 GiB \t- \t16 TiB)\n• \tMax PIOPS: 64,000 for Nitro EC2 instances & 32,000 for other\n• \tCan increase PIOPS independently from storage size; IOPS:GiB ratio of 50:1\n• \tio2 Block Express \t(4 GiB \t– \t64 TiB)\n• \tSub-millisecond latency\n• \tMax PIOPS: 256,000 with an IOPS:GiB ratio of 1,000:1\n• \tSupports EBS Multi-attach\n\n[Page 108]\nEBS Volume Types Use cases\nHard Disk Drives (HDD)\n• \tCannot be a boot volume\n• \t125 GiB to 16 TiB\n• \tThroughput Optimized HDD (st1)\n• \tBig Data, Data Warehouses, Log Processing\n• \tMax throughput 500 MiB/s – max IOPS 500\n• \tCold HDD (sc1):\n• \tFor data that is infrequently accessed\n• \tScenarios where lowest cost is important\n• \tMax throughput 250 MiB/s – max IOPS 250\n\n[Page 109]\nEBS \t– Volume Types Summary\nhttps://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#solid-state-drives\n\n[Page 110]\nEBS Multi-Attach \t– \tio1/io2 family\n• \tAttach the same EBS volume to multiple EC2\ninstances in the same AZ\n• \tEach instance has full read & write permissions\nto the high-performance volume\n• \tUse case:\n• \tAchieve higher application availability in clustered\nLinux applications (ex: Teradata)\n• \tApplications must manage concurrent write\noperations\n• \tUp to 16 EC2 Instances at a time\n• \tMust use a file system that’s cluster-aware (not\nXFS, EXT4, etc…)\nio2 volume with Multi-Attach\nAvailability Zone 1",
+      "read": false
+    },
+    {
+      "id": "ce3b1758-c794-4125-ada4-98e0c2231e33",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "9a4c5ff5-9296-4e67-b0f3-b11f7cc0afb4",
+      "title": "EBS Encryption and Amazon EFS",
+      "objective": "Explain EBS encryption at rest and its snapshot-based re-encryption path, then choose EFS versus EBS versus Instance Store based on multi-AZ sharing, OS compatibility, performance mode and cost.",
+      "keyTopics": [
+        "EBS encryption at rest and in flight",
+        "KMS AES-256 keys",
+        "Encrypting an unencrypted volume via snapshot",
+        "EFS managed NFS multi-AZ",
+        "EFS Linux-only POSIX",
+        "EFS performance modes",
+        "EFS throughput modes",
+        "EFS storage classes and lifecycle",
+        "EFS One Zone and IA",
+        "EBS vs EFS vs Instance Store"
+      ],
+      "pageStart": 111,
+      "pageEnd": 118,
+      "text": "[Page 111]\nEBS Encryption\n• \tWhen you create an encrypted EBS volume, you get the following:\n• \tData at rest is encrypted inside the volume\n• \tAll the data in flight moving between the instance and the volume is encrypted\n• \tAll snapshots are encrypted\n• \tAll volumes created from the snapshot\n• \tEncryption and decryption are handled transparently (you have nothing to\ndo)\n• \tEncryption has a minimal impact on latency\n• \tEBS Encryption leverages keys from KMS (AES-256)\n• \tCopying an unencrypted snapshot allows encryption\n• \tSnapshots of encrypted volumes are encrypted\n\n[Page 112]\nEncryption: encrypt an unencrypted EBS volume\n• \tCreate an EBS snapshot of the volume\n• \tEncrypt the EBS snapshot ( using copy )\n• \tCreate new \tebs \tvolume from the snapshot ( the volume will also be\nencrypted )\n• \tNow you can attach the encrypted volume to the original instance\n\n[Page 113]\nAmazon EFS \t– \tElastic File System\n• \tManaged NFS (network file system) that can be mounted on many EC2\n• \tEFS works with EC2 instances in multi-AZ\n• \tHighly available, scalable, expensive (3x gp2), pay per use\nus-east-1a\nEC2 Instances\nus-east-1b\nEC2 Instances\nus-east-1c\nEC2 Instances\nSecurity Group\nEFS FileSystem\n\n[Page 114]\nAmazon EFS \t– \tElastic File System\n• \tUse cases: content management, web serving, data sharing, Wordpress\n• \tUses NFSv4.1 protocol\n• \tUses security group to control access to EFS\n• \tCompatible with Linux based AMI (not Windows)\n• \tEncryption at rest using KMS\n• \tPOSIX file system (~Linux) that has a standard file API\n• \tFile system scales automatically, pay-per-use, no capacity planning!\n\n[Page 115]\nEFS \t– \tPerformance & Storage Classes\n• \tEFS Scale\n• \t1000s of concurrent NFS clients, 10 GB+ /s throughput\n• \tGrow to Petabyte-scale network file system, automatically\n• \tPerformance Mode (set at EFS creation time)\n• \tGeneral Purpose (default) – latency-sensitive use cases (web server, CMS, etc…)\n• \tMax I/O – higher latency, throughput, highly parallel (big data, media processing)\n• \tThroughput Mode\n• \tBursting – 1 TB = 50MiB/s + burst of up to 100MiB/s\n• \tProvisioned – set your throughput regardless of storage size, ex: 1 GiB/s for 1 TB storage\n• \tElastic – automatically scales throughput up or down based on your workloads\n• \tUp to 3GiB/s for reads and 1GiB/s for writes\n• \tUsed for unpredictable workloads\n\n[Page 116]\nEFS \t– \tStorage Classes\n• \tStorage Tiers (lifecycle management feature – move\nfile after N days)\n• \tStandard: for frequently accessed files\n• \tInfrequent access (EFS-IA): cost to retrieve files, lower price\nto store.\n• \tArchive: rarely accessed data (few times each year), 50%\ncheaper\n• \tImplement lifecycle policies to move files between storage\ntiers\n• \tAvailability and durability\n• \tStandard: Multi-AZ, great for prod\n• \tOne Zone: One AZ, great for dev, backup enabled by\ndefault, compatible with IA (EFS One Zone-IA)\n• \tOver 90% in cost savings\nAmazon EFS File System\nEFS Standard\nEFS IA\nLifecycle Policy\nno access\nfor 60 days\nmove\n\n[Page 117]\nEBS vs EFS \t– \tElastic Block Storage\n• \tEBS volumes…\n• \tone instance (except multi-attach io1/io2)\n• \tare locked at the Availability Zone (AZ) level\n• \tgp2: IO increases if the disk size increases\n• \tgp3 & io1: can increase IO independently\n• \tTo migrate an EBS volume across AZ\n• \tTake a snapshot\n• \tRestore the snapshot to another AZ\n• \tEBS backups use IO and you shouldn’t run\nthem while your application is handling a lot\nof traffic\n• \tRoot EBS Volumes of instances get\nterminated by default if the EC2 instance\ngets terminated. (you can disable that)\nsnapshot \trestore\nAvailability Zone 1\nEBS Snapshot\nAvailability Zone 2\nEBS \tEBS\n\n[Page 118]\nEBS vs EFS \t– \tElastic File System\n• \tMounting 100s of instances across AZ\n• \tEFS share website files (WordPress)\n• \tOnly for Linux Instances (POSIX)\n• \tEFS has a higher price point than EBS\n• \tCan leverage Storage Tiers for cost savings\n• \tRemember: EFS vs EBS vs Instance Store\nAvailability Zone 1\nEFS\nAvailability Zone 2\nEFS\nMount\nTarget\nLinux \tLinux\nEFS\nMount\nTarget",
+      "read": false
+    }
+  ]
+}

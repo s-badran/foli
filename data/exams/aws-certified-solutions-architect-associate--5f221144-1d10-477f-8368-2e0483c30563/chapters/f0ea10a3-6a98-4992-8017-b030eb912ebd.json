@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "f0ea10a3-6a98-4992-8017-b030eb912ebd",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 23,
+    "title": "Advanced Identity in AWS",
+    "pageStart": 622,
+    "pageEnd": 650,
+    "description": "AWS Organizations and SCPs, IAM conditions, policy evaluation, Identity Center, Directory Services and Control Tower.",
+    "examFocus": [
+      "Task 1.1: multi-account access and guardrails",
+      "Task 1.1: federation and single sign-on"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

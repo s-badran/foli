@@ -1,0 +1,108 @@
+{
+  "questions": [
+    {
+      "question": "Developers and operations staff share some permissions. An administrator wants a single \"Engineering\" group that contains both the Developers and Operations groups. What happens?",
+      "options": [
+        "It works; groups can be nested one level",
+        "It fails; groups can contain users only",
+        "It works only for inline policies",
+        "It works if both groups are in one Region"
+      ],
+      "correctIndex": 1,
+      "explanation": "IAM groups contain users only, so nesting fails; there is no one-level nesting, inline policies do not change this, and IAM is global so Regions are irrelevant.",
+      "keyTopic": "IAM groups",
+      "kind": "scenario"
+    },
+    {
+      "question": "Fred belongs to no group but needs read access to one bucket. What is the most direct way to grant it?",
+      "options": [
+        "Add Fred to the root account",
+        "Attach an inline policy to Fred",
+        "Create a group containing only the bucket",
+        "Share another user's credentials"
+      ],
+      "correctIndex": 1,
+      "explanation": "An inline policy grants permissions to a single user; root access and credential sharing break least privilege, and groups cannot contain resources.",
+      "keyTopic": "Policy inheritance",
+      "kind": "scenario"
+    },
+    {
+      "question": "An auditor needs only to list and describe EC2 instances. Which policy best applies least privilege?",
+      "options": [
+        "Allow ec2:Describe* on *",
+        "Allow ec2:* on *",
+        "Allow * on *",
+        "Deny ec2:Describe* on *"
+      ],
+      "correctIndex": 0,
+      "explanation": "Describe actions grant exactly the read access needed; ec2:* and * add write permissions, and Deny would block the requirement.",
+      "keyTopic": "Least privilege",
+      "kind": "scenario"
+    },
+    {
+      "question": "A new company opens its first AWS account. What should be done with the root account after initial setup?",
+      "options": [
+        "Share it with all administrators",
+        "Use it for daily tasks with a strong password",
+        "Avoid using it and create IAM users instead",
+        "Delete it"
+      ],
+      "correctIndex": 2,
+      "explanation": "Root should not be used or shared; create IAM users for daily work. Sharing or daily use exposes full access, and the root account cannot simply be deleted while the account exists.",
+      "keyTopic": "Root account",
+      "kind": "scenario"
+    },
+    {
+      "question": "Alice is in the Developers group and the Audit group. Which permissions does she receive?",
+      "options": [
+        "Only the first group she was added to",
+        "Only her inline policies",
+        "Those of both groups",
+        "None until a single group is chosen"
+      ],
+      "correctIndex": 2,
+      "explanation": "Users inherit the policies of every group they belong to; there is no first-group or single-group rule.",
+      "keyTopic": "IAM users",
+      "kind": "scenario"
+    },
+    {
+      "question": "In a policy statement, which element specifies the API calls being allowed or denied?",
+      "options": [
+        "Resource",
+        "Action",
+        "Principal",
+        "Sid"
+      ],
+      "correctIndex": 1,
+      "explanation": "Action lists the API calls; Resource is the target, Principal the identity, and Sid only an optional statement identifier.",
+      "keyTopic": "Policy structure",
+      "kind": "concept"
+    },
+    {
+      "question": "Which statement about IAM policies is correct?",
+      "options": [
+        "Policies are YAML documents",
+        "Effect can be Allow or Deny",
+        "Version is optional and free-form",
+        "Condition is required in every statement"
+      ],
+      "correctIndex": 1,
+      "explanation": "Effect takes Allow or Deny; policies are JSON, Version should always be \"2012-10-17\", and Condition is optional.",
+      "keyTopic": "IAM policies",
+      "kind": "concept"
+    },
+    {
+      "question": "Compare a group policy with an inline policy. Which is true?",
+      "options": [
+        "A group policy applies to every member; an inline policy to one user",
+        "An inline policy applies to every group",
+        "Group policies override inline policies",
+        "Inline policies can only Deny"
+      ],
+      "correctIndex": 0,
+      "explanation": "Group policies apply to all members while inline policies attach to one user; inline policies are not group-wide, there is no override ranking between them, and they can Allow or Deny.",
+      "keyTopic": "Policy inheritance",
+      "kind": "comparison"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "questions": [
+    {
+      "question": "A company needs a fixed public IPv4 address for a single EC2 instance that must survive stop/start cycles. The instance is currently running with its default addressing. What should the architect do?",
+      "options": [
+        "Assign an Elastic IP to the instance, since the default public IP can change on stop/start",
+        "Rely on the instance's public IP, since an EC2 public IP never changes after launch",
+        "Move the instance into a private network and connect to it via NAT and an internet gateway",
+        "Register the private IP in a DNS record, since private IPs are fixed for the instance lifetime"
+      ],
+      "correctIndex": 0,
+      "explanation": "An Elastic IP is a public IPv4 you own until you delete it, so it stays fixed across stop/start; the default public IP is not permanent, so option B is wrong; NAT plus internet gateway only gives private machines outbound WWW access and does not provide a fixed public address, so C is wrong; private IPs are not reachable from the internet, so D is wrong.",
+      "keyTopic": "Elastic IP: fixed public IPv4",
+      "kind": "scenario"
+    },
+    {
+      "question": "A web tier behind a single stable entry point must scale to multiple instances, and the design should avoid scarce public addresses on the instances. Which solution best fits?",
+      "options": [
+        "Allocate a public IP directly to every instance in the web tier",
+        "Front the instances with a Load Balancer and don't use a public IP on the instances",
+        "Attach one Elastic IP to each of the instances in the fleet",
+        "Attach a single Elastic IP to the whole fleet simultaneously"
+      ],
+      "correctIndex": 1,
+      "explanation": "The section recommends a Load Balancer with no public IP on the instances for a stable, scalable entry point; public IPs per instance are the brittle pattern being avoided, so A is wrong; Elastic IPs reflect poor architectural decisions and consume the 5-per-account limit, so C is wrong; an Elastic IP can be attached to only one instance at a time, so D is wrong.",
+      "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+      "kind": "scenario"
+    },
+    {
+      "question": "An application team wants a stable, human-facing endpoint for a web server without consuming an Elastic IP. What is the recommended approach?",
+      "options": [
+        "Request an increase of the Elastic IP quota and attach one to the server",
+        "Recreate the instance each time the public IP changes to keep a fixed address",
+        "Use a random public IP and register a DNS name to it",
+        "Advertise the instance's private IP to external clients"
+      ],
+      "correctIndex": 2,
+      "explanation": "Registering a DNS name to a random public IP keeps a stable user-facing endpoint while hiding the changing public IP; raising the Elastic IP quota still uses a scarce Elastic IP that the section advises avoiding, so A is wrong; recreating instances is not a fix for address stability, so B is wrong; the private IP is not reachable from the internet, so D is wrong.",
+      "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+      "kind": "scenario"
+    },
+    {
+      "question": "A solutions architect has been asked to add a sixth Elastic IP address in one AWS account. What is the most accurate statement about this request?",
+      "options": [
+        "The account already has 5 Elastic IPs; the limit can be increased by asking AWS",
+        "The account already has 5 Elastic IPs and the limit can never be increased",
+        "The limit is 5 per Region, so the request is automatically approved",
+        "The limit is 5 per instance, so the third instance can receive its own Elastic IP"
+      ],
+      "correctIndex": 0,
+      "explanation": "The section states you can have 5 Elastic IPs in your account and can ask AWS to increase that limit; option B contradicts the documented ability to request an increase; option C is a per-Region claim not made in the source; option D misstates the quota, which is per account, not per instance.",
+      "keyTopic": "Elastic IP limit of 5 per account",
+      "kind": "concept"
+    },
+    {
+      "question": "An operations team reports that an instance's public IP changed after a stop and start. Which statement explains the underlying behaviour?",
+      "options": [
+        "Public IPs are unique across the whole web, so they cannot change",
+        "Stopping and then starting an EC2 instance can change its public IP",
+        "Private IPs are renumbered by AWS on every stop and start",
+        "The Elastic IP was remapped to another instance automatically"
+      ],
+      "correctIndex": 1,
+      "explanation": "The section explicitly says stopping and then starting an instance can change its public IP; uniqueness across the web does not imply permanence, so A is wrong; the behaviour concerns the public IP, not the private one, so C is wrong; no Elastic IP is involved in a default-addressed instance, so D is wrong.",
+      "keyTopic": "Elastic IP: fixed public IPv4",
+      "kind": "concept"
+    },
+    {
+      "question": "Two different companies each build a private network and both choose the address 192.168.0.1/22. Which statement is correct?",
+      "options": [
+        "This is a conflict; private IPs must be unique across the whole web",
+        "This is valid because only a specified range may be used as private IP but the value may repeat",
+        "This is valid only if the two networks are connected through NAT and an internet gateway",
+        "This is invalid because private IPs must be unique within each AWS account"
+      ],
+      "correctIndex": 1,
+      "explanation": "Private IPs only need to be unique inside their own private network, so two companies can reuse the same range, and private addressing is restricted to a specified range; option A confuses the public-IP rule with private addressing; option C is irrelevant to reuse; option D invents a per-account uniqueness rule for private IPs.",
+      "keyTopic": "Same private range across companies",
+      "kind": "comparison"
+    },
+    {
+      "question": "A server on a private network needs to reach websites on the WWW. Its private IP is not routable from the internet. What mechanism provides that access?",
+      "options": [
+        "A NAT with an internet gateway acting as a proxy",
+        "A public IP added directly to the server's network interface",
+        "An Elastic IP attached to the private network interface",
+        "A DNS name registered to the private IP address"
+      ],
+      "correctIndex": 0,
+      "explanation": "Machines with private IPs connect to the WWW using NAT plus an internet gateway, a proxy mechanism; option B would give the server a public address, which is not how private-to-WWW access is described; option C misuses an Elastic IP, which is a public IPv4 attached to one instance; option D cannot make a private IP routable on the internet.",
+      "keyTopic": "NAT and internet gateway for WWW access",
+      "kind": "concept"
+    },
+    {
+      "question": "An administrator must SSH into a newly launched EC2 instance from a laptop outside AWS. The instance has both a private and a public IP. Which address should be used, and why?",
+      "options": [
+        "The public IP, because the private IP is only unique within the private network and cannot be reached from outside",
+        "The private IP, because it is fixed and the public IP may change after a stop and start",
+        "The private IP, because SSH traffic is proxied by the internet gateway to that address",
+        "The public IP, because Elastic IPs are required for SSH access to any EC2 instance"
+      ],
+      "correctIndex": 0,
+      "explanation": "From outside AWS you can only SSH using the public IP because you are not in the same network as the private IP; option B is true about public IP changes but does not make the private IP reachable; option C is wrong because the internet gateway does not give an external client a route to the private address; option D is wrong because SSH does not require an Elastic IP, only a public IP.",
+      "keyTopic": "SSH via public IP",
+      "kind": "scenario"
+    },
+    {
+      "question": "A production instance fails and the team needs traffic to move to a standby instance in the same account as quickly as possible. Which Elastic IP capability supports this?",
+      "options": [
+        "Rapidly remap the Elastic IP to the standby instance",
+        "Attach the same Elastic IP to both instances at the same time",
+        "Recreate the instance so its default public IP is reassigned",
+        "Add the Elastic IP to a private network and route via NAT"
+      ],
+      "correctIndex": 0,
+      "explanation": "The section says an Elastic IP can mask the failure of an instance or software by rapidly remapping the address to another instance in your account; option B is impossible because an Elastic IP attaches to one instance at a time; option C does not provide a controlled failover address; option D is not how a private network plus NAT provides a public endpoint.",
+      "keyTopic": "Elastic IP attach to one instance",
+      "kind": "scenario"
+    },
+    {
+      "question": "A new EC2 instance is launched with default settings. Which addressing does it receive?",
+      "options": [
+        "A private IP for the internal AWS Network and a public IP for the WWW",
+        "A public IP only, because public IPs are sufficient for internal AWS traffic",
+        "An Elastic IP, because public IPs are not assigned by default",
+        "A private IP only, because a public IP must be requested explicitly"
+      ],
+      "correctIndex": 0,
+      "explanation": "By default an EC2 machine comes with a private IP for the internal AWS Network and a public IP for the WWW; option B omits the default private IP; option C is wrong because an Elastic IP is optional and not the default; option D is wrong because the default launch does include a public IP.",
+      "keyTopic": "Default EC2 private + public IP",
+      "kind": "concept"
+    }
+  ]
+}

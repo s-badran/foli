@@ -1,0 +1,223 @@
+{
+  "chapter": {
+    "id": "1b3fb5a9-58fc-43bc-9755-cd3e673e59fb",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "Machine learning service selection",
+    "order": 20,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 563,
+    "pageEnd": 577,
+    "description": "Managed AI services versus custom model workflows.",
+    "objectives": [
+      {
+        "id": "1b3fb5a9-58fc-43bc-9755-cd3e673e59fb/Prebuilt capability versus custom training",
+        "title": "Prebuilt capability versus custom training",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 563,
+        "pageEnd": 577,
+        "assessment": "both"
+      },
+      {
+        "id": "1b3fb5a9-58fc-43bc-9755-cd3e673e59fb/Language, speech and operational fit",
+        "title": "Language, speech and operational fit",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 563,
+        "pageEnd": 577,
+        "assessment": "both"
+      }
+    ],
+    "coverageStatus": "draft"
+  },
+  "sections": [
+    {
+      "id": "ef5c7437-3779-405f-8f24-6a622655f3cf",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "1b3fb5a9-58fc-43bc-9755-cd3e673e59fb",
+      "title": "Prebuilt capability versus custom training",
+      "objective": "When should an architect evaluate a prebuilt AI service before building a custom model?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nMachine Learning\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon \tRekognition\n• \tFind \tobjects, people, text, scenes \tin \timages and videos \tusing ML\n• \tFacial analysis \tand \tfacial search \tto do user verification, people counting\n• \tCreate a database of “familiar faces” or compare against celebrities\n• \tUse cases:\n• \tLabeling\n• \tContent Moderation\n• \tText Detection\n• \tFace Detection and Analysis (gender, age range, emotions…)\n• \tFace Search and Verification\n• \tCelebrity Recognition\n• \tPathing (ex: for sports game analysis)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Rekognition \t– \tContent Moderation\n• \tDetect content that is inappropriate, unwanted,\nor offensive (image and videos)\n• \tUsed in social \tmedia, broadcast media,\nadvertising, and e-commerce situations to create\na safer user experience\n• \tSet a Minimum Confidence Threshold for items\nthat will be flagged\n• \tFlag sensitive content for manual review in\nAmazon Augmented AI (A2I)\n• \tHelp comply with regulations\nImage\nAmazon\nRekognition\nConfidence Level\nand Threshold\nOptional Manual\nreview in A2I\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Transcribe\n• \tAutomatically convert speech to text\n• \tUses a deep learning process called automatic speech recognition (ASR) to convert\nspeech to text quickly and accurately\n• \tAutomatically remove Personally Identifiable Information (PII) using Redaction\n• \tSupports Automatic Language Identification for multi-lingual audio\n• \tUse cases:\n• \ttranscribe customer service calls\n• \tautomate closed captioning and subtitling\n• \tgenerate metadata for media assets to create a fully searchable archive\n”Hello my name is Stéphane.\nI hope you’re enjoying the course!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Polly\n• \tTurn text into lifelike speech using deep learning\n• \tAllowing you to create applications that talk\nHi! My name is Stéphane\nand this is a demo of Amazon Polly\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Polly \t– \tLexicon & SSML\n• \tCustomize the pronunciation of words with \tPronunciation lexicons\n• \tStylized words: St3ph4ne => “Stephane”\n• \tAcronyms: AWS => “Amazon Web Services”\n• \tUpload the lexicons and use them in the SynthesizeSpeech operation\n• \tGenerate speech from plain text or from documents marked up with Speech\nSynthesis Markup Language (SSML) – enables more customization\n• \temphasizing specific words or phrases\n• \tusing phonetic pronunciation\n• \tincluding breathing sounds, whispering\n• \tusing the Newscaster speaking style\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Translate\n• \tNatural and accurate \tlanguage translation\n• \tAmazon Translate allows you to \tlocalize content \t- \tsuch as websites and\napplications \t- \tfor \tinternational users, and to easily translate large volumes\nof text efficiently.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Lex & Connect\n• \tAmazon Lex: \t(same technology that powers Alexa)\n• \tAutomatic Speech Recognition (ASR) to convert speech to text\n• \tNatural Language Understanding to recognize the intent of text, callers\n• \tHelps build chatbots, call center bots\n• \tAmazon Connect:\n• \tReceive calls, create contact flows, cloud-based virtual contact center\n• \tCan integrate with other CRM systems or AWS\n• \tNo upfront payments, 80% cheaper than traditional contact center solutions\nPhone Call\nSchedule an\nAppointment\nConnect \tLex\nIntent recognized\nLambda CRM\ncall \tstream \tinvoke \tschedule\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Comprehend\n• \tFor Natural Language Processing – NLP\n• \tFully managed and serverless service\n• \tUses machine learning to find insights and relationships in text\n• \tLanguage of the text\n• \tExtracts key phrases, places, people, brands, or events\n• \tUnderstands how positive or negative the text is\n• \tAnalyzes text using tokenization and parts of speech\n• \tAutomatically organizes a collection of text files by topic\n• \tSample use cases:\n• \tanalyze customer interactions (emails) to find what leads to a positive or negative experience\n• \tCreate and groups articles by topics that Comprehend will uncover\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Comprehend Medical\n• \tAmazon Comprehend Medical detects and returns useful information in\nunstructured clinical text:\n• \tPhysician’s notes\n• \tDischarge summaries\n• \tTest results\n• \tCase notes\n• \tUses NLP to detect Protected Health Information (PHI) \t– \tDetectPHI \tAPI\n• \tStore your documents in Amazon S3, analyze real-time data with Kinesis\nData Firehose, or use Amazon Transcribe to transcribe patient narratives\ninto text that can be analyzed by Amazon Comprehend Medical.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon SageMaker AI\n• \tFully managed service for developers / data scientists to build ML models\n• \tTypically, difficult to do all the processes in one place + provision servers\n• \tMachine learning process (simplified): predicting your exam score\nHistorical Data:\n# years of experience in IT\n# years of experience with AWS\nTime spent on the course\n…\nlabel 670\n890\n934\nbuild\nML model\nTrain and Tune\nNew data\nApply model\nPrediction\nPASS WITH 906\nscore\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Kendra\n• \tFully managed document search service powered by Machine Learning\n• \tExtract answers from within a document (text, pdf, HTML, PowerPoint, MS Word, FAQs…)\n• \tNatural language search capabilities\n• \tLearn from user interactions/feedback to promote preferred results (Incremental Learning)\n• \tAbility to manually fine-tune search results (importance of data, freshness, custom, …)\nData Sources\nAmazon S3 \tAmazon RDS \tGoogle Drive \tMS SharePoint\nMS OneDrive\n3rd party,\nAPNs,\nCustom\nKnowledge Index\n(powered by ML)\nAmazon Kendra\nindexing\nUser\nWhere is the IT support desk?\n1st floor\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Personalize\n• \tFully managed ML-service to build apps with real-time personalized recommendations\n• \tExample: personalized product recommendations/re-ranking, customized direct marketing\n• \tExample: User bought gardening tools, provide recommendations on the next one to buy\n• \tSame technology used by Amazon.com\n• \tIntegrates into existing websites, applications, SMS, email marketing systems, …\n• \tImplement in days, not months (you don’t need to build, train, and deploy ML solutions)\n• \tUse cases: retail stores, media and entertainment…\nAmazon S3\nAmazon Personalize API\nread data from S3\nreal-time data integration\nAmazon Personalize\nCustomized personalized API\nWebsites & Apps\nMobile Apps\nSMS\nEmails\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Textract\n• \tAutomatically extracts text, handwriting, and data from any scanned\ndocuments using AI and ML\n• \tExtract data from forms and tables\n• \tRead and process any type of document (PDFs, images, …)\n• \tUse cases:\n• \tFinancial Services (e.g., invoices, financial reports)\n• \tHealthcare (e.g., medical records, insurance claims)\n• \tPublic Sector (e.g., tax forms, ID documents, passports)\nAmazon Textract\n{\n“Document ID”: “123456789-005”,\n“Name”: “”,\n“SEX”: “F”,\n“DOB”: “23.05.1997”,\n…\n}\nanalyze \tresult\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Machine Learning \t- \tSummary\n• \tRekognition: face detection, labeling, celebrity recognition\n• \tTranscribe: audio to text (ex: subtitles)\n• \tPolly: text to audio\n• \tTranslate: translations\n• \tLex: build conversational bots – chatbots\n• \tConnect: cloud contact center\n• \tComprehend: natural language processing\n• \tSageMaker: machine learning for every developer and data scientist\n• \tKendra: ML-powered search engine\n• \tPersonalize: real-time personalized recommendations\n• \tTextract: detect text and data in documents",
+      "pageStart": 563,
+      "pageEnd": 577,
+      "read": false,
+      "content": {
+        "summary": "## Prebuilt capability versus custom training\n\nIf a managed service directly fits a standard capability and its quality, region and privacy constraints are acceptable, it can reduce implementation and model-operations effort. Custom workflows fit needs requiring specialized training or control.\n\n### Reasoning and trade-offs\n\nTextract targets document text extraction. Polly generates speech and the other services do not provide OCR. Evaluation still needs to measure handwriting, forms, layout and error behavior for the actual documents.\n\n### Avoid this trap\n\nA prebuilt API is not guaranteed to meet a regulated workload accuracy or data-handling requirements. Evaluate representative examples and current feature availability.\n\n### Apply it\n\nA team needs to extract text from scanned forms without operating an OCR training pipeline. Which service category best matches the first evaluation?\n\n**Recommended design:** Evaluate Amazon Textract against representative documents and privacy requirements.\n\nTextract targets document text extraction. Polly generates speech and the other services do not provide OCR. Evaluation still needs to measure handwriting, forms, layout and error behavior for the actual documents.",
+        "keyPoints": [
+          "If a managed service directly fits a standard capability and its quality, region and privacy constraints are acceptable, it can reduce implementation and model-operations effort. Custom workflows fit needs requiring specialized training or control.",
+          "Textract targets document text extraction. Polly generates speech and the other services do not provide OCR. Evaluation still needs to measure handwriting, forms, layout and error behavior for the actual documents.",
+          "A prebuilt API is not guaranteed to meet a regulated workload accuracy or data-handling requirements. Evaluate representative examples and current feature availability."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Which managed service extracts text from scanned documents?",
+            "answer": "Amazon Textract.",
+            "objectiveIds": [
+              "1b3fb5a9-58fc-43bc-9755-cd3e673e59fb/Prebuilt capability versus custom training"
+            ],
+            "id": "8f0ad0d2-b482-4011-ad63-245c115950ee",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.212Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Does a prebuilt model remove the need to evaluate accuracy?",
+            "answer": "No. Test representative inputs and governance requirements.",
+            "objectiveIds": [
+              "1b3fb5a9-58fc-43bc-9755-cd3e673e59fb/Prebuilt capability versus custom training"
+            ],
+            "id": "056c0faf-835a-4446-a714-9c09b796076c",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.212Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A team needs to extract text from scanned forms without operating an OCR training pipeline. Which service category best matches the first evaluation?",
+            "options": [
+              "Use Amazon Polly as the OCR engine for scanned pages.",
+              "Use an RDS read replica to recognize text in images.",
+              "Evaluate Amazon Textract against representative documents and privacy requirements.",
+              "Use Route 53 weighted routing to convert page pixels to structured text."
+            ],
+            "correctIndex": 2,
+            "explanation": "Textract targets document text extraction. Polly generates speech and the other services do not provide OCR. Evaluation still needs to measure handwriting, forms, layout and error behavior for the actual documents.",
+            "objectiveIds": [
+              "1b3fb5a9-58fc-43bc-9755-cd3e673e59fb/Prebuilt capability versus custom training"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.212Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 563,
+            "pageEnd": 577,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 4,
+            "pageEnd": 10,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "1ff1b970-5143-4d99-ad26-0d324331a125",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "1b3fb5a9-58fc-43bc-9755-cd3e673e59fb",
+      "title": "Language, speech and operational fit",
+      "objective": "How do Transcribe, Polly and Comprehend differ?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nMachine Learning\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon \tRekognition\n• \tFind \tobjects, people, text, scenes \tin \timages and videos \tusing ML\n• \tFacial analysis \tand \tfacial search \tto do user verification, people counting\n• \tCreate a database of “familiar faces” or compare against celebrities\n• \tUse cases:\n• \tLabeling\n• \tContent Moderation\n• \tText Detection\n• \tFace Detection and Analysis (gender, age range, emotions…)\n• \tFace Search and Verification\n• \tCelebrity Recognition\n• \tPathing (ex: for sports game analysis)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Rekognition \t– \tContent Moderation\n• \tDetect content that is inappropriate, unwanted,\nor offensive (image and videos)\n• \tUsed in social \tmedia, broadcast media,\nadvertising, and e-commerce situations to create\na safer user experience\n• \tSet a Minimum Confidence Threshold for items\nthat will be flagged\n• \tFlag sensitive content for manual review in\nAmazon Augmented AI (A2I)\n• \tHelp comply with regulations\nImage\nAmazon\nRekognition\nConfidence Level\nand Threshold\nOptional Manual\nreview in A2I\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Transcribe\n• \tAutomatically convert speech to text\n• \tUses a deep learning process called automatic speech recognition (ASR) to convert\nspeech to text quickly and accurately\n• \tAutomatically remove Personally Identifiable Information (PII) using Redaction\n• \tSupports Automatic Language Identification for multi-lingual audio\n• \tUse cases:\n• \ttranscribe customer service calls\n• \tautomate closed captioning and subtitling\n• \tgenerate metadata for media assets to create a fully searchable archive\n”Hello my name is Stéphane.\nI hope you’re enjoying the course!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Polly\n• \tTurn text into lifelike speech using deep learning\n• \tAllowing you to create applications that talk\nHi! My name is Stéphane\nand this is a demo of Amazon Polly\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Polly \t– \tLexicon & SSML\n• \tCustomize the pronunciation of words with \tPronunciation lexicons\n• \tStylized words: St3ph4ne => “Stephane”\n• \tAcronyms: AWS => “Amazon Web Services”\n• \tUpload the lexicons and use them in the SynthesizeSpeech operation\n• \tGenerate speech from plain text or from documents marked up with Speech\nSynthesis Markup Language (SSML) – enables more customization\n• \temphasizing specific words or phrases\n• \tusing phonetic pronunciation\n• \tincluding breathing sounds, whispering\n• \tusing the Newscaster speaking style\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Translate\n• \tNatural and accurate \tlanguage translation\n• \tAmazon Translate allows you to \tlocalize content \t- \tsuch as websites and\napplications \t- \tfor \tinternational users, and to easily translate large volumes\nof text efficiently.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Lex & Connect\n• \tAmazon Lex: \t(same technology that powers Alexa)\n• \tAutomatic Speech Recognition (ASR) to convert speech to text\n• \tNatural Language Understanding to recognize the intent of text, callers\n• \tHelps build chatbots, call center bots\n• \tAmazon Connect:\n• \tReceive calls, create contact flows, cloud-based virtual contact center\n• \tCan integrate with other CRM systems or AWS\n• \tNo upfront payments, 80% cheaper than traditional contact center solutions\nPhone Call\nSchedule an\nAppointment\nConnect \tLex\nIntent recognized\nLambda CRM\ncall \tstream \tinvoke \tschedule\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Comprehend\n• \tFor Natural Language Processing – NLP\n• \tFully managed and serverless service\n• \tUses machine learning to find insights and relationships in text\n• \tLanguage of the text\n• \tExtracts key phrases, places, people, brands, or events\n• \tUnderstands how positive or negative the text is\n• \tAnalyzes text using tokenization and parts of speech\n• \tAutomatically organizes a collection of text files by topic\n• \tSample use cases:\n• \tanalyze customer interactions (emails) to find what leads to a positive or negative experience\n• \tCreate and groups articles by topics that Comprehend will uncover\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Comprehend Medical\n• \tAmazon Comprehend Medical detects and returns useful information in\nunstructured clinical text:\n• \tPhysician’s notes\n• \tDischarge summaries\n• \tTest results\n• \tCase notes\n• \tUses NLP to detect Protected Health Information (PHI) \t– \tDetectPHI \tAPI\n• \tStore your documents in Amazon S3, analyze real-time data with Kinesis\nData Firehose, or use Amazon Transcribe to transcribe patient narratives\ninto text that can be analyzed by Amazon Comprehend Medical.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon SageMaker AI\n• \tFully managed service for developers / data scientists to build ML models\n• \tTypically, difficult to do all the processes in one place + provision servers\n• \tMachine learning process (simplified): predicting your exam score\nHistorical Data:\n# years of experience in IT\n# years of experience with AWS\nTime spent on the course\n…\nlabel 670\n890\n934\nbuild\nML model\nTrain and Tune\nNew data\nApply model\nPrediction\nPASS WITH 906\nscore\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Kendra\n• \tFully managed document search service powered by Machine Learning\n• \tExtract answers from within a document (text, pdf, HTML, PowerPoint, MS Word, FAQs…)\n• \tNatural language search capabilities\n• \tLearn from user interactions/feedback to promote preferred results (Incremental Learning)\n• \tAbility to manually fine-tune search results (importance of data, freshness, custom, …)\nData Sources\nAmazon S3 \tAmazon RDS \tGoogle Drive \tMS SharePoint\nMS OneDrive\n3rd party,\nAPNs,\nCustom\nKnowledge Index\n(powered by ML)\nAmazon Kendra\nindexing\nUser\nWhere is the IT support desk?\n1st floor\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Personalize\n• \tFully managed ML-service to build apps with real-time personalized recommendations\n• \tExample: personalized product recommendations/re-ranking, customized direct marketing\n• \tExample: User bought gardening tools, provide recommendations on the next one to buy\n• \tSame technology used by Amazon.com\n• \tIntegrates into existing websites, applications, SMS, email marketing systems, …\n• \tImplement in days, not months (you don’t need to build, train, and deploy ML solutions)\n• \tUse cases: retail stores, media and entertainment…\nAmazon S3\nAmazon Personalize API\nread data from S3\nreal-time data integration\nAmazon Personalize\nCustomized personalized API\nWebsites & Apps\nMobile Apps\nSMS\nEmails\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Textract\n• \tAutomatically extracts text, handwriting, and data from any scanned\ndocuments using AI and ML\n• \tExtract data from forms and tables\n• \tRead and process any type of document (PDFs, images, …)\n• \tUse cases:\n• \tFinancial Services (e.g., invoices, financial reports)\n• \tHealthcare (e.g., medical records, insurance claims)\n• \tPublic Sector (e.g., tax forms, ID documents, passports)\nAmazon Textract\n{\n“Document ID”: “123456789-005”,\n“Name”: “”,\n“SEX”: “F”,\n“DOB”: “23.05.1997”,\n…\n}\nanalyze \tresult\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Machine Learning \t- \tSummary\n• \tRekognition: face detection, labeling, celebrity recognition\n• \tTranscribe: audio to text (ex: subtitles)\n• \tPolly: text to audio\n• \tTranslate: translations\n• \tLex: build conversational bots – chatbots\n• \tConnect: cloud contact center\n• \tComprehend: natural language processing\n• \tSageMaker: machine learning for every developer and data scientist\n• \tKendra: ML-powered search engine\n• \tPersonalize: real-time personalized recommendations\n• \tTextract: detect text and data in documents",
+      "pageStart": 563,
+      "pageEnd": 577,
+      "read": false,
+      "content": {
+        "summary": "## Language, speech and operational fit\n\nTranscribe converts supported speech to text; Polly converts text to speech; Comprehend provides supported natural-language analysis. Match the direction and output of the task before comparing deployment details.\n\n### Reasoning and trade-offs\n\nThe first required transformation is speech to text, which is the Transcribe use case. Text analytics follows transcription, while speech synthesis goes in the reverse direction. Accuracy depends on audio conditions and configuration.\n\n### Avoid this trap\n\nDo not assume one language service handles every language, document format or custom terminology equally. Check supported features, region availability and data-governance requirements.\n\n### Apply it\n\nA contact center wants transcripts from recorded calls before running text analytics. Which service should produce the initial transcript?\n\n**Recommended design:** Amazon Transcribe, configured and evaluated for the call language and audio quality.\n\nThe first required transformation is speech to text, which is the Transcribe use case. Text analytics follows transcription, while speech synthesis goes in the reverse direction. Accuracy depends on audio conditions and configuration.",
+        "keyPoints": [
+          "Transcribe converts supported speech to text; Polly converts text to speech; Comprehend provides supported natural-language analysis. Match the direction and output of the task before comparing deployment details.",
+          "The first required transformation is speech to text, which is the Transcribe use case. Text analytics follows transcription, while speech synthesis goes in the reverse direction. Accuracy depends on audio conditions and configuration.",
+          "Do not assume one language service handles every language, document format or custom terminology equally. Check supported features, region availability and data-governance requirements."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Which service converts speech to text?",
+            "answer": "Amazon Transcribe.",
+            "objectiveIds": [
+              "1b3fb5a9-58fc-43bc-9755-cd3e673e59fb/Language, speech and operational fit"
+            ],
+            "id": "45eb0034-26d3-4347-be6d-269018fca8c3",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.212Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Which service converts text to speech?",
+            "answer": "Amazon Polly.",
+            "objectiveIds": [
+              "1b3fb5a9-58fc-43bc-9755-cd3e673e59fb/Language, speech and operational fit"
+            ],
+            "id": "5701f658-7138-431a-8712-77aef90ba7a8",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.212Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A contact center wants transcripts from recorded calls before running text analytics. Which service should produce the initial transcript?",
+            "options": [
+              "Amazon Polly, because it synthesizes audio from existing text.",
+              "Amazon Comprehend alone, without first converting the audio to text.",
+              "Amazon Rekognition as the primary audio-to-text engine.",
+              "Amazon Transcribe, configured and evaluated for the call language and audio quality."
+            ],
+            "correctIndex": 3,
+            "explanation": "The first required transformation is speech to text, which is the Transcribe use case. Text analytics follows transcription, while speech synthesis goes in the reverse direction. Accuracy depends on audio conditions and configuration.",
+            "objectiveIds": [
+              "1b3fb5a9-58fc-43bc-9755-cd3e673e59fb/Language, speech and operational fit"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.212Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 563,
+            "pageEnd": 577,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 4,
+            "pageEnd": 10,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

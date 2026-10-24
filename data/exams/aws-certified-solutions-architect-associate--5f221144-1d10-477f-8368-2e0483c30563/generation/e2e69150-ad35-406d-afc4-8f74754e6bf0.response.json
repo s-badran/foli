@@ -1,0 +1,147 @@
+{
+  "questions": [
+    {
+      "question": "A company that has standardized its internal addressing uses 192.168.0.1/22 for its private network. A supplier independently uses the exact same range internally. Which statement describes the benefit this provides?",
+      "options": [
+        "Private ranges must be unique across the whole web, so one company will be renumbered",
+        "The same private IP can be reused in different private networks because private IPs need only be unique within their own network",
+        "The duplicate range is acceptable only because both companies are connected to the same internet gateway",
+        "The duplicate range is acceptable because NAT translates both networks to the same public IP address"
+      ],
+      "correctIndex": 1,
+      "explanation": "Private IPs only need to be unique within a given private network, so two companies can overlap. Public uniqueness applies to public IPs, not private ones. Internet gateways do not resolve address overlap, and NAT does not give two organizations one shared public IP.",
+      "keyTopic": "Same private range across companies",
+      "kind": "scenario"
+    },
+    {
+      "question": "Which two addresses illustrate, respectively, IPv4 and IPv6 formats as described in this section?",
+      "options": [
+        "IPv4: 3ffe:1900:4545:3:200:f8ff:fe21:67cf; IPv6: 1.160.10.240",
+        "IPv4: [0-255].[0-255].[0-255].[0-255]; IPv6: 192.168.0.1",
+        "IPv4: 1.160.10.240; IPv6: 3ffe:1900:4545:3:200:f8ff:fe21:67cf",
+        "IPv4: 79.216.59.75/22; IPv6: 253.144.139.205"
+      ],
+      "correctIndex": 2,
+      "explanation": "IPv4 uses four dot-separated octets such as 1.160.10.240, while IPv6 uses the longer colon-separated form such as 3ffe:1900:4545:3:200:f8ff:fe21:67cf. The first option swaps the examples, the second mixes the address template with a private address, and the fourth uses two IPv4 addresses with a CIDR suffix.",
+      "keyTopic": "IPv4 vs IPv6 formats",
+      "kind": "concept"
+    },
+    {
+      "question": "An EC2 instance in a private subnet needs outbound access to a public website while keeping its private address. What must be in place for the machine to reach the WWW?",
+      "options": [
+        "An Elastic IP attached to the instance so the private address is never used",
+        "A second public IP assigned by default to every EC2 instance",
+        "A DNS name registered for the private IP so internet hosts can resolve it",
+        "A NAT with an internet gateway, which acts as a proxy between the private network and the internet"
+      ],
+      "correctIndex": 3,
+      "explanation": "The section states that machines connect to the WWW using a NAT plus an internet gateway acting as a proxy. An Elastic IP would expose the instance publicly rather than preserve the private-only design, only the public IP (not the private) is used for WWW access, and DNS does not make a private address routable on the internet.",
+      "keyTopic": "NAT and internet gateway for WWW access",
+      "kind": "scenario"
+    },
+    {
+      "question": "Which statement about public IPv4 addresses is correct?",
+      "options": [
+        "They must be unique across the whole internet and can be geo-located easily",
+        "They must be unique only inside one private network and cannot be geo-located",
+        "Two machines may share one public IP as long as they are in different networks",
+        "They are limited to the range 192.168.0.1/22 and are not visible on the internet"
+      ],
+      "correctIndex": 0,
+      "explanation": "A public IP makes a machine identifiable on the internet, must be unique across the whole web, and can be geo-located. Private-network uniqueness and lack of geo-location describe private IPs, public IPs cannot be shared by two machines, and 192.168.0.1/22 is a private range.",
+      "keyTopic": "Public IP uniqueness and geo-location",
+      "kind": "concept"
+    },
+    {
+      "question": "A team must guarantee that its EC2 instance keeps the same public address after it is stopped and started again, and the same address must be able to move quickly to a replacement instance. What should the architect use?",
+      "options": [
+        "The default public IP that EC2 assigns to the instance",
+        "An Elastic IP address attached to the instance, then remapped to the replacement",
+        "A private IP address registered in the internal DNS zone",
+        "A NAT gateway in front of the instance's private address"
+      ],
+      "correctIndex": 1,
+      "explanation": "An Elastic IP is a fixed public IPv4 address that survives stop/start and can be rapidly remapped to another instance to mask a failure. The default public IP can change on stop/start, a private IP is not reachable from the internet, and a NAT gateway provides outbound access rather than a fixed public address for the instance.",
+      "keyTopic": "Elastic IP: fixed public IPv4",
+      "kind": "scenario"
+    },
+    {
+      "question": "How many Elastic IP addresses can an account hold by default, and what happens if more are needed?",
+      "options": [
+        "One per Region, and the limit cannot be changed",
+        "Ten per instance, and the limit is fixed by AWS",
+        "Five per account, with the option to ask AWS to increase it",
+        "Twenty per VPC, with the option to ask AWS to increase it"
+      ],
+      "correctIndex": 2,
+      "explanation": "The section states you can only have 5 Elastic IP addresses in your account and that you can ask AWS to increase that. The other counts are not the stated limits, and the limits in the distractors are described as unchangeable when this one can be raised.",
+      "keyTopic": "Elastic IP limit of 5 per account",
+      "kind": "concept"
+    },
+    {
+      "question": "An architect is told to avoid Elastic IP addresses wherever possible. Which two alternatives does the section recommend for exposing a service?",
+      "options": [
+        "Register a DNS name to a random public IP, or use a Load Balancer and no public IP",
+        "Use a NAT gateway, or use static private IP addresses in the route table",
+        "Use an IPv6-only address, or use a larger CIDR range in the private network",
+        "Attach one Elastic IP to many instances, or use identical Elastic IPs in each Availability Zone"
+      ],
+      "correctIndex": 0,
+      "explanation": "The section recommends a random public IP with a registered DNS name or a Load Balancer without a public IP instead of Elastic IPs. NAT gateways and route tables do not replace a public endpoint, IPv6 and CIDR sizing are unrelated, and one Elastic IP can be attached to only one instance at a time.",
+      "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+      "kind": "concept"
+    },
+    {
+      "question": "An administrator needs to SSH into a newly launched EC2 instance. Which address should be used, and why?",
+      "options": [
+        "The private IP, because it is unique inside the AWS network",
+        "Either address works, because both are routable from the internet",
+        "The Elastic IP only, because instances never receive a default public IP",
+        "The public IP, because the administrator is not inside the same network as the instance"
+      ],
+      "correctIndex": 3,
+      "explanation": "The section states you cannot SSH using the private IP because you are not in the same network, so the public IP is used. The private IP is not routable from outside, the private address is not an internet route, and instances do come with a default public IP in addition to a private IP.",
+      "keyTopic": "SSH via public IP",
+      "kind": "scenario"
+    },
+    {
+      "question": "A single EC2 instance hosts a workload that must appear on the internet at two different fixed IPv4 addresses, one for each of two separate partner allow-lists. What is the key constraint that blocks attaching two Elastic IPs to that instance?",
+      "options": [
+        "An Elastic IP is a public IPv4 address that can be attached to only one instance at a time",
+        "An Elastic IP can be attached only to an internet gateway, never to an EC2 instance",
+        "An Elastic IP is a private IPv4 address and therefore not reachable by the partners",
+        "An Elastic IP stops working when the instance is stopped and must be recreated"
+      ],
+      "correctIndex": 0,
+      "explanation": "The attachment rule is that each Elastic IP can be attached to one instance at a time, so the design must be changed to reach two addresses. Elastic IPs attach to instances rather than gateways, they are public IPv4 addresses that persist as long as they are not deleted, and they are not lost merely by stopping an instance.",
+      "keyTopic": "Elastic IP attach to one instance",
+      "kind": "scenario"
+    },
+    {
+      "question": "A new EC2 instance is launched with default settings and later stopped and started. What addressing configuration should be expected?",
+      "options": [
+        "Only a private IP, with the public IP supplied by an attached Elastic IP",
+        "A private IP for the internal AWS network and a public IP for the WWW, and the public IP may change on restart",
+        "Two public IPs, and both remain fixed across stop and start",
+        "A private IP that is unique across the whole internet and a public IP that is geo-located"
+      ],
+      "correctIndex": 1,
+      "explanation": "By default an instance comes with a private IP for the internal AWS network and a public IP for the WWW, and the public IP can change after a stop and start. The default public IP is not an Elastic IP, two public IPs are not provided, and private addresses are unique only within their own network and are not geo-located.",
+      "keyTopic": "Default EC2 private + public IP",
+      "kind": "concept"
+    },
+    {
+      "question": "A company's security policy treats private IPv4 addresses as internal identifiers. Which statement about them is correct?",
+      "options": [
+        "Every private IP must be unique across the internet so routes do not collide",
+        "Private IPs can be geo-located as precisely as public IPs",
+        "A private IP is unique within its private network, and only a specified range may be used",
+        "A private IP must be registered with AWS before an instance can use it"
+      ],
+      "correctIndex": 2,
+      "explanation": "The section defines private IPs as unique across the private network and restricted to a specified range of addresses. Internet-wide uniqueness applies to public IPs, geo-location is a public IP property, and no such registration step is described.",
+      "keyTopic": "Private IP uniqueness within a network",
+      "kind": "comparison"
+    }
+  ]
+}

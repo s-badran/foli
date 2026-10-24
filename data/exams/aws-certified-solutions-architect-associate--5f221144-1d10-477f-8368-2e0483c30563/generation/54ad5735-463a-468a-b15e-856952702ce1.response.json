@@ -1,0 +1,315 @@
+{
+  "groups": [
+    {
+      "concept": "Decoding m5.2xlarge",
+      "cards": [
+        {
+          "question": "In the name m5.2xlarge, what does the leading 'm' represent?",
+          "answer": "The instance class (family)",
+          "keyTopic": "Instance naming m5.2xlarge decoded",
+          "origin": "source"
+        },
+        {
+          "question": "In the name m5.2xlarge, what does the '5' represent?",
+          "answer": "The generation",
+          "keyTopic": "Instance naming m5.2xlarge decoded",
+          "origin": "source"
+        },
+        {
+          "question": "In the name m5.2xlarge, what does '2xlarge' represent?",
+          "answer": "The size within the instance class",
+          "keyTopic": "Instance naming m5.2xlarge decoded",
+          "origin": "source"
+        },
+        {
+          "question": "Which part of m5.2xlarge is the size, the '5' or the '2xlarge'?",
+          "answer": "2xlarge",
+          "keyTopic": "Instance naming m5.2xlarge decoded",
+          "origin": "source"
+        },
+        {
+          "question": "Which part of m5.2xlarge is the generation, the '5' or the '2' in 2xlarge?",
+          "answer": "The 5",
+          "keyTopic": "Instance naming m5.2xlarge decoded",
+          "origin": "source"
+        },
+        {
+          "question": "Does a larger size suffix (e.g. 8xlarge vs large) change the instance family?",
+          "answer": "No, same class and generation, larger capacity",
+          "keyTopic": "Instance naming m5.2xlarge decoded",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Instance families overview",
+      "cards": [
+        {
+          "question": "Name the six EC2 instance type categories listed.",
+          "answer": [
+            "General Purpose",
+            "Compute Optimized",
+            "Memory Optimized",
+            "Storage Optimized",
+            "Accelerated Computing",
+            "HPC Optimized"
+          ],
+          "keyTopic": "Instance families overview",
+          "origin": "source"
+        },
+        {
+          "question": "Why does AWS offer different EC2 instance types?",
+          "answer": "Each type is optimised for different use cases",
+          "keyTopic": "Instance families overview",
+          "origin": "source"
+        },
+        {
+          "question": "Does the source give use cases for Accelerated Computing and HPC Optimized?",
+          "answer": "No, they are only listed as categories",
+          "keyTopic": "Instance families overview",
+          "origin": "source"
+        },
+        {
+          "question": "What does the source advise about evolving instance family lists?",
+          "answer": "Check the AWS website for the latest information",
+          "keyTopic": "Instance families overview",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "General Purpose",
+      "cards": [
+        {
+          "question": "What three resources does a General Purpose instance balance?",
+          "answer": [
+            "Compute",
+            "Memory",
+            "Networking"
+          ],
+          "keyTopic": "General purpose use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Which instance family suits a diversity of workloads like web servers or code repositories?",
+          "answer": "General Purpose",
+          "keyTopic": "General purpose use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Which instance type used in the course is General Purpose?",
+          "answer": "t2.micro",
+          "keyTopic": "General purpose use cases",
+          "origin": "source"
+        },
+        {
+          "question": "A workload needs balance across compute, memory and networking — which family?",
+          "answer": "General Purpose",
+          "keyTopic": "General purpose use cases",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Compute Optimized",
+      "cards": [
+        {
+          "question": "What kind of tasks is Compute Optimized designed for?",
+          "answer": "Compute-intensive tasks needing high-performance processors",
+          "keyTopic": "Compute optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Name three Compute Optimized use cases.",
+          "answer": [
+            "Batch processing",
+            "Media transcoding",
+            "High performance web servers"
+          ],
+          "keyTopic": "Compute optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Which family fits media transcoding and dedicated gaming servers?",
+          "answer": "Compute Optimized",
+          "keyTopic": "Compute optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Which family fits scientific modeling and machine learning workloads?",
+          "answer": "Compute Optimized",
+          "keyTopic": "Compute optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "High performance computing (HPC) is a use case for which family?",
+          "answer": "Compute Optimized",
+          "keyTopic": "Compute optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Which family is chosen when the CPU is the bottleneck, General Purpose or Compute Optimized?",
+          "answer": "Compute Optimized",
+          "keyTopic": "Compute optimized use cases",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Memory Optimized",
+      "cards": [
+        {
+          "question": "What defines a Memory Optimized workload?",
+          "answer": "Processing large data sets in memory",
+          "keyTopic": "Memory optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Name two Memory Optimized use cases.",
+          "answer": [
+            "Distributed web scale cache stores",
+            "In-memory BI databases"
+          ],
+          "keyTopic": "Memory optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Which family fits real-time processing of big unstructured data?",
+          "answer": "Memory Optimized",
+          "keyTopic": "Memory optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Which family fits high performance relational/non-relational databases?",
+          "answer": "Memory Optimized",
+          "keyTopic": "Memory optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "In-memory databases optimized for business intelligence need which family?",
+          "answer": "Memory Optimized",
+          "keyTopic": "Memory optimized use cases",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Storage Optimized",
+      "cards": [
+        {
+          "question": "What access pattern defines Storage Optimized instances?",
+          "answer": "High, sequential read/write to large data sets on local storage",
+          "keyTopic": "Storage optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Which family fits high frequency OLTP systems?",
+          "answer": "Storage Optimized",
+          "keyTopic": "Storage optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Which family fits data warehousing applications and distributed file systems?",
+          "answer": "Storage Optimized",
+          "keyTopic": "Storage optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "A cache for in-memory databases such as Redis belongs to which family?",
+          "answer": "Storage Optimized",
+          "keyTopic": "Storage optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Which family fits relational and NoSQL databases needing high sequential local storage?",
+          "answer": "Storage Optimized",
+          "keyTopic": "Storage optimized use cases",
+          "origin": "source"
+        },
+        {
+          "question": "Which family targets data held in RAM, Memory Optimized or Storage Optimized?",
+          "answer": "Memory Optimized",
+          "keyTopic": "Storage optimized use cases",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Sizing table rows",
+      "cards": [
+        {
+          "question": "How many vCPU and GiB of memory does t2.micro have?",
+          "answer": "1 vCPU / 1 GiB",
+          "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+          "origin": "source"
+        },
+        {
+          "question": "What network performance does t2.micro have?",
+          "answer": "Low to Moderate",
+          "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+          "origin": "source"
+        },
+        {
+          "question": "How many vCPU and GiB does t2.xlarge have?",
+          "answer": "4 vCPU / 16 GiB",
+          "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+          "origin": "source"
+        },
+        {
+          "question": "What network performance does t2.xlarge have?",
+          "answer": "Moderate",
+          "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+          "origin": "source"
+        },
+        {
+          "question": "How many vCPU and GiB does c5d.4xlarge have?",
+          "answer": "16 vCPU / 32 GiB",
+          "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+          "origin": "source"
+        },
+        {
+          "question": "What local storage does c5d.4xlarge provide?",
+          "answer": "1 x 400 NVMe SSD",
+          "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+          "origin": "source"
+        },
+        {
+          "question": "What EBS bandwidth does c5d.4xlarge have?",
+          "answer": "4,750 Mbps",
+          "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+          "origin": "source"
+        },
+        {
+          "question": "How many vCPU and GiB does r5.16xlarge have?",
+          "answer": "64 vCPU / 512 GiB",
+          "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+          "origin": "source"
+        },
+        {
+          "question": "What network and EBS bandwidth does r5.16xlarge have?",
+          "answer": "20 Gbps / 13,600 Mbps EBS",
+          "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+          "origin": "source"
+        },
+        {
+          "question": "How many vCPU and GiB does m5.8xlarge have?",
+          "answer": "32 vCPU / 128 GiB",
+          "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+          "origin": "source"
+        },
+        {
+          "question": "What network and EBS bandwidth does m5.8xlarge have?",
+          "answer": "10 Gbps / 6,800 Mbps EBS",
+          "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+          "origin": "source"
+        },
+        {
+          "question": "Which table row shows local NVMe SSD instead of EBS-Only storage?",
+          "answer": "c5d.4xlarge",
+          "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+          "origin": "source"
+        }
+      ]
+    }
+  ]
+}

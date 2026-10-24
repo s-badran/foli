@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "9eac225a-7b08-4dc4-9200-20af16016256",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 27,
+    "title": "More Solutions Architecture",
+    "pageStart": 805,
+    "pageEnd": 826,
+    "description": "Event processing patterns, caching strategies, blocking IPs, high-performance computing and highly available EC2 designs.",
+    "examFocus": [
+      "Task 2.1: event-driven patterns",
+      "Task 3.2: HPC on AWS"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

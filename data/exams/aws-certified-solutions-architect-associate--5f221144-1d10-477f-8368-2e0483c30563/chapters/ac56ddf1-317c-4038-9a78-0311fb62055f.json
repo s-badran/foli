@@ -1,0 +1,223 @@
+{
+  "chapter": {
+    "id": "ac56ddf1-317c-4038-9a78-0311fb62055f",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "Database selection",
+    "order": 18,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 516,
+    "pageEnd": 529,
+    "description": "Relational, key-value, graph and managed database trade-offs.",
+    "objectives": [
+      {
+        "id": "ac56ddf1-317c-4038-9a78-0311fb62055f/Match the data model to the query",
+        "title": "Match the data model to the query",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 516,
+        "pageEnd": 529,
+        "assessment": "both"
+      },
+      {
+        "id": "ac56ddf1-317c-4038-9a78-0311fb62055f/Specialized databases and analytical boundaries",
+        "title": "Specialized databases and analytical boundaries",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 516,
+        "pageEnd": 529,
+        "assessment": "both"
+      }
+    ],
+    "coverageStatus": "draft"
+  },
+  "sections": [
+    {
+      "id": "98cd5188-7600-4b9e-82ab-cc3e5842880e",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "ac56ddf1-317c-4038-9a78-0311fb62055f",
+      "title": "Match the data model to the query",
+      "objective": "What workload characteristics favor a relational database over a key-value design?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nDatabases in AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nChoosing the Right Database\n• \tWe have a lot of managed databases on AWS to choose from\n• \tQuestions to choose the right database based on your architecture:\n• \tRead-heavy, write-heavy, or balanced workload? Throughput needs? Will it\nchange, does it need to scale or fluctuate during the day?\n• \tHow much data to store and for how long? Will it grow? Average object size?\nHow are they accessed?\n• \tData durability? Source of truth for the data ?\n• \tLatency requirements? Concurrent users?\n• \tData model? How will you query the data? Joins? Structured? Semi-Structured?\n• \tStrong schema? More flexibility? Reporting? Search? RDBMS / NoSQL?\n• \tLicense costs? Switch to Cloud Native DB such as Aurora?\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDatabase Types\n• \tRDBMS (= SQL / OLTP): RDS, Aurora – great for joins\n• \tNoSQL database – no joins, no SQL : DynamoDB (~JSON), ElastiCache (key / value\npairs), Neptune (graphs), DocumentDB (for MongoDB), Keyspaces (for Apache\nCassandra)\n• \tObject Store: S3 (for big objects) / Glacier (for backups / archives)\n• \tData Warehouse (= SQL Analytics / BI): Redshift (OLAP), Athena, EMR\n• \tSearch: OpenSearch (JSON) – free text, unstructured searches\n• \tGraphs: Amazon Neptune – displays relationships between data\n• \tLedger: Amazon Quantum Ledger Database\n• \tTime series: Amazon Timestream\n• \tNote: some databases are being discussed in the Data & Analytics section\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon RDS \t– \tSummary\n• \tManaged PostgreSQL / MySQL / Oracle / SQL Server / DB2 / MariaDB / Custom\n• \tProvisioned RDS Instance Size and EBS Volume Type & Size\n• \tAuto-scaling capability for Storage\n• \tSupport for Read Replicas and Multi AZ\n• \tSecurity through IAM, Security Groups, KMS , SSL in transit\n• \tAutomated Backup with Point in time restore feature (up to 35 days)\n• \tManual DB Snapshot for longer-term recovery\n• \tManaged and Scheduled maintenance (with downtime)\n• \tSupport for IAM Authentication, integration with Secrets Manager\n• \tRDS Custom for access to and customize the underlying instance (Oracle & SQL Server)\n• \tUse case: Store relational datasets (RDBMS / OLTP), perform SQL queries, transactions\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\n• \tCompatible API for PostgreSQL / MySQL, separation of storage and compute\n• \tStorage: data is stored in 6 replicas, across 3 AZ – highly available, self-healing, auto-scaling\n• \tCompute: Cluster of DB Instance across multiple AZ, auto-scaling of Read Replicas\n• \tCluster: Custom endpoints for writer and reader DB instances\n• \tSame security / monitoring / maintenance features as RDS\n• \tKnow the backup & restore options for Aurora\n• \tAurora Serverless – for unpredictable / intermittent workloads, no capacity planning\n• \tAurora Global: up to 16 DB Read Instances in each region, < 1 second storage replication\n• \tAurora Machine Learning: perform ML using SageMaker & Comprehend on Aurora\n• \tAurora Database Cloning: new cluster from existing one, faster than restoring a snapshot\n• \tUse case: same as RDS, but with less maintenance / more flexibility / more performance / more features\nAmazon Aurora \t– \tSummary\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon \tElastiCache \t– \tSummary\n• \tManaged Redis / Memcached (similar offering as RDS, but for caches)\n• \tIn-memory data store, sub-millisecond latency\n• \tSelect an ElastiCache instance type (e.g., cache.m6g.large)\n• \tSupport for Clustering (Redis) and Multi AZ, Read Replicas (sharding)\n• \tSecurity through IAM, Security Groups, KMS, Redis Auth\n• \tBackup / Snapshot / Point in time restore feature\n• \tManaged and Scheduled maintenance\n• \tRequires some application code changes to be leveraged\n• \tUse Case: Key/Value store, Frequent reads, less writes, cache results for DB\nqueries, store session data for websites, cannot use SQL.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon DynamoDB \t– \tSummary\n• \tAWS proprietary technology, managed serverless NoSQL database, millisecond latency\n• \tCapacity modes: provisioned capacity with optional auto-scaling or on-demand capacity\n• \tCan replace ElastiCache as a key/value store (storing session data for example, using TTL feature)\n• \tHighly Available, Multi AZ by default, Read and Writes are decoupled, transaction capability\n• \tDAX cluster for read cache, microsecond read latency\n• \tSecurity, authentication and authorization is done through IAM\n• \tEvent Processing: DynamoDB Streams to integrate with AWS Lambda, or Kinesis Data Streams\n• \tGlobal Table feature: active-active setup\n• \tAutomated backups up to 35 days with PITR (restore to new table), or on-demand backups\n• \tExport to S3 without using RCU within the PITR window, import from S3 without using WCU\n• \tGreat to rapidly evolve schemas\n• \tUse Case: Serverless applications development (small documents 100s KB), distributed serverless\ncache\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tSummary\n• \tS3 is a… key / value store for objects\n• \tGreat for bigger objects, not so great for many small objects\n• \tServerless, scales infinitely, max object size is 50 TB, versioning capability\n• \tTiers: S3 Standard, S3 Infrequent Access, S3 Intelligent, S3 Glacier + lifecycle policy\n• \tFeatures: Versioning, Encryption, Replication, MFA-Delete, Access Logs…\n• \tSecurity: IAM, Bucket Policies, ACL, Access Points, Object Lambda, CORS, Object/Vault Lock\n• \tEncryption: SSE-S3, SSE-KMS, SSE-C, client-side, TLS in transit, default encryption\n• \tBatch operations on objects using S3 Batch, listing files using S3 Inventory\n• \tPerformance: Multi-part upload, S3 Transfer Acceleration, S3 Select\n• \tAutomation: S3 Event Notifications (SNS, SQS, Lambda, EventBridge)\n• \tUse Cases: static files, key value store for big files, website hosting\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDocumentDB\n• \tAurora is an “AWS-implementation” of PostgreSQL / MySQL …\n• \tDocumentDB is the same for MongoDB (which is a NoSQL database)\n• \tMongoDB is used to store, query, and index JSON data\n• \tSimilar “deployment concepts” as Aurora\n• \tFully Managed, highly available with replication across 3 AZ\n• \tDocumentDB storage automatically grows in increments of 10GB\n• \tAutomatically scales to workloads with millions of requests per seconds\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Neptune\n• \tFully managed graph database\n• \tA popular graph dataset would be a social network\n• \tUsers have friends\n• \tPosts have comments\n• \tComments have likes from users\n• \tUsers share and like posts…\n• \tHighly available across 3 AZ, with up to 15 read replicas\n• \tBuild and run applications working with highly connected\ndatasets – optimized for these complex and hard queries\n• \tCan store up to billions of relations and query the graph with\nmilliseconds latency\n• \tHighly available with replications across multiple AZs\n• \tGreat for knowledge graphs (Wikipedia), fraud detection,\nrecommendation engines, social networking\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Neptune \t– \tStreams\n• \tReal-time ordered \tsequence of every change to\nyour graph data\n• \tChanges are available immediately after writing\n• \tNo duplicates, strict order\n• \tStreams data is accessible in an \tHTTP REST API\n• \tUse cases:\n• \tSend notifications when certain changes are made\n• \tMaintain your graph data synchronized in another\ndata store (e.g., S3, OpenSearch, ElastiCache)\n• \tReplicate data across regions in Neptune\nNeptune Cluster\nNeptune\nStreams\nStreams API\nHTTP Get Request\n…\nOpenSearch\tS3 \tElastiCache\n…\nStreams reader application\nwrites\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon \tKeyspaces \t(for Apache Cassandra)\n• \tApache Cassandra is an open-source NoSQL distributed database\n• \tA managed Apache Cassandra-compatible database service\n• \tServerless, Scalable, highly available, fully managed by AWS\n• \tAutomatically scale tables up/down based on the application’s traffic\n• \tTables are replicated 3 times across multiple AZ\n• \tUsing the Cassandra Query Language (CQL)\n• \tSingle-digit millisecond latency at any scale, 1000s of requests per second\n• \tCapacity: On-demand mode or provisioned mode with auto-scaling\n• \tEncryption, backup, Point-In-Time Recovery (PITR) up to 35 days\n• \tUse cases: store IoT devices info, time-series data, …\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Timestream\n• \tFully managed, fast, scalable, serverless time series database\n• \tAutomatically scales up/down to adjust capacity\n• \tStore and analyze trillions of events per day\n• \t1000s times faster & 1/10th the cost of relational databases\n• \tScheduled queries, multi-measure records, SQL compatibility\n• \tData storage tiering: recent data kept in memory and\nhistorical data kept in a cost-optimized storage\n• \tBuilt-in time series analytics functions (helps you identify\npatterns in your data in near real-time)\n• \tEncryption in transit and at rest\n• \tUse cases: IoT apps, operational applications, real-time\nanalytics, …\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Timestream \t– \tArchitecture\nAmazon\nTimestream\nAWS IoT\nKinesis Data\nStreams\nLambda\nPrometheus\nAmazon MSK Kinesis Data Analytics\nFor Apache Flink\nKinesis Data\nStreams\nAmazon\nQuickSight\nAmazon\nSageMaker\nAny JDBC connection",
+      "pageStart": 516,
+      "pageEnd": 529,
+      "read": false,
+      "content": {
+        "summary": "## Match the data model to the query\n\nRelational engines suit relationships, joins, flexible SQL and transactional constraints when those are core requirements. Key-value designs suit well-defined access patterns and horizontally scalable key-based operations.\n\n### Reasoning and trade-offs\n\nThe explicit SQL and transaction requirements favor a relational engine. Other services may support particular pieces but would require substantial application redesign. Availability and scaling modes are subsequent engine-specific decisions.\n\n### Avoid this trap\n\nNo database choice is automatically best because it is serverless or newer. Evaluate query patterns, consistency, transaction boundaries, operational effort and total cost together.\n\n### Apply it\n\nA finance application needs multi-row transactional updates and frequent ad hoc SQL joins across several entities. Which initial choice best matches the stated needs?\n\n**Recommended design:** Use an appropriate managed relational engine such as RDS or Aurora.\n\nThe explicit SQL and transaction requirements favor a relational engine. Other services may support particular pieces but would require substantial application redesign. Availability and scaling modes are subsequent engine-specific decisions.",
+        "keyPoints": [
+          "Relational engines suit relationships, joins, flexible SQL and transactional constraints when those are core requirements. Key-value designs suit well-defined access patterns and horizontally scalable key-based operations.",
+          "The explicit SQL and transaction requirements favor a relational engine. Other services may support particular pieces but would require substantial application redesign. Availability and scaling modes are subsequent engine-specific decisions.",
+          "No database choice is automatically best because it is serverless or newer. Evaluate query patterns, consistency, transaction boundaries, operational effort and total cost together."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Which database model naturally fits joins and relational constraints?",
+            "answer": "A relational database.",
+            "objectiveIds": [
+              "ac56ddf1-317c-4038-9a78-0311fb62055f/Match the data model to the query"
+            ],
+            "id": "84fad5dd-1b2b-4b46-a7c8-fbb790609e43",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.197Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What should determine database selection before product popularity?",
+            "answer": "Queries, consistency, transactions and operational requirements.",
+            "objectiveIds": [
+              "ac56ddf1-317c-4038-9a78-0311fb62055f/Match the data model to the query"
+            ],
+            "id": "03f38e96-8900-4b74-84aa-c71ce27b7a5e",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.197Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A finance application needs multi-row transactional updates and frequent ad hoc SQL joins across several entities. Which initial choice best matches the stated needs?",
+            "options": [
+              "Use a key-value table and replace all joins with full scans by default.",
+              "Use ElastiCache as the sole durable accounting system without recovery design.",
+              "Use an appropriate managed relational engine such as RDS or Aurora.",
+              "Use S3 object names as the only mechanism for multi-row transactional joins."
+            ],
+            "correctIndex": 2,
+            "explanation": "The explicit SQL and transaction requirements favor a relational engine. Other services may support particular pieces but would require substantial application redesign. Availability and scaling modes are subsequent engine-specific decisions.",
+            "objectiveIds": [
+              "ac56ddf1-317c-4038-9a78-0311fb62055f/Match the data model to the query"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.197Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 516,
+            "pageEnd": 529,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "c556c68c-0fa2-4f4b-a4da-32dfabc058c4",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "ac56ddf1-317c-4038-9a78-0311fb62055f",
+      "title": "Specialized databases and analytical boundaries",
+      "objective": "When is a graph database a better conceptual fit than repeated relational joins?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nDatabases in AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nChoosing the Right Database\n• \tWe have a lot of managed databases on AWS to choose from\n• \tQuestions to choose the right database based on your architecture:\n• \tRead-heavy, write-heavy, or balanced workload? Throughput needs? Will it\nchange, does it need to scale or fluctuate during the day?\n• \tHow much data to store and for how long? Will it grow? Average object size?\nHow are they accessed?\n• \tData durability? Source of truth for the data ?\n• \tLatency requirements? Concurrent users?\n• \tData model? How will you query the data? Joins? Structured? Semi-Structured?\n• \tStrong schema? More flexibility? Reporting? Search? RDBMS / NoSQL?\n• \tLicense costs? Switch to Cloud Native DB such as Aurora?\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDatabase Types\n• \tRDBMS (= SQL / OLTP): RDS, Aurora – great for joins\n• \tNoSQL database – no joins, no SQL : DynamoDB (~JSON), ElastiCache (key / value\npairs), Neptune (graphs), DocumentDB (for MongoDB), Keyspaces (for Apache\nCassandra)\n• \tObject Store: S3 (for big objects) / Glacier (for backups / archives)\n• \tData Warehouse (= SQL Analytics / BI): Redshift (OLAP), Athena, EMR\n• \tSearch: OpenSearch (JSON) – free text, unstructured searches\n• \tGraphs: Amazon Neptune – displays relationships between data\n• \tLedger: Amazon Quantum Ledger Database\n• \tTime series: Amazon Timestream\n• \tNote: some databases are being discussed in the Data & Analytics section\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon RDS \t– \tSummary\n• \tManaged PostgreSQL / MySQL / Oracle / SQL Server / DB2 / MariaDB / Custom\n• \tProvisioned RDS Instance Size and EBS Volume Type & Size\n• \tAuto-scaling capability for Storage\n• \tSupport for Read Replicas and Multi AZ\n• \tSecurity through IAM, Security Groups, KMS , SSL in transit\n• \tAutomated Backup with Point in time restore feature (up to 35 days)\n• \tManual DB Snapshot for longer-term recovery\n• \tManaged and Scheduled maintenance (with downtime)\n• \tSupport for IAM Authentication, integration with Secrets Manager\n• \tRDS Custom for access to and customize the underlying instance (Oracle & SQL Server)\n• \tUse case: Store relational datasets (RDBMS / OLTP), perform SQL queries, transactions\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\n• \tCompatible API for PostgreSQL / MySQL, separation of storage and compute\n• \tStorage: data is stored in 6 replicas, across 3 AZ – highly available, self-healing, auto-scaling\n• \tCompute: Cluster of DB Instance across multiple AZ, auto-scaling of Read Replicas\n• \tCluster: Custom endpoints for writer and reader DB instances\n• \tSame security / monitoring / maintenance features as RDS\n• \tKnow the backup & restore options for Aurora\n• \tAurora Serverless – for unpredictable / intermittent workloads, no capacity planning\n• \tAurora Global: up to 16 DB Read Instances in each region, < 1 second storage replication\n• \tAurora Machine Learning: perform ML using SageMaker & Comprehend on Aurora\n• \tAurora Database Cloning: new cluster from existing one, faster than restoring a snapshot\n• \tUse case: same as RDS, but with less maintenance / more flexibility / more performance / more features\nAmazon Aurora \t– \tSummary\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon \tElastiCache \t– \tSummary\n• \tManaged Redis / Memcached (similar offering as RDS, but for caches)\n• \tIn-memory data store, sub-millisecond latency\n• \tSelect an ElastiCache instance type (e.g., cache.m6g.large)\n• \tSupport for Clustering (Redis) and Multi AZ, Read Replicas (sharding)\n• \tSecurity through IAM, Security Groups, KMS, Redis Auth\n• \tBackup / Snapshot / Point in time restore feature\n• \tManaged and Scheduled maintenance\n• \tRequires some application code changes to be leveraged\n• \tUse Case: Key/Value store, Frequent reads, less writes, cache results for DB\nqueries, store session data for websites, cannot use SQL.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon DynamoDB \t– \tSummary\n• \tAWS proprietary technology, managed serverless NoSQL database, millisecond latency\n• \tCapacity modes: provisioned capacity with optional auto-scaling or on-demand capacity\n• \tCan replace ElastiCache as a key/value store (storing session data for example, using TTL feature)\n• \tHighly Available, Multi AZ by default, Read and Writes are decoupled, transaction capability\n• \tDAX cluster for read cache, microsecond read latency\n• \tSecurity, authentication and authorization is done through IAM\n• \tEvent Processing: DynamoDB Streams to integrate with AWS Lambda, or Kinesis Data Streams\n• \tGlobal Table feature: active-active setup\n• \tAutomated backups up to 35 days with PITR (restore to new table), or on-demand backups\n• \tExport to S3 without using RCU within the PITR window, import from S3 without using WCU\n• \tGreat to rapidly evolve schemas\n• \tUse Case: Serverless applications development (small documents 100s KB), distributed serverless\ncache\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon S3 \t– \tSummary\n• \tS3 is a… key / value store for objects\n• \tGreat for bigger objects, not so great for many small objects\n• \tServerless, scales infinitely, max object size is 50 TB, versioning capability\n• \tTiers: S3 Standard, S3 Infrequent Access, S3 Intelligent, S3 Glacier + lifecycle policy\n• \tFeatures: Versioning, Encryption, Replication, MFA-Delete, Access Logs…\n• \tSecurity: IAM, Bucket Policies, ACL, Access Points, Object Lambda, CORS, Object/Vault Lock\n• \tEncryption: SSE-S3, SSE-KMS, SSE-C, client-side, TLS in transit, default encryption\n• \tBatch operations on objects using S3 Batch, listing files using S3 Inventory\n• \tPerformance: Multi-part upload, S3 Transfer Acceleration, S3 Select\n• \tAutomation: S3 Event Notifications (SNS, SQS, Lambda, EventBridge)\n• \tUse Cases: static files, key value store for big files, website hosting\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDocumentDB\n• \tAurora is an “AWS-implementation” of PostgreSQL / MySQL …\n• \tDocumentDB is the same for MongoDB (which is a NoSQL database)\n• \tMongoDB is used to store, query, and index JSON data\n• \tSimilar “deployment concepts” as Aurora\n• \tFully Managed, highly available with replication across 3 AZ\n• \tDocumentDB storage automatically grows in increments of 10GB\n• \tAutomatically scales to workloads with millions of requests per seconds\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Neptune\n• \tFully managed graph database\n• \tA popular graph dataset would be a social network\n• \tUsers have friends\n• \tPosts have comments\n• \tComments have likes from users\n• \tUsers share and like posts…\n• \tHighly available across 3 AZ, with up to 15 read replicas\n• \tBuild and run applications working with highly connected\ndatasets – optimized for these complex and hard queries\n• \tCan store up to billions of relations and query the graph with\nmilliseconds latency\n• \tHighly available with replications across multiple AZs\n• \tGreat for knowledge graphs (Wikipedia), fraud detection,\nrecommendation engines, social networking\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Neptune \t– \tStreams\n• \tReal-time ordered \tsequence of every change to\nyour graph data\n• \tChanges are available immediately after writing\n• \tNo duplicates, strict order\n• \tStreams data is accessible in an \tHTTP REST API\n• \tUse cases:\n• \tSend notifications when certain changes are made\n• \tMaintain your graph data synchronized in another\ndata store (e.g., S3, OpenSearch, ElastiCache)\n• \tReplicate data across regions in Neptune\nNeptune Cluster\nNeptune\nStreams\nStreams API\nHTTP Get Request\n…\nOpenSearch\tS3 \tElastiCache\n…\nStreams reader application\nwrites\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon \tKeyspaces \t(for Apache Cassandra)\n• \tApache Cassandra is an open-source NoSQL distributed database\n• \tA managed Apache Cassandra-compatible database service\n• \tServerless, Scalable, highly available, fully managed by AWS\n• \tAutomatically scale tables up/down based on the application’s traffic\n• \tTables are replicated 3 times across multiple AZ\n• \tUsing the Cassandra Query Language (CQL)\n• \tSingle-digit millisecond latency at any scale, 1000s of requests per second\n• \tCapacity: On-demand mode or provisioned mode with auto-scaling\n• \tEncryption, backup, Point-In-Time Recovery (PITR) up to 35 days\n• \tUse cases: store IoT devices info, time-series data, …\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Timestream\n• \tFully managed, fast, scalable, serverless time series database\n• \tAutomatically scales up/down to adjust capacity\n• \tStore and analyze trillions of events per day\n• \t1000s times faster & 1/10th the cost of relational databases\n• \tScheduled queries, multi-measure records, SQL compatibility\n• \tData storage tiering: recent data kept in memory and\nhistorical data kept in a cost-optimized storage\n• \tBuilt-in time series analytics functions (helps you identify\npatterns in your data in near real-time)\n• \tEncryption in transit and at rest\n• \tUse cases: IoT apps, operational applications, real-time\nanalytics, …\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon Timestream \t– \tArchitecture\nAmazon\nTimestream\nAWS IoT\nKinesis Data\nStreams\nLambda\nPrometheus\nAmazon MSK Kinesis Data Analytics\nFor Apache Flink\nKinesis Data\nStreams\nAmazon\nQuickSight\nAmazon\nSageMaker\nAny JDBC connection",
+      "pageStart": 516,
+      "pageEnd": 529,
+      "read": false,
+      "content": {
+        "summary": "## Specialized databases and analytical boundaries\n\nA graph database is suited to relationship traversal, such as finding connection paths or fraud rings. Its advantage depends on traversal-heavy queries rather than simply storing any data with identifiers.\n\n### Reasoning and trade-offs\n\nRelationship-centric traversal is the graph use case. The alternatives provide storage, delivery or transport abstractions without the required graph query model. Validate supported graph languages and actual traversal performance.\n\n### Avoid this trap\n\nGraph storage does not replace a warehouse for large analytical aggregations or a cache for repeated lookups. Choose a specialized database for a demonstrated query need.\n\n### Apply it\n\nA fraud team repeatedly explores several hops of relationships among accounts, devices and payment instruments. Which managed database category should be evaluated?\n\n**Recommended design:** A graph service such as Amazon Neptune for relationship traversal.\n\nRelationship-centric traversal is the graph use case. The alternatives provide storage, delivery or transport abstractions without the required graph query model. Validate supported graph languages and actual traversal performance.",
+        "keyPoints": [
+          "A graph database is suited to relationship traversal, such as finding connection paths or fraud rings. Its advantage depends on traversal-heavy queries rather than simply storing any data with identifiers.",
+          "Relationship-centric traversal is the graph use case. The alternatives provide storage, delivery or transport abstractions without the required graph query model. Validate supported graph languages and actual traversal performance.",
+          "Graph storage does not replace a warehouse for large analytical aggregations or a cache for repeated lookups. Choose a specialized database for a demonstrated query need."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Which database category fits multi-hop relationship traversal?",
+            "answer": "A graph database.",
+            "objectiveIds": [
+              "ac56ddf1-317c-4038-9a78-0311fb62055f/Specialized databases and analytical boundaries"
+            ],
+            "id": "b31e2c1a-d1ca-43e0-a2d7-e115efb96fc6",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.197Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Which managed AWS service supports graph workloads?",
+            "answer": "Amazon Neptune.",
+            "objectiveIds": [
+              "ac56ddf1-317c-4038-9a78-0311fb62055f/Specialized databases and analytical boundaries"
+            ],
+            "id": "13844ff4-cb53-4686-b528-dba8ca523852",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.197Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A fraud team repeatedly explores several hops of relationships among accounts, devices and payment instruments. Which managed database category should be evaluated?",
+            "options": [
+              "A block volume used directly as a query engine.",
+              "A CDN cache as the persistent relationship database.",
+              "A queue in which each relationship can only be consumed once.",
+              "A graph service such as Amazon Neptune for relationship traversal."
+            ],
+            "correctIndex": 3,
+            "explanation": "Relationship-centric traversal is the graph use case. The alternatives provide storage, delivery or transport abstractions without the required graph query model. Validate supported graph languages and actual traversal performance.",
+            "objectiveIds": [
+              "ac56ddf1-317c-4038-9a78-0311fb62055f/Specialized databases and analytical boundaries"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.197Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 516,
+            "pageEnd": 529,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

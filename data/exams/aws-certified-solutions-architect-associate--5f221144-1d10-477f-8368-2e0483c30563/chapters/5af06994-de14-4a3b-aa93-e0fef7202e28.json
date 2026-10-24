@@ -1,0 +1,20 @@
+{
+  "chapter": {
+    "id": "5af06994-de14-4a3b-aa93-e0fef7202e28",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 25,
+    "title": "Amazon VPC",
+    "pageStart": 700,
+    "pageEnd": 777,
+    "description": "Subnets, gateways, NAT, security groups versus NACLs, peering, endpoints, VPN, Direct Connect, Transit Gateway and egress costs.",
+    "examFocus": [
+      "Task 1.2: network segmentation and security",
+      "Task 3.4: network architectures",
+      "Task 4.4: cost-optimized networking"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

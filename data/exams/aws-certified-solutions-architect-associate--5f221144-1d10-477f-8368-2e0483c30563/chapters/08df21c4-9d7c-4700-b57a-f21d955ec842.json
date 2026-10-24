@@ -1,0 +1,186 @@
+{
+  "chapter": {
+    "id": "08df21c4-9d7c-4700-b57a-f21d955ec842",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "CloudFront and Global Accelerator",
+    "order": 12,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 337,
+    "pageEnd": 351,
+    "description": "Edge caching, global transport and origin protection."
+  },
+  "sections": [
+    {
+      "id": "1a10924c-ec85-46d1-84a3-1dc47fb51d04",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "08df21c4-9d7c-4700-b57a-f21d955ec842",
+      "title": "Caching content versus accelerating transport",
+      "objective": "When would you choose Global Accelerator rather than CloudFront?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nCloudFront & Global Accelerator\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon CloudFront\n• \tContent Delivery Network (CDN)\n• \tImproves read performance, content\nis cached at the edge\n• \tImproves users experience\n• \tHundreds of Points of Presence\nglobally (edge locations, caches)\n• \tDDoS protection (because\nworldwide), integration with Shield,\nAWS Web Application Firewall Source: https://aws.amazon.com/cloudfront/features/?nc=sn&loc=2\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront \t– \tOrigins\n• \tS3 bucket\n• \tFor distributing files and caching them at the edge\n• \tFor uploading files to S3 through CloudFront\n• \tSecured using Origin Access Control (OAC)\n• \tVPC Origin\n• \tFor applications hosted in VPC private subnets\n• \tPrivate Application Load Balancer / Network Load Balancer / EC2 Instances\n• \tCustom Origin (HTTP)\n• \tS3 website (must first enable the bucket as a static S3 website)\n• \tAny public HTTP backend you want (example: Public ALB)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront at a high level\nCloudFront Edge Location\nForward Request\nto your Origin\nLocal Cache\nS3\nHTTP\nor\nOrigin\nClient\nGET /beach.jpg?size=300x300 HTTP/1.1\nUser-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)\nHost: www.example.com\nAccept-Encoding: gzip, deflate\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront \t– \tS3 as an Origin\nEdge\nLos Angeles\nEdge\nMumbai\nEdge\nMelbourne\nOrigin (S3 bucket)\nPublic www\nPublic www\nEdge\nSão Paulo\nOrigin Access Control\n+ S3 bucket policy\nOAC\nPrivate AWS\nPrivate AWS\nPrivate AWS\nPrivate AWS\nAWS Cloud\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront vs S3 Cross Region Replication\n• \tCloudFront:\n• \tGlobal Edge network\n• \tFiles are cached for a TTL (maybe a day)\n• \tGreat for static content that must be available everywhere\n• \tS3 Cross Region Replication:\n• \tMust be setup for each region you want replication to happen\n• \tFiles are updated in near real-time\n• \tRead only\n• \tGreat for dynamic content that needs to be available at low-latency in few regions\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront \t– \tALB or EC2 as an origin\nUsing VPC Origins\n• \tAllows you to deliver content from your applications hosted in your\nVPC private subnets (no need to expose them on the Internet)\n• \tDeliver traffic to \tprivate:\n• \tApplication Load Balancer\n• \tNetwork Load Balancer\n• \tEC2 Instances\nUsers CloudFront\nEdge Location\nPrivate Subnet\nVPC\nVPC\nOrigin\nApplication Load Balancer\nNetwork Load Balancer\nEC2 Instance\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront \t– \tALB or EC2 as an origin\nUsing Public Network\nhttp://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips\nEdge Location\nPublic IPs Application Load Balancer\nMust be Public\nEC2 Instances\nCan be Private\nAllow Security Group\nof Load Balancer\nAllow Public IP of\nEdge Locations\nSecurity group\tSecurity group\nEdge Location \tEC2 Instances\nMust be Public\nAllow Public IP of Edge Locations\nSecurity group\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront Geo Restriction\n• \tYou can restrict who can access your distribution\n• \tAllowlist: Allow your users to access your content only if they're in one of the\ncountries on a list of approved countries.\n• \tBlocklist: Prevent your users from accessing your content if they're in one of the\ncountries on a list of banned countries.\n• \tThe “country” is determined using a 3rd party Geo-IP database\n• \tUse case: Copyright Laws to control access to content\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront \t– \tCache Invalidations\n• \tIn case you update the \tback-end\norigin, CloudFront doesn’t know\nabout it and will only get the\nrefreshed content after the TTL has\nexpired\n• \tHowever, you can force an entire or\npartial cache refresh (thus bypassing\nthe TTL) by performing a \tCloudFront\nInvalidation\n• \tYou can invalidate all files (*) or a\nspecial path (/images/*)\nCloudFront\nEdge Location\nindex.html \t/images/\nCache\nEdge Location\nInvalidate\n- /index.html\n- /images/*\ninvalidate\nS3 Bucket\n(origin)\nindex.html \t/images/\nCache\nGET /index.html\nupdate files\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nGlobal users for our application\n• \tYou have deployed an\napplication and have global\nusers who want to access it\ndirectly.\n• \tThey go over the public\ninternet, which can add a lot of\nlatency due to many hops\n• \tWe wish to go as fast as\npossible through AWS network\nto minimize latency\nAmerica\nAustralia\nEurope\nIndia\nPublic ALB\nhops\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nUnicast IP vs Anycast IP\n• \tUnicast IP: \tone server holds one IP\naddress\n• \tAnycast IP: \tall servers hold the same\nIP address and the client is routed to\nthe nearest one\n12.34.56.78 \t98.76.54.32\nClient\n12.34.56.78 \t12.34.56.78\nClient\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Global Accelerator\n• \tLeverage the AWS internal\nnetwork to route to your\napplication\n• \t2 Anycast IP \tare created for your\napplication\n• \tThe Anycast IP send traffic directly\nto Edge Locations\n• \tThe Edge locations send the traffic\nto your application\nAmerica\nAustralia\nEurope\nIndia\nPublic ALB\nEdge location\nPrivate AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Global Accelerator\n• \tWorks with Elastic IP, EC2 instances, ALB, NLB, public or private\n• \tConsistent Performance\n• \tIntelligent routing to lowest latency and fast regional failover\n• \tNo issue with client cache (because the IP doesn’t change)\n• \tInternal AWS network\n• \tHealth Checks\n• \tGlobal Accelerator performs a health check of your applications\n• \tHelps make your application global (failover less than 1 minute for unhealthy)\n• \tGreat for disaster recovery (thanks to the health checks)\n• \tSecurity\n• \tonly 2 external IP need to be whitelisted\n• \tDDoS protection thanks to AWS Shield\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Global Accelerator vs CloudFront\n• \tThey both use the AWS global network and its edge locations around the world\n• \tBoth services integrate with AWS Shield for DDoS protection.\n• \tCloudFront\n• \tImproves performance for both cacheable content (such as images and videos)\n• \tDynamic content (such as API acceleration and dynamic site delivery)\n• \tContent is served at the edge\n• \tGlobal Accelerator\n• \tImproves performance for a wide range of applications over TCP or UDP\n• \tProxying packets at the edge to applications running in one or more AWS Regions.\n• \tGood fit for non-HTTP use cases, such as gaming (UDP), IoT (MQTT), or Voice over IP\n• \tGood for HTTP use cases that require static IP addresses\n• \tGood for HTTP use cases that required deterministic, fast regional failover",
+      "pageStart": 337,
+      "pageEnd": 351,
+      "read": false,
+      "content": {
+        "summary": "## Caching content versus accelerating transport\n\nCloudFront is a CDN optimized for supported HTTP delivery and edge caching. Global Accelerator provides anycast entry addresses and routes supported TCP/UDP traffic over the AWS network toward healthy regional endpoints.\n\n### Reasoning and trade-offs\n\nGlobal Accelerator addresses transport-level global ingress and static anycast entry addresses. CloudFront does not serve arbitrary UDP sessions, S3 Transfer Acceleration is specific to S3 access, and NAT gateways are not global inbound application accelerators.\n\n### Avoid this trap\n\nGlobal Accelerator is not an object cache. A CDN cannot make every changing transaction cacheable, and latency benefits depend on the workload and geography.\n\n### Apply it\n\nA real-time UDP application has endpoints in two Regions and requires stable global entry IPs with health-based routing. Which service best matches?\n\n**Recommended design:** Use Global Accelerator with the regional endpoints and suitable health configuration.\n\nGlobal Accelerator addresses transport-level global ingress and static anycast entry addresses. CloudFront does not serve arbitrary UDP sessions, S3 Transfer Acceleration is specific to S3 access, and NAT gateways are not global inbound application accelerators.",
+        "keyPoints": [
+          "CloudFront is a CDN optimized for supported HTTP delivery and edge caching. Global Accelerator provides anycast entry addresses and routes supported TCP/UDP traffic over the AWS network toward healthy regional endpoints.",
+          "Global Accelerator addresses transport-level global ingress and static anycast entry addresses. CloudFront does not serve arbitrary UDP sessions, S3 Transfer Acceleration is specific to S3 access, and NAT gateways are not global inbound application accelerators.",
+          "Global Accelerator is not an object cache. A CDN cannot make every changing transaction cacheable, and latency benefits depend on the workload and geography."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "When would you choose Global Accelerator rather than CloudFront?",
+            "answer": "CloudFront is a CDN optimized for supported HTTP delivery and edge caching. Global Accelerator provides anycast entry addresses and routes supported TCP/UDP traffic over the AWS network toward healthy regional endpoints. Global Accelerator addresses transport-level global ingress and static anycast entry addresses. CloudFront does not serve arbitrary UDP sessions, S3 Transfer Acceleration is specific to S3 access, and NAT gateways are not global inbound application accelerators.",
+            "id": "0e24fd80-06e6-4f57-b6e6-f40c9778e806",
+            "schedule": {
+              "due": "2026-10-23T20:38:47.338Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What failure mode or trade-off must you avoid when designing caching content versus accelerating transport?",
+            "answer": "Global Accelerator is not an object cache. A CDN cannot make every changing transaction cacheable, and latency benefits depend on the workload and geography.",
+            "id": "9a9683f1-c60c-4189-b318-c6227c3acd0d",
+            "schedule": {
+              "due": "2026-10-23T20:38:47.338Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A real-time UDP application has endpoints in two Regions and requires stable global entry IPs with health-based routing. Which service best matches?",
+            "options": [
+              "Use CloudFront to cache all UDP packets as objects.",
+              "Use S3 Transfer Acceleration as the client entry point for arbitrary UDP sessions.",
+              "Use Global Accelerator with the regional endpoints and suitable health configuration.",
+              "Use a NAT gateway to expose stable public UDP endpoints across Regions."
+            ],
+            "correctIndex": 2,
+            "explanation": "Global Accelerator addresses transport-level global ingress and static anycast entry addresses. CloudFront does not serve arbitrary UDP sessions, S3 Transfer Acceleration is specific to S3 access, and NAT gateways are not global inbound application accelerators."
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v1",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-23T20:38:47.338Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 337,
+            "pageEnd": 351,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "91e37812-f8c8-4dcc-90a1-f8bb6e92e145",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "08df21c4-9d7c-4700-b57a-f21d955ec842",
+      "title": "Cache keys and authorization correctness",
+      "objective": "Why must a cache key reflect the values that change the response?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nCloudFront & Global Accelerator\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon CloudFront\n• \tContent Delivery Network (CDN)\n• \tImproves read performance, content\nis cached at the edge\n• \tImproves users experience\n• \tHundreds of Points of Presence\nglobally (edge locations, caches)\n• \tDDoS protection (because\nworldwide), integration with Shield,\nAWS Web Application Firewall Source: https://aws.amazon.com/cloudfront/features/?nc=sn&loc=2\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront \t– \tOrigins\n• \tS3 bucket\n• \tFor distributing files and caching them at the edge\n• \tFor uploading files to S3 through CloudFront\n• \tSecured using Origin Access Control (OAC)\n• \tVPC Origin\n• \tFor applications hosted in VPC private subnets\n• \tPrivate Application Load Balancer / Network Load Balancer / EC2 Instances\n• \tCustom Origin (HTTP)\n• \tS3 website (must first enable the bucket as a static S3 website)\n• \tAny public HTTP backend you want (example: Public ALB)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront at a high level\nCloudFront Edge Location\nForward Request\nto your Origin\nLocal Cache\nS3\nHTTP\nor\nOrigin\nClient\nGET /beach.jpg?size=300x300 HTTP/1.1\nUser-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)\nHost: www.example.com\nAccept-Encoding: gzip, deflate\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront \t– \tS3 as an Origin\nEdge\nLos Angeles\nEdge\nMumbai\nEdge\nMelbourne\nOrigin (S3 bucket)\nPublic www\nPublic www\nEdge\nSão Paulo\nOrigin Access Control\n+ S3 bucket policy\nOAC\nPrivate AWS\nPrivate AWS\nPrivate AWS\nPrivate AWS\nAWS Cloud\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront vs S3 Cross Region Replication\n• \tCloudFront:\n• \tGlobal Edge network\n• \tFiles are cached for a TTL (maybe a day)\n• \tGreat for static content that must be available everywhere\n• \tS3 Cross Region Replication:\n• \tMust be setup for each region you want replication to happen\n• \tFiles are updated in near real-time\n• \tRead only\n• \tGreat for dynamic content that needs to be available at low-latency in few regions\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront \t– \tALB or EC2 as an origin\nUsing VPC Origins\n• \tAllows you to deliver content from your applications hosted in your\nVPC private subnets (no need to expose them on the Internet)\n• \tDeliver traffic to \tprivate:\n• \tApplication Load Balancer\n• \tNetwork Load Balancer\n• \tEC2 Instances\nUsers CloudFront\nEdge Location\nPrivate Subnet\nVPC\nVPC\nOrigin\nApplication Load Balancer\nNetwork Load Balancer\nEC2 Instance\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront \t– \tALB or EC2 as an origin\nUsing Public Network\nhttp://d7uri8nf7uskq.cloudfront.net/tools/list-cloudfront-ips\nEdge Location\nPublic IPs Application Load Balancer\nMust be Public\nEC2 Instances\nCan be Private\nAllow Security Group\nof Load Balancer\nAllow Public IP of\nEdge Locations\nSecurity group\tSecurity group\nEdge Location \tEC2 Instances\nMust be Public\nAllow Public IP of Edge Locations\nSecurity group\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront Geo Restriction\n• \tYou can restrict who can access your distribution\n• \tAllowlist: Allow your users to access your content only if they're in one of the\ncountries on a list of approved countries.\n• \tBlocklist: Prevent your users from accessing your content if they're in one of the\ncountries on a list of banned countries.\n• \tThe “country” is determined using a 3rd party Geo-IP database\n• \tUse case: Copyright Laws to control access to content\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCloudFront \t– \tCache Invalidations\n• \tIn case you update the \tback-end\norigin, CloudFront doesn’t know\nabout it and will only get the\nrefreshed content after the TTL has\nexpired\n• \tHowever, you can force an entire or\npartial cache refresh (thus bypassing\nthe TTL) by performing a \tCloudFront\nInvalidation\n• \tYou can invalidate all files (*) or a\nspecial path (/images/*)\nCloudFront\nEdge Location\nindex.html \t/images/\nCache\nEdge Location\nInvalidate\n- /index.html\n- /images/*\ninvalidate\nS3 Bucket\n(origin)\nindex.html \t/images/\nCache\nGET /index.html\nupdate files\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nGlobal users for our application\n• \tYou have deployed an\napplication and have global\nusers who want to access it\ndirectly.\n• \tThey go over the public\ninternet, which can add a lot of\nlatency due to many hops\n• \tWe wish to go as fast as\npossible through AWS network\nto minimize latency\nAmerica\nAustralia\nEurope\nIndia\nPublic ALB\nhops\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nUnicast IP vs Anycast IP\n• \tUnicast IP: \tone server holds one IP\naddress\n• \tAnycast IP: \tall servers hold the same\nIP address and the client is routed to\nthe nearest one\n12.34.56.78 \t98.76.54.32\nClient\n12.34.56.78 \t12.34.56.78\nClient\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Global Accelerator\n• \tLeverage the AWS internal\nnetwork to route to your\napplication\n• \t2 Anycast IP \tare created for your\napplication\n• \tThe Anycast IP send traffic directly\nto Edge Locations\n• \tThe Edge locations send the traffic\nto your application\nAmerica\nAustralia\nEurope\nIndia\nPublic ALB\nEdge location\nPrivate AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Global Accelerator\n• \tWorks with Elastic IP, EC2 instances, ALB, NLB, public or private\n• \tConsistent Performance\n• \tIntelligent routing to lowest latency and fast regional failover\n• \tNo issue with client cache (because the IP doesn’t change)\n• \tInternal AWS network\n• \tHealth Checks\n• \tGlobal Accelerator performs a health check of your applications\n• \tHelps make your application global (failover less than 1 minute for unhealthy)\n• \tGreat for disaster recovery (thanks to the health checks)\n• \tSecurity\n• \tonly 2 external IP need to be whitelisted\n• \tDDoS protection thanks to AWS Shield\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Global Accelerator vs CloudFront\n• \tThey both use the AWS global network and its edge locations around the world\n• \tBoth services integrate with AWS Shield for DDoS protection.\n• \tCloudFront\n• \tImproves performance for both cacheable content (such as images and videos)\n• \tDynamic content (such as API acceleration and dynamic site delivery)\n• \tContent is served at the edge\n• \tGlobal Accelerator\n• \tImproves performance for a wide range of applications over TCP or UDP\n• \tProxying packets at the edge to applications running in one or more AWS Regions.\n• \tGood fit for non-HTTP use cases, such as gaming (UDP), IoT (MQTT), or Voice over IP\n• \tGood for HTTP use cases that require static IP addresses\n• \tGood for HTTP use cases that required deterministic, fast regional failover",
+      "pageStart": 337,
+      "pageEnd": 351,
+      "read": false,
+      "content": {
+        "summary": "## Cache keys and authorization correctness\n\nCache only responses that are safe to reuse, and include the relevant query strings, headers or cookies in the cache policy. Separate public shared content from personalized or authorization-sensitive responses.\n\n### Reasoning and trade-offs\n\nVariants collapse when the cache key omits an input used by the origin. Scaling and encryption do not correct cache identity. Choose key inputs carefully because unnecessary variation also reduces cache efficiency.\n\n### Avoid this trap\n\nA high hit ratio is harmful if it serves one user content intended for another. Forwarding a header to the origin is not automatically equivalent to varying the cache key on that header.\n\n### Apply it\n\nAn API returns different content by a query parameter, but the CDN sometimes serves the wrong variant. What should the architect inspect first?\n\n**Recommended design:** Check whether the cache policy includes the parameter that changes the response, or disable caching for that behavior.\n\nVariants collapse when the cache key omits an input used by the origin. Scaling and encryption do not correct cache identity. Choose key inputs carefully because unnecessary variation also reduces cache efficiency.",
+        "keyPoints": [
+          "Cache only responses that are safe to reuse, and include the relevant query strings, headers or cookies in the cache policy. Separate public shared content from personalized or authorization-sensitive responses.",
+          "Variants collapse when the cache key omits an input used by the origin. Scaling and encryption do not correct cache identity. Choose key inputs carefully because unnecessary variation also reduces cache efficiency.",
+          "A high hit ratio is harmful if it serves one user content intended for another. Forwarding a header to the origin is not automatically equivalent to varying the cache key on that header."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Why must a cache key reflect the values that change the response?",
+            "answer": "Cache only responses that are safe to reuse, and include the relevant query strings, headers or cookies in the cache policy. Separate public shared content from personalized or authorization-sensitive responses. Variants collapse when the cache key omits an input used by the origin. Scaling and encryption do not correct cache identity. Choose key inputs carefully because unnecessary variation also reduces cache efficiency.",
+            "id": "e35a3a55-975c-4282-a213-20702bb82952",
+            "schedule": {
+              "due": "2026-10-23T20:38:47.338Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What failure mode or trade-off must you avoid when designing cache keys and authorization correctness?",
+            "answer": "A high hit ratio is harmful if it serves one user content intended for another. Forwarding a header to the origin is not automatically equivalent to varying the cache key on that header.",
+            "id": "53ab7697-f412-4f97-907e-75299c11db75",
+            "schedule": {
+              "due": "2026-10-23T20:38:47.338Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "An API returns different content by a query parameter, but the CDN sometimes serves the wrong variant. What should the architect inspect first?",
+            "options": [
+              "Increase the edge cache TTL without changing the cache key.",
+              "Add more origin instances while retaining the same incorrect cache policy.",
+              "Enable storage encryption on the origin database as the caching fix.",
+              "Check whether the cache policy includes the parameter that changes the response, or disable caching for that behavior."
+            ],
+            "correctIndex": 3,
+            "explanation": "Variants collapse when the cache key omits an input used by the origin. Scaling and encryption do not correct cache identity. Choose key inputs carefully because unnecessary variation also reduces cache efficiency."
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v1",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-23T20:38:47.338Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 337,
+            "pageEnd": 351,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

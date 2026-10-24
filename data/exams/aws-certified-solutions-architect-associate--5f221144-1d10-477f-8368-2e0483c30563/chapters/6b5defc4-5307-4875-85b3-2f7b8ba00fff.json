@@ -1,0 +1,1093 @@
+{
+  "chapter": {
+    "id": "6b5defc4-5307-4875-85b3-2f7b8ba00fff",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 1,
+    "title": "Getting Started with AWS",
+    "pageStart": 14,
+    "pageEnd": 23,
+    "description": "AWS cloud basics and global infrastructure: Regions, Availability Zones, edge locations, and global versus Region-scoped services.",
+    "examFocus": [
+      "Task 2.2: highly available and fault-tolerant designs rely on Regions and AZs",
+      "Task 3.4: choosing Regions and edge locations for latency"
+    ],
+    "objectives": [
+      {
+        "id": "c7e61f4d-d3f8-44ee-bfbb-c9978687f202::aws-as-a-cloud-provider",
+        "title": "AWS as a cloud provider",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 14,
+        "pageEnd": 17,
+        "assessment": "recall"
+      },
+      {
+        "id": "c7e61f4d-d3f8-44ee-bfbb-c9978687f202::aws-cloud-use-cases",
+        "title": "AWS cloud use cases",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 14,
+        "pageEnd": 17,
+        "assessment": "recall"
+      },
+      {
+        "id": "8ffd8b43-b876-44a8-818a-baa82a696e3b::regions",
+        "title": "Regions",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 18,
+        "pageEnd": 23,
+        "assessment": "recall"
+      },
+      {
+        "id": "8ffd8b43-b876-44a8-818a-baa82a696e3b::region-naming",
+        "title": "Region naming",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 18,
+        "pageEnd": 23,
+        "assessment": "recall"
+      },
+      {
+        "id": "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region",
+        "title": "Choosing a Region",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 18,
+        "pageEnd": 23,
+        "assessment": "recall"
+      },
+      {
+        "id": "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones",
+        "title": "Availability Zones",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 18,
+        "pageEnd": 23,
+        "assessment": "recall"
+      },
+      {
+        "id": "8ffd8b43-b876-44a8-818a-baa82a696e3b::edge-locations",
+        "title": "Edge Locations",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 18,
+        "pageEnd": 23,
+        "assessment": "recall"
+      },
+      {
+        "id": "8ffd8b43-b876-44a8-818a-baa82a696e3b::global-vs-region-scoped-services",
+        "title": "Global vs Region-scoped services",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 18,
+        "pageEnd": 23,
+        "assessment": "recall"
+      }
+    ],
+    "coverageStatus": "source-audited"
+  },
+  "sections": [
+    {
+      "id": "c7e61f4d-d3f8-44ee-bfbb-c9978687f202",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "6b5defc4-5307-4875-85b3-2f7b8ba00fff",
+      "title": "AWS Cloud Overview",
+      "objective": "Explain what AWS provides as a cloud provider and recognize typical workloads it supports.",
+      "keyTopics": [
+        "AWS as a cloud provider",
+        "AWS cloud use cases"
+      ],
+      "pageStart": 14,
+      "pageEnd": 17,
+      "text": "[Page 14]\nGetting started with AWS\n\n[Page 15]\nAWS Cloud History\n2002:\nInternally\nlaunched\n2003:\nAmazon infrastructure is\none of their core strength.\nIdea to market\n2004:\nLaunched publicly\nwith SQS\n2006:\nRe-launched\npublicly with\nSQS, S3 & EC2\n2007:\nLaunched in\nEurope\n\n[Page 16]\nAWS Cloud Number Facts\n• \tIn \t2023, AWS had $90 \tbillion\nin annual revenue\n• \tAWS accounts for \t31% of the\nmarket in \tQ1 2024 \t(Microsoft\nis 2nd with 25%)\n• \tPioneer and Leader of the\nAWS Cloud Market for the\n13th consecutive year\n• \tOver 1,000,000 active users\nGartner Magic Quadrant\n\n[Page 17]\nAWS Cloud Use Cases\n• \tAWS enables you to build sophisticated, scalable applications\n• \tApplicable to a diverse set of industries\n• \tUse cases include\n• \tEnterprise IT, Backup & Storage, Big Data analytics\n• \tWebsite hosting, Mobile & Social Apps\n• \tGaming",
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nAWS is a cloud provider: it offers servers and managed services on demand that scale easily, so teams build applications without owning hardware. The history and market-share slides are context only; the exam tests what the services do, not AWS business facts.\n\n## Core Concepts\n\n- **Cloud provider:** A company that rents compute, storage and managed services on demand over the internet.\n- **On-demand:** Resources are provisioned when needed and released when not, paying only for use.\n- **Scalability:** Ability to grow or shrink capacity easily as load changes.\n\n## Must Remember\n\n- AWS provides servers and services you use on demand and scale easily.\n- Use cases span enterprise IT, backup and storage, big data analytics, website hosting, mobile and social apps, and gaming.\n\n## Mental Models\n\n- Think of AWS as renting a data center by the minute instead of buying one.\n\n## Exam Traps\n\n- “Memorise AWS revenue and market-share figures” — Business statistics are not tested; focus on what services do and when to use them.",
+        "keyPoints": [
+          "AWS provides servers and services you use on demand and scale easily.",
+          "Use cases span enterprise IT, backup and storage, big data analytics, website hosting, mobile and social apps, and gaming."
+        ],
+        "supplement": "",
+        "cards": [
+          {
+            "id": "5e3c7da9-d0ce-4e69-9839-07aec5810b05",
+            "question": "What type of company is AWS?",
+            "answer": "A cloud provider",
+            "group": "What AWS is",
+            "keyTopic": "AWS as a cloud provider",
+            "origin": "source",
+            "objectiveIds": [
+              "c7e61f4d-d3f8-44ee-bfbb-c9978687f202::aws-as-a-cloud-provider"
+            ],
+            "schedule": {
+              "due": "2026-11-01T11:11:26.485Z",
+              "stability": 8.2956,
+              "difficulty": 1,
+              "elapsed_days": 0,
+              "scheduled_days": 8,
+              "reps": 1,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-24T11:11:26.485Z"
+            }
+          },
+          {
+            "id": "42dcfc99-1cab-4cd8-a348-727300d3a865",
+            "question": "How are AWS servers and services consumed?",
+            "answer": "On demand, scaling easily",
+            "group": "What AWS is",
+            "keyTopic": "AWS as a cloud provider",
+            "origin": "source",
+            "objectiveIds": [
+              "c7e61f4d-d3f8-44ee-bfbb-c9978687f202::aws-as-a-cloud-provider"
+            ],
+            "schedule": {
+              "due": "2026-11-01T11:11:34.733Z",
+              "stability": 8.2956,
+              "difficulty": 1,
+              "elapsed_days": 0,
+              "scheduled_days": 8,
+              "reps": 1,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-24T11:11:34.733Z"
+            }
+          },
+          {
+            "id": "a88a293e-f703-40af-bcd9-cc7654c3d5f0",
+            "question": "Name AWS cloud use cases from the course.",
+            "answer": "Enterprise IT\nBackup & storage\nBig data analytics\nWebsite hosting\nMobile & social apps\nGaming",
+            "group": "Use cases",
+            "keyTopic": "AWS cloud use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "c7e61f4d-d3f8-44ee-bfbb-c9978687f202::aws-cloud-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-11-01T11:11:42.704Z",
+              "stability": 8.2956,
+              "difficulty": 1,
+              "elapsed_days": 0,
+              "scheduled_days": 8,
+              "reps": 1,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-24T11:11:42.704Z"
+            }
+          },
+          {
+            "id": "a666d9c2-a679-47e9-be86-f410034ff669",
+            "question": "Is AWS limited to one industry?",
+            "answer": "No, it serves diverse industries",
+            "group": "Use cases",
+            "keyTopic": "AWS cloud use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "c7e61f4d-d3f8-44ee-bfbb-c9978687f202::aws-cloud-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-11-01T11:11:48.345Z",
+              "stability": 8.2956,
+              "difficulty": 1,
+              "elapsed_days": 0,
+              "scheduled_days": 8,
+              "reps": 1,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-24T11:11:48.345Z"
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A startup expects unpredictable traffic and wants to avoid buying servers upfront. What property of AWS addresses this?",
+            "options": [
+              "On-demand resources that scale easily",
+              "Long-term hardware leasing contracts",
+              "Fixed-capacity colocation racks",
+              "Annual capacity reservations only"
+            ],
+            "correctIndex": 0,
+            "explanation": "On-demand, easily scaled resources match unpredictable load without upfront purchase; leasing, colocation and annual-only reservations all fix capacity in advance.",
+            "keyTopic": "AWS as a cloud provider",
+            "kind": "scenario",
+            "objectiveIds": [
+              "c7e61f4d-d3f8-44ee-bfbb-c9978687f202::aws-as-a-cloud-provider"
+            ]
+          },
+          {
+            "question": "A company wants to move nightly backups off its own tape library to managed cloud storage. Is this a typical AWS use case?",
+            "options": [
+              "No, AWS only hosts websites",
+              "Yes, backup and storage is a core use case",
+              "No, AWS only runs analytics",
+              "Only for gaming companies"
+            ],
+            "correctIndex": 1,
+            "explanation": "Backup and storage is listed as a core AWS use case; the other options wrongly restrict AWS to a single workload or industry.",
+            "keyTopic": "AWS cloud use cases",
+            "kind": "scenario",
+            "objectiveIds": [
+              "c7e61f4d-d3f8-44ee-bfbb-c9978687f202::aws-cloud-use-cases"
+            ]
+          },
+          {
+            "question": "Which statement best describes AWS?",
+            "options": [
+              "A hardware vendor selling servers",
+              "A software licence reseller",
+              "A cloud provider offering on-demand services",
+              "An internet service provider"
+            ],
+            "correctIndex": 2,
+            "explanation": "AWS provides servers and services on demand; it does not sell hardware, resell licences or provide home internet access.",
+            "keyTopic": "AWS as a cloud provider",
+            "kind": "concept",
+            "objectiveIds": [
+              "c7e61f4d-d3f8-44ee-bfbb-c9978687f202::aws-as-a-cloud-provider"
+            ]
+          },
+          {
+            "question": "Which list contains only AWS use cases named in the course?",
+            "options": [
+              "Gaming, website hosting, big data analytics",
+              "Chip manufacturing, retail checkout hardware",
+              "Telephone line installation, gaming",
+              "Physical printing, website hosting"
+            ],
+            "correctIndex": 0,
+            "explanation": "Gaming, website hosting and big data analytics are named use cases; the other lists mix in physical services AWS does not provide.",
+            "keyTopic": "AWS cloud use cases",
+            "kind": "concept",
+            "objectiveIds": [
+              "c7e61f4d-d3f8-44ee-bfbb-c9978687f202::aws-cloud-use-cases"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v1",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T10:24:42.679Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 14,
+            "pageEnd": 17,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "AWS is a cloud provider: it offers servers and managed services on demand that scale easily, so teams build applications without owning hardware. The history and market-share slides are context only; the exam tests what the services do, not AWS business facts.",
+        "coreConcepts": [
+          {
+            "term": "Cloud provider",
+            "definition": "A company that rents compute, storage and managed services on demand over the internet."
+          },
+          {
+            "term": "On-demand",
+            "definition": "Resources are provisioned when needed and released when not, paying only for use."
+          },
+          {
+            "term": "Scalability",
+            "definition": "Ability to grow or shrink capacity easily as load changes."
+          }
+        ],
+        "mustRemember": [
+          "AWS provides servers and services you use on demand and scale easily.",
+          "Use cases span enterprise IT, backup and storage, big data analytics, website hosting, mobile and social apps, and gaming."
+        ],
+        "keyComparisons": [],
+        "commonMisunderstandings": [],
+        "mentalModels": [
+          "Think of AWS as renting a data center by the minute instead of buying one."
+        ],
+        "edgeCases": [],
+        "whenToUse": [],
+        "patternsToRecognize": [],
+        "examTraps": [
+          {
+            "trap": "Memorise AWS revenue and market-share figures",
+            "correction": "Business statistics are not tested; focus on what services do and when to use them."
+          }
+        ],
+        "beyondSource": []
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "292089cf-6533-4a39-87e2-32a5af558475",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:42.679Z"
+        },
+        "flashcards": {
+          "requestId": "bf452fac-8af6-4683-9a3d-41d5724d64bd",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:42.754Z"
+        },
+        "quiz": {
+          "requestId": "f9f42fb9-9ef8-4f85-91f0-8f9e2aee4f15",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:42.822Z"
+        }
+      }
+    },
+    {
+      "id": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "6b5defc4-5307-4875-85b3-2f7b8ba00fff",
+      "title": "AWS Global Infrastructure",
+      "objective": "Choose an appropriate Region and distinguish Regions, Availability Zones and edge locations, including which services are global.",
+      "keyTopics": [
+        "Regions",
+        "Region naming",
+        "Choosing a Region",
+        "Availability Zones",
+        "Edge Locations",
+        "Global vs Region-scoped services"
+      ],
+      "pageStart": 18,
+      "pageEnd": 23,
+      "text": "[Page 18]\nAWS Global Infrastructure\n• \tAWS Regions\n• \tAWS Availability Zones\n• \tAWS Data Centers\n• \tAWS Edge Locations /\nPoints of Presence\n• \thttps://infrastructure.aws/\n\n[Page 19]\nAWS Regions\n• \tAWS has \tRegions \tall around the world\n• \tNames can be us-east-1, eu-west-3…\n• \tA region is a \tcluster of data centers\n• \tMost AWS services are region-scoped\nhttps://aws.amazon.com/about-aws/global-infrastructure/\n\n[Page 20]\nHow to choose an AWS Region?\n• \tCompliance with data governance and legal\nrequirements: data never leaves a region without\nyour explicit permission\n• \tProximity to customers: reduced latency\n• \tAvailable services within a Region: new services\nand new features aren’t available in every Region\n• \tPricing: pricing varies region to region and is\ntransparent in the service pricing page\nIf you need to launch a new application,\nwhere should you do it?\n?\n?\n?\n?\n\n[Page 21]\nAWS Availability Zones\n• \tEach region has many availability zones\n(usually 3, min is 3, max is 6). Example:\n• \tap-southeast-2a\n• \tap-southeast-2b\n• \tap-southeast-2c\n• \tEach availability zone (AZ) is one or more\ndiscrete data centers with redundant power,\nnetworking, and connectivity\n• \tThey’re separate from each other, so that\nthey’re isolated from disasters\n• \tThey’re connected with high bandwidth,\nultra-low latency networking\nAWS Region\nSydney: ap-southeast-2\nap-southeast-2a\nap-southeast-2b \tap-southeast-2c\n\n[Page 22]\nAWS Points of Presence (Edge Locations)\n• \tAmazon has 400+ Points of Presence (400+ Edge Locations & 10+\nRegional Caches) in 90+ cities across 40+ countries\n• \tContent is delivered to end users with lower latency\nhttps://aws.amazon.com/cloudfront/features/\n\n[Page 23]\nTour of the AWS Console\n• \tAWS has Global Services:\n• \tIdentity and Access Management (IAM)\n• \tRoute 53 (DNS service)\n• \tCloudFront (Content Delivery Network)\n• \tWAF (Web Application Firewall)\n• \tMost AWS services are Region-scoped:\n• \tAmazon EC2 (Infrastructure as a Service)\n• \tElastic Beanstalk (Platform as a Service)\n• \tLambda (Function as a Service)\n• \tRekognition (Software as a Service)\n• \tRegion Table: https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services",
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nAWS infrastructure is organised into Regions, each made of isolated Availability Zones built from data centers, plus edge locations close to users. Choosing a Region and spreading across AZs underpins every availability, latency and compliance question.\n\n## Core Concepts\n\n- **Region:** A geographic area containing a cluster of data centers, named like us-east-1 or eu-west-3.\n- **Availability Zone (AZ):** One or more discrete data centers with redundant power, networking and connectivity inside a Region.\n- **Edge location / Point of Presence:** A site close to end users that delivers content with lower latency.\n- **Global service:** A service not tied to one Region, such as IAM, Route 53, CloudFront and WAF.\n- **Region-scoped service:** A service whose resources live in one Region, such as EC2, Elastic Beanstalk, Lambda and Rekognition.\n\n## Must Remember\n\n- Most AWS services are Region-scoped.\n- A Region usually has 3 AZs: minimum 3, maximum 6.\n- AZ names add a letter to the Region name, e.g. ap-southeast-2a.\n- AZs are isolated from each other but linked with high-bandwidth, ultra-low-latency networking.\n- Data never leaves a Region without your explicit permission.\n- Not every service or feature is available in every Region.\n- Pricing varies from Region to Region.\n- AWS has 400+ Points of Presence in 90+ cities across 40+ countries.\n\n## Key Comparisons\n\n- **Region vs Availability Zone:** A Region is a geographic area; an AZ is an isolated set of data centers inside it.\n- **Availability Zone vs edge location:** AZs run your workloads; edge locations cache and deliver content near users.\n- **Global vs Region-scoped service:** Global services such as IAM span all Regions; EC2 resources exist in one Region.\n\n## Common Misunderstandings\n\n- An Availability Zone is not a Region; each Region contains multiple AZs.\n- An AZ is not always a single building; it is one or more data centers.\n- Launching in any Region does not guarantee every service is available there.\n\n## Mental Models\n\n- Region = city, AZ = separate neighbourhoods with their own power, edge location = local delivery point.\n- Spreading across AZs protects against a single-site disaster inside one Region.\n\n## Exceptions & Edge Cases\n\n- A Region has at least 3 AZs, so multi-AZ designs are always possible within one Region.\n\n## When to Use Which\n\n- Data must stay in a specific country by law → **A Region in that jurisdiction (compliance first)**\n- Users are concentrated in one geography → **The Region closest to them for lower latency**\n- A needed service is new → **Check it is available in the target Region**\n- Budget is the main constraint → **Compare Region pricing pages**\n\n## Patterns to Recognize\n\n- Names like us-east-1 or eu-west-3 → **A Region**\n- Names like ap-southeast-2a → **An Availability Zone**\n- IAM, Route 53, CloudFront, WAF → **Global services**\n- Lower latency content delivery worldwide → **Edge locations / Points of Presence**\n\n## Exam Traps\n\n- “An Availability Zone contains multiple Regions” — A Region contains multiple AZs.\n- “IAM users must be created per Region” — IAM is global.\n- “Pick the cheapest Region even if data residency rules apply” — Compliance requirements come first.",
+        "keyPoints": [
+          "Most AWS services are Region-scoped.",
+          "A Region usually has 3 AZs: minimum 3, maximum 6.",
+          "AZ names add a letter to the Region name, e.g. ap-southeast-2a.",
+          "AZs are isolated from each other but linked with high-bandwidth, ultra-low-latency networking.",
+          "Data never leaves a Region without your explicit permission.",
+          "Not every service or feature is available in every Region.",
+          "Pricing varies from Region to Region.",
+          "AWS has 400+ Points of Presence in 90+ cities across 40+ countries."
+        ],
+        "supplement": "",
+        "cards": [
+          {
+            "id": "8d4f0734-793a-406c-805e-004b80a8ec4b",
+            "question": "What is an AWS Region?",
+            "answer": "A cluster of data centers in a geographic area",
+            "group": "Regions",
+            "keyTopic": "Regions",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::regions"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "4fcf33a2-b4ec-47c8-afb7-90a6bc780d3c",
+            "question": "Are most AWS services global or Region-scoped?",
+            "answer": "Region-scoped",
+            "group": "Regions",
+            "keyTopic": "Regions",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::regions"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d7fa4347-69d1-4d05-bee5-f83cbc3eee62",
+            "question": "Which part of us-east-1 identifies a Region?",
+            "answer": "The whole name: us-east-1",
+            "group": "Regions",
+            "keyTopic": "Region naming",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::region-naming"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "e00878b6-de4b-47ea-9999-514d2265f56e",
+            "question": "What does the letter in ap-southeast-2a identify?",
+            "answer": "An Availability Zone within ap-southeast-2",
+            "group": "Regions",
+            "keyTopic": "Region naming",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::region-naming"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7ccb7ac2-73b5-49ff-8767-7b7190f81b90",
+            "question": "Four factors for choosing an AWS Region?",
+            "answer": "Compliance\nProximity to customers\nAvailable services\nPricing",
+            "group": "Choosing a Region",
+            "keyTopic": "Choosing a Region",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a0e8be79-ba89-4e33-8171-ce099e405b6c",
+            "question": "Can data leave a Region without your permission?",
+            "answer": "No, not without explicit permission",
+            "group": "Choosing a Region",
+            "keyTopic": "Choosing a Region",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ea19dcbc-fe76-4a3c-b820-4e0ea0b9c4e9",
+            "question": "Why choose a Region near your customers?",
+            "answer": "Reduced latency",
+            "group": "Choosing a Region",
+            "keyTopic": "Choosing a Region",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "31d065ff-6f1e-4fe0-9fc0-bc8ef618b8ec",
+            "question": "Do all Regions offer every new service?",
+            "answer": "No, availability varies by Region",
+            "group": "Choosing a Region",
+            "keyTopic": "Choosing a Region",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "374c6739-edd6-4048-a56e-a55e2d638713",
+            "question": "Usual number of AZs in a Region?",
+            "answer": "3",
+            "group": "Availability Zones",
+            "keyTopic": "Availability Zones",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "52d0c893-b7e7-4e67-9865-d0734f1d69de",
+            "question": "Minimum and maximum AZs per Region?",
+            "answer": "Minimum 3, maximum 6",
+            "group": "Availability Zones",
+            "keyTopic": "Availability Zones",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "557b8fa3-a34a-4ebd-8fab-2e28442c0d8e",
+            "question": "What is an Availability Zone made of?",
+            "answer": "One or more discrete data centers",
+            "group": "Availability Zones",
+            "keyTopic": "Availability Zones",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "443753d2-35e0-4fca-a0b9-f5551fa38fdb",
+            "question": "What redundancy does each AZ have?",
+            "answer": "Redundant power, networking and connectivity",
+            "group": "Availability Zones",
+            "keyTopic": "Availability Zones",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a5a3e85f-f131-4b40-a14e-811cd54ac82a",
+            "question": "How are AZs in a Region connected?",
+            "answer": "High-bandwidth, ultra-low-latency networking",
+            "group": "Availability Zones",
+            "keyTopic": "Availability Zones",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "9c3050cf-5e15-415f-aac4-dd8bc95ad4c3",
+            "question": "Why are AZs separated from each other?",
+            "answer": "To isolate them from disasters",
+            "group": "Availability Zones",
+            "keyTopic": "Availability Zones",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "5643727b-9f2d-43d8-ba8a-9f48f8d6e335",
+            "question": "What do edge locations provide to end users?",
+            "answer": "Content delivery with lower latency",
+            "group": "Edge locations",
+            "keyTopic": "Edge Locations",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::edge-locations"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "71469102-c4c3-4fd3-9ada-5e53c0c87f3e",
+            "question": "Another name for an edge location?",
+            "answer": "Point of Presence",
+            "group": "Edge locations",
+            "keyTopic": "Edge Locations",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::edge-locations"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "46e06bf1-92f9-4720-a930-3b31e4a485ab",
+            "question": "Roughly how many AWS Points of Presence exist?",
+            "answer": "400+",
+            "group": "Edge locations",
+            "keyTopic": "Edge Locations",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::edge-locations"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b004fd32-84a0-4f61-9526-b0eca0235839",
+            "question": "Name four global AWS services.",
+            "answer": "IAM\nRoute 53\nCloudFront\nWAF",
+            "group": "Global vs Region-scoped",
+            "keyTopic": "Global vs Region-scoped services",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::global-vs-region-scoped-services"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "29a98c4e-0519-4d0e-ae97-efa125f63def",
+            "question": "Name four Region-scoped services from the console tour.",
+            "answer": "EC2\nElastic Beanstalk\nLambda\nRekognition",
+            "group": "Global vs Region-scoped",
+            "keyTopic": "Global vs Region-scoped services",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::global-vs-region-scoped-services"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c638de60-d182-46c6-b7bc-fd2420f38973",
+            "question": "Which service type is Route 53: global or regional?",
+            "answer": "Global",
+            "group": "Global vs Region-scoped",
+            "keyTopic": "Global vs Region-scoped services",
+            "origin": "source",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::global-vs-region-scoped-services"
+            ],
+            "schedule": {
+              "due": "2026-10-24T10:24:42.974Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A healthcare company must keep patient data inside Germany by law and has most users in Germany. Which factor should drive the Region choice first?",
+            "options": [
+              "Lowest price across all Regions",
+              "Compliance with data governance requirements",
+              "The Region with the most services",
+              "The Region with the most edge locations"
+            ],
+            "correctIndex": 1,
+            "explanation": "Legal data residency is a hard requirement, so compliance decides first; price, service count and edge-location count only matter among compliant Regions.",
+            "keyTopic": "Choosing a Region",
+            "kind": "scenario",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
+            ]
+          },
+          {
+            "question": "An application runs on instances in a single data center and must survive the loss of that facility while staying in one Region. What should the architect use?",
+            "options": [
+              "Multiple edge locations",
+              "A second Region only",
+              "Multiple Availability Zones in the Region",
+              "A larger instance in the same data center"
+            ],
+            "correctIndex": 2,
+            "explanation": "AZs are isolated data centers within a Region, so spreading across them survives a facility loss; edge locations only cache content, a second Region is beyond the requirement, and a larger instance shares the same failure.",
+            "keyTopic": "Availability Zones",
+            "kind": "scenario",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
+            ]
+          },
+          {
+            "question": "A team plans to use a service launched last month in us-east-1 from a smaller Region. What must they verify first?",
+            "options": [
+              "That the service is available in the target Region",
+              "That the Region has exactly six AZs",
+              "That IAM users exist in that Region",
+              "That the Region has an edge location"
+            ],
+            "correctIndex": 0,
+            "explanation": "New services and features are not in every Region, so availability must be checked; AZ count, IAM (global) and edge locations do not decide whether the service exists there.",
+            "keyTopic": "Choosing a Region",
+            "kind": "scenario",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
+            ]
+          },
+          {
+            "question": "Users worldwide complain about slow downloads of static images served from one Region. Which part of the global infrastructure addresses this?",
+            "options": [
+              "Additional Availability Zones",
+              "Edge locations / Points of Presence",
+              "A Region with lower pricing",
+              "More IAM roles"
+            ],
+            "correctIndex": 1,
+            "explanation": "Edge locations deliver content close to users with lower latency; more AZs or cheaper Regions do not move content closer, and IAM roles are unrelated to latency.",
+            "keyTopic": "Edge Locations",
+            "kind": "scenario",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::edge-locations"
+            ]
+          },
+          {
+            "question": "Which identifier names an Availability Zone rather than a Region?",
+            "options": [
+              "eu-west-3",
+              "us-east-1",
+              "ap-southeast-2b",
+              "ap-southeast-2"
+            ],
+            "correctIndex": 2,
+            "explanation": "Appending a letter (ap-southeast-2b) identifies an AZ; the other three are Region names.",
+            "keyTopic": "Region naming",
+            "kind": "concept",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::region-naming"
+            ]
+          },
+          {
+            "question": "An engineer creates an IAM user while the console is set to eu-west-3. In which Regions can that user sign in?",
+            "options": [
+              "Only eu-west-3",
+              "All Regions, because IAM is global",
+              "Only Regions in Europe",
+              "Only Regions with the same AZ count"
+            ],
+            "correctIndex": 1,
+            "explanation": "IAM is a global service, so users are not tied to a Region; the other options wrongly treat IAM as Region-scoped.",
+            "keyTopic": "Global vs Region-scoped services",
+            "kind": "scenario",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::global-vs-region-scoped-services"
+            ]
+          },
+          {
+            "question": "Which pair is correctly matched?",
+            "options": [
+              "EC2 - global service",
+              "Route 53 - Region-scoped",
+              "CloudFront - global service",
+              "Lambda - global service"
+            ],
+            "correctIndex": 2,
+            "explanation": "CloudFront is global; EC2 and Lambda are Region-scoped and Route 53 is global, so the other pairings are reversed.",
+            "keyTopic": "Global vs Region-scoped services",
+            "kind": "comparison",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::global-vs-region-scoped-services"
+            ]
+          },
+          {
+            "question": "What is the minimum number of Availability Zones in an AWS Region?",
+            "options": [
+              "1",
+              "2",
+              "3",
+              "6"
+            ],
+            "correctIndex": 2,
+            "explanation": "Regions have a minimum of 3 AZs (usually 3, at most 6); 1 and 2 are below the minimum and 6 is the maximum.",
+            "keyTopic": "Regions",
+            "kind": "concept",
+            "objectiveIds": [
+              "8ffd8b43-b876-44a8-818a-baa82a696e3b::regions"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v1",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T10:24:42.893Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 18,
+            "pageEnd": 23,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 8,
+            "pageEnd": 13,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "AWS infrastructure is organised into Regions, each made of isolated Availability Zones built from data centers, plus edge locations close to users. Choosing a Region and spreading across AZs underpins every availability, latency and compliance question.",
+        "coreConcepts": [
+          {
+            "term": "Region",
+            "definition": "A geographic area containing a cluster of data centers, named like us-east-1 or eu-west-3."
+          },
+          {
+            "term": "Availability Zone (AZ)",
+            "definition": "One or more discrete data centers with redundant power, networking and connectivity inside a Region."
+          },
+          {
+            "term": "Edge location / Point of Presence",
+            "definition": "A site close to end users that delivers content with lower latency."
+          },
+          {
+            "term": "Global service",
+            "definition": "A service not tied to one Region, such as IAM, Route 53, CloudFront and WAF."
+          },
+          {
+            "term": "Region-scoped service",
+            "definition": "A service whose resources live in one Region, such as EC2, Elastic Beanstalk, Lambda and Rekognition."
+          }
+        ],
+        "mustRemember": [
+          "Most AWS services are Region-scoped.",
+          "A Region usually has 3 AZs: minimum 3, maximum 6.",
+          "AZ names add a letter to the Region name, e.g. ap-southeast-2a.",
+          "AZs are isolated from each other but linked with high-bandwidth, ultra-low-latency networking.",
+          "Data never leaves a Region without your explicit permission.",
+          "Not every service or feature is available in every Region.",
+          "Pricing varies from Region to Region.",
+          "AWS has 400+ Points of Presence in 90+ cities across 40+ countries."
+        ],
+        "keyComparisons": [
+          {
+            "items": "Region vs Availability Zone",
+            "difference": "A Region is a geographic area; an AZ is an isolated set of data centers inside it."
+          },
+          {
+            "items": "Availability Zone vs edge location",
+            "difference": "AZs run your workloads; edge locations cache and deliver content near users."
+          },
+          {
+            "items": "Global vs Region-scoped service",
+            "difference": "Global services such as IAM span all Regions; EC2 resources exist in one Region."
+          }
+        ],
+        "commonMisunderstandings": [
+          "An Availability Zone is not a Region; each Region contains multiple AZs.",
+          "An AZ is not always a single building; it is one or more data centers.",
+          "Launching in any Region does not guarantee every service is available there."
+        ],
+        "mentalModels": [
+          "Region = city, AZ = separate neighbourhoods with their own power, edge location = local delivery point.",
+          "Spreading across AZs protects against a single-site disaster inside one Region."
+        ],
+        "edgeCases": [
+          "A Region has at least 3 AZs, so multi-AZ designs are always possible within one Region."
+        ],
+        "whenToUse": [
+          {
+            "situation": "Data must stay in a specific country by law",
+            "use": "A Region in that jurisdiction (compliance first)"
+          },
+          {
+            "situation": "Users are concentrated in one geography",
+            "use": "The Region closest to them for lower latency"
+          },
+          {
+            "situation": "A needed service is new",
+            "use": "Check it is available in the target Region"
+          },
+          {
+            "situation": "Budget is the main constraint",
+            "use": "Compare Region pricing pages"
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "Names like us-east-1 or eu-west-3",
+            "indicates": "A Region"
+          },
+          {
+            "signal": "Names like ap-southeast-2a",
+            "indicates": "An Availability Zone"
+          },
+          {
+            "signal": "IAM, Route 53, CloudFront, WAF",
+            "indicates": "Global services"
+          },
+          {
+            "signal": "Lower latency content delivery worldwide",
+            "indicates": "Edge locations / Points of Presence"
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "An Availability Zone contains multiple Regions",
+            "correction": "A Region contains multiple AZs."
+          },
+          {
+            "trap": "IAM users must be created per Region",
+            "correction": "IAM is global."
+          },
+          {
+            "trap": "Pick the cheapest Region even if data residency rules apply",
+            "correction": "Compliance requirements come first."
+          }
+        ],
+        "beyondSource": []
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "8b53cbec-ad08-4862-a84b-b2643373d95b",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:42.893Z"
+        },
+        "flashcards": {
+          "requestId": "37a74f47-8bc9-4d6e-8e8e-129d1569784a",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:42.974Z"
+        },
+        "quiz": {
+          "requestId": "6ab65694-c255-4b36-998e-b8d0c2bdb4b5",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T10:24:43.060Z"
+        }
+      }
+    }
+  ]
+}

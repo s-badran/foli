@@ -1,0 +1,18 @@
+{
+  "chapter": {
+    "id": "f075d37f-7fed-4b56-b3f2-b0939aff812f",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 28,
+    "title": "Other Services",
+    "pageStart": 827,
+    "pageEnd": 854,
+    "description": "Overview of services that may appear in a few questions, such as CloudFormation, SES, Pinpoint, SSM, Batch, AppFlow and Amplify.",
+    "examFocus": [
+      "Recognize when a niche managed service is the best fit"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

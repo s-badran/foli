@@ -1,0 +1,164 @@
+{
+  "groups": [
+    {
+      "concept": "Regions",
+      "cards": [
+        {
+          "question": "What is an AWS Region?",
+          "answer": "A cluster of data centers in a geographic area",
+          "keyTopic": "Regions",
+          "origin": "source"
+        },
+        {
+          "question": "Are most AWS services global or Region-scoped?",
+          "answer": "Region-scoped",
+          "keyTopic": "Regions",
+          "origin": "source"
+        },
+        {
+          "question": "Which part of us-east-1 identifies a Region?",
+          "answer": "The whole name: us-east-1",
+          "keyTopic": "Region naming",
+          "origin": "source"
+        },
+        {
+          "question": "What does the letter in ap-southeast-2a identify?",
+          "answer": "An Availability Zone within ap-southeast-2",
+          "keyTopic": "Region naming",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Choosing a Region",
+      "cards": [
+        {
+          "question": "Four factors for choosing an AWS Region?",
+          "answer": [
+            "Compliance",
+            "Proximity to customers",
+            "Available services",
+            "Pricing"
+          ],
+          "keyTopic": "Choosing a Region",
+          "origin": "source"
+        },
+        {
+          "question": "Can data leave a Region without your permission?",
+          "answer": "No, not without explicit permission",
+          "keyTopic": "Choosing a Region",
+          "origin": "source"
+        },
+        {
+          "question": "Why choose a Region near your customers?",
+          "answer": "Reduced latency",
+          "keyTopic": "Choosing a Region",
+          "origin": "source"
+        },
+        {
+          "question": "Do all Regions offer every new service?",
+          "answer": "No, availability varies by Region",
+          "keyTopic": "Choosing a Region",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Availability Zones",
+      "cards": [
+        {
+          "question": "Usual number of AZs in a Region?",
+          "answer": "3",
+          "keyTopic": "Availability Zones",
+          "origin": "source"
+        },
+        {
+          "question": "Minimum and maximum AZs per Region?",
+          "answer": "Minimum 3, maximum 6",
+          "keyTopic": "Availability Zones",
+          "origin": "source"
+        },
+        {
+          "question": "What is an Availability Zone made of?",
+          "answer": "One or more discrete data centers",
+          "keyTopic": "Availability Zones",
+          "origin": "source"
+        },
+        {
+          "question": "What redundancy does each AZ have?",
+          "answer": "Redundant power, networking and connectivity",
+          "keyTopic": "Availability Zones",
+          "origin": "source"
+        },
+        {
+          "question": "How are AZs in a Region connected?",
+          "answer": "High-bandwidth, ultra-low-latency networking",
+          "keyTopic": "Availability Zones",
+          "origin": "source"
+        },
+        {
+          "question": "Why are AZs separated from each other?",
+          "answer": "To isolate them from disasters",
+          "keyTopic": "Availability Zones",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Edge locations",
+      "cards": [
+        {
+          "question": "What do edge locations provide to end users?",
+          "answer": "Content delivery with lower latency",
+          "keyTopic": "Edge Locations",
+          "origin": "source"
+        },
+        {
+          "question": "Another name for an edge location?",
+          "answer": "Point of Presence",
+          "keyTopic": "Edge Locations",
+          "origin": "source"
+        },
+        {
+          "question": "Roughly how many AWS Points of Presence exist?",
+          "answer": "400+",
+          "keyTopic": "Edge Locations",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Global vs Region-scoped",
+      "cards": [
+        {
+          "question": "Name four global AWS services.",
+          "answer": [
+            "IAM",
+            "Route 53",
+            "CloudFront",
+            "WAF"
+          ],
+          "keyTopic": "Global vs Region-scoped services",
+          "origin": "source"
+        },
+        {
+          "question": "Name four Region-scoped services from the console tour.",
+          "answer": [
+            "EC2",
+            "Elastic Beanstalk",
+            "Lambda",
+            "Rekognition"
+          ],
+          "keyTopic": "Global vs Region-scoped services",
+          "origin": "source"
+        },
+        {
+          "question": "Which service type is Route 53: global or regional?",
+          "answer": "Global",
+          "keyTopic": "Global vs Region-scoped services",
+          "origin": "source"
+        }
+      ]
+    }
+  ]
+}

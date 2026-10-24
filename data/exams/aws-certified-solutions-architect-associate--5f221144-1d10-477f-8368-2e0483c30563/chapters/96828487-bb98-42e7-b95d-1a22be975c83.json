@@ -1,0 +1,20 @@
+{
+  "chapter": {
+    "id": "96828487-bb98-42e7-b95d-1a22be975c83",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 6,
+    "title": "High Availability & Scalability",
+    "pageStart": 119,
+    "pageEnd": 160,
+    "description": "Vertical versus horizontal scaling, Elastic Load Balancers (ALB, NLB, GWLB, CLB) and Auto Scaling Groups.",
+    "examFocus": [
+      "Task 2.1: scalable and loosely coupled architectures",
+      "Task 2.2: highly available designs",
+      "Task 3.2: elastic compute"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

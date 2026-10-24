@@ -1,0 +1,223 @@
+{
+  "chapter": {
+    "id": "32079515-df78-4c3a-8cbb-eefa2562edf2",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "Classic application architectures",
+    "order": 8,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 228,
+    "pageEnd": 267,
+    "description": "Stateless tiers, sessions, database scaling and resilient web design.",
+    "objectives": [
+      {
+        "id": "32079515-df78-4c3a-8cbb-eefa2562edf2/Making a web tier truly stateless",
+        "title": "Making a web tier truly stateless",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 228,
+        "pageEnd": 267,
+        "assessment": "both"
+      },
+      {
+        "id": "32079515-df78-4c3a-8cbb-eefa2562edf2/Decoupling slow work from request handling",
+        "title": "Decoupling slow work from request handling",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 228,
+        "pageEnd": 267,
+        "assessment": "both"
+      }
+    ],
+    "coverageStatus": "draft"
+  },
+  "sections": [
+    {
+      "id": "3b3db873-0151-4fda-979f-dcb96bf8a317",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "32079515-df78-4c3a-8cbb-eefa2562edf2",
+      "title": "Making a web tier truly stateless",
+      "objective": "What prevents session loss when a load balancer sends a user to a different instance?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nClassic Solutions Architecture\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSection Introduction\n• \tThese solutions architectures are the best part of this course\n• \tLet’s understand how all the technologies we’ve seen work together\n• \tThis is a section you need to be 100% comfortable with\n• \tWe’ll see the progression of a Solution’s architect mindset through many\nsample case studies:\n• \tWhatIsTheTime.Com\n• \tMyClothes.Com\n• \tMyWordPress.Com\n• \tInstantiating applications quickly\n• \tBeanstalk\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless Web App: WhatIsTheTime.com\n• \tWhatIsTheTime.com \tallows people to know what time it is\n• \tWe don’t need a database\n• \tWe want to start small and can accept downtime\n• \tWe want to fully scale vertically and horizontally, no downtime\n• \tLet’s go through the Solutions Architect journey for this app\n• \tLet’s see how we can proceed!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nStarting simple\nPublic EC2\nElastic IP Address\nUser\nWhat time is it?\n5:30 pm!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nScaling vertically\nPublic EC2\nElastic IP Address\nUser\nWhat time is it?\n5:30 pm!\nWhat time is it?\n6:30 pm!\nWhat time is it?\n7:30 pm!\nDowntime while upgrading to M5\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nScaling horizontally\nUser\nWhat time is it?\n5:30 pm!\nWhat time is it?\n6:30 pm!\nWhat time is it?\n7:30 pm!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nScaling horizontally\nWhat time is it?\n5:30 pm!\nWhat time is it?\n6:30 pm!\nWhat time is it?\n7:30 pm!\nPublic EC2 instance,\nNo Elastic IP\nDNS Query\nFor api.whatisthetime.com\nA Record\nTTL 1 hour\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nScaling horizontally, adding and removing instances\nWhat time is it?\n5:30 pm!\nWhat time is it?\n6:30 pm!\nWhat time is it?\n7:30 pm!\nPublic EC2 instance,\nNo Elastic IP\nDNS Query\nFor api.whatisthetime.com\nA Record\nTTL 1 hour\nINSTANCE IS GONE!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nScaling horizontally, with a load balancer\nWhat time is it?\nPrivate\nEC2 instances\nDNS Query\nFor api.whatisthetime.com\nAlias Record\nAvailability zone 1 \tAvailability zone 1\nELB +\nHealth Checks\nRestricted\nSecurity groups rules\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nScaling horizontally, with an auto-scaling group\nWhat time is it?\nPrivate\nEC2 instances\nDNS Query\nFor api.whatisthetime.com\nAlias Record\nAvailability zone 1 \tAvailability zone 1\nELB +\nHealth Checks\nAuto Scaling group\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nMaking our app multi-AZ\nWhat time is it?\nDNS Query\nFor api.whatisthetime.com\nAlias Record\nAvailability zone 1 to 3 \tAvailability zone 1\nELB +\nHealth Checks\n+ Multi AZ\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMinimum 2 AZ => Let’s reserve capacity\nDNS Query\nFor api.whatisthetime.com\nAlias Record\nAvailability zone 1 to 3 \tAvailability zone 1\nELB +\nHealth Checks\n+ Multi AZ\nAuto Scaling group\nAvailability zone 2\nMinimum capacity\n= reserved instances\n= cost savings\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIn this lecture we’ve discussed…\n• \tPublic vs Private IP and EC2 instances\n• \tElastic IP vs Route 53 vs Load Balancers\n• \tRoute 53 TTL, A records and Alias Records\n• \tMaintaining EC2 instances manually vs Auto Scaling Groups\n• \tMulti AZ to survive disasters\n• \tELB Health Checks\n• \tSecurity Group Rules\n• \tReservation of capacity for costing savings when possible\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\n• \tMyClothes.com \tallows people to buy clothes online.\n• \tThere’s a shopping cart\n• \tOur website is having hundreds of users at the same time\n• \tWe need to scale, maintain horizontal scalability and keep our web\napplication as stateless as possible\n• \tUsers should not lose their shopping cart\n• \tUsers should have their details (address, etc) in a database\n• \tLet’s see how we can proceed!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nIntroduce Stickiness (Session Affinity)\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nELB Stickiness\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nIntroduce User Cookies\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nSend shopping cart\ncontent in Web Cookies\nStateless\nHTTP requests are heavier\nSecurity risk\n(cookies can be altered)\nCookies must be validated\nCookies must be less than 4KB\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nIntroduce Server Session\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nSend session_id in\nWeb Cookies\nElastiCache\nStore / retrieve\nsession data\nAmazon DynamoDB\n(alternative)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nStoring User Data in a database\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nAmazon RDS\nStore / retrieve user data\n(address, name, etc)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nScaling Reads\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nRDS\nRead Replicas\nRDS\nMaster\n(writes)\nreplication\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nScaling Reads (Alternative) \t– \tLazy Loading\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nRDS\nRead/write\ncache\nRead from cache\nhit\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nMulti AZ \t– \tSurvive disasters\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nMulti AZ\nRDS\nMulti AZ\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nSecurity Groups\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nRDS\nRestrict traffic to EC2\nSecurity group from the LB\nRestrict traffic to RDS\nSecurity group from the\nEC2 security group\nRestrict traffic to ElastiCache\nSecurity group from the\nEC2 security group\nOpen HTTP / HTTPS\nto 0.0.0.0/0\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIn this lecture we’ve discussed…\n3-tier architectures for web applications\n• \tELB sticky sessions\n• \tWeb clients for storing cookies and making our web app stateless\n• \tElastiCache\n• \tFor storing sessions (alternative: DynamoDB)\n• \tFor caching data from RDS\n• \tMulti AZ\n• \tRDS\n• \tFor storing user data\n• \tRead replicas for scaling reads\n• \tMulti AZ for disaster recovery\n• \tTight Security with security groups referencing each other\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyWordPress.com\n• \tWe are trying to create a fully scalable WordPress website\n• \tWe want that website to access and correctly display picture uploads\n• \tOur user data, and the blog content should be stored in a MySQL database.\n• \tLet’s see how we can achieve this!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyWordPress.com\nRDS layer\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nRDS\nMulti AZ\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyWordPress.com\nScaling with Aurora: Multi AZ & Read Replicas\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nAurora MySQL\nMulti AZ\nRead Replicas\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyWordPress.com\nStoring images with EBS\nMulti AZ\nAmazon EBS\nVolume\nAvailability zone 1\nSend image\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyWordPress.com\nStoring images with EBS\nMulti AZ\nAmazon EBS\nVolume\nAmazon EBS\nVolume\nAvailability zone 1\nAvailability zone 2\nSend image\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyWordPress.com\nStoring images with EFS\nMulti AZ\nAvailability zone 1\nAvailability zone 2\nEFS\nENI\nENI\nSend image\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIn this lecture we’ve discussed…\n• \tAurora Database to have easy Multi-AZ and Read-Replicas\n• \tStoring data in EBS (single instance application)\n• \tVs Storing data in EFS (distributed application)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nInstantiating Applications quickly\n• \tWhen launching a full stack (EC2, EBS, RDS), it can take time to:\n• \tInstall applications\n• \tInsert initial (or recovery) data\n• \tConfigure everything\n• \tLaunch the application\n• \tWe can take advantage of the cloud to speed that up!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nInstantiating Applications quickly\n• \tEC2 Instances:\n• \tUse a Golden AMI: Install your applications, OS dependencies etc.. beforehand\nand launch your EC2 instance from the Golden AMI\n• \tBootstrap using User Data: For dynamic configuration, use User Data scripts\n• \tHybrid: mix Golden AMI and User Data (Elastic Beanstalk)\n• \tRDS Databases:\n• \tRestore from a snapshot: the database will have schemas and data ready!\n• \tEBS Volumes:\n• \tRestore from a snapshot: the disk will already be formatted and have data!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nTypical architecture: Web App 3-tier\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nStore / retrieve\nsession data\n+ Cached data\nPUBLIC SUBNET \tPRIVATE SUBNET \tDATA SUBNET\nAmazon RDS\nRead / write data\nELB\nRoute 53\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDeveloper problems on AWS\n• \tManaging infrastructure\n• \tDeploying Code\n• \tConfiguring all the databases, load balancers, etc\n• \tScaling concerns\n• \tMost web apps have the same architecture (ALB + ASG)\n• \tAll the developers want is for their code to run!\n• \tPossibly, consistently across different applications and environments\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic Beanstalk \t– \tOverview\n• \tElastic Beanstalk is a developer centric view of deploying an application\non AWS\n• \tIt uses all the component’s we’ve seen before: EC2, ASG, ELB, RDS, …\n• \tManaged service\n• \tAutomatically handles capacity provisioning, load balancing, scaling, application\nhealth monitoring, instance configuration, …\n• \tJust the application code is the responsibility of the developer\n• \tWe still have full control over the configuration\n• \tBeanstalk is free but you pay for the underlying instances\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic Beanstalk \t– \tComponents\n• \tApplication: collection of Elastic Beanstalk components (environments,\nversions, configurations, …)\n• \tApplication Version: an iteration of your application code\n• \tEnvironment\n• \tCollection of AWS resources running an application version (only one application\nversion at a time)\n• \tTiers: Web Server Environment Tier & Worker Environment Tier\n• \tYou can create multiple environments (dev, test, prod, …)\nCreate\nApplication\nUpload\nVersion\nLaunch\nEnvironment\nManage\nEnvironment\nupdate version\ndeploy new version\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic Beanstalk \t– \tSupported Platforms\n• \tGo\n• \tJava SE\n• \tJava with Tomcat\n• \t.NET Core on Linux\n• \t.NET on Windows Server\n• \tNode.js\n• \tPHP\n• \tPython\n• \tRuby\n• \tPacker Builder\n• \tSingle Container Docker\n• \tMulti-container Docker\n• \tPreconfigured Docker\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWeb Server Tier vs. Worker Tier\nAuto Scaling group\nWeb Environment\n(myapp.us-east-1.elasticbeanstalk.com)\nSecurity Group\nAvailability Zone 1 \tAvailability Zone 2\nEC2 Instance\n(Web Server)\nELB\nSecurity Group\nEC2 Instance\n(Web Server)\nAuto Scaling group\nWorker Environment\nAvailability Zone 1 \tAvailability Zone 2\nSQS Queue\nSQS message \tSQS message\npull\nmessages\nEC2 Instance\n(Worker)\nEC2 Instance\n(Worker)\n• \tScale based on the number of SQS messages\n• \tCan push messages to SQS queue from\nanother Web Server Tier\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic Beanstalk Deployment Modes\nSingle Instance\nGreat for dev\nHigh Availability with Load Balancer\nGreat for prod\nAvailability Zone 1\nAuto Scaling Group\nAvailability Zone 2\nRDS Master \tRDS Standby\nEC2 Instance \tEC2 Instance\nALBAvailability Zone 1\nRDS Master\nEC2 Instance\nElastic IP",
+      "pageStart": 228,
+      "pageEnd": 267,
+      "read": false,
+      "content": {
+        "summary": "## Making a web tier truly stateless\n\nStore session data in an appropriate external shared store or use carefully designed client-side sessions. Then any healthy web instance can handle a request without recovering local process state.\n\n### Reasoning and trade-offs\n\nThe infrastructure can replace failed compute only if application state survives elsewhere. Stickiness does not preserve a failed server, and concentrating instances in one AZ reduces resilience rather than fixing session persistence.\n\n### Avoid this trap\n\nSticky sessions can improve locality but do not protect session state when an instance fails. Shared storage and security constraints must be considered explicitly.\n\n### Apply it\n\nUsers are logged out whenever a web server is replaced. The fleet already uses a multi-AZ ALB and Auto Scaling. What is the most durable correction?\n\n**Recommended design:** Externalize session state and make the web instances replaceable.\n\nThe infrastructure can replace failed compute only if application state survives elsewhere. Stickiness does not preserve a failed server, and concentrating instances in one AZ reduces resilience rather than fixing session persistence.",
+        "keyPoints": [
+          "Store session data in an appropriate external shared store or use carefully designed client-side sessions. Then any healthy web instance can handle a request without recovering local process state.",
+          "The infrastructure can replace failed compute only if application state survives elsewhere. Stickiness does not preserve a failed server, and concentrating instances in one AZ reduces resilience rather than fixing session persistence.",
+          "Sticky sessions can improve locality but do not protect session state when an instance fails. Shared storage and security constraints must be considered explicitly."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "What allows any healthy web instance to handle a session?",
+            "answer": "Session state stored outside the individual instance.",
+            "objectiveIds": [
+              "32079515-df78-4c3a-8cbb-eefa2562edf2/Making a web tier truly stateless"
+            ],
+            "id": "f2a88e4e-c109-473d-93ce-554f2de32da8",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.106Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Do sticky sessions preserve state after instance failure?",
+            "answer": "No. They only influence request routing.",
+            "objectiveIds": [
+              "32079515-df78-4c3a-8cbb-eefa2562edf2/Making a web tier truly stateless"
+            ],
+            "id": "7c3253fc-c05d-478f-b9bb-b5f0c589683d",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.106Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Users are logged out whenever a web server is replaced. The fleet already uses a multi-AZ ALB and Auto Scaling. What is the most durable correction?",
+            "options": [
+              "Enable stickiness and continue keeping the only session copy in process memory.",
+              "Move all instances into one AZ so users stay close to the session server.",
+              "Externalize session state and make the web instances replaceable.",
+              "Disable health checks so failed instances are not removed."
+            ],
+            "correctIndex": 2,
+            "explanation": "The infrastructure can replace failed compute only if application state survives elsewhere. Stickiness does not preserve a failed server, and concentrating instances in one AZ reduces resilience rather than fixing session persistence.",
+            "objectiveIds": [
+              "32079515-df78-4c3a-8cbb-eefa2562edf2/Making a web tier truly stateless"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.106Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 228,
+            "pageEnd": 267,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ecda841f-923c-454f-b32c-d4559ae2191b",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "32079515-df78-4c3a-8cbb-eefa2562edf2",
+      "title": "Decoupling slow work from request handling",
+      "objective": "How can a web application absorb slow background work without holding open user requests?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nClassic Solutions Architecture\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nSection Introduction\n• \tThese solutions architectures are the best part of this course\n• \tLet’s understand how all the technologies we’ve seen work together\n• \tThis is a section you need to be 100% comfortable with\n• \tWe’ll see the progression of a Solution’s architect mindset through many\nsample case studies:\n• \tWhatIsTheTime.Com\n• \tMyClothes.Com\n• \tMyWordPress.Com\n• \tInstantiating applications quickly\n• \tBeanstalk\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless Web App: WhatIsTheTime.com\n• \tWhatIsTheTime.com \tallows people to know what time it is\n• \tWe don’t need a database\n• \tWe want to start small and can accept downtime\n• \tWe want to fully scale vertically and horizontally, no downtime\n• \tLet’s go through the Solutions Architect journey for this app\n• \tLet’s see how we can proceed!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nStarting simple\nPublic EC2\nElastic IP Address\nUser\nWhat time is it?\n5:30 pm!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nScaling vertically\nPublic EC2\nElastic IP Address\nUser\nWhat time is it?\n5:30 pm!\nWhat time is it?\n6:30 pm!\nWhat time is it?\n7:30 pm!\nDowntime while upgrading to M5\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nScaling horizontally\nUser\nWhat time is it?\n5:30 pm!\nWhat time is it?\n6:30 pm!\nWhat time is it?\n7:30 pm!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nScaling horizontally\nWhat time is it?\n5:30 pm!\nWhat time is it?\n6:30 pm!\nWhat time is it?\n7:30 pm!\nPublic EC2 instance,\nNo Elastic IP\nDNS Query\nFor api.whatisthetime.com\nA Record\nTTL 1 hour\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nScaling horizontally, adding and removing instances\nWhat time is it?\n5:30 pm!\nWhat time is it?\n6:30 pm!\nWhat time is it?\n7:30 pm!\nPublic EC2 instance,\nNo Elastic IP\nDNS Query\nFor api.whatisthetime.com\nA Record\nTTL 1 hour\nINSTANCE IS GONE!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nScaling horizontally, with a load balancer\nWhat time is it?\nPrivate\nEC2 instances\nDNS Query\nFor api.whatisthetime.com\nAlias Record\nAvailability zone 1 \tAvailability zone 1\nELB +\nHealth Checks\nRestricted\nSecurity groups rules\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nScaling horizontally, with an auto-scaling group\nWhat time is it?\nPrivate\nEC2 instances\nDNS Query\nFor api.whatisthetime.com\nAlias Record\nAvailability zone 1 \tAvailability zone 1\nELB +\nHealth Checks\nAuto Scaling group\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateless web app: What time is it?\nMaking our app multi-AZ\nWhat time is it?\nDNS Query\nFor api.whatisthetime.com\nAlias Record\nAvailability zone 1 to 3 \tAvailability zone 1\nELB +\nHealth Checks\n+ Multi AZ\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMinimum 2 AZ => Let’s reserve capacity\nDNS Query\nFor api.whatisthetime.com\nAlias Record\nAvailability zone 1 to 3 \tAvailability zone 1\nELB +\nHealth Checks\n+ Multi AZ\nAuto Scaling group\nAvailability zone 2\nMinimum capacity\n= reserved instances\n= cost savings\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIn this lecture we’ve discussed…\n• \tPublic vs Private IP and EC2 instances\n• \tElastic IP vs Route 53 vs Load Balancers\n• \tRoute 53 TTL, A records and Alias Records\n• \tMaintaining EC2 instances manually vs Auto Scaling Groups\n• \tMulti AZ to survive disasters\n• \tELB Health Checks\n• \tSecurity Group Rules\n• \tReservation of capacity for costing savings when possible\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\n• \tMyClothes.com \tallows people to buy clothes online.\n• \tThere’s a shopping cart\n• \tOur website is having hundreds of users at the same time\n• \tWe need to scale, maintain horizontal scalability and keep our web\napplication as stateless as possible\n• \tUsers should not lose their shopping cart\n• \tUsers should have their details (address, etc) in a database\n• \tLet’s see how we can proceed!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nIntroduce Stickiness (Session Affinity)\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nELB Stickiness\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nIntroduce User Cookies\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nSend shopping cart\ncontent in Web Cookies\nStateless\nHTTP requests are heavier\nSecurity risk\n(cookies can be altered)\nCookies must be validated\nCookies must be less than 4KB\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nIntroduce Server Session\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nSend session_id in\nWeb Cookies\nElastiCache\nStore / retrieve\nsession data\nAmazon DynamoDB\n(alternative)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nStoring User Data in a database\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nAmazon RDS\nStore / retrieve user data\n(address, name, etc)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nScaling Reads\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nRDS\nRead Replicas\nRDS\nMaster\n(writes)\nreplication\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nScaling Reads (Alternative) \t– \tLazy Loading\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nRDS\nRead/write\ncache\nRead from cache\nhit\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nMulti AZ \t– \tSurvive disasters\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nMulti AZ\nRDS\nMulti AZ\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyClothes.com\nSecurity Groups\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nRDS\nRestrict traffic to EC2\nSecurity group from the LB\nRestrict traffic to RDS\nSecurity group from the\nEC2 security group\nRestrict traffic to ElastiCache\nSecurity group from the\nEC2 security group\nOpen HTTP / HTTPS\nto 0.0.0.0/0\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIn this lecture we’ve discussed…\n3-tier architectures for web applications\n• \tELB sticky sessions\n• \tWeb clients for storing cookies and making our web app stateless\n• \tElastiCache\n• \tFor storing sessions (alternative: DynamoDB)\n• \tFor caching data from RDS\n• \tMulti AZ\n• \tRDS\n• \tFor storing user data\n• \tRead replicas for scaling reads\n• \tMulti AZ for disaster recovery\n• \tTight Security with security groups referencing each other\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyWordPress.com\n• \tWe are trying to create a fully scalable WordPress website\n• \tWe want that website to access and correctly display picture uploads\n• \tOur user data, and the blog content should be stored in a MySQL database.\n• \tLet’s see how we can achieve this!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyWordPress.com\nRDS layer\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nRDS\nMulti AZ\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyWordPress.com\nScaling with Aurora: Multi AZ & Read Replicas\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nAurora MySQL\nMulti AZ\nRead Replicas\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyWordPress.com\nStoring images with EBS\nMulti AZ\nAmazon EBS\nVolume\nAvailability zone 1\nSend image\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyWordPress.com\nStoring images with EBS\nMulti AZ\nAmazon EBS\nVolume\nAmazon EBS\nVolume\nAvailability zone 1\nAvailability zone 2\nSend image\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStateful Web App: \tMyWordPress.com\nStoring images with EFS\nMulti AZ\nAvailability zone 1\nAvailability zone 2\nEFS\nENI\nENI\nSend image\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIn this lecture we’ve discussed…\n• \tAurora Database to have easy Multi-AZ and Read-Replicas\n• \tStoring data in EBS (single instance application)\n• \tVs Storing data in EFS (distributed application)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nInstantiating Applications quickly\n• \tWhen launching a full stack (EC2, EBS, RDS), it can take time to:\n• \tInstall applications\n• \tInsert initial (or recovery) data\n• \tConfigure everything\n• \tLaunch the application\n• \tWe can take advantage of the cloud to speed that up!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nInstantiating Applications quickly\n• \tEC2 Instances:\n• \tUse a Golden AMI: Install your applications, OS dependencies etc.. beforehand\nand launch your EC2 instance from the Golden AMI\n• \tBootstrap using User Data: For dynamic configuration, use User Data scripts\n• \tHybrid: mix Golden AMI and User Data (Elastic Beanstalk)\n• \tRDS Databases:\n• \tRestore from a snapshot: the database will have schemas and data ready!\n• \tEBS Volumes:\n• \tRestore from a snapshot: the disk will already be formatted and have data!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nTypical architecture: Web App 3-tier\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nStore / retrieve\nsession data\n+ Cached data\nPUBLIC SUBNET \tPRIVATE SUBNET \tDATA SUBNET\nAmazon RDS\nRead / write data\nELB\nRoute 53\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nDeveloper problems on AWS\n• \tManaging infrastructure\n• \tDeploying Code\n• \tConfiguring all the databases, load balancers, etc\n• \tScaling concerns\n• \tMost web apps have the same architecture (ALB + ASG)\n• \tAll the developers want is for their code to run!\n• \tPossibly, consistently across different applications and environments\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic Beanstalk \t– \tOverview\n• \tElastic Beanstalk is a developer centric view of deploying an application\non AWS\n• \tIt uses all the component’s we’ve seen before: EC2, ASG, ELB, RDS, …\n• \tManaged service\n• \tAutomatically handles capacity provisioning, load balancing, scaling, application\nhealth monitoring, instance configuration, …\n• \tJust the application code is the responsibility of the developer\n• \tWe still have full control over the configuration\n• \tBeanstalk is free but you pay for the underlying instances\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic Beanstalk \t– \tComponents\n• \tApplication: collection of Elastic Beanstalk components (environments,\nversions, configurations, …)\n• \tApplication Version: an iteration of your application code\n• \tEnvironment\n• \tCollection of AWS resources running an application version (only one application\nversion at a time)\n• \tTiers: Web Server Environment Tier & Worker Environment Tier\n• \tYou can create multiple environments (dev, test, prod, …)\nCreate\nApplication\nUpload\nVersion\nLaunch\nEnvironment\nManage\nEnvironment\nupdate version\ndeploy new version\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic Beanstalk \t– \tSupported Platforms\n• \tGo\n• \tJava SE\n• \tJava with Tomcat\n• \t.NET Core on Linux\n• \t.NET on Windows Server\n• \tNode.js\n• \tPHP\n• \tPython\n• \tRuby\n• \tPacker Builder\n• \tSingle Container Docker\n• \tMulti-container Docker\n• \tPreconfigured Docker\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWeb Server Tier vs. Worker Tier\nAuto Scaling group\nWeb Environment\n(myapp.us-east-1.elasticbeanstalk.com)\nSecurity Group\nAvailability Zone 1 \tAvailability Zone 2\nEC2 Instance\n(Web Server)\nELB\nSecurity Group\nEC2 Instance\n(Web Server)\nAuto Scaling group\nWorker Environment\nAvailability Zone 1 \tAvailability Zone 2\nSQS Queue\nSQS message \tSQS message\npull\nmessages\nEC2 Instance\n(Worker)\nEC2 Instance\n(Worker)\n• \tScale based on the number of SQS messages\n• \tCan push messages to SQS queue from\nanother Web Server Tier\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nElastic Beanstalk Deployment Modes\nSingle Instance\nGreat for dev\nHigh Availability with Load Balancer\nGreat for prod\nAvailability Zone 1\nAuto Scaling Group\nAvailability Zone 2\nRDS Master \tRDS Standby\nEC2 Instance \tEC2 Instance\nALBAvailability Zone 1\nRDS Master\nEC2 Instance\nElastic IP",
+      "pageStart": 228,
+      "pageEnd": 267,
+      "read": false,
+      "content": {
+        "summary": "## Decoupling slow work from request handling\n\nAccept the request, persist a job to a durable queue and let independent workers process it. Track job state and make retries idempotent so duplicate deliveries do not duplicate business effects.\n\n### Reasoning and trade-offs\n\nA durable queue separates request acceptance from processing speed and supports independent scaling. Long synchronous requests consume web capacity. Workers need visibility-timeout, retry, duplicate handling and failure policies that match the job duration.\n\n### Avoid this trap\n\nA queue does not create unlimited processing capacity or guarantee exactly-once business operations. Monitor age and backlog and use dead-letter handling for poison messages.\n\n### Apply it\n\nImage conversion takes several minutes and demand arrives in bursts. The web tier must respond quickly even during a spike. Which design is most appropriate?\n\n**Recommended design:** Queue conversion jobs and scale independent workers using backlog-related metrics.\n\nA durable queue separates request acceptance from processing speed and supports independent scaling. Long synchronous requests consume web capacity. Workers need visibility-timeout, retry, duplicate handling and failure policies that match the job duration.",
+        "keyPoints": [
+          "Accept the request, persist a job to a durable queue and let independent workers process it. Track job state and make retries idempotent so duplicate deliveries do not duplicate business effects.",
+          "A durable queue separates request acceptance from processing speed and supports independent scaling. Long synchronous requests consume web capacity. Workers need visibility-timeout, retry, duplicate handling and failure policies that match the job duration.",
+          "A queue does not create unlimited processing capacity or guarantee exactly-once business operations. Monitor age and backlog and use dead-letter handling for poison messages."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "How can a web API hand off a slow background job?",
+            "answer": "Persist a job to a durable queue for independent workers.",
+            "objectiveIds": [
+              "32079515-df78-4c3a-8cbb-eefa2562edf2/Decoupling slow work from request handling"
+            ],
+            "id": "a29a39b7-62b8-41f8-bdb7-deb360bcc656",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.106Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Why should queue workers be idempotent?",
+            "answer": "Retries or duplicate deliveries must not duplicate business effects.",
+            "objectiveIds": [
+              "32079515-df78-4c3a-8cbb-eefa2562edf2/Decoupling slow work from request handling"
+            ],
+            "id": "fc751dee-0219-46a5-9337-01c4d270e173",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.106Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Image conversion takes several minutes and demand arrives in bursts. The web tier must respond quickly even during a spike. Which design is most appropriate?",
+            "options": [
+              "Increase every HTTP timeout and run conversion synchronously on the web servers.",
+              "Store pending jobs only in the load balancer memory.",
+              "Use DNS TTL changes to schedule individual conversion tasks.",
+              "Queue conversion jobs and scale independent workers using backlog-related metrics."
+            ],
+            "correctIndex": 3,
+            "explanation": "A durable queue separates request acceptance from processing speed and supports independent scaling. Long synchronous requests consume web capacity. Workers need visibility-timeout, retry, duplicate handling and failure policies that match the job duration.",
+            "objectiveIds": [
+              "32079515-df78-4c3a-8cbb-eefa2562edf2/Decoupling slow work from request handling"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.106Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 228,
+            "pageEnd": 267,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

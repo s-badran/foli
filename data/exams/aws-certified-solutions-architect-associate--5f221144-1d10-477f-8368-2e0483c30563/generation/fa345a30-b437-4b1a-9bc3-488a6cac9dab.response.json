@@ -1,0 +1,188 @@
+{
+  "groups": [
+    {
+      "concept": "Password policy",
+      "cards": [
+        {
+          "question": "Password policy settings in IAM?",
+          "answer": [
+            "Minimum length",
+            "Required character types",
+            "Users change own password",
+            "Password expiration",
+            "Prevent password reuse"
+          ],
+          "keyTopic": "Password policy",
+          "origin": "source"
+        },
+        {
+          "question": "Which setting forces periodic password changes?",
+          "answer": "Password expiration",
+          "keyTopic": "Password policy",
+          "origin": "source"
+        },
+        {
+          "question": "Which setting blocks reusing old passwords?",
+          "answer": "Prevent password re-use",
+          "keyTopic": "Password policy",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "MFA",
+      "cards": [
+        {
+          "question": "MFA combines which two factors?",
+          "answer": "Password you know + security device you own",
+          "keyTopic": "Multi-Factor Authentication",
+          "origin": "source"
+        },
+        {
+          "question": "Main benefit of MFA?",
+          "answer": "A stolen password alone cannot compromise the account",
+          "keyTopic": "Multi-Factor Authentication",
+          "origin": "source"
+        },
+        {
+          "question": "Whose accounts should MFA protect?",
+          "answer": "Root account and IAM users",
+          "keyTopic": "Multi-Factor Authentication",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "MFA devices",
+      "cards": [
+        {
+          "question": "Two virtual MFA apps named in the course?",
+          "answer": "Google Authenticator and Authy",
+          "keyTopic": "MFA device options",
+          "origin": "source"
+        },
+        {
+          "question": "Example of a U2F security key?",
+          "answer": "YubiKey",
+          "keyTopic": "MFA device options",
+          "origin": "source"
+        },
+        {
+          "question": "Which MFA type lets one device serve multiple users?",
+          "answer": "U2F security key",
+          "keyTopic": "MFA device options",
+          "origin": "source"
+        },
+        {
+          "question": "Who provides hardware key fob MFA devices?",
+          "answer": "Third parties such as Gemalto",
+          "keyTopic": "MFA device options",
+          "origin": "source"
+        },
+        {
+          "question": "MFA hardware fob provider for AWS GovCloud (US)?",
+          "answer": "SurePassID",
+          "keyTopic": "MFA device options",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Access methods",
+      "cards": [
+        {
+          "question": "Three ways to access AWS?",
+          "answer": [
+            "Management Console",
+            "AWS CLI",
+            "AWS SDK"
+          ],
+          "keyTopic": "Access methods",
+          "origin": "source"
+        },
+        {
+          "question": "What protects Management Console access?",
+          "answer": "Password + MFA",
+          "keyTopic": "Access methods",
+          "origin": "source"
+        },
+        {
+          "question": "What protects CLI and SDK access?",
+          "answer": "Access keys",
+          "keyTopic": "Access methods",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Access keys",
+      "cards": [
+        {
+          "question": "Where are access keys generated?",
+          "answer": "In the AWS Console",
+          "keyTopic": "Access keys",
+          "origin": "source"
+        },
+        {
+          "question": "Who manages a user's access keys?",
+          "answer": "The user",
+          "keyTopic": "Access keys",
+          "origin": "source"
+        },
+        {
+          "question": "Access Key ID is comparable to what?",
+          "answer": "A username",
+          "keyTopic": "Access keys",
+          "origin": "source"
+        },
+        {
+          "question": "Secret Access Key is comparable to what?",
+          "answer": "A password",
+          "keyTopic": "Access keys",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "CLI and SDK",
+      "cards": [
+        {
+          "question": "What does the AWS CLI interact with?",
+          "answer": "AWS public service APIs",
+          "keyTopic": "AWS CLI",
+          "origin": "source"
+        },
+        {
+          "question": "Is the AWS CLI open-source?",
+          "answer": "Yes",
+          "keyTopic": "AWS CLI",
+          "origin": "source"
+        },
+        {
+          "question": "Typical use of the AWS CLI?",
+          "answer": "Scripting management of AWS resources",
+          "keyTopic": "AWS CLI",
+          "origin": "source"
+        },
+        {
+          "question": "What is the AWS SDK?",
+          "answer": "Language-specific libraries for calling AWS APIs",
+          "keyTopic": "AWS SDK",
+          "origin": "source"
+        },
+        {
+          "question": "Where is the AWS SDK used?",
+          "answer": "Embedded within your application code",
+          "keyTopic": "AWS SDK",
+          "origin": "source"
+        },
+        {
+          "question": "The AWS CLI is built on which SDK?",
+          "answer": "AWS SDK for Python",
+          "keyTopic": "AWS SDK",
+          "origin": "source"
+        }
+      ]
+    }
+  ]
+}

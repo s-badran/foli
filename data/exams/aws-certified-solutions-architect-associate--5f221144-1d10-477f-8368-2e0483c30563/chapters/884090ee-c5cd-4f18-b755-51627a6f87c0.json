@@ -1,0 +1,16 @@
+{
+  "chapter": {
+    "id": "884090ee-c5cd-4f18-b755-51627a6f87c0",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 30,
+    "title": "Exam Preparation",
+    "pageStart": 862,
+    "pageEnd": 877,
+    "description": "Exam format, review strategy and practice-exam guidance.",
+    "examFocus": [],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

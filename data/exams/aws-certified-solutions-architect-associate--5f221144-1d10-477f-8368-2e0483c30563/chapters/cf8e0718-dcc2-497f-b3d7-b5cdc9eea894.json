@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "cf8e0718-dcc2-497f-b3d7-b5cdc9eea894",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 18,
+    "title": "Serverless Architectures",
+    "pageStart": 494,
+    "pageEnd": 515,
+    "description": "Worked serverless solution designs: mobile app, serverless website, microservices, and software distribution.",
+    "examFocus": [
+      "Task 2.1: composing serverless services",
+      "Task 3.4: caching and edge delivery"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

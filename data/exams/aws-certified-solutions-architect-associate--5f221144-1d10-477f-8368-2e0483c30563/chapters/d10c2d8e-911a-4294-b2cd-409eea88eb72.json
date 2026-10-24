@@ -1,0 +1,2712 @@
+{
+  "chapter": {
+    "id": "d10c2d8e-911a-4294-b2cd-409eea88eb72",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 3,
+    "title": "Amazon EC2 – Basics",
+    "pageStart": 41,
+    "pageEnd": 77,
+    "description": "EC2 instance types, security groups, connecting to instances, instance roles and purchasing options.",
+    "examFocus": [
+      "Task 3.2: elastic compute choices",
+      "Task 4.2: cost-optimized compute and purchasing options",
+      "Task 1.2: security groups"
+    ],
+    "objectives": [
+      {
+        "id": "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-as-infrastructure-as-a-service",
+        "title": "EC2 as Infrastructure as a Service",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 41,
+        "pageEnd": 45,
+        "assessment": "recall"
+      },
+      {
+        "id": "c4e16720-595d-46c6-a53c-3142fa56a845::renting-vms-ebs-elb-asg-roles",
+        "title": "Renting VMs, EBS, ELB, ASG roles",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 41,
+        "pageEnd": 45,
+        "assessment": "recall"
+      },
+      {
+        "id": "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-sizing-and-configuration-options",
+        "title": "EC2 sizing and configuration options",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 41,
+        "pageEnd": 45,
+        "assessment": "recall"
+      },
+      {
+        "id": "c4e16720-595d-46c6-a53c-3142fa56a845::network-attached-vs-hardware-storage",
+        "title": "Network-attached vs hardware storage",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 41,
+        "pageEnd": 45,
+        "assessment": "recall"
+      },
+      {
+        "id": "c4e16720-595d-46c6-a53c-3142fa56a845::security-group-as-firewall-rule-set",
+        "title": "Security group as firewall rule set",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 41,
+        "pageEnd": 45,
+        "assessment": "recall"
+      },
+      {
+        "id": "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-user-data-bootstrapping",
+        "title": "EC2 User Data bootstrapping",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 41,
+        "pageEnd": 45,
+        "assessment": "recall"
+      },
+      {
+        "id": "c4e16720-595d-46c6-a53c-3142fa56a845::user-data-runs-once-as-root",
+        "title": "User Data runs once as root",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 41,
+        "pageEnd": 45,
+        "assessment": "recall"
+      },
+      {
+        "id": "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-naming-m5-2xlarge-decoded",
+        "title": "Instance naming m5.2xlarge decoded",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 46,
+        "pageEnd": 51,
+        "assessment": "recall"
+      },
+      {
+        "id": "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-families-overview",
+        "title": "Instance families overview",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 46,
+        "pageEnd": 51,
+        "assessment": "recall"
+      },
+      {
+        "id": "42b79261-6e53-4757-a0fb-e636fc5a8576::general-purpose-use-cases",
+        "title": "General purpose use cases",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 46,
+        "pageEnd": 51,
+        "assessment": "recall"
+      },
+      {
+        "id": "42b79261-6e53-4757-a0fb-e636fc5a8576::compute-optimized-use-cases",
+        "title": "Compute optimized use cases",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 46,
+        "pageEnd": 51,
+        "assessment": "recall"
+      },
+      {
+        "id": "42b79261-6e53-4757-a0fb-e636fc5a8576::memory-optimized-use-cases",
+        "title": "Memory optimized use cases",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 46,
+        "pageEnd": 51,
+        "assessment": "recall"
+      },
+      {
+        "id": "42b79261-6e53-4757-a0fb-e636fc5a8576::storage-optimized-use-cases",
+        "title": "Storage optimized use cases",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 46,
+        "pageEnd": 51,
+        "assessment": "recall"
+      },
+      {
+        "id": "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs",
+        "title": "Instance sizing table (vCPU, memory, network, EBS)",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 46,
+        "pageEnd": 51,
+        "assessment": "recall"
+      },
+      {
+        "id": "cdd97b84-b9db-4ee6-bba8-15de32be5e76::inbound-vs-outbound-traffic-control",
+        "title": "Inbound vs outbound traffic control",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 52,
+        "pageEnd": 57,
+        "assessment": "recall"
+      },
+      {
+        "id": "cdd97b84-b9db-4ee6-bba8-15de32be5e76::rules-by-ip-range-or-security-group",
+        "title": "Rules by IP range or security group",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 52,
+        "pageEnd": 57,
+        "assessment": "recall"
+      },
+      {
+        "id": "cdd97b84-b9db-4ee6-bba8-15de32be5e76::security-groups-as-stateful-firewall-outside-ec2",
+        "title": "Security groups as stateful firewall outside EC2",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 52,
+        "pageEnd": 57,
+        "assessment": "recall"
+      },
+      {
+        "id": "cdd97b84-b9db-4ee6-bba8-15de32be5e76::default-inbound-blocked-outbound-allowed",
+        "title": "Default: inbound blocked, outbound allowed",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 52,
+        "pageEnd": 57,
+        "assessment": "recall"
+      },
+      {
+        "id": "cdd97b84-b9db-4ee6-bba8-15de32be5e76::multiple-instances-region-vpc-scoped",
+        "title": "Multiple instances; region/VPC scoped",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 52,
+        "pageEnd": 57,
+        "assessment": "recall"
+      },
+      {
+        "id": "cdd97b84-b9db-4ee6-bba8-15de32be5e76::timeout-vs-connection-refused-diagnosis",
+        "title": "Timeout vs connection refused diagnosis",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 52,
+        "pageEnd": 57,
+        "assessment": "recall"
+      },
+      {
+        "id": "cdd97b84-b9db-4ee6-bba8-15de32be5e76::referencing-other-security-groups",
+        "title": "Referencing other security groups",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 52,
+        "pageEnd": 57,
+        "assessment": "recall"
+      },
+      {
+        "id": "cdd97b84-b9db-4ee6-bba8-15de32be5e76::classic-ports-22-21-80-443-3389",
+        "title": "Classic ports: 22, 21, 80, 443, 3389",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 52,
+        "pageEnd": 57,
+        "assessment": "recall"
+      },
+      {
+        "id": "bec0fb5a-5643-4c7f-b86f-b4b35d9e47d7::ssh-client-by-os-mac-linux-windows",
+        "title": "SSH client by OS (Mac, Linux, Windows)",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 58,
+        "pageEnd": 63,
+        "assessment": "recall"
+      },
+      {
+        "id": "bec0fb5a-5643-4c7f-b86f-b4b35d9e47d7::putty-for-windows",
+        "title": "Putty for Windows",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 58,
+        "pageEnd": 63,
+        "assessment": "recall"
+      },
+      {
+        "id": "bec0fb5a-5643-4c7f-b86f-b4b35d9e47d7::ec2-instance-connect-in-browser",
+        "title": "EC2 Instance Connect in browser",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 58,
+        "pageEnd": 63,
+        "assessment": "recall"
+      },
+      {
+        "id": "bec0fb5a-5643-4c7f-b86f-b4b35d9e47d7::temporary-key-upload-by-aws",
+        "title": "Temporary key upload by AWS",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 58,
+        "pageEnd": 63,
+        "assessment": "recall"
+      },
+      {
+        "id": "bec0fb5a-5643-4c7f-b86f-b4b35d9e47d7::works-out-of-the-box-with-amazon-linux-2",
+        "title": "Works out-of-the-box with Amazon Linux 2",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 58,
+        "pageEnd": 63,
+        "assessment": "recall"
+      },
+      {
+        "id": "bec0fb5a-5643-4c7f-b86f-b4b35d9e47d7::port-22-must-be-open",
+        "title": "Port 22 must be open",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 58,
+        "pageEnd": 63,
+        "assessment": "recall"
+      },
+      {
+        "id": "bec0fb5a-5643-4c7f-b86f-b4b35d9e47d7::ssh-troubleshooting-order",
+        "title": "SSH troubleshooting order",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 58,
+        "pageEnd": 63,
+        "assessment": "recall"
+      },
+      {
+        "id": "83c28431-4feb-4df1-8600-56639c24f6f3::on-demand-billing-and-use-cases",
+        "title": "On-Demand billing and use cases",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 64,
+        "pageEnd": 73,
+        "assessment": "recall"
+      },
+      {
+        "id": "83c28431-4feb-4df1-8600-56639c24f6f3::reserved-instances-1-or-3-years",
+        "title": "Reserved Instances (1 or 3 years)",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 64,
+        "pageEnd": 73,
+        "assessment": "recall"
+      },
+      {
+        "id": "83c28431-4feb-4df1-8600-56639c24f6f3::convertible-reserved-instances",
+        "title": "Convertible Reserved Instances",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 64,
+        "pageEnd": 73,
+        "assessment": "recall"
+      },
+      {
+        "id": "83c28431-4feb-4df1-8600-56639c24f6f3::savings-plans-commitment-model",
+        "title": "Savings Plans commitment model",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 64,
+        "pageEnd": 73,
+        "assessment": "recall"
+      },
+      {
+        "id": "83c28431-4feb-4df1-8600-56639c24f6f3::spot-instances-and-interruption",
+        "title": "Spot Instances and interruption",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 64,
+        "pageEnd": 73,
+        "assessment": "recall"
+      },
+      {
+        "id": "83c28431-4feb-4df1-8600-56639c24f6f3::dedicated-hosts-vs-dedicated-instances",
+        "title": "Dedicated Hosts vs Dedicated Instances",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 64,
+        "pageEnd": 73,
+        "assessment": "recall"
+      },
+      {
+        "id": "83c28431-4feb-4df1-8600-56639c24f6f3::capacity-reservations-in-a-specific-az",
+        "title": "Capacity Reservations in a specific AZ",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 64,
+        "pageEnd": 73,
+        "assessment": "recall"
+      },
+      {
+        "id": "83c28431-4feb-4df1-8600-56639c24f6f3::payment-options-upfront-levels",
+        "title": "Payment options: upfront levels",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 64,
+        "pageEnd": 73,
+        "assessment": "recall"
+      },
+      {
+        "id": "83c28431-4feb-4df1-8600-56639c24f6f3::hotel-analogy-and-price-comparison",
+        "title": "Hotel analogy and price comparison",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 64,
+        "pageEnd": 73,
+        "assessment": "recall"
+      },
+      {
+        "id": "63ab6513-1d6b-4177-bcbe-71b34242de22::max-spot-price-vs-current-spot-price",
+        "title": "Max spot price vs current spot price",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 74,
+        "pageEnd": 77,
+        "assessment": "recall"
+      },
+      {
+        "id": "63ab6513-1d6b-4177-bcbe-71b34242de22::2-minute-interruption-grace-period",
+        "title": "2-minute interruption grace period",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 74,
+        "pageEnd": 77,
+        "assessment": "recall"
+      },
+      {
+        "id": "63ab6513-1d6b-4177-bcbe-71b34242de22::spot-request-states-and-cancellation",
+        "title": "Spot Request states and cancellation",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 74,
+        "pageEnd": 77,
+        "assessment": "recall"
+      },
+      {
+        "id": "63ab6513-1d6b-4177-bcbe-71b34242de22::cancel-request-before-terminating-instances",
+        "title": "Cancel request before terminating instances",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 74,
+        "pageEnd": 77,
+        "assessment": "recall"
+      },
+      {
+        "id": "63ab6513-1d6b-4177-bcbe-71b34242de22::spot-fleet-definition-spot-optional-on-demand",
+        "title": "Spot Fleet definition (Spot + optional On-Demand)",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 74,
+        "pageEnd": 77,
+        "assessment": "recall"
+      },
+      {
+        "id": "63ab6513-1d6b-4177-bcbe-71b34242de22::launch-pools-and-target-capacity",
+        "title": "Launch pools and target capacity",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 74,
+        "pageEnd": 77,
+        "assessment": "recall"
+      },
+      {
+        "id": "63ab6513-1d6b-4177-bcbe-71b34242de22::fleet-allocation-strategies",
+        "title": "Fleet allocation strategies",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 74,
+        "pageEnd": 77,
+        "assessment": "recall"
+      },
+      {
+        "id": "63ab6513-1d6b-4177-bcbe-71b34242de22::pricecapacityoptimized-as-default-choice",
+        "title": "priceCapacityOptimized as default choice",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 74,
+        "pageEnd": 77,
+        "assessment": "recall"
+      }
+    ],
+    "coverageStatus": "source-audited"
+  },
+  "sections": [
+    {
+      "id": "c4e16720-595d-46c6-a53c-3142fa56a845",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "d10c2d8e-911a-4294-b2cd-409eea88eb72",
+      "title": "EC2 Fundamentals: What It Is, Sizing Options and User Data",
+      "objective": "Explain what EC2 provides, list the sizing/configuration choices at launch, and describe what an EC2 User Data script does and when it runs.",
+      "keyTopics": [
+        "EC2 as Infrastructure as a Service",
+        "Renting VMs, EBS, ELB, ASG roles",
+        "EC2 sizing and configuration options",
+        "Network-attached vs hardware storage",
+        "Security group as firewall rule set",
+        "EC2 User Data bootstrapping",
+        "User Data runs once as root"
+      ],
+      "pageStart": 41,
+      "pageEnd": 45,
+      "text": "[Page 41]\nAmazon EC2 \t– \tBasics\n\n[Page 42]\nAmazon EC2\n• \tEC2 is one of the most popular of AWS’ offering\n• \tEC2 = Elastic Compute Cloud = Infrastructure as a Service\n• \tIt mainly consists in the capability of :\n• \tRenting virtual machines (EC2)\n• \tStoring data on virtual drives (EBS)\n• \tDistributing load across machines (ELB)\n• \tScaling the services using an auto-scaling group (ASG)\n• \tKnowing EC2 is fundamental to understand how the Cloud works\n\n[Page 43]\nEC2 sizing & configuration options\n• \tOperating System (OS): Linux, Windows or Mac OS\n• \tHow much compute power & cores (CPU)\n• \tHow much random-access memory (RAM)\n• \tHow much storage space:\n• \tNetwork-attached (EBS & EFS)\n• \thardware (EC2 Instance Store)\n• \tNetwork card: speed of the card, Public IP address\n• \tFirewall rules: security group\n• \tBootstrap script (configure at first launch): EC2 User Data\n\n[Page 44]\nEC2 User Data\n• \tIt is possible to bootstrap our instances using an \tEC2 User data \tscript.\n• \tbootstrapping \tmeans launching commands when a machine starts\n• \tThat script is \tonly run once \tat the instance \tfirst start\n• \tEC2 user data is used to automate boot tasks such as:\n• \tInstalling updates\n• \tInstalling software\n• \tDownloading common files from the internet\n• \tAnything you can think of\n• \tThe EC2 User Data Script runs with the root user\n\n[Page 45]\nHands-On:\nLaunching an EC2 Instance running Linux\n• \tWe’ll be launching our first virtual server using the AWS Console\n• \tWe’ll get a first high-level approach to the various parameters\n• \tWe’ll see that our web server is launched using EC2 user data\n• \tWe’ll learn how to start / stop / terminate our instance.",
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nEC2 (Elastic Compute Cloud) is AWS's Infrastructure as a Service offering: you rent virtual machines in the cloud and choose their sizing and configuration at launch. The section lists the launch-time choices (OS, CPU, RAM, storage type, network card, security group, User Data) and explains the EC2 User Data bootstrap script. These fundamentals underpin most SAA-C03 scenarios on compute, scaling, security and cost, so the terms here (EBS, ELB, ASG, Instance Store, security group, bootstrapping) reappear throughout the exam.\n\n## Core Concepts\n\n- **Amazon EC2 (Elastic Compute Cloud):** AWS's Infrastructure as a Service offering: the capability to rent virtual machines (servers) in the cloud.\n- **Infrastructure as a Service (IaaS):** The cloud model where you rent raw infrastructure such as virtual machines, and manage the OS and software yourself; EC2 is the AWS example.\n- **EBS (Elastic Block Store):** Network-attached virtual drives used to store data for EC2 instances.\n- **ELB (Elastic Load Balancing):** The service used to distribute load (traffic) across multiple machines.\n- **ASG (Auto Scaling Group):** The capability that scales services automatically by adding or removing instances.\n- **EC2 sizing and configuration options:** The launch-time choices: OS, CPU power and cores, RAM, storage space and type, network card (speed, public IP), firewall rules and bootstrap script.\n- **Operating System choice:** At launch you pick the instance OS: Linux, Windows or Mac OS.\n- **Network-attached storage:** Storage reached over the network rather than physically attached: EBS and EFS for EC2.\n- **Hardware storage (EC2 Instance Store):** Storage physically attached to the host hardware of the instance, as opposed to network-attached EBS/EFS.\n- **Security group:** The set of firewall rules that controls traffic to and from an EC2 instance; configured at launch.\n- **EC2 User Data:** A bootstrap script supplied at launch that runs commands automatically when the instance first starts.\n- **Bootstrapping:** Launching commands automatically when a machine starts, to configure it without manual login.\n\n## Key Comparisons\n\n- **Network-attached storage (EBS/EFS) vs hardware storage (EC2 Instance Store):** Network-attached storage is separate from the physical host and reached over the network, while Instance Store is hardware storage attached to the instance's own machine.\n- **EC2 vs EBS vs ELB vs ASG:** EC2 rents the virtual machine, EBS stores its data on virtual drives, ELB distributes load across machines, and ASG scales the number of instances.\n- **EC2 User Data vs manual post-launch configuration:** User Data automates boot tasks at first start only, whereas manual configuration can happen any time after launch.\n- **User Data run as root vs run as a normal user:** The User Data script runs with the root user, so it has full privileges on the instance.\n\n## Common Misunderstandings\n\n- User Data runs on every start or reboot — it actually runs only once, at the instance's first start.\n- User Data is a general-purpose remote shell — it is a bootstrap script executed at launch, not an interactive session.\n- Storage for EC2 is always physical/hardware — it can be network-attached (EBS, EFS) or hardware (Instance Store).\n- A security group is a networking device added later — it is one of the configuration options set at launch as the instance's firewall rules.\n- EC2 only provides the VM — EC2 as an offering also covers the related capabilities of EBS storage, ELB load distribution and ASG scaling.\n\n## Mental Models\n\n- Think of EC2 as renting a computer in AWS's data center: you pick the OS, CPU, RAM, disk, network card and firewall, then it boots for you.\n- Think of User Data as a note taped to the machine that it reads the moment it is switched on for the very first time, then discards.\n- Think of the security group as the locked door list for the instance: it decides who may come in and go out.\n- Think of EBS/EFS as disks connected by cable (network) vs Instance Store as a disk screwed into the chassis.\n\n## Exceptions & Edge Cases\n\n- User Data executes at first start only — restarting or rebooting the instance does not run it again.\n- Because User Data runs as root, it can perform privileged boot tasks (installing software and updates) without extra permissions.\n- User Data content is open-ended: the source says it can do 'anything you can think of' as long as it is scriptable at boot.\n- Mac OS is offered as an OS option alongside Linux and Windows.\n- Storage choice is not a single option: you decide between network-attached (EBS and EFS) and hardware (Instance Store).\n\n## When to Use Which\n\n- A new instance must have packages, updates or files ready without logging in manually → **EC2 User Data bootstrap script**\n- You need a persistent virtual drive for an instance's data → **EBS (network-attached storage)**\n- Traffic must be spread over several machines → **ELB (Elastic Load Balancing)**\n- The number of instances must grow or shrink with demand → **ASG (Auto Scaling Group)**\n- You need to allow or block specific traffic to an instance → **Security group firewall rules**\n\n## Patterns to Recognize\n\n- 'automate at first launch', 'install software/updates at boot', 'configure without SSH' → **EC2 User Data**\n- 'firewall rules for the instance' → **Security group**\n- 'store data on virtual drives' → **EBS**\n- 'distribute traffic across machines' → **ELB**\n- 'scale the number of servers automatically' → **Auto Scaling Group**\n- 'disk physically attached to the host' vs 'drive reached over the network' → **Instance Store vs EBS/EFS storage type**\n- 'rent a virtual machine', 'IaaS compute' → **Amazon EC2**\n- 'choose OS / CPU / RAM / network card' → **EC2 sizing and configuration options**\n\n## Exam Traps\n\n- “Choosing an option that says User Data runs on every boot or can be re-run by rebooting.” — The User Data script is only run once at the instance's first start.\n- “Assuming the User Data script runs as a limited user.” — It runs with the root user.\n- “Treating EBS or EFS as hardware storage.” — EBS and EFS are network-attached; EC2 Instance Store is the hardware storage option.\n- “Thinking the security group is configured after launch as a separate service step.” — Firewall rules (security group) are part of the EC2 sizing/configuration options chosen for the instance.\n- “Remembering EC2 as only 'virtual machines' and forgetting the surrounding capabilities.” — EC2 as an offering also includes EBS virtual drives, ELB load distribution and ASG scaling.\n\n## Beyond the Source (tutor knowledge)\n\n- EC2 User Data is supplied as text (often a shell script) and, on Linux, is executed by the cloud-init mechanism at first boot; the source states the once-at-first-start and root rules, which are the examinable points.",
+        "keyPoints": [
+          "EC2 = Elastic Compute Cloud = Infrastructure as a Service.",
+          "EC2's core capabilities: renting virtual machines (EC2), storing data on virtual drives (EBS), distributing load across machines (ELB), and scaling with an auto-scaling group (ASG).",
+          "Launch-time sizing/configuration choices: OS (Linux, Windows, Mac OS), CPU power and cores, RAM, storage, network card, firewall rules (security group), User Data.",
+          "Two storage categories: network-attached (EBS and EFS) vs hardware (EC2 Instance Store).",
+          "The EC2 User Data script runs ONLY ONCE, at the instance's FIRST start.",
+          "The EC2 User Data script runs with the root user.",
+          "Typical User Data tasks: installing updates, installing software, downloading common files from the internet — anything scriptable.",
+          "Security group = the firewall rules of the instance, set as part of its configuration."
+        ],
+        "supplement": "- EC2 User Data is supplied as text (often a shell script) and, on Linux, is executed by the cloud-init mechanism at first boot; the source states the once-at-first-start and root rules, which are the examinable points.",
+        "cards": [
+          {
+            "id": "321c9d34-fe06-4367-b66c-8917924b7570",
+            "question": "What does EC2 stand for?",
+            "answer": "Elastic Compute Cloud",
+            "group": "What EC2 Is",
+            "keyTopic": "EC2 as Infrastructure as a Service",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-as-infrastructure-as-a-service"
+            ],
+            "schedule": {
+              "due": "2026-11-01T11:49:38.259Z",
+              "stability": 8.2956,
+              "difficulty": 1,
+              "elapsed_days": 0,
+              "scheduled_days": 8,
+              "reps": 1,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-24T11:49:38.259Z"
+            }
+          },
+          {
+            "id": "ad835aa0-d666-42b9-a6ff-c8adba679559",
+            "question": "Which cloud service model does Amazon EC2 represent?",
+            "answer": "Infrastructure as a Service (IaaS)",
+            "group": "What EC2 Is",
+            "keyTopic": "EC2 as Infrastructure as a Service",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-as-infrastructure-as-a-service"
+            ],
+            "schedule": {
+              "due": "2026-11-01T11:49:39.800Z",
+              "stability": 8.2956,
+              "difficulty": 1,
+              "elapsed_days": 0,
+              "scheduled_days": 8,
+              "reps": 1,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-24T11:49:39.800Z"
+            }
+          },
+          {
+            "id": "0af13901-99f2-4784-8cec-566c2e090fce",
+            "question": "In one phrase, what capability does EC2 provide?",
+            "answer": "Renting virtual machines in the cloud",
+            "group": "What EC2 Is",
+            "keyTopic": "EC2 as Infrastructure as a Service",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-as-infrastructure-as-a-service"
+            ],
+            "schedule": {
+              "due": "2026-11-01T11:49:40.964Z",
+              "stability": 8.2956,
+              "difficulty": 1,
+              "elapsed_days": 0,
+              "scheduled_days": 8,
+              "reps": 1,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-24T11:49:40.964Z"
+            }
+          },
+          {
+            "id": "f85a28a8-eef3-4dd5-830c-1fb01116cc5c",
+            "question": "Which EC2 capability stores data on virtual drives?",
+            "answer": "EBS (Elastic Block Store)",
+            "group": "EC2 Family Roles: EC2, EBS, ELB, ASG",
+            "keyTopic": "Renting VMs, EBS, ELB, ASG roles",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::renting-vms-ebs-elb-asg-roles"
+            ],
+            "schedule": {
+              "due": "2026-11-01T11:49:42.189Z",
+              "stability": 8.2956,
+              "difficulty": 1,
+              "elapsed_days": 0,
+              "scheduled_days": 8,
+              "reps": 1,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-24T11:49:42.189Z"
+            }
+          },
+          {
+            "id": "34a35f12-5059-4798-8831-f3ec767a8e2b",
+            "question": "Which EC2 capability distributes load across machines?",
+            "answer": "ELB (Elastic Load Balancing)",
+            "group": "EC2 Family Roles: EC2, EBS, ELB, ASG",
+            "keyTopic": "Renting VMs, EBS, ELB, ASG roles",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::renting-vms-ebs-elb-asg-roles"
+            ],
+            "schedule": {
+              "due": "2026-11-01T11:49:44.832Z",
+              "stability": 8.2956,
+              "difficulty": 1,
+              "elapsed_days": 0,
+              "scheduled_days": 8,
+              "reps": 1,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-24T11:49:44.832Z"
+            }
+          },
+          {
+            "id": "4b87f4f6-e61b-4288-b91f-ecd1f1a1c4ad",
+            "question": "Which capability scales services automatically by adding or removing instances?",
+            "answer": "ASG (Auto Scaling Group)",
+            "group": "EC2 Family Roles: EC2, EBS, ELB, ASG",
+            "keyTopic": "Renting VMs, EBS, ELB, ASG roles",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::renting-vms-ebs-elb-asg-roles"
+            ],
+            "schedule": {
+              "due": "2026-11-01T11:49:46.718Z",
+              "stability": 8.2956,
+              "difficulty": 1,
+              "elapsed_days": 0,
+              "scheduled_days": 8,
+              "reps": 1,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-24T11:49:46.718Z"
+            }
+          },
+          {
+            "id": "72be6b91-0ced-403b-a166-96b56919bbff",
+            "question": "A team needs traffic spread over several servers. Which EC2 capability applies: ELB or ASG?",
+            "answer": "ELB",
+            "group": "EC2 Family Roles: EC2, EBS, ELB, ASG",
+            "keyTopic": "Renting VMs, EBS, ELB, ASG roles",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::renting-vms-ebs-elb-asg-roles"
+            ],
+            "schedule": {
+              "due": "2026-11-01T11:49:48.333Z",
+              "stability": 8.2956,
+              "difficulty": 1,
+              "elapsed_days": 0,
+              "scheduled_days": 8,
+              "reps": 1,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-24T11:49:48.333Z"
+            }
+          },
+          {
+            "id": "01f04b44-c94a-4d3c-9aee-d81ca291e76c",
+            "question": "A team needs the number of servers to grow and shrink with demand. ELB or ASG?",
+            "answer": "ASG",
+            "group": "EC2 Family Roles: EC2, EBS, ELB, ASG",
+            "keyTopic": "Renting VMs, EBS, ELB, ASG roles",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::renting-vms-ebs-elb-asg-roles"
+            ],
+            "schedule": {
+              "due": "2026-11-01T11:49:50.060Z",
+              "stability": 8.2956,
+              "difficulty": 1,
+              "elapsed_days": 0,
+              "scheduled_days": 8,
+              "reps": 1,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-24T11:49:50.060Z"
+            }
+          },
+          {
+            "id": "1fa6d2e5-be79-4bd3-bf38-022e6dd4e63d",
+            "question": "Which capability is the actual renting of virtual machines?",
+            "answer": "EC2",
+            "group": "EC2 Family Roles: EC2, EBS, ELB, ASG",
+            "keyTopic": "Renting VMs, EBS, ELB, ASG roles",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::renting-vms-ebs-elb-asg-roles"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d1c01406-69e2-423a-a225-9d826faffa17",
+            "question": "Name the three operating systems you can choose for an EC2 instance.",
+            "answer": "Linux\nWindows\nMac OS",
+            "group": "EC2 Sizing and Configuration Options",
+            "keyTopic": "EC2 sizing and configuration options",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-sizing-and-configuration-options"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ed11bde2-554d-4e4a-af79-817c60caf43c",
+            "question": "Besides OS, name three hardware parameters chosen at EC2 launch.",
+            "answer": "CPU power and cores\nRAM\nStorage\nNetwork card",
+            "group": "EC2 Sizing and Configuration Options",
+            "keyTopic": "EC2 sizing and configuration options",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-sizing-and-configuration-options"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a651d0b2-9665-42f2-93df-7a5455abfe19",
+            "question": "Which EC2 launch option defines the firewall rules of the instance?",
+            "answer": "The security group",
+            "group": "EC2 Sizing and Configuration Options",
+            "keyTopic": "EC2 sizing and configuration options",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-sizing-and-configuration-options"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "e2a2c0bb-1028-4113-9d5e-a5367a8a4cbb",
+            "question": "Which network card properties are chosen when launching an EC2 instance?",
+            "answer": "Speed of the card\nPublic IP address",
+            "group": "EC2 Sizing and Configuration Options",
+            "keyTopic": "EC2 sizing and configuration options",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-sizing-and-configuration-options"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "24dc8875-7d07-4939-99a4-3e01719ee62e",
+            "question": "Which two storage services are network-attached storage for EC2?",
+            "answer": "EBS\nEFS",
+            "group": "EC2 Storage Types",
+            "keyTopic": "Network-attached vs hardware storage",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::network-attached-vs-hardware-storage"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "6e82917a-0013-4360-80d8-b701dc84dd49",
+            "question": "Which EC2 storage option is hardware storage attached to the instance's host?",
+            "answer": "EC2 Instance Store",
+            "group": "EC2 Storage Types",
+            "keyTopic": "Network-attached vs hardware storage",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::network-attached-vs-hardware-storage"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "be142070-b488-4943-a55c-ecdccdb4dd7a",
+            "question": "Is EC2 Instance Store network-attached storage or hardware storage?",
+            "answer": "Hardware storage",
+            "group": "EC2 Storage Types",
+            "keyTopic": "Network-attached vs hardware storage",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::network-attached-vs-hardware-storage"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d366d6c1-60d1-4a3d-8605-fa3aa2ae476a",
+            "question": "Is EBS network-attached storage or hardware storage?",
+            "answer": "Network-attached storage",
+            "group": "EC2 Storage Types",
+            "keyTopic": "Network-attached vs hardware storage",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::network-attached-vs-hardware-storage"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "2d339a0a-e0ed-4807-9c0a-f6224cc148e6",
+            "question": "What is the security group in EC2 terms?",
+            "answer": "The firewall rules controlling traffic to and from the instance",
+            "group": "Security Group as Firewall",
+            "keyTopic": "Security group as firewall rule set",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::security-group-as-firewall-rule-set"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ea29c160-e014-4f99-abf6-3d0e1adbce4c",
+            "question": "At what point is an instance's security group configured: launch or after launch?",
+            "answer": "At launch, as part of the instance configuration",
+            "group": "Security Group as Firewall",
+            "keyTopic": "Security group as firewall rule set",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::security-group-as-firewall-rule-set"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "62086f86-5112-4e2f-88d0-5c275f73fa24",
+            "question": "What does bootstrapping mean in the EC2 User Data context?",
+            "answer": "Launching commands when a machine starts",
+            "group": "EC2 User Data and Bootstrapping",
+            "keyTopic": "EC2 User Data bootstrapping",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-user-data-bootstrapping"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "2243c0be-0a3a-41c3-b3c1-a5e059640341",
+            "question": "Name three typical tasks automated with EC2 User Data.",
+            "answer": "Installing updates\nInstalling software\nDownloading common files from the internet",
+            "group": "EC2 User Data and Bootstrapping",
+            "keyTopic": "EC2 User Data bootstrapping",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-user-data-bootstrapping"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "aeb9b2f3-cb01-4a5c-b976-cdeec1cf66a5",
+            "question": "What limits what an EC2 User Data script can do at boot?",
+            "answer": "Only that it must be scriptable",
+            "group": "EC2 User Data and Bootstrapping",
+            "keyTopic": "EC2 User Data bootstrapping",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-user-data-bootstrapping"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1bdcd3fb-4f21-4f1e-ac71-187393fed076",
+            "question": "What is EC2 User Data designed to automate?",
+            "answer": "Boot tasks, configured at first launch",
+            "group": "EC2 User Data and Bootstrapping",
+            "keyTopic": "EC2 User Data bootstrapping",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-user-data-bootstrapping"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a8d9aab2-7f9c-48fc-aa01-8cd9fbd2c64c",
+            "question": "How many times does the EC2 User Data script run?",
+            "answer": "Only once, at the instance's first start",
+            "group": "User Data Runs Once as Root",
+            "keyTopic": "User Data runs once as root",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::user-data-runs-once-as-root"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "28d56c60-f8fb-4392-b6b8-452ef9a3c6bc",
+            "question": "Does rebooting an EC2 instance re-run its User Data script?",
+            "answer": "No, it runs only at first start",
+            "group": "User Data Runs Once as Root",
+            "keyTopic": "User Data runs once as root",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::user-data-runs-once-as-root"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "04e3360a-37ec-4157-bd32-4d8121204239",
+            "question": "Which user account does the EC2 User Data script run as?",
+            "answer": "The root user",
+            "group": "User Data Runs Once as Root",
+            "keyTopic": "User Data runs once as root",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::user-data-runs-once-as-root"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "261431aa-26f6-45b5-ac04-97834e09b39e",
+            "question": "Which runs with more privilege at boot: the User Data script as root, or a manual login as a normal user?",
+            "answer": "The User Data script (runs as root)",
+            "group": "User Data Runs Once as Root",
+            "keyTopic": "User Data runs once as root",
+            "origin": "source",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::user-data-runs-once-as-root"
+            ],
+            "schedule": {
+              "due": "2026-10-24T11:48:50.844Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A company wants to rent virtual machines in AWS, keep full control of the operating system and installed software, store the instance data on virtual drives, and automatically scale the number of servers with demand. Which statement best describes how these capabilities map to EC2?",
+            "options": [
+              "EC2 rents the virtual machines, EBS provides the virtual drives, and an ASG scales the number of instances",
+              "EC2 rents the virtual machines, an ASG provides the virtual drives, and EBS scales the number of instances",
+              "EC2 rents the virtual machines and EBS and ELB together provide automatic scaling of instance count",
+              "EC2 is a managed platform that runs the application and hides the underlying operating system"
+            ],
+            "correctIndex": 0,
+            "explanation": "EC2 is the IaaS offering: it rents VMs (EC2), stores data on virtual drives (EBS) and scales services with an auto-scaling group (ASG). Option B swaps the roles of ASG and EBS. Option C confuses ELB (load distribution) with scaling. Option D describes a managed platform (PaaS-like) model, not EC2 IaaS where you manage the OS yourself.",
+            "keyTopic": "Renting VMs, EBS, ELB, ASG roles",
+            "kind": "concept",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::renting-vms-ebs-elb-asg-roles"
+            ]
+          },
+          {
+            "question": "A web application runs on several EC2 instances and must spread incoming traffic across all of them. Which EC2-related capability provides this?",
+            "options": [
+              "An Auto Scaling Group (ASG)",
+              "Elastic Load Balancing (ELB)",
+              "Amazon EBS",
+              "EC2 Instance Store"
+            ],
+            "correctIndex": 1,
+            "explanation": "ELB is the capability that distributes load (traffic) across multiple machines. ASG changes the number of instances rather than balancing traffic; EBS provides network-attached virtual drives; Instance Store is hardware storage on the host.",
+            "keyTopic": "Renting VMs, EBS, ELB, ASG roles",
+            "kind": "scenario",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::renting-vms-ebs-elb-asg-roles"
+            ]
+          },
+          {
+            "question": "Which of the following is NOT one of the sizing and configuration choices made when launching an EC2 instance?",
+            "options": [
+              "Operating system choice (Linux, Windows or Mac OS)",
+              "Amount of RAM and compute power/cores",
+              "Route table entries for the VPC subnets",
+              "Firewall rules defined by a security group"
+            ],
+            "correctIndex": 2,
+            "explanation": "Route tables belong to VPC networking design, not to the EC2 launch-time configuration list, which covers OS, CPU, RAM, storage, network card, firewall rules (security group) and User Data. The other options are all explicitly listed EC2 sizing/configuration options.",
+            "keyTopic": "EC2 sizing and configuration options",
+            "kind": "concept",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-sizing-and-configuration-options"
+            ]
+          },
+          {
+            "question": "An architect needs storage for an EC2 instance and wants a drive that is reached over the network rather than physically attached to the host machine. Which choice fits?",
+            "options": [
+              "EC2 Instance Store",
+              "Amazon EBS",
+              "A larger EC2 Instance Store volume",
+              "The instance's local host disk"
+            ],
+            "correctIndex": 1,
+            "explanation": "EBS (with EFS) is the network-attached storage option for EC2. Instance Store and local host disks are hardware storage physically attached to the instance's machine, so they do not meet the network-attached requirement.",
+            "keyTopic": "Network-attached vs hardware storage",
+            "kind": "comparison",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::network-attached-vs-hardware-storage"
+            ]
+          },
+          {
+            "question": "A solutions architect is comparing storage options for an EC2 fleet. Which statement correctly distinguishes the two storage categories?",
+            "options": [
+              "EBS is hardware storage on the host, while Instance Store is reached over the network",
+              "EBS and EFS are network-attached, while EC2 Instance Store is hardware storage",
+              "Both EFS and EC2 Instance Store are physically attached to the instance's host",
+              "Only EBS is storage for EC2; EFS and Instance Store are not used with EC2"
+            ],
+            "correctIndex": 1,
+            "explanation": "Network-attached storage is EBS and EFS; hardware storage is the EC2 Instance Store attached to the instance's own machine. Option A reverses the categories, option C wrongly makes EFS hardware-attached, and option D ignores EFS and Instance Store as valid EC2 storage choices.",
+            "keyTopic": "Network-attached vs hardware storage",
+            "kind": "concept",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::network-attached-vs-hardware-storage"
+            ]
+          },
+          {
+            "question": "An application team must allow only HTTPS traffic from the internet to its EC2 instances and block all other inbound traffic. Which EC2 configuration element is used, and when is it set?",
+            "options": [
+              "A security group, set as part of the instance's configuration at launch",
+              "A security group, attached only after launch as a separate networking step",
+              "An instance store volume policy, set at launch",
+              "A User Data script that filters packets at first boot"
+            ],
+            "correctIndex": 0,
+            "explanation": "The security group is the set of firewall rules controlling traffic to and from the instance and is one of the launch-time configuration options. Option B reflects the misconception that firewall rules are a later separate step; Instance Store is storage, not a firewall; User Data is a bootstrap script, not a packet filter.",
+            "keyTopic": "Security group as firewall rule set",
+            "kind": "scenario",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::security-group-as-firewall-rule-set"
+            ]
+          },
+          {
+            "question": "A team launches a new Linux EC2 instance and needs a web server installed, package updates applied and a configuration file downloaded before anyone logs in. Which approach meets this requirement?",
+            "options": [
+              "Supply an EC2 User Data script that runs at the instance's first start",
+              "Write a script that the team runs manually over SSH after every reboot",
+              "Configure a security group rule that installs the packages on first connection",
+              "Attach an EC2 Instance Store volume pre-loaded with the web server"
+            ],
+            "correctIndex": 0,
+            "explanation": "User Data bootstraps the instance by launching commands when the machine starts, automating tasks such as installing updates, installing software and downloading files. Options B and C do not automate boot configuration (security groups control traffic only), and Instance Store is raw hardware storage that does not install software.",
+            "keyTopic": "EC2 User Data bootstrapping",
+            "kind": "scenario",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-user-data-bootstrapping"
+            ]
+          },
+          {
+            "question": "An instance bootstrapped with User Data is stopped and started again, and later rebooted. What happens to the User Data script?",
+            "options": [
+              "It runs again on every start and every reboot",
+              "It runs again only after a reboot, not after a stop/start",
+              "It does not run again; it executes only once at the instance's first start",
+              "It runs again only if the instance's security group is changed"
+            ],
+            "correctIndex": 2,
+            "explanation": "The User Data script is run only once at the instance's first start, so restarts and reboots do not execute it again. The other options repeat the common misconception that it runs on every boot or is triggered by unrelated configuration changes.",
+            "keyTopic": "User Data runs once as root",
+            "kind": "concept",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::user-data-runs-once-as-root"
+            ]
+          },
+          {
+            "question": "A User Data script must install system packages that require elevated privileges, and the team wants no additional permission configuration. Which statement about the script's execution identity is correct?",
+            "options": [
+              "It runs as the root user, so it has full privileges on the instance",
+              "It runs as a limited default user and cannot install system packages",
+              "It runs as the IAM role attached to the instance rather than as an OS user",
+              "It runs as root only when the instance OS is Windows"
+            ],
+            "correctIndex": 0,
+            "explanation": "The EC2 User Data script runs with the root user, giving it full privileges for privileged boot tasks such as installing software and updates. Option B understates its privileges, option C confuses the IAM role with the OS user, and option D invents an OS-specific restriction that the source does not state.",
+            "keyTopic": "User Data runs once as root",
+            "kind": "scenario",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::user-data-runs-once-as-root"
+            ]
+          },
+          {
+            "question": "A startup wants AWS compute where it rents virtual machines rather than only running code as functions, and wants to choose the operating system, CPU and RAM per instance. Which description of the service is accurate?",
+            "options": [
+              "EC2 is a serverless compute service where the OS is fully managed by AWS",
+              "EC2 is Amazon's Infrastructure as a Service offering, with sizing chosen at launch",
+              "EC2 only provides virtual machines and no related storage or scaling capabilities",
+              "EC2 is a database service that runs on top of EBS volumes"
+            ],
+            "correctIndex": 1,
+            "explanation": "EC2 is Elastic Compute Cloud, AWS's IaaS offering where you rent virtual machines and pick OS, CPU, RAM, storage, network card, firewall rules and User Data at launch. Option A describes serverless computing rather than IaaS VMs, option C forgets the EBS, ELB and ASG capabilities that are part of the EC2 offering, and option D mislabels a compute service as a database service.",
+            "keyTopic": "EC2 as Infrastructure as a Service",
+            "kind": "scenario",
+            "objectiveIds": [
+              "c4e16720-595d-46c6-a53c-3142fa56a845::ec2-as-infrastructure-as-a-service"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v2",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T11:48:23.983Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 41,
+            "pageEnd": 45,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "EC2 (Elastic Compute Cloud) is AWS's Infrastructure as a Service offering: you rent virtual machines in the cloud and choose their sizing and configuration at launch. The section lists the launch-time choices (OS, CPU, RAM, storage type, network card, security group, User Data) and explains the EC2 User Data bootstrap script. These fundamentals underpin most SAA-C03 scenarios on compute, scaling, security and cost, so the terms here (EBS, ELB, ASG, Instance Store, security group, bootstrapping) reappear throughout the exam.",
+        "coreConcepts": [
+          {
+            "term": "Amazon EC2 (Elastic Compute Cloud)",
+            "definition": "AWS's Infrastructure as a Service offering: the capability to rent virtual machines (servers) in the cloud."
+          },
+          {
+            "term": "Infrastructure as a Service (IaaS)",
+            "definition": "The cloud model where you rent raw infrastructure such as virtual machines, and manage the OS and software yourself; EC2 is the AWS example."
+          },
+          {
+            "term": "EBS (Elastic Block Store)",
+            "definition": "Network-attached virtual drives used to store data for EC2 instances."
+          },
+          {
+            "term": "ELB (Elastic Load Balancing)",
+            "definition": "The service used to distribute load (traffic) across multiple machines."
+          },
+          {
+            "term": "ASG (Auto Scaling Group)",
+            "definition": "The capability that scales services automatically by adding or removing instances."
+          },
+          {
+            "term": "EC2 sizing and configuration options",
+            "definition": "The launch-time choices: OS, CPU power and cores, RAM, storage space and type, network card (speed, public IP), firewall rules and bootstrap script."
+          },
+          {
+            "term": "Operating System choice",
+            "definition": "At launch you pick the instance OS: Linux, Windows or Mac OS."
+          },
+          {
+            "term": "Network-attached storage",
+            "definition": "Storage reached over the network rather than physically attached: EBS and EFS for EC2."
+          },
+          {
+            "term": "Hardware storage (EC2 Instance Store)",
+            "definition": "Storage physically attached to the host hardware of the instance, as opposed to network-attached EBS/EFS."
+          },
+          {
+            "term": "Security group",
+            "definition": "The set of firewall rules that controls traffic to and from an EC2 instance; configured at launch."
+          },
+          {
+            "term": "EC2 User Data",
+            "definition": "A bootstrap script supplied at launch that runs commands automatically when the instance first starts."
+          },
+          {
+            "term": "Bootstrapping",
+            "definition": "Launching commands automatically when a machine starts, to configure it without manual login."
+          }
+        ],
+        "mustRemember": [
+          "EC2 = Elastic Compute Cloud = Infrastructure as a Service.",
+          "EC2's core capabilities: renting virtual machines (EC2), storing data on virtual drives (EBS), distributing load across machines (ELB), and scaling with an auto-scaling group (ASG).",
+          "Launch-time sizing/configuration choices: OS (Linux, Windows, Mac OS), CPU power and cores, RAM, storage, network card, firewall rules (security group), User Data.",
+          "Two storage categories: network-attached (EBS and EFS) vs hardware (EC2 Instance Store).",
+          "The EC2 User Data script runs ONLY ONCE, at the instance's FIRST start.",
+          "The EC2 User Data script runs with the root user.",
+          "Typical User Data tasks: installing updates, installing software, downloading common files from the internet — anything scriptable.",
+          "Security group = the firewall rules of the instance, set as part of its configuration."
+        ],
+        "keyComparisons": [
+          {
+            "items": "Network-attached storage (EBS/EFS) vs hardware storage (EC2 Instance Store)",
+            "difference": "Network-attached storage is separate from the physical host and reached over the network, while Instance Store is hardware storage attached to the instance's own machine."
+          },
+          {
+            "items": "EC2 vs EBS vs ELB vs ASG",
+            "difference": "EC2 rents the virtual machine, EBS stores its data on virtual drives, ELB distributes load across machines, and ASG scales the number of instances."
+          },
+          {
+            "items": "EC2 User Data vs manual post-launch configuration",
+            "difference": "User Data automates boot tasks at first start only, whereas manual configuration can happen any time after launch."
+          },
+          {
+            "items": "User Data run as root vs run as a normal user",
+            "difference": "The User Data script runs with the root user, so it has full privileges on the instance."
+          }
+        ],
+        "commonMisunderstandings": [
+          "User Data runs on every start or reboot — it actually runs only once, at the instance's first start.",
+          "User Data is a general-purpose remote shell — it is a bootstrap script executed at launch, not an interactive session.",
+          "Storage for EC2 is always physical/hardware — it can be network-attached (EBS, EFS) or hardware (Instance Store).",
+          "A security group is a networking device added later — it is one of the configuration options set at launch as the instance's firewall rules.",
+          "EC2 only provides the VM — EC2 as an offering also covers the related capabilities of EBS storage, ELB load distribution and ASG scaling."
+        ],
+        "mentalModels": [
+          "Think of EC2 as renting a computer in AWS's data center: you pick the OS, CPU, RAM, disk, network card and firewall, then it boots for you.",
+          "Think of User Data as a note taped to the machine that it reads the moment it is switched on for the very first time, then discards.",
+          "Think of the security group as the locked door list for the instance: it decides who may come in and go out.",
+          "Think of EBS/EFS as disks connected by cable (network) vs Instance Store as a disk screwed into the chassis."
+        ],
+        "edgeCases": [
+          "User Data executes at first start only — restarting or rebooting the instance does not run it again.",
+          "Because User Data runs as root, it can perform privileged boot tasks (installing software and updates) without extra permissions.",
+          "User Data content is open-ended: the source says it can do 'anything you can think of' as long as it is scriptable at boot.",
+          "Mac OS is offered as an OS option alongside Linux and Windows.",
+          "Storage choice is not a single option: you decide between network-attached (EBS and EFS) and hardware (Instance Store)."
+        ],
+        "whenToUse": [
+          {
+            "situation": "A new instance must have packages, updates or files ready without logging in manually",
+            "use": "EC2 User Data bootstrap script"
+          },
+          {
+            "situation": "You need a persistent virtual drive for an instance's data",
+            "use": "EBS (network-attached storage)"
+          },
+          {
+            "situation": "Traffic must be spread over several machines",
+            "use": "ELB (Elastic Load Balancing)"
+          },
+          {
+            "situation": "The number of instances must grow or shrink with demand",
+            "use": "ASG (Auto Scaling Group)"
+          },
+          {
+            "situation": "You need to allow or block specific traffic to an instance",
+            "use": "Security group firewall rules"
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "'automate at first launch', 'install software/updates at boot', 'configure without SSH'",
+            "indicates": "EC2 User Data"
+          },
+          {
+            "signal": "'firewall rules for the instance'",
+            "indicates": "Security group"
+          },
+          {
+            "signal": "'store data on virtual drives'",
+            "indicates": "EBS"
+          },
+          {
+            "signal": "'distribute traffic across machines'",
+            "indicates": "ELB"
+          },
+          {
+            "signal": "'scale the number of servers automatically'",
+            "indicates": "Auto Scaling Group"
+          },
+          {
+            "signal": "'disk physically attached to the host' vs 'drive reached over the network'",
+            "indicates": "Instance Store vs EBS/EFS storage type"
+          },
+          {
+            "signal": "'rent a virtual machine', 'IaaS compute'",
+            "indicates": "Amazon EC2"
+          },
+          {
+            "signal": "'choose OS / CPU / RAM / network card'",
+            "indicates": "EC2 sizing and configuration options"
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "Choosing an option that says User Data runs on every boot or can be re-run by rebooting.",
+            "correction": "The User Data script is only run once at the instance's first start."
+          },
+          {
+            "trap": "Assuming the User Data script runs as a limited user.",
+            "correction": "It runs with the root user."
+          },
+          {
+            "trap": "Treating EBS or EFS as hardware storage.",
+            "correction": "EBS and EFS are network-attached; EC2 Instance Store is the hardware storage option."
+          },
+          {
+            "trap": "Thinking the security group is configured after launch as a separate service step.",
+            "correction": "Firewall rules (security group) are part of the EC2 sizing/configuration options chosen for the instance."
+          },
+          {
+            "trap": "Remembering EC2 as only 'virtual machines' and forgetting the surrounding capabilities.",
+            "correction": "EC2 as an offering also includes EBS virtual drives, ELB load distribution and ASG scaling."
+          }
+        ],
+        "beyondSource": [
+          "EC2 User Data is supplied as text (often a shell script) and, on Linux, is executed by the cloud-init mechanism at first boot; the source states the once-at-first-start and root rules, which are the examinable points."
+        ]
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "d6066ab5-07fb-4847-bcc6-c6094ab63f79",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T11:48:23.983Z"
+        },
+        "flashcards": {
+          "requestId": "f283c09e-ea05-4f7e-b73a-3f18a38ec69f",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T11:48:50.844Z"
+        },
+        "quiz": {
+          "requestId": "5385ba14-5369-4e9c-bc5e-b2d3fdbacf6c",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T11:52:16.654Z"
+        }
+      }
+    },
+    {
+      "id": "42b79261-6e53-4757-a0fb-e636fc5a8576",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "d10c2d8e-911a-4294-b2cd-409eea88eb72",
+      "title": "EC2 Instance Types: Naming Convention and Families",
+      "objective": "Choose the appropriate EC2 instance family (general purpose, compute, memory, storage optimized) for a given workload and decode instance names such as m5.2xlarge.",
+      "keyTopics": [
+        "Instance naming m5.2xlarge decoded",
+        "Instance families overview",
+        "General purpose use cases",
+        "Compute optimized use cases",
+        "Memory optimized use cases",
+        "Storage optimized use cases",
+        "Instance sizing table (vCPU, memory, network, EBS)"
+      ],
+      "pageStart": 46,
+      "pageEnd": 51,
+      "text": "[Page 46]\nEC2 Instance Types \t- \tOverview\n• \tYou can use different types of EC2 instances that are optimised for\ndifferent use cases (https://aws.amazon.com/ec2/instance-types/)\n• \tAWS has the following naming convention:\nm5.2xlarge\n• \tm: instance class\n• \t5: generation (AWS improves them over time)\n• \t2xlarge: size within the instance class\nGeneral Purpose\nCompute Optimized\nMemory Optimized\nStorage Optimized\nAccelerated Computing\nHPC Optimized\n\n[Page 47]\nEC2 Instance Types \t– \tGeneral Purpose\n• \tGreat for a diversity of workloads such as web servers or code repositories\n• \tBalance between:\n• \tCompute\n• \tMemory\n• \tNetworking\n• \tIn the course, we will be using the t2.micro which is a General Purpose EC2\ninstance\n* this list will evolve over time, please check the AWS website for the latest information\n\n[Page 48]\nEC2 Instance Types \t– \tCompute Optimized\n• \tGreat for compute-intensive tasks that require high performance\nprocessors:\n• \tBatch processing workloads\n• \tMedia transcoding\n• \tHigh performance web servers\n• \tHigh performance computing (HPC)\n• \tScientific modeling & machine learning\n• \tDedicated gaming servers\n* this list will evolve over time, please check the AWS website for the latest information\n\n[Page 49]\nEC2 Instance Types \t– \tMemory Optimized\n• \tFast performance for workloads \tthat \tprocess \tlarge data sets \tin memory\n• \tUse cases:\n• \tHigh performance, relational/non-relational databases\n• \tDistributed web scale cache stores\n• \tIn-memory databases optimized for BI (business intelligence)\n• \tApplications performing real-time processing of big unstructured data\n* this list will evolve over time, please check the AWS website for the latest information\n\n[Page 50]\nEC2 Instance Types \t– \tStorage Optimized\n• \tGreat for storage-intensive tasks that require high, sequential read and write\naccess to large data sets on local storage\n• \tUse cases:\n• \tHigh frequency online transaction processing (OLTP) systems\n• \tRelational & NoSQL databases\n• \tCache for in-memory databases (for example, Redis)\n• \tData warehousing applications\n• \tDistributed file systems\n* this list will evolve over time, please check the AWS website for the latest information\n\n[Page 51]\nEC2 \tInstance Types: example\nInstance \tvCPU \tMem (GiB) Storage \tNetwork\nPerformance\nEBS Bandwidth\n(Mbps)\nt2.micro \t1 \t1 \tEBS-Only \tLow to Moderate\nt2.xlarge \t4 \t16 \tEBS-Only \tModerate\nc5d.4xlarge \t16 \t32 \t1 x 400 NVMe SSD \tUp to 10 Gbps \t4,750\nr5.16xlarge \t64 \t512 \tEBS Only \t20 Gbps \t13,600\nm5.8xlarge \t32 \t128 \tEBS Only \t10 Gbps \t6,800\nGreat website: https://instances.vantage.sh",
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nThis section explains how AWS names EC2 instance types (for example m5.2xlarge) and how the main instance families — General Purpose, Compute Optimized, Memory Optimized and Storage Optimized (plus Accelerated Computing and HPC Optimized) — map to workloads. For SAA-C03 this matters because you must select the appropriate instance family and size for a workload's performance and cost requirements, and decode names quickly under time pressure.\n\n## Core Concepts\n\n- **EC2 instance type:** A specific hardware configuration (vCPU, memory, storage, network) offered by EC2, optimised for a particular set of use cases.\n- **Instance naming convention:** The pattern class + generation + size, e.g. m5.2xlarge: 'm' is the instance class, '5' the generation (AWS improves them over time), '2xlarge' the size within the class.\n- **Instance class (family) letter:** The first letter of the name that identifies the family's optimisation — e.g. m for general purpose, c for compute, r for memory, t for general purpose burstable-class usage.\n- **Generation:** The number after the class letter (e.g. the '5' in m5); newer generations are improved versions of the same family.\n- **Size:** The suffix (e.g. micro, large, xlarge, 2xlarge, 8xlarge, 16xlarge) that scales vCPU, memory, network and EBS bandwidth within a class.\n- **General Purpose:** Instances with a balance of compute, memory and networking, great for a diversity of workloads such as web servers or code repositories; t2.micro used in the course is General Purpose.\n- **Compute Optimized:** Instances for compute-intensive tasks that require high-performance processors (batch processing, media transcoding, high performance web servers, HPC, scientific modeling & machine learning, dedicated gaming servers).\n- **Memory Optimized:** Instances giving fast performance for workloads that process large data sets in memory (high performance relational/non-relational databases, distributed web-scale cache stores, in-memory BI databases, real-time processing of big unstructured data).\n- **Storage Optimized:** Instances for storage-intensive tasks requiring high, sequential read and write access to large data sets on local storage (high frequency OLTP, relational & NoSQL databases, cache for in-memory databases such as Redis, data warehousing, distributed file systems).\n- **Accelerated Computing:** An EC2 instance family category listed alongside the four main families (hardware acceleration oriented).\n- **HPC Optimized:** An EC2 instance family category listed alongside the four main families, aimed at high performance computing.\n- **EBS-Only storage:** Instance type with no local instance store; storage is provided only via Amazon EBS (as shown for t2.micro, t2.xlarge, r5.16xlarge, m5.8xlarge).\n- **Local NVMe SSD:** Instance-attached storage listed for c5d.4xlarge as '1 x 400 NVMe SSD' — local storage rather than EBS.\n- **EBS Bandwidth (Mbps):** The dedicated bandwidth an instance type can use for EBS volumes, shown per instance in the sizing table (e.g. 4,750 for c5d.4xlarge).\n- **vCPU and Mem (GiB):** The compute and memory capacity columns of the instance sizing table — e.g. r5.16xlarge has 64 vCPU and 512 GiB.\n\n## Key Comparisons\n\n- **General Purpose vs Compute Optimized:** General Purpose balances compute, memory and networking for diverse workloads; Compute Optimized trades that balance for high-performance processors on CPU-heavy work.\n- **Compute Optimized vs Memory Optimized:** Compute Optimized is chosen when the processor is the bottleneck (transcoding, batch, HPC); Memory Optimized when the workload processes large data sets in memory (in-memory caches, high-performance databases).\n- **Memory Optimized vs Storage Optimized:** Memory Optimized targets data held in RAM (in-memory databases, cache stores); Storage Optimized targets high, sequential read/write access to large data sets on local storage.\n- **EBS-Only vs local NVMe SSD:** EBS-Only instances have no instance-attached storage and rely on Amazon EBS; c5d.4xlarge in the table carries 1 x 400 NVMe SSD local storage.\n- **Instance class letter vs size suffix:** The letter (m, c, r, t) tells you the family's optimisation; the suffix (micro, large, 2xlarge, 16xlarge) only scales capacity within that family.\n- **Generation number vs size number:** The digit right after the class letter is the generation (5 in m5); a leading number in the size (2xlarge) is a size multiplier, not a generation.\n\n## Common Misunderstandings\n\n- The '5' in m5.2xlarge is the generation, not a size or a vCPU count — the size is the '2xlarge' part.\n- The '2' in 2xlarge is a size within the class, not two of something like vCPUs or sockets.\n- Larger size does not mean a different family: m5.large and m5.8xlarge are the same class and generation.\n- Storage Optimized is about high sequential local-storage access for large data sets, not simply 'any workload that uses EBS'.\n- An EBS-Only instance has no local instance store; do not assume all instances come with attached disks.\n- Memory Optimized is not the same as 'general purpose with more RAM' in exam intent — it is selected for workloads that process large data sets in memory.\n\n## Mental Models\n\n- Think of the name as three slots: family letter | generation digit | size word (m | 5 | 2xlarge).\n- Picture the families as a tuning dial: General Purpose is centred, Compute Optimized pushes CPU, Memory Optimized pushes RAM, Storage Optimized pushes local disk I/O.\n- Treat the sizing table as a ladder: as vCPU and memory grow, network performance and EBS bandwidth generally step up too.\n\n## Exceptions & Edge Cases\n\n- Some instance names carry a 'd' (e.g. c5d.4xlarge), which in the table coincides with local NVMe SSD storage rather than EBS-Only.\n- Network performance can be a range ('Low to Moderate' for t2.micro) or a cap ('Up to 10 Gbps'), not always a fixed number.\n- EBS Bandwidth is not listed for every instance in the table (t2.micro and t2.xlarge rows omit it).\n- Accelerated Computing and HPC Optimized appear as categories but no use cases are given for them in this section.\n- The family/use-case lists evolve over time; the source advises checking the AWS website for current information.\n\n## When to Use Which\n\n- Diverse workload such as a web server or code repository, needing balance of compute, memory and networking → **General Purpose**\n- Batch processing, media transcoding, high performance web servers, HPC, scientific modeling & machine learning, dedicated gaming servers → **Compute Optimized**\n- High performance relational/non-relational databases, distributed web-scale cache stores, in-memory BI databases, real-time processing of big unstructured data → **Memory Optimized**\n- High frequency OLTP, relational & NoSQL databases, cache for in-memory databases such as Redis, data warehousing, distributed file systems → **Storage Optimized**\n- Need to know the exact vCPU, memory, network and EBS bandwidth of a named instance → **Read the instance sizing table row (e.g. r5.16xlarge = 64 vCPU, 512 GiB, 20 Gbps, 13,600 Mbps EBS)**\n\n## Patterns to Recognize\n\n- A name like m5.2xlarge appears and the question asks what '5' or '2xlarge' means → **Instance naming convention: class, generation, size**\n- 'Media transcoding' or 'batch processing' in the workload description → **Compute Optimized**\n- 'In-memory cache', 'large data sets in memory', or 'in-memory database for BI' → **Memory Optimized**\n- 'High frequency OLTP', 'data warehousing', 'distributed file system', 'high sequential read/write to local storage' → **Storage Optimized**\n- 'Balanced' workload, generic web server or code repository → **General Purpose**\n- Question quotes vCPU/memory/network numbers for a named instance → **Instance sizing table lookup**\n\n## Exam Traps\n\n- “Choosing Memory Optimized just because the workload is a database” — High performance relational/non-relational databases appear under Memory Optimized, but high frequency OLTP, relational & NoSQL databases and data warehousing also appear under Storage Optimized — let the deciding signal (in-memory processing vs high sequential local storage) pick the family.\n- “Reading the '5' in m5.2xlarge as the number of vCPUs” — The digit after the class letter is the generation; vCPU count comes from the sizing table (m5.8xlarge = 32 vCPU).\n- “Assuming every instance includes local storage” — t2.micro, t2.xlarge, r5.16xlarge and m5.8xlarge are EBS-Only; only c5d.4xlarge in the table shows 1 x 400 NVMe SSD.\n- “Treating 'r' as a compute family because its memory number is large” — r5.16xlarge's 512 GiB relative to 64 vCPU reflects the memory-oriented family profile; pair each table row with its family intent.\n- “Picking a size for a workload without checking network/EBS bandwidth” — Sizes change network performance and EBS bandwidth (e.g. m5.8xlarge 10 Gbps / 6,800 Mbps vs r5.16xlarge 20 Gbps / 13,600 Mbps) as well as vCPU and memory.\n\n## Beyond the Source (tutor knowledge)\n\n- (tutor knowledge) In real AWS names a trailing 'd' denotes local NVMe SSD storage and 'n' enhanced networking; the source only shows the 'd' by example.\n- (tutor knowledge) Burstable general purpose instances (t-family) earn CPU credits and can be unlimited; the source treats t2.micro only as a General Purpose example.\n- (tutor knowledge) Current-generation families differ from the generations shown (m5, c5, r5, t2); on the exam reason from family letter and sizing pattern, not from the specific generation number.",
+        "keyPoints": [
+          "Naming: m5.2xlarge → m = instance class, 5 = generation, 2xlarge = size within the instance class.",
+          "The section lists six categories: General Purpose, Compute Optimized, Memory Optimized, Storage Optimized, Accelerated Computing, HPC Optimized.",
+          "General Purpose balances compute, memory and networking; good for web servers and code repositories.",
+          "t2.micro is a General Purpose instance (used throughout the course).",
+          "Compute Optimized = high performance processors: batch processing, media transcoding, high performance web servers, HPC, scientific modeling & machine learning, dedicated gaming servers.",
+          "Memory Optimized = processing large data sets in memory: high performance relational/non-relational databases, distributed web-scale cache stores, in-memory BI databases, real-time processing of big unstructured data.",
+          "Storage Optimized = high, sequential read/write access to large data sets on local storage: high frequency OLTP, relational & NoSQL databases, cache for in-memory databases (e.g. Redis), data warehousing, distributed file systems.",
+          "Sizing table anchors: t2.micro = 1 vCPU / 1 GiB / EBS-Only / low-to-moderate network; t2.xlarge = 4 vCPU / 16 GiB / EBS-Only / moderate network.",
+          "Sizing table anchors: c5d.4xlarge = 16 vCPU / 32 GiB / 1 x 400 NVMe SSD / up to 10 Gbps / 4,750 Mbps EBS.",
+          "Sizing table anchors: r5.16xlarge = 64 vCPU / 512 GiB / EBS Only / 20 Gbps / 13,600 Mbps EBS; m5.8xlarge = 32 vCPU / 128 GiB / EBS Only / 10 Gbps / 6,800 Mbps EBS.",
+          "The family lists evolve over time — the source says to check the AWS website for the latest information."
+        ],
+        "supplement": "- (tutor knowledge) In real AWS names a trailing 'd' denotes local NVMe SSD storage and 'n' enhanced networking; the source only shows the 'd' by example.\n- (tutor knowledge) Burstable general purpose instances (t-family) earn CPU credits and can be unlimited; the source treats t2.micro only as a General Purpose example.\n- (tutor knowledge) Current-generation families differ from the generations shown (m5, c5, r5, t2); on the exam reason from family letter and sizing pattern, not from the specific generation number.",
+        "cards": [
+          {
+            "id": "12ead061-74a1-4b2b-bae8-c97259315a6d",
+            "question": "In the name m5.2xlarge, what does the leading 'm' represent?",
+            "answer": "The instance class (family)",
+            "group": "Decoding m5.2xlarge",
+            "keyTopic": "Instance naming m5.2xlarge decoded",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-naming-m5-2xlarge-decoded"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f6d415e3-e940-460c-8eec-396f736150c4",
+            "question": "In the name m5.2xlarge, what does the '5' represent?",
+            "answer": "The generation",
+            "group": "Decoding m5.2xlarge",
+            "keyTopic": "Instance naming m5.2xlarge decoded",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-naming-m5-2xlarge-decoded"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "dc6d4a07-0ea4-4b24-a7f2-2878cfe80105",
+            "question": "In the name m5.2xlarge, what does '2xlarge' represent?",
+            "answer": "The size within the instance class",
+            "group": "Decoding m5.2xlarge",
+            "keyTopic": "Instance naming m5.2xlarge decoded",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-naming-m5-2xlarge-decoded"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b3618fe5-3f3f-46e3-96a7-1193a469eb5b",
+            "question": "Which part of m5.2xlarge is the size, the '5' or the '2xlarge'?",
+            "answer": "2xlarge",
+            "group": "Decoding m5.2xlarge",
+            "keyTopic": "Instance naming m5.2xlarge decoded",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-naming-m5-2xlarge-decoded"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f79820d4-06f8-4dfd-aee4-cb10d686b00c",
+            "question": "Which part of m5.2xlarge is the generation, the '5' or the '2' in 2xlarge?",
+            "answer": "The 5",
+            "group": "Decoding m5.2xlarge",
+            "keyTopic": "Instance naming m5.2xlarge decoded",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-naming-m5-2xlarge-decoded"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "09c96b5f-f143-42b1-97ef-9384502e1e75",
+            "question": "Does a larger size suffix (e.g. 8xlarge vs large) change the instance family?",
+            "answer": "No, same class and generation, larger capacity",
+            "group": "Decoding m5.2xlarge",
+            "keyTopic": "Instance naming m5.2xlarge decoded",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-naming-m5-2xlarge-decoded"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f1d54430-a074-424d-988a-e223594e5089",
+            "question": "Name the six EC2 instance type categories listed.",
+            "answer": "General Purpose\nCompute Optimized\nMemory Optimized\nStorage Optimized\nAccelerated Computing\nHPC Optimized",
+            "group": "Instance families overview",
+            "keyTopic": "Instance families overview",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-families-overview"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "702551c4-22e9-4224-a757-a285f3378219",
+            "question": "Why does AWS offer different EC2 instance types?",
+            "answer": "Each type is optimised for different use cases",
+            "group": "Instance families overview",
+            "keyTopic": "Instance families overview",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-families-overview"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "dd104c83-7b59-4e6d-9b79-f3ec54a6b3f4",
+            "question": "Does the source give use cases for Accelerated Computing and HPC Optimized?",
+            "answer": "No, they are only listed as categories",
+            "group": "Instance families overview",
+            "keyTopic": "Instance families overview",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-families-overview"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7b112509-78b2-4213-b41a-5866cc949baf",
+            "question": "What does the source advise about evolving instance family lists?",
+            "answer": "Check the AWS website for the latest information",
+            "group": "Instance families overview",
+            "keyTopic": "Instance families overview",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-families-overview"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "2b66b2f0-6fe6-4725-8ceb-01d4912c601a",
+            "question": "What three resources does a General Purpose instance balance?",
+            "answer": "Compute\nMemory\nNetworking",
+            "group": "General Purpose",
+            "keyTopic": "General purpose use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::general-purpose-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ec28c20c-b87a-4ce8-9691-6f20aa3f9bd7",
+            "question": "Which instance family suits a diversity of workloads like web servers or code repositories?",
+            "answer": "General Purpose",
+            "group": "General Purpose",
+            "keyTopic": "General purpose use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::general-purpose-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "5b4ec85c-b743-424b-aaa5-5c4a5b214c3f",
+            "question": "Which instance type used in the course is General Purpose?",
+            "answer": "t2.micro",
+            "group": "General Purpose",
+            "keyTopic": "General purpose use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::general-purpose-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a17c25a0-81dc-4d25-b6e4-a8ab59eb33dd",
+            "question": "A workload needs balance across compute, memory and networking — which family?",
+            "answer": "General Purpose",
+            "group": "General Purpose",
+            "keyTopic": "General purpose use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::general-purpose-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "bff548d2-0eb0-44d5-878e-ee90ab091200",
+            "question": "What kind of tasks is Compute Optimized designed for?",
+            "answer": "Compute-intensive tasks needing high-performance processors",
+            "group": "Compute Optimized",
+            "keyTopic": "Compute optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::compute-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c0195e5a-ad55-4546-8665-3abd2a2c72cd",
+            "question": "Name three Compute Optimized use cases.",
+            "answer": "Batch processing\nMedia transcoding\nHigh performance web servers",
+            "group": "Compute Optimized",
+            "keyTopic": "Compute optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::compute-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a2f25218-9693-4cb2-b6f4-3abaf3cee308",
+            "question": "Which family fits media transcoding and dedicated gaming servers?",
+            "answer": "Compute Optimized",
+            "group": "Compute Optimized",
+            "keyTopic": "Compute optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::compute-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "2b21ffec-061d-403b-a566-67d5a1cddc2a",
+            "question": "Which family fits scientific modeling and machine learning workloads?",
+            "answer": "Compute Optimized",
+            "group": "Compute Optimized",
+            "keyTopic": "Compute optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::compute-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "36361177-b680-4c9e-ab37-1fec26b6e8f6",
+            "question": "High performance computing (HPC) is a use case for which family?",
+            "answer": "Compute Optimized",
+            "group": "Compute Optimized",
+            "keyTopic": "Compute optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::compute-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ad8d85e2-fcf8-421c-b4e5-78b8dd9982af",
+            "question": "Which family is chosen when the CPU is the bottleneck, General Purpose or Compute Optimized?",
+            "answer": "Compute Optimized",
+            "group": "Compute Optimized",
+            "keyTopic": "Compute optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::compute-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "e19edbf3-a77d-41b5-b875-1dcc9f7be184",
+            "question": "What defines a Memory Optimized workload?",
+            "answer": "Processing large data sets in memory",
+            "group": "Memory Optimized",
+            "keyTopic": "Memory optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::memory-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7002245d-e6de-4631-b75b-770507a3312a",
+            "question": "Name two Memory Optimized use cases.",
+            "answer": "Distributed web scale cache stores\nIn-memory BI databases",
+            "group": "Memory Optimized",
+            "keyTopic": "Memory optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::memory-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1223806c-7b5b-4416-9f60-3292ab9c3214",
+            "question": "Which family fits real-time processing of big unstructured data?",
+            "answer": "Memory Optimized",
+            "group": "Memory Optimized",
+            "keyTopic": "Memory optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::memory-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c5891225-95e7-498e-83f6-07e215768bd8",
+            "question": "Which family fits high performance relational/non-relational databases?",
+            "answer": "Memory Optimized",
+            "group": "Memory Optimized",
+            "keyTopic": "Memory optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::memory-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "3955df53-863a-4177-b7bf-cdd60c55bccf",
+            "question": "In-memory databases optimized for business intelligence need which family?",
+            "answer": "Memory Optimized",
+            "group": "Memory Optimized",
+            "keyTopic": "Memory optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::memory-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "3be869db-388c-4c0e-85be-ff9f43067c8a",
+            "question": "What access pattern defines Storage Optimized instances?",
+            "answer": "High, sequential read/write to large data sets on local storage",
+            "group": "Storage Optimized",
+            "keyTopic": "Storage optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::storage-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ec7e569e-cc72-429b-9f5d-884ab9698ed7",
+            "question": "Which family fits high frequency OLTP systems?",
+            "answer": "Storage Optimized",
+            "group": "Storage Optimized",
+            "keyTopic": "Storage optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::storage-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "11a4b543-37a4-45f2-9571-600e9f6badcb",
+            "question": "Which family fits data warehousing applications and distributed file systems?",
+            "answer": "Storage Optimized",
+            "group": "Storage Optimized",
+            "keyTopic": "Storage optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::storage-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f42e125a-4675-45eb-ba0c-de1c496d7b23",
+            "question": "A cache for in-memory databases such as Redis belongs to which family?",
+            "answer": "Storage Optimized",
+            "group": "Storage Optimized",
+            "keyTopic": "Storage optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::storage-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b15622c5-889f-4ea2-b7fc-09baf5d81261",
+            "question": "Which family fits relational and NoSQL databases needing high sequential local storage?",
+            "answer": "Storage Optimized",
+            "group": "Storage Optimized",
+            "keyTopic": "Storage optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::storage-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "63d9318d-8e03-4440-97a4-984f5a5c4374",
+            "question": "Which family targets data held in RAM, Memory Optimized or Storage Optimized?",
+            "answer": "Memory Optimized",
+            "group": "Storage Optimized",
+            "keyTopic": "Storage optimized use cases",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::storage-optimized-use-cases"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "534461b3-9e14-4b3b-b02a-503f8557444e",
+            "question": "How many vCPU and GiB of memory does t2.micro have?",
+            "answer": "1 vCPU / 1 GiB",
+            "group": "Sizing table rows",
+            "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f63039b3-c5c1-4593-9254-e3207e98b7d5",
+            "question": "What network performance does t2.micro have?",
+            "answer": "Low to Moderate",
+            "group": "Sizing table rows",
+            "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "9c2b05b1-366f-4308-819b-a1d1e92a0b88",
+            "question": "How many vCPU and GiB does t2.xlarge have?",
+            "answer": "4 vCPU / 16 GiB",
+            "group": "Sizing table rows",
+            "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "6b1f9ff5-1e9b-4f48-ba1c-28ac2b15bb53",
+            "question": "What network performance does t2.xlarge have?",
+            "answer": "Moderate",
+            "group": "Sizing table rows",
+            "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "fb12ba7d-886d-42b0-a8b8-714b0ff89d42",
+            "question": "How many vCPU and GiB does c5d.4xlarge have?",
+            "answer": "16 vCPU / 32 GiB",
+            "group": "Sizing table rows",
+            "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "db9262d1-17da-4ff7-9264-56541aef8d35",
+            "question": "What local storage does c5d.4xlarge provide?",
+            "answer": "1 x 400 NVMe SSD",
+            "group": "Sizing table rows",
+            "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1ee83bee-3fec-474d-b8f5-b8a9bfb93d9c",
+            "question": "What EBS bandwidth does c5d.4xlarge have?",
+            "answer": "4,750 Mbps",
+            "group": "Sizing table rows",
+            "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7b9dd134-4cf8-4e1b-9e5e-f35f7bfe9928",
+            "question": "How many vCPU and GiB does r5.16xlarge have?",
+            "answer": "64 vCPU / 512 GiB",
+            "group": "Sizing table rows",
+            "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7cb71dbb-b354-4011-b1c5-766f619e4262",
+            "question": "What network and EBS bandwidth does r5.16xlarge have?",
+            "answer": "20 Gbps / 13,600 Mbps EBS",
+            "group": "Sizing table rows",
+            "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c262293f-f99a-4115-a2fe-c8b951d0f6dc",
+            "question": "How many vCPU and GiB does m5.8xlarge have?",
+            "answer": "32 vCPU / 128 GiB",
+            "group": "Sizing table rows",
+            "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "9d402ead-491b-44ce-b59a-519552837734",
+            "question": "What network and EBS bandwidth does m5.8xlarge have?",
+            "answer": "10 Gbps / 6,800 Mbps EBS",
+            "group": "Sizing table rows",
+            "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c27e5bdd-4453-43b4-ba68-c93c52f9cdd9",
+            "question": "Which table row shows local NVMe SSD instead of EBS-Only storage?",
+            "answer": "c5d.4xlarge",
+            "group": "Sizing table rows",
+            "keyTopic": "Instance sizing table (vCPU, memory, network, EBS)",
+            "origin": "source",
+            "objectiveIds": [
+              "42b79261-6e53-4757-a0fb-e636fc5a8576::instance-sizing-table-vcpu-memory-network-ebs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:09:09.405Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [],
+        "provider": "copilot",
+        "model": "Tutor model · flashcards prompt v1",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T12:08:57.318Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 46,
+            "pageEnd": 51,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "This section explains how AWS names EC2 instance types (for example m5.2xlarge) and how the main instance families — General Purpose, Compute Optimized, Memory Optimized and Storage Optimized (plus Accelerated Computing and HPC Optimized) — map to workloads. For SAA-C03 this matters because you must select the appropriate instance family and size for a workload's performance and cost requirements, and decode names quickly under time pressure.",
+        "coreConcepts": [
+          {
+            "term": "EC2 instance type",
+            "definition": "A specific hardware configuration (vCPU, memory, storage, network) offered by EC2, optimised for a particular set of use cases."
+          },
+          {
+            "term": "Instance naming convention",
+            "definition": "The pattern class + generation + size, e.g. m5.2xlarge: 'm' is the instance class, '5' the generation (AWS improves them over time), '2xlarge' the size within the class."
+          },
+          {
+            "term": "Instance class (family) letter",
+            "definition": "The first letter of the name that identifies the family's optimisation — e.g. m for general purpose, c for compute, r for memory, t for general purpose burstable-class usage."
+          },
+          {
+            "term": "Generation",
+            "definition": "The number after the class letter (e.g. the '5' in m5); newer generations are improved versions of the same family."
+          },
+          {
+            "term": "Size",
+            "definition": "The suffix (e.g. micro, large, xlarge, 2xlarge, 8xlarge, 16xlarge) that scales vCPU, memory, network and EBS bandwidth within a class."
+          },
+          {
+            "term": "General Purpose",
+            "definition": "Instances with a balance of compute, memory and networking, great for a diversity of workloads such as web servers or code repositories; t2.micro used in the course is General Purpose."
+          },
+          {
+            "term": "Compute Optimized",
+            "definition": "Instances for compute-intensive tasks that require high-performance processors (batch processing, media transcoding, high performance web servers, HPC, scientific modeling & machine learning, dedicated gaming servers)."
+          },
+          {
+            "term": "Memory Optimized",
+            "definition": "Instances giving fast performance for workloads that process large data sets in memory (high performance relational/non-relational databases, distributed web-scale cache stores, in-memory BI databases, real-time processing of big unstructured data)."
+          },
+          {
+            "term": "Storage Optimized",
+            "definition": "Instances for storage-intensive tasks requiring high, sequential read and write access to large data sets on local storage (high frequency OLTP, relational & NoSQL databases, cache for in-memory databases such as Redis, data warehousing, distributed file systems)."
+          },
+          {
+            "term": "Accelerated Computing",
+            "definition": "An EC2 instance family category listed alongside the four main families (hardware acceleration oriented)."
+          },
+          {
+            "term": "HPC Optimized",
+            "definition": "An EC2 instance family category listed alongside the four main families, aimed at high performance computing."
+          },
+          {
+            "term": "EBS-Only storage",
+            "definition": "Instance type with no local instance store; storage is provided only via Amazon EBS (as shown for t2.micro, t2.xlarge, r5.16xlarge, m5.8xlarge)."
+          },
+          {
+            "term": "Local NVMe SSD",
+            "definition": "Instance-attached storage listed for c5d.4xlarge as '1 x 400 NVMe SSD' — local storage rather than EBS."
+          },
+          {
+            "term": "EBS Bandwidth (Mbps)",
+            "definition": "The dedicated bandwidth an instance type can use for EBS volumes, shown per instance in the sizing table (e.g. 4,750 for c5d.4xlarge)."
+          },
+          {
+            "term": "vCPU and Mem (GiB)",
+            "definition": "The compute and memory capacity columns of the instance sizing table — e.g. r5.16xlarge has 64 vCPU and 512 GiB."
+          }
+        ],
+        "mustRemember": [
+          "Naming: m5.2xlarge → m = instance class, 5 = generation, 2xlarge = size within the instance class.",
+          "The section lists six categories: General Purpose, Compute Optimized, Memory Optimized, Storage Optimized, Accelerated Computing, HPC Optimized.",
+          "General Purpose balances compute, memory and networking; good for web servers and code repositories.",
+          "t2.micro is a General Purpose instance (used throughout the course).",
+          "Compute Optimized = high performance processors: batch processing, media transcoding, high performance web servers, HPC, scientific modeling & machine learning, dedicated gaming servers.",
+          "Memory Optimized = processing large data sets in memory: high performance relational/non-relational databases, distributed web-scale cache stores, in-memory BI databases, real-time processing of big unstructured data.",
+          "Storage Optimized = high, sequential read/write access to large data sets on local storage: high frequency OLTP, relational & NoSQL databases, cache for in-memory databases (e.g. Redis), data warehousing, distributed file systems.",
+          "Sizing table anchors: t2.micro = 1 vCPU / 1 GiB / EBS-Only / low-to-moderate network; t2.xlarge = 4 vCPU / 16 GiB / EBS-Only / moderate network.",
+          "Sizing table anchors: c5d.4xlarge = 16 vCPU / 32 GiB / 1 x 400 NVMe SSD / up to 10 Gbps / 4,750 Mbps EBS.",
+          "Sizing table anchors: r5.16xlarge = 64 vCPU / 512 GiB / EBS Only / 20 Gbps / 13,600 Mbps EBS; m5.8xlarge = 32 vCPU / 128 GiB / EBS Only / 10 Gbps / 6,800 Mbps EBS.",
+          "The family lists evolve over time — the source says to check the AWS website for the latest information."
+        ],
+        "keyComparisons": [
+          {
+            "items": "General Purpose vs Compute Optimized",
+            "difference": "General Purpose balances compute, memory and networking for diverse workloads; Compute Optimized trades that balance for high-performance processors on CPU-heavy work."
+          },
+          {
+            "items": "Compute Optimized vs Memory Optimized",
+            "difference": "Compute Optimized is chosen when the processor is the bottleneck (transcoding, batch, HPC); Memory Optimized when the workload processes large data sets in memory (in-memory caches, high-performance databases)."
+          },
+          {
+            "items": "Memory Optimized vs Storage Optimized",
+            "difference": "Memory Optimized targets data held in RAM (in-memory databases, cache stores); Storage Optimized targets high, sequential read/write access to large data sets on local storage."
+          },
+          {
+            "items": "EBS-Only vs local NVMe SSD",
+            "difference": "EBS-Only instances have no instance-attached storage and rely on Amazon EBS; c5d.4xlarge in the table carries 1 x 400 NVMe SSD local storage."
+          },
+          {
+            "items": "Instance class letter vs size suffix",
+            "difference": "The letter (m, c, r, t) tells you the family's optimisation; the suffix (micro, large, 2xlarge, 16xlarge) only scales capacity within that family."
+          },
+          {
+            "items": "Generation number vs size number",
+            "difference": "The digit right after the class letter is the generation (5 in m5); a leading number in the size (2xlarge) is a size multiplier, not a generation."
+          }
+        ],
+        "commonMisunderstandings": [
+          "The '5' in m5.2xlarge is the generation, not a size or a vCPU count — the size is the '2xlarge' part.",
+          "The '2' in 2xlarge is a size within the class, not two of something like vCPUs or sockets.",
+          "Larger size does not mean a different family: m5.large and m5.8xlarge are the same class and generation.",
+          "Storage Optimized is about high sequential local-storage access for large data sets, not simply 'any workload that uses EBS'.",
+          "An EBS-Only instance has no local instance store; do not assume all instances come with attached disks.",
+          "Memory Optimized is not the same as 'general purpose with more RAM' in exam intent — it is selected for workloads that process large data sets in memory."
+        ],
+        "mentalModels": [
+          "Think of the name as three slots: family letter | generation digit | size word (m | 5 | 2xlarge).",
+          "Picture the families as a tuning dial: General Purpose is centred, Compute Optimized pushes CPU, Memory Optimized pushes RAM, Storage Optimized pushes local disk I/O.",
+          "Treat the sizing table as a ladder: as vCPU and memory grow, network performance and EBS bandwidth generally step up too."
+        ],
+        "edgeCases": [
+          "Some instance names carry a 'd' (e.g. c5d.4xlarge), which in the table coincides with local NVMe SSD storage rather than EBS-Only.",
+          "Network performance can be a range ('Low to Moderate' for t2.micro) or a cap ('Up to 10 Gbps'), not always a fixed number.",
+          "EBS Bandwidth is not listed for every instance in the table (t2.micro and t2.xlarge rows omit it).",
+          "Accelerated Computing and HPC Optimized appear as categories but no use cases are given for them in this section.",
+          "The family/use-case lists evolve over time; the source advises checking the AWS website for current information."
+        ],
+        "whenToUse": [
+          {
+            "situation": "Diverse workload such as a web server or code repository, needing balance of compute, memory and networking",
+            "use": "General Purpose"
+          },
+          {
+            "situation": "Batch processing, media transcoding, high performance web servers, HPC, scientific modeling & machine learning, dedicated gaming servers",
+            "use": "Compute Optimized"
+          },
+          {
+            "situation": "High performance relational/non-relational databases, distributed web-scale cache stores, in-memory BI databases, real-time processing of big unstructured data",
+            "use": "Memory Optimized"
+          },
+          {
+            "situation": "High frequency OLTP, relational & NoSQL databases, cache for in-memory databases such as Redis, data warehousing, distributed file systems",
+            "use": "Storage Optimized"
+          },
+          {
+            "situation": "Need to know the exact vCPU, memory, network and EBS bandwidth of a named instance",
+            "use": "Read the instance sizing table row (e.g. r5.16xlarge = 64 vCPU, 512 GiB, 20 Gbps, 13,600 Mbps EBS)"
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "A name like m5.2xlarge appears and the question asks what '5' or '2xlarge' means",
+            "indicates": "Instance naming convention: class, generation, size"
+          },
+          {
+            "signal": "'Media transcoding' or 'batch processing' in the workload description",
+            "indicates": "Compute Optimized"
+          },
+          {
+            "signal": "'In-memory cache', 'large data sets in memory', or 'in-memory database for BI'",
+            "indicates": "Memory Optimized"
+          },
+          {
+            "signal": "'High frequency OLTP', 'data warehousing', 'distributed file system', 'high sequential read/write to local storage'",
+            "indicates": "Storage Optimized"
+          },
+          {
+            "signal": "'Balanced' workload, generic web server or code repository",
+            "indicates": "General Purpose"
+          },
+          {
+            "signal": "Question quotes vCPU/memory/network numbers for a named instance",
+            "indicates": "Instance sizing table lookup"
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "Choosing Memory Optimized just because the workload is a database",
+            "correction": "High performance relational/non-relational databases appear under Memory Optimized, but high frequency OLTP, relational & NoSQL databases and data warehousing also appear under Storage Optimized — let the deciding signal (in-memory processing vs high sequential local storage) pick the family."
+          },
+          {
+            "trap": "Reading the '5' in m5.2xlarge as the number of vCPUs",
+            "correction": "The digit after the class letter is the generation; vCPU count comes from the sizing table (m5.8xlarge = 32 vCPU)."
+          },
+          {
+            "trap": "Assuming every instance includes local storage",
+            "correction": "t2.micro, t2.xlarge, r5.16xlarge and m5.8xlarge are EBS-Only; only c5d.4xlarge in the table shows 1 x 400 NVMe SSD."
+          },
+          {
+            "trap": "Treating 'r' as a compute family because its memory number is large",
+            "correction": "r5.16xlarge's 512 GiB relative to 64 vCPU reflects the memory-oriented family profile; pair each table row with its family intent."
+          },
+          {
+            "trap": "Picking a size for a workload without checking network/EBS bandwidth",
+            "correction": "Sizes change network performance and EBS bandwidth (e.g. m5.8xlarge 10 Gbps / 6,800 Mbps vs r5.16xlarge 20 Gbps / 13,600 Mbps) as well as vCPU and memory."
+          }
+        ],
+        "beyondSource": [
+          "(tutor knowledge) In real AWS names a trailing 'd' denotes local NVMe SSD storage and 'n' enhanced networking; the source only shows the 'd' by example.",
+          "(tutor knowledge) Burstable general purpose instances (t-family) earn CPU credits and can be unlimited; the source treats t2.micro only as a General Purpose example.",
+          "(tutor knowledge) Current-generation families differ from the generations shown (m5, c5, r5, t2); on the exam reason from family letter and sizing pattern, not from the specific generation number."
+        ]
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "18ead175-672a-4d02-b1cc-7e8ad16d9391",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T12:08:57.318Z"
+        },
+        "flashcards": {
+          "requestId": "54ad5735-463a-468a-b15e-856952702ce1",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T12:09:09.405Z"
+        }
+      }
+    },
+    {
+      "id": "cdd97b84-b9db-4ee6-bba8-15de32be5e76",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "d10c2d8e-911a-4294-b2cd-409eea88eb72",
+      "title": "Security Groups and Classic Ports",
+      "objective": "Apply security group rules to control ports, IP ranges and traffic direction, reference other security groups, and diagnose connectivity failures using the classic port numbers.",
+      "keyTopics": [
+        "Inbound vs outbound traffic control",
+        "Rules by IP range or security group",
+        "Security groups as stateful firewall outside EC2",
+        "Default: inbound blocked, outbound allowed",
+        "Multiple instances; region/VPC scoped",
+        "Timeout vs connection refused diagnosis",
+        "Referencing other security groups",
+        "Classic ports: 22, 21, 80, 443, 3389"
+      ],
+      "pageStart": 52,
+      "pageEnd": 57,
+      "text": "[Page 52]\nIntroduction to Security Groups\n• \tSecurity Groups are the fundamental of network security in AWS\n• \tThey control how traffic is allowed into or out of our EC2 Instances.\n• \tSecurity groups only contain \trules\n• \tSecurity groups rules can reference by IP or by security group\nInbound traffic\nOutbound traffic\nSecurity\nGroup\nWWW \tEC2 Instance\n\n[Page 53]\nSecurity Groups\nDeeper Dive\n• \tSecurity groups are acting as a “firewall” on EC2 instances\n• \tThey regulate:\n• \tAccess to Ports\n• \tAuthorised IP ranges – IPv4 and IPv6\n• \tControl of inbound network (from other to the instance)\n• \tControl of outbound network (from the instance to other)\n\n[Page 54]\nSecurity Groups\nDiagram\nEC2 Instance\nIP XX.XX.XX.XX\nPort 22\nPort 22\tSecurity Group 1\nInbound\nFilter IP / Port with Rules\nAny Port\nSecurity Group 1\nOutbound\nFilter IP / Port with Rules\nYour Computer - IP XX.XX.XX.XX\n(authorised port 22)\nOther computer\n(not authorised port 22)\nWWW\nAny IP – Any Port\n\n[Page 55]\nSecurity Groups\nGood to know\n• \tCan be attached to multiple instances\n• \tLocked down to a region / VPC combination\n• \tDoes live “outside” the EC2 – if traffic is blocked the EC2 instance won’t see it\n• \tIt’s good to maintain one separate security group for SSH access\n• \tIf your application is not accessible (time out), then it’s a security group issue\n• \tIf your application gives a “connection refused“ error, then it’s an application\nerror or it’s not launched\n• \tAll inbound traffic is \tblocked by default\n• \tAll outbound traffic is \tauthorised by default\n\n[Page 56]\nReferencing other security groups\nDiagram\nEC2 Instance\nIP XX.XX.XX.XX\nPort 123\nPort 123\nPort 123\nSecurity Group 1\nInbound\nAuthorising Security Group 1\nAuthorising Security Group 2\nEC2 Instance\nIP XX.XX.XX.XX\nSecurity\nGroup 2\n(attached)\nEC2 Instance\nIP XX.XX.XX.XX\nSecurity\nGroup 1\n(attached)\nEC2 Instance\nIP XX.XX.XX.XX\nSecurity\nGroup 3\n(attached)\n\n[Page 57]\nClassic Ports to know\n• \t22 = SSH (Secure Shell) \t- \tlog into a Linux instance\n• \t21 = FTP (File Transfer Protocol) \t– \tupload files into a file share\n• \t22 = SFTP (Secure File Transfer Protocol) \t– \tupload files using SSH\n• \t80 = HTTP \t– \taccess unsecured websites\n• \t443 = HTTPS \t– \taccess secured websites\n• \t3389 = RDP (Remote Desktop Protocol) \t– \tlog into a Windows instance",
+      "read": false
+    },
+    {
+      "id": "bec0fb5a-5643-4c7f-b86f-b4b35d9e47d7",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "d10c2d8e-911a-4294-b2cd-409eea88eb72",
+      "title": "Connecting to EC2 Instances: SSH, Putty and EC2 Instance Connect",
+      "objective": "Select the right connection method for a given client OS and explain how EC2 Instance Connect works without a downloaded key file.",
+      "keyTopics": [
+        "SSH client by OS (Mac, Linux, Windows)",
+        "Putty for Windows",
+        "EC2 Instance Connect in browser",
+        "Temporary key upload by AWS",
+        "Works out-of-the-box with Amazon Linux 2",
+        "Port 22 must be open",
+        "SSH troubleshooting order"
+      ],
+      "pageStart": 58,
+      "pageEnd": 63,
+      "text": "[Page 58]\nSSH Summary Table\nMac\nLinux\nWindows < 10\nWindows >= 10\nSSH \tPutty EC2 Instance\nConnect\n\n[Page 59]\nWhich Lectures to watch\n• \tMac / Linux:\n• \tSSH on Mac/Linux lecture\n• \tWindows:\n• \tPutty Lecture\n• \tIf Windows 10: SSH on Windows 10 lecture\n• \tAll:\n• \tEC2 Instance Connect lecture\n\n[Page 60]\nSSH troubleshooting\n• \tStudents have the most problems with SSH\n• \tIf things don’t work…\n1. \tRe-watch the lecture. You may have missed something\n2. \tRead the troubleshooting guide\n3. \tTry EC2 Instance Connect\n• \tIf one method works (SSH, Putty or EC2 Instance Connect) you’re good\n• \tIf no method works, that’s okay, the course won’t use SSH much\n\n[Page 61]\nHow to SSH into your EC2 Instance\nLinux / Mac OS X\n• \tWe’ll learn how to SSH into your EC2 instance using \tLinux / Mac\n• \tSSH is one of the most important function. It allows you to control a\nremote machine, all using the command line.\n• \tWe will see how we can configure OpenSSH \t~/.ssh/config \tto facilitate\nthe SSH into our EC2 instances\nEC2 Instance\nLinux\nPublic IP\nSSH\n– Port 22\nWWW\n\n[Page 62]\nHow to SSH into your EC2 Instance\nWindows\n• \tWe’ll learn how to SSH into your EC2 instance using Windows\n• \tSSH is one of the most important function. It allows you to control a\nremote machine, all using the command line.\n• \tWe will configure all the required parameters necessary for doing SSH\non Windows using the free tool \tPutty.\nEC2 Instance\nLinux\nPublic IP\nSSH\n– Port 22\nWWW\n\n[Page 63]\nEC2 Instance Connect\n• \tConnect to your EC2 instance within your browser\n• \tNo need to use your key file that was downloaded\n• \tThe “magic” is that a temporary key is uploaded onto EC2 by AWS\n• \tWorks only out-of-the-box with Amazon Linux 2\n• \tNeed to make sure the port 22 is still opened!",
+      "read": false
+    },
+    {
+      "id": "83c28431-4feb-4df1-8600-56639c24f6f3",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "d10c2d8e-911a-4294-b2cd-409eea88eb72",
+      "title": "EC2 Purchasing Options and Price Comparison",
+      "objective": "Choose the cost-optimal EC2 purchasing option for a workload's duration, predictability, fault tolerance and licensing/compliance constraints, and distinguish Dedicated Hosts from Dedicated Instances and Capacity Reservations.",
+      "keyTopics": [
+        "On-Demand billing and use cases",
+        "Reserved Instances (1 or 3 years)",
+        "Convertible Reserved Instances",
+        "Savings Plans commitment model",
+        "Spot Instances and interruption",
+        "Dedicated Hosts vs Dedicated Instances",
+        "Capacity Reservations in a specific AZ",
+        "Payment options: upfront levels",
+        "Hotel analogy and price comparison"
+      ],
+      "pageStart": 64,
+      "pageEnd": 73,
+      "text": "[Page 64]\nEC2 Instances Purchasing Options\n• \tOn-Demand Instances – short workload, predictable pricing, pay by second\n• \tReserved (1 & 3 years)\n• \tReserved Instances – long workloads\n• \tConvertible Reserved Instances – long workloads with flexible instances\n• \tSavings Plans (1 & 3 years) –commitment to an amount of usage, long workload\n• \tSpot Instances – short workloads, cheap, can lose instances (less reliable)\n• \tDedicated Hosts – book an entire physical server, control instance placement\n• \tDedicated Instances – no other customers will share your hardware\n• \tCapacity Reservations – reserve capacity in a specific AZ for any duration\n\n[Page 65]\nEC2 On Demand\n• \tPay for what you use:\n• \tLinux or Windows - billing per second, after the first minute\n• \tAll other operating systems - billing per hour\n• \tHas the highest cost but no upfront payment\n• \tNo long-term commitment\n• \tRecommended for \tshort-term \tand \tun-interrupted workloads, where you\ncan't predict how the application will behave\n\n[Page 66]\nEC2 Reserved Instances\n• \tUp to 72% discount compared to On-demand\n• \tYou reserve a specific instance attributes \t(Instance Type, Region, Tenancy, OS)\n• \tReservation Period – 1 year (+discount) or 3 years (+++discount)\n• \tPayment Options – No Upfront (+), Partial Upfront (++), All Upfront (+++)\n• \tReserved Instance’s Scope – Regional or Zonal (reserve capacity in an AZ)\n• \tRecommended for steady-state usage applications (think database)\n• \tYou can buy and sell in the Reserved Instance Marketplace\n• \tConvertible Reserved Instance\n• \tCan change the EC2 instance type, instance family, OS, scope and tenancy\n• \tUp to 66% discount Note: the % discounts are different from the video as AWS\nchange them over time – the exact numbers are not needed\nfor the exam. This is just for illustrative purposes J\n\n[Page 67]\nEC2 Savings Plans\n• \tGet a discount based on long-term usage (up to 72% \t- \tsame as RIs)\n• \tCommit to a certain type of usage ($10/hour for 1 or 3 years)\n• \tUsage \tbeyond \tEC2 Savings Plans is billed at the On-Demand price\n• \tLocked to a specific instance family & AWS region (e.g., M5 in us-east-1)\n• \tFlexible across:\n• \tInstance Size (e.g., m5.xlarge, m5.2xlarge)\n• \tOS (e.g., Linux, Windows)\n• \tTenancy (Host, Dedicated, Default)\n\n[Page 68]\nEC2 Spot Instances\n• \tCan get a discount of up to 90% compared to On-demand\n• \tInstances that you can “lose” at any point of time if your max price is less than the\ncurrent spot price\n• \tThe MOST cost-efficient instances in AWS\n• \tUseful for workloads that are resilient to failure\n• \tBatch jobs\n• \tData analysis\n• \tImage processing\n• \tAny distributed workloads\n• \tWorkloads with a flexible start and end time\n• \tNot suitable for critical jobs or databases\n\n[Page 69]\nEC2 Dedicated Hosts\n• \tA physical server with EC2 instance capacity fully dedicated to your use\n• \tAllows you address \tcompliance requirements and use your existing server-\nbound software licenses (per-socket, per-core, pe—VM software licenses)\n• \tPurchasing Options:\n• \tOn-demand – pay per second for active Dedicated Host\n• \tReserved - 1 or 3 years (No Upfront, Partial Upfront, All Upfront)\n• \tThe most expensive option\n• \tUseful for software that have complicated licensing model (BYOL – Bring Your\nOwn License)\n• \tOr for companies that have strong regulatory or compliance needs\n\n[Page 70]\nEC2 Dedicated Instances\n• \tInstances run on hardware that’s\ndedicated to you\n• \tMay share hardware with other\ninstances in same account\n• \tNo control over instance placement\n(can move hardware after Stop / Start)\n\n[Page 71]\nEC2 Capacity Reservations\n• \tReserve \tOn-Demand \tinstances capacity in a specific AZ for any duration\n• \tYou always have access to EC2 capacity when you need it\n• \tNo time commitment \t(create/cancel anytime), no billing discounts\n• \tCombine with Regional Reserved Instances and Savings Plans to benefit\nfrom billing discounts\n• \tYou’re charged at On-Demand rate whether you run instances or not\n• \tSuitable for short-term, uninterrupted workloads that needs to be in a\nspecific AZ\n\n[Page 72]\nWhich purchasing option is right for me?\n• \tOn demand: coming and staying in resort\nwhenever we like, we pay the full price\n• \tReserved: like planning ahead and if we plan to stay\nfor a long time, we may get a good discount.\n• \tSavings Plans: pay a certain amount per hour for\ncertain period and stay in any room type (e.g.,\nKing, Suite, Sea View, …)\n• \tSpot instances: the hotel allows people to bid for\nthe empty rooms and the highest bidder keeps the\nrooms. You can get kicked out at any time\n• \tDedicated Hosts: We book an entire building of\nthe resort\n• \tCapacity Reservations: you book a room for a\nperiod with full price even you don’t stay in it\n\n[Page 73]\nPrice Comparison\nExample \t– \tm4.large \t– \tus-east-1\nPrice Type \tPrice (per hour)\nOn-Demand \t$0.10\nSpot Instance (Spot Price) \t$0.038 - $0.039 (up to 61% off)\nReserved Instance (1 year) \t$0.062 (No Upfront) - $0.058 (All Upfront)\nReserved Instance (3 years) \t$0.043 (No Upfront) - $0.037 (All Upfront)\nEC2 Savings Plan (1 year) \t$0.062 (No Upfront) - $0.058 (All Upfront)\nReserved Convertible Instance (1 year) \t$0.071 (No Upfront) - $0.066 (All Upfront)\nDedicated Host \tOn-Demand Price\nDedicated Host Reservation \tUp to 70% off\nCapacity Reservations \tOn-Demand Price",
+      "read": false
+    },
+    {
+      "id": "63ab6513-1d6b-4177-bcbe-71b34242de22",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "d10c2d8e-911a-4294-b2cd-409eea88eb72",
+      "title": "Spot Instances: Requests, Termination and Spot Fleets",
+      "objective": "Explain how Spot requests are interrupted and terminated, and select the appropriate Spot Fleet allocation strategy (lowestPrice, diversified, capacityOptimized, priceCapacityOptimized) for a workload.",
+      "keyTopics": [
+        "Max spot price vs current spot price",
+        "2-minute interruption grace period",
+        "Spot Request states and cancellation",
+        "Cancel request before terminating instances",
+        "Spot Fleet definition (Spot + optional On-Demand)",
+        "Launch pools and target capacity",
+        "Fleet allocation strategies",
+        "priceCapacityOptimized as default choice"
+      ],
+      "pageStart": 74,
+      "pageEnd": 77,
+      "text": "[Page 74]\nEC2 Spot Instance Requests\n• \tCan get a discount of up to 90% compared to On-demand\n• \tDefine \tmax spot price and get the instance while \tcurrent spot price < max\n• \tThe hourly spot price varies based on offer and capacity\n• \tIf the current spot price > your max price you can choose to stop or terminate your\ninstance with a 2 minutes grace period.\n• \tUsed for batch jobs, data analysis, or workloads that are resilient to failures.\n• \tNot great for critical jobs or databases\n\n[Page 75]\nEC2 Spot Instances Pricing\nhttps://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#SpotInstances:\nUser-defined max price\n\n[Page 76]\nHow to terminate Spot Instances?\nhttps://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html\nYou can only cancel Spot Instance requests that are open, active, or disabled.\nCancelling a Spot Request does not terminate instances\nYou must first cancel a Spot Request, and then terminate the associated Spot Instances\n\n[Page 77]\nSpot Fleets\n• \tSpot Fleets = set of Spot Instances + (optional) On-Demand Instances\n• \tThe Spot Fleet will try to meet the target capacity with price constraints\n• \tDefine possible launch pools: instance type (m5.large), OS, Availability Zone\n• \tCan have multiple launch pools, so that the fleet can choose\n• \tSpot Fleet stops launching instances when reaching capacity or max cost\n• \tStrategies to allocate Spot Instances:\n• \tlowestPrice: from the pool with the lowest price (cost optimization, short workload)\n• \tdiversified: distributed across all pools (great for availability, long workloads)\n• \tcapacityOptimized: pool with the optimal capacity for the number of instances\n• \tpriceCapacityOptimized (recommended): pools with highest capacity available, then select the\npool with the lowest price (best choice for most workloads)\n• \tSpot Fleets allow us to automatically request Spot Instances with the lowest price",
+      "read": false
+    }
+  ]
+}

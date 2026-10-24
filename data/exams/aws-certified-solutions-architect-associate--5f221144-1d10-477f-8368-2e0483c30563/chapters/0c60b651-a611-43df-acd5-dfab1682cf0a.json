@@ -1,0 +1,223 @@
+{
+  "chapter": {
+    "id": "0c60b651-a611-43df-acd5-dfab1682cf0a",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "EC2 instance storage",
+    "order": 4,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 94,
+    "pageEnd": 118,
+    "description": "EBS, EFS, snapshots and ephemeral local disks.",
+    "objectives": [
+      {
+        "id": "0c60b651-a611-43df-acd5-dfab1682cf0a/Choosing block, shared file or ephemeral storage",
+        "title": "Choosing block, shared file or ephemeral storage",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 94,
+        "pageEnd": 118,
+        "assessment": "both"
+      },
+      {
+        "id": "0c60b651-a611-43df-acd5-dfab1682cf0a/Recovery through snapshots",
+        "title": "Recovery through snapshots",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 94,
+        "pageEnd": 118,
+        "assessment": "both"
+      }
+    ],
+    "coverageStatus": "draft"
+  },
+  "sections": [
+    {
+      "id": "17388fd8-49a6-4be6-8814-7349b1e16ab4",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "0c60b651-a611-43df-acd5-dfab1682cf0a",
+      "title": "Choosing block, shared file or ephemeral storage",
+      "objective": "How do EBS, EFS and instance store differ in sharing and durability?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nAmazon EC2 \t– \tInstance Storage\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s an EBS Volume?\n• \tAn \tEBS (Elastic Block Store) Volume \tis a \tnetwork \tdrive you can attach\nto your instances while they run\n• \tIt allows your instances to persist data, even after their termination\n• \tThey can only be mounted to one instance at a time (at the CCP level)\n• \tThey are bound to \ta specific availability zone\n• \tAnalogy: Think of them as a “network USB stick”\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Volume\n• \tIt’s a network drive (i.e. not a physical drive)\n• \tIt uses the network to communicate the instance, which means there might be a bit of\nlatency\n• \tIt can be detached from an EC2 instance and attached to another one quickly\n• \tIt’s locked to an Availability Zone (AZ)\n• \tAn EBS Volume in us-east-1a cannot be attached to us-east-1b\n• \tTo move a volume across, you first need to snapshot it\n• \tHave a provisioned capacity (size in GBs, and IOPS)\n• \tYou get billed for all the provisioned capacity\n• \tYou can increase the capacity of the drive over time\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nUS-EAST-1B\tUS-EAST-1A\nEBS Volume \t- \tExample\nEBS\n(10 GB)\nEBS\n(100 GB)\nEBS\n(50 GB)\nEBS\n(50 GB)\nEBS\n(10 GB)\nunattached\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS \t– \tDelete on Termination attribute\n• \tControls the EBS behaviour when an EC2 instance terminates\n• \tBy default, the root EBS volume is deleted (attribute enabled)\n• \tBy default, any other attached EBS volume is not deleted (attribute disabled)\n• \tThis can be controlled by the AWS console / AWS CLI\n• \tUse case: preserve root volume when instance is terminated\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Snapshots\n• \tMake a backup (snapshot) of your EBS volume at a point in time\n• \tNot necessary to detach volume to do snapshot, but recommended\n• \tCan copy snapshots across AZ or Region\nUS-EAST-1A\nEBS\n(50 GB)\nUS-EAST-1B\nEBS\n(50 GB)\nEBS Snapshot\nsnapshot \trestore\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Snapshots Features\n• \tEBS Snapshot Archive\n• \tMove a Snapshot to an ”archive tier” that is\n75% cheaper\n• \tTakes within 24 to 72 hours for restoring the\narchive\n• \tRecycle Bin for EBS Snapshots\n• \tSetup rules to retain deleted snapshots so you\ncan recover them after an accidental deletion\n• \tSpecify retention (from 1 day to 1 year)\n• \tFast Snapshot Restore (FSR)\n• \tForce full initialization of snapshot to have no\nlatency on the first use ($$$)\nEBS Snapshot EBS Snapshot\nArchive\narchive\nEBS Snapshot \tRecycle Bin\ndelete\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAMI Overview\n• \tAMI = Amazon Machine Image\n• \tAMI are a \tcustomization \tof an EC2 instance\n• \tYou add your own software, configuration, operating system, monitoring…\n• \tFaster boot / configuration time because all your software is pre-packaged\n• \tAMI are built for a \tspecific region \t(and can be copied across regions)\n• \tYou can launch EC2 instances from:\n• \tA Public AMI: AWS provided\n• \tYour own AMI: you make and maintain them yourself\n• \tAn AWS Marketplace AMI: an AMI someone else made (and potentially sells)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAMI Process (from an EC2 instance)\n• \tStart an EC2 instance and customize it\n• \tStop the instance (for data integrity)\n• \tBuild an AMI \t– \tthis will also create EBS snapshots\n• \tLaunch instances from other AMIs\nUS-EAST-1A \tUS-EAST-1B\nCustom AMI\nCreate AMI\nLaunch\nfrom AMI\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEC2 Instance Store\n• \tEBS volumes are \tnetwork drives \twith good but “limited” performance\n• \tIf you need a high-performance hardware disk, use EC2 Instance Store\n• \tBetter I/O performance\n• \tEC2 Instance Store lose their storage if they’re stopped (ephemeral)\n• \tGood for buffer / cache / scratch data / temporary content\n• \tRisk of data loss if hardware fails\n• \tBackups and Replication are your responsibility\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nLocal EC2 Instance Store Very high IOPS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Volume Types\n• \tEBS Volumes come in 6 types\n• \tgp2 / gp3 (SSD): General purpose SSD volume that balances price and performance for\na wide variety of workloads\n• \tio1 / io2 Block Express (SSD): Highest-performance SSD volume for mission-critical\nlow-latency or high-throughput workloads\n• \tst1 (HDD): Low cost HDD volume designed for frequently accessed, throughput-\nintensive workloads\n• \tsc1 (HDD): Lowest cost HDD volume designed for less frequently accessed workloads\n• \tEBS Volumes are characterized in Size | Throughput | IOPS (I/O Ops Per Sec)\n• \tWhen in doubt always consult the AWS documentation – it’s good!\n• \tOnly gp2/gp3 and io1/io2 Block Express can be used as boot volumes\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Volume Types Use cases\nGeneral Purpose SSD\n• \tCost effective storage, low-latency\n• \tSystem boot volumes, Virtual desktops, Development and test\nenvironments, medium-sized databases, transactional workloads…\n• \tgp3 \t(1 GiB \t- \t64 TiB)\n• \tBaseline of 3,000 IOPS and throughput of 125 MiB/s\n• \tCan increase IOPS up to 80,000 and throughput up to 2000 MiB/s independently\n• \tgp2 \t(1 GiB \t- \t16 TiB)\n• \tSmall gp2 volumes can burst IOPS to 3,000\n• \tSize of the volume and IOPS are linked, max IOPS is 16,000\n• \t3 IOPS per GiB, means at 5,334 GiB we are at the max IOPS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Volume Types Use cases\nProvisioned IOPS (PIOPS) SSD\n• \tCritical business applications with sustained IOPS performance\n• \tOr applications that need more than 80,000 IOPS\n• \tGreat for \tdatabases workloads \t(sensitive to storage perf and consistency)\n• \tio1 \t(4 GiB \t- \t16 TiB)\n• \tMax PIOPS: 64,000 for Nitro EC2 instances & 32,000 for other\n• \tCan increase PIOPS independently from storage size; IOPS:GiB ratio of 50:1\n• \tio2 Block Express \t(4 GiB \t– \t64 TiB)\n• \tSub-millisecond latency\n• \tMax PIOPS: 256,000 with an IOPS:GiB ratio of 1,000:1\n• \tSupports EBS Multi-attach\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Volume Types Use cases\nHard Disk Drives (HDD)\n• \tCannot be a boot volume\n• \t125 GiB to 16 TiB\n• \tThroughput Optimized HDD (st1)\n• \tBig Data, Data Warehouses, Log Processing\n• \tMax throughput 500 MiB/s – max IOPS 500\n• \tCold HDD (sc1):\n• \tFor data that is infrequently accessed\n• \tScenarios where lowest cost is important\n• \tMax throughput 250 MiB/s – max IOPS 250\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS \t– Volume Types Summary\nhttps://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#solid-state-drives\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Multi-Attach \t– \tio1/io2 family\n• \tAttach the same EBS volume to multiple EC2\ninstances in the same AZ\n• \tEach instance has full read & write permissions\nto the high-performance volume\n• \tUse case:\n• \tAchieve higher application availability in clustered\nLinux applications (ex: Teradata)\n• \tApplications must manage concurrent write\noperations\n• \tUp to 16 EC2 Instances at a time\n• \tMust use a file system that’s cluster-aware (not\nXFS, EXT4, etc…)\nio2 volume with Multi-Attach\nAvailability Zone 1\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Encryption\n• \tWhen you create an encrypted EBS volume, you get the following:\n• \tData at rest is encrypted inside the volume\n• \tAll the data in flight moving between the instance and the volume is encrypted\n• \tAll snapshots are encrypted\n• \tAll volumes created from the snapshot\n• \tEncryption and decryption are handled transparently (you have nothing to\ndo)\n• \tEncryption has a minimal impact on latency\n• \tEBS Encryption leverages keys from KMS (AES-256)\n• \tCopying an unencrypted snapshot allows encryption\n• \tSnapshots of encrypted volumes are encrypted\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEncryption: encrypt an unencrypted EBS volume\n• \tCreate an EBS snapshot of the volume\n• \tEncrypt the EBS snapshot ( using copy )\n• \tCreate new \tebs \tvolume from the snapshot ( the volume will also be\nencrypted )\n• \tNow you can attach the encrypted volume to the original instance\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EFS \t– \tElastic File System\n• \tManaged NFS (network file system) that can be mounted on many EC2\n• \tEFS works with EC2 instances in multi-AZ\n• \tHighly available, scalable, expensive (3x gp2), pay per use\nus-east-1a\nEC2 Instances\nus-east-1b\nEC2 Instances\nus-east-1c\nEC2 Instances\nSecurity Group\nEFS FileSystem\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EFS \t– \tElastic File System\n• \tUse cases: content management, web serving, data sharing, Wordpress\n• \tUses NFSv4.1 protocol\n• \tUses security group to control access to EFS\n• \tCompatible with Linux based AMI (not Windows)\n• \tEncryption at rest using KMS\n• \tPOSIX file system (~Linux) that has a standard file API\n• \tFile system scales automatically, pay-per-use, no capacity planning!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEFS \t– \tPerformance & Storage Classes\n• \tEFS Scale\n• \t1000s of concurrent NFS clients, 10 GB+ /s throughput\n• \tGrow to Petabyte-scale network file system, automatically\n• \tPerformance Mode (set at EFS creation time)\n• \tGeneral Purpose (default) – latency-sensitive use cases (web server, CMS, etc…)\n• \tMax I/O – higher latency, throughput, highly parallel (big data, media processing)\n• \tThroughput Mode\n• \tBursting – 1 TB = 50MiB/s + burst of up to 100MiB/s\n• \tProvisioned – set your throughput regardless of storage size, ex: 1 GiB/s for 1 TB storage\n• \tElastic – automatically scales throughput up or down based on your workloads\n• \tUp to 3GiB/s for reads and 1GiB/s for writes\n• \tUsed for unpredictable workloads\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEFS \t– \tStorage Classes\n• \tStorage Tiers (lifecycle management feature – move\nfile after N days)\n• \tStandard: for frequently accessed files\n• \tInfrequent access (EFS-IA): cost to retrieve files, lower price\nto store.\n• \tArchive: rarely accessed data (few times each year), 50%\ncheaper\n• \tImplement lifecycle policies to move files between storage\ntiers\n• \tAvailability and durability\n• \tStandard: Multi-AZ, great for prod\n• \tOne Zone: One AZ, great for dev, backup enabled by\ndefault, compatible with IA (EFS One Zone-IA)\n• \tOver 90% in cost savings\nAmazon EFS File System\nEFS Standard\nEFS IA\nLifecycle Policy\nno access\nfor 60 days\nmove\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS vs EFS \t– \tElastic Block Storage\n• \tEBS volumes…\n• \tone instance (except multi-attach io1/io2)\n• \tare locked at the Availability Zone (AZ) level\n• \tgp2: IO increases if the disk size increases\n• \tgp3 & io1: can increase IO independently\n• \tTo migrate an EBS volume across AZ\n• \tTake a snapshot\n• \tRestore the snapshot to another AZ\n• \tEBS backups use IO and you shouldn’t run\nthem while your application is handling a lot\nof traffic\n• \tRoot EBS Volumes of instances get\nterminated by default if the EC2 instance\ngets terminated. (you can disable that)\nsnapshot \trestore\nAvailability Zone 1\nEBS Snapshot\nAvailability Zone 2\nEBS \tEBS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS vs EFS \t– \tElastic File System\n• \tMounting 100s of instances across AZ\n• \tEFS share website files (WordPress)\n• \tOnly for Linux Instances (POSIX)\n• \tEFS has a higher price point than EBS\n• \tCan leverage Storage Tiers for cost savings\n• \tRemember: EFS vs EBS vs Instance Store\nAvailability Zone 1\nEFS\nAvailability Zone 2\nEFS\nMount\nTarget\nLinux \tLinux\nEFS\nMount\nTarget",
+      "pageStart": 94,
+      "pageEnd": 118,
+      "read": false,
+      "content": {
+        "summary": "## Choosing block, shared file or ephemeral storage\n\nEBS is AZ-scoped block storage for instances. EFS provides a managed shared NFS file system. Instance store is local ephemeral storage suited to recreatable temporary data.\n\n### Reasoning and trade-offs\n\nEFS supplies the requested shared file semantics and supports clients across AZs. EBS does not become a cross-AZ shared file system, and snapshot copying cannot provide a concurrent writable namespace. Instance-store data is inappropriate as the sole persistent copy.\n\n### Avoid this trap\n\nDo not treat instance store as the only durable copy. A normal EBS volume is not a general shared multi-instance file system; specialized Multi-Attach has important application and volume constraints.\n\n### Apply it\n\nA Linux web fleet in several AZs must read and update the same user-uploaded files through a POSIX file interface. Which storage service is the best fit?\n\n**Recommended design:** Mount an EFS file system using mount targets in the application AZs.\n\nEFS supplies the requested shared file semantics and supports clients across AZs. EBS does not become a cross-AZ shared file system, and snapshot copying cannot provide a concurrent writable namespace. Instance-store data is inappropriate as the sole persistent copy.",
+        "keyPoints": [
+          "EBS is AZ-scoped block storage for instances. EFS provides a managed shared NFS file system. Instance store is local ephemeral storage suited to recreatable temporary data.",
+          "EFS supplies the requested shared file semantics and supports clients across AZs. EBS does not become a cross-AZ shared file system, and snapshot copying cannot provide a concurrent writable namespace. Instance-store data is inappropriate as the sole persistent copy.",
+          "Do not treat instance store as the only durable copy. A normal EBS volume is not a general shared multi-instance file system; specialized Multi-Attach has important application and volume constraints."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Which service provides shared Linux NFS storage?",
+            "answer": "Amazon EFS.",
+            "objectiveIds": [
+              "0c60b651-a611-43df-acd5-dfab1682cf0a/Choosing block, shared file or ephemeral storage"
+            ],
+            "id": "9f13f4c1-369b-4d01-8ceb-4120d20e301a",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.063Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Is instance store suitable as the sole durable copy?",
+            "answer": "No. It is ephemeral local storage.",
+            "objectiveIds": [
+              "0c60b651-a611-43df-acd5-dfab1682cf0a/Choosing block, shared file or ephemeral storage"
+            ],
+            "id": "033a1b4d-9ba5-47d6-8d46-00e83c9e782f",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.063Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A Linux web fleet in several AZs must read and update the same user-uploaded files through a POSIX file interface. Which storage service is the best fit?",
+            "options": [
+              "Attach one ordinary gp3 EBS volume to every instance across all AZs.",
+              "Store the only copy of uploads on each instance-store disk.",
+              "Mount an EFS file system using mount targets in the application AZs.",
+              "Copy an EBS snapshot to each instance before every user request."
+            ],
+            "correctIndex": 2,
+            "explanation": "EFS supplies the requested shared file semantics and supports clients across AZs. EBS does not become a cross-AZ shared file system, and snapshot copying cannot provide a concurrent writable namespace. Instance-store data is inappropriate as the sole persistent copy.",
+            "objectiveIds": [
+              "0c60b651-a611-43df-acd5-dfab1682cf0a/Choosing block, shared file or ephemeral storage"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.063Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 94,
+            "pageEnd": 118,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "39422b6b-5c2b-4208-b887-aab3fe9b67de",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "0c60b651-a611-43df-acd5-dfab1682cf0a",
+      "title": "Recovery through snapshots",
+      "objective": "How do you recover an EBS-backed workload into a different Availability Zone?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nAmazon EC2 \t– \tInstance Storage\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s an EBS Volume?\n• \tAn \tEBS (Elastic Block Store) Volume \tis a \tnetwork \tdrive you can attach\nto your instances while they run\n• \tIt allows your instances to persist data, even after their termination\n• \tThey can only be mounted to one instance at a time (at the CCP level)\n• \tThey are bound to \ta specific availability zone\n• \tAnalogy: Think of them as a “network USB stick”\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Volume\n• \tIt’s a network drive (i.e. not a physical drive)\n• \tIt uses the network to communicate the instance, which means there might be a bit of\nlatency\n• \tIt can be detached from an EC2 instance and attached to another one quickly\n• \tIt’s locked to an Availability Zone (AZ)\n• \tAn EBS Volume in us-east-1a cannot be attached to us-east-1b\n• \tTo move a volume across, you first need to snapshot it\n• \tHave a provisioned capacity (size in GBs, and IOPS)\n• \tYou get billed for all the provisioned capacity\n• \tYou can increase the capacity of the drive over time\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nUS-EAST-1B\tUS-EAST-1A\nEBS Volume \t- \tExample\nEBS\n(10 GB)\nEBS\n(100 GB)\nEBS\n(50 GB)\nEBS\n(50 GB)\nEBS\n(10 GB)\nunattached\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS \t– \tDelete on Termination attribute\n• \tControls the EBS behaviour when an EC2 instance terminates\n• \tBy default, the root EBS volume is deleted (attribute enabled)\n• \tBy default, any other attached EBS volume is not deleted (attribute disabled)\n• \tThis can be controlled by the AWS console / AWS CLI\n• \tUse case: preserve root volume when instance is terminated\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Snapshots\n• \tMake a backup (snapshot) of your EBS volume at a point in time\n• \tNot necessary to detach volume to do snapshot, but recommended\n• \tCan copy snapshots across AZ or Region\nUS-EAST-1A\nEBS\n(50 GB)\nUS-EAST-1B\nEBS\n(50 GB)\nEBS Snapshot\nsnapshot \trestore\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Snapshots Features\n• \tEBS Snapshot Archive\n• \tMove a Snapshot to an ”archive tier” that is\n75% cheaper\n• \tTakes within 24 to 72 hours for restoring the\narchive\n• \tRecycle Bin for EBS Snapshots\n• \tSetup rules to retain deleted snapshots so you\ncan recover them after an accidental deletion\n• \tSpecify retention (from 1 day to 1 year)\n• \tFast Snapshot Restore (FSR)\n• \tForce full initialization of snapshot to have no\nlatency on the first use ($$$)\nEBS Snapshot EBS Snapshot\nArchive\narchive\nEBS Snapshot \tRecycle Bin\ndelete\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAMI Overview\n• \tAMI = Amazon Machine Image\n• \tAMI are a \tcustomization \tof an EC2 instance\n• \tYou add your own software, configuration, operating system, monitoring…\n• \tFaster boot / configuration time because all your software is pre-packaged\n• \tAMI are built for a \tspecific region \t(and can be copied across regions)\n• \tYou can launch EC2 instances from:\n• \tA Public AMI: AWS provided\n• \tYour own AMI: you make and maintain them yourself\n• \tAn AWS Marketplace AMI: an AMI someone else made (and potentially sells)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAMI Process (from an EC2 instance)\n• \tStart an EC2 instance and customize it\n• \tStop the instance (for data integrity)\n• \tBuild an AMI \t– \tthis will also create EBS snapshots\n• \tLaunch instances from other AMIs\nUS-EAST-1A \tUS-EAST-1B\nCustom AMI\nCreate AMI\nLaunch\nfrom AMI\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEC2 Instance Store\n• \tEBS volumes are \tnetwork drives \twith good but “limited” performance\n• \tIf you need a high-performance hardware disk, use EC2 Instance Store\n• \tBetter I/O performance\n• \tEC2 Instance Store lose their storage if they’re stopped (ephemeral)\n• \tGood for buffer / cache / scratch data / temporary content\n• \tRisk of data loss if hardware fails\n• \tBackups and Replication are your responsibility\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nLocal EC2 Instance Store Very high IOPS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Volume Types\n• \tEBS Volumes come in 6 types\n• \tgp2 / gp3 (SSD): General purpose SSD volume that balances price and performance for\na wide variety of workloads\n• \tio1 / io2 Block Express (SSD): Highest-performance SSD volume for mission-critical\nlow-latency or high-throughput workloads\n• \tst1 (HDD): Low cost HDD volume designed for frequently accessed, throughput-\nintensive workloads\n• \tsc1 (HDD): Lowest cost HDD volume designed for less frequently accessed workloads\n• \tEBS Volumes are characterized in Size | Throughput | IOPS (I/O Ops Per Sec)\n• \tWhen in doubt always consult the AWS documentation – it’s good!\n• \tOnly gp2/gp3 and io1/io2 Block Express can be used as boot volumes\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Volume Types Use cases\nGeneral Purpose SSD\n• \tCost effective storage, low-latency\n• \tSystem boot volumes, Virtual desktops, Development and test\nenvironments, medium-sized databases, transactional workloads…\n• \tgp3 \t(1 GiB \t- \t64 TiB)\n• \tBaseline of 3,000 IOPS and throughput of 125 MiB/s\n• \tCan increase IOPS up to 80,000 and throughput up to 2000 MiB/s independently\n• \tgp2 \t(1 GiB \t- \t16 TiB)\n• \tSmall gp2 volumes can burst IOPS to 3,000\n• \tSize of the volume and IOPS are linked, max IOPS is 16,000\n• \t3 IOPS per GiB, means at 5,334 GiB we are at the max IOPS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Volume Types Use cases\nProvisioned IOPS (PIOPS) SSD\n• \tCritical business applications with sustained IOPS performance\n• \tOr applications that need more than 80,000 IOPS\n• \tGreat for \tdatabases workloads \t(sensitive to storage perf and consistency)\n• \tio1 \t(4 GiB \t- \t16 TiB)\n• \tMax PIOPS: 64,000 for Nitro EC2 instances & 32,000 for other\n• \tCan increase PIOPS independently from storage size; IOPS:GiB ratio of 50:1\n• \tio2 Block Express \t(4 GiB \t– \t64 TiB)\n• \tSub-millisecond latency\n• \tMax PIOPS: 256,000 with an IOPS:GiB ratio of 1,000:1\n• \tSupports EBS Multi-attach\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Volume Types Use cases\nHard Disk Drives (HDD)\n• \tCannot be a boot volume\n• \t125 GiB to 16 TiB\n• \tThroughput Optimized HDD (st1)\n• \tBig Data, Data Warehouses, Log Processing\n• \tMax throughput 500 MiB/s – max IOPS 500\n• \tCold HDD (sc1):\n• \tFor data that is infrequently accessed\n• \tScenarios where lowest cost is important\n• \tMax throughput 250 MiB/s – max IOPS 250\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS \t– Volume Types Summary\nhttps://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html#solid-state-drives\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Multi-Attach \t– \tio1/io2 family\n• \tAttach the same EBS volume to multiple EC2\ninstances in the same AZ\n• \tEach instance has full read & write permissions\nto the high-performance volume\n• \tUse case:\n• \tAchieve higher application availability in clustered\nLinux applications (ex: Teradata)\n• \tApplications must manage concurrent write\noperations\n• \tUp to 16 EC2 Instances at a time\n• \tMust use a file system that’s cluster-aware (not\nXFS, EXT4, etc…)\nio2 volume with Multi-Attach\nAvailability Zone 1\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS Encryption\n• \tWhen you create an encrypted EBS volume, you get the following:\n• \tData at rest is encrypted inside the volume\n• \tAll the data in flight moving between the instance and the volume is encrypted\n• \tAll snapshots are encrypted\n• \tAll volumes created from the snapshot\n• \tEncryption and decryption are handled transparently (you have nothing to\ndo)\n• \tEncryption has a minimal impact on latency\n• \tEBS Encryption leverages keys from KMS (AES-256)\n• \tCopying an unencrypted snapshot allows encryption\n• \tSnapshots of encrypted volumes are encrypted\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEncryption: encrypt an unencrypted EBS volume\n• \tCreate an EBS snapshot of the volume\n• \tEncrypt the EBS snapshot ( using copy )\n• \tCreate new \tebs \tvolume from the snapshot ( the volume will also be\nencrypted )\n• \tNow you can attach the encrypted volume to the original instance\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EFS \t– \tElastic File System\n• \tManaged NFS (network file system) that can be mounted on many EC2\n• \tEFS works with EC2 instances in multi-AZ\n• \tHighly available, scalable, expensive (3x gp2), pay per use\nus-east-1a\nEC2 Instances\nus-east-1b\nEC2 Instances\nus-east-1c\nEC2 Instances\nSecurity Group\nEFS FileSystem\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EFS \t– \tElastic File System\n• \tUse cases: content management, web serving, data sharing, Wordpress\n• \tUses NFSv4.1 protocol\n• \tUses security group to control access to EFS\n• \tCompatible with Linux based AMI (not Windows)\n• \tEncryption at rest using KMS\n• \tPOSIX file system (~Linux) that has a standard file API\n• \tFile system scales automatically, pay-per-use, no capacity planning!\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEFS \t– \tPerformance & Storage Classes\n• \tEFS Scale\n• \t1000s of concurrent NFS clients, 10 GB+ /s throughput\n• \tGrow to Petabyte-scale network file system, automatically\n• \tPerformance Mode (set at EFS creation time)\n• \tGeneral Purpose (default) – latency-sensitive use cases (web server, CMS, etc…)\n• \tMax I/O – higher latency, throughput, highly parallel (big data, media processing)\n• \tThroughput Mode\n• \tBursting – 1 TB = 50MiB/s + burst of up to 100MiB/s\n• \tProvisioned – set your throughput regardless of storage size, ex: 1 GiB/s for 1 TB storage\n• \tElastic – automatically scales throughput up or down based on your workloads\n• \tUp to 3GiB/s for reads and 1GiB/s for writes\n• \tUsed for unpredictable workloads\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEFS \t– \tStorage Classes\n• \tStorage Tiers (lifecycle management feature – move\nfile after N days)\n• \tStandard: for frequently accessed files\n• \tInfrequent access (EFS-IA): cost to retrieve files, lower price\nto store.\n• \tArchive: rarely accessed data (few times each year), 50%\ncheaper\n• \tImplement lifecycle policies to move files between storage\ntiers\n• \tAvailability and durability\n• \tStandard: Multi-AZ, great for prod\n• \tOne Zone: One AZ, great for dev, backup enabled by\ndefault, compatible with IA (EFS One Zone-IA)\n• \tOver 90% in cost savings\nAmazon EFS File System\nEFS Standard\nEFS IA\nLifecycle Policy\nno access\nfor 60 days\nmove\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS vs EFS \t– \tElastic Block Storage\n• \tEBS volumes…\n• \tone instance (except multi-attach io1/io2)\n• \tare locked at the Availability Zone (AZ) level\n• \tgp2: IO increases if the disk size increases\n• \tgp3 & io1: can increase IO independently\n• \tTo migrate an EBS volume across AZ\n• \tTake a snapshot\n• \tRestore the snapshot to another AZ\n• \tEBS backups use IO and you shouldn’t run\nthem while your application is handling a lot\nof traffic\n• \tRoot EBS Volumes of instances get\nterminated by default if the EC2 instance\ngets terminated. (you can disable that)\nsnapshot \trestore\nAvailability Zone 1\nEBS Snapshot\nAvailability Zone 2\nEBS \tEBS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nEBS vs EFS \t– \tElastic File System\n• \tMounting 100s of instances across AZ\n• \tEFS share website files (WordPress)\n• \tOnly for Linux Instances (POSIX)\n• \tEFS has a higher price point than EBS\n• \tCan leverage Storage Tiers for cost savings\n• \tRemember: EFS vs EBS vs Instance Store\nAvailability Zone 1\nEFS\nAvailability Zone 2\nEFS\nMount\nTarget\nLinux \tLinux\nEFS\nMount\nTarget",
+      "pageStart": 94,
+      "pageEnd": 118,
+      "read": false,
+      "content": {
+        "summary": "## Recovery through snapshots\n\nCreate a volume from an EBS snapshot in the target AZ, then attach it to a compatible instance there. Snapshots support recovery and copying; volumes themselves remain AZ-scoped.\n\n### Reasoning and trade-offs\n\nA snapshot can be used to create a new AZ-local volume. EBS attachment cannot cross AZ boundaries. Recovery time also includes provisioning, filesystem or database recovery and validation, not merely creating a volume.\n\n### Avoid this trap\n\nTaking a snapshot does not automatically test application recovery or guarantee application-consistent database data. Coordinate the application state and test the restore process.\n\n### Apply it\n\nAn AZ outage makes an instance and its attached EBS volume unavailable. A recent snapshot exists and the recovery runbook allows a new AZ. What should the runbook do?\n\n**Recommended design:** Create a new EBS volume from the snapshot in the recovery AZ and restore the workload on new compute.\n\nA snapshot can be used to create a new AZ-local volume. EBS attachment cannot cross AZ boundaries. Recovery time also includes provisioning, filesystem or database recovery and validation, not merely creating a volume.",
+        "keyPoints": [
+          "Create a volume from an EBS snapshot in the target AZ, then attach it to a compatible instance there. Snapshots support recovery and copying; volumes themselves remain AZ-scoped.",
+          "A snapshot can be used to create a new AZ-local volume. EBS attachment cannot cross AZ boundaries. Recovery time also includes provisioning, filesystem or database recovery and validation, not merely creating a volume.",
+          "Taking a snapshot does not automatically test application recovery or guarantee application-consistent database data. Coordinate the application state and test the restore process."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Can an EBS volume attach across AZs?",
+            "answer": "No. Volume and instance must be in the same AZ.",
+            "objectiveIds": [
+              "0c60b651-a611-43df-acd5-dfab1682cf0a/Recovery through snapshots"
+            ],
+            "id": "a4b99b25-d163-43c8-b03b-e73cb2f86f6a",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.063Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "How do you restore EBS data in another AZ?",
+            "answer": "Create a new volume there from a snapshot.",
+            "objectiveIds": [
+              "0c60b651-a611-43df-acd5-dfab1682cf0a/Recovery through snapshots"
+            ],
+            "id": "cbcc5363-8e00-4ef8-abbc-34e22b90841d",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.063Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "An AZ outage makes an instance and its attached EBS volume unavailable. A recent snapshot exists and the recovery runbook allows a new AZ. What should the runbook do?",
+            "options": [
+              "Attach the original EBS volume directly to an instance in another AZ.",
+              "Change the subnet of the original volume to move it between AZs.",
+              "Wait for an EFS mount target to expose the EBS volume automatically.",
+              "Create a new EBS volume from the snapshot in the recovery AZ and restore the workload on new compute."
+            ],
+            "correctIndex": 3,
+            "explanation": "A snapshot can be used to create a new AZ-local volume. EBS attachment cannot cross AZ boundaries. Recovery time also includes provisioning, filesystem or database recovery and validation, not merely creating a volume.",
+            "objectiveIds": [
+              "0c60b651-a611-43df-acd5-dfab1682cf0a/Recovery through snapshots"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.063Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 94,
+            "pageEnd": 118,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "chapter": {
+    "id": "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 7,
+    "title": "RDS, Aurora & ElastiCache",
+    "pageStart": 161,
+    "pageEnd": 193,
+    "description": "Managed relational databases, read replicas, Multi-AZ, Aurora features, backups, security, RDS Proxy and ElastiCache.",
+    "examFocus": [
+      "Task 3.3: high-performing database solutions",
+      "Task 2.2: database high availability",
+      "Task 4.3: cost-optimized databases"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

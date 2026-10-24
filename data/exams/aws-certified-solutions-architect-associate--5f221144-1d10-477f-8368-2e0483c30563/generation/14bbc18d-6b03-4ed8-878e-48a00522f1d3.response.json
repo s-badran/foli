@@ -1,0 +1,77 @@
+{
+  "overview": "Amazon EC2 (Elastic Compute Cloud) is AWS's Infrastructure as a Service offering: you rent virtual machines and configure them at launch. The section lists the launch-time configuration options (OS, CPU, RAM, storage, network card, firewall rules, user data) and explains EC2 User Data bootstrapping. This matters on the exam because most compute scenarios (instance sizing, storage choice, bootstrapping, security) start from these fundamentals.",
+  "coreConcepts": [
+    { "term": "Amazon EC2", "definition": "Elastic Compute Cloud — AWS's Infrastructure as a Service offering whose core capability is renting virtual machines in the cloud." },
+    { "term": "EBS (Elastic Block Store)", "definition": "Network-attached (virtual drive) storage option listed as part of the EC2 offering, used to store data on virtual drives." },
+    { "term": "ELB (Elastic Load Balancing)", "definition": "Network-attached load-balancing option listed as part of EC2, used to distribute load across machines." },
+    { "term": "ASG (Auto Scaling Group)", "definition": "Auto-scaling group listed as part of EC2, used to scale services automatically." },
+    { "term": "Operating System (OS)", "definition": "First sizing option: the instance can run Linux, Windows or Mac OS and you choose which at launch." },
+    { "term": "CPU sizing", "definition": "How much compute power and how many cores the instance gets." },
+    { "term": "RAM sizing", "definition": "How much random-access memory the instance gets." },
+    { "term": "Network-attached storage (EBS & EFS)", "definition": "Storage choices attached over the network: EBS and EFS." },
+    { "term": "EC2 Instance Store", "definition": "Hardware (local) storage attached directly to the instance." },
+    { "term": "Network card options", "definition": "The instance's network card speed and whether it has a Public IP address." },
+    { "term": "Security group", "definition": "Firewall rules: the set of rules that control inbound and outbound traffic to the instance." },
+    { "term": "EC2 User Data", "definition": "A bootstrap script passed as an instance parameter that runs commands automatically when the machine starts." },
+    { "term": "Bootstrapping", "definition": "Launching commands when a machine starts — what EC2 User Data provides." },
+    { "term": "Public IP address", "definition": "An address option chosen under the network card settings that makes the instance reachable over the internet." }
+  ],
+  "mustRemember": [
+    "EC2 = Elastic Compute Cloud = Infrastructure as a Service.",
+    "EC2's four stated capabilities: renting virtual machines (EC2), storing data on virtual drives (EBS), distributing load across machines (ELB), scaling with an auto-scaling group (ASG).",
+    "OS choices are Linux, Windows or Mac OS.",
+    "Storage is either network-attached (EBS & EFS) or hardware (EC2 Instance Store).",
+    "EC2 User Data runs ONLY ONCE, at the instance's first start — never again on reboot.",
+    "The EC2 User Data script runs with the root user.",
+    "User Data examples: installing updates, installing software, downloading common files from the internet."
+  ],
+  "keyComparisons": [
+    { "items": "Network-attached storage (EBS, EFS) vs hardware (EC2 Instance Store)", "difference": "EBS/EFS are attached over the network; Instance Store is hardware storage on the host. Only these two categories are named in the source." },
+    { "items": "Default launch vs bootstrap with EC2 User Data", "difference": "Default: no commands run automatically. User Data: specified commands run automatically at first start as root." },
+    { "items": "Security group vs EC2 User Data", "difference": "Security group = firewall rules controlling traffic; User Data = bootstrap script configuring the OS at first start." }
+  ],
+  "commonMisunderstandings": [
+    "EC2 User Data does NOT run on every reboot or restart — it runs only once, at the instance's first start.",
+    "The User Data script does NOT run as a normal user — it runs with the root user.",
+    "EC2 is not just 'a VM': EBS, ELB and ASG are presented as part of the EC2 offering, not separate concerns.",
+    "Instance Store is NOT network-attached — it is classified as hardware storage."
+  ],
+  "mentalModels": [
+    "Think of EC2 as renting a computer at a desk: at checkout you tick the spec sheet — OS, CPU, RAM, disk, network card, firewall, and an optional 'run these commands when it boots' note (user data).",
+    "Think of User Data as a first-boot setup note: the machine reads it once, executes it as root, then forgets it.",
+    "Think of storage as 'plugged in over the network' (EBS, EFS) vs 'bolted to the hoard' (Instance Store).",
+    "Think of the security group as the door policy of the machine, and User Data as the instructions the machine follows the first time it is switched on."
+  ],
+  "edgeCases": [
+    "Because User Data runs only at first start, it is useless for re-configuring an already-running instance.",
+    "User Data runs as root, so commands that need root privileges work without extra steps.",
+    "Public IP address and network card speed are configured as part of the network card settings, not separately."
+  ],
+  "whenToUse": [
+    { "situation": "You need a web server that installs software and downloads files automatically the moment it first boots.", "use": "EC2 User Data bootstrap script." },
+    { "situation": "You need persistent data on a virtual drive rather than on the host.", "use": "Network-attached storage (EBS & EFS)." },
+    { "situation": "You need to control which inbound/outbound traffic reaches the instance.", "use": "Security group firewall rules." },
+    { "situation": "You need load spread over multiple servers.", "use": "ELB." },
+    { "situation": "You need the fleet to scale automatically.", "use": "ASG." }
+  ],
+  "patternsToRecognize": [
+    { "signal": "'automatically installs software / updates / downloads files when the instance starts'", "indicates": "EC2 User Data bootstrapping." },
+    { "signal": "'how many times does user data run'", "indicates": "Only once, at first start." },
+    { "signal": "'which user does the user data script run as'", "indicates": "root." },
+    { "signal": "'data stored on a virtual drive'", "indicates": "EBS." },
+    { "signal": "'storage attached directly to the hardware'", "indicates": "EC2 Instance Store." },
+    { "signal": "'distribute traffic across multiple EC2 instances'", "indicates": "ELB." },
+    { "signal": "'scale the number of EC2 instances automatically'", "indicates": "ASG." }
+  ],
+  "examTraps": [
+    { "trap": "Re-running user data as a way to reconfigure a running instance.", "correction": "User Data only executes once at the instance's first start; it cannot be re-used to reconfigure an existing running instance." },
+    { "trap": "Claiming the user data script runs as a standard non-root user.", "correction": "The EC2 User Data script runs with the root user." },
+    { "trap": "Treating EBS/ELB/ASG as unrelated AWS services you must add separately from EC2.", "correction": "Per the source, EC2 mainly consists of renting VMs, storing data on virtual drives (EBS), distributing load (ELB) and scaling with an ASG." },
+    { "trap": "Assuming EFS is hardware storage.", "correction": "EFS is grouped with EBS as network-attached storage; only EC2 Instance Store is hardware storage." }
+  ],
+  "beyondSource": [
+    "EC2 User Data scripts are run by the cloud-init/instance-init system at first boot; you can also choose 'As file' vs 'As text' when providing the script. (Tutor knowledge, not in the source section.)",
+    "The exam guide's Task 3.2 asks you to select appropriate compute options and features (for example, EC2 instance types) and resource sizes — so expect sizing questions beyond the option list here. (Tutor knowledge from the exam guide.)",
+    "EC2 is listed as in-scope in the exam guide's Compute category, and AWS Auto Scaling / Amazon EC2 Auto Scaling are in scope. (Tutor knowledge from the exam guide.)"
+  ]
+}

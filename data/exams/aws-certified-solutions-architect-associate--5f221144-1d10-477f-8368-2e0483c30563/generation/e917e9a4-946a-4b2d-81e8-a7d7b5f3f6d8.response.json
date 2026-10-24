@@ -1,0 +1,283 @@
+{
+  "groups": [
+    {
+      "concept": "IPv4 vs IPv6 formats",
+      "cards": [
+        {
+          "question": "Which address is IPv4: 1.160.10.240 or 3ffe:1900:4545:3:200:f8ff:fe21:67cf?",
+          "answer": "1.160.10.240",
+          "keyTopic": "IPv4 vs IPv6 formats",
+          "origin": "source"
+        },
+        {
+          "question": "What is the IPv4 address format in dotted-decimal notation?",
+          "answer": "[0-255].[0-255].[0-255].[0-255]",
+          "keyTopic": "IPv4 vs IPv6 formats",
+          "origin": "source"
+        },
+        {
+          "question": "How many different IPv4 addresses does the public space allow?",
+          "answer": "3.7 billion",
+          "keyTopic": "IPv4 vs IPv6 formats",
+          "origin": "source"
+        },
+        {
+          "question": "Which IP version is newer, IPv4 or IPv6?",
+          "answer": "IPv6",
+          "keyTopic": "IPv4 vs IPv6 formats",
+          "origin": "source"
+        },
+        {
+          "question": "What problem does IPv6 primarily solve according to the section?",
+          "answer": "Problems for the Internet of Things (IoT)",
+          "keyTopic": "IPv4 vs IPv6 formats",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Public IP uniqueness and geo-location",
+      "cards": [
+        {
+          "question": "Can two machines share the same public IP?",
+          "answer": "No — it must be unique across the whole web",
+          "keyTopic": "Public IP uniqueness and geo-location",
+          "origin": "source"
+        },
+        {
+          "question": "Can a public IP be geo-located easily?",
+          "answer": "Yes",
+          "keyTopic": "Public IP uniqueness and geo-location",
+          "origin": "source"
+        },
+        {
+          "question": "A public IP lets a machine be identified on which network?",
+          "answer": "The internet (WWW)",
+          "keyTopic": "Public IP uniqueness and geo-location",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Private IP uniqueness within a network",
+      "cards": [
+        {
+          "question": "A private IP must be unique across what scope?",
+          "answer": "Its own private network",
+          "keyTopic": "Private IP uniqueness within a network",
+          "origin": "source"
+        },
+        {
+          "question": "Which IP lets a machine be identified only on a private network: public or private?",
+          "answer": "Private IP",
+          "keyTopic": "Private IP uniqueness within a network",
+          "origin": "source"
+        },
+        {
+          "question": "Which range of IPs can be used as private IPs?",
+          "answer": "Only a specified range of IPs",
+          "keyTopic": "Private IP uniqueness within a network",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Same private range across companies",
+      "cards": [
+        {
+          "question": "Can two different companies both use 192.168.0.1/22?",
+          "answer": "Yes — private IPs only must be unique inside their own network",
+          "keyTopic": "Same private range across companies",
+          "origin": "source"
+        },
+        {
+          "question": "Which must be unique across the whole web: a public IP or a private IP?",
+          "answer": "A public IP",
+          "keyTopic": "Same private range across companies",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "NAT and internet gateway for WWW access",
+      "cards": [
+        {
+          "question": "How do machines with private IPs connect to the WWW?",
+          "answer": "Using a NAT + internet gateway (a proxy)",
+          "keyTopic": "NAT and internet gateway for WWW access",
+          "origin": "source"
+        },
+        {
+          "question": "NAT plus an internet gateway acts like what for a private network?",
+          "answer": "A proxy",
+          "keyTopic": "NAT and internet gateway for WWW access",
+          "origin": "source"
+        },
+        {
+          "question": "In the section diagram, what is the public-facing address given for the Internet Gateway?",
+          "answer": "149.140.72.10",
+          "keyTopic": "NAT and internet gateway for WWW access",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Elastic IP: fixed public IPv4",
+      "cards": [
+        {
+          "question": "What do you need when an instance requires a fixed public IP?",
+          "answer": "An Elastic IP",
+          "keyTopic": "Elastic IP: fixed public IPv4",
+          "origin": "source"
+        },
+        {
+          "question": "What kind of address is an Elastic IP?",
+          "answer": "A public IPv4 address you own until you delete it",
+          "keyTopic": "Elastic IP: fixed public IPv4",
+          "origin": "source"
+        },
+        {
+          "question": "How long do you own an Elastic IP?",
+          "answer": "As long as you don't delete it",
+          "keyTopic": "Elastic IP: fixed public IPv4",
+          "origin": "source"
+        },
+        {
+          "question": "An instance must keep the same public IP after stop/start. Which do you use?",
+          "answer": "An Elastic IP",
+          "keyTopic": "Elastic IP: fixed public IPv4",
+          "origin": "exam-guide"
+        }
+      ]
+    },
+    {
+      "concept": "Elastic IP attach to one instance",
+      "cards": [
+        {
+          "question": "How many instances can one Elastic IP be attached to at a time?",
+          "answer": "One instance at a time",
+          "keyTopic": "Elastic IP attach to one instance",
+          "origin": "source"
+        },
+        {
+          "question": "How can an Elastic IP mask the failure of an instance?",
+          "answer": "By rapidly remapping it to another instance in your account",
+          "keyTopic": "Elastic IP attach to one instance",
+          "origin": "source"
+        },
+        {
+          "question": "Can one Elastic IP front a fleet of instances simultaneously?",
+          "answer": "No — it attaches to one instance at a time",
+          "keyTopic": "Elastic IP attach to one instance",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Elastic IP limit of 5 per account",
+      "cards": [
+        {
+          "question": "How many Elastic IPs can you have per account, as stated in the section?",
+          "answer": "5",
+          "keyTopic": "Elastic IP limit of 5 per account",
+          "origin": "source"
+        },
+        {
+          "question": "What can you do if you need more than 5 Elastic IPs?",
+          "answer": "Ask AWS to increase the limit",
+          "keyTopic": "Elastic IP limit of 5 per account",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Avoid Elastic IP: DNS name or Load Balancer",
+      "cards": [
+        {
+          "question": "What do Elastic IPs often reflect, according to the section?",
+          "answer": "Poor architectural decisions",
+          "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+          "origin": "source"
+        },
+        {
+          "question": "Instead of an Elastic IP, what should you register to a random public IP?",
+          "answer": "A DNS name",
+          "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+          "origin": "source"
+        },
+        {
+          "question": "Instead of an Elastic IP, what can front your instances so they need no public IP?",
+          "answer": "A Load Balancer",
+          "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+          "origin": "source"
+        },
+        {
+          "question": "Which gives a stable endpoint without consuming a scarce Elastic IP: DNS name or Elastic IP?",
+          "answer": "DNS name on a random public IP",
+          "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+          "origin": "exam-guide"
+        }
+      ]
+    },
+    {
+      "concept": "Default EC2 private + public IP",
+      "cards": [
+        {
+          "question": "Which two IPs does an EC2 machine come with by default?",
+          "answer": [
+            "A private IP for the internal AWS network",
+            "A public IP for the WWW"
+          ],
+          "keyTopic": "Default EC2 private + public IP",
+          "origin": "source"
+        },
+        {
+          "question": "What can happen to an EC2 instance's public IP when it is stopped and started?",
+          "answer": "It can change",
+          "keyTopic": "Default EC2 private + public IP",
+          "origin": "source"
+        },
+        {
+          "question": "Is an EC2 instance's default public IP permanent?",
+          "answer": "No — stop/start can change it",
+          "keyTopic": "Default EC2 private + public IP",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "SSH via public IP",
+      "cards": [
+        {
+          "question": "Why can't you SSH into an EC2 instance using its private IP?",
+          "answer": "Because you are not in the same network",
+          "keyTopic": "SSH via public IP",
+          "origin": "source"
+        },
+        {
+          "question": "From outside AWS, which IP do you use to SSH into an EC2 instance?",
+          "answer": "The public IP",
+          "keyTopic": "SSH via public IP",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Choosing the right option",
+      "cards": [
+        {
+          "question": "Which IP type must be unique across the whole web: public or private?",
+          "answer": "Public",
+          "keyTopic": "Public IP uniqueness and geo-location",
+          "origin": "source"
+        },
+        {
+          "question": "Which is the least brittle stable endpoint for a scalable web tier: Elastic IP or Load Balancer?",
+          "answer": "Load Balancer",
+          "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+          "origin": "exam-guide"
+        }
+      ]
+    }
+  ]
+}

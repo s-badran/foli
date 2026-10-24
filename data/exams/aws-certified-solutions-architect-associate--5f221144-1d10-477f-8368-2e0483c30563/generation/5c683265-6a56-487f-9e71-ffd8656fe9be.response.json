@@ -1,0 +1,172 @@
+{
+  "groups": [
+    {
+      "concept": "Root account",
+      "cards": [
+        {
+          "question": "When is the AWS root account created?",
+          "answer": "By default, with the account",
+          "keyTopic": "Root account",
+          "origin": "source"
+        },
+        {
+          "question": "Should the root account be used or shared for daily work?",
+          "answer": "No, neither",
+          "keyTopic": "Root account",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Users and groups",
+      "cards": [
+        {
+          "question": "What does an IAM user represent?",
+          "answer": "One person in your organisation",
+          "keyTopic": "IAM users",
+          "origin": "source"
+        },
+        {
+          "question": "Must every IAM user belong to a group?",
+          "answer": "No",
+          "keyTopic": "IAM users",
+          "origin": "source"
+        },
+        {
+          "question": "How many groups can one user belong to?",
+          "answer": "Multiple, or none",
+          "keyTopic": "IAM groups",
+          "origin": "source"
+        },
+        {
+          "question": "What can an IAM group contain?",
+          "answer": "Users only",
+          "keyTopic": "IAM groups",
+          "origin": "source"
+        },
+        {
+          "question": "Can an IAM group contain another group?",
+          "answer": "No",
+          "keyTopic": "IAM groups",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Policies",
+      "cards": [
+        {
+          "question": "In what format are IAM policies written?",
+          "answer": "JSON",
+          "keyTopic": "IAM policies",
+          "origin": "source"
+        },
+        {
+          "question": "What can IAM policies be attached to (from this section)?",
+          "answer": "Users or groups",
+          "keyTopic": "IAM policies",
+          "origin": "source"
+        },
+        {
+          "question": "What does an IAM policy define?",
+          "answer": "The permissions of its users or groups",
+          "keyTopic": "IAM policies",
+          "origin": "source"
+        },
+        {
+          "question": "Define the least privilege principle.",
+          "answer": "Grant only the permissions a user needs",
+          "keyTopic": "Least privilege",
+          "origin": "source"
+        },
+        {
+          "question": "Which principle forbids giving users extra permissions \"just in case\"?",
+          "answer": "Least privilege",
+          "keyTopic": "Least privilege",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Inheritance",
+      "cards": [
+        {
+          "question": "A user is in two groups. Which policies apply?",
+          "answer": "Policies of both groups",
+          "keyTopic": "Policy inheritance",
+          "origin": "source"
+        },
+        {
+          "question": "What is a policy attached directly to one user called?",
+          "answer": "An inline policy",
+          "keyTopic": "Policy inheritance",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Policy structure",
+      "cards": [
+        {
+          "question": "Top-level elements of an IAM policy?",
+          "answer": [
+            "Version",
+            "Id (optional)",
+            "Statement"
+          ],
+          "keyTopic": "Policy structure",
+          "origin": "source"
+        },
+        {
+          "question": "Value always used for the policy Version?",
+          "answer": "\"2012-10-17\"",
+          "keyTopic": "Policy structure",
+          "origin": "source"
+        },
+        {
+          "question": "Elements of a policy statement?",
+          "answer": [
+            "Sid (optional)",
+            "Effect",
+            "Principal",
+            "Action",
+            "Resource",
+            "Condition (optional)"
+          ],
+          "keyTopic": "Policy structure",
+          "origin": "source"
+        },
+        {
+          "question": "Two possible values of Effect?",
+          "answer": "Allow or Deny",
+          "keyTopic": "Policy structure",
+          "origin": "source"
+        },
+        {
+          "question": "Which statement element lists the API actions?",
+          "answer": "Action",
+          "keyTopic": "Policy structure",
+          "origin": "source"
+        },
+        {
+          "question": "Which statement element lists what the actions apply to?",
+          "answer": "Resource",
+          "keyTopic": "Policy structure",
+          "origin": "source"
+        },
+        {
+          "question": "Which statement element names the account, user or role?",
+          "answer": "Principal",
+          "keyTopic": "Policy structure",
+          "origin": "source"
+        },
+        {
+          "question": "Which optional element restricts when a statement applies?",
+          "answer": "Condition",
+          "keyTopic": "Policy structure",
+          "origin": "source"
+        }
+      ]
+    }
+  ]
+}

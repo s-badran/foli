@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "6adb590f-75d0-4bc7-adf6-4d5dbe512e04",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 15,
+    "title": "AWS Integration & Messaging: SQS, SNS & Kinesis",
+    "pageStart": 377,
+    "pageEnd": 415,
+    "description": "Decoupling with queues, pub/sub fan-out, real-time streaming with Kinesis, and Amazon MQ.",
+    "examFocus": [
+      "Task 2.1: loosely coupled architectures",
+      "Task 3.5: data ingestion"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

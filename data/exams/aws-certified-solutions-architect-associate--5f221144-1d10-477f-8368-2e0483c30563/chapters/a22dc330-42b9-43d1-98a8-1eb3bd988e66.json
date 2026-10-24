@@ -1,0 +1,1267 @@
+{
+  "chapter": {
+    "id": "a22dc330-42b9-43d1-98a8-1eb3bd988e66",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "AWS Identity and Access Management (AWS IAM)",
+    "order": 1,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 24,
+    "pageEnd": 40,
+    "description": "Users and groups, permissions, policies, password/MFA protection, CLI, SDK, roles, audit tools and IAM best practices.",
+    "objectives": [
+      {
+        "id": "a22dc330-42b9-43d1-98a8-1eb3bd988e66/users-groups",
+        "title": "Users and groups",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 25,
+        "pageEnd": 25,
+        "assessment": "both"
+      },
+      {
+        "id": "a22dc330-42b9-43d1-98a8-1eb3bd988e66/permissions",
+        "title": "Permissions and least privilege",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 26,
+        "pageEnd": 26,
+        "assessment": "both"
+      },
+      {
+        "id": "a22dc330-42b9-43d1-98a8-1eb3bd988e66/policies",
+        "title": "Policy inheritance, structure and evaluation",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 27,
+        "pageEnd": 28,
+        "assessment": "both"
+      },
+      {
+        "id": "a22dc330-42b9-43d1-98a8-1eb3bd988e66/mfa",
+        "title": "Password policy and MFA",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 29,
+        "pageEnd": 32,
+        "assessment": "both"
+      },
+      {
+        "id": "a22dc330-42b9-43d1-98a8-1eb3bd988e66/cli",
+        "title": "AWS CLI and programmatic access",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 33,
+        "pageEnd": 35,
+        "assessment": "both"
+      },
+      {
+        "id": "a22dc330-42b9-43d1-98a8-1eb3bd988e66/sdk",
+        "title": "AWS SDK and application credentials",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 36,
+        "pageEnd": 36,
+        "assessment": "both"
+      },
+      {
+        "id": "a22dc330-42b9-43d1-98a8-1eb3bd988e66/roles",
+        "title": "IAM roles for services",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 37,
+        "pageEnd": 37,
+        "assessment": "both"
+      },
+      {
+        "id": "a22dc330-42b9-43d1-98a8-1eb3bd988e66/security-tools",
+        "title": "Credential report and Access Advisor",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 38,
+        "pageEnd": 38,
+        "assessment": "both"
+      },
+      {
+        "id": "a22dc330-42b9-43d1-98a8-1eb3bd988e66/best-practices",
+        "title": "IAM best practices",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 39,
+        "pageEnd": 40,
+        "assessment": "both"
+      }
+    ],
+    "coverageStatus": "source-audited"
+  },
+  "sections": [
+    {
+      "id": "3bf27e6b-f59f-4b74-8e0d-6fda82ece23c",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "a22dc330-42b9-43d1-98a8-1eb3bd988e66",
+      "title": "Users and groups",
+      "objective": "Can an IAM group contain another group?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Identity and Access\nManagement (AWS IAM)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Users & Groups\n• \tIAM = Identity and Access Management, Global service\n• \tRoot account created by default, shouldn’t be used or shared\n• \tUsers are people within your organization, and can be grouped\n• \tGroups only contain users, not other groups\n• \tUsers don’t have to belong to a group, and user can belong to multiple groups\nAlice \tBob \tCharles \tDavid \tEdward\nGroup: Developers \tGroup: Operations\nGroup\nAudit Team\nFred\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Permissions\n• \tUsers or Groups \tcan be\nassigned JSON documents\ncalled policies\n• \tThese policies define the\npermissions \tof the users\n• \tIn AWS you apply the \tleast\nprivilege principle: don’t give\nmore permissions than a user\nneeds\n{\n\"Version\": \t\"2012-10-17\",\n\"Statement\": [\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"ec2:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"elasticloadbalancing:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": [\n\"cloudwatch:ListMetrics\",\n\"cloudwatch:GetMetricStatistics\",\n\"cloudwatch:Describe*\"\n],\n\"Resource\": \t\"*\"\n}\n]\n}\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies inheritance\nAlice \tBob \tCharles \tDavid \tEdward\nDevelopers \tOperations\nAudit Team\nFred\ninline\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies Structure\n• \tConsists of\n• \tVersion: policy language version, always include “2012-10-\n17”\n• \tId: an identifier for the policy (optional)\n• \tStatement: one or more individual statements (required)\n• \tStatements consists of\n• \tSid: an identifier for the statement (optional)\n• \tEffect: whether the statement allows or denies access\n(Allow, Deny)\n• \tPrincipal: account/user/role to which this policy applied to\n• \tAction: list of actions this policy allows or denies\n• \tResource: list of resources to which the actions applied to\n• \tCondition: conditions for when this policy is in effect\n(optional)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM \t– \tPassword Policy\n• \tStrong passwords = higher security for your account\n• \tIn AWS, you can setup a password policy:\n• \tSet a minimum password length\n• \tRequire specific character types:\n• \tincluding uppercase letters\n• \tlowercase letters\n• \tnumbers\n• \tnon-alphanumeric characters\n• \tAllow all IAM users to change their own passwords\n• \tRequire users to change their password after some time (password expiration)\n• \tPrevent password re-use\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMulti Factor Authentication \t- \tMFA\n• \tUsers have access to your account and can possibly change\nconfigurations or delete resources in your AWS account\n• \tYou want to protect your Root Accounts and IAM users\n• \tMFA = password \tyou know \t+ security device \tyou own\n• \tMain benefit of MFA:\nif a password is stolen or hacked, the account is not compromised\nAlice\n+Password \t=> \tSuccessful login\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nVirtual MFA device\nGoogle Authenticator\n(phone only)\nAuthy\n(phone only)\nUniversal 2nd Factor (U2F) Security Key\nYubiKey by Yubico (3rd party)\nSupport for multiple tokens on a single device. Support for multiple root and IAM users\nusing a single security key\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nHardware Key Fob MFA Device\nProvided by Gemalto (3rd party)\nHardware Key Fob MFA Device for\nAWS GovCloud (US)\nProvided by SurePassID (3rd party)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nHow can users access AWS ?\n• \tTo access AWS, you have three options:\n• \tAWS Management Console (protected by password + MFA)\n• \tAWS Command Line Interface (CLI): protected by access keys\n• \tAWS Software Developer Kit (SDK) - for code: protected by access keys\n• \tAccess Keys are generated through the AWS Console\n• \tUsers manage their own access keys\n• \tAccess Keys are secret, just like a password. Don’t share them\n• \tAccess Key ID ~= username\n• \tSecret Access Key ~= password\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nExample (Fake) Access Keys\n• \tAccess key ID: AKIASK4E37PV4983d6C\n• \tSecret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq\n• \tRemember: don’t share your access keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS CLI?\n• \tA tool that enables you to interact with AWS services using commands in\nyour command-line shell\n• \tDirect access to the public APIs of AWS services\n• \tYou can develop scripts to manage your resources\n• \tIt’s open-source \thttps://github.com/aws/aws-cli\n• \tAlternative to using AWS Management Console\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS SDK?\n• \tAWS Software Development Kit (AWS SDK)\n• \tLanguage-specific APIs (set of libraries)\n• \tEnables you to access and manage AWS services\nprogrammatically\n• \tEmbedded within your application\n• \tSupports\n• \tSDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js,\nC++)\n• \tMobile SDKs (Android, iOS, …)\n• \tIoT Device SDKs (Embedded C, Arduino, …)\n• \tExample: AWS CLI is built on AWS SDK for Python\nAWS SDK\nYour Application\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles for Services\n• \tSome AWS service will need to\nperform actions on your behalf\n• \tTo do so, we will assign\npermissions \tto AWS services\nwith \tIAM Roles\n• \tCommon roles:\n• \tEC2 Instance Roles\n• \tLambda Function Roles\n• \tRoles for CloudFormation\nEC2 Instance\n(virtual server)\nIAM Role\nAccess AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Security Tools\n• \tIAM Credentials Report (account-level)\n• \ta report that lists all your account's users and the status of their various\ncredentials\n• \tIAM Access Advisor (user-level)\n• \tAccess advisor shows the service permissions granted to a user and when those\nservices were last accessed.\n• \tYou can use this information to revise your policies.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Guidelines & Best Practices\n• \tDon’t use the root account except for AWS account setup\n• \tOne physical user = One AWS \tuser\n• \tAssign users to groups \tand assign permissions to groups\n• \tCreate a \tstrong password policy\n• \tUse and enforce the use of \tMulti Factor Authentication (MFA)\n• \tCreate and use \tRoles \tfor giving permissions to AWS services\n• \tUse Access Keys for Programmatic Access (CLI / SDK)\n• \tAudit permissions of your account using IAM Credentials Report & IAM\nAccess Advisor\n• \tNever share IAM users & Access Keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Section \t– \tSummary\n• \tUsers: \tmapped to a physical user, has a password for AWS Console\n• \tGroups: contains users only\n• \tPolicies: \tJSON document that outlines permissions for users or groups\n• \tRoles: \tfor EC2 instances or AWS services\n• \tSecurity: \tMFA + Password Policy\n• \tAWS CLI: manage your AWS services using the command-line\n• \tAWS SDK: manage your AWS services using a programming language\n• \tAccess Keys: \taccess AWS using the CLI or SDK\n• \tAudit: IAM Credential Reports & IAM Access Advisor",
+      "pageStart": 25,
+      "pageEnd": 25,
+      "read": false,
+      "content": {
+        "summary": "## Users and groups\n\nAn IAM user is an identity; a group organizes permissions for users. Groups can contain users, not other groups, and one user may belong to several groups. IAM is global, while individual service resources may be regional.\n\n### Reasoning and trade-offs\n\nIAM groups cannot contain groups, but a user can belong to multiple groups. Group policies contribute permissions subject to applicable denies and other limits. Modern workforce federation is a labelled extension to the source, not a reason to omit these IAM fundamentals.\n\n### Avoid this trap\n\nSeparate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls.\n\n### Apply it\n\nA developer needs the permissions of both the engineering and audit teams. The administrator proposes nesting the audit group inside the engineering group. Which design matches IAM group behavior?\n\n**Recommended design:** Place the developer in both groups and review the resulting effective permissions.\n\nIAM groups cannot contain groups, but a user can belong to multiple groups. Group policies contribute permissions subject to applicable denies and other limits. Modern workforce federation is a labelled extension to the source, not a reason to omit these IAM fundamentals.",
+        "keyPoints": [
+          "An IAM user is an identity; a group organizes permissions for users. Groups can contain users, not other groups, and one user may belong to several groups. IAM is global, while individual service resources may be regional.",
+          "IAM groups cannot contain groups, but a user can belong to multiple groups. Group policies contribute permissions subject to applicable denies and other limits. Modern workforce federation is a labelled extension to the source, not a reason to omit these IAM fundamentals.",
+          "Separate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Can an IAM group contain another group?",
+            "answer": "No. IAM groups contain users only.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/users-groups"
+            ],
+            "id": "1cdb5415-370c-4f83-a40d-33e4bdcdbb1a",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Can an IAM user belong to several groups?",
+            "answer": "Yes.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/users-groups"
+            ],
+            "id": "8d2aa668-592f-4529-8b14-19b93444222c",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Is IAM a regional service?",
+            "answer": "No. IAM is a global service.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/users-groups"
+            ],
+            "id": "44636f23-d4d8-4b8e-8bf7-0c2d50fd701b",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Is the root identity intended for routine work?",
+            "answer": "No. Protect it and reserve it for tasks that require root.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/users-groups"
+            ],
+            "id": "79d700d2-7538-4f68-ba4f-8fecc51795e3",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A developer needs the permissions of both the engineering and audit teams. The administrator proposes nesting the audit group inside the engineering group. Which design matches IAM group behavior?",
+            "options": [
+              "Place the developer in both groups and review the resulting effective permissions.",
+              "Nest the audit group inside engineering so permissions inherit automatically.",
+              "Create an IAM user in each Region because group membership is regional.",
+              "Share the root login so the developer inherits every group permission."
+            ],
+            "correctIndex": 0,
+            "explanation": "IAM groups cannot contain groups, but a user can belong to multiple groups. Group policies contribute permissions subject to applicable denies and other limits. Modern workforce federation is a labelled extension to the source, not a reason to omit these IAM fundamentals.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/users-groups"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.035Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 25,
+            "pageEnd": 25,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "0facfe14-bfcb-4b5a-950a-50c7227f274c",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "a22dc330-42b9-43d1-98a8-1eb3bd988e66",
+      "title": "Permissions and least privilege",
+      "objective": "What does least privilege mean?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Identity and Access\nManagement (AWS IAM)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Users & Groups\n• \tIAM = Identity and Access Management, Global service\n• \tRoot account created by default, shouldn’t be used or shared\n• \tUsers are people within your organization, and can be grouped\n• \tGroups only contain users, not other groups\n• \tUsers don’t have to belong to a group, and user can belong to multiple groups\nAlice \tBob \tCharles \tDavid \tEdward\nGroup: Developers \tGroup: Operations\nGroup\nAudit Team\nFred\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Permissions\n• \tUsers or Groups \tcan be\nassigned JSON documents\ncalled policies\n• \tThese policies define the\npermissions \tof the users\n• \tIn AWS you apply the \tleast\nprivilege principle: don’t give\nmore permissions than a user\nneeds\n{\n\"Version\": \t\"2012-10-17\",\n\"Statement\": [\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"ec2:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"elasticloadbalancing:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": [\n\"cloudwatch:ListMetrics\",\n\"cloudwatch:GetMetricStatistics\",\n\"cloudwatch:Describe*\"\n],\n\"Resource\": \t\"*\"\n}\n]\n}\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies inheritance\nAlice \tBob \tCharles \tDavid \tEdward\nDevelopers \tOperations\nAudit Team\nFred\ninline\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies Structure\n• \tConsists of\n• \tVersion: policy language version, always include “2012-10-\n17”\n• \tId: an identifier for the policy (optional)\n• \tStatement: one or more individual statements (required)\n• \tStatements consists of\n• \tSid: an identifier for the statement (optional)\n• \tEffect: whether the statement allows or denies access\n(Allow, Deny)\n• \tPrincipal: account/user/role to which this policy applied to\n• \tAction: list of actions this policy allows or denies\n• \tResource: list of resources to which the actions applied to\n• \tCondition: conditions for when this policy is in effect\n(optional)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM \t– \tPassword Policy\n• \tStrong passwords = higher security for your account\n• \tIn AWS, you can setup a password policy:\n• \tSet a minimum password length\n• \tRequire specific character types:\n• \tincluding uppercase letters\n• \tlowercase letters\n• \tnumbers\n• \tnon-alphanumeric characters\n• \tAllow all IAM users to change their own passwords\n• \tRequire users to change their password after some time (password expiration)\n• \tPrevent password re-use\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMulti Factor Authentication \t- \tMFA\n• \tUsers have access to your account and can possibly change\nconfigurations or delete resources in your AWS account\n• \tYou want to protect your Root Accounts and IAM users\n• \tMFA = password \tyou know \t+ security device \tyou own\n• \tMain benefit of MFA:\nif a password is stolen or hacked, the account is not compromised\nAlice\n+Password \t=> \tSuccessful login\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nVirtual MFA device\nGoogle Authenticator\n(phone only)\nAuthy\n(phone only)\nUniversal 2nd Factor (U2F) Security Key\nYubiKey by Yubico (3rd party)\nSupport for multiple tokens on a single device. Support for multiple root and IAM users\nusing a single security key\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nHardware Key Fob MFA Device\nProvided by Gemalto (3rd party)\nHardware Key Fob MFA Device for\nAWS GovCloud (US)\nProvided by SurePassID (3rd party)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nHow can users access AWS ?\n• \tTo access AWS, you have three options:\n• \tAWS Management Console (protected by password + MFA)\n• \tAWS Command Line Interface (CLI): protected by access keys\n• \tAWS Software Developer Kit (SDK) - for code: protected by access keys\n• \tAccess Keys are generated through the AWS Console\n• \tUsers manage their own access keys\n• \tAccess Keys are secret, just like a password. Don’t share them\n• \tAccess Key ID ~= username\n• \tSecret Access Key ~= password\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nExample (Fake) Access Keys\n• \tAccess key ID: AKIASK4E37PV4983d6C\n• \tSecret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq\n• \tRemember: don’t share your access keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS CLI?\n• \tA tool that enables you to interact with AWS services using commands in\nyour command-line shell\n• \tDirect access to the public APIs of AWS services\n• \tYou can develop scripts to manage your resources\n• \tIt’s open-source \thttps://github.com/aws/aws-cli\n• \tAlternative to using AWS Management Console\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS SDK?\n• \tAWS Software Development Kit (AWS SDK)\n• \tLanguage-specific APIs (set of libraries)\n• \tEnables you to access and manage AWS services\nprogrammatically\n• \tEmbedded within your application\n• \tSupports\n• \tSDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js,\nC++)\n• \tMobile SDKs (Android, iOS, …)\n• \tIoT Device SDKs (Embedded C, Arduino, …)\n• \tExample: AWS CLI is built on AWS SDK for Python\nAWS SDK\nYour Application\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles for Services\n• \tSome AWS service will need to\nperform actions on your behalf\n• \tTo do so, we will assign\npermissions \tto AWS services\nwith \tIAM Roles\n• \tCommon roles:\n• \tEC2 Instance Roles\n• \tLambda Function Roles\n• \tRoles for CloudFormation\nEC2 Instance\n(virtual server)\nIAM Role\nAccess AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Security Tools\n• \tIAM Credentials Report (account-level)\n• \ta report that lists all your account's users and the status of their various\ncredentials\n• \tIAM Access Advisor (user-level)\n• \tAccess advisor shows the service permissions granted to a user and when those\nservices were last accessed.\n• \tYou can use this information to revise your policies.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Guidelines & Best Practices\n• \tDon’t use the root account except for AWS account setup\n• \tOne physical user = One AWS \tuser\n• \tAssign users to groups \tand assign permissions to groups\n• \tCreate a \tstrong password policy\n• \tUse and enforce the use of \tMulti Factor Authentication (MFA)\n• \tCreate and use \tRoles \tfor giving permissions to AWS services\n• \tUse Access Keys for Programmatic Access (CLI / SDK)\n• \tAudit permissions of your account using IAM Credentials Report & IAM\nAccess Advisor\n• \tNever share IAM users & Access Keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Section \t– \tSummary\n• \tUsers: \tmapped to a physical user, has a password for AWS Console\n• \tGroups: contains users only\n• \tPolicies: \tJSON document that outlines permissions for users or groups\n• \tRoles: \tfor EC2 instances or AWS services\n• \tSecurity: \tMFA + Password Policy\n• \tAWS CLI: manage your AWS services using the command-line\n• \tAWS SDK: manage your AWS services using a programming language\n• \tAccess Keys: \taccess AWS using the CLI or SDK\n• \tAudit: IAM Credential Reports & IAM Access Advisor",
+      "pageStart": 26,
+      "pageEnd": 26,
+      "read": false,
+      "content": {
+        "summary": "## Permissions and least privilege\n\nPolicies describe permitted or denied actions on resources, potentially under conditions. Least privilege means granting only what the workload or person needs, rather than selecting an access mechanism and assuming it grants every action.\n\n### Reasoning and trade-offs\n\nThe required actions are observational, so permission scope should reflect that. MFA strengthens authentication but does not turn an allowed write into a read-only action. Console and CLI calls are both authorized through policies.\n\n### Avoid this trap\n\nSeparate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls.\n\n### Apply it\n\nA support team must list EC2 instances to diagnose incidents but must not launch or terminate them. Which permission approach best meets the requirement?\n\n**Recommended design:** Allow the necessary describe/list actions and omit write permissions.\n\nThe required actions are observational, so permission scope should reflect that. MFA strengthens authentication but does not turn an allowed write into a read-only action. Console and CLI calls are both authorized through policies.",
+        "keyPoints": [
+          "Policies describe permitted or denied actions on resources, potentially under conditions. Least privilege means granting only what the workload or person needs, rather than selecting an access mechanism and assuming it grants every action.",
+          "The required actions are observational, so permission scope should reflect that. MFA strengthens authentication but does not turn an allowed write into a read-only action. Console and CLI calls are both authorized through policies.",
+          "Separate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "What does least privilege mean?",
+            "answer": "Grant only the actions and resource access required.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/permissions"
+            ],
+            "id": "d9e5416e-11e6-4f99-8581-32d05631f340",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What document defines IAM permissions?",
+            "answer": "An IAM policy expressed as JSON.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/permissions"
+            ],
+            "id": "738e2cd3-adeb-42e7-9c03-effd4ee1e50e",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Does successful authentication authorize every AWS action?",
+            "answer": "No. Applicable policies still determine authorization.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/permissions"
+            ],
+            "id": "cca7ccc6-2c10-4f72-9c92-9fd958875101",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A support team must list EC2 instances to diagnose incidents but must not launch or terminate them. Which permission approach best meets the requirement?",
+            "options": [
+              "Grant AdministratorAccess because access through the CLI is read-only.",
+              "Allow the necessary describe/list actions and omit write permissions.",
+              "Allow all EC2 actions and rely on MFA to block accidental termination.",
+              "Share a full-access user so incident responders do not need individual permissions."
+            ],
+            "correctIndex": 1,
+            "explanation": "The required actions are observational, so permission scope should reflect that. MFA strengthens authentication but does not turn an allowed write into a read-only action. Console and CLI calls are both authorized through policies.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/permissions"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.035Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 26,
+            "pageEnd": 26,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "bc060ee5-dbcd-4cc2-b4d4-7bda8fd9adba",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "a22dc330-42b9-43d1-98a8-1eb3bd988e66",
+      "title": "Policy structure and evaluation",
+      "objective": "Which policy field chooses Allow or Deny?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Identity and Access\nManagement (AWS IAM)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Users & Groups\n• \tIAM = Identity and Access Management, Global service\n• \tRoot account created by default, shouldn’t be used or shared\n• \tUsers are people within your organization, and can be grouped\n• \tGroups only contain users, not other groups\n• \tUsers don’t have to belong to a group, and user can belong to multiple groups\nAlice \tBob \tCharles \tDavid \tEdward\nGroup: Developers \tGroup: Operations\nGroup\nAudit Team\nFred\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Permissions\n• \tUsers or Groups \tcan be\nassigned JSON documents\ncalled policies\n• \tThese policies define the\npermissions \tof the users\n• \tIn AWS you apply the \tleast\nprivilege principle: don’t give\nmore permissions than a user\nneeds\n{\n\"Version\": \t\"2012-10-17\",\n\"Statement\": [\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"ec2:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"elasticloadbalancing:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": [\n\"cloudwatch:ListMetrics\",\n\"cloudwatch:GetMetricStatistics\",\n\"cloudwatch:Describe*\"\n],\n\"Resource\": \t\"*\"\n}\n]\n}\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies inheritance\nAlice \tBob \tCharles \tDavid \tEdward\nDevelopers \tOperations\nAudit Team\nFred\ninline\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies Structure\n• \tConsists of\n• \tVersion: policy language version, always include “2012-10-\n17”\n• \tId: an identifier for the policy (optional)\n• \tStatement: one or more individual statements (required)\n• \tStatements consists of\n• \tSid: an identifier for the statement (optional)\n• \tEffect: whether the statement allows or denies access\n(Allow, Deny)\n• \tPrincipal: account/user/role to which this policy applied to\n• \tAction: list of actions this policy allows or denies\n• \tResource: list of resources to which the actions applied to\n• \tCondition: conditions for when this policy is in effect\n(optional)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM \t– \tPassword Policy\n• \tStrong passwords = higher security for your account\n• \tIn AWS, you can setup a password policy:\n• \tSet a minimum password length\n• \tRequire specific character types:\n• \tincluding uppercase letters\n• \tlowercase letters\n• \tnumbers\n• \tnon-alphanumeric characters\n• \tAllow all IAM users to change their own passwords\n• \tRequire users to change their password after some time (password expiration)\n• \tPrevent password re-use\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMulti Factor Authentication \t- \tMFA\n• \tUsers have access to your account and can possibly change\nconfigurations or delete resources in your AWS account\n• \tYou want to protect your Root Accounts and IAM users\n• \tMFA = password \tyou know \t+ security device \tyou own\n• \tMain benefit of MFA:\nif a password is stolen or hacked, the account is not compromised\nAlice\n+Password \t=> \tSuccessful login\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nVirtual MFA device\nGoogle Authenticator\n(phone only)\nAuthy\n(phone only)\nUniversal 2nd Factor (U2F) Security Key\nYubiKey by Yubico (3rd party)\nSupport for multiple tokens on a single device. Support for multiple root and IAM users\nusing a single security key\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nHardware Key Fob MFA Device\nProvided by Gemalto (3rd party)\nHardware Key Fob MFA Device for\nAWS GovCloud (US)\nProvided by SurePassID (3rd party)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nHow can users access AWS ?\n• \tTo access AWS, you have three options:\n• \tAWS Management Console (protected by password + MFA)\n• \tAWS Command Line Interface (CLI): protected by access keys\n• \tAWS Software Developer Kit (SDK) - for code: protected by access keys\n• \tAccess Keys are generated through the AWS Console\n• \tUsers manage their own access keys\n• \tAccess Keys are secret, just like a password. Don’t share them\n• \tAccess Key ID ~= username\n• \tSecret Access Key ~= password\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nExample (Fake) Access Keys\n• \tAccess key ID: AKIASK4E37PV4983d6C\n• \tSecret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq\n• \tRemember: don’t share your access keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS CLI?\n• \tA tool that enables you to interact with AWS services using commands in\nyour command-line shell\n• \tDirect access to the public APIs of AWS services\n• \tYou can develop scripts to manage your resources\n• \tIt’s open-source \thttps://github.com/aws/aws-cli\n• \tAlternative to using AWS Management Console\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS SDK?\n• \tAWS Software Development Kit (AWS SDK)\n• \tLanguage-specific APIs (set of libraries)\n• \tEnables you to access and manage AWS services\nprogrammatically\n• \tEmbedded within your application\n• \tSupports\n• \tSDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js,\nC++)\n• \tMobile SDKs (Android, iOS, …)\n• \tIoT Device SDKs (Embedded C, Arduino, …)\n• \tExample: AWS CLI is built on AWS SDK for Python\nAWS SDK\nYour Application\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles for Services\n• \tSome AWS service will need to\nperform actions on your behalf\n• \tTo do so, we will assign\npermissions \tto AWS services\nwith \tIAM Roles\n• \tCommon roles:\n• \tEC2 Instance Roles\n• \tLambda Function Roles\n• \tRoles for CloudFormation\nEC2 Instance\n(virtual server)\nIAM Role\nAccess AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Security Tools\n• \tIAM Credentials Report (account-level)\n• \ta report that lists all your account's users and the status of their various\ncredentials\n• \tIAM Access Advisor (user-level)\n• \tAccess advisor shows the service permissions granted to a user and when those\nservices were last accessed.\n• \tYou can use this information to revise your policies.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Guidelines & Best Practices\n• \tDon’t use the root account except for AWS account setup\n• \tOne physical user = One AWS \tuser\n• \tAssign users to groups \tand assign permissions to groups\n• \tCreate a \tstrong password policy\n• \tUse and enforce the use of \tMulti Factor Authentication (MFA)\n• \tCreate and use \tRoles \tfor giving permissions to AWS services\n• \tUse Access Keys for Programmatic Access (CLI / SDK)\n• \tAudit permissions of your account using IAM Credentials Report & IAM\nAccess Advisor\n• \tNever share IAM users & Access Keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Section \t– \tSummary\n• \tUsers: \tmapped to a physical user, has a password for AWS Console\n• \tGroups: contains users only\n• \tPolicies: \tJSON document that outlines permissions for users or groups\n• \tRoles: \tfor EC2 instances or AWS services\n• \tSecurity: \tMFA + Password Policy\n• \tAWS CLI: manage your AWS services using the command-line\n• \tAWS SDK: manage your AWS services using a programming language\n• \tAccess Keys: \taccess AWS using the CLI or SDK\n• \tAudit: IAM Credential Reports & IAM Access Advisor",
+      "pageStart": 27,
+      "pageEnd": 28,
+      "read": false,
+      "content": {
+        "summary": "## Policy structure and evaluation\n\nA policy contains statements with an Effect, Action and Resource, plus other fields as applicable. Conditions narrow when a statement applies. Permissions can come from user and group policies, but an applicable explicit deny wins over an allow. Principal belongs in policies that identify a resource-side or trust principal, not every identity policy.\n\n### Reasoning and trade-offs\n\nPolicy order and access client do not cancel an applicable explicit deny. Evaluate the requested action, resource and conditions across applicable policies. Other permission boundaries can further restrict an otherwise allowed request.\n\n### Avoid this trap\n\nSeparate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls.\n\n### Apply it\n\nA user has a group policy allowing s3:GetObject and a user policy explicitly denying s3:GetObject for the confidential prefix. The user requests an object in that prefix. What is the result?\n\n**Recommended design:** Access is denied because the applicable explicit deny overrides the allow.\n\nPolicy order and access client do not cancel an applicable explicit deny. Evaluate the requested action, resource and conditions across applicable policies. Other permission boundaries can further restrict an otherwise allowed request.",
+        "keyPoints": [
+          "A policy contains statements with an Effect, Action and Resource, plus other fields as applicable. Conditions narrow when a statement applies. Permissions can come from user and group policies, but an applicable explicit deny wins over an allow. Principal belongs in policies that identify a resource-side or trust principal, not every identity policy.",
+          "Policy order and access client do not cancel an applicable explicit deny. Evaluate the requested action, resource and conditions across applicable policies. Other permission boundaries can further restrict an otherwise allowed request.",
+          "Separate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Which policy field chooses Allow or Deny?",
+            "answer": "Effect.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/policies"
+            ],
+            "id": "d0b18c15-7c1d-4f46-b821-8d58faaff394",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Which field names permitted API operations?",
+            "answer": "Action.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/policies"
+            ],
+            "id": "e3dd0a30-9117-4dc2-8464-b31a0ac79131",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Which field scopes the affected resources?",
+            "answer": "Resource.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/policies"
+            ],
+            "id": "da80346a-b863-438e-b0d8-07bafe9f1e82",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What does a policy Condition restrict?",
+            "answer": "The circumstances in which a statement applies.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/policies"
+            ],
+            "id": "722ba918-7614-45bf-8787-3531c528b6ab",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What wins when an applicable Allow and explicit Deny conflict?",
+            "answer": "The explicit Deny.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/policies"
+            ],
+            "id": "4cd37bf9-5ca2-47d5-84b6-e6aa279e5b94",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Is Principal required in an IAM identity-based policy?",
+            "answer": "No. The attached identity is already the policy subject.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/policies"
+            ],
+            "id": "b77592a1-a7ec-4736-bb59-e9a72e5a4cb2",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A user has a group policy allowing s3:GetObject and a user policy explicitly denying s3:GetObject for the confidential prefix. The user requests an object in that prefix. What is the result?",
+            "options": [
+              "Access is allowed because group policies always outrank user policies.",
+              "Access is allowed if the allow statement appears earlier in the JSON document.",
+              "Access is denied because the applicable explicit deny overrides the allow.",
+              "Access is allowed when the user switches from the console to an SDK."
+            ],
+            "correctIndex": 2,
+            "explanation": "Policy order and access client do not cancel an applicable explicit deny. Evaluate the requested action, resource and conditions across applicable policies. Other permission boundaries can further restrict an otherwise allowed request.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/policies"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.035Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 27,
+            "pageEnd": 28,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "4fe4cb47-454e-4d82-8f1e-5b3e1dc7325f",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "a22dc330-42b9-43d1-98a8-1eb3bd988e66",
+      "title": "Password policy and MFA",
+      "objective": "What does MFA add to a password login?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Identity and Access\nManagement (AWS IAM)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Users & Groups\n• \tIAM = Identity and Access Management, Global service\n• \tRoot account created by default, shouldn’t be used or shared\n• \tUsers are people within your organization, and can be grouped\n• \tGroups only contain users, not other groups\n• \tUsers don’t have to belong to a group, and user can belong to multiple groups\nAlice \tBob \tCharles \tDavid \tEdward\nGroup: Developers \tGroup: Operations\nGroup\nAudit Team\nFred\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Permissions\n• \tUsers or Groups \tcan be\nassigned JSON documents\ncalled policies\n• \tThese policies define the\npermissions \tof the users\n• \tIn AWS you apply the \tleast\nprivilege principle: don’t give\nmore permissions than a user\nneeds\n{\n\"Version\": \t\"2012-10-17\",\n\"Statement\": [\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"ec2:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"elasticloadbalancing:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": [\n\"cloudwatch:ListMetrics\",\n\"cloudwatch:GetMetricStatistics\",\n\"cloudwatch:Describe*\"\n],\n\"Resource\": \t\"*\"\n}\n]\n}\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies inheritance\nAlice \tBob \tCharles \tDavid \tEdward\nDevelopers \tOperations\nAudit Team\nFred\ninline\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies Structure\n• \tConsists of\n• \tVersion: policy language version, always include “2012-10-\n17”\n• \tId: an identifier for the policy (optional)\n• \tStatement: one or more individual statements (required)\n• \tStatements consists of\n• \tSid: an identifier for the statement (optional)\n• \tEffect: whether the statement allows or denies access\n(Allow, Deny)\n• \tPrincipal: account/user/role to which this policy applied to\n• \tAction: list of actions this policy allows or denies\n• \tResource: list of resources to which the actions applied to\n• \tCondition: conditions for when this policy is in effect\n(optional)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM \t– \tPassword Policy\n• \tStrong passwords = higher security for your account\n• \tIn AWS, you can setup a password policy:\n• \tSet a minimum password length\n• \tRequire specific character types:\n• \tincluding uppercase letters\n• \tlowercase letters\n• \tnumbers\n• \tnon-alphanumeric characters\n• \tAllow all IAM users to change their own passwords\n• \tRequire users to change their password after some time (password expiration)\n• \tPrevent password re-use\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMulti Factor Authentication \t- \tMFA\n• \tUsers have access to your account and can possibly change\nconfigurations or delete resources in your AWS account\n• \tYou want to protect your Root Accounts and IAM users\n• \tMFA = password \tyou know \t+ security device \tyou own\n• \tMain benefit of MFA:\nif a password is stolen or hacked, the account is not compromised\nAlice\n+Password \t=> \tSuccessful login\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nVirtual MFA device\nGoogle Authenticator\n(phone only)\nAuthy\n(phone only)\nUniversal 2nd Factor (U2F) Security Key\nYubiKey by Yubico (3rd party)\nSupport for multiple tokens on a single device. Support for multiple root and IAM users\nusing a single security key\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nHardware Key Fob MFA Device\nProvided by Gemalto (3rd party)\nHardware Key Fob MFA Device for\nAWS GovCloud (US)\nProvided by SurePassID (3rd party)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nHow can users access AWS ?\n• \tTo access AWS, you have three options:\n• \tAWS Management Console (protected by password + MFA)\n• \tAWS Command Line Interface (CLI): protected by access keys\n• \tAWS Software Developer Kit (SDK) - for code: protected by access keys\n• \tAccess Keys are generated through the AWS Console\n• \tUsers manage their own access keys\n• \tAccess Keys are secret, just like a password. Don’t share them\n• \tAccess Key ID ~= username\n• \tSecret Access Key ~= password\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nExample (Fake) Access Keys\n• \tAccess key ID: AKIASK4E37PV4983d6C\n• \tSecret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq\n• \tRemember: don’t share your access keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS CLI?\n• \tA tool that enables you to interact with AWS services using commands in\nyour command-line shell\n• \tDirect access to the public APIs of AWS services\n• \tYou can develop scripts to manage your resources\n• \tIt’s open-source \thttps://github.com/aws/aws-cli\n• \tAlternative to using AWS Management Console\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS SDK?\n• \tAWS Software Development Kit (AWS SDK)\n• \tLanguage-specific APIs (set of libraries)\n• \tEnables you to access and manage AWS services\nprogrammatically\n• \tEmbedded within your application\n• \tSupports\n• \tSDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js,\nC++)\n• \tMobile SDKs (Android, iOS, …)\n• \tIoT Device SDKs (Embedded C, Arduino, …)\n• \tExample: AWS CLI is built on AWS SDK for Python\nAWS SDK\nYour Application\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles for Services\n• \tSome AWS service will need to\nperform actions on your behalf\n• \tTo do so, we will assign\npermissions \tto AWS services\nwith \tIAM Roles\n• \tCommon roles:\n• \tEC2 Instance Roles\n• \tLambda Function Roles\n• \tRoles for CloudFormation\nEC2 Instance\n(virtual server)\nIAM Role\nAccess AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Security Tools\n• \tIAM Credentials Report (account-level)\n• \ta report that lists all your account's users and the status of their various\ncredentials\n• \tIAM Access Advisor (user-level)\n• \tAccess advisor shows the service permissions granted to a user and when those\nservices were last accessed.\n• \tYou can use this information to revise your policies.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Guidelines & Best Practices\n• \tDon’t use the root account except for AWS account setup\n• \tOne physical user = One AWS \tuser\n• \tAssign users to groups \tand assign permissions to groups\n• \tCreate a \tstrong password policy\n• \tUse and enforce the use of \tMulti Factor Authentication (MFA)\n• \tCreate and use \tRoles \tfor giving permissions to AWS services\n• \tUse Access Keys for Programmatic Access (CLI / SDK)\n• \tAudit permissions of your account using IAM Credentials Report & IAM\nAccess Advisor\n• \tNever share IAM users & Access Keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Section \t– \tSummary\n• \tUsers: \tmapped to a physical user, has a password for AWS Console\n• \tGroups: contains users only\n• \tPolicies: \tJSON document that outlines permissions for users or groups\n• \tRoles: \tfor EC2 instances or AWS services\n• \tSecurity: \tMFA + Password Policy\n• \tAWS CLI: manage your AWS services using the command-line\n• \tAWS SDK: manage your AWS services using a programming language\n• \tAccess Keys: \taccess AWS using the CLI or SDK\n• \tAudit: IAM Credential Reports & IAM Access Advisor",
+      "pageStart": 29,
+      "pageEnd": 32,
+      "read": false,
+      "content": {
+        "summary": "## Password policy and MFA\n\nA password policy controls requirements such as length, character composition and reuse for IAM-user passwords. MFA adds another authentication factor, such as a supported authenticator or security key. Neither mechanism grants additional permissions or automatically changes how every access key is used.\n\n### Reasoning and trade-offs\n\nMFA and password controls protect their authentication flows. Existing access keys are not automatically transformed into interactive MFA sessions; policies and temporary-session workflows need explicit design. Credentials and authorization still require least privilege and monitoring.\n\n### Avoid this trap\n\nSeparate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls.\n\n### Apply it\n\nAn organization requires stronger console sign-in protection for privileged users. It also has CLI scripts using access keys. Which statement is correct?\n\n**Recommended design:** Enforce suitable passwords and MFA for sign-in, and separately secure or replace programmatic credentials.\n\nMFA and password controls protect their authentication flows. Existing access keys are not automatically transformed into interactive MFA sessions; policies and temporary-session workflows need explicit design. Credentials and authorization still require least privilege and monitoring.",
+        "keyPoints": [
+          "A password policy controls requirements such as length, character composition and reuse for IAM-user passwords. MFA adds another authentication factor, such as a supported authenticator or security key. Neither mechanism grants additional permissions or automatically changes how every access key is used.",
+          "MFA and password controls protect their authentication flows. Existing access keys are not automatically transformed into interactive MFA sessions; policies and temporary-session workflows need explicit design. Credentials and authorization still require least privilege and monitoring.",
+          "Separate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "What does MFA add to a password login?",
+            "answer": "An additional authentication factor.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/mfa"
+            ],
+            "id": "3e9936fb-06e0-4580-81bb-a3d3896694d2",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What can an IAM password policy control?",
+            "answer": "Password requirements such as length and reuse.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/mfa"
+            ],
+            "id": "e310a2f5-0f8c-481f-a4f4-a929a3b1625a",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Does enabling MFA grant more permissions?",
+            "answer": "No. Authentication and authorization are separate.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/mfa"
+            ],
+            "id": "e2c0d050-4978-4563-bd8f-e1cb4031135c",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Does a strong password protect a leaked access key?",
+            "answer": "No. Compromised programmatic credentials need separate response.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/mfa"
+            ],
+            "id": "951fa66d-3c65-4df1-9c97-56cbf72e753f",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "An organization requires stronger console sign-in protection for privileged users. It also has CLI scripts using access keys. Which statement is correct?",
+            "options": [
+              "Once console MFA is enabled, every existing access key automatically requires an interactive MFA challenge.",
+              "A password complexity policy rotates all CLI access keys automatically.",
+              "MFA makes least-privilege permissions unnecessary for administrators.",
+              "Enforce suitable passwords and MFA for sign-in, and separately secure or replace programmatic credentials."
+            ],
+            "correctIndex": 3,
+            "explanation": "MFA and password controls protect their authentication flows. Existing access keys are not automatically transformed into interactive MFA sessions; policies and temporary-session workflows need explicit design. Credentials and authorization still require least privilege and monitoring.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/mfa"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.035Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 29,
+            "pageEnd": 32,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "074a037a-2d1f-47ef-80a5-960552770324",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "a22dc330-42b9-43d1-98a8-1eb3bd988e66",
+      "title": "AWS CLI and programmatic access",
+      "objective": "What is the AWS CLI used for?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Identity and Access\nManagement (AWS IAM)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Users & Groups\n• \tIAM = Identity and Access Management, Global service\n• \tRoot account created by default, shouldn’t be used or shared\n• \tUsers are people within your organization, and can be grouped\n• \tGroups only contain users, not other groups\n• \tUsers don’t have to belong to a group, and user can belong to multiple groups\nAlice \tBob \tCharles \tDavid \tEdward\nGroup: Developers \tGroup: Operations\nGroup\nAudit Team\nFred\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Permissions\n• \tUsers or Groups \tcan be\nassigned JSON documents\ncalled policies\n• \tThese policies define the\npermissions \tof the users\n• \tIn AWS you apply the \tleast\nprivilege principle: don’t give\nmore permissions than a user\nneeds\n{\n\"Version\": \t\"2012-10-17\",\n\"Statement\": [\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"ec2:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"elasticloadbalancing:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": [\n\"cloudwatch:ListMetrics\",\n\"cloudwatch:GetMetricStatistics\",\n\"cloudwatch:Describe*\"\n],\n\"Resource\": \t\"*\"\n}\n]\n}\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies inheritance\nAlice \tBob \tCharles \tDavid \tEdward\nDevelopers \tOperations\nAudit Team\nFred\ninline\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies Structure\n• \tConsists of\n• \tVersion: policy language version, always include “2012-10-\n17”\n• \tId: an identifier for the policy (optional)\n• \tStatement: one or more individual statements (required)\n• \tStatements consists of\n• \tSid: an identifier for the statement (optional)\n• \tEffect: whether the statement allows or denies access\n(Allow, Deny)\n• \tPrincipal: account/user/role to which this policy applied to\n• \tAction: list of actions this policy allows or denies\n• \tResource: list of resources to which the actions applied to\n• \tCondition: conditions for when this policy is in effect\n(optional)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM \t– \tPassword Policy\n• \tStrong passwords = higher security for your account\n• \tIn AWS, you can setup a password policy:\n• \tSet a minimum password length\n• \tRequire specific character types:\n• \tincluding uppercase letters\n• \tlowercase letters\n• \tnumbers\n• \tnon-alphanumeric characters\n• \tAllow all IAM users to change their own passwords\n• \tRequire users to change their password after some time (password expiration)\n• \tPrevent password re-use\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMulti Factor Authentication \t- \tMFA\n• \tUsers have access to your account and can possibly change\nconfigurations or delete resources in your AWS account\n• \tYou want to protect your Root Accounts and IAM users\n• \tMFA = password \tyou know \t+ security device \tyou own\n• \tMain benefit of MFA:\nif a password is stolen or hacked, the account is not compromised\nAlice\n+Password \t=> \tSuccessful login\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nVirtual MFA device\nGoogle Authenticator\n(phone only)\nAuthy\n(phone only)\nUniversal 2nd Factor (U2F) Security Key\nYubiKey by Yubico (3rd party)\nSupport for multiple tokens on a single device. Support for multiple root and IAM users\nusing a single security key\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nHardware Key Fob MFA Device\nProvided by Gemalto (3rd party)\nHardware Key Fob MFA Device for\nAWS GovCloud (US)\nProvided by SurePassID (3rd party)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nHow can users access AWS ?\n• \tTo access AWS, you have three options:\n• \tAWS Management Console (protected by password + MFA)\n• \tAWS Command Line Interface (CLI): protected by access keys\n• \tAWS Software Developer Kit (SDK) - for code: protected by access keys\n• \tAccess Keys are generated through the AWS Console\n• \tUsers manage their own access keys\n• \tAccess Keys are secret, just like a password. Don’t share them\n• \tAccess Key ID ~= username\n• \tSecret Access Key ~= password\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nExample (Fake) Access Keys\n• \tAccess key ID: AKIASK4E37PV4983d6C\n• \tSecret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq\n• \tRemember: don’t share your access keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS CLI?\n• \tA tool that enables you to interact with AWS services using commands in\nyour command-line shell\n• \tDirect access to the public APIs of AWS services\n• \tYou can develop scripts to manage your resources\n• \tIt’s open-source \thttps://github.com/aws/aws-cli\n• \tAlternative to using AWS Management Console\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS SDK?\n• \tAWS Software Development Kit (AWS SDK)\n• \tLanguage-specific APIs (set of libraries)\n• \tEnables you to access and manage AWS services\nprogrammatically\n• \tEmbedded within your application\n• \tSupports\n• \tSDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js,\nC++)\n• \tMobile SDKs (Android, iOS, …)\n• \tIoT Device SDKs (Embedded C, Arduino, …)\n• \tExample: AWS CLI is built on AWS SDK for Python\nAWS SDK\nYour Application\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles for Services\n• \tSome AWS service will need to\nperform actions on your behalf\n• \tTo do so, we will assign\npermissions \tto AWS services\nwith \tIAM Roles\n• \tCommon roles:\n• \tEC2 Instance Roles\n• \tLambda Function Roles\n• \tRoles for CloudFormation\nEC2 Instance\n(virtual server)\nIAM Role\nAccess AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Security Tools\n• \tIAM Credentials Report (account-level)\n• \ta report that lists all your account's users and the status of their various\ncredentials\n• \tIAM Access Advisor (user-level)\n• \tAccess advisor shows the service permissions granted to a user and when those\nservices were last accessed.\n• \tYou can use this information to revise your policies.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Guidelines & Best Practices\n• \tDon’t use the root account except for AWS account setup\n• \tOne physical user = One AWS \tuser\n• \tAssign users to groups \tand assign permissions to groups\n• \tCreate a \tstrong password policy\n• \tUse and enforce the use of \tMulti Factor Authentication (MFA)\n• \tCreate and use \tRoles \tfor giving permissions to AWS services\n• \tUse Access Keys for Programmatic Access (CLI / SDK)\n• \tAudit permissions of your account using IAM Credentials Report & IAM\nAccess Advisor\n• \tNever share IAM users & Access Keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Section \t– \tSummary\n• \tUsers: \tmapped to a physical user, has a password for AWS Console\n• \tGroups: contains users only\n• \tPolicies: \tJSON document that outlines permissions for users or groups\n• \tRoles: \tfor EC2 instances or AWS services\n• \tSecurity: \tMFA + Password Policy\n• \tAWS CLI: manage your AWS services using the command-line\n• \tAWS SDK: manage your AWS services using a programming language\n• \tAccess Keys: \taccess AWS using the CLI or SDK\n• \tAudit: IAM Credential Reports & IAM Access Advisor",
+      "pageStart": 33,
+      "pageEnd": 35,
+      "read": false,
+      "content": {
+        "summary": "## AWS CLI and programmatic access\n\nThe AWS CLI invokes AWS APIs from a command-line shell and supports automation. It uses an appropriate credential source, such as a temporary session or configured access keys, rather than an ordinary console password as the API signing secret. A profile selects configuration; it does not create permissions.\n\n### Reasoning and trade-offs\n\nThe CLI is another client for AWS APIs, not a permission bypass. Profile selection and credential resolution determine the caller; policies determine allowed actions. Renaming local configuration does not alter IAM permissions.\n\n### Avoid this trap\n\nSeparate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls.\n\n### Apply it\n\nAn operator can sign in to the console but a CLI profile receives AccessDenied for an API call. They propose renaming the profile to administrator. What should be checked instead?\n\n**Recommended design:** The identity and credentials selected by the profile and the policies authorizing the requested API action.\n\nThe CLI is another client for AWS APIs, not a permission bypass. Profile selection and credential resolution determine the caller; policies determine allowed actions. Renaming local configuration does not alter IAM permissions.",
+        "keyPoints": [
+          "The AWS CLI invokes AWS APIs from a command-line shell and supports automation. It uses an appropriate credential source, such as a temporary session or configured access keys, rather than an ordinary console password as the API signing secret. A profile selects configuration; it does not create permissions.",
+          "The CLI is another client for AWS APIs, not a permission bypass. Profile selection and credential resolution determine the caller; policies determine allowed actions. Renaming local configuration does not alter IAM permissions.",
+          "Separate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "What is the AWS CLI used for?",
+            "answer": "Calling AWS service APIs from a shell or script.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/cli"
+            ],
+            "id": "606c1494-c7ac-4a75-96d3-fd04b8aeaf4a",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Does choosing a CLI profile grant permissions?",
+            "answer": "No. The selected identity still needs authorization.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/cli"
+            ],
+            "id": "ebfd334d-3559-4875-8144-56d5da5c9ce1",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Is a console password an API signing secret?",
+            "answer": "No. Use supported programmatic credentials or sessions.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/cli"
+            ],
+            "id": "fc47d121-4a09-481c-b058-d81231c8bf68",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Should CLI access keys be shared?",
+            "answer": "No. Treat them as secrets tied to an identity.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/cli"
+            ],
+            "id": "1ebbbb44-d629-458b-9028-ffc6f90d8f90",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "An operator can sign in to the console but a CLI profile receives AccessDenied for an API call. They propose renaming the profile to administrator. What should be checked instead?",
+            "options": [
+              "The identity and credentials selected by the profile and the policies authorizing the requested API action.",
+              "Whether the profile name contains the word administrator, which grants API access.",
+              "Whether the console password was copied into the secret access key field.",
+              "Whether using the CLI exempts the request from IAM policy checks."
+            ],
+            "correctIndex": 0,
+            "explanation": "The CLI is another client for AWS APIs, not a permission bypass. Profile selection and credential resolution determine the caller; policies determine allowed actions. Renaming local configuration does not alter IAM permissions.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/cli"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.035Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 33,
+            "pageEnd": 35,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "8c334581-b3f4-4215-8579-f253f4783096",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "a22dc330-42b9-43d1-98a8-1eb3bd988e66",
+      "title": "AWS SDK and application credentials",
+      "objective": "What is an AWS SDK?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Identity and Access\nManagement (AWS IAM)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Users & Groups\n• \tIAM = Identity and Access Management, Global service\n• \tRoot account created by default, shouldn’t be used or shared\n• \tUsers are people within your organization, and can be grouped\n• \tGroups only contain users, not other groups\n• \tUsers don’t have to belong to a group, and user can belong to multiple groups\nAlice \tBob \tCharles \tDavid \tEdward\nGroup: Developers \tGroup: Operations\nGroup\nAudit Team\nFred\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Permissions\n• \tUsers or Groups \tcan be\nassigned JSON documents\ncalled policies\n• \tThese policies define the\npermissions \tof the users\n• \tIn AWS you apply the \tleast\nprivilege principle: don’t give\nmore permissions than a user\nneeds\n{\n\"Version\": \t\"2012-10-17\",\n\"Statement\": [\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"ec2:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"elasticloadbalancing:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": [\n\"cloudwatch:ListMetrics\",\n\"cloudwatch:GetMetricStatistics\",\n\"cloudwatch:Describe*\"\n],\n\"Resource\": \t\"*\"\n}\n]\n}\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies inheritance\nAlice \tBob \tCharles \tDavid \tEdward\nDevelopers \tOperations\nAudit Team\nFred\ninline\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies Structure\n• \tConsists of\n• \tVersion: policy language version, always include “2012-10-\n17”\n• \tId: an identifier for the policy (optional)\n• \tStatement: one or more individual statements (required)\n• \tStatements consists of\n• \tSid: an identifier for the statement (optional)\n• \tEffect: whether the statement allows or denies access\n(Allow, Deny)\n• \tPrincipal: account/user/role to which this policy applied to\n• \tAction: list of actions this policy allows or denies\n• \tResource: list of resources to which the actions applied to\n• \tCondition: conditions for when this policy is in effect\n(optional)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM \t– \tPassword Policy\n• \tStrong passwords = higher security for your account\n• \tIn AWS, you can setup a password policy:\n• \tSet a minimum password length\n• \tRequire specific character types:\n• \tincluding uppercase letters\n• \tlowercase letters\n• \tnumbers\n• \tnon-alphanumeric characters\n• \tAllow all IAM users to change their own passwords\n• \tRequire users to change their password after some time (password expiration)\n• \tPrevent password re-use\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMulti Factor Authentication \t- \tMFA\n• \tUsers have access to your account and can possibly change\nconfigurations or delete resources in your AWS account\n• \tYou want to protect your Root Accounts and IAM users\n• \tMFA = password \tyou know \t+ security device \tyou own\n• \tMain benefit of MFA:\nif a password is stolen or hacked, the account is not compromised\nAlice\n+Password \t=> \tSuccessful login\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nVirtual MFA device\nGoogle Authenticator\n(phone only)\nAuthy\n(phone only)\nUniversal 2nd Factor (U2F) Security Key\nYubiKey by Yubico (3rd party)\nSupport for multiple tokens on a single device. Support for multiple root and IAM users\nusing a single security key\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nHardware Key Fob MFA Device\nProvided by Gemalto (3rd party)\nHardware Key Fob MFA Device for\nAWS GovCloud (US)\nProvided by SurePassID (3rd party)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nHow can users access AWS ?\n• \tTo access AWS, you have three options:\n• \tAWS Management Console (protected by password + MFA)\n• \tAWS Command Line Interface (CLI): protected by access keys\n• \tAWS Software Developer Kit (SDK) - for code: protected by access keys\n• \tAccess Keys are generated through the AWS Console\n• \tUsers manage their own access keys\n• \tAccess Keys are secret, just like a password. Don’t share them\n• \tAccess Key ID ~= username\n• \tSecret Access Key ~= password\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nExample (Fake) Access Keys\n• \tAccess key ID: AKIASK4E37PV4983d6C\n• \tSecret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq\n• \tRemember: don’t share your access keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS CLI?\n• \tA tool that enables you to interact with AWS services using commands in\nyour command-line shell\n• \tDirect access to the public APIs of AWS services\n• \tYou can develop scripts to manage your resources\n• \tIt’s open-source \thttps://github.com/aws/aws-cli\n• \tAlternative to using AWS Management Console\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS SDK?\n• \tAWS Software Development Kit (AWS SDK)\n• \tLanguage-specific APIs (set of libraries)\n• \tEnables you to access and manage AWS services\nprogrammatically\n• \tEmbedded within your application\n• \tSupports\n• \tSDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js,\nC++)\n• \tMobile SDKs (Android, iOS, …)\n• \tIoT Device SDKs (Embedded C, Arduino, …)\n• \tExample: AWS CLI is built on AWS SDK for Python\nAWS SDK\nYour Application\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles for Services\n• \tSome AWS service will need to\nperform actions on your behalf\n• \tTo do so, we will assign\npermissions \tto AWS services\nwith \tIAM Roles\n• \tCommon roles:\n• \tEC2 Instance Roles\n• \tLambda Function Roles\n• \tRoles for CloudFormation\nEC2 Instance\n(virtual server)\nIAM Role\nAccess AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Security Tools\n• \tIAM Credentials Report (account-level)\n• \ta report that lists all your account's users and the status of their various\ncredentials\n• \tIAM Access Advisor (user-level)\n• \tAccess advisor shows the service permissions granted to a user and when those\nservices were last accessed.\n• \tYou can use this information to revise your policies.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Guidelines & Best Practices\n• \tDon’t use the root account except for AWS account setup\n• \tOne physical user = One AWS \tuser\n• \tAssign users to groups \tand assign permissions to groups\n• \tCreate a \tstrong password policy\n• \tUse and enforce the use of \tMulti Factor Authentication (MFA)\n• \tCreate and use \tRoles \tfor giving permissions to AWS services\n• \tUse Access Keys for Programmatic Access (CLI / SDK)\n• \tAudit permissions of your account using IAM Credentials Report & IAM\nAccess Advisor\n• \tNever share IAM users & Access Keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Section \t– \tSummary\n• \tUsers: \tmapped to a physical user, has a password for AWS Console\n• \tGroups: contains users only\n• \tPolicies: \tJSON document that outlines permissions for users or groups\n• \tRoles: \tfor EC2 instances or AWS services\n• \tSecurity: \tMFA + Password Policy\n• \tAWS CLI: manage your AWS services using the command-line\n• \tAWS SDK: manage your AWS services using a programming language\n• \tAccess Keys: \taccess AWS using the CLI or SDK\n• \tAudit: IAM Credential Reports & IAM Access Advisor",
+      "pageStart": 36,
+      "pageEnd": 36,
+      "read": false,
+      "content": {
+        "summary": "## AWS SDK and application credentials\n\nAn SDK is a language-specific library for invoking AWS APIs from application code. Use supported credential providers so the application can obtain appropriate temporary workload credentials. Do not embed permanent user secrets in source code merely because a library accepts credential parameters.\n\n### Reasoning and trade-offs\n\nAn SDK handles API requests but still needs an authorized identity. An instance role supplies rotating temporary credentials without application-distributed long-lived keys. This secure credential-provider detail expands the source discussion; it does not replace the CLI/SDK distinction.\n\n### Avoid this trap\n\nSeparate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls.\n\n### Apply it\n\nA Node.js application on EC2 reads private S3 objects. Which credential approach avoids shipping permanent credentials with the application?\n\n**Recommended design:** Let the SDK obtain the instance-role temporary credentials through its supported provider chain.\n\nAn SDK handles API requests but still needs an authorized identity. An instance role supplies rotating temporary credentials without application-distributed long-lived keys. This secure credential-provider detail expands the source discussion; it does not replace the CLI/SDK distinction.",
+        "keyPoints": [
+          "An SDK is a language-specific library for invoking AWS APIs from application code. Use supported credential providers so the application can obtain appropriate temporary workload credentials. Do not embed permanent user secrets in source code merely because a library accepts credential parameters.",
+          "An SDK handles API requests but still needs an authorized identity. An instance role supplies rotating temporary credentials without application-distributed long-lived keys. This secure credential-provider detail expands the source discussion; it does not replace the CLI/SDK distinction.",
+          "Separate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "What is an AWS SDK?",
+            "answer": "A language-specific library for calling AWS service APIs.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/sdk"
+            ],
+            "id": "c37780a9-3043-4164-a757-4d3cd76b5707",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What is the main CLI versus SDK distinction?",
+            "answer": "The CLI is a shell tool; an SDK is used in application code.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/sdk"
+            ],
+            "id": "c03103d5-a106-4f85-bc83-b56f05a8dced",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Where should a workload SDK obtain credentials?",
+            "answer": "From a suitable configured provider, preferably temporary workload credentials.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/sdk"
+            ],
+            "id": "8e5ff369-dd19-4a28-a4ea-0a1c0ca32bcc",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A Node.js application on EC2 reads private S3 objects. Which credential approach avoids shipping permanent credentials with the application?",
+            "options": [
+              "Commit a user secret in the application repository because SDK libraries encrypt source code.",
+              "Let the SDK obtain the instance-role temporary credentials through its supported provider chain.",
+              "Use the console password as the SDK secret access key.",
+              "Assume using an official SDK automatically grants access to every bucket."
+            ],
+            "correctIndex": 1,
+            "explanation": "An SDK handles API requests but still needs an authorized identity. An instance role supplies rotating temporary credentials without application-distributed long-lived keys. This secure credential-provider detail expands the source discussion; it does not replace the CLI/SDK distinction.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/sdk"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.035Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 36,
+            "pageEnd": 36,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "d7276962-ae79-4193-99df-0b3f1321fcad",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "a22dc330-42b9-43d1-98a8-1eb3bd988e66",
+      "title": "IAM roles for services",
+      "objective": "What does a service role provide to a workload?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Identity and Access\nManagement (AWS IAM)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Users & Groups\n• \tIAM = Identity and Access Management, Global service\n• \tRoot account created by default, shouldn’t be used or shared\n• \tUsers are people within your organization, and can be grouped\n• \tGroups only contain users, not other groups\n• \tUsers don’t have to belong to a group, and user can belong to multiple groups\nAlice \tBob \tCharles \tDavid \tEdward\nGroup: Developers \tGroup: Operations\nGroup\nAudit Team\nFred\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Permissions\n• \tUsers or Groups \tcan be\nassigned JSON documents\ncalled policies\n• \tThese policies define the\npermissions \tof the users\n• \tIn AWS you apply the \tleast\nprivilege principle: don’t give\nmore permissions than a user\nneeds\n{\n\"Version\": \t\"2012-10-17\",\n\"Statement\": [\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"ec2:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"elasticloadbalancing:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": [\n\"cloudwatch:ListMetrics\",\n\"cloudwatch:GetMetricStatistics\",\n\"cloudwatch:Describe*\"\n],\n\"Resource\": \t\"*\"\n}\n]\n}\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies inheritance\nAlice \tBob \tCharles \tDavid \tEdward\nDevelopers \tOperations\nAudit Team\nFred\ninline\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies Structure\n• \tConsists of\n• \tVersion: policy language version, always include “2012-10-\n17”\n• \tId: an identifier for the policy (optional)\n• \tStatement: one or more individual statements (required)\n• \tStatements consists of\n• \tSid: an identifier for the statement (optional)\n• \tEffect: whether the statement allows or denies access\n(Allow, Deny)\n• \tPrincipal: account/user/role to which this policy applied to\n• \tAction: list of actions this policy allows or denies\n• \tResource: list of resources to which the actions applied to\n• \tCondition: conditions for when this policy is in effect\n(optional)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM \t– \tPassword Policy\n• \tStrong passwords = higher security for your account\n• \tIn AWS, you can setup a password policy:\n• \tSet a minimum password length\n• \tRequire specific character types:\n• \tincluding uppercase letters\n• \tlowercase letters\n• \tnumbers\n• \tnon-alphanumeric characters\n• \tAllow all IAM users to change their own passwords\n• \tRequire users to change their password after some time (password expiration)\n• \tPrevent password re-use\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMulti Factor Authentication \t- \tMFA\n• \tUsers have access to your account and can possibly change\nconfigurations or delete resources in your AWS account\n• \tYou want to protect your Root Accounts and IAM users\n• \tMFA = password \tyou know \t+ security device \tyou own\n• \tMain benefit of MFA:\nif a password is stolen or hacked, the account is not compromised\nAlice\n+Password \t=> \tSuccessful login\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nVirtual MFA device\nGoogle Authenticator\n(phone only)\nAuthy\n(phone only)\nUniversal 2nd Factor (U2F) Security Key\nYubiKey by Yubico (3rd party)\nSupport for multiple tokens on a single device. Support for multiple root and IAM users\nusing a single security key\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nHardware Key Fob MFA Device\nProvided by Gemalto (3rd party)\nHardware Key Fob MFA Device for\nAWS GovCloud (US)\nProvided by SurePassID (3rd party)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nHow can users access AWS ?\n• \tTo access AWS, you have three options:\n• \tAWS Management Console (protected by password + MFA)\n• \tAWS Command Line Interface (CLI): protected by access keys\n• \tAWS Software Developer Kit (SDK) - for code: protected by access keys\n• \tAccess Keys are generated through the AWS Console\n• \tUsers manage their own access keys\n• \tAccess Keys are secret, just like a password. Don’t share them\n• \tAccess Key ID ~= username\n• \tSecret Access Key ~= password\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nExample (Fake) Access Keys\n• \tAccess key ID: AKIASK4E37PV4983d6C\n• \tSecret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq\n• \tRemember: don’t share your access keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS CLI?\n• \tA tool that enables you to interact with AWS services using commands in\nyour command-line shell\n• \tDirect access to the public APIs of AWS services\n• \tYou can develop scripts to manage your resources\n• \tIt’s open-source \thttps://github.com/aws/aws-cli\n• \tAlternative to using AWS Management Console\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS SDK?\n• \tAWS Software Development Kit (AWS SDK)\n• \tLanguage-specific APIs (set of libraries)\n• \tEnables you to access and manage AWS services\nprogrammatically\n• \tEmbedded within your application\n• \tSupports\n• \tSDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js,\nC++)\n• \tMobile SDKs (Android, iOS, …)\n• \tIoT Device SDKs (Embedded C, Arduino, …)\n• \tExample: AWS CLI is built on AWS SDK for Python\nAWS SDK\nYour Application\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles for Services\n• \tSome AWS service will need to\nperform actions on your behalf\n• \tTo do so, we will assign\npermissions \tto AWS services\nwith \tIAM Roles\n• \tCommon roles:\n• \tEC2 Instance Roles\n• \tLambda Function Roles\n• \tRoles for CloudFormation\nEC2 Instance\n(virtual server)\nIAM Role\nAccess AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Security Tools\n• \tIAM Credentials Report (account-level)\n• \ta report that lists all your account's users and the status of their various\ncredentials\n• \tIAM Access Advisor (user-level)\n• \tAccess advisor shows the service permissions granted to a user and when those\nservices were last accessed.\n• \tYou can use this information to revise your policies.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Guidelines & Best Practices\n• \tDon’t use the root account except for AWS account setup\n• \tOne physical user = One AWS \tuser\n• \tAssign users to groups \tand assign permissions to groups\n• \tCreate a \tstrong password policy\n• \tUse and enforce the use of \tMulti Factor Authentication (MFA)\n• \tCreate and use \tRoles \tfor giving permissions to AWS services\n• \tUse Access Keys for Programmatic Access (CLI / SDK)\n• \tAudit permissions of your account using IAM Credentials Report & IAM\nAccess Advisor\n• \tNever share IAM users & Access Keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Section \t– \tSummary\n• \tUsers: \tmapped to a physical user, has a password for AWS Console\n• \tGroups: contains users only\n• \tPolicies: \tJSON document that outlines permissions for users or groups\n• \tRoles: \tfor EC2 instances or AWS services\n• \tSecurity: \tMFA + Password Policy\n• \tAWS CLI: manage your AWS services using the command-line\n• \tAWS SDK: manage your AWS services using a programming language\n• \tAccess Keys: \taccess AWS using the CLI or SDK\n• \tAudit: IAM Credential Reports & IAM Access Advisor",
+      "pageStart": 37,
+      "pageEnd": 37,
+      "read": false,
+      "content": {
+        "summary": "## IAM roles for services\n\nA service role lets an AWS service or workload act under assigned permissions. The role trust relationship governs who can assume it; its permissions govern allowed operations. EC2 instance profiles and Lambda execution roles are examples of different attachment mechanisms for workload identity.\n\n### Reasoning and trade-offs\n\nThe execution role establishes workload identity and scoped authorization. A group is a collection of users, not a service identity. Making the bucket public or sharing a user secret is not required for service-to-service authorization.\n\n### Avoid this trap\n\nSeparate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls.\n\n### Apply it\n\nA Lambda function must write objects to one S3 bucket. Which design gives it an appropriate service identity?\n\n**Recommended design:** Attach an execution role trusted by Lambda with the required bucket-write permissions.\n\nThe execution role establishes workload identity and scoped authorization. A group is a collection of users, not a service identity. Making the bucket public or sharing a user secret is not required for service-to-service authorization.",
+        "keyPoints": [
+          "A service role lets an AWS service or workload act under assigned permissions. The role trust relationship governs who can assume it; its permissions govern allowed operations. EC2 instance profiles and Lambda execution roles are examples of different attachment mechanisms for workload identity.",
+          "The execution role establishes workload identity and scoped authorization. A group is a collection of users, not a service identity. Making the bucket public or sharing a user secret is not required for service-to-service authorization.",
+          "Separate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "What does a service role provide to a workload?",
+            "answer": "Permissions through an assumable identity, typically using temporary credentials.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/roles"
+            ],
+            "id": "6ee4a4d5-5b1b-4bee-bec2-f16ca5a22935",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What does a role trust policy govern?",
+            "answer": "Who or what may assume the role.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/roles"
+            ],
+            "id": "7c878e09-286f-41e6-9237-c03d0559bb86",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What does the role permissions policy govern?",
+            "answer": "Which operations the assumed identity may perform.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/roles"
+            ],
+            "id": "1ed3c172-1099-4421-9474-dbe8c0d99dc1",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "How is an EC2 instance role exposed to the instance?",
+            "answer": "Through an instance profile.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/roles"
+            ],
+            "id": "9393ada4-2973-4511-8c65-d563f25b27ee",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A Lambda function must write objects to one S3 bucket. Which design gives it an appropriate service identity?",
+            "options": [
+              "Place an IAM user password in the function environment and use it as an API key.",
+              "Add the function name to an IAM group because groups can contain AWS services.",
+              "Attach an execution role trusted by Lambda with the required bucket-write permissions.",
+              "Make the bucket public so the function does not need a role."
+            ],
+            "correctIndex": 2,
+            "explanation": "The execution role establishes workload identity and scoped authorization. A group is a collection of users, not a service identity. Making the bucket public or sharing a user secret is not required for service-to-service authorization.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/roles"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.035Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 37,
+            "pageEnd": 37,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "15ea749c-7b8d-4272-abdf-8668e959aa1f",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "a22dc330-42b9-43d1-98a8-1eb3bd988e66",
+      "title": "IAM security tools",
+      "objective": "Which tool reports IAM-user credential status account-wide?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Identity and Access\nManagement (AWS IAM)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Users & Groups\n• \tIAM = Identity and Access Management, Global service\n• \tRoot account created by default, shouldn’t be used or shared\n• \tUsers are people within your organization, and can be grouped\n• \tGroups only contain users, not other groups\n• \tUsers don’t have to belong to a group, and user can belong to multiple groups\nAlice \tBob \tCharles \tDavid \tEdward\nGroup: Developers \tGroup: Operations\nGroup\nAudit Team\nFred\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Permissions\n• \tUsers or Groups \tcan be\nassigned JSON documents\ncalled policies\n• \tThese policies define the\npermissions \tof the users\n• \tIn AWS you apply the \tleast\nprivilege principle: don’t give\nmore permissions than a user\nneeds\n{\n\"Version\": \t\"2012-10-17\",\n\"Statement\": [\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"ec2:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"elasticloadbalancing:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": [\n\"cloudwatch:ListMetrics\",\n\"cloudwatch:GetMetricStatistics\",\n\"cloudwatch:Describe*\"\n],\n\"Resource\": \t\"*\"\n}\n]\n}\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies inheritance\nAlice \tBob \tCharles \tDavid \tEdward\nDevelopers \tOperations\nAudit Team\nFred\ninline\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies Structure\n• \tConsists of\n• \tVersion: policy language version, always include “2012-10-\n17”\n• \tId: an identifier for the policy (optional)\n• \tStatement: one or more individual statements (required)\n• \tStatements consists of\n• \tSid: an identifier for the statement (optional)\n• \tEffect: whether the statement allows or denies access\n(Allow, Deny)\n• \tPrincipal: account/user/role to which this policy applied to\n• \tAction: list of actions this policy allows or denies\n• \tResource: list of resources to which the actions applied to\n• \tCondition: conditions for when this policy is in effect\n(optional)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM \t– \tPassword Policy\n• \tStrong passwords = higher security for your account\n• \tIn AWS, you can setup a password policy:\n• \tSet a minimum password length\n• \tRequire specific character types:\n• \tincluding uppercase letters\n• \tlowercase letters\n• \tnumbers\n• \tnon-alphanumeric characters\n• \tAllow all IAM users to change their own passwords\n• \tRequire users to change their password after some time (password expiration)\n• \tPrevent password re-use\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMulti Factor Authentication \t- \tMFA\n• \tUsers have access to your account and can possibly change\nconfigurations or delete resources in your AWS account\n• \tYou want to protect your Root Accounts and IAM users\n• \tMFA = password \tyou know \t+ security device \tyou own\n• \tMain benefit of MFA:\nif a password is stolen or hacked, the account is not compromised\nAlice\n+Password \t=> \tSuccessful login\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nVirtual MFA device\nGoogle Authenticator\n(phone only)\nAuthy\n(phone only)\nUniversal 2nd Factor (U2F) Security Key\nYubiKey by Yubico (3rd party)\nSupport for multiple tokens on a single device. Support for multiple root and IAM users\nusing a single security key\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nHardware Key Fob MFA Device\nProvided by Gemalto (3rd party)\nHardware Key Fob MFA Device for\nAWS GovCloud (US)\nProvided by SurePassID (3rd party)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nHow can users access AWS ?\n• \tTo access AWS, you have three options:\n• \tAWS Management Console (protected by password + MFA)\n• \tAWS Command Line Interface (CLI): protected by access keys\n• \tAWS Software Developer Kit (SDK) - for code: protected by access keys\n• \tAccess Keys are generated through the AWS Console\n• \tUsers manage their own access keys\n• \tAccess Keys are secret, just like a password. Don’t share them\n• \tAccess Key ID ~= username\n• \tSecret Access Key ~= password\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nExample (Fake) Access Keys\n• \tAccess key ID: AKIASK4E37PV4983d6C\n• \tSecret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq\n• \tRemember: don’t share your access keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS CLI?\n• \tA tool that enables you to interact with AWS services using commands in\nyour command-line shell\n• \tDirect access to the public APIs of AWS services\n• \tYou can develop scripts to manage your resources\n• \tIt’s open-source \thttps://github.com/aws/aws-cli\n• \tAlternative to using AWS Management Console\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS SDK?\n• \tAWS Software Development Kit (AWS SDK)\n• \tLanguage-specific APIs (set of libraries)\n• \tEnables you to access and manage AWS services\nprogrammatically\n• \tEmbedded within your application\n• \tSupports\n• \tSDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js,\nC++)\n• \tMobile SDKs (Android, iOS, …)\n• \tIoT Device SDKs (Embedded C, Arduino, …)\n• \tExample: AWS CLI is built on AWS SDK for Python\nAWS SDK\nYour Application\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles for Services\n• \tSome AWS service will need to\nperform actions on your behalf\n• \tTo do so, we will assign\npermissions \tto AWS services\nwith \tIAM Roles\n• \tCommon roles:\n• \tEC2 Instance Roles\n• \tLambda Function Roles\n• \tRoles for CloudFormation\nEC2 Instance\n(virtual server)\nIAM Role\nAccess AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Security Tools\n• \tIAM Credentials Report (account-level)\n• \ta report that lists all your account's users and the status of their various\ncredentials\n• \tIAM Access Advisor (user-level)\n• \tAccess advisor shows the service permissions granted to a user and when those\nservices were last accessed.\n• \tYou can use this information to revise your policies.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Guidelines & Best Practices\n• \tDon’t use the root account except for AWS account setup\n• \tOne physical user = One AWS \tuser\n• \tAssign users to groups \tand assign permissions to groups\n• \tCreate a \tstrong password policy\n• \tUse and enforce the use of \tMulti Factor Authentication (MFA)\n• \tCreate and use \tRoles \tfor giving permissions to AWS services\n• \tUse Access Keys for Programmatic Access (CLI / SDK)\n• \tAudit permissions of your account using IAM Credentials Report & IAM\nAccess Advisor\n• \tNever share IAM users & Access Keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Section \t– \tSummary\n• \tUsers: \tmapped to a physical user, has a password for AWS Console\n• \tGroups: contains users only\n• \tPolicies: \tJSON document that outlines permissions for users or groups\n• \tRoles: \tfor EC2 instances or AWS services\n• \tSecurity: \tMFA + Password Policy\n• \tAWS CLI: manage your AWS services using the command-line\n• \tAWS SDK: manage your AWS services using a programming language\n• \tAccess Keys: \taccess AWS using the CLI or SDK\n• \tAudit: IAM Credential Reports & IAM Access Advisor",
+      "pageStart": 38,
+      "pageEnd": 38,
+      "read": false,
+      "content": {
+        "summary": "## IAM security tools\n\nThe IAM credential report is an account-level view of IAM users and credential status. Access Advisor shows service last-accessed information for the selected identity. Use these as evidence when investigating unused or risky access, while checking real operational needs before removing permissions.\n\n### Reasoning and trade-offs\n\nThese tools answer different questions: credential status versus last service access. Neither grants permissions. Last-accessed information can guide least-privilege reviews but must not blindly remove permissions needed by seasonal or emergency operations.\n\n### Avoid this trap\n\nSeparate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls.\n\n### Apply it\n\nA security review needs both an account-wide list of IAM-user credential status and evidence about services an individual identity has accessed. Which pairing fits?\n\n**Recommended design:** Use the credential report for user credential status and Access Advisor for service last-accessed evidence.\n\nThese tools answer different questions: credential status versus last service access. Neither grants permissions. Last-accessed information can guide least-privilege reviews but must not blindly remove permissions needed by seasonal or emergency operations.",
+        "keyPoints": [
+          "The IAM credential report is an account-level view of IAM users and credential status. Access Advisor shows service last-accessed information for the selected identity. Use these as evidence when investigating unused or risky access, while checking real operational needs before removing permissions.",
+          "These tools answer different questions: credential status versus last service access. Neither grants permissions. Last-accessed information can guide least-privilege reviews but must not blindly remove permissions needed by seasonal or emergency operations.",
+          "Separate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Which tool reports IAM-user credential status account-wide?",
+            "answer": "The IAM credential report.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/security-tools"
+            ],
+            "id": "32672f9b-554c-403c-9505-25005c0fbb91",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Which tool shows service last-accessed information for an identity?",
+            "answer": "IAM Access Advisor.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/security-tools"
+            ],
+            "id": "99dfb907-dc94-4e7d-a952-8bd38840649a",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Does no recent use prove a permission is never needed?",
+            "answer": "No. Check infrequent jobs and operational requirements.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/security-tools"
+            ],
+            "id": "bf5c21f5-1b0f-4bd9-81d6-6a3d8cd95444",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A security review needs both an account-wide list of IAM-user credential status and evidence about services an individual identity has accessed. Which pairing fits?",
+            "options": [
+              "Use Access Advisor as the only account-wide password and access-key inventory.",
+              "Use a password policy as the historical record of all API activity.",
+              "Use the credential report to grant service permissions automatically.",
+              "Use the credential report for user credential status and Access Advisor for service last-accessed evidence."
+            ],
+            "correctIndex": 3,
+            "explanation": "These tools answer different questions: credential status versus last service access. Neither grants permissions. Last-accessed information can guide least-privilege reviews but must not blindly remove permissions needed by seasonal or emergency operations.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/security-tools"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.035Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 38,
+            "pageEnd": 38,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "e7b8441f-f6e4-49dc-bebd-ce237db34d25",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "a22dc330-42b9-43d1-98a8-1eb3bd988e66",
+      "title": "IAM best practices",
+      "objective": "Why should people avoid sharing an IAM identity?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAWS Identity and Access\nManagement (AWS IAM)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Users & Groups\n• \tIAM = Identity and Access Management, Global service\n• \tRoot account created by default, shouldn’t be used or shared\n• \tUsers are people within your organization, and can be grouped\n• \tGroups only contain users, not other groups\n• \tUsers don’t have to belong to a group, and user can belong to multiple groups\nAlice \tBob \tCharles \tDavid \tEdward\nGroup: Developers \tGroup: Operations\nGroup\nAudit Team\nFred\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM: Permissions\n• \tUsers or Groups \tcan be\nassigned JSON documents\ncalled policies\n• \tThese policies define the\npermissions \tof the users\n• \tIn AWS you apply the \tleast\nprivilege principle: don’t give\nmore permissions than a user\nneeds\n{\n\"Version\": \t\"2012-10-17\",\n\"Statement\": [\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"ec2:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"elasticloadbalancing:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": [\n\"cloudwatch:ListMetrics\",\n\"cloudwatch:GetMetricStatistics\",\n\"cloudwatch:Describe*\"\n],\n\"Resource\": \t\"*\"\n}\n]\n}\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies inheritance\nAlice \tBob \tCharles \tDavid \tEdward\nDevelopers \tOperations\nAudit Team\nFred\ninline\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Policies Structure\n• \tConsists of\n• \tVersion: policy language version, always include “2012-10-\n17”\n• \tId: an identifier for the policy (optional)\n• \tStatement: one or more individual statements (required)\n• \tStatements consists of\n• \tSid: an identifier for the statement (optional)\n• \tEffect: whether the statement allows or denies access\n(Allow, Deny)\n• \tPrincipal: account/user/role to which this policy applied to\n• \tAction: list of actions this policy allows or denies\n• \tResource: list of resources to which the actions applied to\n• \tCondition: conditions for when this policy is in effect\n(optional)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM \t– \tPassword Policy\n• \tStrong passwords = higher security for your account\n• \tIn AWS, you can setup a password policy:\n• \tSet a minimum password length\n• \tRequire specific character types:\n• \tincluding uppercase letters\n• \tlowercase letters\n• \tnumbers\n• \tnon-alphanumeric characters\n• \tAllow all IAM users to change their own passwords\n• \tRequire users to change their password after some time (password expiration)\n• \tPrevent password re-use\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMulti Factor Authentication \t- \tMFA\n• \tUsers have access to your account and can possibly change\nconfigurations or delete resources in your AWS account\n• \tYou want to protect your Root Accounts and IAM users\n• \tMFA = password \tyou know \t+ security device \tyou own\n• \tMain benefit of MFA:\nif a password is stolen or hacked, the account is not compromised\nAlice\n+Password \t=> \tSuccessful login\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nVirtual MFA device\nGoogle Authenticator\n(phone only)\nAuthy\n(phone only)\nUniversal 2nd Factor (U2F) Security Key\nYubiKey by Yubico (3rd party)\nSupport for multiple tokens on a single device. Support for multiple root and IAM users\nusing a single security key\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nMFA devices options in AWS\nHardware Key Fob MFA Device\nProvided by Gemalto (3rd party)\nHardware Key Fob MFA Device for\nAWS GovCloud (US)\nProvided by SurePassID (3rd party)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nHow can users access AWS ?\n• \tTo access AWS, you have three options:\n• \tAWS Management Console (protected by password + MFA)\n• \tAWS Command Line Interface (CLI): protected by access keys\n• \tAWS Software Developer Kit (SDK) - for code: protected by access keys\n• \tAccess Keys are generated through the AWS Console\n• \tUsers manage their own access keys\n• \tAccess Keys are secret, just like a password. Don’t share them\n• \tAccess Key ID ~= username\n• \tSecret Access Key ~= password\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nExample (Fake) Access Keys\n• \tAccess key ID: AKIASK4E37PV4983d6C\n• \tSecret Access Key: AZPN3zojWozWCndIjhB0Unh8239a1bzbzO5fqqkZq\n• \tRemember: don’t share your access keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS CLI?\n• \tA tool that enables you to interact with AWS services using commands in\nyour command-line shell\n• \tDirect access to the public APIs of AWS services\n• \tYou can develop scripts to manage your resources\n• \tIt’s open-source \thttps://github.com/aws/aws-cli\n• \tAlternative to using AWS Management Console\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nWhat’s the AWS SDK?\n• \tAWS Software Development Kit (AWS SDK)\n• \tLanguage-specific APIs (set of libraries)\n• \tEnables you to access and manage AWS services\nprogrammatically\n• \tEmbedded within your application\n• \tSupports\n• \tSDKs (JavaScript, Python, PHP, .NET, Ruby, Java, Go, Node.js,\nC++)\n• \tMobile SDKs (Android, iOS, …)\n• \tIoT Device SDKs (Embedded C, Arduino, …)\n• \tExample: AWS CLI is built on AWS SDK for Python\nAWS SDK\nYour Application\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Roles for Services\n• \tSome AWS service will need to\nperform actions on your behalf\n• \tTo do so, we will assign\npermissions \tto AWS services\nwith \tIAM Roles\n• \tCommon roles:\n• \tEC2 Instance Roles\n• \tLambda Function Roles\n• \tRoles for CloudFormation\nEC2 Instance\n(virtual server)\nIAM Role\nAccess AWS\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Security Tools\n• \tIAM Credentials Report (account-level)\n• \ta report that lists all your account's users and the status of their various\ncredentials\n• \tIAM Access Advisor (user-level)\n• \tAccess advisor shows the service permissions granted to a user and when those\nservices were last accessed.\n• \tYou can use this information to revise your policies.\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Guidelines & Best Practices\n• \tDon’t use the root account except for AWS account setup\n• \tOne physical user = One AWS \tuser\n• \tAssign users to groups \tand assign permissions to groups\n• \tCreate a \tstrong password policy\n• \tUse and enforce the use of \tMulti Factor Authentication (MFA)\n• \tCreate and use \tRoles \tfor giving permissions to AWS services\n• \tUse Access Keys for Programmatic Access (CLI / SDK)\n• \tAudit permissions of your account using IAM Credentials Report & IAM\nAccess Advisor\n• \tNever share IAM users & Access Keys\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nIAM Section \t– \tSummary\n• \tUsers: \tmapped to a physical user, has a password for AWS Console\n• \tGroups: contains users only\n• \tPolicies: \tJSON document that outlines permissions for users or groups\n• \tRoles: \tfor EC2 instances or AWS services\n• \tSecurity: \tMFA + Password Policy\n• \tAWS CLI: manage your AWS services using the command-line\n• \tAWS SDK: manage your AWS services using a programming language\n• \tAccess Keys: \taccess AWS using the CLI or SDK\n• \tAudit: IAM Credential Reports & IAM Access Advisor",
+      "pageStart": 39,
+      "pageEnd": 40,
+      "read": false,
+      "content": {
+        "summary": "## IAM best practices\n\nKeep human identities attributable, avoid sharing credentials, protect root access, enforce suitable authentication controls and review permissions. Use service roles for workloads instead of distributing human access keys. For modern workforce access, federation can reduce long-lived IAM-user credentials; that is a labelled extension to the source examples.\n\n### Reasoning and trade-offs\n\nA shared privileged key collapses accountability and grants unnecessary shared access. Console password controls do not secure a leaked API key. Separate human access from workload identity and review each permission scope.\n\n### Avoid this trap\n\nSeparate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls.\n\n### Apply it\n\nA team proposes one shared privileged access key for staff scripts and EC2 applications, with a strong console password. What is the best response?\n\n**Recommended design:** Use attributable human access and scoped workload roles; remove the shared long-lived credential.\n\nA shared privileged key collapses accountability and grants unnecessary shared access. Console password controls do not secure a leaked API key. Separate human access from workload identity and review each permission scope.",
+        "keyPoints": [
+          "Keep human identities attributable, avoid sharing credentials, protect root access, enforce suitable authentication controls and review permissions. Use service roles for workloads instead of distributing human access keys. For modern workforce access, federation can reduce long-lived IAM-user credentials; that is a labelled extension to the source examples.",
+          "A shared privileged key collapses accountability and grants unnecessary shared access. Console password controls do not secure a leaked API key. Separate human access from workload identity and review each permission scope.",
+          "Separate authentication, authorization and credential handling. A convenient access mechanism must not replace least-privilege controls."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Why should people avoid sharing an IAM identity?",
+            "answer": "Shared identities weaken individual accountability and revocation.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/best-practices"
+            ],
+            "id": "fe8e83c9-a8a9-412c-9d40-572919525892",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What is preferable to human access keys on an AWS workload?",
+            "answer": "A scoped service or workload role.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/best-practices"
+            ],
+            "id": "6e81a71d-ff44-4f17-99e8-ba8550f0df18",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "What should happen when a secret access key is exposed?",
+            "answer": "Revoke or disable it promptly and investigate misuse.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/best-practices"
+            ],
+            "id": "ddd32e5f-f4d7-458f-8795-26e66a7d0dbd",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "When should root credentials be used?",
+            "answer": "Only for tasks that require root, not routine administration.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/best-practices"
+            ],
+            "id": "dfe58528-55b5-4c8c-8234-07ee35ae0c34",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.035Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A team proposes one shared privileged access key for staff scripts and EC2 applications, with a strong console password. What is the best response?",
+            "options": [
+              "Use attributable human access and scoped workload roles; remove the shared long-lived credential.",
+              "Approve it because console password strength protects every programmatic key.",
+              "Keep the shared key and rename the account to improve attribution.",
+              "Store the shared key in a public configuration file so rotation is easier."
+            ],
+            "correctIndex": 0,
+            "explanation": "A shared privileged key collapses accountability and grants unnecessary shared access. Console password controls do not secure a leaked API key. Separate human access from workload identity and review each permission scope.",
+            "objectiveIds": [
+              "a22dc330-42b9-43d1-98a8-1eb3bd988e66/best-practices"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.035Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 39,
+            "pageEnd": 40,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

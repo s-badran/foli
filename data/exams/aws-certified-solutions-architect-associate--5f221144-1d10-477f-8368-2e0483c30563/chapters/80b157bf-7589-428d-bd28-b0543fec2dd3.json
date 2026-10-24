@@ -1,0 +1,19 @@
+{
+  "chapter": {
+    "id": "80b157bf-7589-428d-bd28-b0543fec2dd3",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 13,
+    "title": "CloudFront & Global Accelerator",
+    "pageStart": 337,
+    "pageEnd": 351,
+    "description": "CloudFront origins, caching and geo restriction versus Global Accelerator anycast networking.",
+    "examFocus": [
+      "Task 3.4: edge networking",
+      "Task 1.2: protecting origins"
+    ],
+    "objectives": [],
+    "coverageStatus": "draft"
+  },
+  "sections": []
+}

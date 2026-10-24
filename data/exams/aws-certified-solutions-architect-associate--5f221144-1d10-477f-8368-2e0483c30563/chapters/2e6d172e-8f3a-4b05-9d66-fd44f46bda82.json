@@ -1,0 +1,223 @@
+{
+  "chapter": {
+    "id": "2e6d172e-8f3a-4b05-9d66-fd44f46bda82",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "title": "Cross-service architecture patterns",
+    "order": 26,
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "pageStart": 805,
+    "pageEnd": 826,
+    "description": "Composing network, compute, storage and event-driven decisions.",
+    "objectives": [
+      {
+        "id": "2e6d172e-8f3a-4b05-9d66-fd44f46bda82/Find the real bottleneck",
+        "title": "Find the real bottleneck",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 805,
+        "pageEnd": 826,
+        "assessment": "both"
+      },
+      {
+        "id": "2e6d172e-8f3a-4b05-9d66-fd44f46bda82/Resilience through bounded retries",
+        "title": "Resilience through bounded retries",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 805,
+        "pageEnd": 826,
+        "assessment": "both"
+      }
+    ],
+    "coverageStatus": "draft"
+  },
+  "sections": [
+    {
+      "id": "0943e809-4bfa-484d-b2f5-a09e63350f8e",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "2e6d172e-8f3a-4b05-9d66-fd44f46bda82",
+      "title": "Find the real bottleneck",
+      "objective": "Why should an architect identify the constrained tier before adding capacity?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nMore Solutions Architecture\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nLambda, SNS & SQS\nSQS\nSNS\nretries\nSQS\nDLQ\nTry, retry\nSQS FIFO\nDLQ\nTry, retry\nblocking\nDLQ\nasynchronous\n(poll)\nSQS + Lambda\nSQS FIFO + Lambda\nSNS + Lambda\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nFan Out Pattern: deliver to multiple SQS\nSDK PUT #1\nPUT #2\nPUT #3\nOption 1\nSDK\nOption 2 – Fan Out\nSNS\nSQS \tSQS\nPUT \tsubscribe\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Event Notifications\nAmazon S3\nevents\nLambda Function\nSQS\nSNS\n• \tS3:ObjectCreated, S3:ObjectRemoved,\nS3:ObjectRestore, S3:Replication…\n• \tObject name filtering possible (*.jpg)\n• \tUse case: generate thumbnails of images\nuploaded to S3\n• \tCan create as many “S3 events” as desired\n• \tS3 event notifications typically deliver events\nin seconds but can sometimes take a minute\nor longer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Event Notifications\nwith Amazon EventBridge\nAmazon S3\nbucket\nevents \tAll events\nAmazon\nEventBridge\nrules Over 18\nAWS services\nas destinations\n• \tAdvanced filtering \toptions with JSON rules (metadata, object size, name...)\n• \tMultiple Destinations \t– \tex Step Functions, Kinesis Streams / Firehose…\n• \tEventBridge \tCapabilities \t– Archive, Replay Events, Reliable delivery\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EventBridge \t– \tIntercept API Calls\nCloudTrail\n(any API call)\nAmazon\nEventBridge SNS\nevent\nDynamoDB\nLog API call\nUser\nalert\nDeleteTable API Call 💥\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAPI Gateway \t– \tAWS Service Integration\nKinesis Data Streams example\nAPI Gateway \tKinesis Data\nStreams\nKinesis Data\nFirehose\nAmazon S3\nsend \trecords\nstore .json\nfiles\nClient\nrequests\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCaching Strategies\nAPI Gateway\nCloudFront (edge)\nRedis\nMemcached\nDAX\nS3\nCloudFront\nCaching, TTL, Network, Computation, Cost, Latency\nClient App logic\nEC2 / Lambda Database\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBlocking an IP address\nClient\nVPC\nPublic Subnet\nSecurity Group (allow rules)\nEC2 Instance\npublic IP + Firewall Software (optional)\nNACL\nDeny + Allow rules\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBlocking an IP address \t– \twith an ALB\nClient\nVPC\nPublic Subnet\nEC2 Security Group\nEC2 Instance\nPrivate IP\nPrivate Subnet\nALB Security Group\nApplication Load Balancer\nConnection Termination\nNACL\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBlocking an IP address \t– \twith an NLB\nClient\nVPC\nPublic Subnet\nEC2 Security Group\nEC2 Instance\nPrivate IP\nNACL\nPrivate Subnet\nNLB Security Group\nNetwork Load Balancer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBlocking an IP address \t– \tALB + WAF\nClient\nVPC\nPublic Subnet\nEC2 Security Group\nEC2 Instance\nPrivate IP\nNACL\nPrivate Subnet\nALB Security Group\nApplication Load Balancer\nAWS WAF\nIP Address Filtering\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBlocking an IP address \t– \tALB, CloudFront & WAF\nClient\nVPC\nPublic Subnet\nEC2 Security Group\nEC2 Instance\nPrivate IP\nNACL\nPrivate Subnet\nALB Security Group\nApplication Load Balancer\nPublic\nCloudFront\n(Geo Restriction)\nAWS WAF\n(IP Address Filtering)\nCloudFront\nPublic IPs\nNOT helpful\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nHigh Performance Computing (HPC)\n• \tThe cloud is the perfect place to perform HPC\n• \tYou can create a very high number of resources in no time\n• \tYou can speed up time to results by adding more resources\n• \tYou can pay only for the systems you have used\n• \tPerform genomics, computational chemistry, financial risk modeling,\nweather prediction, machine learning, deep learning, autonomous driving\n• \tWhich services help perform HPC?\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nData Management & Transfer\n• \tAWS Direct Connect:\n• \tMove GB/s of data to the cloud, over a private secure network\n• \tSnowball & Snowmobile\n• \tMove PB of data to the cloud\n• \tAWS \tDataSync\n• \tMove large amount of data between on-premises and S3, EFS, FSx for Windows\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCompute and Networking\n• \tEC2 Instances:\n• \tCPU optimized, GPU optimized\n• \tSpot Instances / Spot Fleets for cost savings + Auto Scaling\n• \tEC2 Placement Groups: Cluster for good network performance\nSame Rack\nSame AZ\nEC2 \tEC2\nEC2 \tEC2 \tEC2\nEC2 Placement group\nCluster\nLow latency\n10Gbps network\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCompute and Networking\n• \tEC2 Enhanced Networking (SR-IOV)\n• \tHigher bandwidth, higher PPS (packet per second), lower latency\n• \tOption 1: Elastic Network Adapter (ENA) up to 100 Gbps\n• \tOption 2: Intel 82599 VF up to 10 Gbps – LEGACY\n• \tElastic Fabric Adapter (EFA)\n• \tImproved ENA for HPC, only works for Linux\n• \tGreat for inter-node communications, tightly coupled workloads\n• \tLeverages Message Passing Interface (MPI) standard\n• \tBypasses the underlying Linux OS to provide low-latency, reliable transport\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStorage\n• \tInstance-attached storage:\n• \tEBS: scale up to 256,000 IOPS with io2 Block Express\n• \tInstance Store: scale to millions of IOPS, linked to EC2 instance, low latency\n• \tNetwork storage:\n• \tAmazon S3: large blob, not a file system\n• \tAmazon EFS: scale IOPS based on total size, or use provisioned IOPS\n• \tAmazon FSx for Lustre:\n• \tHPC optimized distributed file system, millions of IOPS\n• \tBacked by S3\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAutomation and Orchestration\n• \tAWS Batch\n• \tAWS Batch supports multi-node parallel jobs, which enables you to run single\njobs that span multiple EC2 instances.\n• \tEasily schedule jobs and launch EC2 instances accordingly\n• \tAWS \tParallelCluster\n• \tOpen-source cluster management tool to deploy HPC on AWS\n• \tConfigure with text files\n• \tAutomate creation of VPC, Subnet, cluster type and instance types\n• \tAbility to enable EFA on the cluster (improves network performance)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCreating a highly available EC2 instance\nPublic EC2\nElastic IP Address\nWhat time is it?\n5:30 pm!\nStandby EC2 instance\nAttachment CloudWatch Event\n(or Alarm based on metric)\nStart the instance\nAttach the Elastic IP\nmonitor\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCreating a highly available EC2 instance\nWith an Auto Scaling Group\nPublic EC2\nElastic IP Address\nWhat time is it?\n5:30 pm!\nReplacement\nEC2 instance\nAuto Scaling group\nEC2 User Data\nAttachment\nBased on Tag\nAvailability Zone 1\nAvailability Zone 2\nASG Settings\n1 min\n1 max\n1 desired\n>= 2 AZ\nEC2 user data to attach\nThe Elastic IP\nEC2 instance role to\nAllow API calls to attach\nThe Elastic IP\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCreating a highly available EC2 instance\nWith ASG + EBS\nPublic EC2\nElastic IP Address\nWhat time is it?\n5:30 pm!\nReplacement\nEC2 instance\nAuto Scaling group\nEC2 User Data\nAttachment\nBased on Tag\nAvailability Zone 1\nAvailability Zone 2\nEBS Volume\nEBS\nEBS Snapshot\n+ tags\nEBS Snapshot\nOn ASG Terminate lifecycle hook\nEBS Volume created + attached\nOn ASG Launch lifecycle hook",
+      "pageStart": 805,
+      "pageEnd": 826,
+      "read": false,
+      "content": {
+        "summary": "## Find the real bottleneck\n\nMeasure the end-to-end request path and scale or redesign the constrained resource. Additional web servers will not fix a saturated database, serialized lock or external dependency bottleneck.\n\n### Reasoning and trade-offs\n\nEvidence points to the database portion of the critical path. A targeted investigation can reveal expensive queries, contention or connection problems. More upstream concurrency can make a constrained downstream tier worse.\n\n### Avoid this trap\n\nAverage CPU is not a complete service-level signal. Scaling a producer can overload a fixed-capacity downstream service and increase queue age or failure rates.\n\n### Apply it\n\nWeb CPU is low, response latency is high, and database query time dominates traces. What is the most appropriate first investigation?\n\n**Recommended design:** Analyze database queries, indexes, connection behavior and caching opportunities before adding web instances.\n\nEvidence points to the database portion of the critical path. A targeted investigation can reveal expensive queries, contention or connection problems. More upstream concurrency can make a constrained downstream tier worse.",
+        "keyPoints": [
+          "Measure the end-to-end request path and scale or redesign the constrained resource. Additional web servers will not fix a saturated database, serialized lock or external dependency bottleneck.",
+          "Evidence points to the database portion of the critical path. A targeted investigation can reveal expensive queries, contention or connection problems. More upstream concurrency can make a constrained downstream tier worse.",
+          "Average CPU is not a complete service-level signal. Scaling a producer can overload a fixed-capacity downstream service and increase queue age or failure rates."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "Will adding web servers fix a saturated database query?",
+            "answer": "Not by itself; investigate the constrained database path.",
+            "objectiveIds": [
+              "2e6d172e-8f3a-4b05-9d66-fd44f46bda82/Find the real bottleneck"
+            ],
+            "id": "63804e2b-39b2-4874-a084-7726729ba262",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.273Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Why can scaling producers worsen an outage?",
+            "answer": "They can overload a fixed-capacity downstream dependency.",
+            "objectiveIds": [
+              "2e6d172e-8f3a-4b05-9d66-fd44f46bda82/Find the real bottleneck"
+            ],
+            "id": "17d810b2-45be-4ea5-adfb-893927e33827",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.273Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Web CPU is low, response latency is high, and database query time dominates traces. What is the most appropriate first investigation?",
+            "options": [
+              "Double the web fleet because every latency problem is a frontend capacity problem.",
+              "Increase DNS TTL to improve the execution time of SQL queries.",
+              "Analyze database queries, indexes, connection behavior and caching opportunities before adding web instances.",
+              "Remove database monitoring to reduce the apparent latency."
+            ],
+            "correctIndex": 2,
+            "explanation": "Evidence points to the database portion of the critical path. A targeted investigation can reveal expensive queries, contention or connection problems. More upstream concurrency can make a constrained downstream tier worse.",
+            "objectiveIds": [
+              "2e6d172e-8f3a-4b05-9d66-fd44f46bda82/Find the real bottleneck"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.273Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 805,
+            "pageEnd": 826,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    },
+    {
+      "id": "f74629f0-ac80-4706-b992-373c0c553e67",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "2e6d172e-8f3a-4b05-9d66-fd44f46bda82",
+      "title": "Resilience through bounded retries",
+      "objective": "How can retries turn a brief dependency failure into an outage?",
+      "text": "© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\t\nMore Solutions Architecture\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nLambda, SNS & SQS\nSQS\nSNS\nretries\nSQS\nDLQ\nTry, retry\nSQS FIFO\nDLQ\nTry, retry\nblocking\nDLQ\nasynchronous\n(poll)\nSQS + Lambda\nSQS FIFO + Lambda\nSNS + Lambda\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nFan Out Pattern: deliver to multiple SQS\nSDK PUT #1\nPUT #2\nPUT #3\nOption 1\nSDK\nOption 2 – Fan Out\nSNS\nSQS \tSQS\nPUT \tsubscribe\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Event Notifications\nAmazon S3\nevents\nLambda Function\nSQS\nSNS\n• \tS3:ObjectCreated, S3:ObjectRemoved,\nS3:ObjectRestore, S3:Replication…\n• \tObject name filtering possible (*.jpg)\n• \tUse case: generate thumbnails of images\nuploaded to S3\n• \tCan create as many “S3 events” as desired\n• \tS3 event notifications typically deliver events\nin seconds but can sometimes take a minute\nor longer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nS3 Event Notifications\nwith Amazon EventBridge\nAmazon S3\nbucket\nevents \tAll events\nAmazon\nEventBridge\nrules Over 18\nAWS services\nas destinations\n• \tAdvanced filtering \toptions with JSON rules (metadata, object size, name...)\n• \tMultiple Destinations \t– \tex Step Functions, Kinesis Streams / Firehose…\n• \tEventBridge \tCapabilities \t– Archive, Replay Events, Reliable delivery\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAmazon EventBridge \t– \tIntercept API Calls\nCloudTrail\n(any API call)\nAmazon\nEventBridge SNS\nevent\nDynamoDB\nLog API call\nUser\nalert\nDeleteTable API Call 💥\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAPI Gateway \t– \tAWS Service Integration\nKinesis Data Streams example\nAPI Gateway \tKinesis Data\nStreams\nKinesis Data\nFirehose\nAmazon S3\nsend \trecords\nstore .json\nfiles\nClient\nrequests\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCaching Strategies\nAPI Gateway\nCloudFront (edge)\nRedis\nMemcached\nDAX\nS3\nCloudFront\nCaching, TTL, Network, Computation, Cost, Latency\nClient App logic\nEC2 / Lambda Database\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBlocking an IP address\nClient\nVPC\nPublic Subnet\nSecurity Group (allow rules)\nEC2 Instance\npublic IP + Firewall Software (optional)\nNACL\nDeny + Allow rules\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBlocking an IP address \t– \twith an ALB\nClient\nVPC\nPublic Subnet\nEC2 Security Group\nEC2 Instance\nPrivate IP\nPrivate Subnet\nALB Security Group\nApplication Load Balancer\nConnection Termination\nNACL\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBlocking an IP address \t– \twith an NLB\nClient\nVPC\nPublic Subnet\nEC2 Security Group\nEC2 Instance\nPrivate IP\nNACL\nPrivate Subnet\nNLB Security Group\nNetwork Load Balancer\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBlocking an IP address \t– \tALB + WAF\nClient\nVPC\nPublic Subnet\nEC2 Security Group\nEC2 Instance\nPrivate IP\nNACL\nPrivate Subnet\nALB Security Group\nApplication Load Balancer\nAWS WAF\nIP Address Filtering\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nBlocking an IP address \t– \tALB, CloudFront & WAF\nClient\nVPC\nPublic Subnet\nEC2 Security Group\nEC2 Instance\nPrivate IP\nNACL\nPrivate Subnet\nALB Security Group\nApplication Load Balancer\nPublic\nCloudFront\n(Geo Restriction)\nAWS WAF\n(IP Address Filtering)\nCloudFront\nPublic IPs\nNOT helpful\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nHigh Performance Computing (HPC)\n• \tThe cloud is the perfect place to perform HPC\n• \tYou can create a very high number of resources in no time\n• \tYou can speed up time to results by adding more resources\n• \tYou can pay only for the systems you have used\n• \tPerform genomics, computational chemistry, financial risk modeling,\nweather prediction, machine learning, deep learning, autonomous driving\n• \tWhich services help perform HPC?\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nData Management & Transfer\n• \tAWS Direct Connect:\n• \tMove GB/s of data to the cloud, over a private secure network\n• \tSnowball & Snowmobile\n• \tMove PB of data to the cloud\n• \tAWS \tDataSync\n• \tMove large amount of data between on-premises and S3, EFS, FSx for Windows\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCompute and Networking\n• \tEC2 Instances:\n• \tCPU optimized, GPU optimized\n• \tSpot Instances / Spot Fleets for cost savings + Auto Scaling\n• \tEC2 Placement Groups: Cluster for good network performance\nSame Rack\nSame AZ\nEC2 \tEC2\nEC2 \tEC2 \tEC2\nEC2 Placement group\nCluster\nLow latency\n10Gbps network\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCompute and Networking\n• \tEC2 Enhanced Networking (SR-IOV)\n• \tHigher bandwidth, higher PPS (packet per second), lower latency\n• \tOption 1: Elastic Network Adapter (ENA) up to 100 Gbps\n• \tOption 2: Intel 82599 VF up to 10 Gbps – LEGACY\n• \tElastic Fabric Adapter (EFA)\n• \tImproved ENA for HPC, only works for Linux\n• \tGreat for inter-node communications, tightly coupled workloads\n• \tLeverages Message Passing Interface (MPI) standard\n• \tBypasses the underlying Linux OS to provide low-latency, reliable transport\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nStorage\n• \tInstance-attached storage:\n• \tEBS: scale up to 256,000 IOPS with io2 Block Express\n• \tInstance Store: scale to millions of IOPS, linked to EC2 instance, low latency\n• \tNetwork storage:\n• \tAmazon S3: large blob, not a file system\n• \tAmazon EFS: scale IOPS based on total size, or use provisioned IOPS\n• \tAmazon FSx for Lustre:\n• \tHPC optimized distributed file system, millions of IOPS\n• \tBacked by S3\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nAutomation and Orchestration\n• \tAWS Batch\n• \tAWS Batch supports multi-node parallel jobs, which enables you to run single\njobs that span multiple EC2 instances.\n• \tEasily schedule jobs and launch EC2 instances accordingly\n• \tAWS \tParallelCluster\n• \tOpen-source cluster management tool to deploy HPC on AWS\n• \tConfigure with text files\n• \tAutomate creation of VPC, Subnet, cluster type and instance types\n• \tAbility to enable EFA on the cluster (improves network performance)\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCreating a highly available EC2 instance\nPublic EC2\nElastic IP Address\nWhat time is it?\n5:30 pm!\nStandby EC2 instance\nAttachment CloudWatch Event\n(or Alarm based on metric)\nStart the instance\nAttach the Elastic IP\nmonitor\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCreating a highly available EC2 instance\nWith an Auto Scaling Group\nPublic EC2\nElastic IP Address\nWhat time is it?\n5:30 pm!\nReplacement\nEC2 instance\nAuto Scaling group\nEC2 User Data\nAttachment\nBased on Tag\nAvailability Zone 1\nAvailability Zone 2\nASG Settings\n1 min\n1 max\n1 desired\n>= 2 AZ\nEC2 user data to attach\nThe Elastic IP\nEC2 instance role to\nAllow API calls to attach\nThe Elastic IP\n© Stephane Maarek\nNOT FOR DISTRIBUTION © Stephane\n Maarek\n www.datacumulus.com\nCreating a highly available EC2 instance\nWith ASG + EBS\nPublic EC2\nElastic IP Address\nWhat time is it?\n5:30 pm!\nReplacement\nEC2 instance\nAuto Scaling group\nEC2 User Data\nAttachment\nBased on Tag\nAvailability Zone 1\nAvailability Zone 2\nEBS Volume\nEBS\nEBS Snapshot\n+ tags\nEBS Snapshot\nOn ASG Terminate lifecycle hook\nEBS Volume created + attached\nOn ASG Launch lifecycle hook",
+      "pageStart": 805,
+      "pageEnd": 826,
+      "read": false,
+      "content": {
+        "summary": "## Resilience through bounded retries\n\nUse bounded retries with exponential backoff and jitter where appropriate, timeouts and idempotent operations. Control concurrency and consider buffering or circuit-breaking patterns to avoid overload amplification.\n\n### Reasoning and trade-offs\n\nCoordinated bounded retries reduce synchronized load and duplicate effects. Unlimited waits consume resources; aggressive layered retries can overwhelm a recovering dependency. The correct timeout and retry policy depends on operation semantics.\n\n### Avoid this trap\n\nRetries are additional traffic. Retrying at several stacked layers can multiply load, and a timeout does not prove the remote side effect did not occur.\n\n### Apply it\n\nAn external service slows down and every application layer immediately retries five times. Error rates rise sharply. What is the best correction?\n\n**Recommended design:** Bound and coordinate retries, use backoff with jitter, and make side effects safe to retry.\n\nCoordinated bounded retries reduce synchronized load and duplicate effects. Unlimited waits consume resources; aggressive layered retries can overwhelm a recovering dependency. The correct timeout and retry policy depends on operation semantics.",
+        "keyPoints": [
+          "Use bounded retries with exponential backoff and jitter where appropriate, timeouts and idempotent operations. Control concurrency and consider buffering or circuit-breaking patterns to avoid overload amplification.",
+          "Coordinated bounded retries reduce synchronized load and duplicate effects. Unlimited waits consume resources; aggressive layered retries can overwhelm a recovering dependency. The correct timeout and retry policy depends on operation semantics.",
+          "Retries are additional traffic. Retrying at several stacked layers can multiply load, and a timeout does not prove the remote side effect did not occur."
+        ],
+        "supplement": "Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.",
+        "cards": [
+          {
+            "question": "What reduces synchronized retry bursts?",
+            "answer": "Bounded exponential backoff with jitter.",
+            "objectiveIds": [
+              "2e6d172e-8f3a-4b05-9d66-fd44f46bda82/Resilience through bounded retries"
+            ],
+            "id": "eaecda6e-3951-4dc1-95bd-71de475a1bf0",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.273Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "question": "Does a timeout prove the remote side effect did not happen?",
+            "answer": "No. Retried side effects still need idempotency.",
+            "objectiveIds": [
+              "2e6d172e-8f3a-4b05-9d66-fd44f46bda82/Resilience through bounded retries"
+            ],
+            "id": "51bfad74-9816-48fb-866c-c7d9ecc6e17e",
+            "schedule": {
+              "due": "2026-10-24T08:41:34.273Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "An external service slows down and every application layer immediately retries five times. Error rates rise sharply. What is the best correction?",
+            "options": [
+              "Remove all timeouts so requests occupy resources indefinitely.",
+              "Retry faster at every layer to increase the probability of recovery.",
+              "Increase payload size to reduce the number of successful responses.",
+              "Bound and coordinate retries, use backoff with jitter, and make side effects safe to retry."
+            ],
+            "correctIndex": 3,
+            "explanation": "Coordinated bounded retries reduce synchronized load and duplicate effects. Unlimited waits consume resources; aggressive layered retries can overwhelm a recovering dependency. The correct timeout and retry policy depends on operation semantics.",
+            "objectiveIds": [
+              "2e6d172e-8f3a-4b05-9d66-fd44f46bda82/Resilience through bounded retries"
+            ]
+          }
+        ],
+        "provider": "offline",
+        "model": "Tutor-authored AWS SAA-C03 v2",
+        "authorship": "tutor-authored",
+        "generatedAt": "2026-10-24T08:41:34.273Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 805,
+            "pageEnd": 826,
+            "note": "Verified chapter page range in the supplied main PDF. The explanation and scenarios are tutor-authored, not source quotations."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every tutor statement."
+          }
+        ]
+      }
+    }
+  ]
+}

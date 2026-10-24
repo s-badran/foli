@@ -1,0 +1,2266 @@
+{
+  "chapter": {
+    "id": "1ee90bae-d5e9-4140-b287-8ff28a1cdbe8",
+    "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+    "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+    "order": 4,
+    "title": "Amazon EC2 – Associate",
+    "pageStart": 78,
+    "pageEnd": 93,
+    "description": "Elastic IPs, placement groups, elastic network interfaces and EC2 hibernate.",
+    "examFocus": [
+      "Task 3.2: high-performing compute placement",
+      "Task 2.2: failure isolation with placement strategies"
+    ],
+    "objectives": [
+      {
+        "id": "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::ipv4-vs-ipv6-formats",
+        "title": "IPv4 vs IPv6 formats",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 79,
+        "pageEnd": 84,
+        "assessment": "recall"
+      },
+      {
+        "id": "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::public-ip-uniqueness-and-geo-location",
+        "title": "Public IP uniqueness and geo-location",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 79,
+        "pageEnd": 84,
+        "assessment": "recall"
+      },
+      {
+        "id": "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::private-ip-uniqueness-within-a-network",
+        "title": "Private IP uniqueness within a network",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 79,
+        "pageEnd": 84,
+        "assessment": "recall"
+      },
+      {
+        "id": "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::same-private-range-across-companies",
+        "title": "Same private range across companies",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 79,
+        "pageEnd": 84,
+        "assessment": "recall"
+      },
+      {
+        "id": "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::nat-and-internet-gateway-for-www-access",
+        "title": "NAT and internet gateway for WWW access",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 79,
+        "pageEnd": 84,
+        "assessment": "recall"
+      },
+      {
+        "id": "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-fixed-public-ipv4",
+        "title": "Elastic IP: fixed public IPv4",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 79,
+        "pageEnd": 84,
+        "assessment": "recall"
+      },
+      {
+        "id": "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-attach-to-one-instance",
+        "title": "Elastic IP attach to one instance",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 79,
+        "pageEnd": 84,
+        "assessment": "recall"
+      },
+      {
+        "id": "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-limit-of-5-per-account",
+        "title": "Elastic IP limit of 5 per account",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 79,
+        "pageEnd": 84,
+        "assessment": "recall"
+      },
+      {
+        "id": "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::avoid-elastic-ip-dns-name-or-load-balancer",
+        "title": "Avoid Elastic IP: DNS name or Load Balancer",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 79,
+        "pageEnd": 84,
+        "assessment": "recall"
+      },
+      {
+        "id": "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::default-ec2-private-public-ip-ssh-via-public-ip",
+        "title": "Default EC2 private + public IP; SSH via public IP",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 79,
+        "pageEnd": 84,
+        "assessment": "recall"
+      },
+      {
+        "id": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::placement-group-strategies-overview",
+        "title": "Placement group strategies overview",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 85,
+        "pageEnd": 89,
+        "assessment": "recall"
+      },
+      {
+        "id": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::cluster-single-az-10-gbps-enhanced-networking",
+        "title": "Cluster: single AZ, 10 Gbps Enhanced Networking",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 85,
+        "pageEnd": 89,
+        "assessment": "recall"
+      },
+      {
+        "id": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::cluster-risk-az-failure-fails-all-instances",
+        "title": "Cluster risk: AZ failure fails all instances",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 85,
+        "pageEnd": 89,
+        "assessment": "recall"
+      },
+      {
+        "id": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::spread-max-7-instances-per-az",
+        "title": "Spread: max 7 instances per AZ",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 85,
+        "pageEnd": 89,
+        "assessment": "recall"
+      },
+      {
+        "id": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::spread-distinct-hardware-high-availability",
+        "title": "Spread: distinct hardware, high availability",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 85,
+        "pageEnd": 89,
+        "assessment": "recall"
+      },
+      {
+        "id": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-up-to-7-partitions-per-az",
+        "title": "Partition: up to 7 partitions per AZ",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 85,
+        "pageEnd": 89,
+        "assessment": "recall"
+      },
+      {
+        "id": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-hundreds-of-instances-rack-isolation",
+        "title": "Partition: hundreds of instances, rack isolation",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 85,
+        "pageEnd": 89,
+        "assessment": "recall"
+      },
+      {
+        "id": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-metadata-access-hdfs-cassandra-kafka",
+        "title": "Partition metadata access; HDFS, Cassandra, Kafka",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 85,
+        "pageEnd": 89,
+        "assessment": "recall"
+      },
+      {
+        "id": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::precision-time-amazon-time-sync-ptp-clock-linux",
+        "title": "Precision time: Amazon Time Sync, PTP clock (Linux)",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 85,
+        "pageEnd": 89,
+        "assessment": "recall"
+      },
+      {
+        "id": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::precision-time-use-cases-financial-timestamping",
+        "title": "Precision time use cases: financial timestamping",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 85,
+        "pageEnd": 89,
+        "assessment": "recall"
+      },
+      {
+        "id": "11e68d60-a3e8-4910-926e-e5b90c8522b4::eni-as-virtual-network-card",
+        "title": "ENI as virtual network card",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 90,
+        "pageEnd": 90,
+        "assessment": "recall"
+      },
+      {
+        "id": "11e68d60-a3e8-4910-926e-e5b90c8522b4::primary-and-secondary-private-ipv4",
+        "title": "Primary and secondary private IPv4",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 90,
+        "pageEnd": 90,
+        "assessment": "recall"
+      },
+      {
+        "id": "11e68d60-a3e8-4910-926e-e5b90c8522b4::elastic-ip-per-private-ipv4-public-ipv4",
+        "title": "Elastic IP per private IPv4; public IPv4",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 90,
+        "pageEnd": 90,
+        "assessment": "recall"
+      },
+      {
+        "id": "11e68d60-a3e8-4910-926e-e5b90c8522b4::security-groups-and-mac-address",
+        "title": "Security groups and MAC address",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 90,
+        "pageEnd": 90,
+        "assessment": "recall"
+      },
+      {
+        "id": "11e68d60-a3e8-4910-926e-e5b90c8522b4::move-eni-between-instances-for-failover",
+        "title": "Move ENI between instances for failover",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 90,
+        "pageEnd": 90,
+        "assessment": "recall"
+      },
+      {
+        "id": "11e68d60-a3e8-4910-926e-e5b90c8522b4::eni-bound-to-a-single-az",
+        "title": "ENI bound to a single AZ",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 90,
+        "pageEnd": 90,
+        "assessment": "recall"
+      },
+      {
+        "id": "9d0c6fe5-2593-4c55-838c-09bef6eacf88::stop-vs-terminate-vs-hibernate",
+        "title": "Stop vs terminate vs hibernate",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 91,
+        "pageEnd": 93,
+        "assessment": "recall"
+      },
+      {
+        "id": "9d0c6fe5-2593-4c55-838c-09bef6eacf88::slow-start-os-boot-user-data-cache-warm-up",
+        "title": "Slow start: OS boot, User Data, cache warm-up",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 91,
+        "pageEnd": 93,
+        "assessment": "recall"
+      },
+      {
+        "id": "9d0c6fe5-2593-4c55-838c-09bef6eacf88::ram-state-preserved-faster-boot",
+        "title": "RAM state preserved, faster boot",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 91,
+        "pageEnd": 93,
+        "assessment": "recall"
+      },
+      {
+        "id": "9d0c6fe5-2593-4c55-838c-09bef6eacf88::ram-written-to-encrypted-root-ebs-volume",
+        "title": "RAM written to encrypted root EBS volume",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 91,
+        "pageEnd": 93,
+        "assessment": "recall"
+      },
+      {
+        "id": "9d0c6fe5-2593-4c55-838c-09bef6eacf88::supported-instance-families-and-amis",
+        "title": "Supported instance families and AMIs",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 91,
+        "pageEnd": 93,
+        "assessment": "recall"
+      },
+      {
+        "id": "9d0c6fe5-2593-4c55-838c-09bef6eacf88::ram-must-be-under-150-gb-no-bare-metal",
+        "title": "RAM must be under 150 GB; no bare metal",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 91,
+        "pageEnd": 93,
+        "assessment": "recall"
+      },
+      {
+        "id": "9d0c6fe5-2593-4c55-838c-09bef6eacf88::root-volume-ebs-encrypted-not-instance-store",
+        "title": "Root volume EBS, encrypted, not instance store",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 91,
+        "pageEnd": 93,
+        "assessment": "recall"
+      },
+      {
+        "id": "9d0c6fe5-2593-4c55-838c-09bef6eacf88::available-for-on-demand-reserved-spot",
+        "title": "Available for On-Demand, Reserved, Spot",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 91,
+        "pageEnd": 93,
+        "assessment": "recall"
+      },
+      {
+        "id": "9d0c6fe5-2593-4c55-838c-09bef6eacf88::hibernate-max-60-days",
+        "title": "Hibernate max 60 days",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 91,
+        "pageEnd": 93,
+        "assessment": "recall"
+      }
+    ],
+    "coverageStatus": "source-audited"
+  },
+  "sections": [
+    {
+      "id": "a636c89b-6856-4d4b-9e9e-f1f76cef1f19",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "1ee90bae-d5e9-4140-b287-8ff28a1cdbe8",
+      "title": "Private vs Public IPv4 and Elastic IPs",
+      "objective": "Distinguish public from private IPv4 addressing and choose Elastic IPs, DNS names or a Load Balancer appropriately when an instance needs a stable public endpoint.",
+      "keyTopics": [
+        "IPv4 vs IPv6 formats",
+        "Public IP uniqueness and geo-location",
+        "Private IP uniqueness within a network",
+        "Same private range across companies",
+        "NAT and internet gateway for WWW access",
+        "Elastic IP: fixed public IPv4",
+        "Elastic IP attach to one instance",
+        "Elastic IP limit of 5 per account",
+        "Avoid Elastic IP: DNS name or Load Balancer",
+        "Default EC2 private + public IP; SSH via public IP"
+      ],
+      "pageStart": 79,
+      "pageEnd": 84,
+      "text": "[Page 79]\nPrivate vs Public IP (IPv4)\n• \tNetworking has two sorts of IPs. IPv4 and IPv6:\n• \tIPv4: 1.160.10.240\n• \tIPv6: 3ffe:1900:4545:3:200:f8ff:fe21:67cf\n• \tIn this course, we will only be using IPv4.\n• \tIPv4 is still the most common format used online.\n• \tIPv6 is newer and solves problems for the Internet of Things (IoT).\n• \tIPv4 allows for 3.7 billion different addresses in the public space\n• \tIPv4: [0-255].[0-255].[0-255].[0-255].\n\n[Page 80]\nCompany B\nPrivate Network\n192.168.0.1/22\nCompany A\nPrivate Network\n192.168.0.1/22\nPrivate vs Public IP (IPv4)\nExample\nInternet Gateway (public):\n149.140.72.10\nWeb Server (public):\n79.216.59.75\nServer (public):\n211.139.37.43\nInternet Gateway (public):\n253.144.139.205\nWWW\n\n[Page 81]\nPrivate vs Public IP (IPv4)\nFundamental Differences\n• \tPublic IP:\n• \tPublic IP means the machine can be identified on the internet (WWW)\n• \tMust be unique across the whole web (not two machines can have the same public IP).\n• \tCan be geo-located easily\n• \tPrivate IP:\n• \tPrivate IP means the machine can only be identified on a private network only\n• \tThe IP must be unique across the private network\n• \tBUT two different private networks (two companies) can have the same IPs.\n• \tMachines connect to WWW using a NAT + internet gateway (a proxy)\n• \tOnly a specified range of IPs can be used as private IP\n\n[Page 82]\nElastic IPs\n• \tWhen you stop and then start an EC2 instance, it can change its public\nIP.\n• \tIf you need to have a fixed public IP for your instance, you need an\nElastic IP\n• \tAn Elastic IP is a public IPv4 IP you own as long as you don’t delete it\n• \tYou can attach it to one instance at a time\n\n[Page 83]\nElastic IP\n• \tWith an Elastic IP address, you can mask the failure of an instance or software\nby rapidly remapping the address to another instance in your account.\n• \tYou can only have 5 Elastic IP in your account (you can ask AWS to increase\nthat).\n• \tOverall, try to avoid using Elastic IP:\n• \tThey often reflect poor architectural decisions\n• \tInstead, use a random public IP and register a DNS name to it\n• \tOr, as we’ll see later, use a Load Balancer and don’t use a public IP\n\n[Page 84]\nPrivate vs Public IP (IPv4)\nIn AWS EC2 \t– \tHands On\n• \tBy default, your EC2 machine comes with:\n• \tA private IP for the internal AWS Network\n• \tA public IP, for the WWW.\n• \tWhen we are doing SSH into our EC2 machines:\n• \tWe can’t use a private IP, because we are not in the same network\n• \tWe can only use the public IP.\n• \tIf your machine is stopped and then started,\nthe public IP can change",
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nThis section explains the two kinds of IPv4 addressing you meet in AWS: public IPs, which are unique across the whole internet and let a machine be reached from the WWW, and private IPs, which are unique only inside one network and can be freely reused by other companies. It then introduces the Elastic IP, the only way in this section to give an instance a fixed public IPv4 address, together with its one-instance attachment rule, its 5-per-account limit and the architectural advice to avoid it in favour of DNS names or a Load Balancer. Exam questions use this as a design decision: does the workload need a stable, known public endpoint, and if so, what is the least brittle way to provide it?\n\n## Core Concepts\n\n- **IPv4:** The dotted-decimal address format [0-255].[0-255].[0-255].[0-255] (e.g. 1.160.10.240); the most common format online, allowing 3.7 billion different addresses in the public space, and the only format used in this course.\n- **IPv6:** A newer, longer hexadecimal address format (e.g. 3ffe:1900:4545:3:200:f8ff:fe21:67cf) that solves problems for the Internet of Things (IoT).\n- **Public IP:** An address that identifies a machine on the internet (WWW); it must be unique across the whole web and can be geo-located easily.\n- **Private IP:** An address that identifies a machine only on a private network; it must be unique across that private network, but two different private networks (two companies) can have the same IPs, and only a specified range of IPs can be used as private IPs.\n- **NAT + internet gateway:** The proxy mechanism by which machines with private IPs connect to the WWW.\n- **Elastic IP:** A public IPv4 IP that you own for as long as you don't delete it, used when an instance needs a fixed public IP; it can be attached to one instance at a time.\n- **EC2 default addressing:** By default an EC2 machine comes with a private IP for the internal AWS Network and a public IP for the WWW.\n- **Public IP change on stop/start:** When you stop and then start an EC2 instance, it can change its public IP.\n- **Internet Gateway (public):** The public-facing gateway address (e.g. 149.140.72.10, 253.144.139.205 in the section's example diagram) through which a private network reaches the WWW.\n- **Remapping an Elastic IP:** Rapidly reassigning the Elastic IP to another instance in your account, which masks the failure of an instance or software.\n- **DNS name:** The recommended alternative to an Elastic IP: use a random public IP and register a DNS name to it.\n- **Load Balancer:** The other recommended alternative: front the instances with a Load Balancer and don't use a public IP on the instance.\n- **SSH into EC2:** Remote access to an EC2 machine; you cannot use the private IP because you are not in the same network, so you can only use the public IP.\n\n## Key Comparisons\n\n- **Public IP vs Private IP:** A public IP is reachable and unique on the whole internet and is geo-locatable, while a private IP is only unique and reachable inside its own private network.\n- **Elastic IP vs default EC2 public IP:** The default public IP can change when the instance is stopped and started; an Elastic IP stays fixed (you own it until you delete it).\n- **Elastic IP vs DNS name on a random public IP:** A DNS name keeps a stable, user-facing endpoint without consuming a scarce Elastic IP, and hides the underlying changing public IP.\n- **Elastic IP vs Load Balancer:** An Elastic IP hard-wires one address to one instance; a Load Balancer fronts multiple instances and lets you not use a public IP on the instances at all.\n- **IPv4 vs IPv6:** IPv4 is the common 4-octet dotted address (3.7 billion public addresses); IPv6 is newer, longer hexadecimal and solves problems for IoT.\n- **SSH via public IP vs SSH via private IP:** From outside AWS you can only SSH using the public IP; the private IP is unusable because you are not in the same network.\n\n## Common Misunderstandings\n\n- Two companies cannot have the same private IP range — in fact they can; private IPs only have to be unique within their own private network.\n- You should SSH to an instance using its private IP — you can only use the public IP, because you are not in the same network.\n- An EC2 instance's default public IP is permanent — it can change when the instance is stopped and started, which is exactly why Elastic IPs exist.\n- One Elastic IP can be shared across several instances at once — it can be attached to only one instance at a time.\n- Elastic IPs are the recommended way to give a web tier a stable endpoint — they often reflect poor architectural decisions; prefer a DNS name on a random public IP, or a Load Balancer.\n- A private IP lets a machine be identified on the internet — it only identifies the machine on its private network; WWW access goes through NAT + internet gateway.\n\n## Mental Models\n\n- Think of a public IP as a street address that must be unique worldwide, and a private IP as a room number that only has to be unique inside its own building — every building can have a room 101.\n- Think of NAT + internet gateway as a receptionist/proxy: private machines talk to the outside world through it, without exposing their own private numbers.\n- Think of an Elastic IP as a reserved parking space that is yours until you give it back — and you can only park one car in it at a time.\n- Think of the stop/start public IP change as a dynamic lease, and a DNS name or Load Balancer as the sign outside the building that stays valid even when the tenant changes.\n- Think of Elastic IPs as a scarce, blunt tool (5 per account) that you reach for only when nothing better fits.\n\n## Exceptions & Edge Cases\n\n- If you need more than 5 Elastic IPs, you can ask AWS to increase the limit.\n- One Elastic IP can be rapidly remapped to another instance in your account to mask the failure of an instance or software.\n- An Elastic IP is a public IPv4 address you own as long as you don't delete it.\n- A Load Balancer approach avoids using a public IP on the instance at all.\n- The private IP range is restricted: only a specified range of IPs can be used as private IP.\n\n## When to Use Which\n\n- An instance must keep the same public IPv4 address through stop/start cycles → **Elastic IP**\n- You want a stable, human-facing endpoint without consuming a scarce Elastic IP → **Register a DNS name to a random public IP**\n- Multiple instances behind a single stable entry point, with no public IP on the instances → **Load Balancer (don't use a public IP)**\n- You need to fail over from a failed instance or software quickly → **Rapidly remap the Elastic IP to another instance in your account**\n- You need to SSH into an EC2 instance from your own machine → **Connect to the instance's public IP**\n- A machine on a private network must reach the WWW → **NAT + internet gateway (a proxy)**\n\n## Patterns to Recognize\n\n- Question says the instance must keep the same public IP after stop/start → **Elastic IP**\n- Scenario mentions a limited number of Elastic IPs or asks for the AWS-friendly design → **DNS name or Load Balancer instead of Elastic IP**\n- Two companies both use 192.168.0.1/22 → **Private IP ranges only need to be unique within a network**\n- Question asks why the instance cannot be reached by its private IP from the internet → **Private IP is internal-only; you need the public IP or NAT + internet gateway**\n- Requirement to hide an instance failure by moving the address → **Remap the Elastic IP to another instance**\n- Design asks for a stable endpoint for a scalable web tier → **Load Balancer rather than a public IP per instance**\n\n## Exam Traps\n\n- “Assuming an Elastic IP can front a fleet of instances simultaneously” — An Elastic IP attaches to one instance at a time; use a Load Balancer for a fleet.\n- “Assuming you can have unlimited Elastic IPs” — The limit is 5 per account; you can ask AWS to increase it.\n- “Choosing an Elastic IP as the 'best-practice' answer for every stable-endpoint question” — The section says to try to avoid Elastic IPs; preferred answers are a DNS name on a random public IP or a Load Balancer with no public IP.\n- “Believing a public IP must be unique inside a VPC rather than on the internet” — A public IP must be unique across the whole web; it is the private IP that only needs uniqueness within the private network.\n- “Thinking the EC2 public IP is fixed after creation” — Stop and start can change the public IP; only an Elastic IP stays fixed.\n- “Using the private IP for SSH from outside AWS” — You can only SSH using the public IP because you are not in the same network.\n\n## Beyond the Source (tutor knowledge)\n\n- Elastic IPs are allocated per Region and, by design, cannot be attached across Regions; out of scope here, but a common distractor framing.\n- Modern AWS accounts may start with a different default Elastic IP quota than 5 (quotas were later tightened for new accounts); the source's 5-per-account figure is the value a question is most likely to test unless stated otherwise.",
+        "keyPoints": [
+          "Public IP must be unique across the whole web — no two machines can share the same public IP.",
+          "Private IP must be unique across the private network, but two different private networks (two companies) can have the same IPs.",
+          "Public IPs can be geo-located easily.",
+          "Machines with private IPs connect to the WWW using a NAT + internet gateway (a proxy).",
+          "Only a specified range of IPs can be used as private IP.",
+          "Stopping and then starting an EC2 instance can change its public IP.",
+          "An Elastic IP can be attached to one instance at a time.",
+          "You can only have 5 Elastic IPs in your account (you can ask AWS to increase that).",
+          "Elastic IPs often reflect poor architectural decisions — prefer a random public IP with a registered DNS name, or a Load Balancer with no public IP.",
+          "By default an EC2 machine comes with a private IP (internal AWS network) and a public IP (for the WWW).",
+          "To SSH into an EC2 instance you can only use the public IP, not the private IP, because you are not in the same network.",
+          "IPv4 format is [0-255].[0-255].[0-255].[0-255], allowing 3.7 billion different addresses in the public space."
+        ],
+        "supplement": "- Elastic IPs are allocated per Region and, by design, cannot be attached across Regions; out of scope here, but a common distractor framing.\n- Modern AWS accounts may start with a different default Elastic IP quota than 5 (quotas were later tightened for new accounts); the source's 5-per-account figure is the value a question is most likely to test unless stated otherwise.",
+        "cards": [
+          {
+            "id": "af74a7a9-978d-41ca-9d8c-e03b3f1cced3",
+            "question": "Which address is IPv4: 1.160.10.240 or 3ffe:1900:4545:3:200:f8ff:fe21:67cf?",
+            "answer": "1.160.10.240",
+            "group": "IPv4 vs IPv6 formats",
+            "keyTopic": "IPv4 vs IPv6 formats",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::ipv4-vs-ipv6-formats"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "9b3458bb-4dda-48f4-b919-c611ea043d5b",
+            "question": "What is the IPv4 address format in dotted-decimal notation?",
+            "answer": "[0-255].[0-255].[0-255].[0-255]",
+            "group": "IPv4 vs IPv6 formats",
+            "keyTopic": "IPv4 vs IPv6 formats",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::ipv4-vs-ipv6-formats"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ff2ea41f-a648-47e2-8160-21556091baf5",
+            "question": "How many different IPv4 addresses does the public space allow?",
+            "answer": "3.7 billion",
+            "group": "IPv4 vs IPv6 formats",
+            "keyTopic": "IPv4 vs IPv6 formats",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::ipv4-vs-ipv6-formats"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "60f499f3-e7b2-4736-9e0e-dc719743d2b9",
+            "question": "Which IP version is newer, IPv4 or IPv6?",
+            "answer": "IPv6",
+            "group": "IPv4 vs IPv6 formats",
+            "keyTopic": "IPv4 vs IPv6 formats",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::ipv4-vs-ipv6-formats"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "302097a8-b712-47ce-8ec7-54b350163367",
+            "question": "What problem does IPv6 primarily solve according to the section?",
+            "answer": "Problems for the Internet of Things (IoT)",
+            "group": "IPv4 vs IPv6 formats",
+            "keyTopic": "IPv4 vs IPv6 formats",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::ipv4-vs-ipv6-formats"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c046c1c2-df78-4276-9d79-99cfc77455c4",
+            "question": "Can two machines share the same public IP?",
+            "answer": "No — it must be unique across the whole web",
+            "group": "Public IP uniqueness and geo-location",
+            "keyTopic": "Public IP uniqueness and geo-location",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::public-ip-uniqueness-and-geo-location"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a0ec5601-345d-4b14-b3bd-dd02e2214ad6",
+            "question": "Can a public IP be geo-located easily?",
+            "answer": "Yes",
+            "group": "Public IP uniqueness and geo-location",
+            "keyTopic": "Public IP uniqueness and geo-location",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::public-ip-uniqueness-and-geo-location"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "42b3028b-eda4-493d-8e40-ae149e7494a7",
+            "question": "A public IP lets a machine be identified on which network?",
+            "answer": "The internet (WWW)",
+            "group": "Public IP uniqueness and geo-location",
+            "keyTopic": "Public IP uniqueness and geo-location",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::public-ip-uniqueness-and-geo-location"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "08442f51-4363-4ad6-a6cb-c75cffe6e796",
+            "question": "A private IP must be unique across what scope?",
+            "answer": "Its own private network",
+            "group": "Private IP uniqueness within a network",
+            "keyTopic": "Private IP uniqueness within a network",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::private-ip-uniqueness-within-a-network"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1f09d545-ba0e-42b2-9506-59bd79fcfbe3",
+            "question": "Which IP lets a machine be identified only on a private network: public or private?",
+            "answer": "Private IP",
+            "group": "Private IP uniqueness within a network",
+            "keyTopic": "Private IP uniqueness within a network",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::private-ip-uniqueness-within-a-network"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f71660b6-bb18-49d8-b0b9-301ac8762a58",
+            "question": "Which range of IPs can be used as private IPs?",
+            "answer": "Only a specified range of IPs",
+            "group": "Private IP uniqueness within a network",
+            "keyTopic": "Private IP uniqueness within a network",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::private-ip-uniqueness-within-a-network"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "8a1165e2-2f71-4008-b468-316236782b00",
+            "question": "Can two different companies both use 192.168.0.1/22?",
+            "answer": "Yes — private IPs only must be unique inside their own network",
+            "group": "Same private range across companies",
+            "keyTopic": "Same private range across companies",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::same-private-range-across-companies"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "e9205f19-b37a-4122-826b-5dc406d15ffc",
+            "question": "Which must be unique across the whole web: a public IP or a private IP?",
+            "answer": "A public IP",
+            "group": "Same private range across companies",
+            "keyTopic": "Same private range across companies",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::same-private-range-across-companies"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1a715aa8-35ca-471d-9bd9-a51073dd0a34",
+            "question": "How do machines with private IPs connect to the WWW?",
+            "answer": "Using a NAT + internet gateway (a proxy)",
+            "group": "NAT and internet gateway for WWW access",
+            "keyTopic": "NAT and internet gateway for WWW access",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::nat-and-internet-gateway-for-www-access"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "3561d07d-bd5a-4eec-812a-5f37a09a4395",
+            "question": "NAT plus an internet gateway acts like what for a private network?",
+            "answer": "A proxy",
+            "group": "NAT and internet gateway for WWW access",
+            "keyTopic": "NAT and internet gateway for WWW access",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::nat-and-internet-gateway-for-www-access"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "cf03a56a-1c5b-4a19-bf7a-b23f30b61ba7",
+            "question": "In the section diagram, what is the public-facing address given for the Internet Gateway?",
+            "answer": "149.140.72.10",
+            "group": "NAT and internet gateway for WWW access",
+            "keyTopic": "NAT and internet gateway for WWW access",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::nat-and-internet-gateway-for-www-access"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "0f6213a8-b8be-4d99-8492-af998562451e",
+            "question": "What do you need when an instance requires a fixed public IP?",
+            "answer": "An Elastic IP",
+            "group": "Elastic IP: fixed public IPv4",
+            "keyTopic": "Elastic IP: fixed public IPv4",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-fixed-public-ipv4"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "db438663-6a6a-40a1-90e9-1f03c819389e",
+            "question": "What kind of address is an Elastic IP?",
+            "answer": "A public IPv4 address you own until you delete it",
+            "group": "Elastic IP: fixed public IPv4",
+            "keyTopic": "Elastic IP: fixed public IPv4",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-fixed-public-ipv4"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d6060e46-85ea-4b7b-a710-4a0bca8ca5c9",
+            "question": "How long do you own an Elastic IP?",
+            "answer": "As long as you don't delete it",
+            "group": "Elastic IP: fixed public IPv4",
+            "keyTopic": "Elastic IP: fixed public IPv4",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-fixed-public-ipv4"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "967cad34-ad56-4432-9d25-1d9264589f25",
+            "question": "An instance must keep the same public IP after stop/start. Which do you use?",
+            "answer": "An Elastic IP",
+            "group": "Elastic IP: fixed public IPv4",
+            "keyTopic": "Elastic IP: fixed public IPv4",
+            "origin": "exam-guide",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-fixed-public-ipv4"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "2feb75e2-759f-4017-ab08-dc2e58e0b8ca",
+            "question": "How many instances can one Elastic IP be attached to at a time?",
+            "answer": "One instance at a time",
+            "group": "Elastic IP attach to one instance",
+            "keyTopic": "Elastic IP attach to one instance",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-attach-to-one-instance"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b434d1fc-bcaf-45bc-bcec-14b9078db0dc",
+            "question": "How can an Elastic IP mask the failure of an instance?",
+            "answer": "By rapidly remapping it to another instance in your account",
+            "group": "Elastic IP attach to one instance",
+            "keyTopic": "Elastic IP attach to one instance",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-attach-to-one-instance"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "dab084cc-24a3-47be-ba97-e380348a6974",
+            "question": "Can one Elastic IP front a fleet of instances simultaneously?",
+            "answer": "No — it attaches to one instance at a time",
+            "group": "Elastic IP attach to one instance",
+            "keyTopic": "Elastic IP attach to one instance",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-attach-to-one-instance"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1771e2ec-1f3d-47d7-81de-db3aa6c4ac37",
+            "question": "How many Elastic IPs can you have per account, as stated in the section?",
+            "answer": "5",
+            "group": "Elastic IP limit of 5 per account",
+            "keyTopic": "Elastic IP limit of 5 per account",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-limit-of-5-per-account"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "9da2a978-5b3a-4727-a98c-e658c5598309",
+            "question": "What can you do if you need more than 5 Elastic IPs?",
+            "answer": "Ask AWS to increase the limit",
+            "group": "Elastic IP limit of 5 per account",
+            "keyTopic": "Elastic IP limit of 5 per account",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-limit-of-5-per-account"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "3dd352f6-aae4-4067-b7b8-5842c0c5eccc",
+            "question": "What do Elastic IPs often reflect, according to the section?",
+            "answer": "Poor architectural decisions",
+            "group": "Avoid Elastic IP: DNS name or Load Balancer",
+            "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::avoid-elastic-ip-dns-name-or-load-balancer"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a07486b4-f831-456d-828f-a88e568b5df1",
+            "question": "Instead of an Elastic IP, what should you register to a random public IP?",
+            "answer": "A DNS name",
+            "group": "Avoid Elastic IP: DNS name or Load Balancer",
+            "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::avoid-elastic-ip-dns-name-or-load-balancer"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "9a124ebc-55ed-4be4-af74-e318201ec933",
+            "question": "Instead of an Elastic IP, what can front your instances so they need no public IP?",
+            "answer": "A Load Balancer",
+            "group": "Avoid Elastic IP: DNS name or Load Balancer",
+            "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::avoid-elastic-ip-dns-name-or-load-balancer"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "faaf5630-c9dc-489e-a1f7-e2ffc7bb9dbf",
+            "question": "Which gives a stable endpoint without consuming a scarce Elastic IP: DNS name or Elastic IP?",
+            "answer": "DNS name on a random public IP",
+            "group": "Avoid Elastic IP: DNS name or Load Balancer",
+            "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+            "origin": "exam-guide",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::avoid-elastic-ip-dns-name-or-load-balancer"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "eee66757-4091-41b8-8caa-e4828ed4044e",
+            "question": "Which two IPs does an EC2 machine come with by default?",
+            "answer": "A private IP for the internal AWS network\nA public IP for the WWW",
+            "group": "Default EC2 private + public IP",
+            "keyTopic": "Default EC2 private + public IP; SSH via public IP",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::default-ec2-private-public-ip-ssh-via-public-ip"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "8267723b-64bc-4c03-a991-7245a48f47a4",
+            "question": "What can happen to an EC2 instance's public IP when it is stopped and started?",
+            "answer": "It can change",
+            "group": "Default EC2 private + public IP",
+            "keyTopic": "Default EC2 private + public IP; SSH via public IP",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::default-ec2-private-public-ip-ssh-via-public-ip"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "5a231108-c5fb-408a-82ed-d9ec4b94b380",
+            "question": "Is an EC2 instance's default public IP permanent?",
+            "answer": "No — stop/start can change it",
+            "group": "Default EC2 private + public IP",
+            "keyTopic": "Default EC2 private + public IP; SSH via public IP",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::default-ec2-private-public-ip-ssh-via-public-ip"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "29ec1c22-3183-4752-92c4-a7ad54ce752c",
+            "question": "Why can't you SSH into an EC2 instance using its private IP?",
+            "answer": "Because you are not in the same network",
+            "group": "SSH via public IP",
+            "keyTopic": "Default EC2 private + public IP; SSH via public IP",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::default-ec2-private-public-ip-ssh-via-public-ip"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "36f44070-844a-4f88-8176-6cab6752afe6",
+            "question": "From outside AWS, which IP do you use to SSH into an EC2 instance?",
+            "answer": "The public IP",
+            "group": "SSH via public IP",
+            "keyTopic": "Default EC2 private + public IP; SSH via public IP",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::default-ec2-private-public-ip-ssh-via-public-ip"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "062b1959-5207-402c-9dfc-f4e148b21ea6",
+            "question": "Which IP type must be unique across the whole web: public or private?",
+            "answer": "Public",
+            "group": "Choosing the right option",
+            "keyTopic": "Public IP uniqueness and geo-location",
+            "origin": "source",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::public-ip-uniqueness-and-geo-location"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "94aecf03-a5ee-49a5-8ca4-6e69a2a59c39",
+            "question": "Which is the least brittle stable endpoint for a scalable web tier: Elastic IP or Load Balancer?",
+            "answer": "Load Balancer",
+            "group": "Choosing the right option",
+            "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+            "origin": "exam-guide",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::avoid-elastic-ip-dns-name-or-load-balancer"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:07:06.017Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A company needs a fixed public IPv4 address for a single EC2 instance that must survive stop/start cycles. The instance is currently running with its default addressing. What should the architect do?",
+            "options": [
+              "Assign an Elastic IP to the instance, since the default public IP can change on stop/start",
+              "Rely on the instance's public IP, since an EC2 public IP never changes after launch",
+              "Move the instance into a private network and connect to it via NAT and an internet gateway",
+              "Register the private IP in a DNS record, since private IPs are fixed for the instance lifetime"
+            ],
+            "correctIndex": 0,
+            "explanation": "An Elastic IP is a public IPv4 you own until you delete it, so it stays fixed across stop/start; the default public IP is not permanent, so option B is wrong; NAT plus internet gateway only gives private machines outbound WWW access and does not provide a fixed public address, so C is wrong; private IPs are not reachable from the internet, so D is wrong.",
+            "keyTopic": "Elastic IP: fixed public IPv4",
+            "kind": "scenario",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-fixed-public-ipv4"
+            ]
+          },
+          {
+            "question": "A web tier behind a single stable entry point must scale to multiple instances, and the design should avoid scarce public addresses on the instances. Which solution best fits?",
+            "options": [
+              "Allocate a public IP directly to every instance in the web tier",
+              "Front the instances with a Load Balancer and don't use a public IP on the instances",
+              "Attach one Elastic IP to each of the instances in the fleet",
+              "Attach a single Elastic IP to the whole fleet simultaneously"
+            ],
+            "correctIndex": 1,
+            "explanation": "The section recommends a Load Balancer with no public IP on the instances for a stable, scalable entry point; public IPs per instance are the brittle pattern being avoided, so A is wrong; Elastic IPs reflect poor architectural decisions and consume the 5-per-account limit, so C is wrong; an Elastic IP can be attached to only one instance at a time, so D is wrong.",
+            "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+            "kind": "scenario",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::avoid-elastic-ip-dns-name-or-load-balancer"
+            ]
+          },
+          {
+            "question": "An application team wants a stable, human-facing endpoint for a web server without consuming an Elastic IP. What is the recommended approach?",
+            "options": [
+              "Request an increase of the Elastic IP quota and attach one to the server",
+              "Recreate the instance each time the public IP changes to keep a fixed address",
+              "Use a random public IP and register a DNS name to it",
+              "Advertise the instance's private IP to external clients"
+            ],
+            "correctIndex": 2,
+            "explanation": "Registering a DNS name to a random public IP keeps a stable user-facing endpoint while hiding the changing public IP; raising the Elastic IP quota still uses a scarce Elastic IP that the section advises avoiding, so A is wrong; recreating instances is not a fix for address stability, so B is wrong; the private IP is not reachable from the internet, so D is wrong.",
+            "keyTopic": "Avoid Elastic IP: DNS name or Load Balancer",
+            "kind": "scenario",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::avoid-elastic-ip-dns-name-or-load-balancer"
+            ]
+          },
+          {
+            "question": "A solutions architect has been asked to add a sixth Elastic IP address in one AWS account. What is the most accurate statement about this request?",
+            "options": [
+              "The account already has 5 Elastic IPs; the limit can be increased by asking AWS",
+              "The account already has 5 Elastic IPs and the limit can never be increased",
+              "The limit is 5 per Region, so the request is automatically approved",
+              "The limit is 5 per instance, so the third instance can receive its own Elastic IP"
+            ],
+            "correctIndex": 0,
+            "explanation": "The section states you can have 5 Elastic IPs in your account and can ask AWS to increase that limit; option B contradicts the documented ability to request an increase; option C is a per-Region claim not made in the source; option D misstates the quota, which is per account, not per instance.",
+            "keyTopic": "Elastic IP limit of 5 per account",
+            "kind": "concept",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-limit-of-5-per-account"
+            ]
+          },
+          {
+            "question": "An operations team reports that an instance's public IP changed after a stop and start. Which statement explains the underlying behaviour?",
+            "options": [
+              "Public IPs are unique across the whole web, so they cannot change",
+              "Stopping and then starting an EC2 instance can change its public IP",
+              "Private IPs are renumbered by AWS on every stop and start",
+              "The Elastic IP was remapped to another instance automatically"
+            ],
+            "correctIndex": 1,
+            "explanation": "The section explicitly says stopping and then starting an instance can change its public IP; uniqueness across the web does not imply permanence, so A is wrong; the behaviour concerns the public IP, not the private one, so C is wrong; no Elastic IP is involved in a default-addressed instance, so D is wrong.",
+            "keyTopic": "Elastic IP: fixed public IPv4",
+            "kind": "concept",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-fixed-public-ipv4"
+            ]
+          },
+          {
+            "question": "Two different companies each build a private network and both choose the address 192.168.0.1/22. Which statement is correct?",
+            "options": [
+              "This is a conflict; private IPs must be unique across the whole web",
+              "This is valid because only a specified range may be used as private IP but the value may repeat",
+              "This is valid only if the two networks are connected through NAT and an internet gateway",
+              "This is invalid because private IPs must be unique within each AWS account"
+            ],
+            "correctIndex": 1,
+            "explanation": "Private IPs only need to be unique inside their own private network, so two companies can reuse the same range, and private addressing is restricted to a specified range; option A confuses the public-IP rule with private addressing; option C is irrelevant to reuse; option D invents a per-account uniqueness rule for private IPs.",
+            "keyTopic": "Same private range across companies",
+            "kind": "comparison",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::same-private-range-across-companies"
+            ]
+          },
+          {
+            "question": "A server on a private network needs to reach websites on the WWW. Its private IP is not routable from the internet. What mechanism provides that access?",
+            "options": [
+              "A NAT with an internet gateway acting as a proxy",
+              "A public IP added directly to the server's network interface",
+              "An Elastic IP attached to the private network interface",
+              "A DNS name registered to the private IP address"
+            ],
+            "correctIndex": 0,
+            "explanation": "Machines with private IPs connect to the WWW using NAT plus an internet gateway, a proxy mechanism; option B would give the server a public address, which is not how private-to-WWW access is described; option C misuses an Elastic IP, which is a public IPv4 attached to one instance; option D cannot make a private IP routable on the internet.",
+            "keyTopic": "NAT and internet gateway for WWW access",
+            "kind": "concept",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::nat-and-internet-gateway-for-www-access"
+            ]
+          },
+          {
+            "question": "An administrator must SSH into a newly launched EC2 instance from a laptop outside AWS. The instance has both a private and a public IP. Which address should be used, and why?",
+            "options": [
+              "The public IP, because the private IP is only unique within the private network and cannot be reached from outside",
+              "The private IP, because it is fixed and the public IP may change after a stop and start",
+              "The private IP, because SSH traffic is proxied by the internet gateway to that address",
+              "The public IP, because Elastic IPs are required for SSH access to any EC2 instance"
+            ],
+            "correctIndex": 0,
+            "explanation": "From outside AWS you can only SSH using the public IP because you are not in the same network as the private IP; option B is true about public IP changes but does not make the private IP reachable; option C is wrong because the internet gateway does not give an external client a route to the private address; option D is wrong because SSH does not require an Elastic IP, only a public IP.",
+            "keyTopic": "Default EC2 private + public IP; SSH via public IP",
+            "kind": "scenario",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::default-ec2-private-public-ip-ssh-via-public-ip"
+            ]
+          },
+          {
+            "question": "A production instance fails and the team needs traffic to move to a standby instance in the same account as quickly as possible. Which Elastic IP capability supports this?",
+            "options": [
+              "Rapidly remap the Elastic IP to the standby instance",
+              "Attach the same Elastic IP to both instances at the same time",
+              "Recreate the instance so its default public IP is reassigned",
+              "Add the Elastic IP to a private network and route via NAT"
+            ],
+            "correctIndex": 0,
+            "explanation": "The section says an Elastic IP can mask the failure of an instance or software by rapidly remapping the address to another instance in your account; option B is impossible because an Elastic IP attaches to one instance at a time; option C does not provide a controlled failover address; option D is not how a private network plus NAT provides a public endpoint.",
+            "keyTopic": "Elastic IP attach to one instance",
+            "kind": "scenario",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::elastic-ip-attach-to-one-instance"
+            ]
+          },
+          {
+            "question": "A new EC2 instance is launched with default settings. Which addressing does it receive?",
+            "options": [
+              "A private IP for the internal AWS Network and a public IP for the WWW",
+              "A public IP only, because public IPs are sufficient for internal AWS traffic",
+              "An Elastic IP, because public IPs are not assigned by default",
+              "A private IP only, because a public IP must be requested explicitly"
+            ],
+            "correctIndex": 0,
+            "explanation": "By default an EC2 machine comes with a private IP for the internal AWS Network and a public IP for the WWW; option B omits the default private IP; option C is wrong because an Elastic IP is optional and not the default; option D is wrong because the default launch does include a public IP.",
+            "keyTopic": "Default EC2 private + public IP; SSH via public IP",
+            "kind": "concept",
+            "objectiveIds": [
+              "a636c89b-6856-4d4b-9e9e-f1f76cef1f19::default-ec2-private-public-ip-ssh-via-public-ip"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v2",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T12:01:26.072Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 79,
+            "pageEnd": 84,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "This section explains the two kinds of IPv4 addressing you meet in AWS: public IPs, which are unique across the whole internet and let a machine be reached from the WWW, and private IPs, which are unique only inside one network and can be freely reused by other companies. It then introduces the Elastic IP, the only way in this section to give an instance a fixed public IPv4 address, together with its one-instance attachment rule, its 5-per-account limit and the architectural advice to avoid it in favour of DNS names or a Load Balancer. Exam questions use this as a design decision: does the workload need a stable, known public endpoint, and if so, what is the least brittle way to provide it?",
+        "coreConcepts": [
+          {
+            "term": "IPv4",
+            "definition": "The dotted-decimal address format [0-255].[0-255].[0-255].[0-255] (e.g. 1.160.10.240); the most common format online, allowing 3.7 billion different addresses in the public space, and the only format used in this course."
+          },
+          {
+            "term": "IPv6",
+            "definition": "A newer, longer hexadecimal address format (e.g. 3ffe:1900:4545:3:200:f8ff:fe21:67cf) that solves problems for the Internet of Things (IoT)."
+          },
+          {
+            "term": "Public IP",
+            "definition": "An address that identifies a machine on the internet (WWW); it must be unique across the whole web and can be geo-located easily."
+          },
+          {
+            "term": "Private IP",
+            "definition": "An address that identifies a machine only on a private network; it must be unique across that private network, but two different private networks (two companies) can have the same IPs, and only a specified range of IPs can be used as private IPs."
+          },
+          {
+            "term": "NAT + internet gateway",
+            "definition": "The proxy mechanism by which machines with private IPs connect to the WWW."
+          },
+          {
+            "term": "Elastic IP",
+            "definition": "A public IPv4 IP that you own for as long as you don't delete it, used when an instance needs a fixed public IP; it can be attached to one instance at a time."
+          },
+          {
+            "term": "EC2 default addressing",
+            "definition": "By default an EC2 machine comes with a private IP for the internal AWS Network and a public IP for the WWW."
+          },
+          {
+            "term": "Public IP change on stop/start",
+            "definition": "When you stop and then start an EC2 instance, it can change its public IP."
+          },
+          {
+            "term": "Internet Gateway (public)",
+            "definition": "The public-facing gateway address (e.g. 149.140.72.10, 253.144.139.205 in the section's example diagram) through which a private network reaches the WWW."
+          },
+          {
+            "term": "Remapping an Elastic IP",
+            "definition": "Rapidly reassigning the Elastic IP to another instance in your account, which masks the failure of an instance or software."
+          },
+          {
+            "term": "DNS name",
+            "definition": "The recommended alternative to an Elastic IP: use a random public IP and register a DNS name to it."
+          },
+          {
+            "term": "Load Balancer",
+            "definition": "The other recommended alternative: front the instances with a Load Balancer and don't use a public IP on the instance."
+          },
+          {
+            "term": "SSH into EC2",
+            "definition": "Remote access to an EC2 machine; you cannot use the private IP because you are not in the same network, so you can only use the public IP."
+          }
+        ],
+        "mustRemember": [
+          "Public IP must be unique across the whole web — no two machines can share the same public IP.",
+          "Private IP must be unique across the private network, but two different private networks (two companies) can have the same IPs.",
+          "Public IPs can be geo-located easily.",
+          "Machines with private IPs connect to the WWW using a NAT + internet gateway (a proxy).",
+          "Only a specified range of IPs can be used as private IP.",
+          "Stopping and then starting an EC2 instance can change its public IP.",
+          "An Elastic IP can be attached to one instance at a time.",
+          "You can only have 5 Elastic IPs in your account (you can ask AWS to increase that).",
+          "Elastic IPs often reflect poor architectural decisions — prefer a random public IP with a registered DNS name, or a Load Balancer with no public IP.",
+          "By default an EC2 machine comes with a private IP (internal AWS network) and a public IP (for the WWW).",
+          "To SSH into an EC2 instance you can only use the public IP, not the private IP, because you are not in the same network.",
+          "IPv4 format is [0-255].[0-255].[0-255].[0-255], allowing 3.7 billion different addresses in the public space."
+        ],
+        "keyComparisons": [
+          {
+            "items": "Public IP vs Private IP",
+            "difference": "A public IP is reachable and unique on the whole internet and is geo-locatable, while a private IP is only unique and reachable inside its own private network."
+          },
+          {
+            "items": "Elastic IP vs default EC2 public IP",
+            "difference": "The default public IP can change when the instance is stopped and started; an Elastic IP stays fixed (you own it until you delete it)."
+          },
+          {
+            "items": "Elastic IP vs DNS name on a random public IP",
+            "difference": "A DNS name keeps a stable, user-facing endpoint without consuming a scarce Elastic IP, and hides the underlying changing public IP."
+          },
+          {
+            "items": "Elastic IP vs Load Balancer",
+            "difference": "An Elastic IP hard-wires one address to one instance; a Load Balancer fronts multiple instances and lets you not use a public IP on the instances at all."
+          },
+          {
+            "items": "IPv4 vs IPv6",
+            "difference": "IPv4 is the common 4-octet dotted address (3.7 billion public addresses); IPv6 is newer, longer hexadecimal and solves problems for IoT."
+          },
+          {
+            "items": "SSH via public IP vs SSH via private IP",
+            "difference": "From outside AWS you can only SSH using the public IP; the private IP is unusable because you are not in the same network."
+          }
+        ],
+        "commonMisunderstandings": [
+          "Two companies cannot have the same private IP range — in fact they can; private IPs only have to be unique within their own private network.",
+          "You should SSH to an instance using its private IP — you can only use the public IP, because you are not in the same network.",
+          "An EC2 instance's default public IP is permanent — it can change when the instance is stopped and started, which is exactly why Elastic IPs exist.",
+          "One Elastic IP can be shared across several instances at once — it can be attached to only one instance at a time.",
+          "Elastic IPs are the recommended way to give a web tier a stable endpoint — they often reflect poor architectural decisions; prefer a DNS name on a random public IP, or a Load Balancer.",
+          "A private IP lets a machine be identified on the internet — it only identifies the machine on its private network; WWW access goes through NAT + internet gateway."
+        ],
+        "mentalModels": [
+          "Think of a public IP as a street address that must be unique worldwide, and a private IP as a room number that only has to be unique inside its own building — every building can have a room 101.",
+          "Think of NAT + internet gateway as a receptionist/proxy: private machines talk to the outside world through it, without exposing their own private numbers.",
+          "Think of an Elastic IP as a reserved parking space that is yours until you give it back — and you can only park one car in it at a time.",
+          "Think of the stop/start public IP change as a dynamic lease, and a DNS name or Load Balancer as the sign outside the building that stays valid even when the tenant changes.",
+          "Think of Elastic IPs as a scarce, blunt tool (5 per account) that you reach for only when nothing better fits."
+        ],
+        "edgeCases": [
+          "If you need more than 5 Elastic IPs, you can ask AWS to increase the limit.",
+          "One Elastic IP can be rapidly remapped to another instance in your account to mask the failure of an instance or software.",
+          "An Elastic IP is a public IPv4 address you own as long as you don't delete it.",
+          "A Load Balancer approach avoids using a public IP on the instance at all.",
+          "The private IP range is restricted: only a specified range of IPs can be used as private IP."
+        ],
+        "whenToUse": [
+          {
+            "situation": "An instance must keep the same public IPv4 address through stop/start cycles",
+            "use": "Elastic IP"
+          },
+          {
+            "situation": "You want a stable, human-facing endpoint without consuming a scarce Elastic IP",
+            "use": "Register a DNS name to a random public IP"
+          },
+          {
+            "situation": "Multiple instances behind a single stable entry point, with no public IP on the instances",
+            "use": "Load Balancer (don't use a public IP)"
+          },
+          {
+            "situation": "You need to fail over from a failed instance or software quickly",
+            "use": "Rapidly remap the Elastic IP to another instance in your account"
+          },
+          {
+            "situation": "You need to SSH into an EC2 instance from your own machine",
+            "use": "Connect to the instance's public IP"
+          },
+          {
+            "situation": "A machine on a private network must reach the WWW",
+            "use": "NAT + internet gateway (a proxy)"
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "Question says the instance must keep the same public IP after stop/start",
+            "indicates": "Elastic IP"
+          },
+          {
+            "signal": "Scenario mentions a limited number of Elastic IPs or asks for the AWS-friendly design",
+            "indicates": "DNS name or Load Balancer instead of Elastic IP"
+          },
+          {
+            "signal": "Two companies both use 192.168.0.1/22",
+            "indicates": "Private IP ranges only need to be unique within a network"
+          },
+          {
+            "signal": "Question asks why the instance cannot be reached by its private IP from the internet",
+            "indicates": "Private IP is internal-only; you need the public IP or NAT + internet gateway"
+          },
+          {
+            "signal": "Requirement to hide an instance failure by moving the address",
+            "indicates": "Remap the Elastic IP to another instance"
+          },
+          {
+            "signal": "Design asks for a stable endpoint for a scalable web tier",
+            "indicates": "Load Balancer rather than a public IP per instance"
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "Assuming an Elastic IP can front a fleet of instances simultaneously",
+            "correction": "An Elastic IP attaches to one instance at a time; use a Load Balancer for a fleet."
+          },
+          {
+            "trap": "Assuming you can have unlimited Elastic IPs",
+            "correction": "The limit is 5 per account; you can ask AWS to increase it."
+          },
+          {
+            "trap": "Choosing an Elastic IP as the 'best-practice' answer for every stable-endpoint question",
+            "correction": "The section says to try to avoid Elastic IPs; preferred answers are a DNS name on a random public IP or a Load Balancer with no public IP."
+          },
+          {
+            "trap": "Believing a public IP must be unique inside a VPC rather than on the internet",
+            "correction": "A public IP must be unique across the whole web; it is the private IP that only needs uniqueness within the private network."
+          },
+          {
+            "trap": "Thinking the EC2 public IP is fixed after creation",
+            "correction": "Stop and start can change the public IP; only an Elastic IP stays fixed."
+          },
+          {
+            "trap": "Using the private IP for SSH from outside AWS",
+            "correction": "You can only SSH using the public IP because you are not in the same network."
+          }
+        ],
+        "beyondSource": [
+          "Elastic IPs are allocated per Region and, by design, cannot be attached across Regions; out of scope here, but a common distractor framing.",
+          "Modern AWS accounts may start with a different default Elastic IP quota than 5 (quotas were later tightened for new accounts); the source's 5-per-account figure is the value a question is most likely to test unless stated otherwise."
+        ]
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "7b9a7a6c-a22d-43f4-b59e-5172fb38d55e",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T12:01:26.072Z"
+        },
+        "flashcards": {
+          "requestId": "e917e9a4-946a-4b2d-81e8-a7d7b5f3f6d8",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T12:07:06.017Z"
+        },
+        "quiz": {
+          "requestId": "00a475a7-5b4c-4100-9542-c9213efcf1d6",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T12:07:32.529Z"
+        }
+      }
+    },
+    {
+      "id": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "1ee90bae-d5e9-4140-b287-8ff28a1cdbe8",
+      "title": "EC2 Placement Groups: Cluster, Spread, Partition, Precision Time",
+      "objective": "Choose the placement group strategy (cluster, spread, partition or precision time) that meets low-latency, high-availability or failure-isolation requirements, and state its key limits and trade-offs.",
+      "keyTopics": [
+        "Placement group strategies overview",
+        "Cluster: single AZ, 10 Gbps Enhanced Networking",
+        "Cluster risk: AZ failure fails all instances",
+        "Spread: max 7 instances per AZ",
+        "Spread: distinct hardware, high availability",
+        "Partition: up to 7 partitions per AZ",
+        "Partition: hundreds of instances, rack isolation",
+        "Partition metadata access; HDFS, Cassandra, Kafka",
+        "Precision time: Amazon Time Sync, PTP clock (Linux)",
+        "Precision time use cases: financial timestamping"
+      ],
+      "pageStart": 85,
+      "pageEnd": 89,
+      "text": "[Page 85]\nPlacement Groups\n• \tSometimes you want control over the EC2 Instance placement strategy\n• \tThat strategy can be defined using placement groups\n• \tWhen you create a placement group, you specify one of the following\nstrategies for the group:\n• \tCluster—clusters instances into a low-latency group in a single Availability Zone\n• \tSpread—spreads instances across underlying hardware (max 7 instances per\ngroup per AZ)\n• \tPartition—spreads instances across many different partitions (which rely on\ndifferent sets of racks) within an AZ. Scales to 100s of EC2 instances per group\n(Hadoop, Cassandra, Kafka)\n• \tPrecision time— direct access to high-precision time sources\n\n[Page 86]\nSame AZ\nPlacement Groups\nCluster\n• \tPros: Great network (10 Gbps bandwidth between instances with Enhanced\nNetworking enabled - recommended)\n• \tCons: If the AZ fails, all instances fails at the same time\n• \tUse case:\n• \tBig Data job that needs to complete fast\n• \tApplication that needs extremely low latency and high network throughput\nEC2 \tEC2\nEC2 \tEC2 \tEC2\nEC2 Placement group\nCluster\nLow latency\n10 Gbps network\n\n[Page 87]\nUs-east-1a\nHardware 1\nPlacement Groups\nSpread • \tPros:\n• \tCan span across Availability\nZones (AZ)\n• \tReduced risk is simultaneous\nfailure\n• \tEC2 Instances are on different\nphysical hardware\n• \tCons:\n• \tLimited to 7 instances per AZ\nper placement group\n• \tUse case:\n• \tApplication that needs to\nmaximize high availability\n• \tCritical Applications where\neach instance must be isolated\nfrom failure from each other\nEC2\nHardware 2\nEC2\nUs-east-1b\nHardware 3\nEC2\nHardware 4\nEC2\nUs-east-1c\nHardware 5\nEC2\nHardware 6\nEC2\n\n[Page 88]\nPlacements Groups\nPartition • \tUp to 7 partitions per AZ\n• \tCan span across multiple AZs in the\nsame region\n• \tUp to 100s of EC2 instances\n• \tThe instances in a partition do not\nshare racks with the instances in the\nother partitions\n• \tA partition failure can affect many\nEC2 but won’t affect other partitions\n• \tEC2 instances get access to the\npartition information as metadata\n• \tUse cases: HDFS, HBase, Cassandra,\nKafka\nus-east-1a\nPartition 1\nEC2\nEC2\nEC2\nEC2\nPartition 2\nEC2\nEC2\nEC2\nEC2\nPartition 3\nEC2\nEC2\nEC2\nEC2\nus-east-1b\n\n[Page 89]\nPlacements Groups\nPrecision time\n• \tInstances placed on hardware with direct\naccess to high-precision time sources\n• \tEnhanced Amazon Time Sync Service (more\naccurate than standard NTP)\n• \tPTP Hardware Clock + hardware packet\ntimestamping (Linux only)\n• \tUse cases: distributed databases, financial\ntimestamping, event ordering\nus-east-1a\nGroup\nEC2\nEC2\nEC2\nEC2\nEnhanced\nNTP\nPTP Clock",
+      "read": false
+    },
+    {
+      "id": "11e68d60-a3e8-4910-926e-e5b90c8522b4",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "1ee90bae-d5e9-4140-b287-8ff28a1cdbe8",
+      "title": "Elastic Network Interfaces (ENI)",
+      "objective": "Explain what an ENI can carry and how moving a secondary ENI between instances supports failover, while respecting its AZ binding.",
+      "keyTopics": [
+        "ENI as virtual network card",
+        "Primary and secondary private IPv4",
+        "Elastic IP per private IPv4; public IPv4",
+        "Security groups and MAC address",
+        "Move ENI between instances for failover",
+        "ENI bound to a single AZ"
+      ],
+      "pageStart": 90,
+      "pageEnd": 90,
+      "text": "[Page 90]\nElastic Network Interfaces (ENI)\n• \tLogical component in a VPC that represents a\nvirtual network card\n• \tThe ENI can have the following attributes:\n• \tPrimary private IPv4, one or more secondary IPv4\n• \tOne Elastic IP (IPv4) per private IPv4\n• \tOne Public IPv4\n• \tOne or more security groups\n• \tA MAC address\n• \tYou can create ENI independently and attach\nthem on the fly (move them) on EC2 instances\nfor failover\n• \tBound to a specific availability zone (AZ)\nEC2\nEth0 – primary ENI\n192.168.0.31\nEth1 – secondary ENI\n192.168.0.42\nEC2\nEth0 – primary ENI\nCan be moved\nAvailability Zone",
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nAn Elastic Network Interface (ENI) is the logical VPC component that represents a virtual network card attached to an EC2 instance. The exam tests what an ENI can carry (IP addresses, Elastic IPs, security groups, a MAC address) and the two structural rules that drive scenario answers: an ENI is bound to a single Availability Zone, yet it can be detached and moved to another instance. That combination is the classic low-cost failover pattern, so expect questions where moving an ENI is the right answer only if the target instance sits in the same AZ.\n\n## Core Concepts\n\n- **Elastic Network Interface (ENI):** A logical component in a VPC that represents a virtual network card; it is the network identity an EC2 instance uses to reach the VPC.\n- **ENI attributes:** An ENI can have a primary private IPv4, one or more secondary IPv4 addresses, one Elastic IP (IPv4) per private IPv4, one public IPv4, one or more security groups, and a MAC address.\n- **Primary private IPv4:** The main private IPv4 address of the ENI; every ENI has one primary private IPv4 address.\n- **Secondary private IPv4:** Additional private IPv4 addresses that an ENI can carry alongside the primary one (one or more).\n- **Elastic IP (IPv4) per private IPv4:** Each private IPv4 on the ENI can be associated with one Elastic IP; the pairing rule is one Elastic IP per private IPv4.\n- **Public IPv4:** The ENI can have one public IPv4 address, separate from any Elastic IP association.\n- **Security groups on an ENI:** One or more security groups can be attached to an ENI, making the ENI the point where security-group rules apply to that network interface.\n- **MAC address:** Each ENI has its own MAC address, which travels with the ENI when it is moved between instances.\n- **Primary ENI (Eth0):** The network interface an instance is created with, shown as Eth0 in the example; it carries the instance's primary private IP (for example 192.168.0.31).\n- **Secondary ENI (Eth1):** An additional interface attached to an instance, shown as Eth1 with its own private IP (for example 192.168.0.42); this is the type typically detached and re-attached for failover.\n- **Attach/detach on the fly:** An ENI can be created independently of an instance and attached or moved to EC2 instances while running, which enables failover.\n- **AZ binding:** An ENI is bound to one specific Availability Zone; it can only be attached to instances in that same AZ.\n\n## Key Comparisons\n\n- **Primary private IPv4 vs secondary private IPv4:** Every ENI has one primary private IPv4; secondaries are optional and can be one or more, and each private IPv4 can pair with one Elastic IP.\n- **Elastic IP vs public IPv4 on an ENI:** An Elastic IP is associated per private IPv4, while the ENI has a single public IPv4 attribute.\n- **ENI in one AZ vs ENI across AZs:** An ENI lives in exactly one AZ, so failover by moving an ENI only works to an instance in the same AZ.\n- **Primary ENI (Eth0) vs secondary ENI (Eth1):** Eth0 is the instance's original interface carrying the primary private IP; the secondary ENI is the separately created interface that can be moved for failover.\n- **Moving an ENI vs re-creating an instance:** Moving the ENI preserves the network identity (private IP, Elastic IP, MAC, security groups), whereas a new instance in another AZ cannot take that ENI.\n\n## Common Misunderstandings\n\n- An ENI can be moved between any instances — wrong: only to instances in the same Availability Zone, because the ENI is AZ-bound.\n- An ENI can have several Elastic IPs per single private IPv4 — wrong: it is one Elastic IP per private IPv4.\n- Secondary IP addresses are attached to the instance rather than the ENI — wrong: private IPv4 addresses, including secondaries, belong to the ENI.\n- Security groups are properties of the EC2 instance only — security groups are attached to the ENI, and the ENI carries them when moved.\n- You must terminate an instance to change its networking identity — an independently created ENI can be attached on the fly.\n- A public IPv4 and an Elastic IP are the same attribute — the ENI's listed attributes treat one public IPv4 and Elastic-IP-per-private-IPv4 separately.\n\n## Mental Models\n\n- Think of an ENI as a physical network card you can unplug from one server and plug into another in the same rack (AZ) — the MAC, IPs and security settings go with the card.\n- Think of the AZ binding as the ENI being welded to one data center: moving it to another AZ is physically impossible.\n- Think of private IPv4 addresses as slots on the card, each slot able to hold one Elastic IP.\n\n## Exceptions & Edge Cases\n\n- The failover move is only valid when the replacement instance is in the same AZ as the ENI.\n- Moving a secondary ENI onto a different instance preserves the addresses and MAC, so clients using that address see continuity.\n- The instance's own Eth0 stays with the original instance; the movable unit is the separately created ENI (for example Eth1).\n\n## When to Use Which\n\n- A running instance fails and you need its private/Elastic IP and MAC to follow a standby instance quickly without changing DNS or client config → **Detach the secondary ENI from the failed instance and attach it to the standby instance in the same AZ.**\n- You need an interface that exists independently of any instance and can be attached later → **Create the ENI independently, then attach it on the fly.**\n- The standby instance is in a different Availability Zone → **Moving the ENI does not work — the ENI is bound to its AZ, so failover by ENI is constrained to the same AZ.**\n\n## Patterns to Recognize\n\n- 'Preserve private IP / MAC / security groups when an instance is replaced' → **Moving an Elastic Network Interface to the replacement instance.**\n- 'Attach network interface on the fly' or 'move network interface' → **ENI detach/attach failover pattern, valid only within the same AZ.**\n- 'Virtual network card in a VPC' → **Definition question on ENI.**\n- 'One Elastic IP per private IPv4' → **ENI IP-address attribute rule.**\n\n## Exam Traps\n\n- “Option: move the ENI to an instance in another Availability Zone for cross-AZ failover” — The ENI is bound to a specific AZ; it can only be attached to instances in that AZ.\n- “Option: attach multiple Elastic IPs to one private IPv4” — The rule is one Elastic IP (IPv4) per private IPv4.\n- “Option: give the ENI multiple public IPv4 addresses” — The ENI has one public IPv4.\n- “Option: ENI is a subnet-level or Region-level construct” — The ENI is a logical VPC component bound to one Availability Zone.\n- “Option: security groups are configured on the instance and lost if you swap interfaces” — The ENI carries one or more security groups and keeps them when moved.\n\n## Beyond the Source (tutor knowledge)\n\n- (Tutor knowledge) AWS also supports per-ENI IPv6 addresses and multiple ENIs per instance, but the source's testable attributes here are the IPv4 ones, Elastic IPs, one public IPv4, security groups and MAC.\n- (Tutor knowledge) Elastic IPs are associated with the private IPv4, so moving the ENI moves the Elastic IP association as well — useful for failover without DNS changes.",
+        "keyPoints": [
+          "An ENI is bound to a specific Availability Zone — it cannot be attached to an instance in a different AZ.",
+          "An ENI can be created independently of an instance and attached/moved onto instances on the fly.",
+          "An ENI has exactly one primary private IPv4 and can have one or more secondary private IPv4 addresses.",
+          "The Elastic IP rule is one Elastic IP (IPv4) per private IPv4 address on the ENI.",
+          "An ENI can have one public IPv4 address.",
+          "An ENI can have one or more security groups, and it has a MAC address.",
+          "Moving an ENI to another instance carries its private IPs, Elastic IPs, security groups and MAC address with it."
+        ],
+        "supplement": "- (Tutor knowledge) AWS also supports per-ENI IPv6 addresses and multiple ENIs per instance, but the source's testable attributes here are the IPv4 ones, Elastic IPs, one public IPv4, security groups and MAC.\n- (Tutor knowledge) Elastic IPs are associated with the private IPv4, so moving the ENI moves the Elastic IP association as well — useful for failover without DNS changes.",
+        "cards": [
+          {
+            "id": "b325ae4e-c8e9-49a4-b66d-2a34c0b0e619",
+            "question": "What does an ENI represent in a VPC?",
+            "answer": "A virtual network card",
+            "group": "ENI Basics",
+            "keyTopic": "ENI as virtual network card",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::eni-as-virtual-network-card"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "44cf5a8f-251f-43f1-aa12-47b6ed43b273",
+            "question": "Is an ENI a physical or logical component of a VPC?",
+            "answer": "Logical component",
+            "group": "ENI Basics",
+            "keyTopic": "ENI as virtual network card",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::eni-as-virtual-network-card"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b3eeecab-2162-4a59-bc1b-726e0908a188",
+            "question": "Which ENI is attached as Eth0 on an EC2 instance?",
+            "answer": "The primary ENI",
+            "group": "ENI Basics",
+            "keyTopic": "ENI as virtual network card",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::eni-as-virtual-network-card"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a81ce6b3-c15b-4003-9fde-8ff7fbf1689a",
+            "question": "Which private IPv4 address does an ENI always have?",
+            "answer": "A primary private IPv4",
+            "group": "IP Addressing on an ENI",
+            "keyTopic": "Primary and secondary private IPv4",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::primary-and-secondary-private-ipv4"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "870dcbac-72bd-49fe-8c50-6a093634c2eb",
+            "question": "Besides the primary private IPv4, what else can an ENI have?",
+            "answer": "One or more secondary IPv4 addresses",
+            "group": "IP Addressing on an ENI",
+            "keyTopic": "Primary and secondary private IPv4",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::primary-and-secondary-private-ipv4"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "565464eb-bf08-45ed-ac6d-ee39c0fb1e55",
+            "question": "How many Elastic IPs (IPv4) can associate per private IPv4 on an ENI?",
+            "answer": "One",
+            "group": "IP Addressing on an ENI",
+            "keyTopic": "Elastic IP per private IPv4; public IPv4",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::elastic-ip-per-private-ipv4-public-ipv4"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f5635b6b-5684-4642-87bc-7da82597feca",
+            "question": "How many public IPv4 addresses can an ENI have?",
+            "answer": "One",
+            "group": "IP Addressing on an ENI",
+            "keyTopic": "Elastic IP per private IPv4; public IPv4",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::elastic-ip-per-private-ipv4-public-ipv4"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b7a716b8-73cc-4028-8f2b-d8fa2e7d2f1d",
+            "question": "How many security groups can be attached to an ENI?",
+            "answer": "One or more",
+            "group": "Security Groups and MAC Address",
+            "keyTopic": "Security groups and MAC address",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::security-groups-and-mac-address"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "4773a1cc-a86d-4e46-bd92-f28c0d4e42c2",
+            "question": "Which identifier does an ENI carry that network rules can reference?",
+            "answer": "A MAC address",
+            "group": "Security Groups and MAC Address",
+            "keyTopic": "Security groups and MAC address",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::security-groups-and-mac-address"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b9098c13-d8ab-47a1-8eb8-0f740c43afd1",
+            "question": "Can an ENI be created independently of an EC2 instance?",
+            "answer": "Yes, ENIs can be created independently",
+            "group": "ENI Movement and Failover",
+            "keyTopic": "Move ENI between instances for failover",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::move-eni-between-instances-for-failover"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d126eb03-3d7b-4ee0-9e82-6efc3c8a0130",
+            "question": "What do you do with an ENI to fail over to another EC2 instance?",
+            "answer": "Move (reattach) it on the fly to the other instance",
+            "group": "ENI Movement and Failover",
+            "keyTopic": "Move ENI between instances for failover",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::move-eni-between-instances-for-failover"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "73d69832-222c-4bfc-9dbd-51eff4203639",
+            "question": "What is the main use of moving an ENI between EC2 instances?",
+            "answer": "Failover",
+            "group": "ENI Movement and Failover",
+            "keyTopic": "Move ENI between instances for failover",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::move-eni-between-instances-for-failover"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ed513a3b-1510-4cbd-98e0-c4d6cb557f11",
+            "question": "Which scope is an ENI bound to?",
+            "answer": "A specific availability zone",
+            "group": "AZ Binding",
+            "keyTopic": "ENI bound to a single AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::eni-bound-to-a-single-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1286101f-665e-415d-8850-4ac7393c4e2e",
+            "question": "Can an ENI be moved to an instance in a different AZ, yes or no?",
+            "answer": "No, it is bound to a specific AZ",
+            "group": "AZ Binding",
+            "keyTopic": "ENI bound to a single AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::eni-bound-to-a-single-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:14:09.040Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "Which statement best describes an Elastic Network Interface (ENI) in a VPC?",
+            "options": [
+              "A logical component in a VPC that represents a virtual network card",
+              "A subnet-level routing table that controls traffic between subnets",
+              "A Region-wide gateway that connects a VPC to the internet",
+              "A block storage volume that can be attached to one EC2 instance"
+            ],
+            "correctIndex": 0,
+            "explanation": "An ENI is defined as a logical component in a VPC that represents a virtual network card. A route table is a separate VPC construct for directing traffic, not an interface. An internet gateway is a VPC component for internet connectivity, not a network card. An EBS volume is block storage and has no network identity.",
+            "keyTopic": "ENI as virtual network card",
+            "kind": "concept",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::eni-as-virtual-network-card"
+            ]
+          },
+          {
+            "question": "A company attaches an ENI to an instance and wants maximum flexibility for IP addressing on that interface. Which combination of private IPv4 addresses can the ENI have?",
+            "options": [
+              "One primary private IPv4 only, because secondaries require a new ENI",
+              "One primary private IPv4 and one or more secondary private IPv4 addresses",
+              "Multiple primary private IPv4 addresses and no secondary addresses",
+              "One primary private IPv4 and exactly one optional secondary private IPv4"
+            ],
+            "correctIndex": 1,
+            "explanation": "An ENI has exactly one primary private IPv4 and can carry one or more secondary private IPv4 addresses. Restricting it to a primary only is wrong because secondaries are supported. Multiple primaries is wrong because there is one primary per ENI. Limiting secondaries to exactly one contradicts the one-or-more rule.",
+            "keyTopic": "Primary and secondary private IPv4",
+            "kind": "concept",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::primary-and-secondary-private-ipv4"
+            ]
+          },
+          {
+            "question": "An architect wants several public-facing addresses on a single ENI, each pair made of a private IPv4 and an Elastic IP. What is the correct rule?",
+            "options": [
+              "A single private IPv4 can carry multiple Elastic IPs for scale",
+              "Elastic IPs attach to the subnet, not to addresses on the ENI",
+              "Each private IPv4 on the ENI can be associated with one Elastic IP",
+              "Elastic IPs and public IPv4 addresses are the same ENI attribute"
+            ],
+            "correctIndex": 2,
+            "explanation": "The ENI attribute is one Elastic IP (IPv4) per private IPv4, so additional addresses require additional private IPv4s. Attaching several Elastic IPs to one private IPv4 violates the pairing rule. Elastic IPs associate per private IPv4 on the interface, not at subnet level. The ENI's single public IPv4 is listed separately from Elastic IP associations.",
+            "keyTopic": "Elastic IP per private IPv4; public IPv4",
+            "kind": "scenario",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::elastic-ip-per-private-ipv4-public-ipv4"
+            ]
+          },
+          {
+            "question": "A solutions architect reviews the IP attributes listed for an ENI and needs to state how many public IPv4 addresses it can have. Which answer is correct?",
+            "options": [
+              "One public IPv4 address per secondary private IPv4",
+              "No public IPv4 address, because only Elastic IPs are allowed",
+              "A maximum of four public IPv4 addresses, one per security group",
+              "One public IPv4 address"
+            ],
+            "correctIndex": 3,
+            "explanation": "The ENI attribute list includes one public IPv4 address. Scaling public IPv4s with the number of secondaries is an invented rule. Elastic IPs are an additional attribute, not a replacement for a public IPv4. Security groups are traffic filters and have no relation to public address count.",
+            "keyTopic": "Elastic IP per private IPv4; public IPv4",
+            "kind": "concept",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::elastic-ip-per-private-ipv4-public-ipv4"
+            ]
+          },
+          {
+            "question": "An instance's network interface is detached and attached to a replacement instance. Which configuration element follows the ENI automatically?",
+            "options": [
+              "Its MAC address and its one or more security groups",
+              "The instance profile and IAM role of the original instance",
+              "The EBS volumes containing the operating system",
+              "The subnet route table entries of the original instance"
+            ],
+            "correctIndex": 0,
+            "explanation": "An ENI has a MAC address and one or more attached security groups that travel with it when moved. IAM instance profiles belong to the instance, not the interface. EBS volumes are separate storage attachments. Route tables are subnet-level and are unaffected by moving an interface.",
+            "keyTopic": "Security groups and MAC address",
+            "kind": "scenario",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::security-groups-and-mac-address"
+            ]
+          },
+          {
+            "question": "An application server fails. The team needs the standby instance to take over the same private IP, Elastic IP, MAC address and security groups with no client reconfiguration. What should they do?",
+            "options": [
+              "Launch a new instance in the same subnet and reassign the security groups manually",
+              "Detach the secondary ENI from the failed instance and attach it to the standby instance in the same AZ",
+              "Change the route table to point the Elastic IP at the standby instance",
+              "Terminate the failed instance so its addresses are released, then recreate them"
+            ],
+            "correctIndex": 1,
+            "explanation": "Moving the ENI carries its private IPs, Elastic IP associations, MAC address and security groups, which is the ENI failover pattern. A new instance with manually reassigned security groups loses the existing network identity. Route tables do not reassociate Elastic IPs. Terminating and recreating addresses changes the identity and is slower.",
+            "keyTopic": "Move ENI between instances for failover",
+            "kind": "scenario",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::move-eni-between-instances-for-failover"
+            ]
+          },
+          {
+            "question": "A team plans cross-AZ failover by detaching an ENI from a failed instance in AZ A and attaching it to a standby instance in AZ B. Why will this plan not work?",
+            "options": [
+              "An ENI can be moved only after the source instance is terminated",
+              "An ENI's MAC address must be reassigned whenever it crosses subnets",
+              "An ENI is bound to a specific Availability Zone and can only attach to instances in that AZ",
+              "An ENI can be attached to only one instance in its entire lifetime"
+            ],
+            "correctIndex": 2,
+            "explanation": "The ENI is bound to one Availability Zone, so failover by moving it is limited to instances in that same AZ. Termination of the source is not required for moving. The MAC address travels with the ENI rather than being reassigned. An ENI can be detached and re-attached repeatedly, not once.",
+            "keyTopic": "ENI bound to a single AZ",
+            "kind": "scenario",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::eni-bound-to-a-single-az"
+            ]
+          },
+          {
+            "question": "How does the primary ENI (Eth0) compare with a secondary ENI (Eth1) when planning failover?",
+            "options": [
+              "Eth0 can be detached and moved to another instance, while Eth1 is permanently fixed",
+              "Both interfaces are created automatically with the instance and cannot be moved",
+              "Eth1 carries the primary private IP, while Eth0 carries only secondary addresses",
+              "Eth0 is the instance's original interface carrying the primary private IP, while Eth1 is separately created and can be moved for failover"
+            ],
+            "correctIndex": 3,
+            "explanation": "Eth0 is the interface the instance was created with and carries its primary private IP, whereas the separately created secondary ENI is the unit typically moved for failover. Reversing which interface is movable is incorrect. Secondary ENIs are created independently, not automatically with the instance. The primary private IP belongs to Eth0, not Eth1.",
+            "keyTopic": "Move ENI between instances for failover",
+            "kind": "comparison",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::move-eni-between-instances-for-failover"
+            ]
+          },
+          {
+            "question": "A design requires an interface that exists before any instance does and can be attached to a running instance later without terminating it. Which approach meets this requirement?",
+            "options": [
+              "Create the ENI independently of any instance and attach it on the fly",
+              "Create the instance first and add a second private IP to its Eth0",
+              "Place the instance in a public subnet and assign it an Elastic IP",
+              "Attach a second EBS volume and configure it as a network device"
+            ],
+            "correctIndex": 0,
+            "explanation": "An ENI can be created independently and attached or moved onto running instances. Adding a secondary private IP does not create a separately movable interface. Elastic IPs are addresses, not interfaces. EBS volumes are block storage and cannot act as network interfaces.",
+            "keyTopic": "Move ENI between instances for failover",
+            "kind": "scenario",
+            "objectiveIds": [
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4::move-eni-between-instances-for-failover"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v2",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T12:14:09.040Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 90,
+            "pageEnd": 90,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "artifacts": {
+        "flashcards": {
+          "requestId": "8933be31-1012-4fc4-b5c9-9ad9af655476",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T12:14:09.040Z"
+        },
+        "summary": {
+          "requestId": "c401cca6-f29d-456a-bdda-70c39efe2c08",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T12:14:23.265Z"
+        },
+        "quiz": {
+          "requestId": "7213a1d0-8915-4ffa-9c05-602625a94b2c",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T12:14:37.911Z"
+        }
+      },
+      "summaryData": {
+        "overview": "An Elastic Network Interface (ENI) is the logical VPC component that represents a virtual network card attached to an EC2 instance. The exam tests what an ENI can carry (IP addresses, Elastic IPs, security groups, a MAC address) and the two structural rules that drive scenario answers: an ENI is bound to a single Availability Zone, yet it can be detached and moved to another instance. That combination is the classic low-cost failover pattern, so expect questions where moving an ENI is the right answer only if the target instance sits in the same AZ.",
+        "coreConcepts": [
+          {
+            "term": "Elastic Network Interface (ENI)",
+            "definition": "A logical component in a VPC that represents a virtual network card; it is the network identity an EC2 instance uses to reach the VPC."
+          },
+          {
+            "term": "ENI attributes",
+            "definition": "An ENI can have a primary private IPv4, one or more secondary IPv4 addresses, one Elastic IP (IPv4) per private IPv4, one public IPv4, one or more security groups, and a MAC address."
+          },
+          {
+            "term": "Primary private IPv4",
+            "definition": "The main private IPv4 address of the ENI; every ENI has one primary private IPv4 address."
+          },
+          {
+            "term": "Secondary private IPv4",
+            "definition": "Additional private IPv4 addresses that an ENI can carry alongside the primary one (one or more)."
+          },
+          {
+            "term": "Elastic IP (IPv4) per private IPv4",
+            "definition": "Each private IPv4 on the ENI can be associated with one Elastic IP; the pairing rule is one Elastic IP per private IPv4."
+          },
+          {
+            "term": "Public IPv4",
+            "definition": "The ENI can have one public IPv4 address, separate from any Elastic IP association."
+          },
+          {
+            "term": "Security groups on an ENI",
+            "definition": "One or more security groups can be attached to an ENI, making the ENI the point where security-group rules apply to that network interface."
+          },
+          {
+            "term": "MAC address",
+            "definition": "Each ENI has its own MAC address, which travels with the ENI when it is moved between instances."
+          },
+          {
+            "term": "Primary ENI (Eth0)",
+            "definition": "The network interface an instance is created with, shown as Eth0 in the example; it carries the instance's primary private IP (for example 192.168.0.31)."
+          },
+          {
+            "term": "Secondary ENI (Eth1)",
+            "definition": "An additional interface attached to an instance, shown as Eth1 with its own private IP (for example 192.168.0.42); this is the type typically detached and re-attached for failover."
+          },
+          {
+            "term": "Attach/detach on the fly",
+            "definition": "An ENI can be created independently of an instance and attached or moved to EC2 instances while running, which enables failover."
+          },
+          {
+            "term": "AZ binding",
+            "definition": "An ENI is bound to one specific Availability Zone; it can only be attached to instances in that same AZ."
+          }
+        ],
+        "mustRemember": [
+          "An ENI is bound to a specific Availability Zone — it cannot be attached to an instance in a different AZ.",
+          "An ENI can be created independently of an instance and attached/moved onto instances on the fly.",
+          "An ENI has exactly one primary private IPv4 and can have one or more secondary private IPv4 addresses.",
+          "The Elastic IP rule is one Elastic IP (IPv4) per private IPv4 address on the ENI.",
+          "An ENI can have one public IPv4 address.",
+          "An ENI can have one or more security groups, and it has a MAC address.",
+          "Moving an ENI to another instance carries its private IPs, Elastic IPs, security groups and MAC address with it."
+        ],
+        "keyComparisons": [
+          {
+            "items": "Primary private IPv4 vs secondary private IPv4",
+            "difference": "Every ENI has one primary private IPv4; secondaries are optional and can be one or more, and each private IPv4 can pair with one Elastic IP."
+          },
+          {
+            "items": "Elastic IP vs public IPv4 on an ENI",
+            "difference": "An Elastic IP is associated per private IPv4, while the ENI has a single public IPv4 attribute."
+          },
+          {
+            "items": "ENI in one AZ vs ENI across AZs",
+            "difference": "An ENI lives in exactly one AZ, so failover by moving an ENI only works to an instance in the same AZ."
+          },
+          {
+            "items": "Primary ENI (Eth0) vs secondary ENI (Eth1)",
+            "difference": "Eth0 is the instance's original interface carrying the primary private IP; the secondary ENI is the separately created interface that can be moved for failover."
+          },
+          {
+            "items": "Moving an ENI vs re-creating an instance",
+            "difference": "Moving the ENI preserves the network identity (private IP, Elastic IP, MAC, security groups), whereas a new instance in another AZ cannot take that ENI."
+          }
+        ],
+        "commonMisunderstandings": [
+          "An ENI can be moved between any instances — wrong: only to instances in the same Availability Zone, because the ENI is AZ-bound.",
+          "An ENI can have several Elastic IPs per single private IPv4 — wrong: it is one Elastic IP per private IPv4.",
+          "Secondary IP addresses are attached to the instance rather than the ENI — wrong: private IPv4 addresses, including secondaries, belong to the ENI.",
+          "Security groups are properties of the EC2 instance only — security groups are attached to the ENI, and the ENI carries them when moved.",
+          "You must terminate an instance to change its networking identity — an independently created ENI can be attached on the fly.",
+          "A public IPv4 and an Elastic IP are the same attribute — the ENI's listed attributes treat one public IPv4 and Elastic-IP-per-private-IPv4 separately."
+        ],
+        "mentalModels": [
+          "Think of an ENI as a physical network card you can unplug from one server and plug into another in the same rack (AZ) — the MAC, IPs and security settings go with the card.",
+          "Think of the AZ binding as the ENI being welded to one data center: moving it to another AZ is physically impossible.",
+          "Think of private IPv4 addresses as slots on the card, each slot able to hold one Elastic IP."
+        ],
+        "edgeCases": [
+          "The failover move is only valid when the replacement instance is in the same AZ as the ENI.",
+          "Moving a secondary ENI onto a different instance preserves the addresses and MAC, so clients using that address see continuity.",
+          "The instance's own Eth0 stays with the original instance; the movable unit is the separately created ENI (for example Eth1)."
+        ],
+        "whenToUse": [
+          {
+            "situation": "A running instance fails and you need its private/Elastic IP and MAC to follow a standby instance quickly without changing DNS or client config",
+            "use": "Detach the secondary ENI from the failed instance and attach it to the standby instance in the same AZ."
+          },
+          {
+            "situation": "You need an interface that exists independently of any instance and can be attached later",
+            "use": "Create the ENI independently, then attach it on the fly."
+          },
+          {
+            "situation": "The standby instance is in a different Availability Zone",
+            "use": "Moving the ENI does not work — the ENI is bound to its AZ, so failover by ENI is constrained to the same AZ."
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "'Preserve private IP / MAC / security groups when an instance is replaced'",
+            "indicates": "Moving an Elastic Network Interface to the replacement instance."
+          },
+          {
+            "signal": "'Attach network interface on the fly' or 'move network interface'",
+            "indicates": "ENI detach/attach failover pattern, valid only within the same AZ."
+          },
+          {
+            "signal": "'Virtual network card in a VPC'",
+            "indicates": "Definition question on ENI."
+          },
+          {
+            "signal": "'One Elastic IP per private IPv4'",
+            "indicates": "ENI IP-address attribute rule."
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "Option: move the ENI to an instance in another Availability Zone for cross-AZ failover",
+            "correction": "The ENI is bound to a specific AZ; it can only be attached to instances in that AZ."
+          },
+          {
+            "trap": "Option: attach multiple Elastic IPs to one private IPv4",
+            "correction": "The rule is one Elastic IP (IPv4) per private IPv4."
+          },
+          {
+            "trap": "Option: give the ENI multiple public IPv4 addresses",
+            "correction": "The ENI has one public IPv4."
+          },
+          {
+            "trap": "Option: ENI is a subnet-level or Region-level construct",
+            "correction": "The ENI is a logical VPC component bound to one Availability Zone."
+          },
+          {
+            "trap": "Option: security groups are configured on the instance and lost if you swap interfaces",
+            "correction": "The ENI carries one or more security groups and keeps them when moved."
+          }
+        ],
+        "beyondSource": [
+          "(Tutor knowledge) AWS also supports per-ENI IPv6 addresses and multiple ENIs per instance, but the source's testable attributes here are the IPv4 ones, Elastic IPs, one public IPv4, security groups and MAC.",
+          "(Tutor knowledge) Elastic IPs are associated with the private IPv4, so moving the ENI moves the Elastic IP association as well — useful for failover without DNS changes."
+        ]
+      }
+    },
+    {
+      "id": "9d0c6fe5-2593-4c55-838c-09bef6eacf88",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "1ee90bae-d5e9-4140-b287-8ff28a1cdbe8",
+      "title": "EC2 Hibernate",
+      "objective": "Decide when EC2 hibernation suits a workload that takes long to initialize, and verify the prerequisites and limits (RAM, root volume, AMI, instance type, 60-day maximum) that make it eligible.",
+      "keyTopics": [
+        "Stop vs terminate vs hibernate",
+        "Slow start: OS boot, User Data, cache warm-up",
+        "RAM state preserved, faster boot",
+        "RAM written to encrypted root EBS volume",
+        "Supported instance families and AMIs",
+        "RAM must be under 150 GB; no bare metal",
+        "Root volume EBS, encrypted, not instance store",
+        "Available for On-Demand, Reserved, Spot",
+        "Hibernate max 60 days"
+      ],
+      "pageStart": 91,
+      "pageEnd": 93,
+      "text": "[Page 91]\nEC2 Hibernate\n• \tWe know we can stop, terminate instances\n• \tStop – the data on disk (EBS) is kept intact in the next start\n• \tTerminate – any EBS volumes (root) also set-up to be destroyed is lost\n• \tOn start, the following happens:\n• \tFirst start: the OS boots & the EC2 User Data script is run\n• \tFollowing starts: the OS boots up\n• \tThen your application starts, caches get warmed up, and that can take time!\n\n[Page 92]\nEC2 Hibernate\n• \tIntroducing \tEC2 Hibernate:\n• \tThe in-memory (RAM) state is preserved\n• \tThe instance boot is much faster!\n(the OS is not stopped / restarted)\n• \tUnder the hood: the RAM state is written\nto a file in the root EBS volume\n• \tThe root EBS volume must be encrypted\n• \tUse cases:\n• \tLong-running processing\n• \tSaving the RAM state\n• \tServices that take time to initialize\nRAM\nEC2 Instance\nRoot EBS Volume\n(Encrypted)\nRAM\nRAM\nRAM\nRAM\nRunning\nStopping\nStopped\nRunning\nHibernate\nShutdown\nStart\nHibernation\n\n[Page 93]\nEC2 Hibernate \t– \tGood to know\n• \tSupported Instance Families \t– \tC3, C4, C5, I3, M3, M4, R3, R4, T2, T3, …\n• \tInstance RAM Size \t– \tmust be \tless than 150 GB.\n• \tInstance Size \t– \tnot supported for bare metal instances.\n• \tAMI \t– \tAmazon Linux 2, Linux AMI, Ubuntu, RHEL, CentOS & Windows…\n• \tRoot Volume \t– \tmust be EBS, encrypted, not instance store, and large\n• \tAvailable for \tOn-Demand, Reserved \tand \tSpot \tInstances\n• \tAn instance can \tNOT \tbe hibernated more than 60 days",
+      "read": false
+    }
+  ]
+}

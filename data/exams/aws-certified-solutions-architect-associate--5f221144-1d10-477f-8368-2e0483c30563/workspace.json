@@ -17,7 +17,7 @@
       "plan": {
         "examDate": "2027-01-05",
         "dailyMinutes": 60,
-        "createdAt": "2026-10-24T14:40:21.345Z",
+        "createdAt": "2026-10-24T16:22:07.882Z",
         "familiarity": "basic",
         "days": [
           {
@@ -79,20 +79,20 @@
             "date": "2026-10-30",
             "sectionIds": [
               "9d0c6fe5-2593-4c55-838c-09bef6eacf88",
-              "afef90a5-a64e-435c-a6e7-d7fa3a572495"
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495",
+              "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-10-31",
             "sectionIds": [
-              "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc",
               "ed33fcd5-70d5-4e71-abe7-1d9675526507",
               "ce3b1758-c794-4125-ada4-98e0c2231e33"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 45
+            "studyMinutes": 30
           },
           {
             "date": "2026-11-01",
@@ -134,15 +134,16 @@
             "date": "2026-11-05",
             "sectionIds": [
               "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
+              "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
               "a2b93f44-0ec9-49cb-911b-511813cf1cfa"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-11-06",
             "sectionIds": [
-              "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
+              "9cb86741-88eb-45ed-805c-13b9001e5a9f",
               "9cb86741-88eb-45ed-805c-13b9001e5a9f"
             ],
             "reviewMinutes": 21,
@@ -152,11 +153,10 @@
             "date": "2026-11-07",
             "sectionIds": [
               "9cb86741-88eb-45ed-805c-13b9001e5a9f",
-              "9cb86741-88eb-45ed-805c-13b9001e5a9f",
               "9cb86741-88eb-45ed-805c-13b9001e5a9f"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 45
+            "studyMinutes": 30
           },
           {
             "date": "2026-11-08",
@@ -198,16 +198,17 @@
             "date": "2026-11-12",
             "sectionIds": [
               "820bfa62-b869-4ff2-82fb-b291718287aa",
-              "820bfa62-b869-4ff2-82fb-b291718287aa"
+              "820bfa62-b869-4ff2-82fb-b291718287aa",
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-11-13",
             "sectionIds": [
-              "ab279f74-57d3-430e-9eb8-605ce81cde8b",
-              "ab279f74-57d3-430e-9eb8-605ce81cde8b"
+              "13b47f9f-b63e-432d-9dfe-9f3d229aec05",
+              "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 30
@@ -215,18 +216,17 @@
           {
             "date": "2026-11-14",
             "sectionIds": [
-              "ab279f74-57d3-430e-9eb8-605ce81cde8b",
-              "5aa6c1a1-c93b-4c46-8977-2195ee6c3ebd",
+              "6c9da1f0-c7c5-4a6c-be84-d0413557ac01",
               "5aa6c1a1-c93b-4c46-8977-2195ee6c3ebd"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 45
+            "studyMinutes": 30
           },
           {
             "date": "2026-11-15",
             "sectionIds": [
               "5aa6c1a1-c93b-4c46-8977-2195ee6c3ebd",
-              "80b157bf-7589-428d-bd28-b0543fec2dd3"
+              "5aa6c1a1-c93b-4c46-8977-2195ee6c3ebd"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 30
@@ -235,7 +235,7 @@
             "date": "2026-11-16",
             "sectionIds": [
               "80b157bf-7589-428d-bd28-b0543fec2dd3",
-              "c6d49c16-ac0e-4b38-9c8b-501d16c9d3b1"
+              "80b157bf-7589-428d-bd28-b0543fec2dd3"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 30
@@ -253,10 +253,11 @@
             "date": "2026-11-18",
             "sectionIds": [
               "c6d49c16-ac0e-4b38-9c8b-501d16c9d3b1",
+              "c6d49c16-ac0e-4b38-9c8b-501d16c9d3b1",
               "6adb590f-75d0-4bc7-adf6-4d5dbe512e04"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-11-19",
@@ -289,11 +290,10 @@
             "date": "2026-11-22",
             "sectionIds": [
               "a6fa94d5-42b5-4ade-b03a-49a0156d358f",
-              "a6fa94d5-42b5-4ade-b03a-49a0156d358f",
-              "c50ffb6e-95f0-40fd-97dd-846fb4ee3825"
+              "a6fa94d5-42b5-4ade-b03a-49a0156d358f"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 45
+            "studyMinutes": 30
           },
           {
             "date": "2026-11-23",
@@ -317,10 +317,11 @@
             "date": "2026-11-25",
             "sectionIds": [
               "c50ffb6e-95f0-40fd-97dd-846fb4ee3825",
+              "c50ffb6e-95f0-40fd-97dd-846fb4ee3825",
               "c50ffb6e-95f0-40fd-97dd-846fb4ee3825"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-11-26",
@@ -353,17 +354,16 @@
             "date": "2026-11-29",
             "sectionIds": [
               "9b490ee9-c8f6-49f6-9204-8d413b7ff433",
-              "9b490ee9-c8f6-49f6-9204-8d413b7ff433",
               "9b490ee9-c8f6-49f6-9204-8d413b7ff433"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 45
+            "studyMinutes": 30
           },
           {
             "date": "2026-11-30",
             "sectionIds": [
               "9b490ee9-c8f6-49f6-9204-8d413b7ff433",
-              "74c2d935-6b30-45fb-8793-bcbb5aa99812"
+              "9b490ee9-c8f6-49f6-9204-8d413b7ff433"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 30
@@ -372,10 +372,11 @@
             "date": "2026-12-01",
             "sectionIds": [
               "74c2d935-6b30-45fb-8793-bcbb5aa99812",
+              "74c2d935-6b30-45fb-8793-bcbb5aa99812",
               "c76ee3f2-f92d-4292-8f89-b74f41e96aff"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-12-02",
@@ -417,11 +418,10 @@
             "date": "2026-12-06",
             "sectionIds": [
               "f0ea10a3-6a98-4992-8017-b030eb912ebd",
-              "7d9aadc6-70ed-40e1-88b5-b266f2767ad7",
               "7d9aadc6-70ed-40e1-88b5-b266f2767ad7"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 45
+            "studyMinutes": 30
           },
           {
             "date": "2026-12-07",
@@ -436,10 +436,11 @@
             "date": "2026-12-08",
             "sectionIds": [
               "7d9aadc6-70ed-40e1-88b5-b266f2767ad7",
+              "7d9aadc6-70ed-40e1-88b5-b266f2767ad7",
               "7d9aadc6-70ed-40e1-88b5-b266f2767ad7"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-12-09",
@@ -481,20 +482,20 @@
             "date": "2026-12-13",
             "sectionIds": [
               "5af06994-de14-4a3b-aa93-e0fef7202e28",
-              "5af06994-de14-4a3b-aa93-e0fef7202e28",
               "5af06994-de14-4a3b-aa93-e0fef7202e28"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 45
+            "studyMinutes": 30
           },
           {
             "date": "2026-12-14",
             "sectionIds": [
+              "5af06994-de14-4a3b-aa93-e0fef7202e28",
               "dbbbba77-ef34-4f67-af5d-61542803a264",
               "dbbbba77-ef34-4f67-af5d-61542803a264"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-12-15",
@@ -641,7 +642,7 @@
             "studyMinutes": 0
           }
         ],
-        "warning": "This schedule exceeds your daily budget. Increase your time or move the exam date. Each lesson budgets 15 minutes plus daily review. 23 chapter(s) are not yet split into sections; their time is estimated from page counts and refines once sections are generated.",
+        "warning": "This schedule exceeds your daily budget. Increase your time or move the exam date. Each lesson budgets 15 minutes plus daily review. 22 chapter(s) are not yet split into sections; their time is estimated from page counts and refines once sections are generated.",
         "chapterIds": [
           "6b5defc4-5307-4875-85b3-2f7b8ba00fff",
           "1a7eab28-c656-485a-8c23-f06891ebbbf5",
@@ -38738,6 +38739,1248 @@
       "pageEnd": 267,
       "text": "[Page 262]\nDeveloper problems on AWS\n• \tManaging infrastructure\n• \tDeploying Code\n• \tConfiguring all the databases, load balancers, etc\n• \tScaling concerns\n• \tMost web apps have the same architecture (ALB + ASG)\n• \tAll the developers want is for their code to run!\n• \tPossibly, consistently across different applications and environments\n\n[Page 263]\nElastic Beanstalk \t– \tOverview\n• \tElastic Beanstalk is a developer centric view of deploying an application\non AWS\n• \tIt uses all the component’s we’ve seen before: EC2, ASG, ELB, RDS, …\n• \tManaged service\n• \tAutomatically handles capacity provisioning, load balancing, scaling, application\nhealth monitoring, instance configuration, …\n• \tJust the application code is the responsibility of the developer\n• \tWe still have full control over the configuration\n• \tBeanstalk is free but you pay for the underlying instances\n\n[Page 264]\nElastic Beanstalk \t– \tComponents\n• \tApplication: collection of Elastic Beanstalk components (environments,\nversions, configurations, …)\n• \tApplication Version: an iteration of your application code\n• \tEnvironment\n• \tCollection of AWS resources running an application version (only one application\nversion at a time)\n• \tTiers: Web Server Environment Tier & Worker Environment Tier\n• \tYou can create multiple environments (dev, test, prod, …)\nCreate\nApplication\nUpload\nVersion\nLaunch\nEnvironment\nManage\nEnvironment\nupdate version\ndeploy new version\n\n[Page 265]\nElastic Beanstalk \t– \tSupported Platforms\n• \tGo\n• \tJava SE\n• \tJava with Tomcat\n• \t.NET Core on Linux\n• \t.NET on Windows Server\n• \tNode.js\n• \tPHP\n• \tPython\n• \tRuby\n• \tPacker Builder\n• \tSingle Container Docker\n• \tMulti-container Docker\n• \tPreconfigured Docker\n\n[Page 266]\nWeb Server Tier vs. Worker Tier\nAuto Scaling group\nWeb Environment\n(myapp.us-east-1.elasticbeanstalk.com)\nSecurity Group\nAvailability Zone 1 \tAvailability Zone 2\nEC2 Instance\n(Web Server)\nELB\nSecurity Group\nEC2 Instance\n(Web Server)\nAuto Scaling group\nWorker Environment\nAvailability Zone 1 \tAvailability Zone 2\nSQS Queue\nSQS message \tSQS message\npull\nmessages\nEC2 Instance\n(Worker)\nEC2 Instance\n(Worker)\n• \tScale based on the number of SQS messages\n• \tCan push messages to SQS queue from\nanother Web Server Tier\n\n[Page 267]\nElastic Beanstalk Deployment Modes\nSingle Instance\nGreat for dev\nHigh Availability with Load Balancer\nGreat for prod\nAvailability Zone 1\nAuto Scaling Group\nAvailability Zone 2\nRDS Master \tRDS Standby\nEC2 Instance \tEC2 Instance\nALBAvailability Zone 1\nRDS Master\nEC2 Instance\nElastic IP",
       "read": false
+    },
+    {
+      "id": "5bbbe7fe-a877-4795-ac85-b61da40e4a40",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "ab279f74-57d3-430e-9eb8-605ce81cde8b",
+      "title": "Storage Class Transitions, Lifecycle Rules, and S3 Analytics",
+      "objective": "Design lifecycle configurations that transition, expire, or clean up objects by prefix or tag, and decide when S3 Storage Class Analysis is a valid input to those rules.",
+      "keyTopics": [
+        "Storage class transitions",
+        "Standard IA for infrequent access",
+        "Glacier vs Glacier Deep Archive",
+        "Lifecycle transition actions",
+        "Expiration actions",
+        "Noncurrent version deletion",
+        "Incomplete multipart upload cleanup",
+        "Prefix and tag rule filters",
+        "Lifecycle scenario design",
+        "S3 Storage Class Analysis limits"
+      ],
+      "pageStart": 295,
+      "pageEnd": 299,
+      "text": "[Page 295]\nAmazon S3 \t– \tMoving between Storage Classes\n• \tYou can transition objects between\nstorage classes\n• \tFor infrequently accessed object,\nmove them to Standard IA\n• \tFor archive objects that you don’t\nneed fast access to, move them to\nGlacier or Glacier Deep Archive\n• \tMoving objects can be automated\nusing a \tLifecycle Rules\nStandard\nStandard IA\nIntelligent Tiering\nOne-Zone IA\nGlacier Instant Retrieval\nGlacier Flexible Retrieval\nGlacier Deep Archive\n\n[Page 296]\nAmazon S3 \t– \tLifecycle Rules\n• \tTransition Actions – configure objects to transition to another storage class\n• \tMove objects to Standard IA class 60 days after creation\n• \tMove to Glacier for archiving after 6 months\n• \tExpiration actions – configure objects to expire (delete) after some time\n• \tAccess log files can be set to delete after a 365 days\n• \tCan be used to delete old versions of files (if versioning is enabled)\n• \tCan be used to delete incomplete Multi-Part uploads\n• \tRules can be created for a certain prefix (example: s3://mybucket/mp3/*)\n• \tRules can be created for certain objects Tags (example: Department: Finance)\n\n[Page 297]\nAmazon S3 \t– \tLifecycle Rules (Scenario 1)\n• \tYour application on EC2 creates images thumbnails after profile photos\nare uploaded to Amazon S3. These thumbnails can be easily recreated,\nand only need to be kept for 60 days. The source images should be able\nto be immediately retrieved for these 60 days, and afterwards, the user\ncan wait up to 6 hours. How would you design this?\n• \tS3 source images can be on \tStandard, with a lifecycle configuration to\ntransition them to \tGlacier \tafter 60 days\n• \tS3 thumbnails can be on \tOne-Zone IA, with a lifecycle configuration to\nexpire them (delete them) after 60 days\n\n[Page 298]\nAmazon S3 \t– \tLifecycle Rules (Scenario 2)\n• \tA rule in your company states that you should be able to recover your\ndeleted S3 objects immediately for 30 days, although this may happen\nrarely. After this time, and for up to 365 days, deleted objects should be\nrecoverable within 48 hours.\n• \tEnable S3 Versioning \tin order to have object versions, so that “deleted\nobjects” are in fact hidden by a “delete marker” and can be recovered\n• \tTransition the “noncurrent versions” of the object to \tStandard IA\n• \tTransition afterwards the “noncurrent versions” to \tGlacier Deep Archive\n\n[Page 299]\nAmazon S3 Analytics \t– \tStorage Class Analysis\n• \tHelp you decide when to transition objects to\nthe right storage class\n• \tRecommendations for \tStandard \tand \tStandard IA\n• \tDoes NOT work for One-Zone IA or Glacier\n• \tReport is updated daily\n• \t24 to 48 hours to start seeing data analysis\n• \tGood first step to put together Lifecycle Rules\n(or improve them)!\nS3 Bucket\nS3 Analytics\nDate \tStorageClass \tObjectAge\n8/22/2022 \tSTANDARD \t000-014\n8/25/2022 \tSTANDARD \t030-044\n9/6/2022 \tSTANDARD \t120-149\n.csv report",
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nThis section covers how objects move between Amazon S3 storage classes and how Lifecycle Rules automate transitions, expiration, version cleanup and multipart-upload cleanup, filtered by prefix or tag. It also covers S3 Storage Class Analysis, the reporting tool that recommends when to move data to Standard IA. For SAA-C03 this is core Cost-Optimized storage design (managing S3 object lifecycles, storage tiering, selecting the data lifecycle), so expect scenario questions that give retention windows and retrieval-time requirements and ask you to pick storage classes plus a lifecycle design.\n\n## Core Concepts\n\n- **Storage class transition:** Moving an object from one S3 storage class to another (for example Standard to Standard IA to Glacier) without changing its key; can be automated with Lifecycle Rules.\n- **Standard IA:** The target class for infrequently accessed objects that must still be retrieved quickly; the storage class S3 Analytics makes recommendations about (together with Standard).\n- **Glacier / Glacier Deep Archive:** Archive classes for objects you do not need fast access to; Deep Archive is the deeper, cheaper archive tier used after a shorter-term archive step in the section's scenarios.\n- **Lifecycle Rule transition action:** A rule action that moves objects to another storage class after a condition such as days since creation (e.g. move to Standard IA at 60 days, to Glacier after 6 months).\n- **Lifecycle Rule expiration action:** A rule action that deletes (expires) objects after some time, e.g. deleting access log files after 365 days.\n- **Noncurrent version deletion:** An expiration action that deletes old versions of an object when versioning is enabled.\n- **Incomplete multipart upload cleanup:** An expiration action that deletes incomplete Multi-Part uploads, avoiding storage charges for unfinished uploads.\n- **Prefix filter:** A lifecycle rule scoped to a key prefix, e.g. s3://mybucket/mp3/* so only that folder of objects is affected.\n- **Tag filter:** A lifecycle rule scoped to object tags, e.g. Department: Finance, so rules follow business meaning rather than key path.\n- **S3 Storage Class Analysis:** An S3 Analytics feature that monitors access patterns and produces a daily .csv report (storage class by object age) to help decide when to transition objects.\n\n## Key Comparisons\n\n- **Standard IA vs One-Zone IA:** Both are for infrequently accessed data, but the section's thumbnail scenario uses One-Zone IA for easily recreated objects, so pick it when the data can be regenerated and Standard IA otherwise.\n- **Glacier vs Glacier Deep Archive:** Deep Archive is the deeper archive step used after an earlier Glacier-class or Standard IA stage when the retrieval requirement is looser (hours rather than immediate).\n- **Transition action vs Expiration action:** Transition changes the storage class of an object that stays alive; expiration deletes the object (or old versions / incomplete uploads).\n- **Prefix filter vs Tag filter:** Prefix scopes by key path (s3://mybucket/mp3/*); tag scopes by object metadata (Department: Finance), which is better when the rule must follow objects regardless of key layout.\n- **S3 Storage Class Analysis vs Lifecycle Rules:** Analysis only observes and reports on access patterns (recommendations for Standard and Standard IA only); Lifecycle Rules are what actually perform transitions and expirations.\n- **Versioning vs Lifecycle expiration:** With versioning enabled a delete is hidden by a delete marker, so old data is removed by expiring noncurrent versions, not by ordinary object expiration.\n\n## Common Misunderstandings\n\n- S3 Storage Class Analysis performs transitions for you — it does not; it produces recommendations that you then implement as Lifecycle Rules.\n- S3 Analytics can recommend Glacier transitions — it only covers Standard and Standard IA and does not work for One-Zone IA or Glacier.\n- Turning on versioning is enough to clean up old data — you must also expire noncurrent versions, or they keep accruing cost.\n- Deleting an object in a versioned bucket removes the data — it adds a delete marker; the object versions persist until noncurrent-version expiration.\n- Lifecycle rules can only target a whole bucket — they can be scoped by prefix or by object tag.\n- S3 Analytics gives instant results — allow 24 to 48 hours before analysis appears, and the report is updated daily.\n\n## Mental Models\n\n- Think of Lifecycle Rules as a conveyor belt: whenever an age/condition is met, an object moves to the next class or falls off (expire).\n- Think of S3 Storage Class Analysis as an X-ray of the bucket that tells you where to place the belt; the belt itself is the Lifecycle Rule.\n- Think of a delete marker as a curtain in front of the object: versioning keeps the object behind the curtain, and noncurrent-version expiration finally removes it.\n- Think of a prefix as a folder address and a tag as a label on the parcel — either can steer the rule.\n\n## Exceptions & Edge Cases\n\n- Noncurrent version transitions/deletion only exist if versioning is enabled.\n- Incomplete multipart uploads consume storage until a rule expires them; clean them up explicitly.\n- Objects can be transitioned multiple times in sequence (Standard → Standard IA → Glacier Deep Archive) as in Scenario 2.\n- Lifecycle rules by tag require the tag to exist on the object to be matched.\n- An object can be both transitioned and expired by the same overall configuration when requirements differ per object set (source images vs thumbnails in Scenario 1).\n\n## When to Use Which\n\n- Objects are accessed rarely but must still be retrievable quickly. → **Transition to Standard IA.**\n- Archive data that does not need fast access. → **Transition to Glacier or Glacier Deep Archive.**\n- Log files older than 365 days are no longer needed. → **Expiration action to delete access log files after 365 days.**\n- Versioned bucket accumulating old object versions. → **Expire noncurrent versions.**\n- Bucket has many abandoned multipart uploads. → **Expiration action to delete incomplete multipart uploads.**\n- Only one application path's objects should be tiered. → **Rule scoped to a prefix (s3://mybucket/mp3/*).**\n- Rules must follow objects across arbitrary key layouts, e.g. by department. → **Rule scoped to a tag (Department: Finance).**\n- You don't know which objects are cold and want data-driven lifecycle design. → **Start with S3 Storage Class Analysis, then build Lifecycle Rules from its report.**\n- Objects can be regenerated easily and are only needed 60 days. → **Store in One-Zone IA and expire after 60 days.**\n\n## Patterns to Recognize\n\n- \"immediately retrievable for 60 days, then up to 6 hours\" → **Standard (or Standard IA) for the immediate window, transition to Glacier afterwards.**\n- \"thumbnails can be easily recreated\" → **One-Zone IA plus expiration.**\n- \"recover deleted objects immediately for 30 days, within 48 hours for up to 365 days\" → **Versioning + noncurrent version transitions (Standard IA then Glacier Deep Archive).**\n- \"which service recommends when to transition objects\" → **S3 Storage Class Analysis.**\n- \"old versions\" or \"incomplete multipart uploads\" → **Expiration actions in a lifecycle rule.**\n- \"only Finance department files\" → **Tag-based lifecycle rule.**\n- \"only files under the mp3 folder\" → **Prefix-based lifecycle rule.**\n\n## Exam Traps\n\n- “S3 Analytics can be used for One-Zone IA and Glacier optimization.” — Analysis recommendations cover only Standard and Standard IA; it does not work for One-Zone IA or Glacier.\n- “Enabling versioning automatically deletes old versions.” — Versioning retains versions; you must add noncurrent-version expiration/transition actions.\n- “Lifecycle rules are a substitute for S3 Analytics.” — They are complementary: Analytics informs the rules, the rules execute them.\n- “Delete markers free the storage of overwritten objects.” — Only expiring noncurrent versions removes the underlying versions.\n- “Lifecycle rules cannot be targeted narrowly.” — They can be filtered by prefix or by object tag.\n- “S3 Analytics produces data immediately.” — It takes 24 to 48 hours to start seeing analysis, with daily report updates.\n\n## Beyond the Source (tutor knowledge)\n\n- Current S3 lifecycle configurations often distinguish current-version and noncurrent-version actions explicitly (transition and expiration for each), which is consistent with the section's noncurrent-version scenarios.\n- Lifecycle rules support minimum object-age thresholds in whole days and are evaluated asynchronously, so transitions are not instantaneous at the exact day boundary; the exam generally tests the intended design rather than timing exactness.",
+        "keyPoints": [
+          "Transitions are between storage classes; Lifecycle Rules automate them.",
+          "Infrequently accessed objects: move to Standard IA. Archive objects without fast-access needs: Glacier or Glacier Deep Archive.",
+          "Transition actions and expiration actions are separate rule actions; a rule may have both.",
+          "Expiration actions can delete: current objects after N days, noncurrent (old) versions when versioning is enabled, and incomplete Multi-Part uploads.",
+          "Rules can filter by prefix (e.g. s3://mybucket/mp3/*) or by object tag (e.g. Department: Finance).",
+          "S3 Storage Class Analysis gives recommendations only for Standard and Standard IA.",
+          "S3 Analytics does NOT work for One-Zone IA or Glacier.",
+          "S3 Analytics report is updated daily; it takes 24 to 48 hours to start seeing data analysis.",
+          "S3 Analytics is a good first step to build or improve Lifecycle Rules — it is not an automation of transitions itself."
+        ],
+        "supplement": "- Current S3 lifecycle configurations often distinguish current-version and noncurrent-version actions explicitly (transition and expiration for each), which is consistent with the section's noncurrent-version scenarios.\n- Lifecycle rules support minimum object-age thresholds in whole days and are evaluated asynchronously, so transitions are not instantaneous at the exact day boundary; the exam generally tests the intended design rather than timing exactness.",
+        "cards": [
+          {
+            "id": "6c989617-b675-4f95-9028-5ce5a411933b",
+            "question": "What S3 feature automates moving objects between storage classes?",
+            "answer": "Lifecycle Rules",
+            "group": "Moving Between Storage Classes",
+            "keyTopic": "Storage class transitions",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::storage-class-transitions"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ce65e05a-e48c-4781-b308-73cf20fdf6cd",
+            "question": "Which storage class should infrequently accessed objects be moved to?",
+            "answer": "Standard IA",
+            "group": "Moving Between Storage Classes",
+            "keyTopic": "Standard IA for infrequent access",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::standard-ia-for-infrequent-access"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "8aa8fdfd-45aa-45cd-88e2-e63b5542ae8e",
+            "question": "Which storage classes suit archive objects that don't need fast access?",
+            "answer": "Glacier or Glacier Deep Archive",
+            "group": "Moving Between Storage Classes",
+            "keyTopic": "Glacier vs Glacier Deep Archive",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::glacier-vs-glacier-deep-archive"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f6ecea4f-4a74-4014-a2df-0df024bda282",
+            "question": "When an object transitions to another storage class, does its key change?",
+            "answer": "No, only the storage class changes",
+            "group": "Moving Between Storage Classes",
+            "keyTopic": "Storage class transitions",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::storage-class-transitions"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "065d4762-5faf-40d2-b39d-17ad84f02cde",
+            "question": "Which Lifecycle Rule action moves an object to another storage class?",
+            "answer": "A transition action",
+            "group": "Lifecycle Rule Actions",
+            "keyTopic": "Lifecycle transition actions",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-transition-actions"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "6de67aae-27d9-448c-90a6-0b9e438e9d61",
+            "question": "Which Lifecycle Rule action deletes an object after some time?",
+            "answer": "An expiration action",
+            "group": "Lifecycle Rule Actions",
+            "keyTopic": "Expiration actions",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::expiration-actions"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a3f088a5-9b91-4f18-ad7d-aa7176267d10",
+            "question": "In the source example, after how many days are objects moved to Standard IA?",
+            "answer": "60 days after creation",
+            "group": "Lifecycle Rule Actions",
+            "keyTopic": "Lifecycle transition actions",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-transition-actions"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1d56f844-4dd5-46b8-9242-acd6a88c0c1f",
+            "question": "In the source example, when are objects transitioned to Glacier for archiving?",
+            "answer": "After 6 months",
+            "group": "Lifecycle Rule Actions",
+            "keyTopic": "Lifecycle transition actions",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-transition-actions"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "88cfdc4e-103d-4b4a-b7e3-b8c1a5d820b6",
+            "question": "In the source example, after how many days are access log files deleted?",
+            "answer": "365 days",
+            "group": "Lifecycle Rule Actions",
+            "keyTopic": "Expiration actions",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::expiration-actions"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "6f247e6c-e2c5-4794-a2aa-54346815ded9",
+            "question": "Which action moves an object versus deletes it: transition or expiration?",
+            "answer": "Transition moves; expiration deletes",
+            "group": "Lifecycle Rule Actions",
+            "keyTopic": "Lifecycle transition actions",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-transition-actions"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "87a71899-889b-4788-b9b5-4d162fd65ad5",
+            "question": "Which lifecycle expiration action removes old versions when versioning is enabled?",
+            "answer": "Noncurrent version deletion",
+            "group": "Expiration Cleanup Cases",
+            "keyTopic": "Noncurrent version deletion",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::noncurrent-version-deletion"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "99074476-823d-407b-ac2f-3ef47a368b79",
+            "question": "Which lifecycle expiration action stops charges for abandoned multi-part uploads?",
+            "answer": "Deleting incomplete multipart uploads",
+            "group": "Expiration Cleanup Cases",
+            "keyTopic": "Incomplete multipart upload cleanup",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::incomplete-multipart-upload-cleanup"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "2bdb5372-b3c0-4772-9509-558f40d5d02a",
+            "question": "Which prerequisite must be in place before noncurrent versions can be expired?",
+            "answer": "Versioning must be enabled",
+            "group": "Expiration Cleanup Cases",
+            "keyTopic": "Noncurrent version deletion",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::noncurrent-version-deletion"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "fa1ca4cf-e7e9-43b5-8ef0-3a88cc92aa00",
+            "question": "Which lifecycle rule filter scopes rules by key path?",
+            "answer": "A prefix filter",
+            "group": "Filtering Rules",
+            "keyTopic": "Prefix and tag rule filters",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::prefix-and-tag-rule-filters"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d02a8149-685a-422d-bffa-018f9c7aee27",
+            "question": "Which lifecycle rule filter scopes rules by object metadata?",
+            "answer": "A tag filter",
+            "group": "Filtering Rules",
+            "keyTopic": "Prefix and tag rule filters",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::prefix-and-tag-rule-filters"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ac0ba60b-30dd-4acd-befb-b36164517d2a",
+            "question": "Give the source example of a prefix-scoped lifecycle rule.",
+            "answer": "s3://mybucket/mp3/*",
+            "group": "Filtering Rules",
+            "keyTopic": "Prefix and tag rule filters",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::prefix-and-tag-rule-filters"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "6082afea-bff2-4354-93ce-34fbc4fcb3ed",
+            "question": "Give the source example of a tag-scoped lifecycle rule.",
+            "answer": "Department: Finance",
+            "group": "Filtering Rules",
+            "keyTopic": "Prefix and tag rule filters",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::prefix-and-tag-rule-filters"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "03f00990-4d6e-4d2f-adad-4a22ad916fda",
+            "question": "To apply a rule only to files under a folder, which filter type is used?",
+            "answer": "Prefix filter",
+            "group": "Filtering Rules",
+            "keyTopic": "Prefix and tag rule filters",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::prefix-and-tag-rule-filters"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "050beba9-1b06-449e-af8a-2f49453e3bdb",
+            "question": "To follow objects by business meaning regardless of key layout, which filter type is used?",
+            "answer": "Tag filter",
+            "group": "Filtering Rules",
+            "keyTopic": "Prefix and tag rule filters",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::prefix-and-tag-rule-filters"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "8b16f48f-140a-42eb-bf41-f6d45058295b",
+            "question": "In Scenario 1, which class holds source images that must be immediately retrievable for 60 days, then waitable up to 6 hours?",
+            "answer": "Standard, then transition to Glacier after 60 days",
+            "group": "Lifecycle Scenarios",
+            "keyTopic": "Lifecycle scenario design",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-scenario-design"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "592e9879-d92a-44c1-b79f-ad9e7fedc6d8",
+            "question": "In Scenario 1, thumbnails can be easily recreated and are needed 60 days. Which class and action?",
+            "answer": "One-Zone IA with expiration after 60 days",
+            "group": "Lifecycle Scenarios",
+            "keyTopic": "Lifecycle scenario design",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-scenario-design"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c98e3bcb-dcb0-498b-87ec-b9bdb7cefa6d",
+            "question": "In Scenario 2, which feature makes deleted objects recoverable via delete markers?",
+            "answer": "S3 Versioning",
+            "group": "Lifecycle Scenarios",
+            "keyTopic": "Lifecycle scenario design",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-scenario-design"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b2b77c2e-c7cc-42a8-a832-e74e44176973",
+            "question": "In Scenario 2, which class are noncurrent versions transitioned to first?",
+            "answer": "Standard IA",
+            "group": "Lifecycle Scenarios",
+            "keyTopic": "Lifecycle scenario design",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-scenario-design"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "2b8ad40a-581c-4248-9b92-5e1b1445c783",
+            "question": "In Scenario 2, which class are noncurrent versions transitioned to afterwards?",
+            "answer": "Glacier Deep Archive",
+            "group": "Lifecycle Scenarios",
+            "keyTopic": "Lifecycle scenario design",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-scenario-design"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "85f6b4c5-3a2d-4e4e-b3f0-d396ffbd1f90",
+            "question": "In Scenario 2, what does deleting an object in a versioned bucket actually create?",
+            "answer": "A delete marker",
+            "group": "Lifecycle Scenarios",
+            "keyTopic": "Noncurrent version deletion",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::noncurrent-version-deletion"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b41e4e8a-1df7-44ba-8c63-c402c870e7e4",
+            "question": "Which S3 feature recommends when to transition objects to the right storage class?",
+            "answer": "S3 Storage Class Analysis",
+            "group": "S3 Storage Class Analysis",
+            "keyTopic": "S3 Storage Class Analysis limits",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::s3-storage-class-analysis-limits"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "90ba7c9d-196d-4966-84bf-a257a54c7a02",
+            "question": "Which storage classes does S3 Storage Class Analysis give recommendations for?",
+            "answer": "Standard and Standard IA",
+            "group": "S3 Storage Class Analysis",
+            "keyTopic": "S3 Storage Class Analysis limits",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::s3-storage-class-analysis-limits"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "0f464152-41f9-488f-af7e-a0ef3c974e0b",
+            "question": "Which storage classes does S3 Analytics NOT work for?",
+            "answer": "One-Zone IA and Glacier",
+            "group": "S3 Storage Class Analysis",
+            "keyTopic": "S3 Storage Class Analysis limits",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::s3-storage-class-analysis-limits"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "46bb6812-64b5-44b0-8e7f-84d6466c8f77",
+            "question": "How often is the S3 Analytics report updated?",
+            "answer": "Daily",
+            "group": "S3 Storage Class Analysis",
+            "keyTopic": "S3 Storage Class Analysis limits",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::s3-storage-class-analysis-limits"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "03966643-4bcb-4b41-9e62-b5fdadc7103a",
+            "question": "How long before S3 Analytics starts showing data analysis?",
+            "answer": "24 to 48 hours",
+            "group": "S3 Storage Class Analysis",
+            "keyTopic": "S3 Storage Class Analysis limits",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::s3-storage-class-analysis-limits"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "6bb42784-fac9-47ad-b463-8391495ffc53",
+            "question": "Which does S3 Analytics do itself: perform transitions or produce recommendations?",
+            "answer": "Produce recommendations only",
+            "group": "S3 Storage Class Analysis",
+            "keyTopic": "S3 Storage Class Analysis limits",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::s3-storage-class-analysis-limits"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "109e8659-75d9-485d-9712-94d24e4aa993",
+            "question": "What report format does S3 Storage Class Analysis produce?",
+            "answer": "A daily .csv report",
+            "group": "S3 Storage Class Analysis",
+            "keyTopic": "S3 Storage Class Analysis limits",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::s3-storage-class-analysis-limits"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ab61410a-221c-4601-90c6-d6fe75b16bbc",
+            "question": "What is the recommended first step before building or improving Lifecycle Rules?",
+            "answer": "Run S3 Storage Class Analysis",
+            "group": "S3 Storage Class Analysis",
+            "keyTopic": "Lifecycle scenario design",
+            "origin": "source",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-scenario-design"
+            ],
+            "schedule": {
+              "due": "2026-10-24T16:21:55.313Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A media company uploads source images to S3. The images must be instantly retrievable for 60 days after upload; after that, retrieval within a few hours is acceptable. Archival cost matters. Which lifecycle design fits?",
+            "options": [
+              "Store in Standard, then use a lifecycle rule to transition to Glacier after 60 days",
+              "Store in Standard IA, then use a lifecycle rule to expire the objects after 60 days",
+              "Store in One-Zone IA, then use a lifecycle rule to transition to Deep Archive after 60 days",
+              "Store in Glacier Instant Retrieval and transition to Standard after 60 days"
+            ],
+            "correctIndex": 0,
+            "explanation": "Standard gives immediate retrieval during the 60-day window and a transition to Glacier at day 60 matches the loosened hours-level retrieval need. Standard IA plus expiration deletes data the company must still keep. One-Zone IA is for easily recreated data, and Deep Archive is normally a later step after a shorter archive tier in this section's designs. Glacier Instant Retrieval is not the right first tier for data needing immediate access at creation.",
+            "keyTopic": "Lifecycle scenario design",
+            "kind": "scenario",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-scenario-design"
+            ]
+          },
+          {
+            "question": "An application on EC2 generates image thumbnails that can be regenerated at any time and only need to be kept for 60 days. Which configuration is most cost-appropriate?",
+            "options": [
+              "Store thumbnails in Standard with a lifecycle rule to transition to Glacier Deep Archive after 60 days",
+              "Store thumbnails in One-Zone IA with a lifecycle rule to expire them after 60 days",
+              "Store thumbnails in Standard IA with a lifecycle rule to delete noncurrent versions after 60 days",
+              "Store thumbnails in Glacier Flexible Retrieval with a lifecycle rule to transition to Standard IA after 60 days"
+            ],
+            "correctIndex": 1,
+            "explanation": "One-Zone IA suits infrequently accessed data that is easily recreated, and an expiration action deletes it at day 60. Transitioning regenerable thumbnails to Deep Archive keeps charges alive past the 60-day requirement. Noncurrent version deletion only applies to old versions in a versioned bucket, not the current thumbnails. Storing in Glacier and later transitioning back to Standard IA is backwards and keeps data you intended to expire.",
+            "keyTopic": "Storage class transitions",
+            "kind": "scenario",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::storage-class-transitions"
+            ]
+          },
+          {
+            "question": "Objects are infrequently accessed but must still be retrieved quickly when requested, and the data is not easily reproducible. Which storage class is the appropriate lifecycle transition target?",
+            "options": [
+              "Glacier Deep Archive",
+              "One-Zone IA",
+              "Standard IA",
+              "Glacier Flexible Retrieval"
+            ],
+            "correctIndex": 2,
+            "explanation": "Standard IA is the section's target for infrequently accessed objects that still need fast retrieval. Deep Archive and Glacier Flexible Retrieval are archive tiers for data without fast-access needs. One-Zone IA also serves infrequent access but is chosen for objects that can be easily recreated, which does not match this requirement.",
+            "keyTopic": "Standard IA for infrequent access",
+            "kind": "comparison",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::standard-ia-for-infrequent-access"
+            ]
+          },
+          {
+            "question": "A company needs deleted S3 objects recoverable immediately for 30 days and, after that, recoverable within 48 hours for up to 365 days. How should the storage classes be sequenced?",
+            "options": [
+              "Transition current versions to Standard IA at 30 days and expire the bucket at 365 days",
+              "Transition noncurrent versions to Glacier Deep Archive at 30 days, then to Standard IA at 365 days",
+              "Enable versioning and expire noncurrent versions immediately on deletion",
+              "Enable versioning, transition noncurrent versions to Standard IA, then transition them to Glacier Deep Archive"
+            ],
+            "correctIndex": 3,
+            "explanation": "Versioning keeps deleted objects behind a delete marker, and the noncurrent versions can be moved from Standard IA to Glacier Deep Archive as the 48-hour recovery requirement takes over. Expiring the bucket at 365 days removes objects the rule says must be recoverable. Moving noncurrent versions first to Deep Archive and later to Standard IA reverses the retrieval-time progression. Expiring noncurrent versions immediately destroys the ability to recover deleted objects at all.",
+            "keyTopic": "Noncurrent version deletion",
+            "kind": "scenario",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::noncurrent-version-deletion"
+            ]
+          },
+          {
+            "question": "A versioned bucket's storage cost keeps rising because overwritten objects remain. Which lifecycle action removes them?",
+            "options": [
+              "An expiration action that deletes noncurrent versions",
+              "An expiration action that deletes incomplete multipart uploads",
+              "A transition action that moves the objects to Standard IA",
+              "An expiration action that deletes the current object after 30 days"
+            ],
+            "correctIndex": 0,
+            "explanation": "Noncurrent version expiration is the action that removes the old versions kept by versioning. Expiring incomplete multipart uploads only cleans up unfinished uploads. A transition to Standard IA changes the storage class of retained versions but does not delete them. Expiring current objects adds delete markers and leaves the underlying versions, and so does not reduce cost.",
+            "keyTopic": "Expiration actions",
+            "kind": "concept",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::expiration-actions"
+            ]
+          },
+          {
+            "question": "A bucket receives multi-part uploads that applications frequently abandon before completion, and storage charges are growing. What should you add to the lifecycle configuration?",
+            "options": [
+              "A transition of incomplete uploads to One-Zone IA after 7 days",
+              "A transition of incomplete uploads to Glacier Deep Archive after 7 days",
+              "An expiration action to delete incomplete multipart uploads",
+              "An expiration action on noncurrent versions after 7 days"
+            ],
+            "correctIndex": 2,
+            "explanation": "Expiring incomplete multipart uploads removes the parts that are charged while an upload never completes. Transitioning incomplete uploads assumes partial uploads can be tiered like objects, which does not match the section's cleanup mechanism. Noncurrent version expiration applies only to old object versions in a versioned bucket, which is unrelated to unfinished uploads.",
+            "keyTopic": "Incomplete multipart upload cleanup",
+            "kind": "scenario",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::incomplete-multipart-upload-cleanup"
+            ]
+          },
+          {
+            "question": "Finance department files must follow a lifecycle rule even though teams can upload them under any key path. Other departments' objects must not be affected. Which filter satisfies this?",
+            "options": [
+              "A rule scoped to the prefix s3://mybucket/finance/*",
+              "A rule scoped to the object tag Department: Finance",
+              "A bucket policy that restricts lifecycle rules to Finance IAM roles",
+              "A rule scoped to the prefix s3://mybucket/*, applied to the whole bucket"
+            ],
+            "correctIndex": 1,
+            "explanation": "Tag-based rules follow the object's metadata regardless of key layout, and only tagged Finance objects match. A prefix rule only works if every Finance object reliably lands under that path, which the requirement rules out. A bucket policy controls access, not lifecycle scope. A whole-bucket rule affects all departments, violating the constraint.",
+            "keyTopic": "Prefix and tag rule filters",
+            "kind": "scenario",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::prefix-and-tag-rule-filters"
+            ]
+          },
+          {
+            "question": "A team wants to know which objects are cold and when they should move to Standard IA, but has no data on access patterns yet. What should they do first?",
+            "options": [
+              "Create a lifecycle rule that transitions all objects to Standard IA after 30 days",
+              "Enable S3 Storage Class Analysis to collect access patterns and produce reports",
+              "Create a lifecycle rule that expires objects after 30 days",
+              "Enable versioning so old objects become noncurrent versions"
+            ],
+            "correctIndex": 1,
+            "explanation": "Storage Class Analysis observes access patterns and produces a daily report that forms the basis for building lifecycle rules. Transitioning everything after 30 days is a guess made without the data the team lacks. Expiring objects does not inform tiering decisions and risks data loss. Versioning retains old versions but says nothing about which objects are cold.",
+            "keyTopic": "S3 Storage Class Analysis limits",
+            "kind": "scenario",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::s3-storage-class-analysis-limits"
+            ]
+          },
+          {
+            "question": "Which statement about S3 Storage Class Analysis is correct?",
+            "options": [
+              "It gives recommendations for One-Zone IA and Glacier as well as Standard IA",
+              "It performs the storage class transitions automatically once enabled",
+              "It takes 24 to 48 hours before analysis appears, and the report is updated daily",
+              "It produces recommendations only for Glacier Flexible Retrieval and Deep Archive"
+            ],
+            "correctIndex": 2,
+            "explanation": "Analysis takes 24 to 48 hours to begin showing data, and the report refreshes daily. Analysis recommendations cover Standard and Standard IA only and do not work for One-Zone IA or Glacier. Analysis never executes transitions; lifecycle rules do that. Limiting recommendations to Glacier classes misstates which classes are covered.",
+            "keyTopic": "S3 Storage Class Analysis limits",
+            "kind": "concept",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::s3-storage-class-analysis-limits"
+            ]
+          },
+          {
+            "question": "Why should lifecycle configuration include both transition actions and expiration actions rather than choosing one type?",
+            "options": [
+              "Transitions move objects to cheaper classes over time, and expirations delete data that is no longer needed",
+              "Transitions delete old versions, and expirations move current objects between storage classes",
+              "Expiration actions are required before any transition action can be evaluated",
+              "Transitions and expirations can never be combined in a single lifecycle configuration"
+            ],
+            "correctIndex": 0,
+            "explanation": "Transition actions handle tiering so live objects cost less, while expiration actions remove objects, noncurrent versions and incomplete uploads that no longer need to exist. Deletion belongs to expiration actions, not transitions. No rule requires an expiration before a transition is evaluated. Rules may contain both action types, and one configuration can serve different object sets.",
+            "keyTopic": "Lifecycle transition actions",
+            "kind": "comparison",
+            "objectiveIds": [
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-transition-actions"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v3",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T16:21:48.556Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 295,
+            "pageEnd": 299,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "This section covers how objects move between Amazon S3 storage classes and how Lifecycle Rules automate transitions, expiration, version cleanup and multipart-upload cleanup, filtered by prefix or tag. It also covers S3 Storage Class Analysis, the reporting tool that recommends when to move data to Standard IA. For SAA-C03 this is core Cost-Optimized storage design (managing S3 object lifecycles, storage tiering, selecting the data lifecycle), so expect scenario questions that give retention windows and retrieval-time requirements and ask you to pick storage classes plus a lifecycle design.",
+        "coreConcepts": [
+          {
+            "term": "Storage class transition",
+            "definition": "Moving an object from one S3 storage class to another (for example Standard to Standard IA to Glacier) without changing its key; can be automated with Lifecycle Rules."
+          },
+          {
+            "term": "Standard IA",
+            "definition": "The target class for infrequently accessed objects that must still be retrieved quickly; the storage class S3 Analytics makes recommendations about (together with Standard)."
+          },
+          {
+            "term": "Glacier / Glacier Deep Archive",
+            "definition": "Archive classes for objects you do not need fast access to; Deep Archive is the deeper, cheaper archive tier used after a shorter-term archive step in the section's scenarios."
+          },
+          {
+            "term": "Lifecycle Rule transition action",
+            "definition": "A rule action that moves objects to another storage class after a condition such as days since creation (e.g. move to Standard IA at 60 days, to Glacier after 6 months)."
+          },
+          {
+            "term": "Lifecycle Rule expiration action",
+            "definition": "A rule action that deletes (expires) objects after some time, e.g. deleting access log files after 365 days."
+          },
+          {
+            "term": "Noncurrent version deletion",
+            "definition": "An expiration action that deletes old versions of an object when versioning is enabled."
+          },
+          {
+            "term": "Incomplete multipart upload cleanup",
+            "definition": "An expiration action that deletes incomplete Multi-Part uploads, avoiding storage charges for unfinished uploads."
+          },
+          {
+            "term": "Prefix filter",
+            "definition": "A lifecycle rule scoped to a key prefix, e.g. s3://mybucket/mp3/* so only that folder of objects is affected."
+          },
+          {
+            "term": "Tag filter",
+            "definition": "A lifecycle rule scoped to object tags, e.g. Department: Finance, so rules follow business meaning rather than key path."
+          },
+          {
+            "term": "S3 Storage Class Analysis",
+            "definition": "An S3 Analytics feature that monitors access patterns and produces a daily .csv report (storage class by object age) to help decide when to transition objects."
+          }
+        ],
+        "mustRemember": [
+          "Transitions are between storage classes; Lifecycle Rules automate them.",
+          "Infrequently accessed objects: move to Standard IA. Archive objects without fast-access needs: Glacier or Glacier Deep Archive.",
+          "Transition actions and expiration actions are separate rule actions; a rule may have both.",
+          "Expiration actions can delete: current objects after N days, noncurrent (old) versions when versioning is enabled, and incomplete Multi-Part uploads.",
+          "Rules can filter by prefix (e.g. s3://mybucket/mp3/*) or by object tag (e.g. Department: Finance).",
+          "S3 Storage Class Analysis gives recommendations only for Standard and Standard IA.",
+          "S3 Analytics does NOT work for One-Zone IA or Glacier.",
+          "S3 Analytics report is updated daily; it takes 24 to 48 hours to start seeing data analysis.",
+          "S3 Analytics is a good first step to build or improve Lifecycle Rules — it is not an automation of transitions itself."
+        ],
+        "keyComparisons": [
+          {
+            "items": "Standard IA vs One-Zone IA",
+            "difference": "Both are for infrequently accessed data, but the section's thumbnail scenario uses One-Zone IA for easily recreated objects, so pick it when the data can be regenerated and Standard IA otherwise."
+          },
+          {
+            "items": "Glacier vs Glacier Deep Archive",
+            "difference": "Deep Archive is the deeper archive step used after an earlier Glacier-class or Standard IA stage when the retrieval requirement is looser (hours rather than immediate)."
+          },
+          {
+            "items": "Transition action vs Expiration action",
+            "difference": "Transition changes the storage class of an object that stays alive; expiration deletes the object (or old versions / incomplete uploads)."
+          },
+          {
+            "items": "Prefix filter vs Tag filter",
+            "difference": "Prefix scopes by key path (s3://mybucket/mp3/*); tag scopes by object metadata (Department: Finance), which is better when the rule must follow objects regardless of key layout."
+          },
+          {
+            "items": "S3 Storage Class Analysis vs Lifecycle Rules",
+            "difference": "Analysis only observes and reports on access patterns (recommendations for Standard and Standard IA only); Lifecycle Rules are what actually perform transitions and expirations."
+          },
+          {
+            "items": "Versioning vs Lifecycle expiration",
+            "difference": "With versioning enabled a delete is hidden by a delete marker, so old data is removed by expiring noncurrent versions, not by ordinary object expiration."
+          }
+        ],
+        "commonMisunderstandings": [
+          "S3 Storage Class Analysis performs transitions for you — it does not; it produces recommendations that you then implement as Lifecycle Rules.",
+          "S3 Analytics can recommend Glacier transitions — it only covers Standard and Standard IA and does not work for One-Zone IA or Glacier.",
+          "Turning on versioning is enough to clean up old data — you must also expire noncurrent versions, or they keep accruing cost.",
+          "Deleting an object in a versioned bucket removes the data — it adds a delete marker; the object versions persist until noncurrent-version expiration.",
+          "Lifecycle rules can only target a whole bucket — they can be scoped by prefix or by object tag.",
+          "S3 Analytics gives instant results — allow 24 to 48 hours before analysis appears, and the report is updated daily."
+        ],
+        "mentalModels": [
+          "Think of Lifecycle Rules as a conveyor belt: whenever an age/condition is met, an object moves to the next class or falls off (expire).",
+          "Think of S3 Storage Class Analysis as an X-ray of the bucket that tells you where to place the belt; the belt itself is the Lifecycle Rule.",
+          "Think of a delete marker as a curtain in front of the object: versioning keeps the object behind the curtain, and noncurrent-version expiration finally removes it.",
+          "Think of a prefix as a folder address and a tag as a label on the parcel — either can steer the rule."
+        ],
+        "edgeCases": [
+          "Noncurrent version transitions/deletion only exist if versioning is enabled.",
+          "Incomplete multipart uploads consume storage until a rule expires them; clean them up explicitly.",
+          "Objects can be transitioned multiple times in sequence (Standard → Standard IA → Glacier Deep Archive) as in Scenario 2.",
+          "Lifecycle rules by tag require the tag to exist on the object to be matched.",
+          "An object can be both transitioned and expired by the same overall configuration when requirements differ per object set (source images vs thumbnails in Scenario 1)."
+        ],
+        "whenToUse": [
+          {
+            "situation": "Objects are accessed rarely but must still be retrievable quickly.",
+            "use": "Transition to Standard IA."
+          },
+          {
+            "situation": "Archive data that does not need fast access.",
+            "use": "Transition to Glacier or Glacier Deep Archive."
+          },
+          {
+            "situation": "Log files older than 365 days are no longer needed.",
+            "use": "Expiration action to delete access log files after 365 days."
+          },
+          {
+            "situation": "Versioned bucket accumulating old object versions.",
+            "use": "Expire noncurrent versions."
+          },
+          {
+            "situation": "Bucket has many abandoned multipart uploads.",
+            "use": "Expiration action to delete incomplete multipart uploads."
+          },
+          {
+            "situation": "Only one application path's objects should be tiered.",
+            "use": "Rule scoped to a prefix (s3://mybucket/mp3/*)."
+          },
+          {
+            "situation": "Rules must follow objects across arbitrary key layouts, e.g. by department.",
+            "use": "Rule scoped to a tag (Department: Finance)."
+          },
+          {
+            "situation": "You don't know which objects are cold and want data-driven lifecycle design.",
+            "use": "Start with S3 Storage Class Analysis, then build Lifecycle Rules from its report."
+          },
+          {
+            "situation": "Objects can be regenerated easily and are only needed 60 days.",
+            "use": "Store in One-Zone IA and expire after 60 days."
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "\"immediately retrievable for 60 days, then up to 6 hours\"",
+            "indicates": "Standard (or Standard IA) for the immediate window, transition to Glacier afterwards."
+          },
+          {
+            "signal": "\"thumbnails can be easily recreated\"",
+            "indicates": "One-Zone IA plus expiration."
+          },
+          {
+            "signal": "\"recover deleted objects immediately for 30 days, within 48 hours for up to 365 days\"",
+            "indicates": "Versioning + noncurrent version transitions (Standard IA then Glacier Deep Archive)."
+          },
+          {
+            "signal": "\"which service recommends when to transition objects\"",
+            "indicates": "S3 Storage Class Analysis."
+          },
+          {
+            "signal": "\"old versions\" or \"incomplete multipart uploads\"",
+            "indicates": "Expiration actions in a lifecycle rule."
+          },
+          {
+            "signal": "\"only Finance department files\"",
+            "indicates": "Tag-based lifecycle rule."
+          },
+          {
+            "signal": "\"only files under the mp3 folder\"",
+            "indicates": "Prefix-based lifecycle rule."
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "S3 Analytics can be used for One-Zone IA and Glacier optimization.",
+            "correction": "Analysis recommendations cover only Standard and Standard IA; it does not work for One-Zone IA or Glacier."
+          },
+          {
+            "trap": "Enabling versioning automatically deletes old versions.",
+            "correction": "Versioning retains versions; you must add noncurrent-version expiration/transition actions."
+          },
+          {
+            "trap": "Lifecycle rules are a substitute for S3 Analytics.",
+            "correction": "They are complementary: Analytics informs the rules, the rules execute them."
+          },
+          {
+            "trap": "Delete markers free the storage of overwritten objects.",
+            "correction": "Only expiring noncurrent versions removes the underlying versions."
+          },
+          {
+            "trap": "Lifecycle rules cannot be targeted narrowly.",
+            "correction": "They can be filtered by prefix or by object tag."
+          },
+          {
+            "trap": "S3 Analytics produces data immediately.",
+            "correction": "It takes 24 to 48 hours to start seeing analysis, with daily report updates."
+          }
+        ],
+        "beyondSource": [
+          "Current S3 lifecycle configurations often distinguish current-version and noncurrent-version actions explicitly (transition and expiration for each), which is consistent with the section's noncurrent-version scenarios.",
+          "Lifecycle rules support minimum object-age thresholds in whole days and are evaluated asynchronously, so transitions are not instantaneous at the exact day boundary; the exam generally tests the intended design rather than timing exactness."
+        ]
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "d0f8cdba-c6d7-4ac6-8d1c-d22422d2f991",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T16:21:48.556Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
+          "revision": 3
+        },
+        "flashcards": {
+          "requestId": "c0ffbb0e-8edd-474b-a1f9-096e12b7c823",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T16:21:55.313Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
+          "revision": 3
+        },
+        "quiz": {
+          "requestId": "c8d89041-e7c8-4e69-ac56-38555cc19aaf",
+          "promptVersion": 3,
+          "generatedAt": "2026-10-24T16:22:07.497Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
+          "revision": 3
+        }
+      }
+    },
+    {
+      "id": "13b47f9f-b63e-432d-9dfe-9f3d229aec05",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "ab279f74-57d3-430e-9eb8-605ce81cde8b",
+      "title": "Requester Pays and S3 Event Notifications",
+      "objective": "Choose between native S3 event notifications and EventBridge for event-driven integration, and identify the IAM permissions and authentication constraints each option requires.",
+      "keyTopics": [
+        "Requester Pays cost shift",
+        "Requester authentication requirement",
+        "S3 event types",
+        "Object name filtering",
+        "Event notification destinations",
+        "Lambda, SNS, SQS resource policies",
+        "EventBridge advanced JSON filtering",
+        "EventBridge multiple destinations",
+        "EventBridge archive and replay"
+      ],
+      "pageStart": 300,
+      "pageEnd": 303,
+      "text": "[Page 300]\nS3 \t– \tRequester Pays\n• \tIn general, bucket owners pay for all\nAmazon S3 storage and data transfer\ncosts associated with their bucket\n• \tWith Requester Pays buckets, the\nrequester instead of the bucket owner\npays the cost of the request and the\ndata download from the bucket\n• \tHelpful when you want to share large\ndatasets with other accounts\n• \tThe requester must be authenticated\nin AWS (cannot be anonymous)\nOwner\n$$ Storage Cost\nOwner\n$$ Networking Cost\ndownload\nRequester\nOwner\n$$ Storage Cost\nRequester\n$$ Networking Cost\ndownload\nRequester Pays Bucket\nStandard Bucket\n\n[Page 301]\nS3 Event Notifications\nAmazon S3\nevents\nLambda Function\nSQS\nSNS\n• \tS3:ObjectCreated, S3:ObjectRemoved,\nS3:ObjectRestore, S3:Replication…\n• \tObject name filtering possible (*.jpg)\n• \tUse case: generate thumbnails of images\nuploaded to S3\n• \tCan create as many “S3 events” as desired\n• \tS3 event notifications typically deliver events\nin seconds but can sometimes take a minute\nor longer\n\n[Page 302]\nS3 Event Notifications \t– \tIAM Permissions\nAmazon S3\nevents\nLambda Function\nSQS\nSNS\nLambda Resource Policy\nSNS Resource (Access) Policy\nSQS Resource (Access) Policy\n\n[Page 303]\nS3 Event Notifications\nwith Amazon EventBridge\nAmazon S3\nbucket\nevents \tAll events\nAmazon\nEventBridge\nrules Over 18\nAWS services\nas destinations\n• \tAdvanced filtering \toptions with JSON rules (metadata, object size, name...)\n• \tMultiple Destinations \t– \tex Step Functions, Kinesis Streams / Firehose…\n• \tEventBridge \tCapabilities \t– Archive, Replay Events, Reliable delivery",
+      "read": false
+    },
+    {
+      "id": "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "ab279f74-57d3-430e-9eb8-605ce81cde8b",
+      "title": "S3 Performance: Baseline Throughput, Multi-Part Upload, Transfer Acceleration, Byte-Range Fetches",
+      "objective": "Select S3 performance features and prefix strategies that meet a stated throughput, upload speed, or download resilience requirement.",
+      "keyTopics": [
+        "Requests per second per prefix",
+        "Prefix definition in object path",
+        "Parallel reads across prefixes",
+        "Multi-Part upload thresholds",
+        "S3 Transfer Acceleration",
+        "Edge location forwarding",
+        "Byte-Range Fetches",
+        "Partial data retrieval"
+      ],
+      "pageStart": 304,
+      "pageEnd": 306,
+      "text": "[Page 304]\nS3 \t– \tBaseline Performance\n• \tAmazon S3 automatically scales to high request rates, latency 100-200 ms\n• \tYour application can achieve at least \t3,500 PUT/COPY/POST/DELETE or\n5,500 GET/HEAD requests per second per prefix in a bucket.\n• \tThere are no limits to the number of prefixes in a bucket.\n• \tExample (object path => prefix):\n• \tbucket/folder1/sub1/file => /folder1/sub1/\n• \tbucket/folder1/sub2/file => /folder1/sub2/\n• \tbucket/1/file \t=> /1/\n• \tbucket/2/file \t=> /2/\n• \tIf you spread reads across all four prefixes evenly, you can achieve 22,000\nrequests per second for GET and HEAD\n\n[Page 305]\nS3 Performance\n• \tMulti-Part upload:\n• \trecommended for files > 100MB,\nmust use for files > 5GB\n• \tCan help parallelize uploads (speed\nup transfers)\n• \tS3 Transfer Acceleration\n• \tIncrease transfer speed by transferring\nfile to an AWS edge location which will\nforward the data to the S3 bucket in the\ntarget region\n• \tCompatible with multi-part upload\nAmazon S3\nParallel uploads\tDivide\nIn parts\nBIG file\nS3 Bucket\nAustralia\nEdge Location\nUSA\nFast\n(public www)\nFast\n(private AWS)\nFile in USA\n\n[Page 306]\nS3 Performance \t– \tS3 Byte-Range Fetches\n• \tParallelize GETs by requesting specific\nbyte ranges\n• \tBetter resilience in case of failures\nCan be used to speed up downloads\nFile in S3\nByte-range request for header\n(first XX bytes)\nheader\nFile in S3\nPart 1 \tPart 2 \tPart N\t…\nCan be used to retrieve only partial\ndata (for example the head of a file)\nRequests in parallel",
+      "read": false
+    },
+    {
+      "id": "6c9da1f0-c7c5-4a6c-be84-d0413557ac01",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "ab279f74-57d3-430e-9eb8-605ce81cde8b",
+      "title": "S3 Batch Operations and S3 Storage Lens",
+      "objective": "Match bulk object operations and Storage Lens metric categories to a given cost-optimization, data-protection, or governance scenario.",
+      "keyTopics": [
+        "S3 Batch Operations actions",
+        "Job structure and managed retries",
+        "S3 Inventory and Athena input",
+        "Storage Lens organization scope",
+        "Default dashboard behavior",
+        "Summary and cost-optimization metrics",
+        "Data-protection and access-management metrics",
+        "Event, performance, and activity metrics",
+        "Free vs advanced metrics"
+      ],
+      "pageStart": 307,
+      "pageEnd": 313,
+      "text": "[Page 307]\nS3 Batch Operations\n• \tPerform bulk operations on existing S3 objects with a\nsingle request, example:\n• \tModify object metadata & properties\n• \tCopy objects between S3 buckets\n• \tEncrypt un-encrypted objects\n• \tModify ACLs, tags\n• \tRestore objects from S3 Glacier\n• \tInvoke Lambda function to perform custom action on\neach object\n• \tA job consists of a list of objects, the action to\nperform, and optional parameters\n• \tS3 Batch Operations manages retries, tracks progress,\nsends completion notifications, generate reports …\n• \tYou can use S3 Inventory to get object list and use\nAthena to query and filter your objects\nS3 Inventory\nObjects List Report\nfiltered list\nfilter\nS3 Batch\nOperations\noperation\n+\nparameters\nUser\nProcessed Objects\n…\nAthena\n\n[Page 308]\nS3 \t– \tStorage Lens\n• \tUnderstand, analyze, and optimize storage across entire AWS Organization\n• \tDiscover anomalies, identify cost efficiencies, and apply data protection best\npractices across entire AWS Organization (30 days usage & activity metrics)\n• \tAggregate data for Organization, specific accounts, regions, buckets, or prefixes\n• \tDefault dashboard or create your own dashboards\n• \tCan be configured to export metrics daily to an S3 bucket (CSV, Parquet)\nS3 Storage Lens\nOrganization\nAccounts\nRegions\nBuckets\nAggregate \tAnalyze\n(Dashboard)\nSummary Insights\nData Protection\nCost Efficiency\nConfigure \tOptimize\n\n[Page 309]\nStorage Lens \t– \tDefault Dashboard\n• \tVisualize summarized insights and trends for both free and advanced metrics\n• \tDefault dashboard shows Multi-Region and Multi-Account data\n• \tPreconfigured by Amazon S3\n• \tCan’t be deleted, but can be disabled\nhttps://aws.amazon.com/blogs/aws/s3-storage-lens/\nhttps://aws.amazon.com/blogs/aws/s3-storage-lens/\n\n[Page 310]\nStorage Lens \t– \tMetrics\n• \tSummary Metrics\n• \tGeneral insights about your S3 storage\n• \tStorageBytes, ObjectCount…\n• \tUse cases: identify the fastest-growing (or not used) buckets and prefixes\n• \tCost-Optimization Metrics\n• \tProvide insights to manage and optimize your storage costs\n• \tNonCurrentVersionStorageBytes, IncompleteMultipartUploadStorageBytes…\n• \tUse cases: identify buckets with incomplete multipart uploaded older than 7\ndays, Identify which objects could be transitioned to lower-cost storage class\n\n[Page 311]\nStorage Lens \t– \tMetrics\n• \tData-Protection Metrics\n• \tProvide insights for data protection features\n• \tVersioningEnabledBucketCount, MFADeleteEnabledBucketCount, SSEKMSEnabledBucketCount,\nCrossRegionReplicationRuleCount…\n• \tUse cases: identify buckets that aren’t following data-protection best practices\n• \tAccess-management Metrics\n• \tProvide insights for S3 Object Ownership\n• \tObjectOwnershipBucketOwnerEnforcedBucketCount…\n• \tUse cases: identify which Object Ownership settings your buckets use\n• \tEvent Metrics\n• \tProvide insights for S3 Event Notifications\n• \tEventNotificationEnabledBucketCount (identify which buckets have S3 Event Notifications\nconfigured)\n\n[Page 312]\nStorage Lens \t– \tMetrics\n• \tPerformance Metrics\n• \tProvide insights for S3 Transfer Acceleration\n• \tTransferAccelerationEnabledBucketCount (identify which buckets have S3 Transfer\nAcceleration enabled)\n• \tActivity Metrics\n• \tProvide insights about how your storage is requested\n• \tAllRequests, GetRequests, PutRequests, ListRequests, BytesDownloaded…\n• \tDetailed Status Code Metrics\n• \tProvide insights for HTTP status codes\n• \t200OKStatusCount, 403ForbiddenErrorCount, 404NotFoundErrorCount…\n\n[Page 313]\nStorage Lens \t– \tFree vs. \tPaid\n• \tFree Metrics\n• \tAutomatically available for all customers\n• \tContains around 28 usage metrics\n• \tData is available for queries for 14 days\n• \tAdvanced Metrics and Recommendations\n• \tAdditional paid metrics and features\n• \tAdvanced Metrics – Activity, Advanced Cost\nOptimization, Advanced Data Protection, Status\nCode\n• \tCloudWatch Publishing – Access metrics in\nCloudWatch without additional charges\n• \tPrefix Aggregation – Collect metrics at the prefix\nlevel\n• \tData is available for queries for 15 months",
+      "read": false
     }
   ],
   "attempts": [
@@ -41143,8 +42386,297 @@
         "Task 3.1: S3 performance",
         "Task 2.1: event-driven integration"
       ],
-      "objectives": [],
-      "coverageStatus": "draft"
+      "objectives": [
+        {
+          "id": "5bbbe7fe-a877-4795-ac85-b61da40e4a40::storage-class-transitions",
+          "title": "Storage class transitions",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 295,
+          "pageEnd": 299,
+          "assessment": "recall"
+        },
+        {
+          "id": "5bbbe7fe-a877-4795-ac85-b61da40e4a40::standard-ia-for-infrequent-access",
+          "title": "Standard IA for infrequent access",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 295,
+          "pageEnd": 299,
+          "assessment": "recall"
+        },
+        {
+          "id": "5bbbe7fe-a877-4795-ac85-b61da40e4a40::glacier-vs-glacier-deep-archive",
+          "title": "Glacier vs Glacier Deep Archive",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 295,
+          "pageEnd": 299,
+          "assessment": "recall"
+        },
+        {
+          "id": "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-transition-actions",
+          "title": "Lifecycle transition actions",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 295,
+          "pageEnd": 299,
+          "assessment": "recall"
+        },
+        {
+          "id": "5bbbe7fe-a877-4795-ac85-b61da40e4a40::expiration-actions",
+          "title": "Expiration actions",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 295,
+          "pageEnd": 299,
+          "assessment": "recall"
+        },
+        {
+          "id": "5bbbe7fe-a877-4795-ac85-b61da40e4a40::noncurrent-version-deletion",
+          "title": "Noncurrent version deletion",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 295,
+          "pageEnd": 299,
+          "assessment": "recall"
+        },
+        {
+          "id": "5bbbe7fe-a877-4795-ac85-b61da40e4a40::incomplete-multipart-upload-cleanup",
+          "title": "Incomplete multipart upload cleanup",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 295,
+          "pageEnd": 299,
+          "assessment": "recall"
+        },
+        {
+          "id": "5bbbe7fe-a877-4795-ac85-b61da40e4a40::prefix-and-tag-rule-filters",
+          "title": "Prefix and tag rule filters",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 295,
+          "pageEnd": 299,
+          "assessment": "recall"
+        },
+        {
+          "id": "5bbbe7fe-a877-4795-ac85-b61da40e4a40::lifecycle-scenario-design",
+          "title": "Lifecycle scenario design",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 295,
+          "pageEnd": 299,
+          "assessment": "recall"
+        },
+        {
+          "id": "5bbbe7fe-a877-4795-ac85-b61da40e4a40::s3-storage-class-analysis-limits",
+          "title": "S3 Storage Class Analysis limits",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 295,
+          "pageEnd": 299,
+          "assessment": "recall"
+        },
+        {
+          "id": "13b47f9f-b63e-432d-9dfe-9f3d229aec05::requester-pays-cost-shift",
+          "title": "Requester Pays cost shift",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 300,
+          "pageEnd": 303,
+          "assessment": "recall"
+        },
+        {
+          "id": "13b47f9f-b63e-432d-9dfe-9f3d229aec05::requester-authentication-requirement",
+          "title": "Requester authentication requirement",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 300,
+          "pageEnd": 303,
+          "assessment": "recall"
+        },
+        {
+          "id": "13b47f9f-b63e-432d-9dfe-9f3d229aec05::s3-event-types",
+          "title": "S3 event types",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 300,
+          "pageEnd": 303,
+          "assessment": "recall"
+        },
+        {
+          "id": "13b47f9f-b63e-432d-9dfe-9f3d229aec05::object-name-filtering",
+          "title": "Object name filtering",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 300,
+          "pageEnd": 303,
+          "assessment": "recall"
+        },
+        {
+          "id": "13b47f9f-b63e-432d-9dfe-9f3d229aec05::event-notification-destinations",
+          "title": "Event notification destinations",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 300,
+          "pageEnd": 303,
+          "assessment": "recall"
+        },
+        {
+          "id": "13b47f9f-b63e-432d-9dfe-9f3d229aec05::lambda-sns-sqs-resource-policies",
+          "title": "Lambda, SNS, SQS resource policies",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 300,
+          "pageEnd": 303,
+          "assessment": "recall"
+        },
+        {
+          "id": "13b47f9f-b63e-432d-9dfe-9f3d229aec05::eventbridge-advanced-json-filtering",
+          "title": "EventBridge advanced JSON filtering",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 300,
+          "pageEnd": 303,
+          "assessment": "recall"
+        },
+        {
+          "id": "13b47f9f-b63e-432d-9dfe-9f3d229aec05::eventbridge-multiple-destinations",
+          "title": "EventBridge multiple destinations",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 300,
+          "pageEnd": 303,
+          "assessment": "recall"
+        },
+        {
+          "id": "13b47f9f-b63e-432d-9dfe-9f3d229aec05::eventbridge-archive-and-replay",
+          "title": "EventBridge archive and replay",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 300,
+          "pageEnd": 303,
+          "assessment": "recall"
+        },
+        {
+          "id": "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede::requests-per-second-per-prefix",
+          "title": "Requests per second per prefix",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 304,
+          "pageEnd": 306,
+          "assessment": "recall"
+        },
+        {
+          "id": "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede::prefix-definition-in-object-path",
+          "title": "Prefix definition in object path",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 304,
+          "pageEnd": 306,
+          "assessment": "recall"
+        },
+        {
+          "id": "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede::parallel-reads-across-prefixes",
+          "title": "Parallel reads across prefixes",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 304,
+          "pageEnd": 306,
+          "assessment": "recall"
+        },
+        {
+          "id": "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede::multi-part-upload-thresholds",
+          "title": "Multi-Part upload thresholds",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 304,
+          "pageEnd": 306,
+          "assessment": "recall"
+        },
+        {
+          "id": "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede::s3-transfer-acceleration",
+          "title": "S3 Transfer Acceleration",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 304,
+          "pageEnd": 306,
+          "assessment": "recall"
+        },
+        {
+          "id": "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede::edge-location-forwarding",
+          "title": "Edge location forwarding",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 304,
+          "pageEnd": 306,
+          "assessment": "recall"
+        },
+        {
+          "id": "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede::byte-range-fetches",
+          "title": "Byte-Range Fetches",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 304,
+          "pageEnd": 306,
+          "assessment": "recall"
+        },
+        {
+          "id": "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede::partial-data-retrieval",
+          "title": "Partial data retrieval",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 304,
+          "pageEnd": 306,
+          "assessment": "recall"
+        },
+        {
+          "id": "6c9da1f0-c7c5-4a6c-be84-d0413557ac01::s3-batch-operations-actions",
+          "title": "S3 Batch Operations actions",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 307,
+          "pageEnd": 313,
+          "assessment": "recall"
+        },
+        {
+          "id": "6c9da1f0-c7c5-4a6c-be84-d0413557ac01::job-structure-and-managed-retries",
+          "title": "Job structure and managed retries",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 307,
+          "pageEnd": 313,
+          "assessment": "recall"
+        },
+        {
+          "id": "6c9da1f0-c7c5-4a6c-be84-d0413557ac01::s3-inventory-and-athena-input",
+          "title": "S3 Inventory and Athena input",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 307,
+          "pageEnd": 313,
+          "assessment": "recall"
+        },
+        {
+          "id": "6c9da1f0-c7c5-4a6c-be84-d0413557ac01::storage-lens-organization-scope",
+          "title": "Storage Lens organization scope",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 307,
+          "pageEnd": 313,
+          "assessment": "recall"
+        },
+        {
+          "id": "6c9da1f0-c7c5-4a6c-be84-d0413557ac01::default-dashboard-behavior",
+          "title": "Default dashboard behavior",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 307,
+          "pageEnd": 313,
+          "assessment": "recall"
+        },
+        {
+          "id": "6c9da1f0-c7c5-4a6c-be84-d0413557ac01::summary-and-cost-optimization-metrics",
+          "title": "Summary and cost-optimization metrics",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 307,
+          "pageEnd": 313,
+          "assessment": "recall"
+        },
+        {
+          "id": "6c9da1f0-c7c5-4a6c-be84-d0413557ac01::data-protection-and-access-management-metrics",
+          "title": "Data-protection and access-management metrics",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 307,
+          "pageEnd": 313,
+          "assessment": "recall"
+        },
+        {
+          "id": "6c9da1f0-c7c5-4a6c-be84-d0413557ac01::event-performance-and-activity-metrics",
+          "title": "Event, performance, and activity metrics",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 307,
+          "pageEnd": 313,
+          "assessment": "recall"
+        },
+        {
+          "id": "6c9da1f0-c7c5-4a6c-be84-d0413557ac01::free-vs-advanced-metrics",
+          "title": "Free vs advanced metrics",
+          "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+          "pageStart": 307,
+          "pageEnd": 313,
+          "assessment": "recall"
+        }
+      ],
+      "coverageStatus": "source-audited"
     },
     {
       "id": "5aa6c1a1-c93b-4c46-8977-2195ee6c3ebd",
@@ -42204,6 +43736,50 @@
         "sections.5.keyTopics: Too big: expected array to have <=10 items"
       ],
       "completedAt": "2026-10-24T14:43:01.390Z"
+    },
+    {
+      "id": "1f87786c-cfc2-44f4-b9a3-d8d17051fb52",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "sections",
+      "targetId": "ab279f74-57d3-430e-9eb8-605ce81cde8b",
+      "status": "done",
+      "promptVersion": 3,
+      "createdAt": "2026-10-24T16:21:25.656Z",
+      "model": "deepseek-chat",
+      "completedAt": "2026-10-24T16:21:31.329Z"
+    },
+    {
+      "id": "d0f8cdba-c6d7-4ac6-8d1c-d22422d2f991",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "summary",
+      "targetId": "5bbbe7fe-a877-4795-ac85-b61da40e4a40",
+      "status": "done",
+      "promptVersion": 2,
+      "createdAt": "2026-10-24T16:21:34.778Z",
+      "model": "deepseek-chat",
+      "completedAt": "2026-10-24T16:21:48.974Z"
+    },
+    {
+      "id": "c0ffbb0e-8edd-474b-a1f9-096e12b7c823",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "flashcards",
+      "targetId": "5bbbe7fe-a877-4795-ac85-b61da40e4a40",
+      "status": "done",
+      "promptVersion": 1,
+      "createdAt": "2026-10-24T16:21:49.048Z",
+      "model": "deepseek-chat",
+      "completedAt": "2026-10-24T16:21:55.706Z"
+    },
+    {
+      "id": "c8d89041-e7c8-4e69-ac56-38555cc19aaf",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "quiz",
+      "targetId": "5bbbe7fe-a877-4795-ac85-b61da40e4a40",
+      "status": "done",
+      "promptVersion": 3,
+      "createdAt": "2026-10-24T16:21:55.780Z",
+      "model": "deepseek-chat",
+      "completedAt": "2026-10-24T16:22:07.884Z"
     }
   ]
 }

@@ -310,6 +310,20 @@ describe('response validation and application', () => {
     expect(applyResponse(state, request('summary', section.id), summary)).toEqual([]);
     expect(section.content!.summary).toContain('**EBS vs Instance Store:** Network-attached versus local hardware.');
   });
+  it('spreads same-position quiz answers before validating', () => {
+    const { state, section } = sectioned();
+    const quiz = {
+      questions: [
+        { question: 'A meter reads 5 A. Which quantity?', options: ['Current', 'Voltage', 'Resistance', 'Power'], correctIndex: 0, explanation: 'Amperes measure current.', keyTopic: 'Current', kind: 'scenario' },
+        { question: 'A battery is 9 V. What does it describe?', options: ['Potential difference', 'Charge flow', 'Resistance', 'Energy stored'], correctIndex: 0, explanation: 'Volts describe potential difference.', keyTopic: 'Voltage', kind: 'scenario' },
+        { question: 'Which pair is correctly matched?', options: ['Current - ampere', 'Current - volt', 'Voltage - ampere', 'Voltage - ohm'], correctIndex: 0, explanation: 'Current is measured in amperes.', keyTopic: 'Current', kind: 'comparison' },
+        { question: 'What unit is voltage measured in?', options: ['Volts', 'Amperes', 'Ohms', 'Watts'], correctIndex: 0, explanation: 'Voltage is measured in volts.', keyTopic: 'Voltage', kind: 'concept' },
+      ],
+    };
+    expect(applyResponse(state, request('quiz', section.id), quiz)).toEqual([]);
+    const positions = section.content!.quiz.map((item) => item.correctIndex);
+    expect(new Set(positions).size).toBeGreaterThan(1);
+  });
   it('requires recall and current-quiz evidence for chapter preparation', () => {
     const { state, chapter, section } = sectioned();
     applyResponse(state, request('flashcards', section.id), goodCards);

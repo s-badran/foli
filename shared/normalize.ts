@@ -35,7 +35,49 @@ export function normalizeSummary(raw: unknown): unknown {
   return { ...value, keyComparisons };
 }
 
+/** Move the correct option to a rotating position, preserving the option set and answer. */
+function redistributeOptions(
+  question: Record<string, unknown>,
+  index: number,
+): Record<string, unknown> {
+  const options = question.options;
+  const correctIndex = question.correctIndex;
+  if (
+    !Array.isArray(options) ||
+    options.length !== 4 ||
+    typeof correctIndex !== 'number' ||
+    !Number.isInteger(correctIndex) ||
+    correctIndex < 0 ||
+    correctIndex >= 4
+  )
+    return question;
+  const correct = options[correctIndex];
+  const rest = options.filter((_, position) => position !== correctIndex);
+  const position = index % 4;
+  const next = [...rest];
+  next.splice(position, 0, correct);
+  return { ...question, options: next, correctIndex: position };
+}
+
+/** Models often leave every correct answer in the same option position; spread them out. */
+export function normalizeQuiz(raw: unknown): unknown {
+  const value = record(raw);
+  if (!value || !Array.isArray(value.questions) || value.questions.length < 4) return raw;
+  const positions = new Set(
+    value.questions
+      .map((item) => record(item)?.correctIndex)
+      .filter((position): position is number => typeof position === 'number'),
+  );
+  if (positions.size >= 2) return raw;
+  const questions = value.questions.map((item, index) => {
+    const question = record(item);
+    return question ? redistributeOptions(question, index) : item;
+  });
+  return { ...value, questions };
+}
+
 export function normalizeArtifact(kind: ArtifactKind, raw: unknown): unknown {
   if (kind === 'summary') return normalizeSummary(raw);
+  if (kind === 'quiz') return normalizeQuiz(raw);
   return raw;
 }

@@ -32,7 +32,13 @@ export function sectionPractice(section: Section, state: Pick<StudyState, 'revie
       .at(-1);
     return latest !== undefined && latest.rating >= 3;
   });
-  const latestAttempt = state.attempts.filter((attempt) => attempt.sectionId === section.id).at(-1);
+  const quizVersion = section.artifacts?.quiz?.requestId;
+  const latestAttempt = state.attempts
+    .filter(
+      (attempt) =>
+        attempt.sectionId === section.id && (!quizVersion || attempt.quizRequestId === quizVersion),
+    )
+    .at(-1);
   const correctQuestions = quiz.filter(
     (question, index) => latestAttempt?.answers[index] === question.correctIndex,
   );

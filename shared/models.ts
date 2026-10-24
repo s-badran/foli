@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import type { Card } from 'ts-fsrs';
+import type { ArtifactKind, Summary } from './artifacts';
 
 export const providerSchema = z.object({
   provider: z.enum(['offline', 'openai', 'copilot']).default('offline'),
@@ -17,8 +18,11 @@ export const contentSchema = z.object({
     .array(
       z.object({
         question: z.string().min(5).max(2000),
-        answer: z.string().min(3).max(4000),
+        answer: z.string().min(1).max(4000),
         objectiveIds: z.array(z.string()).optional(),
+        group: z.string().optional(),
+        keyTopic: z.string().optional(),
+        origin: z.enum(['source', 'exam-guide', 'background']).optional(),
       }),
     )
     .min(2)
@@ -31,6 +35,8 @@ export const contentSchema = z.object({
         correctIndex: z.number().int().min(0).max(3),
         explanation: z.string().min(5).max(4000),
         objectiveIds: z.array(z.string()).optional(),
+        keyTopic: z.string().optional(),
+        kind: z.enum(['scenario', 'concept', 'comparison']).optional(),
       }),
     )
     .min(1)
@@ -82,6 +88,24 @@ export interface Chapter {
   description: string;
   objectives?: LearningObjective[];
   coverageStatus?: 'source-audited' | 'draft';
+  examFocus?: string[];
+  provisional?: boolean;
+}
+export interface ArtifactMeta {
+  requestId: string;
+  promptVersion: number;
+  generatedAt: string;
+}
+export interface GenerationRequest {
+  id: string;
+  folderId: string;
+  kind: ArtifactKind;
+  targetId?: string;
+  status: 'pending' | 'done' | 'failed' | 'superseded';
+  promptVersion: number;
+  createdAt: string;
+  completedAt?: string;
+  problems?: string[];
 }
 export interface Section {
   id: string;
@@ -98,6 +122,9 @@ export interface Section {
   objective?: string;
   sourceFragment?: boolean;
   chapterTitle?: string;
+  keyTopics?: string[];
+  summaryData?: Summary;
+  artifacts?: Partial<Record<'summary' | 'flashcards' | 'quiz', ArtifactMeta>>;
 }
 export interface Source {
   id: string;
@@ -137,7 +164,7 @@ export interface Folder {
   prompt?: string;
   curriculumRevision?: number;
   curriculumNote?: string;
-  materialsVersion?: number;
+  outline?: ArtifactMeta;
 }
 export interface QuizAttempt {
   id: string;
@@ -146,6 +173,7 @@ export interface QuizAttempt {
   answers: number[];
   correct: number;
   total: number;
+  quizRequestId?: string;
 }
 export interface Review {
   cardId: string;
@@ -161,6 +189,7 @@ export interface StudyState {
   attempts: QuizAttempt[];
   reviews: Review[];
   chapters: Chapter[];
+  requests: GenerationRequest[];
 }
 export function emptyState(): StudyState {
   return {
@@ -171,5 +200,6 @@ export function emptyState(): StudyState {
     attempts: [],
     reviews: [],
     chapters: [],
+    requests: [],
   };
 }

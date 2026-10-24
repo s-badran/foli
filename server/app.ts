@@ -5,10 +5,12 @@ import { mkdir, readFile, readdir, realpath, writeFile } from 'node:fs/promises'
 import path from 'node:path';
 import { z } from 'zod';
 import { learnerSchema, type Section, type Source, type StudyState } from '../shared/models';
+import { artifactKinds } from '../shared/artifacts';
 import { Store } from './store';
 import { extractDocument } from './documents';
-import { createPlan, replanExam, reviewCard } from './study';
+import { createPlan, planItems, replanExam, reviewCard } from './study';
 import { buildCurriculum, refreshRelevance, refreshSupplementLinks } from './curriculum';
+import { ingestRequest, loadPrompt, promptDirectory, queueRequest } from './tutor';
 
 const extensions = new Set(['.pdf', '.md', '.txt']);
 const reserved = new Set([
@@ -93,6 +95,8 @@ export function createApp(
       refreshSupplementLinks(state, current);
     });
     const saved = await store.read();
+    const exam = required(saved.folders, folderId);
+    if (!exam.outline && exam.mainSourceId) await queueRequest(store, folderId, 'outline');
     return {
       sourceCount: sources.length,
       sectionCount: saved.sections.filter(
@@ -195,10 +199,11 @@ export function createApp(
       refreshRelevance(state, folder);
       buildCurriculum(state, folder);
     });
+    await queueRequest(store, request.params.id, 'outline');
     response.json({
       ok: true,
       message:
-        'Main source changed. Previous curriculum and progress are archived; rebuild the dated plan.',
+        'Main source changed. Previous curriculum and progress are archived; an outline request was queued.',
     });
   });
   app.patch('/api/folders/:id/sources/:sourceId', async (request, response) => {
@@ -263,20 +268,70 @@ export function createApp(
       refreshRelevance(current, exam);
       buildCurriculum(current, exam);
     });
+    await queueRequest(store, folder.id, 'outline');
     response.json({ ok: true });
   });
-  app.post('/api/folders/:id/refresh-materials', async (request, response) => {
-    z.object({ confirm: z.literal(true) }).parse(request.body);
-    const result = await store.update((state) => {
-      const folder = required(state.folders, request.params.id);
-      if ((folder.materialsVersion ?? 0) >= 2) return { changed: false };
-      const previousPlan = folder.plan;
-      buildCurriculum(state, folder);
-      folder.plan = previousPlan;
-      replanExam(state, folder);
-      return { changed: true };
+  app.get('/api/prompts', async (_request, response) => {
+    const files = (await readdir(promptDirectory)).filter((file) => file.endsWith('.md')).sort();
+    response.json(
+      await Promise.all(
+        files.map(async (file) => ({
+          id: file.replace(/\.md$/, ''),
+          version: (await loadPrompt(file.replace(/\.md$/, ''))).version,
+          file: `prompts/${file}`,
+        })),
+      ),
+    );
+  });
+  app.post('/api/folders/:id/requests', async (request, response) => {
+    const { kind, targetId } = z
+      .object({ kind: z.enum(artifactKinds), targetId: z.string().optional() })
+      .parse(request.body);
+    response
+      .status(201)
+      .json(await queueRequest(store, z.string().parse(request.params.id), kind, targetId));
+  });
+  app.post('/api/chapters/:id/materials', async (request, response) => {
+    const state = await store.read();
+    const chapter = required(state.chapters, request.params.id);
+    const sections = state.sections.filter(
+      (item) => item.chapterId === chapter.id && !item.archived,
+    );
+    if (!sections.length) throw new Error("Generate this chapter's sections first.");
+    const queued = [];
+    for (const section of sections)
+      for (const kind of ['summary', 'flashcards', 'quiz'] as const)
+        if (!section.artifacts?.[kind])
+          queued.push(await queueRequest(store, chapter.folderId, kind, section.id));
+    response.status(201).json(queued);
+  });
+  app.get('/api/requests/:id/prompt', async (request, response) => {
+    const state = await store.read();
+    const item = required(state.requests, request.params.id);
+    const folder = required(state.folders, item.folderId);
+    response.type('text/markdown; charset=utf-8');
+    response.setHeader('X-Content-Type-Options', 'nosniff');
+    response.send(await readFile(store.generationPath(folder, `${item.id}.prompt.md`), 'utf8'));
+  });
+  app.post('/api/requests/:id/ingest', async (request, response) => {
+    response.json(await ingestRequest(store, z.string().parse(request.params.id)));
+  });
+  app.post('/api/folders/:id/requests/ingest', async (request, response) => {
+    const pending = (await store.read()).requests.filter(
+      (item) =>
+        item.folderId === request.params.id &&
+        (item.status === 'pending' || item.status === 'failed'),
+    );
+    const results = [];
+    for (const item of pending) results.push(await ingestRequest(store, item.id));
+    response.json(results.filter((result) => !('waiting' in result && result.waiting)));
+  });
+  app.delete('/api/requests/:id', async (request, response) => {
+    await store.update((state) => {
+      const item = required(state.requests, request.params.id);
+      if (item.status === 'pending' || item.status === 'failed') item.status = 'superseded';
     });
-    response.json(result);
+    response.json({ ok: true });
   });
   app.post('/api/import-workspace', async (request, response) => {
     const { name } = z.object({ name: nameSchema }).parse(request.body);
@@ -359,17 +414,12 @@ export function createApp(
     });
     response.json({ ok: true });
   });
-  app.post('/api/sections/:id/generate', async (request, response) => {
-    const section = required((await store.read()).sections, request.params.id);
-    if (section.content?.authorship === 'tutor-authored') return response.json(section.content);
-    throw new Error(
-      'AI integration is paused. Prepare this exam from its main source; generic cloze generation has been retired.',
-    );
-  });
   app.post('/api/folders/:id/topic', (_request, response) => {
     response
       .status(400)
-      .json({ error: 'AI integration is paused. Add sources to an exam workspace instead.' });
+      .json({
+        error: 'Topic-only exams are not supported yet. Add sources to an exam workspace instead.',
+      });
   });
   app.post('/api/sections/:id/cards/:cardId/review', async (request, response) => {
     const { rating } = z.object({ rating: z.number().int().min(1).max(4) }).parse(request.body);
@@ -405,6 +455,7 @@ export function createApp(
         answers,
         correct: quiz.filter((question, index) => question.correctIndex === answers[index]).length,
         total: quiz.length,
+        quizRequestId: section.artifacts?.quiz?.requestId,
       };
       state.attempts.push(attempt);
       replanExam(state, required(state.folders, section.folderId));
@@ -421,12 +472,16 @@ export function createApp(
       .parse(request.body);
     const plan = await store.update((state) => {
       const folder = required(state.folders, request.params.id);
-      const sections = state.sections.filter(
-        (section) => section.folderId === folder.id && !section.archived,
-      );
-      if (!sections.length)
+      if (!state.chapters.some((chapter) => chapter.folderId === folder.id))
         throw new Error('Import sources or add a topic before creating a plan.');
-      folder.plan = createPlan(sections, examDate, dailyMinutes, new Date(), folder.learner, state);
+      folder.plan = createPlan(
+        planItems(state, folder),
+        examDate,
+        dailyMinutes,
+        new Date(),
+        folder.learner,
+        state,
+      );
       replanExam(state, folder);
       return folder.plan;
     });

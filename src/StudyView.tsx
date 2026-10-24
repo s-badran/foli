@@ -16,6 +16,8 @@ import type { QuizAttempt, Section, Source, StudyState } from '../shared/models'
 import { api, displayDate, send } from './api';
 import { Empty, SourceIcon, useNow } from './components';
 import { sectionPractice } from '../shared/learning';
+import { renderSummary } from '../shared/artifacts';
+import { GenerateAction } from './Generation';
 
 export type RunTask = (action: () => Promise<unknown>, success?: string) => Promise<void>;
 type Tab = 'summary' | 'cards' | 'quiz' | 'source';
@@ -35,7 +37,6 @@ export function StudyView({
   state: StudyState;
   busy: string;
   run: RunTask;
-  generate: () => void;
   onBack: () => void;
   onNext?: () => void;
   initialTab?: 'summary' | 'cards' | 'quiz';
@@ -53,6 +54,37 @@ export function StudyView({
     ) ?? [];
   const card = cards[0];
   const attempts = state.attempts.filter((attempt) => attempt.sectionId === section.id);
+  const hasSummary = !!content?.summary;
+  const hasCards = !!content?.cards.length;
+  const hasQuiz = !!content?.quiz.length;
+  const groups = (content?.cards ?? []).reduce<
+    Record<string, NonNullable<typeof content>['cards']>
+  >(
+    (all, item) => ({
+      ...all,
+      [item.group ?? 'Cards']: [...(all[item.group ?? 'Cards'] ?? []), item],
+    }),
+    {},
+  );
+  const generate = (kind: 'summary' | 'flashcards' | 'quiz', label: string, hint: string) => (
+    <Empty
+      icon={<Sparkles size={28} />}
+      title={`No ${label.toLowerCase()} yet`}
+      action={
+        <GenerateAction
+          state={state}
+          folderId={section.folderId}
+          kind={kind}
+          targetId={section.id}
+          label={`Generate ${label.toLowerCase()}`}
+          run={run}
+          busy={busy}
+        />
+      }
+    >
+      {hint}
+    </Empty>
+  );
   const tabs: { id: Tab; label: string; count?: number }[] = [
     { id: 'summary', label: 'Summary' },
     { id: 'cards', label: 'Flashcards', count: content?.cards.length },
@@ -97,11 +129,19 @@ export function StudyView({
           {preparation.complete ? 'Practice passed' : 'Practice pending'}
         </span>
         <span className={`dot ${content ? 'green' : ''}`} />
-        {content
-          ? `${content.authorship === 'tutor-authored' ? 'Original tutor practice' : content.provider === 'offline' ? 'Legacy source extracts' : 'Source-grounded study material'} · ${content.model}`
-          : 'Source reading · tutor practice not yet authored'}
-        {content && <span>Generated {displayDate(content.generatedAt)}</span>}
+        {content ? content.model : 'Source reading · study materials not generated yet'}
+        {content && <span>Updated {displayDate(content.generatedAt)}</span>}
       </div>
+      {(section.objective || section.keyTopics?.length) && (
+        <div className="key-topics">
+          {section.objective && <p>{section.objective}</p>}
+          {section.keyTopics?.map((topic) => (
+            <span className="topic-chip" key={topic}>
+              {topic}
+            </span>
+          ))}
+        </div>
+      )}
       <div className="tab-row" role="tablist" aria-label="Section views">
         {tabs.map((item) => (
           <button
@@ -117,35 +157,36 @@ export function StudyView({
         ))}
       </div>
 
-      {!content && tab !== 'source' ? (
-        <Empty
-          icon={<Sparkles size={28} />}
-          title="Tutor practice is not yet authored for this source"
-          action={
-            <button className="button secondary" onClick={() => setTab('source')}>
-              <BookOpen size={16} /> Read main source
-            </button>
-          }
-        >
-          <>AI integration is paused. We will not fill this lesson with generic cloze questions.</>
-        </Empty>
-      ) : null}
+      {tab === 'summary' &&
+        !hasSummary &&
+        generate(
+          'summary',
+          'Summary',
+          'An exam-focused study sheet: core concepts, must-remember facts, comparisons, traps.',
+        )}
+      {tab === 'cards' &&
+        !hasCards &&
+        generate(
+          'flashcards',
+          'Flashcards',
+          'Short single-fact cards grouped by concept, covering every key topic.',
+        )}
+      {tab === 'quiz' &&
+        !hasQuiz &&
+        generate(
+          'quiz',
+          'Quiz',
+          'Exam-style multiple-choice questions, mostly scenarios, with explained distractors.',
+        )}
 
-      {tab === 'summary' && content && (
+      {tab === 'summary' && content && hasSummary && (
         <div className="summary-layout">
           <article className="markdown">
-            <Markdown>{content.summary}</Markdown>
-            {content.supplement && (
-              <aside className="knowledge-note">
-                <span className="eyebrow">
-                  <Sparkles size={14} />{' '}
-                  {content.authorship === 'tutor-authored'
-                    ? 'Tutor knowledge and provenance'
-                    : 'Knowledge additions · not source evidence'}
-                </span>
-                <Markdown>{content.supplement}</Markdown>
-              </aside>
-            )}
+            <Markdown>
+              {section.summaryData
+                ? renderSummary(section.summaryData, { mustRemember: false })
+                : content.summary}
+            </Markdown>
             <div className="reader-footer">
               <button className="button primary" onClick={() => setTab('cards')}>
                 <Layers size={16} /> Practice flashcards <ArrowRight size={16} />
@@ -177,7 +218,7 @@ export function StudyView({
             )}
           </article>
           <aside className="key-points">
-            <span className="eyebrow">Key Takeaways</span>
+            <span className="eyebrow">Must Remember</span>
             {content.keyPoints.map((point, index) => (
               <div key={index}>
                 <span className="point-number">{String(index + 1).padStart(2, '0')}</span>
@@ -188,7 +229,7 @@ export function StudyView({
         </div>
       )}
 
-      {tab === 'cards' && content && (
+      {tab === 'cards' && content && hasCards && (
         <div className="practice">
           <div className="practice-top">
             <span className="eyebrow">Active Recall</span>
@@ -203,7 +244,7 @@ export function StudyView({
                 onClick={() => setRevealed(!revealed)}
                 aria-label={revealed ? 'Hide answer' : 'Reveal answer'}
               >
-                <span className="eyebrow">{revealed ? 'Answer' : 'Question'}</span>
+                <span className="eyebrow">{revealed ? 'Answer' : (card.group ?? 'Question')}</span>
                 <span className="flashcard-text">{revealed ? card.answer : card.question}</span>
                 <span className="flashcard-hint">
                   {revealed ? 'How well did you remember?' : 'Reveal answer'}
@@ -251,22 +292,28 @@ export function StudyView({
           )}
           <details className="all-cards">
             <summary>All cards · {content.cards.length}</summary>
-            {content.cards.map((item) => (
-              <div className="card-reference" key={item.id}>
-                <strong>{item.question}</strong>
-                <p>{item.answer}</p>
-                <span className="muted">
-                  {item.schedule.reps
-                    ? `Reviewed ${item.schedule.reps} times · due ${displayDate(item.schedule.due)}`
-                    : 'Not reviewed yet'}
-                </span>
+            {Object.entries(groups).map(([group, items]) => (
+              <div className="card-group" key={group}>
+                <h3>{group}</h3>
+                {items.map((item) => (
+                  <div className="card-reference" key={item.id}>
+                    <strong>{item.question}</strong>
+                    <p>{item.answer}</p>
+                    <span className="muted">
+                      {item.schedule.reps
+                        ? `Reviewed ${item.schedule.reps} times · due ${displayDate(item.schedule.due)}`
+                        : 'Not reviewed yet'}
+                      {item.origin === 'background' ? ' · tutor knowledge' : ''}
+                    </span>
+                  </div>
+                ))}
               </div>
             ))}
           </details>
         </div>
       )}
 
-      {tab === 'quiz' && content && (
+      {tab === 'quiz' && content && hasQuiz && (
         <div className="quiz-view">
           <div className="section-heading">
             <div>

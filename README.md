@@ -2,7 +2,7 @@
 
 Local, single-user **exam preparation**. One workspace per exam, one main source defining the chapter roadmap, and related supplementary sources in the same exam directory.
 
-**AI-provider integration is paused.** The AWS example now contains original tutor-authored study material instead of the previous extractive fill-in-the-blank demo. No API key, Copilot login or model call is needed.
+**Prompt-driven, tutor-in-the-loop.** Study materials are produced by versioned prompts (outline, sections, summary, flashcards, quiz) stored in the repository. There is no live model call: the app queues a request, writes the fully rendered prompt to disk, and you (or a future provider integration) answer by writing a response file, which the app validates against a strict schema and applies. Prompt quality is the product, so prompts are first-class files you revise without touching code.
 
 ## Run
 
@@ -34,32 +34,29 @@ The relevance score is a transparent heuristic, **not** an AI judgment, semantic
 
 ## The AWS Example
 
-The actual supplied slide deck has been mapped to **28 chapters** using verified divider pages. Its fingerprint identifies this exact file; a similarly named unrelated PDF cannot silently receive AWS materials.
+The supplied slide deck is the main source; the 30-page exam guide is an accepted supplement (70.6% vocabulary overlap). The outline follows the deck's own table of contents: **30 chapters**, each mapped to a page range and to the SAA-C03 task statements from the exam guide. Chapters 1-2 (Getting Started with AWS, IAM) have been split into sections and their summary/flashcard/quiz materials generated through the prompt pipeline as a worked example. The remaining chapters show their roadmap and exam focus and generate on request.
 
-The exam contains:
-
-- **63 tutor lessons**, with counts determined by authored topic coverage rather than a two-per-chapter quota.
-- **143 atomic flashcards**: one recall target per card, short answers, longer reasoning kept in summaries and quiz explanations.
-- **63 application questions**, one per lesson, with four choices and explained answers.
-- Per-lesson summaries, architectural trade-offs and common traps.
-- Main-source chapter page references and related supplementary reading.
-- A chapter-first dated plan, FSRS card schedules, saved quizzes and separate reading progress.
-
-IAM now has nine source-mapped topic areas: users/groups, permissions, policies, password/MFA protection, CLI, SDK, service roles, security tools and best practices. Its 35 cards and nine application questions cover those areas with source-page references. The remaining 27 chapters are explicitly **draft inventories, not source-audited**. Completing their current practice does not establish complete source coverage. More questions do not by themselves prove coverage.
-
-Topics also include EC2, load balancing, RDS/Aurora, S3, Route 53, networking, messaging, containers, serverless, databases, analytics, security, disaster recovery and architectural trade-offs. These are **tutor-authored practice**, not official AWS exam questions, a comprehensive exam bank or a guarantee of exam readiness. Knowledge additions are labelled separately from source evidence.
+Materials are **tutor-authored practice**, not official AWS exam questions, a comprehensive exam bank, or a guarantee of exam readiness. Knowledge additions are labelled separately from source evidence. Sections carry a key-topic inventory, and flashcards/quizzes are validated to cover those topics.
 
 ## Coverage And Preparation
 
-The methodology is topic-neutral: source topic inventory → learning objectives → mapped recall/application assessments → demonstrated preparation. Exam-specific content is registered in a content catalog; coverage, completion and planning rules do not branch on AWS topics.
+The methodology is topic-neutral: source structure → chapter outline → section key topics → mapped recall/application assessments → demonstrated preparation. Nothing in the completion, coverage or planning rules branches on AWS topics; the AWS example is only data flowing through the prompts and schemas.
 
-Each chapter shows its objective checklist, source pages, cards/quiz mappings, coverage gaps and demonstrated topics. Supplements can add context, but must not silently replace required main-source topics. A chapter is **prepared** only when its source inventory is audited, required assessments exist, every card's latest recorded grade is Good/Easy and the latest quiz answers are all correct. Reading markers never complete preparation. Later failed practice can reopen it. This is evidence from the current assessment set, not a validated prediction of exam performance; self-rated cards and repeatable quizzes have limitations.
+Each section shows its key topics, source pages, and which cards/quiz questions map to each topic. A chapter is **prepared** only when its sections are generated, required assessments exist for the key topics, every card's latest recorded grade is Good/Easy, and the latest quiz answers are all correct. Reading markers never complete preparation, and later failed practice can reopen it. This is evidence from the current assessment set, not a validated prediction of exam performance.
 
-The former pack's fixed two-lesson quota caused the missing IAM coverage; the exam guide did not deliberately reprioritize those topics. Old paragraph cards and practice remain archived after the explicit materials upgrade. The upgrade is idempotent and does not delete historical reviews or quiz attempts.
+## How Generation Works
 
-Your real working copy has already been migrated. The slides are the main source; the 30-page exam guide is an accepted supplement (70.6% vocabulary overlap at migration). Previous records were preserved. The old December 22, 2026 target and daily time budget were used to rebuild the plan; adjust them to your actual exam.
+1. The app queues a generation request (outline, sections, summary, flashcards or quiz). A single request targets one artifact for one chapter or section - never "everything at once".
+2. The rendered prompt (system + task + the exact JSON schema + source pages + exam brief) is written to `data/exams/<id>/generation/<requestId>.prompt.md`.
+3. You answer as the model by writing `.../<requestId>.response.json`, then run `pnpm tutor ingest` (or click **Check** in the UI).
+4. The response is validated against the schema plus topic-coverage and range checks. Invalid responses are rejected with the problems listed; valid responses are applied, superseding previous pending requests for the same target.
 
-For another exam or a different main PDF, the app produces a source-based outline using explicit chapter/domain headings, or a provisional source-introduction group if no reliable boundary is found. Markdown H1 headings group subordinate sections. **It does not fabricate tutor packs for arbitrary exams.** Those need separate tutor authoring or a future generation integration. Switching back to the verified AWS deck restores its authored curriculum as a new revision.
+```sh
+pnpm tutor pending   # list open requests with their prompt/response paths
+pnpm tutor ingest    # validate and apply every response file that exists
+```
+
+Per-artifact requests are deliberate: a single request that emits summary + cards + quiz at once splits the model's attention, mixes formats in one completion, and fails all-or-nothing. Separate prompts give each artifact a focused schema and isolated validation/retry, and match RemNote's separate "Generate cards" / "Generate quiz" buttons.
 
 ## Learner Setup
 
@@ -79,7 +76,7 @@ The baseline is a workflow preference, not proof of knowledge:
 
 Saving a changed familiarity **automatically rebuilds an existing plan** without regenerating materials or changing card IDs, topics, difficulty or history. New quiz/review evidence also refreshes the remaining-work plan. The exam date spreads or compresses unprepared lessons over the first 80% of available days, leaving the remainder for review; overload is warned about rather than dropping topics. Time estimates are fixed MVP defaults, not measured predictions.
 
-Role and goal are saved context only. Changing student/professional/career changer does not change the plan or questions, and does not imply prior subject knowledge. AI integration is paused, so none of these settings secretly modifies model prompts or generates new content.
+Role and goal are saved context only. Changing student/professional/career changer does not change the plan or questions, and does not imply prior subject knowledge. They are injected into generation prompts as context only.
 
 **Exam settings** saves the baseline and an editable exam tutor brief to the exam directory. Changing the brief does not silently rewrite existing lessons. It is stored for tutor work and later prompt integration. A main-source change still requires an explicit new dated plan, while a familiarity change automatically replans the existing one.
 
@@ -97,6 +94,7 @@ data/
       workspace.json                 Authoritative exam snapshot
       sources/                       Original PDF/MD/TXT copies
       prompts/study.md               Saved exam tutor brief
+      generation/                    <requestId>.prompt.md and .response.json
       chapters/<chapter-id>.json     Chapter and its lesson packs
       plan.json                      Dated plan snapshot
       progress.json                  Reading, reviews and quiz attempts
@@ -121,27 +119,31 @@ Node.js, strict TypeScript, pnpm, React/Vite, Express, Zod, pdf-parse, ts-fsrs, 
 
 ```sh
 pnpm check
+pnpm tutor pending
 PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm exec playwright install chromium
 PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e
 ```
 
-`pnpm check` runs lint, strict types, **39 unit/API tests** and a production build. **Six Chromium workflows** include topic coverage, concise cards, reading-versus-preparation and baseline/content stability. Browser tests use separate data under `.cache/e2e-data`, not your exam records. If the original source folder is absent, tests read retained PDF copies without modifying real study data. See [verification](docs/VERIFICATION.md).
+`pnpm check` runs lint, strict types, **48 unit/API tests** and a production build. **Five Chromium workflows** cover the prompt pipeline end to end with isolated test data. See [verification](docs/VERIFICATION.md) and [RemNote analysis](docs/remnote-analysis.md).
 
 ## Structure And Limits
 
 See [architecture and API contracts](docs/ARCHITECTURE.md) and [implementation history](docs/IMPLEMENTATION_PLAN.md).
 
 - `server/store.ts`: per-exam storage and legacy migration.
-- `server/curriculum.ts`: main-source outline, tutor packs, revisions and source references.
-- `shared/learning.ts`: topic-neutral objective coverage, practice evidence and baseline policy.
-- `server/tutor/catalog.ts`: source-fingerprinted content-pack lookup, separate from methodology.
+- `server/curriculum.ts`: main-source outline (provisional until the outline request is answered), relevance, supplements.
+- `server/tutor.ts`: prompt loading/rendering, request queue, response validation and application.
+- `server/tutor-cli.ts`: `pnpm tutor pending` / `pnpm tutor ingest` helper.
+- `shared/artifacts.ts`: schemas, coverage/quality checks and summary rendering.
+- `shared/learning.ts`: topic-neutral coverage, practice evidence and baseline policy.
+- `prompts/*.md`: versioned, exam-neutral generation prompts.
 - `server/relevance.ts`: explainable supplementary-source overlap check.
-- `server/tutor/aws.ts`: original AWS lessons and scenario practice.
 - `src/App.tsx`: workspace index, routing, uploads and onboarding.
 - `src/Dashboard.tsx`: chapter roadmap, source review, plan, progress and settings.
+- `src/Generation.tsx`: generate/check controls, request status and prompt library.
 - `src/StudyView.tsx`: lesson summaries, cards, quiz feedback and source reader.
 
-This remains a local single-user MVP: no accounts, public hosting controls, cloud sync, OCR, robust arbitrary-book topic extraction, diagnostic item calibration or multi-user transactions. Practice-based remaining-work replanning is implemented, but there is no predictive adaptive tutor or automated full-source coverage audit. PDF uploads are limited to 60 MB each and 12 files per request. Dates use UTC days. Fonts are optional external downloads with local fallback. Model-provider modules remain inactive; generic cloze generation is retired.
+This remains a local single-user MVP: no accounts, public hosting controls, cloud sync, OCR, robust arbitrary-book topic extraction, diagnostic item calibration or multi-user transactions. Generation is request/response via files, with no live provider call yet. PDF uploads are limited to 60 MB each and 12 files per request. Dates use UTC days. Fonts are optional external downloads with local fallback.
 
 Git commits are local development milestones. The user has configured the remote; **never push without explicit permission**.
 

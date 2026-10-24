@@ -35,6 +35,7 @@ export class Store {
             await readFile(path.join(this.directory, 'study.json'), 'utf8'),
           ) as StudyState;
           legacy.chapters ??= [];
+          legacy.requests ??= [];
           return legacy;
         } catch (legacyError) {
           if ((legacyError as NodeJS.ErrnoException).code === 'ENOENT') return emptyState();
@@ -59,6 +60,7 @@ export class Store {
           'attempts',
           'reviews',
           'chapters',
+          'requests',
         ] as const)
           state[key].push(...((exam[key] ?? []) as never[]));
       }
@@ -76,6 +78,15 @@ export class Store {
       this.directory,
       folder.directory ?? workspaceDirectory(folder),
       'sources',
+      path.basename(file),
+    );
+  }
+
+  generationPath(folder: Folder, file: string) {
+    return path.join(
+      this.directory,
+      folder.directory ?? workspaceDirectory(folder),
+      'generation',
       path.basename(file),
     );
   }
@@ -116,6 +127,7 @@ export class Store {
         chapters: state.chapters.filter((chapter) => chapter.folderId === folder.id),
         attempts: state.attempts.filter((attempt) => sectionIds.has(attempt.sectionId)),
         reviews: state.reviews.filter((review) => sectionIds.has(review.sectionId)),
+        requests: state.requests.filter((request) => request.folderId === folder.id),
       };
       await this.atomic(path.join(root, 'workspace.json'), exam);
       await this.atomic(path.join(root, 'plan.json'), folder.plan ?? null);
@@ -127,7 +139,7 @@ export class Store {
       await this.atomic(
         path.join(root, 'prompts', 'study.md'),
         folder.prompt ??
-          '# Exam tutor brief\n\nUse the main source for structure. Supplement only with related sources. Prefer architectural scenarios, trade-offs and explained distractors.\n',
+          '# Exam tutor brief\n\n(Optional) Tell the tutor what to emphasise for this exam, e.g. weak areas, question style or depth.\n',
       );
       for (const chapter of exam.chapters)
         await this.atomic(path.join(root, 'chapters', `${chapter.id}.json`), {

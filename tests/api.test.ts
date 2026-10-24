@@ -1,11 +1,10 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import type { Server } from 'node:http';
 import { createApp } from '../server/app';
 import { Store } from '../server/store';
-import { AWS_SLIDES_HASH, buildCurriculum } from '../server/curriculum';
-import { emptyState, type GeneratedContent, type Section, type StudyState } from '../shared/models';
+import { type GeneratedContent, type Section, type StudyState } from '../shared/models';
 
 let server: Server;
 let base: string;
@@ -57,38 +56,92 @@ describe.sequential('complete local study workflow', () => {
     expect(section.title).toBe('Networking');
     expect((await new Store(directory).read()).sources).toHaveLength(1);
   });
-  it('retires cloze generation and installs a tutor fixture for practice tests', async () => {
-    const result = await json(`/api/sections/${section.id}/generate`, 'POST', {
-      provider: 'offline',
+  it('queues an outline on upload and applies validated per-artifact responses', async () => {
+    let state = (await json('/api/state')).data as StudyState;
+    expect(
+      state.requests.some((item) => item.kind === 'outline' && item.status === 'pending'),
+    ).toBe(true);
+    const answer = async (kind: string, payload: unknown) => {
+      const queued = await json(`/api/folders/${folderId}/requests`, 'POST', {
+        kind,
+        targetId: section.id,
+      });
+      expect(queued.status).toBe(201);
+      const prompt = await fetch(`${base}/api/requests/${queued.data.id}/prompt`);
+      expect(await prompt.text()).toContain('Required JSON schema');
+      const folder = (await new Store(directory).read()).folders[0];
+      await writeFile(
+        new Store(directory).generationPath(folder, `${queued.data.id}.response.json`),
+        JSON.stringify(payload),
+      );
+      return json(`/api/requests/${queued.data.id}/ingest`, 'POST', {});
+    };
+    const rejected = await answer('flashcards', {
+      groups: [
+        {
+          concept: 'Networking',
+          cards: [
+            {
+              question: 'Explain everything about networking?',
+              answer: 'x',
+              keyTopic: 'Networking',
+            },
+          ],
+        },
+      ],
     });
-    expect(result.status).toBe(400);
-    const fixture = emptyState();
-    const folder = { id: 'fixture', name: 'AWS fixture', createdAt: '', mainSourceId: 'main' };
-    fixture.folders.push(folder);
-    fixture.sources.push({
-      id: 'main',
-      folderId: folder.id,
-      name: 'fixture.pdf',
-      kind: 'pdf',
-      addedAt: '',
-      contentHash: AWS_SLIDES_HASH,
+    expect(rejected.data.applied).toBe(false);
+    expect(rejected.data.problems.join(' ')).toContain('Too few cards');
+    const cards = [
+      {
+        question: 'What isolates network resources?',
+        answer: 'A virtual private cloud',
+        keyTopic: 'Networking',
+      },
+      {
+        question: 'What does an availability zone contain?',
+        answer: 'Separate data centers',
+        keyTopic: 'Networking',
+      },
+      {
+        question: 'What power design do zones use?',
+        answer: 'Redundant power',
+        keyTopic: 'Networking',
+      },
+      {
+        question: 'What gives workloads temporary credentials?',
+        answer: 'Roles',
+        keyTopic: 'Networking',
+      },
+    ];
+    expect(
+      (await answer('flashcards', { groups: [{ concept: 'Networking', cards }] })).data.applied,
+    ).toBe(true);
+    const question = (text: string, correctIndex: number, kind: string) => ({
+      question: text,
+      options: ['Private cloud network', 'Data center zone', 'Temporary role', 'Public bucket'],
+      correctIndex,
+      explanation:
+        'The scenario requirement matches exactly one option; the others solve a different need.',
+      keyTopic: 'Networking',
+      kind,
     });
-    fixture.sections.push({
-      id: 'raw',
-      folderId: folder.id,
-      sourceId: 'main',
-      title: 'Source fixture',
-      text: 'Fixture source text',
-      pageStart: 1,
-      pageEnd: 879,
-      read: false,
-    });
-    buildCurriculum(fixture, folder);
-    content = fixture.sections.find((item) => !item.archived)!.content!;
-    await new Store(directory).update((current) => {
-      current.sections.find((item) => item.id === section.id)!.content = content;
-    });
-    expect(content.cards.length).toBeGreaterThan(1);
+    const quiz = {
+      questions: [
+        question('A team needs isolated networking for its resources. What fits?', 0, 'scenario'),
+        question(
+          'A design must survive a facility power failure. What isolates the failure?',
+          1,
+          'scenario',
+        ),
+        question('Which item issues temporary credentials?', 2, 'concept'),
+      ],
+    };
+    expect((await answer('quiz', quiz)).data.applied).toBe(true);
+    state = (await json('/api/state')).data as StudyState;
+    content = state.sections.find((item) => item.id === section.id)!.content!;
+    expect(content.cards).toHaveLength(4);
+    expect(content.quiz).toHaveLength(3);
   });
   it('serves original files even when the configured data directory is hidden', async () => {
     const state = (await json('/api/state')).data as StudyState;
@@ -105,9 +158,7 @@ describe.sequential('complete local study workflow', () => {
     const answers = content.quiz.map((question) => question.correctIndex);
     const attempt = await json(`/api/sections/${section.id}/quiz`, 'POST', { answers });
     expect(attempt.data.correct).toBe(content.quiz.length);
-    expect(
-      (await json(`/api/sections/${section.id}/generate`, 'POST', { provider: 'offline' })).status,
-    ).toBe(200);
+    expect(attempt.data.quizRequestId).toBeTruthy();
   });
   it('creates a dated study plan and marks reading complete', async () => {
     const examDate = new Date(Date.now() + 14 * 86400000).toISOString().slice(0, 10);
@@ -141,24 +192,6 @@ describe.sequential('complete local study workflow', () => {
       learner: { familiarity: 'basic', role: 'professional', goal: 'Understand the source' },
     });
     expect(roleChange.data.plan).toEqual(result.data.plan);
-  });
-  it('upgrades old material with confirmation while preserving archived history', async () => {
-    await new Store(directory).update((current) => {
-      current.folders[0].materialsVersion = 1;
-    });
-    expect((await json(`/api/folders/${folderId}/refresh-materials`, 'POST', {})).status).toBe(400);
-    expect(
-      (await json(`/api/folders/${folderId}/refresh-materials`, 'POST', { confirm: true })).data
-        .changed,
-    ).toBe(true);
-    const after = (await json('/api/state')).data as StudyState;
-    expect(after.sections.find((item) => item.id === section.id)?.archived).toBe(true);
-    expect(after.reviews).toHaveLength(1);
-    expect(after.attempts).toHaveLength(1);
-    expect(
-      (await json(`/api/folders/${folderId}/refresh-materials`, 'POST', { confirm: true })).data
-        .changed,
-    ).toBe(false);
   });
   it('rejects workspace path traversal', async () => {
     expect((await json('/api/import-workspace', 'POST', { name: '../other-folder' })).status).toBe(

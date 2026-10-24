@@ -409,7 +409,6 @@ export function App() {
             state={state}
             busy={busy}
             run={run}
-            generate={() => {}}
             onBack={() => navigate('chapters')}
             onNext={
               sections.indexOf(section) < sections.length - 1
@@ -444,7 +443,7 @@ export function App() {
           <span>
             <Layers2 size={13} /> Exam-focused learning
           </span>
-          <span>AI integration paused · tutor-authored AWS practice</span>
+          <span>Prompt-driven tutor · lazy per-section generation</span>
           {folder && (
             <button className="text-button" onClick={() => setDialog('delete')}>
               <Trash2 size={13} /> Delete workspace

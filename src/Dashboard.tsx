@@ -8,6 +8,7 @@ import {
   Layers,
   Settings2,
   ShieldAlert,
+  Sparkles,
   Star,
   Target,
   Upload,
@@ -18,6 +19,7 @@ import { Empty, ProgressBar, SourceIcon, useNow } from './components';
 import { LearnerFields } from './App';
 import type { RunTask } from './StudyView';
 import { baselinePolicy, chapterPreparation, sectionPractice } from '../shared/learning';
+import { GenerateAction, latestRequest, PromptLibrary, RequestStatus } from './Generation';
 
 export type View = 'chapters' | 'sources' | 'plan' | 'progress' | 'settings';
 export function Dashboard({
@@ -100,7 +102,6 @@ export function Dashboard({
       <div className="chapter-list">
         {matches.map((chapter, index) => {
           const lessons = sections.filter((section) => section.chapterId === chapter.id);
-          const read = lessons.filter((section) => section.read).length;
           const preparation = chapterPreparation(chapter, sections, state);
           const chapterAttempts = attempts.filter((attempt) =>
             lessons.some((section) => section.id === attempt.sectionId),
@@ -115,7 +116,9 @@ export function Dashboard({
           );
           const dates = plan?.days
             .filter((day) =>
-              day.sectionIds.some((id) => lessons.some((section) => section.id === id)),
+              day.sectionIds.some(
+                (id) => id === chapter.id || lessons.some((section) => section.id === id),
+              ),
             )
             .map((day) => day.date);
           return (
@@ -131,10 +134,8 @@ export function Dashboard({
                 <div>
                   <h2>{chapter.title}</h2>
                   <p>
-                    {lessons.length} lessons
-                    {chapter.pageStart
-                      ? ` · main source pp. ${chapter.pageStart}-${chapter.pageEnd}`
-                      : ''}
+                    {lessons.length ? `${lessons.length} sections` : 'Sections not generated'}
+                    {chapter.pageStart ? ` · pp. ${chapter.pageStart}-${chapter.pageEnd}` : ''}
                     {dates?.length
                       ? ` · ${displayDate(dates[0])}${dates.length > 1 ? ` to ${displayDate(dates.at(-1)!)}` : ''}`
                       : ''}
@@ -144,67 +145,59 @@ export function Dashboard({
                   <span>
                     {preparation.complete
                       ? 'Prepared'
-                      : `${preparation.demonstrated}/${preparation.total} demonstrated`}
+                      : lessons.length
+                        ? `${lessons.filter((section) => sectionPractice(section, state).complete).length}/${lessons.length} sections practised`
+                        : 'Not started'}
                   </span>
-                  {!preparation.audited && (
-                    <span className="attention">Coverage audit pending</span>
-                  )}
                   {needsAttention && <span className="attention">Needs practice</span>}
                   <ProgressBar
-                    value={preparation.practicePercent}
-                    label={`${chapter.title} practice evidence`}
+                    value={
+                      lessons.length
+                        ? (lessons.filter((section) => sectionPractice(section, state).complete)
+                            .length /
+                            lessons.length) *
+                          100
+                        : 0
+                    }
+                    label={`${chapter.title} practice progress`}
                   />
                 </div>
                 <ChevronDown size={16} />
               </summary>
               <p className="chapter-description">{chapter.description}</p>
-              <div className="coverage-matrix">
-                <div className="coverage-heading">
-                  <strong>Source-topic coverage</strong>
-                  <span>
-                    {preparation.covered}/{preparation.total} mapped · {read}/{lessons.length} read
-                  </span>
+              {chapter.examFocus?.length ? (
+                <p className="exam-focus">
+                  <strong>Exam focus:</strong> {chapter.examFocus.join(' · ')}
+                </p>
+              ) : null}
+              {!lessons.length && (
+                <div className="chapter-actions">
+                  <GenerateAction
+                    state={state}
+                    folderId={folder.id}
+                    kind="sections"
+                    targetId={chapter.id}
+                    label="Generate sections"
+                    run={run}
+                    busy={busy}
+                  />
                 </div>
-                {!preparation.audited && (
-                  <p className="form-note">
-                    The topic inventory is not source-audited. Passing the current practice cannot
-                    certify full chapter preparation.
-                  </p>
-                )}
-                {preparation.objectives.map((objective) => (
-                  <div className="coverage-topic" key={objective.id}>
-                    <div>
-                      <strong>{objective.title}</strong>
-                      {objective.pageStart && (
-                        <a
-                          href={`/api/sources/${objective.sourceId}/file#page=${objective.pageStart}`}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          pp. {objective.pageStart}-{objective.pageEnd}
-                        </a>
-                      )}
-                    </div>
-                    <span>
-                      {objective.recallCovered ? 'Cards mapped' : 'Cards missing'} ·{' '}
-                      {objective.applicationCovered ? 'Quiz mapped' : 'Quiz missing'}
-                    </span>
-                    <span className={objective.demonstrated ? 'evidence-passed' : ''}>
-                      {objective.demonstrated
-                        ? 'Demonstrated'
-                        : objective.covered
-                          ? 'Practice needed'
-                          : 'Coverage gap'}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              )}
               {lessons.map((section) => {
                 const latest = attempts
                   .filter((attempt) => attempt.sectionId === section.id)
                   .at(-1);
                 const reviewed =
                   section.content?.cards.filter((card) => card.schedule.reps > 0).length ?? 0;
+                const parts = [
+                  section.content?.summary ? 'Summary' : null,
+                  section.content?.cards.length
+                    ? `${section.content.cards.length} cards (${reviewed} reviewed)`
+                    : null,
+                  section.content?.quiz.length
+                    ? `${section.content.quiz.length} quiz questions`
+                    : null,
+                ].filter(Boolean);
                 return (
                   <button
                     className="lesson-row"
@@ -218,10 +211,11 @@ export function Dashboard({
                     )}
                     <div>
                       <strong>{section.title}</strong>
+                      {section.keyTopics?.length ? (
+                        <span className="lesson-topics">{section.keyTopics.join(' · ')}</span>
+                      ) : null}
                       <span>
-                        {section.content
-                          ? `${section.content.cards.length} conceptual cards · ${section.content.quiz.length} questions · ${reviewed} cards reviewed`
-                          : 'Source reading · tutor materials not yet authored'}
+                        {parts.length ? parts.join(' · ') : 'Study materials not generated yet'}
                         {latest ? ` · latest quiz ${latest.correct}/${latest.total}` : ''}
                       </span>
                     </div>
@@ -229,6 +223,31 @@ export function Dashboard({
                   </button>
                 );
               })}
+              {lessons.length > 0 &&
+                lessons.some(
+                  (section) =>
+                    !section.artifacts?.summary ||
+                    !section.artifacts?.flashcards ||
+                    !section.artifacts?.quiz,
+                ) && (
+                  <div className="chapter-actions">
+                    <button
+                      className="button secondary"
+                      disabled={!!busy}
+                      onClick={() =>
+                        void run(
+                          () => api(`/chapters/${chapter.id}/materials`, send({})),
+                          'Study materials requested for this chapter',
+                        )
+                      }
+                    >
+                      <Sparkles size={15} /> Generate missing study materials
+                    </button>
+                    <span className="form-note">
+                      Queues one summary, flashcard and quiz request per section.
+                    </span>
+                  </div>
+                )}
             </details>
           );
         })}
@@ -305,27 +324,32 @@ export function Dashboard({
       )}
       {view === 'chapters' && (
         <>
-          {(folder.materialsVersion ?? 0) < 2 && (
-            <div className="warning">
-              <strong>Older material needs a methodology upgrade.</strong>
-              <p>
-                Archive the previous practice records and publish concise, source-mapped cards.
-                Previous reviews stay in history.
-              </p>
-              <button
-                className="button secondary"
-                disabled={!!busy}
-                onClick={() =>
-                  void run(
-                    () => api(`/folders/${folder.id}/refresh-materials`, send({ confirm: true })),
-                    'Study methodology upgraded; previous practice archived',
-                  )
-                }
-              >
-                Archive old material and upgrade
-              </button>
-            </div>
-          )}
+          {(() => {
+            const outline = latestRequest(state, folder.id, 'outline');
+            if (folder.outline || !main) return null;
+            return (
+              <div className="outline-banner">
+                <strong>Roadmap is provisional.</strong>
+                <p>
+                  The tutor builds the chapter outline from the main source&apos;s own structure
+                  (table of contents, dividers). Until then, chapters come from explicit headings
+                  only.
+                </p>
+                {outline && outline.status !== 'done' ? (
+                  <RequestStatus request={outline} run={run} busy={busy} />
+                ) : (
+                  <GenerateAction
+                    state={state}
+                    folderId={folder.id}
+                    kind="outline"
+                    label="Generate outline"
+                    run={run}
+                    busy={busy}
+                  />
+                )}
+              </div>
+            );
+          })()}
           <div className="exam-brief">
             <Star size={18} />
             <div>
@@ -491,8 +515,21 @@ export function Dashboard({
                         <strong>{displayDate(day.date)}</strong>
                       </div>
                       <div className="day-content">
-                        {day.sectionIds.map((id) => {
+                        {[...new Set(day.sectionIds)].map((id) => {
                           const lesson = sections.find((item) => item.id === id);
+                          const placeholder = lesson
+                            ? undefined
+                            : chapters.find((item) => item.id === id);
+                          if (placeholder)
+                            return (
+                              <span className="day-section estimated" key={id}>
+                                <BookOpen size={15} />
+                                <span>
+                                  {placeholder.order}. {placeholder.title} (sections not generated ·
+                                  estimate)
+                                </span>
+                              </span>
+                            );
                           const chapter = chapters.find((item) => item.id === lesson?.chapterId);
                           return (
                             lesson && (
@@ -628,17 +665,14 @@ export function Dashboard({
                 name="prompt"
                 rows={6}
                 maxLength={16000}
-                defaultValue={
-                  folder.prompt ??
-                  'Focus on architectural reasoning, constraints, trade-offs and plausible distractors. Use the main source for chapter structure; keep knowledge additions labelled.'
-                }
+                defaultValue={folder.prompt ?? ''}
+                placeholder="Optional: what should the tutor emphasise for this exam? e.g. weak areas, question style, depth."
               />
             </label>
             <p className="form-note">
               The baseline changes study priority and time estimates, not the required topic
-              coverage. The saved brief is available for tutor work and future generation; editing
-              it does not silently rewrite existing lessons. Role and goal are context, not
-              automatic difficulty scores.
+              coverage. The brief is injected into every new generation request; existing materials
+              are not rewritten unless you regenerate them.
             </p>
             <div className="modal-actions">
               <button className="button primary" disabled={!!busy}>
@@ -650,9 +684,10 @@ export function Dashboard({
             <h2>Local exam directory</h2>
             <code>data/{folder.directory ?? 'Pending first save'}</code>
             <p>
-              Sources, prompts, chapter packs, plan and progress live together. AI provider
-              integration is paused.
+              Sources, generation requests/responses, chapter packs, plan and progress live
+              together.
             </p>
+            <PromptLibrary state={state} folderId={folder.id} run={run} busy={busy} />
           </div>
         </div>
       )}

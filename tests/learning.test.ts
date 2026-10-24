@@ -52,6 +52,7 @@ function fixture() {
     },
   };
   state.sections.push(section);
+  state.chapters.push(chapter);
   return { state, section };
 }
 

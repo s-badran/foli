@@ -28,6 +28,32 @@ export function dateKey(date: Date): string {
   return date.toISOString().slice(0, 10);
 }
 
+export const PAGES_PER_ESTIMATED_SECTION = 8;
+
+/** Active sections in chapter order; a chapter without sections yet is estimated from its page count. */
+export function planItems(state: StudyState, folder: Folder): Section[] {
+  const chapters = state.chapters
+    .filter((chapter) => chapter.folderId === folder.id)
+    .sort((left, right) => left.order - right.order);
+  return chapters.flatMap((chapter) => {
+    const sections = state.sections
+      .filter((section) => section.chapterId === chapter.id && !section.archived)
+      .sort((left, right) => (left.pageStart ?? 0) - (right.pageStart ?? 0));
+    if (sections.length) return sections;
+    const pages = (chapter.pageEnd ?? chapter.pageStart ?? 1) - (chapter.pageStart ?? 1) + 1;
+    const estimate = Math.max(1, Math.ceil(pages / PAGES_PER_ESTIMATED_SECTION));
+    return Array.from({ length: estimate }, () => ({
+      id: chapter.id,
+      folderId: folder.id,
+      sourceId: chapter.sourceId,
+      chapterId: chapter.id,
+      title: chapter.title,
+      text: '',
+      read: false,
+    }));
+  });
+}
+
 export function createPlan(
   sections: Section[],
   examDate: string,
@@ -87,9 +113,7 @@ export function createPlan(
 export function replanExam(state: StudyState, folder: Folder, now = new Date()) {
   if (!folder.plan) return;
   const previous = folder.plan;
-  const sections = state.sections.filter(
-    (section) => section.folderId === folder.id && !section.archived,
-  );
+  const sections = planItems(state, folder);
   if (previous.examDate <= dateKey(now)) {
     previous.warning =
       'The exam date has passed or is today. Choose a future date to rebuild the plan; preparation is not complete just because time ran out.';
@@ -105,10 +129,14 @@ export function replanExam(state: StudyState, folder: Folder, now = new Date()) 
   );
   const chapters = state.chapters.filter((chapter) => chapter.folderId === folder.id);
   folder.plan.chapterIds = chapters.map((chapter) => chapter.id);
-  if (chapters.some((chapter) => chapter.coverageStatus !== 'source-audited'))
+  const unsectioned = chapters.filter(
+    (chapter) =>
+      !state.sections.some((section) => section.chapterId === chapter.id && !section.archived),
+  ).length;
+  if (unsectioned)
     folder.plan.warning = [
       folder.plan.warning,
-      'Some chapter topic inventories are not source-audited. Finishing their current practice cannot establish full chapter coverage.',
+      `${unsectioned} chapter(s) are not yet split into sections; their time is estimated from page counts and refines once sections are generated.`,
     ]
       .filter(Boolean)
       .join(' ');

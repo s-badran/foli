@@ -38,14 +38,24 @@ The actual supplied slide deck has been mapped to **28 chapters** using verified
 
 The exam contains:
 
-- **56 original tutor lessons**, two per chapter.
-- **112 conceptual flashcards** about design decisions, constraints and failure modes.
-- **56 original scenario questions**, one per lesson, with four choices and explained answers.
+- **63 tutor lessons**, with counts determined by authored topic coverage rather than a two-per-chapter quota.
+- **143 atomic flashcards**: one recall target per card, short answers, longer reasoning kept in summaries and quiz explanations.
+- **63 application questions**, one per lesson, with four choices and explained answers.
 - Per-lesson summaries, architectural trade-offs and common traps.
 - Main-source chapter page references and related supplementary reading.
 - A chapter-first dated plan, FSRS card schedules, saved quizzes and separate reading progress.
 
-Topics include IAM, EC2, load balancing, RDS/Aurora, S3, Route 53, networking, messaging, containers, serverless, databases, analytics, security, disaster recovery and architectural trade-offs. These are **tutor-authored practice**, not official AWS exam questions, a comprehensive exam bank or a guarantee of exam readiness. Knowledge additions are labelled separately from source evidence. Source citations are chapter-level, not sentence-level proof.
+IAM now has nine source-mapped topic areas: users/groups, permissions, policies, password/MFA protection, CLI, SDK, service roles, security tools and best practices. Its 35 cards and nine application questions cover those areas with source-page references. The remaining 27 chapters are explicitly **draft inventories, not source-audited**. Completing their current practice does not establish complete source coverage. More questions do not by themselves prove coverage.
+
+Topics also include EC2, load balancing, RDS/Aurora, S3, Route 53, networking, messaging, containers, serverless, databases, analytics, security, disaster recovery and architectural trade-offs. These are **tutor-authored practice**, not official AWS exam questions, a comprehensive exam bank or a guarantee of exam readiness. Knowledge additions are labelled separately from source evidence.
+
+## Coverage And Preparation
+
+The methodology is topic-neutral: source topic inventory → learning objectives → mapped recall/application assessments → demonstrated preparation. Exam-specific content is registered in a content catalog; coverage, completion and planning rules do not branch on AWS topics.
+
+Each chapter shows its objective checklist, source pages, cards/quiz mappings, coverage gaps and demonstrated topics. Supplements can add context, but must not silently replace required main-source topics. A chapter is **prepared** only when its source inventory is audited, required assessments exist, every card's latest recorded grade is Good/Easy and the latest quiz answers are all correct. Reading markers never complete preparation. Later failed practice can reopen it. This is evidence from the current assessment set, not a validated prediction of exam performance; self-rated cards and repeatable quizzes have limitations.
+
+The former pack's fixed two-lesson quota caused the missing IAM coverage; the exam guide did not deliberately reprioritize those topics. Old paragraph cards and practice remain archived after the explicit materials upgrade. The upgrade is idempotent and does not delete historical reviews or quiz attempts.
 
 Your real working copy has already been migrated. The slides are the main source; the 30-page exam guide is an accepted supplement (70.6% vocabulary overlap at migration). Previous records were preserved. The old December 22, 2026 target and daily time budget were used to rebuild the plan; adjust them to your actual exam.
 
@@ -59,9 +69,19 @@ Before a new upload/import you choose:
 - **Which best describes you?** Professional, student, career changer, or other.
 - Your exam-preparation goal.
 
-The baseline changes the initial lesson view and time allocation: new learners read first with a 25-minute lesson estimate; basic learners use 15 minutes; refreshers start with cards, use 10-minute lessons and reserve more daily practice time. These are explicit planning defaults, not measured predictions. Role and goal are saved context, not an automatic difficulty score.
+The baseline is a workflow preference, not proof of knowledge:
 
-**Exam settings** saves the baseline and an editable exam tutor brief to the exam directory. Changing the brief does not silently rewrite existing lessons. It is stored for tutor work and later prompt integration, which remains out of scope for this revision. Rebuild the dated plan after changing the baseline or curriculum.
+| Familiarity            | Initial View                        | Estimated Lesson Time | Daily Review Reserve |
+| ---------------------- | ----------------------------------- | --------------------- | -------------------- |
+| Haven't learned it yet | Summary                             | 25 minutes            | 25%                  |
+| Basic understanding    | Flashcards, then targeted rereading | 15 minutes            | 35%                  |
+| Know it well / review  | Quiz, then weak-topic repair        | 10 minutes            | 45%                  |
+
+Saving a changed familiarity **automatically rebuilds an existing plan** without regenerating materials or changing card IDs, topics, difficulty or history. New quiz/review evidence also refreshes the remaining-work plan. The exam date spreads or compresses unprepared lessons over the first 80% of available days, leaving the remainder for review; overload is warned about rather than dropping topics. Time estimates are fixed MVP defaults, not measured predictions.
+
+Role and goal are saved context only. Changing student/professional/career changer does not change the plan or questions, and does not imply prior subject knowledge. AI integration is paused, so none of these settings secretly modifies model prompts or generates new content.
+
+**Exam settings** saves the baseline and an editable exam tutor brief to the exam directory. Changing the brief does not silently rewrite existing lessons. It is stored for tutor work and later prompt integration. A main-source change still requires an explicit new dated plan, while a familiarity change automatically replans the existing one.
 
 The baseline wording is grounded in RemNote's public [Guided Learn Mode article](https://help.remnote.com/en/articles/15724936-guided-learn-mode). It documents “how well do you know this content?” with “Haven't learned it yet,” “I have a basic understanding,” and “Know it well and just want to review.” It says priority changes, not the underlying facts/cards. Exact role-onboarding wording could not be verified; the role labels here are Folio's own.
 
@@ -105,7 +125,7 @@ PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm exec playwright install chrom
 PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e
 ```
 
-`pnpm check` runs lint, strict types, **33 unit/API tests** and a production build. **Five Chromium workflows** cover actual PDF import, authored practice, source warnings and switching, workspace onboarding, saved settings and mobile chapter plans. Browser tests use separate data under `.cache/e2e-data`, not your exam records. See [verification](docs/VERIFICATION.md).
+`pnpm check` runs lint, strict types, **39 unit/API tests** and a production build. **Six Chromium workflows** include topic coverage, concise cards, reading-versus-preparation and baseline/content stability. Browser tests use separate data under `.cache/e2e-data`, not your exam records. If the original source folder is absent, tests read retained PDF copies without modifying real study data. See [verification](docs/VERIFICATION.md).
 
 ## Structure And Limits
 
@@ -113,13 +133,15 @@ See [architecture and API contracts](docs/ARCHITECTURE.md) and [implementation h
 
 - `server/store.ts`: per-exam storage and legacy migration.
 - `server/curriculum.ts`: main-source outline, tutor packs, revisions and source references.
+- `shared/learning.ts`: topic-neutral objective coverage, practice evidence and baseline policy.
+- `server/tutor/catalog.ts`: source-fingerprinted content-pack lookup, separate from methodology.
 - `server/relevance.ts`: explainable supplementary-source overlap check.
 - `server/tutor/aws.ts`: original AWS lessons and scenario practice.
 - `src/App.tsx`: workspace index, routing, uploads and onboarding.
 - `src/Dashboard.tsx`: chapter roadmap, source review, plan, progress and settings.
 - `src/StudyView.tsx`: lesson summaries, cards, quiz feedback and source reader.
 
-This remains a local single-user MVP: no accounts, public hosting controls, cloud sync, OCR, robust arbitrary-book chapter extraction, automatic weak-topic replanning or multi-user transactions. PDF uploads are limited to 60 MB each and 12 files per request. Dates use UTC days. Plans reserve review time and warn about overload but do not certify exam readiness. Fonts are optional external downloads with local fallback. Model-provider modules remain in the codebase for later work, but live generation routes and UI controls are paused; generic cloze generation is retired.
+This remains a local single-user MVP: no accounts, public hosting controls, cloud sync, OCR, robust arbitrary-book topic extraction, diagnostic item calibration or multi-user transactions. Practice-based remaining-work replanning is implemented, but there is no predictive adaptive tutor or automated full-source coverage audit. PDF uploads are limited to 60 MB each and 12 files per request. Dates use UTC days. Fonts are optional external downloads with local fallback. Model-provider modules remain inactive; generic cloze generation is retired.
 
 Git commits are local development milestones. The user has configured the remote; **never push without explicit permission**.
 

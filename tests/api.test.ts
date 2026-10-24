@@ -120,6 +120,46 @@ describe.sequential('complete local study workflow', () => {
     expect(state.attempts).toHaveLength(1);
     expect(state.reviews).toHaveLength(1);
   });
+  it('replans automatically on baseline change without regenerating assessments; role is context only', async () => {
+    const before = (await json('/api/state')).data as StudyState;
+    const beforeContent = JSON.stringify(
+      before.sections.find((item) => item.id === section.id)!.content,
+    );
+    const result = await json(`/api/folders/${folderId}`, 'PATCH', {
+      learner: { familiarity: 'basic', role: 'student', goal: 'Understand the source' },
+    });
+    expect(result.status).toBe(200);
+    expect(result.data.plan.familiarity).toBe('basic');
+    expect(
+      result.data.plan.days.some((day: { studyMinutes: number }) => day.studyMinutes === 15),
+    ).toBe(true);
+    const after = (await json('/api/state')).data as StudyState;
+    expect(JSON.stringify(after.sections.find((item) => item.id === section.id)!.content)).toBe(
+      beforeContent,
+    );
+    const roleChange = await json(`/api/folders/${folderId}`, 'PATCH', {
+      learner: { familiarity: 'basic', role: 'professional', goal: 'Understand the source' },
+    });
+    expect(roleChange.data.plan).toEqual(result.data.plan);
+  });
+  it('upgrades old material with confirmation while preserving archived history', async () => {
+    await new Store(directory).update((current) => {
+      current.folders[0].materialsVersion = 1;
+    });
+    expect((await json(`/api/folders/${folderId}/refresh-materials`, 'POST', {})).status).toBe(400);
+    expect(
+      (await json(`/api/folders/${folderId}/refresh-materials`, 'POST', { confirm: true })).data
+        .changed,
+    ).toBe(true);
+    const after = (await json('/api/state')).data as StudyState;
+    expect(after.sections.find((item) => item.id === section.id)?.archived).toBe(true);
+    expect(after.reviews).toHaveLength(1);
+    expect(after.attempts).toHaveLength(1);
+    expect(
+      (await json(`/api/folders/${folderId}/refresh-materials`, 'POST', { confirm: true })).data
+        .changed,
+    ).toBe(false);
+  });
   it('rejects workspace path traversal', async () => {
     expect((await json('/api/import-workspace', 'POST', { name: '../other-folder' })).status).toBe(
       400,

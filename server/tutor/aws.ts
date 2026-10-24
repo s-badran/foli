@@ -1,3 +1,6 @@
+import { atomicCards } from './atomic-cards';
+import { iamLessons, iamObjectives } from './iam';
+
 export interface TutorLesson {
   title: string;
   rule: string;
@@ -9,6 +12,9 @@ export interface TutorLesson {
   options: [string, string, string, string];
   explanation: string;
   check: string;
+  cards: { question: string; answer: string }[];
+  objectiveKey?: string;
+  pages?: [number, number];
 }
 export interface TutorChapter {
   title: string;
@@ -16,6 +22,8 @@ export interface TutorChapter {
   pageEnd?: number;
   description: string;
   lessons: TutorLesson[];
+  objectives?: { key: string; title: string; pageStart?: number; pageEnd?: number }[];
+  coverageStatus?: 'source-audited' | 'draft';
 }
 
 function lesson(
@@ -38,10 +46,11 @@ function lesson(
     explanation: reasoning,
     contrast: `What failure mode or trade-off must you avoid when designing ${title.toLowerCase()}?`,
     check: `A design review concerns ${title.toLowerCase()}. Which principle correctly guides the decision?`,
+    cards: (atomicCards[title] ?? []).map(([question, answer]) => ({ question, answer })),
   };
 }
 
-export const awsChapters: TutorChapter[] = [
+const authoredChapters: TutorChapter[] = [
   {
     title: 'IAM and secure access',
     pageStart: 24,
@@ -1024,3 +1033,17 @@ export const awsChapters: TutorChapter[] = [
     ],
   },
 ];
+
+export const awsChapters: TutorChapter[] = authoredChapters.map((chapter, index) =>
+  index === 0
+    ? {
+        ...chapter,
+        title: 'AWS Identity and Access Management (AWS IAM)',
+        description:
+          'Users and groups, permissions, policies, password/MFA protection, CLI, SDK, roles, audit tools and IAM best practices.',
+        objectives: iamObjectives,
+        coverageStatus: 'source-audited',
+        lessons: iamLessons,
+      }
+    : { ...chapter, coverageStatus: 'draft' },
+);

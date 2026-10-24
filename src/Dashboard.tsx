@@ -17,6 +17,7 @@ import { api, displayDate, send } from './api';
 import { Empty, ProgressBar, SourceIcon, useNow } from './components';
 import { LearnerFields } from './App';
 import type { RunTask } from './StudyView';
+import { baselinePolicy, chapterPreparation, sectionPractice } from '../shared/learning';
 
 export type View = 'chapters' | 'sources' | 'plan' | 'progress' | 'settings';
 export function Dashboard({
@@ -59,8 +60,8 @@ export function Dashboard({
   const due = cards.filter(
     (card) => card.schedule.reps === 0 || new Date(card.schedule.due).getTime() <= now,
   );
-  const completed = chapters.filter((chapter) =>
-    sections.filter((section) => section.chapterId === chapter.id).every((section) => section.read),
+  const completed = chapters.filter(
+    (chapter) => chapterPreparation(chapter, sections, state).complete,
   ).length;
   const score = attempts.length
     ? Math.round(
@@ -100,6 +101,7 @@ export function Dashboard({
         {matches.map((chapter, index) => {
           const lessons = sections.filter((section) => section.chapterId === chapter.id);
           const read = lessons.filter((section) => section.read).length;
+          const preparation = chapterPreparation(chapter, sections, state);
           const chapterAttempts = attempts.filter((attempt) =>
             lessons.some((section) => section.id === attempt.sectionId),
           );
@@ -119,8 +121,8 @@ export function Dashboard({
           return (
             <details className="chapter" key={chapter.id} open={index === 0 && !progressOnly}>
               <summary>
-                <span className={`chapter-number ${read === lessons.length ? 'done' : ''}`}>
-                  {read === lessons.length ? (
+                <span className={`chapter-number ${preparation.complete ? 'done' : ''}`}>
+                  {preparation.complete ? (
                     <CheckCircle2 size={19} />
                   ) : (
                     String(chapter.order).padStart(2, '0')
@@ -140,17 +142,63 @@ export function Dashboard({
                 </div>
                 <div className="chapter-status">
                   <span>
-                    {read} / {lessons.length} read
+                    {preparation.complete
+                      ? 'Prepared'
+                      : `${preparation.demonstrated}/${preparation.total} demonstrated`}
                   </span>
+                  {!preparation.audited && (
+                    <span className="attention">Coverage audit pending</span>
+                  )}
                   {needsAttention && <span className="attention">Needs practice</span>}
                   <ProgressBar
-                    value={lessons.length ? (read / lessons.length) * 100 : 0}
-                    label={`${chapter.title} reading progress`}
+                    value={preparation.practicePercent}
+                    label={`${chapter.title} practice evidence`}
                   />
                 </div>
                 <ChevronDown size={16} />
               </summary>
               <p className="chapter-description">{chapter.description}</p>
+              <div className="coverage-matrix">
+                <div className="coverage-heading">
+                  <strong>Source-topic coverage</strong>
+                  <span>
+                    {preparation.covered}/{preparation.total} mapped · {read}/{lessons.length} read
+                  </span>
+                </div>
+                {!preparation.audited && (
+                  <p className="form-note">
+                    The topic inventory is not source-audited. Passing the current practice cannot
+                    certify full chapter preparation.
+                  </p>
+                )}
+                {preparation.objectives.map((objective) => (
+                  <div className="coverage-topic" key={objective.id}>
+                    <div>
+                      <strong>{objective.title}</strong>
+                      {objective.pageStart && (
+                        <a
+                          href={`/api/sources/${objective.sourceId}/file#page=${objective.pageStart}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          pp. {objective.pageStart}-{objective.pageEnd}
+                        </a>
+                      )}
+                    </div>
+                    <span>
+                      {objective.recallCovered ? 'Cards mapped' : 'Cards missing'} ·{' '}
+                      {objective.applicationCovered ? 'Quiz mapped' : 'Quiz missing'}
+                    </span>
+                    <span className={objective.demonstrated ? 'evidence-passed' : ''}>
+                      {objective.demonstrated
+                        ? 'Demonstrated'
+                        : objective.covered
+                          ? 'Practice needed'
+                          : 'Coverage gap'}
+                    </span>
+                  </div>
+                ))}
+              </div>
               {lessons.map((section) => {
                 const latest = attempts
                   .filter((attempt) => attempt.sectionId === section.id)
@@ -163,7 +211,11 @@ export function Dashboard({
                     key={section.id}
                     onClick={() => openSection(section.id)}
                   >
-                    {section.read ? <CheckCircle2 size={17} /> : <BookOpen size={17} />}
+                    {sectionPractice(section, state).complete ? (
+                      <CheckCircle2 size={17} />
+                    ) : (
+                      <BookOpen size={17} />
+                    )}
                     <div>
                       <strong>{section.title}</strong>
                       <span>
@@ -208,7 +260,7 @@ export function Dashboard({
         <div className="stats">
           <div>
             <span className="stat-label">
-              <BookOpen size={16} /> Chapters completed
+              <BookOpen size={16} /> Chapters prepared
             </span>
             <strong>
               {completed}
@@ -216,7 +268,7 @@ export function Dashboard({
             </strong>
             <ProgressBar
               value={chapters.length ? (completed / chapters.length) * 100 : 0}
-              label="Reading progress"
+              label="Preparation progress"
             />
           </div>
           <div>
@@ -253,19 +305,34 @@ export function Dashboard({
       )}
       {view === 'chapters' && (
         <>
+          {(folder.materialsVersion ?? 0) < 2 && (
+            <div className="warning">
+              <strong>Older material needs a methodology upgrade.</strong>
+              <p>
+                Archive the previous practice records and publish concise, source-mapped cards.
+                Previous reviews stay in history.
+              </p>
+              <button
+                className="button secondary"
+                disabled={!!busy}
+                onClick={() =>
+                  void run(
+                    () => api(`/folders/${folder.id}/refresh-materials`, send({ confirm: true })),
+                    'Study methodology upgraded; previous practice archived',
+                  )
+                }
+              >
+                Archive old material and upgrade
+              </button>
+            </div>
+          )}
           <div className="exam-brief">
             <Star size={18} />
             <div>
               <strong>Main source</strong>
               <p>{main?.name ?? 'Upload your first source to define the exam.'}</p>
             </div>
-            <span className="badge">
-              {folder.learner?.familiarity === 'refresh'
-                ? 'Practice first'
-                : folder.learner?.familiarity === 'basic'
-                  ? 'Build on the basics'
-                  : 'Read, then practice'}
-            </span>
+            <span className="badge">{baselinePolicy(folder.learner?.familiarity).label}</span>
           </div>
           {folder.curriculumNote && <p className="curriculum-note">{folder.curriculumNote}</p>}
           {chapters.length ? (
@@ -474,7 +541,9 @@ export function Dashboard({
         <>
           <div className="section-heading">
             <h2>Progress by chapter</h2>
-            <span className="muted">Reading, recall and quiz evidence are separate.</span>
+            <span className="muted">
+              Preparation requires audited coverage, successful recall and correct application.
+            </span>
           </div>
           {chapterList(true)}
           <div className="section-heading library-heading">
@@ -540,6 +609,19 @@ export function Dashboard({
           >
             <h2>Learning baseline</h2>
             <LearnerFields learner={folder.learner} />
+            <div className="baseline-impact">
+              <strong>Current plan policy</strong>
+              <p>{baselinePolicy(folder.learner?.familiarity).label}</p>
+              <p>
+                {baselinePolicy(folder.learner?.familiarity).lessonMinutes} minutes per lesson ·{' '}
+                {Math.round(baselinePolicy(folder.learner?.familiarity).reviewFraction * 100)}%
+                daily review reserve
+              </p>
+              <p>
+                Saving a changed familiarity replans the remaining practice automatically. Topics,
+                card IDs and quiz difficulty stay unchanged.
+              </p>
+            </div>
             <label>
               Exam tutor brief
               <textarea
@@ -553,10 +635,10 @@ export function Dashboard({
               />
             </label>
             <p className="form-note">
-              The baseline changes study priority and time estimates, not the factual curriculum.
-              The saved brief is available for tutor work and future generation; editing it does not
-              silently rewrite existing lessons. Role and goal are context, not automatic difficulty
-              scores.
+              The baseline changes study priority and time estimates, not the required topic
+              coverage. The saved brief is available for tutor work and future generation; editing
+              it does not silently rewrite existing lessons. Role and goal are context, not
+              automatic difficulty scores.
             </p>
             <div className="modal-actions">
               <button className="button primary" disabled={!!busy}>

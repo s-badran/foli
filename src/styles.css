@@ -2113,6 +2113,80 @@ textarea:focus {
   }
 }
 
+.coverage-matrix {
+  margin: 0 0 14px 47px;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #fbfcfa;
+}
+.coverage-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 11px;
+  color: #607456;
+  margin-bottom: 10px;
+}
+.coverage-heading > span {
+  font-size: 10px;
+  color: #7c8876;
+}
+.coverage-topic {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) 105px;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-top: 1px solid var(--line);
+  font-size: 10px;
+  color: #818b7a;
+}
+.coverage-topic strong {
+  font-size: 11px;
+  color: #566a50;
+}
+.coverage-topic a {
+  display: block;
+  font-size: 9px;
+  color: var(--blue);
+  margin-top: 4px;
+  text-decoration: underline;
+}
+.coverage-topic .evidence-passed {
+  color: var(--green);
+  font-weight: 600;
+}
+.baseline-impact {
+  padding: 16px;
+  margin: 20px 0;
+  background: #f3f6f0;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font-size: 11px;
+  color: #77866c;
+}
+.baseline-impact p {
+  font-size: 11px;
+  margin-top: 7px;
+}
+@media (max-width: 700px) {
+  .coverage-matrix {
+    margin-left: 24px;
+    padding: 11px;
+  }
+  .coverage-heading {
+    flex-wrap: wrap;
+  }
+  .coverage-topic {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+  .coverage-topic > span {
+    font-size: 9px;
+  }
+}
+
 @media (min-width: 1600px) {
   .dashboard,
   .reader {

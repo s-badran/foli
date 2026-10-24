@@ -1,5 +1,16 @@
 # Folio MVP Implementation Plan
 
+## Methodology Review - 2026-10-24
+
+- ✅ Replace fixed material quotas with explicit source objectives and recall/application mappings. Keep catalog content separate from generic logic; exercise the rules with non-AWS fixtures.
+- ✅ Publish short, single-target cards; place longer reasoning in summaries and quiz explanations. Audit all nine IAM topic areas against actual source pages, not assumed exam priorities.
+- ✅ Base chapter preparation on audited coverage and demonstrated practice, never reading ticks. Mark the other 27 chapter inventories as drafts rather than claiming exhaustive coverage.
+- ✅ Make baseline workflow/time policies explicit, automatically replan on familiarity changes and practice evidence, and make the target date affect spacing. Leave role/goal contextual rather than inferring knowledge from occupation.
+- ✅ Upgrade the real workspace idempotently, preserve old practice in the archive and retain its saved learner baseline and date.
+- ✅ Final regression run, methodology documentation and local commit. No push authorized.
+
+Remaining content work: source-audit the other 27 chapter inventories and add missing objectives/assessments. This is authored coverage work, not evidence that the generic completion rule needs an AWS-specific exception.
+
 ## Exam Workspace Revision
 
 The original single-PDF extraction demo is superseded by the exam-scoped revision requested on 2026-10-23. AI-provider integration is paused; no runtime model calls are made by the current application routes.

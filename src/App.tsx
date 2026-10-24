@@ -31,6 +31,7 @@ import { api, loadState, send } from './api';
 import { Modal, ProgressBar } from './components';
 import { Dashboard, type View } from './Dashboard';
 import { StudyView, type RunTask } from './StudyView';
+import { baselinePolicy, chapterPreparation } from '../shared/learning';
 
 type Dialog = 'new' | 'import' | 'upload' | 'plan' | 'main' | 'accept' | 'delete' | null;
 interface LocalFolder {
@@ -58,6 +59,9 @@ export function LearnerFields({ learner }: { learner?: Learner }) {
           <option value="other">Other</option>
         </select>
       </label>
+      <p className="form-note">
+        Role is context only; it does not estimate prior knowledge or remove exam topics.
+      </p>
       <label>
         Exam preparation goal
         <textarea
@@ -98,8 +102,8 @@ export function App() {
   const section =
     route[2] === 'section' ? sections.find((item) => item.id === route[3]) : undefined;
   const chapters = state.chapters.filter((chapter) => chapter.folderId === folder?.id);
-  const completed = chapters.filter((chapter) =>
-    sections.filter((item) => item.chapterId === chapter.id).every((item) => item.read),
+  const completed = chapters.filter(
+    (chapter) => chapterPreparation(chapter, sections, state).complete,
   ).length;
 
   useEffect(() => {
@@ -245,19 +249,16 @@ export function App() {
         {folder && (
           <div className="sidebar-progress">
             <div>
-              <span>Chapters completed</span>
+              <span>Chapters prepared</span>
               <strong>
                 {completed} / {chapters.length}
               </strong>
             </div>
             <ProgressBar
               value={chapters.length ? (completed / chapters.length) * 100 : 0}
-              label="Chapter progress"
+              label="Chapter preparation"
             />
-            <span>
-              {sections.filter((item) => item.read).length} lessons read · separate from quiz
-              accuracy
-            </span>
+            <span>Recall + quiz evidence; reading is separate</span>
           </div>
         )}
         <div className="sidebar-bottom">
@@ -364,7 +365,9 @@ export function App() {
                 const lessons = state.sections.filter(
                   (entry) => entry.folderId === item.id && !entry.archived,
                 );
-                const read = lessons.filter((entry) => entry.read).length;
+                const prepared = groups.filter(
+                  (chapter) => chapterPreparation(chapter, lessons, state).complete,
+                ).length;
                 return (
                   <a className="exam-tile" key={item.id} href={`#exam/${item.id}/chapters`}>
                     <div className="tile-icon">
@@ -376,11 +379,13 @@ export function App() {
                       {groups.length} chapters · {lessons.length} lessons
                     </p>
                     <ProgressBar
-                      value={lessons.length ? (read / lessons.length) * 100 : 0}
-                      label={`${item.name} reading progress`}
+                      value={groups.length ? (prepared / groups.length) * 100 : 0}
+                      label={`${item.name} preparation`}
                     />
                     <div>
-                      <span>{read} lessons read</span>
+                      <span>
+                        {prepared} / {groups.length} chapters prepared
+                      </span>
                       <ArrowRight size={17} />
                     </div>
                   </a>
@@ -398,7 +403,7 @@ export function App() {
           </div>
         ) : section && source ? (
           <StudyView
-            key={section.id}
+            key={`${section.id}-${folder.learner?.familiarity}`}
             section={section}
             source={source}
             state={state}
@@ -411,7 +416,7 @@ export function App() {
                 ? () => openSection(sections[sections.indexOf(section) + 1].id)
                 : undefined
             }
-            initialTab={folder.learner?.familiarity === 'refresh' ? 'cards' : 'summary'}
+            initialTab={baselinePolicy(folder.learner?.familiarity).initialTab}
           />
         ) : (
           <Dashboard

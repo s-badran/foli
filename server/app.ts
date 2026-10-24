@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { learnerSchema, type Section, type Source, type StudyState } from '../shared/models';
 import { Store } from './store';
 import { extractDocument } from './documents';
-import { createPlan, reviewCard } from './study';
+import { createPlan, replanExam, reviewCard } from './study';
 import { buildCurriculum, refreshRelevance, refreshSupplementLinks } from './curriculum';
 
 const extensions = new Set(['.pdf', '.md', '.txt']);
@@ -171,7 +171,10 @@ export function createApp(
       .parse(request.body);
     const folder = await store.update((state) => {
       const current = required(state.folders, request.params.id);
+      const previousFamiliarity = current.learner?.familiarity;
       Object.assign(current, settings);
+      if (settings.learner && settings.learner.familiarity !== previousFamiliarity)
+        replanExam(state, current);
       return current;
     });
     response.json(folder);
@@ -261,6 +264,19 @@ export function createApp(
       buildCurriculum(current, exam);
     });
     response.json({ ok: true });
+  });
+  app.post('/api/folders/:id/refresh-materials', async (request, response) => {
+    z.object({ confirm: z.literal(true) }).parse(request.body);
+    const result = await store.update((state) => {
+      const folder = required(state.folders, request.params.id);
+      if ((folder.materialsVersion ?? 0) >= 2) return { changed: false };
+      const previousPlan = folder.plan;
+      buildCurriculum(state, folder);
+      folder.plan = previousPlan;
+      replanExam(state, folder);
+      return { changed: true };
+    });
+    response.json(result);
   });
   app.post('/api/import-workspace', async (request, response) => {
     const { name } = z.object({ name: nameSchema }).parse(request.body);
@@ -368,6 +384,7 @@ export function createApp(
         date: new Date().toISOString(),
         rating,
       });
+      replanExam(state, required(state.folders, section.folderId));
       return card;
     });
     response.json(result);
@@ -390,6 +407,7 @@ export function createApp(
         total: quiz.length,
       };
       state.attempts.push(attempt);
+      replanExam(state, required(state.folders, section.folderId));
       return attempt;
     });
     response.status(201).json(result);
@@ -408,10 +426,8 @@ export function createApp(
       );
       if (!sections.length)
         throw new Error('Import sources or add a topic before creating a plan.');
-      folder.plan = createPlan(sections, examDate, dailyMinutes, new Date(), folder.learner);
-      folder.plan.chapterIds = state.chapters
-        .filter((chapter) => chapter.folderId === folder.id)
-        .map((chapter) => chapter.id);
+      folder.plan = createPlan(sections, examDate, dailyMinutes, new Date(), folder.learner, state);
+      replanExam(state, folder);
       return folder.plan;
     });
     response.json(plan);

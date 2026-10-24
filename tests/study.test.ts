@@ -37,19 +37,18 @@ describe('spaced repetition and plans', () => {
     id: `${index}`,
     read: index === 0,
   })) as Section[];
-  it('schedules every unread section exactly once, before the exam', () => {
+  it('schedules every unprepared section exactly once, even when marked read', () => {
     const plan = createPlan(sections, '2026-11-01', 60, now);
     const ids = plan.days.flatMap((day) => day.sectionIds);
-    expect(ids).toHaveLength(19);
-    expect(new Set(ids).size).toBe(19);
-    expect(ids).not.toContain('0');
+    expect(ids).toHaveLength(20);
+    expect(new Set(ids).size).toBe(20);
+    expect(ids).toContain('0');
     expect(plan.days.at(-1)?.date).toBe('2026-10-31');
-    expect(plan.warning).toBeUndefined();
   });
   it('warns about an overloaded plan without silently losing sections', () => {
     const plan = createPlan(sections, '2026-10-24', 20, now);
     expect(plan.warning).toContain('exceeds');
-    expect(plan.days.flatMap((day) => day.sectionIds)).toHaveLength(19);
+    expect(plan.days.flatMap((day) => day.sectionIds)).toHaveLength(20);
   });
   it('rejects past exam dates', () =>
     expect(() => createPlan(sections, '2026-10-22', 60, now)).toThrow());

@@ -2,8 +2,8 @@
 
 ## Final Gates
 
-- `pnpm check`: lint, strict TypeScript, 33 unit/API tests and production build pass.
-- `PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e`: five passing Chromium workflows using isolated `.cache/e2e-data`.
+- `pnpm check`: lint, strict TypeScript, 39 unit/API tests and production build pass.
+- `PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e`: six passing Chromium workflows using isolated `.cache/e2e-data`.
 - Desktop chapter screenshot inspected at 1440 x 1000; mobile chapter plan at 390 x 844. Mobile plan/progress overflow assertions pass.
 - No AI-provider call, authentication or subscription usage was performed.
 - Development app remains at http://127.0.0.1:5173/ with the API on port 43126.
@@ -13,7 +13,8 @@
 - Both original PDFs unchanged: 879-page slide deck and 30-page exam guide.
 - Main source: the fingerprint-verified supplied slide deck.
 - Supplement: exam guide, accepted at 70.6% vocabulary overlap against the 16% heuristic threshold.
-- Active material: 28 chapters, 56 lessons, 112 conceptual cards, 56 scenario questions.
+- Active material after the 2026-10-24 methodology upgrade: 28 chapters, 63 lessons, 143 concise cards, 63 application questions. IAM has nine source-mapped topics, 35 cards and nine application questions.
+- IAM is source-audited against its actual pages; the remaining 27 chapters explicitly require inventory audits. A fixed amount of authored material is not treated as proof of coverage.
 - Prior legacy records, reviews and attempts retained. The original legacy JSON is not overwritten.
 - Existing exam target and daily budget used to rebuild the plan; no exam date was guessed anew.
 - Actual data now lives beneath `data/exams/aws-certified-solutions-architect-associate--<id>/`, including sources, prompts, chapter packs, plan and progress.
@@ -25,10 +26,15 @@
 3. Upload an unrelated cooking document, observe a warning and exclusion, keep it excluded, change the main PDF with confirmation, preserve archived quiz/review records and switch back.
 4. Create a new workspace from a Markdown upload, retain chapter/section hierarchy, save learner settings and a tutor brief, then reload to verify persistence.
 5. Build a chapter-associated dated plan; navigate mobile plan and progress without horizontal overflow.
+6. Save changed familiarity, verify immediate replanning and a changed initial view while assessment IDs/content remain stable. Change only role and verify the plan is unchanged. Reading markers do not claim preparation.
 
 ## Focused Tests
 
 Coverage includes legacy migration and source-copy preservation; missing-indexed-snapshot errors; Markdown chapter boundaries; main-source-only chapter ownership; unrelated-source exclusion; complete tutor pack schema/counts; distinct choices; no cloze placeholders; FSRS state; server-side scoring; retained progress; plan overload/date checks; workspace traversal rejection. Historical provider contract tests use only a local mock; they do not indicate active AI integration.
+
+Topic-neutral circuit fixtures verify missing-coverage blocking, read-only noncompletion, successful recall plus quiz evidence, later failure reopening, unaudited-inventory blocking, baseline time changes and date-dependent spacing. API tests verify automatic familiarity replanning, role-only non-effects, stable assessments and confirmed/idempotent upgrades with retained history. Atomic-card publication rejects fronts over 30 words or backs over 40 words; semantic single-target quality still requires author review.
+
+The original root PDF folder was no longer present during this revision. Browser tests were adapted to use read-only copies already retained by the app, rather than recreating a user-removed folder or altering real study records.
 
 ## RemNote Research
 

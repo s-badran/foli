@@ -14,7 +14,13 @@ export const contentSchema = z.object({
   keyPoints: z.array(z.string().min(3).max(1200)).min(2).max(12),
   supplement: z.string().max(8000).default(''),
   cards: z
-    .array(z.object({ question: z.string().min(5).max(2000), answer: z.string().min(3).max(4000) }))
+    .array(
+      z.object({
+        question: z.string().min(5).max(2000),
+        answer: z.string().min(3).max(4000),
+        objectiveIds: z.array(z.string()).optional(),
+      }),
+    )
     .min(2)
     .max(16),
   quiz: z
@@ -24,6 +30,7 @@ export const contentSchema = z.object({
         options: z.array(z.string().min(1).max(2000)).length(4),
         correctIndex: z.number().int().min(0).max(3),
         explanation: z.string().min(5).max(4000),
+        objectiveIds: z.array(z.string()).optional(),
       }),
     )
     .min(1)
@@ -56,6 +63,14 @@ export const learnerSchema = z.object({
   goal: z.string().trim().max(500).default('Prepare for the exam with scenario-based practice.'),
 });
 export type Learner = z.infer<typeof learnerSchema>;
+export interface LearningObjective {
+  id: string;
+  title: string;
+  sourceId: string;
+  pageStart?: number;
+  pageEnd?: number;
+  assessment: 'recall' | 'application' | 'both';
+}
 export interface Chapter {
   id: string;
   folderId: string;
@@ -65,6 +80,8 @@ export interface Chapter {
   pageStart?: number;
   pageEnd?: number;
   description: string;
+  objectives?: LearningObjective[];
+  coverageStatus?: 'source-audited' | 'draft';
 }
 export interface Section {
   id: string;
@@ -120,6 +137,7 @@ export interface Folder {
   prompt?: string;
   curriculumRevision?: number;
   curriculumNote?: string;
+  materialsVersion?: number;
 }
 export interface QuizAttempt {
   id: string;

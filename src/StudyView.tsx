@@ -15,6 +15,7 @@ import {
 import type { QuizAttempt, Section, Source, StudyState } from '../shared/models';
 import { api, displayDate, send } from './api';
 import { Empty, SourceIcon, useNow } from './components';
+import { sectionPractice } from '../shared/learning';
 
 export type RunTask = (action: () => Promise<unknown>, success?: string) => Promise<void>;
 type Tab = 'summary' | 'cards' | 'quiz' | 'source';
@@ -37,7 +38,7 @@ export function StudyView({
   generate: () => void;
   onBack: () => void;
   onNext?: () => void;
-  initialTab?: 'summary' | 'cards';
+  initialTab?: 'summary' | 'cards' | 'quiz';
 }) {
   const now = useNow();
   const [tab, setTab] = useState<Tab>(initialTab);
@@ -45,6 +46,7 @@ export function StudyView({
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [result, setResult] = useState<QuizAttempt | null>(null);
   const content = section.content;
+  const preparation = sectionPractice(section, state);
   const cards =
     content?.cards.filter(
       (card) => card.schedule.reps === 0 || new Date(card.schedule.due).getTime() <= now,
@@ -80,15 +82,20 @@ export function StudyView({
           onClick={() =>
             void run(
               () => api(`/sections/${section.id}`, send({ read: !section.read }, 'PATCH')),
-              section.read ? 'Section marked unread' : 'Section completed',
+              section.read
+                ? 'Reading marker cleared'
+                : 'Reading saved; preparation depends on practice',
             )
           }
         >
           <Check size={16} />
-          {section.read ? 'Completed' : 'Mark complete'}
+          {section.read ? 'Read' : 'Mark as read'}
         </button>
       </div>
       <div className="reader-meta">
+        <span className={`badge ${preparation.complete ? 'success' : ''}`}>
+          {preparation.complete ? 'Practice passed' : 'Practice pending'}
+        </span>
         <span className={`dot ${content ? 'green' : ''}`} />
         {content
           ? `${content.authorship === 'tutor-authored' ? 'Original tutor practice' : content.provider === 'offline' ? 'Legacy source extracts' : 'Source-grounded study material'} · ${content.model}`

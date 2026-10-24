@@ -36,12 +36,14 @@ The active index is `data/exams/index.json`. If absent, the store reads the lega
 
 1. First source is main by default. The learner can choose a different source from this exam only.
 2. The supplied AWS slide deck is identified by its SHA-256 fingerprint. Its 28 chapter dividers are mapped to actual PDF page ranges, starting at IAM on page 24. Introductory slides are not falsely described as exam topic chapters.
-3. Each mapped chapter has two original tutor-authored lessons. Each lesson has a summary, two conceptual cards and one scenario with four distinct choices and an explanation. The final chapter also consolidates architecture/exam-review topics.
+3. Lesson and assessment counts follow authored objectives, not a fixed quota. The reference pack currently has 63 lessons, 143 concise cards and 63 application questions. IAM has nine source-audited topic areas; other chapter inventories remain explicitly draft.
 4. Generic Markdown groups H2/H3 sections under their H1 chapter. Other sources use explicit Chapter/Domain/Part boundaries when present. An unreliable outline is labelled provisional; arbitrary exam questions are not fabricated.
 5. Main-source changes require explicit confirmation. Active lessons are archived, chapter records are replaced and the dated plan is invalidated. Historical records are retained.
 6. No current route invokes an AI provider. Old provider modules remain unused by the active product flow. Per-section cloze generation is retired.
 
-This is a foundational authored AWS pack, not exhaustive coverage or official exam content. Main-source references are verified chapter ranges; the explanations incorporate tutor knowledge, and the provenance UI does not claim sentence-level attribution.
+`server/tutor/catalog.ts` owns source-fingerprint lookup; the curriculum builder operates on the selected pack, and `shared/learning.ts` operates only on objectives and assessment evidence. Non-AWS circuit-learning tests exercise the same completion and planning rules. Content-specific examples belong in the catalog, never in preparation thresholds or baseline policies.
+
+`Chapter.objectives` is an explicit main-source inventory. Cards/questions list `objectiveIds`; the UI distinguishes assessment coverage from learner demonstration. An unaudited chapter cannot claim preparation even when all its current questions are passed. IAM was checked against PDF pages 24-40, not inferred to be complete from its card count. This remains a limited authored assessment, not official or validated exam readiness.
 
 ## Supplement Commonness
 
@@ -53,31 +55,32 @@ Accepted supplements are searched for chapter-topic overlap. Only matching refer
 
 ## Personalization And Plan
 
-The verified RemNote baseline labels are documented in its public [Guided Learn Mode](https://help.remnote.com/en/articles/15724936-guided-learn-mode) article. The article explicitly distinguishes priority from content changes. Folio follows that distinction: new learners read first; refreshers start with cards. Planning estimates are 25/15/10 minutes for new/basic/refresh lessons, with more review allocation for refreshers. Role, goal and the brief are saved tutor context, not hidden adaptive scoring.
+The verified RemNote baseline labels are documented in its public [Guided Learn Mode](https://help.remnote.com/en/articles/15724936-guided-learn-mode) article. Folio's explicit policy is summary/cards/quiz first for new/basic/refresh respectively, with estimated lesson minutes 25/15/10 and review reserves 25%/35%/45%. These are product defaults, not validated measurements. Familiarity changes automatically replan an existing schedule without regenerating assessments. Role changes alone do not replan; role, goal and the brief remain context only. There is no active prompt execution.
 
-FSRS owns card due dates; reading completion and quiz scores are independent signals. Chapter reading completion is all its lessons marked read. A recent quiz score under 80% flags a chapter for practice; this is not an automatic mastery certificate. The plan remains chapter-first and expandable, with the daily calendar secondary.
+FSRS owns due dates. Reading is an independent marker. Chapter preparation requires an audited nonempty inventory, required recall/application mappings, successful latest card grades (Good/Easy) for every card, and all correct answers in the latest lesson quiz. Later failures can reopen it. The remaining-work planner uses practice rather than read markers, spreads work over the first 80% of days and reserves the rest for review. Reviews and quiz attempts refresh an existing plan; a passed/today exam date prompts date correction instead of implying completion. Incomplete source audits produce a plan warning. The visible 80%-quiz attention hint is separate from the stricter preparation rule.
 
 ## API Map
 
-| Route                                         | Contract                                                            |
-| --------------------------------------------- | ------------------------------------------------------------------- |
-| `GET /api/state`                              | Aggregate active-exam snapshots, including archived records         |
-| `GET /api/workspace-folders`                  | Direct importable source folders inside the project                 |
-| `POST /api/workspaces/upload`                 | Create an exam from first multipart upload and learner fields       |
-| `POST /api/folders`                           | Create an empty exam with learner settings                          |
-| `POST /api/import-workspace`                  | Import an existing local source folder                              |
-| `POST /api/folders/:id/upload`                | Add files to the existing exam directory; return relevance warnings |
-| `PATCH /api/folders/:id`                      | Save learner settings and exam brief                                |
-| `PUT /api/folders/:id/main-source`            | Same-exam source ID plus `confirmRebuild: true`                     |
-| `PATCH /api/folders/:id/sources/:sourceId`    | Explicitly accept or exclude a supplement                           |
-| `POST /api/folders/:id/prepare`               | Upgrade legacy sources and build an exam curriculum                 |
-| `PUT /api/folders/:id/plan`                   | Dated chapter-associated plan using the saved baseline              |
-| `GET /api/sources/:id/file`                   | Original file from its exam directory                               |
-| `PATCH /api/sections/:id`                     | Reading-completion state                                            |
-| `POST /api/sections/:id/cards/:cardId/review` | Due-card FSRS grade                                                 |
-| `POST /api/sections/:id/quiz`                 | Score a complete quiz server-side                                   |
-| `GET /api/export`                             | JSON backup, including archived records but no binary files         |
-| `DELETE /api/folders/:id`                     | Remove active index records; retain on-disk directory               |
+| Route                                         | Contract                                                                                            |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `GET /api/state`                              | Aggregate active-exam snapshots, including archived records                                         |
+| `GET /api/workspace-folders`                  | Direct importable source folders inside the project                                                 |
+| `POST /api/workspaces/upload`                 | Create an exam from first multipart upload and learner fields                                       |
+| `POST /api/folders`                           | Create an empty exam with learner settings                                                          |
+| `POST /api/import-workspace`                  | Import an existing local source folder                                                              |
+| `POST /api/folders/:id/upload`                | Add files to the existing exam directory; return relevance warnings                                 |
+| `PATCH /api/folders/:id`                      | Save learner settings and exam brief                                                                |
+| `PUT /api/folders/:id/main-source`            | Same-exam source ID plus `confirmRebuild: true`                                                     |
+| `PATCH /api/folders/:id/sources/:sourceId`    | Explicitly accept or exclude a supplement                                                           |
+| `POST /api/folders/:id/prepare`               | Upgrade legacy sources and build an exam curriculum                                                 |
+| `POST /api/folders/:id/refresh-materials`     | Confirmed idempotent methodology upgrade; archive old practice, preserve the target date and replan |
+| `PUT /api/folders/:id/plan`                   | Dated chapter-associated plan using the saved baseline                                              |
+| `GET /api/sources/:id/file`                   | Original file from its exam directory                                                               |
+| `PATCH /api/sections/:id`                     | Reading-completion state                                                                            |
+| `POST /api/sections/:id/cards/:cardId/review` | Due-card FSRS grade                                                                                 |
+| `POST /api/sections/:id/quiz`                 | Score a complete quiz server-side                                                                   |
+| `GET /api/export`                             | JSON backup, including archived records but no binary files                                         |
+| `DELETE /api/folders/:id`                     | Remove active index records; retain on-disk directory                                               |
 
 The old generation route returns an existing tutor pack unchanged or an explicit paused/retired error; it never regenerates cloze filler. Topic-only generation returns a paused error.
 

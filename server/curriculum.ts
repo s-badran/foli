@@ -10,9 +10,9 @@ import {
 } from '../shared/models';
 import { serializeCard } from './study';
 import { assessRelevance, terms } from './relevance';
-import { awsChapters, type TutorLesson } from './tutor/aws';
-
-export const AWS_SLIDES_HASH = 'e95a915c20193e621e3773fefb98b4ad4bae53a8477fea0b9f07d7b552d5c06b';
+import type { TutorLesson } from './tutor/aws';
+import { findTutorPack } from './tutor/catalog';
+export { AWS_SLIDES_HASH } from './tutor/catalog';
 
 function sourceFragments(state: StudyState, sourceId: string) {
   const raw = state.sections.filter(
@@ -106,7 +106,16 @@ function tutorContent(
   end: number,
   extra: NonNullable<GeneratedContent['evidence']>,
   index: number,
+  objectiveId: string,
+  label: string,
 ): GeneratedContent {
+  if (
+    lesson.cards.length < 2 ||
+    lesson.cards.some(
+      (card) => card.question.split(/\s+/).length > 30 || card.answer.split(/\s+/).length > 40,
+    )
+  )
+    throw new Error(`Author concise single-target flashcards before publishing: ${lesson.title}`);
   const correct = index % 4;
   const options = [...lesson.options];
   const answer = options.shift()!;
@@ -116,16 +125,14 @@ function tutorContent(
     keyPoints: [lesson.rule, lesson.reasoning, lesson.trap],
     supplement:
       'Tutor-authored explanation using architectural knowledge alongside the cited main-source chapter. These are original practice questions, not official AWS exam questions. Supplementary reading is listed separately; vocabulary overlap does not establish factual agreement.',
-    cards: [
-      { question: lesson.recall, answer: `${lesson.rule} ${lesson.reasoning}` },
-      { question: lesson.contrast, answer: lesson.trap },
-    ],
+    cards: lesson.cards.map((card) => ({ ...card, objectiveIds: [objectiveId] })),
     quiz: [
       {
         question: lesson.scenario,
         options,
         correctIndex: correct,
         explanation: lesson.explanation,
+        objectiveIds: [objectiveId],
       },
     ],
   });
@@ -137,7 +144,7 @@ function tutorContent(
       schedule: serializeCard(createEmptyCard()),
     })),
     provider: 'offline',
-    model: 'Tutor-authored AWS SAA-C03 v1',
+    model: label,
     authorship: 'tutor-authored',
     generatedAt: new Date().toISOString(),
     evidence: [
@@ -163,11 +170,13 @@ export function buildCurriculum(state: StudyState, folder: Folder) {
     section.archived = true;
   state.chapters = state.chapters.filter((chapter) => chapter.folderId !== folder.id);
   folder.curriculumRevision = (folder.curriculumRevision ?? 0) + 1;
+  folder.materialsVersion = 2;
   folder.plan = undefined;
-  const curated = main.contentHash === AWS_SLIDES_HASH;
+  const pack = findTutorPack(main.contentHash);
+  const curated = pack !== undefined;
   let inferredChapter = 'Source introduction';
   const definitions = curated
-    ? awsChapters
+    ? pack.chapters
     : raw
         .map((section, index) => {
           const explicit = section.text
@@ -194,10 +203,27 @@ export function buildCurriculum(state: StudyState, folder: Folder) {
   for (const [index, definition] of definitions.entries()) {
     const chapterId = randomUUID();
     const pageEnd = curated
-      ? (definition.pageEnd ?? (awsChapters[index + 1]?.pageStart ?? 880) - 1)
+      ? (definition.pageEnd ??
+        (pack.chapters[index + 1]?.pageStart ?? (main.pages ?? raw.at(-1)?.pageEnd ?? 1) + 1) - 1)
       : main.kind === 'pdf'
         ? (definitions[index + 1]?.pageStart ?? (main.pages ?? raw.at(-1)?.pageEnd ?? 1) + 1) - 1
         : definition.pageEnd;
+    const objectiveDefinitions =
+      pack?.chapters[index].objectives ??
+      definition.lessons.map((lesson) => ({
+        key: lesson.objectiveKey ?? lesson.title,
+        title: lesson.title,
+        pageStart: definition.pageStart,
+        pageEnd,
+      }));
+    const objectives = objectiveDefinitions.map((item) => ({
+      id: `${chapterId}/${item.key}`,
+      title: item.title,
+      sourceId: main.id,
+      pageStart: item.pageStart,
+      pageEnd: item.pageEnd,
+      assessment: 'both' as const,
+    }));
     state.chapters.push({
       id: chapterId,
       folderId: folder.id,
@@ -207,6 +233,8 @@ export function buildCurriculum(state: StudyState, folder: Folder) {
       pageStart: definition.pageStart,
       pageEnd,
       description: definition.description,
+      objectives,
+      coverageStatus: pack?.chapters[index].coverageStatus ?? 'draft',
     });
     const chapterText = raw
       .filter((section) =>
@@ -232,16 +260,18 @@ export function buildCurriculum(state: StudyState, folder: Folder) {
           title: lesson.title,
           objective: lesson.recall,
           text: chapterText,
-          pageStart: definition.pageStart,
-          pageEnd,
+          pageStart: lesson.pages?.[0] ?? definition.pageStart,
+          pageEnd: lesson.pages?.[1] ?? pageEnd,
           read: false,
           content: tutorContent(
             lesson,
             main,
-            definition.pageStart!,
-            pageEnd!,
+            lesson.pages?.[0] ?? definition.pageStart!,
+            lesson.pages?.[1] ?? pageEnd!,
             extra,
             index * 2 + lessonIndex,
+            `${chapterId}/${lesson.objectiveKey ?? lesson.title}`,
+            pack.label,
           ),
         });
     } else {
@@ -268,6 +298,6 @@ export function buildCurriculum(state: StudyState, folder: Folder) {
     }
   }
   folder.curriculumNote = curated
-    ? '28 tutor-curated chapters follow verified divider pages in the main slide deck. Each chapter has two original lessons with scenario questions and architectural trade-offs.'
-    : 'Source-based outline only. No generic fill-in-the-blank practice is generated. Tutor-authored materials are currently available only for the supplied AWS slide deck.';
+    ? `${definitions.length} source-mapped chapters. Topic counts follow authored coverage, not a fixed lessons-per-chapter quota. Draft chapter inventories are not yet source-audited and cannot count as fully prepared.`
+    : 'Source-based outline only. Its topic inventory and assessments need authoring and source audit before preparation can be claimed.';
 }

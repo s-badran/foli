@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { emptyState } from '../shared/models';
 import { assessRelevance } from '../server/relevance';
 import { AWS_SLIDES_HASH, buildCurriculum, refreshRelevance } from '../server/curriculum';
+import { awsChapters } from '../server/tutor/aws';
+import { chapterPreparation } from '../shared/learning';
 
 describe('exam-scoped curriculum', () => {
   it('warns on unrelated documents rather than inventing a shared topic', () => {
@@ -79,9 +81,24 @@ describe('exam-scoped curriculum', () => {
     buildCurriculum(state, folder);
     const active = state.sections.filter((section) => !section.archived);
     expect(state.chapters).toHaveLength(28);
-    expect(active).toHaveLength(56);
-    expect(active.flatMap((section) => section.content!.cards)).toHaveLength(112);
-    expect(active.flatMap((section) => section.content!.quiz)).toHaveLength(56);
+    expect(active).toHaveLength(
+      awsChapters.reduce((count, chapter) => count + chapter.lessons.length, 0),
+    );
+    const cards = active.flatMap((section) => section.content!.cards);
+    expect(cards.length).toBeGreaterThan(active.length * 2);
+    expect(
+      cards.every(
+        (card) => card.question.split(/\s+/).length <= 30 && card.answer.split(/\s+/).length <= 40,
+      ),
+    ).toBe(true);
+    expect(active.flatMap((section) => section.content!.quiz)).toHaveLength(active.length);
+    const coverage = chapterPreparation(state.chapters[0], state.sections, state);
+    expect(coverage.total).toBe(9);
+    expect(coverage.covered).toBe(9);
+    expect(coverage.audited).toBe(true);
+    expect(state.chapters.slice(1).every((chapter) => chapter.coverageStatus === 'draft')).toBe(
+      true,
+    );
     expect(active.every((section) => section.content?.authorship === 'tutor-authored')).toBe(true);
     expect(
       active

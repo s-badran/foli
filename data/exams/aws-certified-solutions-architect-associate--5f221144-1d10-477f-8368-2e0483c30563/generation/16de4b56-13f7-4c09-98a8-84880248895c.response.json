@@ -1,0 +1,221 @@
+{
+  "groups": [
+    {
+      "concept": "Placement group strategies overview",
+      "cards": [
+        {
+          "question": "What is a placement group used for?",
+          "answer": "Controlling the EC2 instance placement strategy",
+          "keyTopic": "Placement group strategies overview",
+          "origin": "source"
+        },
+        {
+          "question": "How many strategies must you specify when creating a placement group?",
+          "answer": "Exactly one",
+          "keyTopic": "Placement group strategies overview",
+          "origin": "source"
+        },
+        {
+          "question": "Name the four placement group strategies.",
+          "answer": ["Cluster", "Spread", "Partition", "Precision time"],
+          "keyTopic": "Placement group strategies overview",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Cluster placement group",
+      "cards": [
+        {
+          "question": "How many Availability Zones does a cluster placement group use?",
+          "answer": "A single Availability Zone",
+          "keyTopic": "Cluster: single AZ, 10 Gbps Enhanced Networking",
+          "origin": "source"
+        },
+        {
+          "question": "What bandwidth can cluster placement group instances achieve with Enhanced Networking enabled?",
+          "answer": "Up to 10 Gbps between instances",
+          "keyTopic": "Cluster: single AZ, 10 Gbps Enhanced Networking",
+          "origin": "source"
+        },
+        {
+          "question": "Which networking option is recommended for cluster placement groups?",
+          "answer": "Enhanced Networking",
+          "keyTopic": "Cluster: single AZ, 10 Gbps Enhanced Networking",
+          "origin": "source"
+        },
+        {
+          "question": "Which strategy fits a Big Data job that must complete fast with extremely low latency?",
+          "answer": "Cluster placement group",
+          "keyTopic": "Cluster: single AZ, 10 Gbps Enhanced Networking",
+          "origin": "source"
+        },
+        {
+          "question": "Which placement group is better for AZ-failure resilience, cluster or spread?",
+          "answer": "Spread",
+          "keyTopic": "Cluster risk: AZ failure fails all instances",
+          "origin": "source"
+        },
+        {
+          "question": "What happens to cluster placement group instances if the AZ fails?",
+          "answer": "All instances fail at the same time",
+          "keyTopic": "Cluster risk: AZ failure fails all instances",
+          "origin": "source"
+        },
+        {
+          "question": "Which placement group is NOT highly available because all instances are in one AZ?",
+          "answer": "Cluster",
+          "keyTopic": "Cluster risk: AZ failure fails all instances",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Spread placement group",
+      "cards": [
+        {
+          "question": "What is the maximum number of spread placement group instances per AZ?",
+          "answer": "7 instances per AZ per placement group",
+          "keyTopic": "Spread: max 7 instances per AZ",
+          "origin": "source"
+        },
+        {
+          "question": "Does spanning Availability Zones remove the spread group per-AZ instance cap?",
+          "answer": "No; the cap stays at 7 per AZ",
+          "keyTopic": "Spread: max 7 instances per AZ",
+          "origin": "source"
+        },
+        {
+          "question": "Do spread placement group instances share underlying physical hardware?",
+          "answer": "No, each is on different physical hardware",
+          "keyTopic": "Spread: distinct hardware, high availability",
+          "origin": "source"
+        },
+        {
+          "question": "Which placement group suits critical applications where each instance must be isolated from the failure of others?",
+          "answer": "Spread placement group",
+          "keyTopic": "Spread: distinct hardware, high availability",
+          "origin": "source"
+        },
+        {
+          "question": "Can a spread placement group span Availability Zones?",
+          "answer": "Yes",
+          "keyTopic": "Spread: distinct hardware, high availability",
+          "origin": "source"
+        },
+        {
+          "question": "Which placement group reduces the risk of simultaneous failure across instances?",
+          "answer": "Spread",
+          "keyTopic": "Spread: distinct hardware, high availability",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Partition placement group",
+      "cards": [
+        {
+          "question": "How many partitions can a partition placement group have per AZ?",
+          "answer": "Up to 7 partitions per AZ",
+          "keyTopic": "Partition: up to 7 partitions per AZ",
+          "origin": "source"
+        },
+        {
+          "question": "Can a partition placement group span multiple Availability Zones?",
+          "answer": "Yes, multiple AZs in the same Region",
+          "keyTopic": "Partition: up to 7 partitions per AZ",
+          "origin": "source"
+        },
+        {
+          "question": "How many EC2 instances can a partition placement group scale to?",
+          "answer": "Hundreds of instances per group",
+          "keyTopic": "Partition: hundreds of instances, rack isolation",
+          "origin": "source"
+        },
+        {
+          "question": "Do instances in one partition share racks with instances in another partition?",
+          "answer": "No, partitions use different sets of racks",
+          "keyTopic": "Partition: hundreds of instances, rack isolation",
+          "origin": "source"
+        },
+        {
+          "question": "If one partition fails, which instances are affected?",
+          "answer": "Many instances in that partition, but no other partitions",
+          "keyTopic": "Partition: hundreds of instances, rack isolation",
+          "origin": "source"
+        },
+        {
+          "question": "Which placement group isolates failures at rack/partition level rather than per instance?",
+          "answer": "Partition",
+          "keyTopic": "Partition: hundreds of instances, rack isolation",
+          "origin": "source"
+        },
+        {
+          "question": "How do partition placement group instances obtain their partition information?",
+          "answer": "As instance metadata",
+          "keyTopic": "Partition metadata access",
+          "origin": "source"
+        },
+        {
+          "question": "Which placement group lets instances read partition info from metadata to be rack-aware?",
+          "answer": "Partition placement group",
+          "keyTopic": "Partition metadata access",
+          "origin": "source"
+        },
+        {
+          "question": "Name the workloads the source lists for partition placement groups.",
+          "answer": ["HDFS", "HBase", "Cassandra", "Kafka"],
+          "keyTopic": "HDFS, Cassandra, Kafka",
+          "origin": "source"
+        },
+        {
+          "question": "A Cassandra cluster needs rack awareness across hundreds of instances. Which strategy?",
+          "answer": "Partition placement group",
+          "keyTopic": "HDFS, Cassandra, Kafka",
+          "origin": "source"
+        }
+      ]
+    },
+    {
+      "concept": "Precision time placement group",
+      "cards": [
+        {
+          "question": "Which time service does the precision time placement group give enhanced access to?",
+          "answer": "Amazon Time Sync Service (more accurate than standard NTP)",
+          "keyTopic": "Precision time: Amazon Time Sync, PTP clock (Linux)",
+          "origin": "source"
+        },
+        {
+          "question": "On which operating system is the PTP hardware clock available?",
+          "answer": "Linux only",
+          "keyTopic": "Precision time: Amazon Time Sync, PTP clock (Linux)",
+          "origin": "source"
+        },
+        {
+          "question": "What timestamping capability comes with the PTP hardware clock?",
+          "answer": "Hardware packet timestamping",
+          "keyTopic": "Precision time: Amazon Time Sync, PTP clock (Linux)",
+          "origin": "source"
+        },
+        {
+          "question": "Is precision time placement about network throughput or clock accuracy?",
+          "answer": "Clock accuracy",
+          "keyTopic": "Precision time: Amazon Time Sync, PTP clock (Linux)",
+          "origin": "source"
+        },
+        {
+          "question": "Which placement group is used for financial timestamping and event ordering?",
+          "answer": "Precision time placement group",
+          "keyTopic": "Precision time use cases: financial timestamping",
+          "origin": "source"
+        },
+        {
+          "question": "Name the use cases listed for precision time placement groups.",
+          "answer": ["Distributed databases", "Financial timestamping", "Event ordering"],
+          "keyTopic": "Precision time use cases: financial timestamping",
+          "origin": "source"
+        }
+      ]
+    }
+  ]
+}

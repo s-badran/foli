@@ -1391,6 +1391,55 @@ details summary {
   border-top: 1px solid var(--line);
   padding-top: 20px;
 }
+.quiz-card {
+  margin-top: 27px;
+}
+.quiz-progress {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.quiz-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+.quiz-dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: #8c987e;
+  font-size: 10px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+.quiz-dot.current {
+  border-color: #a5ba94;
+  background: #eef4e6;
+  color: #556847;
+  font-weight: 600;
+}
+.quiz-dot.answered {
+  background: #8cb177;
+  border-color: #8cb177;
+  color: #fff;
+}
+.quiz-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
 .quiz-result {
   display: flex;
   align-items: center;

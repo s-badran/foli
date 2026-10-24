@@ -1,0 +1,121 @@
+{
+  "questions": [
+    {
+      "question": "A team runs a small inventory application on a t2.micro instance. It needs more processing capacity, but the code is a single-tier monolith with no shared state layer. Which action best describes scaling this application vertically?",
+      "options": [
+        "Add more t2.micro instances behind a Load Balancer and distribute traffic across them.",
+        "Resize the instance to a larger family, for example from t2.micro to t2.large.",
+        "Spread the existing t2.micro instance across two Availability Zones for resilience.",
+        "Place an Auto Scaling Group in front of the instance to add capacity on demand."
+      ],
+      "correctIndex": 1,
+      "explanation": "Vertical scaling means increasing the size of the instance, so moving from t2.micro to t2.large is the classic scale up. Adding instances behind a Load Balancer is horizontal scaling, not vertical. Spreading across two AZs is high availability, which does not increase per-instance capacity. An Auto Scaling Group changes instance count, which is horizontal, not vertical.",
+      "keyTopic": "EC2 vertical scaling (t2.nano to u-12tb1.metal)",
+      "kind": "scenario"
+    },
+    {
+      "question": "A startup expects sudden traffic spikes for a web application. It wants to add and remove compute capacity automatically as demand changes. Which property of horizontal scalability does this describe?",
+      "options": [
+        "Elasticity: increase and decrease the number of instances to match load.",
+        "High availability: run the application in at least two Availability Zones.",
+        "Passive failover: keep a standby copy ready for failover.",
+        "Vertical scaling: replace the instance with a larger instance type."
+      ],
+      "correctIndex": 0,
+      "explanation": "Horizontal scalability is described in the source as elasticity, i.e. scaling out and in the number of instances. High availability is a different goal about surviving data-center loss across two AZs. Passive failover is a standby HA pattern such as RDS Multi AZ. Vertical scaling changes instance size, not instance count.",
+      "keyTopic": "Horizontal scalability as elasticity",
+      "kind": "concept"
+    },
+    {
+      "question": "An application is being redesigned to run on many EC2 instances that share session state through a central store. Which architectural consequence should the team expect from adopting horizontal scaling?",
+      "options": [
+        "The application becomes a distributed system and must tolerate partial failures.",
+        "The application can rely on one large instance and avoid coordinating nodes.",
+        "The application no longer needs a Load Balancer to route requests.",
+        "The application is guaranteed high availability without any AZ design."
+      ],
+      "correctIndex": 0,
+      "explanation": "Horizontal scaling implies distributed systems, so the application must be designed to coordinate across multiple systems. Relying on one large instance is vertical scaling, the opposite approach. A Load Balancer is still needed to distribute traffic. Horizontal scaling alone does not give high availability unless the instances are placed across multiple AZs.",
+      "keyTopic": "Distributed systems",
+      "kind": "comparison"
+    },
+    {
+      "question": "A company must ensure its application survives the loss of a single AWS data center. What is the minimum requirement for high availability in this section?",
+      "options": [
+        "Run the application in at least two Availability Zones.",
+        "Run the application on at least two instance sizes.",
+        "Run the application with an Auto Scaling Group in one AZ.",
+        "Run the application with a Load Balancer in one AZ."
+      ],
+      "correctIndex": 0,
+      "explanation": "High availability means running the application in at least two data centers, which are Availability Zones, so losing one does not stop the service. Using two instance sizes is vertical sizing, not HA. An ASG or Load Balancer inside a single AZ still fails if that AZ is lost.",
+      "keyTopic": "High availability across AZs",
+      "kind": "concept"
+    },
+    {
+      "question": "A relational workload on Amazon RDS requires resilience against the failure of its Availability Zone but the application team cannot modify the application. Which design fits the section's example of passive high availability?",
+      "options": [
+        "Deploy a database layer across several EC2 instances in multiple AZs and scale out.",
+        "Use Amazon RDS Multi AZ so a standby copy is available for failover.",
+        "Use an Auto Scaling Group to scale the database instances out and in.",
+        "Replace the database with a cache in a single AZ to reduce failure surface."
+      ],
+      "correctIndex": 1,
+      "explanation": "RDS Multi AZ is the section's named example of passive high availability, where a standby copy exists for failover without app changes. Running several EC2 database instances is active HA and would require application changes. An ASG is for EC2 horizontal scaling, not the managed database standby pattern. A single-AZ cache reduces resilience instead of improving it.",
+      "keyTopic": "Passive high availability (RDS Multi AZ)",
+      "kind": "scenario"
+    },
+    {
+      "question": "A web application runs several identical EC2 instances in multiple Availability Zones and all of them serve traffic simultaneously. Which type of high availability does this represent?",
+      "options": [
+        "Passive high availability, because a standby is ready for failover.",
+        "Vertical high availability, because instance sizes are increased.",
+        "Active high availability, because the workload runs on multiple instances across AZs.",
+        "Elasticity, because instances are removed when traffic decreases."
+      ],
+      "correctIndex": 2,
+      "explanation": "Active high availability means the workload is actively served by several instances across AZs, as with horizontal scaling. Passive HA keeps a standby rather than serving traffic. Vertical scaling changes instance size and is not an HA type. Elasticity describes scaling out and in, not the HA posture itself.",
+      "keyTopic": "Active high availability",
+      "kind": "concept"
+    },
+    {
+      "question": "A team already has an Auto Scaling Group and Load Balancer for a web tier. It must additionally survive the loss of one Availability Zone without changing the application. What should it do?",
+      "options": [
+        "Increase the maximum instance size in the Auto Scaling Group launch configuration.",
+        "Move the Auto Scaling Group into a single AZ and increase desired capacity.",
+        "Keep the Load Balancer in one AZ and rely on the Auto Scaling Group for failover.",
+        "Configure the Auto Scaling Group and the Load Balancer to span multiple AZs."
+      ],
+      "correctIndex": 3,
+      "explanation": "For EC2, high availability is achieved by running the same application across multiple AZs through an ASG multi AZ and a Load Balancer multi AZ. Increasing instance size is vertical scaling and does not protect against AZ loss. Confining the ASG to one AZ reduces HA. A single-AZ Load Balancer remains a single point of failure.",
+      "keyTopic": "Load balancer multi-AZ",
+      "kind": "scenario"
+    },
+    {
+      "question": "Which statement correctly distinguishes scaling out from scaling up in the context of EC2?",
+      "options": [
+        "Scaling out changes instance count via an ASG, while scaling up changes instance size.",
+        "Scaling out changes instance size, while scaling up changes instance count.",
+        "Scaling out adds AZs, while scaling up adds Load Balancers.",
+        "Scaling out and scaling up are both achieved by resizing the same instance."
+      ],
+      "correctIndex": 0,
+      "explanation": "Scale out and in refer to the number of instances and are handled by the Auto Scaling Group, while scale up and down refer to instance size. The reversed pairing is the trap. AZs are an HA concern, not what scaling out changes, and Load Balancers are added for traffic distribution. Scaling up does not add instances, so the two are not the same operation.",
+      "keyTopic": "ASG scale out and scale in",
+      "kind": "comparison"
+    },
+    {
+      "question": "An architect proposes handling all growth by vertically scaling a single EC2 instance from t2.nano up through larger families. Which constraint from the section makes this strategy unsuitable as the only long-term approach?",
+      "options": [
+        "Vertical scaling is only possible for RDS and ElastiCache, not for EC2.",
+        "There is usually a hardware limit to how far an instance can be vertically scaled.",
+        "Vertical scaling requires a distributed system, which this design lacks.",
+        "Vertical scaling requires a Load Balancer, which single instances cannot use."
+      ],
+      "correctIndex": 1,
+      "explanation": "The source states there is usually a limit to how much you can vertically scale, a hardware ceiling, so it cannot absorb unlimited growth. Vertical scaling is available for EC2 as well as RDS and ElastiCache. It is the typical choice for non-distributed systems, so it does not require a distributed design. A Load Balancer is not a prerequisite for vertical scaling.",
+      "keyTopic": "Vertical scalability",
+      "kind": "scenario"
+    }
+  ]
+}

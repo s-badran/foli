@@ -50,6 +50,7 @@ export function StudyView({
   const [tab, setTab] = useState<Tab>(initialTab);
   const [revealed, setRevealed] = useState(false);
   const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [quizIndex, setQuizIndex] = useState(0);
   const [result, setResult] = useState<QuizAttempt | null>(null);
   const content = section.content;
   const preparation = sectionPractice(section, state);
@@ -417,63 +418,124 @@ export function StudyView({
                 onClick={() => {
                   setResult(null);
                   setAnswers({});
+                  setQuizIndex(0);
                 }}
               >
                 <RotateCcw size={15} /> Try again
               </button>
             </div>
           )}
-          {content.quiz.map((question, index) => (
-            <fieldset className="quiz-question" key={index} disabled={!!result || !!busy}>
-              <legend>
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                {question.question}
-              </legend>
-              <div className="quiz-options">
-                {question.options.map((option, optionIndex) => (
-                  <label
-                    key={optionIndex}
-                    className={`quiz-option ${answers[index] === optionIndex ? 'selected' : ''} ${result && optionIndex === question.correctIndex ? 'correct' : ''} ${result && answers[index] === optionIndex && optionIndex !== question.correctIndex ? 'incorrect' : ''}`}
+          {result ? (
+            content.quiz.map((question, index) => (
+              <fieldset className="quiz-question" key={index} disabled>
+                <legend>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  {question.question}
+                </legend>
+                <div className="quiz-options">
+                  {question.options.map((option, optionIndex) => (
+                    <label
+                      key={optionIndex}
+                      className={`quiz-option ${answers[index] === optionIndex ? 'selected' : ''} ${optionIndex === question.correctIndex ? 'correct' : ''} ${answers[index] === optionIndex && optionIndex !== question.correctIndex ? 'incorrect' : ''}`}
+                    >
+                      <input
+                        type="radio"
+                        name={`question-${index}`}
+                        value={optionIndex}
+                        checked={answers[index] === optionIndex}
+                        onChange={() => setAnswers({ ...answers, [index]: optionIndex })}
+                      />
+                      <span className="option-letter">{String.fromCharCode(65 + optionIndex)}</span>
+                      <span>{option}</span>
+                      {optionIndex === question.correctIndex && <Check size={16} />}
+                    </label>
+                  ))}
+                </div>
+                <p className="explanation">{question.explanation}</p>
+              </fieldset>
+            ))
+          ) : (
+            <div className="quiz-card">
+              <div className="quiz-progress">
+                <span className="eyebrow">
+                  Question {quizIndex + 1} of {content.quiz.length}
+                </span>
+                <span className="muted">
+                  {Object.keys(answers).length} of {content.quiz.length} answered
+                </span>
+              </div>
+              <div className="quiz-dots">
+                {content.quiz.map((question, index) => (
+                  <button
+                    key={question.question}
+                    className={`quiz-dot ${answers[index] !== undefined ? 'answered' : ''} ${index === quizIndex ? 'current' : ''}`}
+                    onClick={() => setQuizIndex(index)}
+                    aria-label={`Go to question ${index + 1}`}
                   >
-                    <input
-                      type="radio"
-                      name={`question-${index}`}
-                      value={optionIndex}
-                      checked={answers[index] === optionIndex}
-                      onChange={() => setAnswers({ ...answers, [index]: optionIndex })}
-                    />
-                    <span className="option-letter">{String.fromCharCode(65 + optionIndex)}</span>
-                    <span>{option}</span>
-                    {result && optionIndex === question.correctIndex && <Check size={16} />}
-                  </label>
+                    {String(index + 1)}
+                  </button>
                 ))}
               </div>
-              {result && <p className="explanation">{question.explanation}</p>}
-            </fieldset>
-          ))}
-          {!result && (
-            <div className="quiz-submit">
-              <span className="muted">
-                {Object.keys(answers).length} of {content.quiz.length} answered
-              </span>
-              <button
-                className="button primary"
-                disabled={!!busy || Object.keys(answers).length !== content.quiz.length}
-                onClick={() =>
-                  void run(
-                    async () =>
-                      setResult(
-                        await api<QuizAttempt>(
-                          `/sections/${section.id}/quiz`,
-                          send({ answers: content.quiz.map((_, index) => answers[index]) }),
-                        ),
-                      ),
-                    'Quiz saved',
-                  )
-                }
-              >
-                <Check size={16} /> Submit quiz
-              </button>
+              <fieldset className="quiz-question" disabled={!!busy}>
+                <legend>
+                  <span>{String(quizIndex + 1).padStart(2, '0')}</span>
+                  {content.quiz[quizIndex].question}
+                </legend>
+                <div className="quiz-options">
+                  {content.quiz[quizIndex].options.map((option, optionIndex) => (
+                    <label
+                      key={optionIndex}
+                      className={`quiz-option ${answers[quizIndex] === optionIndex ? 'selected' : ''}`}
+                    >
+                      <input
+                        type="radio"
+                        name={`question-${quizIndex}`}
+                        value={optionIndex}
+                        checked={answers[quizIndex] === optionIndex}
+                        onChange={() => setAnswers({ ...answers, [quizIndex]: optionIndex })}
+                      />
+                      <span className="option-letter">{String.fromCharCode(65 + optionIndex)}</span>
+                      <span>{option}</span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+              <div className="quiz-nav">
+                <button
+                  className="button secondary"
+                  disabled={quizIndex === 0}
+                  onClick={() => setQuizIndex(quizIndex - 1)}
+                >
+                  <ArrowLeft size={15} /> Previous
+                </button>
+                {quizIndex < content.quiz.length - 1 ? (
+                  <button
+                    className="button secondary"
+                    onClick={() => setQuizIndex(quizIndex + 1)}
+                  >
+                    Next <ArrowRight size={15} />
+                  </button>
+                ) : (
+                  <button
+                    className="button primary"
+                    disabled={!!busy || Object.keys(answers).length !== content.quiz.length}
+                    onClick={() =>
+                      void run(
+                        async () =>
+                          setResult(
+                            await api<QuizAttempt>(
+                              `/sections/${section.id}/quiz`,
+                              send({ answers: content.quiz.map((_, index) => answers[index]) }),
+                            ),
+                          ),
+                        'Quiz saved',
+                      )
+                    }
+                  >
+                    <Check size={16} /> Submit quiz
+                  </button>
+                )}
+              </div>
             </div>
           )}
         </div>

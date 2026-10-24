@@ -17,7 +17,7 @@
       "plan": {
         "examDate": "2027-01-05",
         "dailyMinutes": 60,
-        "createdAt": "2026-10-24T13:13:13.873Z",
+        "createdAt": "2026-10-24T13:47:28.722Z",
         "familiarity": "basic",
         "days": [
           {
@@ -25127,15 +25127,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::regions"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-28T13:43:27.106Z",
+              "stability": 3.94605407,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 4,
+              "reps": 2,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:43:27.106Z"
             }
           },
           {
@@ -25149,15 +25150,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::regions"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-01T13:33:26.657Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:33:26.657Z"
             }
           },
           {
@@ -25171,15 +25173,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::region-naming"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-28T13:45:09.909Z",
+              "stability": 3.94605407,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 4,
+              "reps": 2,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:45:09.909Z"
             }
           },
           {
@@ -25193,15 +25196,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::region-naming"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-28T13:46:42.890Z",
+              "stability": 3.94605407,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 4,
+              "reps": 2,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:46:42.890Z"
             }
           },
           {
@@ -25215,15 +25219,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-24T13:48:07.258Z",
+              "stability": 2.3065,
+              "difficulty": 2.11810397,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
-              "learning_steps": 0,
-              "state": 0
+              "learning_steps": 1,
+              "state": 1,
+              "last_review": "2026-10-24T13:38:07.258Z"
             }
           },
           {
@@ -25237,15 +25242,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-24T13:48:22.434Z",
+              "stability": 2.3065,
+              "difficulty": 2.11810397,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
-              "learning_steps": 0,
-              "state": 0
+              "learning_steps": 1,
+              "state": 1,
+              "last_review": "2026-10-24T13:38:22.434Z"
             }
           },
           {
@@ -25259,15 +25265,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-24T13:49:04.462Z",
+              "stability": 2.3065,
+              "difficulty": 2.11810397,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
-              "learning_steps": 0,
-              "state": 0
+              "learning_steps": 1,
+              "state": 1,
+              "last_review": "2026-10-24T13:39:04.462Z"
             }
           },
           {
@@ -25281,15 +25288,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-01T13:39:11.075Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:39:11.075Z"
             }
           },
           {
@@ -25303,15 +25311,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-01T13:39:17.889Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:39:17.889Z"
             }
           },
           {
@@ -25325,15 +25334,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-01T13:39:25.623Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:39:25.623Z"
             }
           },
           {
@@ -25347,15 +25357,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-01T13:39:38.011Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:39:38.011Z"
             }
           },
           {
@@ -25369,15 +25380,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-01T13:41:06.579Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:41:06.579Z"
             }
           },
           {
@@ -25391,15 +25403,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-01T13:41:50.740Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:41:50.740Z"
             }
           },
           {
@@ -25413,15 +25426,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::availability-zones"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-01T13:42:19.501Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:42:19.501Z"
             }
           },
           {
@@ -25435,15 +25449,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::edge-locations"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-01T13:44:03.483Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:44:03.483Z"
             }
           },
           {
@@ -25457,15 +25472,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::edge-locations"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-24T13:54:15.490Z",
+              "stability": 2.3065,
+              "difficulty": 2.11810397,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
-              "learning_steps": 0,
-              "state": 0
+              "learning_steps": 1,
+              "state": 1,
+              "last_review": "2026-10-24T13:44:15.490Z"
             }
           },
           {
@@ -25479,15 +25495,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::edge-locations"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-24T13:54:27.643Z",
+              "stability": 2.3065,
+              "difficulty": 2.11810397,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
-              "learning_steps": 0,
-              "state": 0
+              "learning_steps": 1,
+              "state": 1,
+              "last_review": "2026-10-24T13:44:27.643Z"
             }
           },
           {
@@ -25501,15 +25518,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::global-vs-region-scoped-services"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-24T13:51:29.991Z",
+              "stability": 1.2931,
+              "difficulty": 5.11217071,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 1,
+              "last_review": "2026-10-24T13:45:29.991Z"
             }
           },
           {
@@ -25523,15 +25541,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::global-vs-region-scoped-services"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-24T13:53:18.304Z",
+              "stability": 1.2931,
+              "difficulty": 5.11217071,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 1,
+              "last_review": "2026-10-24T13:47:18.304Z"
             }
           },
           {
@@ -25545,15 +25564,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::global-vs-region-scoped-services"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:42.974Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-01T13:47:28.722Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-24T13:47:28.722Z"
             }
           }
         ],
@@ -31856,7 +31876,1089 @@
       "pageStart": 85,
       "pageEnd": 89,
       "text": "[Page 85]\nPlacement Groups\n• \tSometimes you want control over the EC2 Instance placement strategy\n• \tThat strategy can be defined using placement groups\n• \tWhen you create a placement group, you specify one of the following\nstrategies for the group:\n• \tCluster—clusters instances into a low-latency group in a single Availability Zone\n• \tSpread—spreads instances across underlying hardware (max 7 instances per\ngroup per AZ)\n• \tPartition—spreads instances across many different partitions (which rely on\ndifferent sets of racks) within an AZ. Scales to 100s of EC2 instances per group\n(Hadoop, Cassandra, Kafka)\n• \tPrecision time— direct access to high-precision time sources\n\n[Page 86]\nSame AZ\nPlacement Groups\nCluster\n• \tPros: Great network (10 Gbps bandwidth between instances with Enhanced\nNetworking enabled - recommended)\n• \tCons: If the AZ fails, all instances fails at the same time\n• \tUse case:\n• \tBig Data job that needs to complete fast\n• \tApplication that needs extremely low latency and high network throughput\nEC2 \tEC2\nEC2 \tEC2 \tEC2\nEC2 Placement group\nCluster\nLow latency\n10 Gbps network\n\n[Page 87]\nUs-east-1a\nHardware 1\nPlacement Groups\nSpread • \tPros:\n• \tCan span across Availability\nZones (AZ)\n• \tReduced risk is simultaneous\nfailure\n• \tEC2 Instances are on different\nphysical hardware\n• \tCons:\n• \tLimited to 7 instances per AZ\nper placement group\n• \tUse case:\n• \tApplication that needs to\nmaximize high availability\n• \tCritical Applications where\neach instance must be isolated\nfrom failure from each other\nEC2\nHardware 2\nEC2\nUs-east-1b\nHardware 3\nEC2\nHardware 4\nEC2\nUs-east-1c\nHardware 5\nEC2\nHardware 6\nEC2\n\n[Page 88]\nPlacements Groups\nPartition • \tUp to 7 partitions per AZ\n• \tCan span across multiple AZs in the\nsame region\n• \tUp to 100s of EC2 instances\n• \tThe instances in a partition do not\nshare racks with the instances in the\nother partitions\n• \tA partition failure can affect many\nEC2 but won’t affect other partitions\n• \tEC2 instances get access to the\npartition information as metadata\n• \tUse cases: HDFS, HBase, Cassandra,\nKafka\nus-east-1a\nPartition 1\nEC2\nEC2\nEC2\nEC2\nPartition 2\nEC2\nEC2\nEC2\nEC2\nPartition 3\nEC2\nEC2\nEC2\nEC2\nus-east-1b\n\n[Page 89]\nPlacements Groups\nPrecision time\n• \tInstances placed on hardware with direct\naccess to high-precision time sources\n• \tEnhanced Amazon Time Sync Service (more\naccurate than standard NTP)\n• \tPTP Hardware Clock + hardware packet\ntimestamping (Linux only)\n• \tUse cases: distributed databases, financial\ntimestamping, event ordering\nus-east-1a\nGroup\nEC2\nEC2\nEC2\nEC2\nEnhanced\nNTP\nPTP Clock",
-      "read": false
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nEC2 placement groups give you control over how instances are physically placed on AWS hardware, letting you trade latency against failure isolation. The section covers four strategies — cluster, spread, partition and precision time — each with a distinct limit and risk profile. For the exam, questions usually describe a workload requirement (low latency, high availability, rack-level isolation, accurate time) and expect you to pick the strategy and know its constraint numbers.\n\n## Core Concepts\n\n- **Placement group:** A logical grouping of EC2 instances that defines the placement strategy applied when the instances are launched.\n- **Cluster placement group:** Packs instances close together into a low-latency group within a single Availability Zone.\n- **Spread placement group:** Places instances on distinct underlying physical hardware, reducing the risk of simultaneous failure, and can span Availability Zones.\n- **Partition placement group:** Spreads instances across partitions that rely on different sets of racks within an AZ; a group can span multiple AZs in the same Region.\n- **Partition:** An isolated rack-set segment of a partition placement group; instances in one partition do not share racks with instances in other partitions.\n- **Precision time placement group:** Places instances on hardware with direct access to high-precision time sources such as enhanced Amazon Time Sync and a PTP hardware clock.\n- **Enhanced Networking:** Networking option recommended for cluster placement groups; enables up to 10 Gbps bandwidth between instances.\n- **Amazon Time Sync Service:** AWS time source; in precision time groups the enhanced version is more accurate than standard NTP.\n- **PTP hardware clock:** Precision Time Protocol hardware clock with hardware packet timestamping, available on Linux only, in precision time groups.\n- **Partition metadata:** Partition information that instances in a partition placement group can access as instance metadata.\n\n## Key Comparisons\n\n- **Cluster vs Spread:** Cluster maximizes network performance inside one AZ but all instances fail if the AZ fails; Spread minimizes simultaneous failure by using distinct hardware, capped at 7 instances per AZ.\n- **Spread vs Partition:** Spread isolates every individual instance (limit 7 per AZ), while Partition isolates groups of instances by rack and scales to hundreds of instances.\n- **Partition vs Cluster:** Both are low-latency-friendly AZ-level placements, but Partition sacrifices close packing for rack isolation, while Cluster sacrifices failure isolation for 10 Gbps low latency.\n- **Cluster vs Precision time:** Cluster addresses latency and bandwidth; precision time addresses clock accuracy (enhanced Time Sync, PTP) not throughput.\n- **Enhanced Time Sync vs standard NTP:** The precision time group's enhanced Amazon Time Sync Service is more accurate than standard NTP, and it is paired with a Linux-only PTP hardware clock.\n\n## Common Misunderstandings\n\n- Spread groups are not unlimited across AZs — the cap is 7 instances per AZ per group, but the group itself can span AZs.\n- Partition is not the same as Spread: isolation is at rack/partition level, so a partition failure impacts all the instances in that partition.\n- Cluster placement groups are not highly available — they deliberately concentrate instances in one AZ.\n- Precision time is not about low network latency; it is about accurate time sources and timestamping.\n- A partition placement group is not limited to a single AZ — it can span multiple AZs within the same Region.\n\n## Mental Models\n\n- Cluster = one tightly packed rack room in one building: fast, but one fire takes everything.\n- Spread = each instance in its own separate building: maximum isolation, but only 7 per AZ.\n- Partition = several separate rack rooms: losing one room hurts that room only, not the others.\n- Precision time = a placement choice about clock accuracy, like giving instances a certified atomic watch.\n- Think of the placement strategy as deciding whether you are optimizing for speed, per-instance isolation, or failure-domain grouping.\n\n## Exceptions & Edge Cases\n\n- Cluster's 10 Gbps figure applies between instances with Enhanced Networking enabled; Enhanced Networking is recommended, not automatic.\n- Partition group spanning is limited to multiple AZs in the same Region.\n- Partition metadata is available to instances inside the placement group as instance metadata, enabling distributed applications to be rack-aware.\n- PTP hardware clock support exists only on Linux instances.\n- Each placement group gets exactly one strategy at creation — you cannot mix strategies inside a group.\n\n## When to Use Which\n\n- Big Data job that must complete fast, or an application needing extremely low latency and high network throughput → **Cluster placement group**\n- Maximum high availability where each instance must be isolated from failures of the others → **Spread placement group**\n- HDFS, HBase, Cassandra or Kafka needing rack-level isolation across hundreds of instances → **Partition placement group**\n- Distributed database or financial workload needing accurate timestamps and event ordering → **Precision time placement group**\n- Workload must survive a single AZ failure → **Spread or partition group (both can span AZs), not cluster**\n\n## Patterns to Recognize\n\n- \"10 Gbps between instances\", \"extremely low latency\", \"single AZ\" → **Cluster placement group**\n- \"each instance isolated from failure of the others\", \"maximize high availability\", \"limited number of critical instances\" → **Spread placement group**\n- \"rack-aware\", \"HDFS/Cassandra/Kafka\", \"hundreds of instances\", \"partition failure affects only that partition\" → **Partition placement group**\n- \"accurate timestamps\", \"event ordering\", \"financial timestamping\", \"PTP\" → **Precision time placement group**\n- \"if the AZ fails all instances fail\" → **Cluster placement group's known trade-off**\n\n## Exam Traps\n\n- “Cluster placement groups are the answer when the question demands both low latency and AZ-failure resilience.” — Cluster is single-AZ; AZ failure fails every instance. Low-latency plus HA is not achievable with one cluster group.\n- “Spread groups can hold unlimited instances because they span AZs.” — The limit is 7 instances per AZ per placement group; spanning AZs does not remove the per-AZ cap.\n- “Partition groups are limited to a single AZ like cluster groups.” — Partition groups can span multiple AZs in the same Region, with up to 7 partitions per AZ and hundreds of instances.\n- “Precision time groups are the choice for high-throughput networking.” — Precision time is about clock accuracy; low latency and throughput are cluster territory.\n- “Partition isolation means a failure hits only one instance.” — A partition failure can affect many EC2 instances — but it will not affect other partitions.\n\n## Beyond the Source (tutor knowledge)\n\n- Placement groups do not by themselves guarantee instance-type or capacity availability; capacity reservations or launch templates are separate considerations.\n- Cluster groups are commonly paired with other low-latency features (for example, EFA networking on supported instance types), but the source only cites Enhanced Networking and 10 Gbps.",
+        "keyPoints": [
+          "Cluster: instances are in a single Availability Zone; if the AZ fails, all instances in the group fail at the same time.",
+          "Cluster: up to 10 Gbps bandwidth between instances with Enhanced Networking enabled (recommended).",
+          "Spread: maximum 7 instances per group per Availability Zone.",
+          "Spread: instances sit on different physical hardware and the group can span Availability Zones.",
+          "Partition: up to 7 partitions per AZ, and a group can span multiple AZs in the same Region.",
+          "Partition: scales to hundreds of EC2 instances per group.",
+          "Partition: a partition failure can affect many EC2 instances but will not affect other partitions.",
+          "Partition instances can read their partition information as instance metadata.",
+          "Precision time: PTP hardware clock and hardware packet timestamping are Linux only.",
+          "When you create a placement group you must specify exactly one strategy."
+        ],
+        "supplement": "- Placement groups do not by themselves guarantee instance-type or capacity availability; capacity reservations or launch templates are separate considerations.\n- Cluster groups are commonly paired with other low-latency features (for example, EFA networking on supported instance types), but the source only cites Enhanced Networking and 10 Gbps.",
+        "cards": [
+          {
+            "id": "7668ee60-0b78-44c5-b44e-e4bef281d02a",
+            "question": "What is a placement group used for?",
+            "answer": "Controlling the EC2 instance placement strategy",
+            "group": "Placement group strategies overview",
+            "keyTopic": "Placement group strategies overview",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::placement-group-strategies-overview"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "acc7da4f-eeaa-4fd3-b982-9db519c3cf0b",
+            "question": "How many strategies must you specify when creating a placement group?",
+            "answer": "Exactly one",
+            "group": "Placement group strategies overview",
+            "keyTopic": "Placement group strategies overview",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::placement-group-strategies-overview"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "778dff0e-35d7-4899-bae1-3d6461a0ea54",
+            "question": "Name the four placement group strategies.",
+            "answer": "Cluster\nSpread\nPartition\nPrecision time",
+            "group": "Placement group strategies overview",
+            "keyTopic": "Placement group strategies overview",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::placement-group-strategies-overview"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "99369ab7-7c28-474b-b8b3-15fea140438d",
+            "question": "How many Availability Zones does a cluster placement group use?",
+            "answer": "A single Availability Zone",
+            "group": "Cluster placement group",
+            "keyTopic": "Cluster: single AZ, 10 Gbps Enhanced Networking",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::cluster-single-az-10-gbps-enhanced-networking"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "4a5b3e0a-6fd8-48c4-adb8-73b846d801e2",
+            "question": "What bandwidth can cluster placement group instances achieve with Enhanced Networking enabled?",
+            "answer": "Up to 10 Gbps between instances",
+            "group": "Cluster placement group",
+            "keyTopic": "Cluster: single AZ, 10 Gbps Enhanced Networking",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::cluster-single-az-10-gbps-enhanced-networking"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "75cd16b6-ba6b-4240-b0df-5e9d4cf5129c",
+            "question": "Which networking option is recommended for cluster placement groups?",
+            "answer": "Enhanced Networking",
+            "group": "Cluster placement group",
+            "keyTopic": "Cluster: single AZ, 10 Gbps Enhanced Networking",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::cluster-single-az-10-gbps-enhanced-networking"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "be24c547-6372-47c4-8c7b-a51ee9328ab5",
+            "question": "Which strategy fits a Big Data job that must complete fast with extremely low latency?",
+            "answer": "Cluster placement group",
+            "group": "Cluster placement group",
+            "keyTopic": "Cluster: single AZ, 10 Gbps Enhanced Networking",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::cluster-single-az-10-gbps-enhanced-networking"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "6fddd695-9d49-4ae6-8c90-c70e7481f99d",
+            "question": "Which placement group is better for AZ-failure resilience, cluster or spread?",
+            "answer": "Spread",
+            "group": "Cluster placement group",
+            "keyTopic": "Cluster risk: AZ failure fails all instances",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::cluster-risk-az-failure-fails-all-instances"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f3d539b0-eb28-4e64-9e46-ce4c96b4c13f",
+            "question": "What happens to cluster placement group instances if the AZ fails?",
+            "answer": "All instances fail at the same time",
+            "group": "Cluster placement group",
+            "keyTopic": "Cluster risk: AZ failure fails all instances",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::cluster-risk-az-failure-fails-all-instances"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "8d7c304c-2a27-483c-816e-dd97dd7f4589",
+            "question": "Which placement group is NOT highly available because all instances are in one AZ?",
+            "answer": "Cluster",
+            "group": "Cluster placement group",
+            "keyTopic": "Cluster risk: AZ failure fails all instances",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::cluster-risk-az-failure-fails-all-instances"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "e39cdb85-7626-42ed-9fe4-ce67e11e8ab9",
+            "question": "What is the maximum number of spread placement group instances per AZ?",
+            "answer": "7 instances per AZ per placement group",
+            "group": "Spread placement group",
+            "keyTopic": "Spread: max 7 instances per AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::spread-max-7-instances-per-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "774dbf10-8acf-4c69-8f2a-fe6b664a07db",
+            "question": "Does spanning Availability Zones remove the spread group per-AZ instance cap?",
+            "answer": "No; the cap stays at 7 per AZ",
+            "group": "Spread placement group",
+            "keyTopic": "Spread: max 7 instances per AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::spread-max-7-instances-per-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d8c9adf7-0403-4134-9f9b-c38cd06f5187",
+            "question": "Do spread placement group instances share underlying physical hardware?",
+            "answer": "No, each is on different physical hardware",
+            "group": "Spread placement group",
+            "keyTopic": "Spread: distinct hardware, high availability",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::spread-distinct-hardware-high-availability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "5adc3e84-4c0f-4170-b13c-45567ddb7d5e",
+            "question": "Which placement group suits critical applications where each instance must be isolated from the failure of others?",
+            "answer": "Spread placement group",
+            "group": "Spread placement group",
+            "keyTopic": "Spread: distinct hardware, high availability",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::spread-distinct-hardware-high-availability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "57083056-b05e-4ef1-8673-8c6366c06cbc",
+            "question": "Can a spread placement group span Availability Zones?",
+            "answer": "Yes",
+            "group": "Spread placement group",
+            "keyTopic": "Spread: distinct hardware, high availability",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::spread-distinct-hardware-high-availability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "174f00b3-4d05-47f1-9d2c-3e1e51aa954b",
+            "question": "Which placement group reduces the risk of simultaneous failure across instances?",
+            "answer": "Spread",
+            "group": "Spread placement group",
+            "keyTopic": "Spread: distinct hardware, high availability",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::spread-distinct-hardware-high-availability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "0d82fe63-23b9-4bd0-8cc5-b2415df3de0f",
+            "question": "How many partitions can a partition placement group have per AZ?",
+            "answer": "Up to 7 partitions per AZ",
+            "group": "Partition placement group",
+            "keyTopic": "Partition: up to 7 partitions per AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-up-to-7-partitions-per-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "feff0f19-a6df-43a7-8311-e6e455182a48",
+            "question": "Can a partition placement group span multiple Availability Zones?",
+            "answer": "Yes, multiple AZs in the same Region",
+            "group": "Partition placement group",
+            "keyTopic": "Partition: up to 7 partitions per AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-up-to-7-partitions-per-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c70d185f-7c2c-4aa8-9230-5db906ab9420",
+            "question": "How many EC2 instances can a partition placement group scale to?",
+            "answer": "Hundreds of instances per group",
+            "group": "Partition placement group",
+            "keyTopic": "Partition: hundreds of instances, rack isolation",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-hundreds-of-instances-rack-isolation"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "4ccae1c3-40f8-44ee-bf67-dd542ccf4b1e",
+            "question": "Do instances in one partition share racks with instances in another partition?",
+            "answer": "No, partitions use different sets of racks",
+            "group": "Partition placement group",
+            "keyTopic": "Partition: hundreds of instances, rack isolation",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-hundreds-of-instances-rack-isolation"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a5de2cf8-aa3b-4127-a17c-160824c3c5ae",
+            "question": "If one partition fails, which instances are affected?",
+            "answer": "Many instances in that partition, but no other partitions",
+            "group": "Partition placement group",
+            "keyTopic": "Partition: hundreds of instances, rack isolation",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-hundreds-of-instances-rack-isolation"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "2cc2de92-9b79-4a4f-8dd0-9c7f340594f0",
+            "question": "Which placement group isolates failures at rack/partition level rather than per instance?",
+            "answer": "Partition",
+            "group": "Partition placement group",
+            "keyTopic": "Partition: hundreds of instances, rack isolation",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-hundreds-of-instances-rack-isolation"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ef681719-9b1b-48de-b204-22690b74a4d6",
+            "question": "How do partition placement group instances obtain their partition information?",
+            "answer": "As instance metadata",
+            "group": "Partition placement group",
+            "keyTopic": "Partition metadata access; HDFS, Cassandra, Kafka",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-metadata-access-hdfs-cassandra-kafka"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1f09183e-64ee-42c2-88a6-efebacad7c68",
+            "question": "Which placement group lets instances read partition info from metadata to be rack-aware?",
+            "answer": "Partition placement group",
+            "group": "Partition placement group",
+            "keyTopic": "Partition metadata access; HDFS, Cassandra, Kafka",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-metadata-access-hdfs-cassandra-kafka"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "04150363-83c4-45cd-9a4b-3a057a741c30",
+            "question": "Name the workloads the source lists for partition placement groups.",
+            "answer": "HDFS\nHBase\nCassandra\nKafka",
+            "group": "Partition placement group",
+            "keyTopic": "Partition metadata access; HDFS, Cassandra, Kafka",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-metadata-access-hdfs-cassandra-kafka"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "3a2e48a5-845a-47b2-9f23-d8e8b7daaa24",
+            "question": "A Cassandra cluster needs rack awareness across hundreds of instances. Which strategy?",
+            "answer": "Partition placement group",
+            "group": "Partition placement group",
+            "keyTopic": "Partition metadata access; HDFS, Cassandra, Kafka",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-metadata-access-hdfs-cassandra-kafka"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "84615b75-6474-450c-bc9b-5a0ef22599a2",
+            "question": "Which time service does the precision time placement group give enhanced access to?",
+            "answer": "Amazon Time Sync Service (more accurate than standard NTP)",
+            "group": "Precision time placement group",
+            "keyTopic": "Precision time: Amazon Time Sync, PTP clock (Linux)",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::precision-time-amazon-time-sync-ptp-clock-linux"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7fdcd771-0bb7-4b46-bd07-c08594af8fa9",
+            "question": "On which operating system is the PTP hardware clock available?",
+            "answer": "Linux only",
+            "group": "Precision time placement group",
+            "keyTopic": "Precision time: Amazon Time Sync, PTP clock (Linux)",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::precision-time-amazon-time-sync-ptp-clock-linux"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "05916ae2-e532-4c11-ab0f-ffd89dfc45d5",
+            "question": "What timestamping capability comes with the PTP hardware clock?",
+            "answer": "Hardware packet timestamping",
+            "group": "Precision time placement group",
+            "keyTopic": "Precision time: Amazon Time Sync, PTP clock (Linux)",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::precision-time-amazon-time-sync-ptp-clock-linux"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "0a76fd5c-2424-4114-bd9b-0f49a94237cd",
+            "question": "Is precision time placement about network throughput or clock accuracy?",
+            "answer": "Clock accuracy",
+            "group": "Precision time placement group",
+            "keyTopic": "Precision time: Amazon Time Sync, PTP clock (Linux)",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::precision-time-amazon-time-sync-ptp-clock-linux"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "e2999797-57ba-4d43-8c7a-31d6e429b8f1",
+            "question": "Which placement group is used for financial timestamping and event ordering?",
+            "answer": "Precision time placement group",
+            "group": "Precision time placement group",
+            "keyTopic": "Precision time use cases: financial timestamping",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::precision-time-use-cases-financial-timestamping"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "620cd22c-d5e5-4b79-b48c-44fb712b822d",
+            "question": "Name the use cases listed for precision time placement groups.",
+            "answer": "Distributed databases\nFinancial timestamping\nEvent ordering",
+            "group": "Precision time placement group",
+            "keyTopic": "Precision time use cases: financial timestamping",
+            "origin": "source",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::precision-time-use-cases-financial-timestamping"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:24:07.516Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A genomics team runs a tightly coupled batch simulation that exchanges messages between nodes constantly and must finish in the shortest possible time. The nodes must be packed as close together as possible with up to 10 Gbps between instances. Which placement strategy should you choose?",
+            "options": [
+              "Spread placement group across three Availability Zones",
+              "Cluster placement group with Enhanced Networking enabled",
+              "Partition placement group with seven partitions",
+              "Precision time placement group"
+            ],
+            "correctIndex": 1,
+            "explanation": "Cluster packs instances together in a single AZ and gives up to 10 Gbps between instances when Enhanced Networking is enabled, which is the recommended low-latency option. Spread is capped at 7 instances per AZ and isolates instances on separate hardware rather than packing them; Partition separates instances by rack set rather than packing them for bandwidth; Precision time addresses clock accuracy, not network throughput.",
+            "keyTopic": "Cluster: single AZ, 10 Gbps Enhanced Networking",
+            "kind": "scenario",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::cluster-single-az-10-gbps-enhanced-networking"
+            ]
+          },
+          {
+            "question": "A compliance officer asks why you refuse to host a customer-facing multi-AZ application on a single cluster placement group, even though latency requirements are aggressive. What is the correct reason?",
+            "options": [
+              "Cluster groups are limited to 7 instances per Availability Zone",
+              "A cluster group lives in one AZ, so an AZ failure fails every instance in it",
+              "Cluster groups cannot use instances larger than a medium size",
+              "A cluster group's instances cannot be reached over the internet"
+            ],
+            "correctIndex": 1,
+            "explanation": "The cluster strategy concentrates instances in a single Availability Zone, so an AZ failure takes down all of them at once — the documented downside of cluster. The 7-per-AZ limit belongs to spread groups; placement groups do not impose a size cap like medium instances; and reaching instances over the internet depends on networking, not the placement strategy.",
+            "keyTopic": "Cluster risk: AZ failure fails all instances",
+            "kind": "concept",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::cluster-risk-az-failure-fails-all-instances"
+            ]
+          },
+          {
+            "question": "An application has five critical EC2 instances that must each be isolated from the failure of the others, and the design should survive the loss of a single Availability Zone. The instances are spread across three AZs. Which strategy meets these requirements?",
+            "options": [
+              "Cluster placement group in one Availability Zone",
+              "Spread placement group, with instances on distinct physical hardware",
+              "Partition placement group with one partition per AZ",
+              "Precision time placement group spanning the AZs"
+            ],
+            "correctIndex": 1,
+            "explanation": "Spread places each instance on different physical hardware, can span AZs, and is intended for critical instances that must be isolated from each other's failures. Cluster keeps everything in one AZ and fails together; Partition isolates groups of instances by rack set rather than per-instance and offers no per-instance isolation guarantee; Precision time is about clock accuracy, not failure isolation.",
+            "keyTopic": "Spread: distinct hardware, high availability",
+            "kind": "scenario",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::spread-distinct-hardware-high-availability"
+            ]
+          },
+          {
+            "question": "A team needs to launch 10 instances per Availability Zone with per-instance failure isolation across two AZs, for 20 instances total. What is the outcome when they use a spread placement group?",
+            "options": [
+              "It works, because spanning AZs removes the per-AZ instance cap",
+              "It works, because spread groups support hundreds of instances",
+              "It fails, because a spread group allows a maximum of 7 instances per AZ per group",
+              "It fails, because spread groups cannot span multiple Availability Zones"
+            ],
+            "correctIndex": 2,
+            "explanation": "The documented spread limit is 7 instances per group per AZ; spanning AZs does not raise that per-AZ cap, so 10 per AZ is not possible in a spread group. Options claiming the cap disappears or that spread reaches hundreds of instances misstate the limit, and the claim that spread cannot span AZs is the opposite of the source, which says spread can span AZs.",
+            "keyTopic": "Spread: max 7 instances per AZ",
+            "kind": "scenario",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::spread-max-7-instances-per-az"
+            ]
+          },
+          {
+            "question": "A team runs Apache Cassandra on several hundred EC2 instances and needs the nodes to be aware of which rack-set segment they belong to so replication can avoid correlated failure. Which strategy fits and what limit applies per AZ?",
+            "options": [
+              "Partition placement group, with up to 7 partitions per AZ",
+              "Spread placement group, with up to 7 instances per AZ",
+              "Cluster placement group, with 10 Gbps between instances",
+              "Precision time placement group, with PTP on Linux"
+            ],
+            "correctIndex": 0,
+            "explanation": "Partition groups scale to hundreds of instances, isolate instances by rack set across partitions, and are the documented fit for Cassandra/Kafka/HDFS-style workloads; the limit is up to 7 partitions per AZ. Spread caps out at 7 instances per AZ, far below hundreds; Cluster optimizes bandwidth within one AZ and offers no rack isolation; Precision time concerns accurate time sources, not rack isolation.",
+            "keyTopic": "Partition: up to 7 partitions per AZ",
+            "kind": "scenario",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-up-to-7-partitions-per-az"
+            ]
+          },
+          {
+            "question": "How do instances in a partition placement group learn which partition they belong to, so a distributed application can be rack-aware?",
+            "options": [
+              "They query an Amazon Route 53 private hosted zone for the partition ID",
+              "They read the partition information as EC2 instance metadata",
+              "They call a placement group API that returns the rack set name",
+              "They inspect the subnet ID, which is unique per partition"
+            ],
+            "correctIndex": 1,
+            "explanation": "The source states that EC2 instances in a partition group get access to partition information as instance metadata, which is what makes applications rack-aware. Route 53 hosted zones, a placement group API for rack sets, and per-partition subnet IDs are not how partition information is exposed to the instance.",
+            "keyTopic": "Partition metadata access; HDFS, Cassandra, Kafka",
+            "kind": "concept",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-metadata-access-hdfs-cassandra-kafka"
+            ]
+          },
+          {
+            "question": "A data platform runs HDFS and Kafka across hundreds of EC2 instances and must limit the blast radius so that a hardware rack failure affects only the instances in that set, not the whole cluster. Which placement strategy should you select?",
+            "options": [
+              "Cluster, so all instances share the lowest-latency network path",
+              "Spread, so every instance sits on distinct physical hardware",
+              "Partition, so instances are isolated into rack sets that fail independently",
+              "Precision time, so event ordering is preserved during the failure"
+            ],
+            "correctIndex": 2,
+            "explanation": "Partition spreads instances across partitions backed by different rack sets, so a partition failure can affect many instances in that partition but not the other partitions — exactly the requested blast-radius limit, with HDFS/Kafka as documented use cases. Cluster concentrates everything and fails together; Spread is capped at 7 instances per AZ and cannot host hundreds; Precision time is about clock accuracy, not failure domains.",
+            "keyTopic": "Partition: hundreds of instances, rack isolation",
+            "kind": "scenario",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::partition-hundreds-of-instances-rack-isolation"
+            ]
+          },
+          {
+            "question": "A trading firm must record the order in which financial events occur and needs the most accurate time source available on its EC2 instances, including hardware timestamping. Which choice matches the source?",
+            "options": [
+              "Precision time placement group using enhanced Amazon Time Sync and a PTP hardware clock on Linux",
+              "Precision time placement group using standard NTP and a PTP hardware clock on Windows",
+              "Cluster placement group using Enhanced Networking for tighter timestamp correlation",
+              "Spread placement group across AZs with Amazon Time Sync on each instance"
+            ],
+            "correctIndex": 0,
+            "explanation": "Precision time groups give direct access to high-precision time sources: enhanced Amazon Time Sync Service (more accurate than standard NTP) plus a PTP hardware clock with hardware packet timestamping, which is Linux only. Standard NTP plus Windows fails both the accuracy and the Linux-only constraint; Cluster solves bandwidth, not clock accuracy; and Spread does not provide the enhanced time sources or PTP clock.",
+            "keyTopic": "Precision time: Amazon Time Sync, PTP clock (Linux)",
+            "kind": "scenario",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::precision-time-amazon-time-sync-ptp-clock-linux"
+            ]
+          },
+          {
+            "question": "A workload needs accurate timestamps and event ordering for financial records, but the network throughput requirement is modest. Why is the precision time strategy the right answer rather than cluster?",
+            "options": [
+              "Because precision time gives 10 Gbps between instances and cluster does not",
+              "Because precision time addresses clock accuracy and timestamping, while cluster optimizes latency and bandwidth",
+              "Because precision time spans multiple Regions, while cluster is regional",
+              "Because precision time removes the 7-instance-per-AZ limit"
+            ],
+            "correctIndex": 1,
+            "explanation": "Precision time is a placement choice about access to high-precision time sources and PTP hardware timestamping, which is what financial timestamping and event ordering require. The 10 Gbps figure is the cluster benefit, not precision time's; neither strategy is described as spanning multiple Regions; and the 7-per-AZ cap is a spread limit that precision time does not address.",
+            "keyTopic": "Precision time use cases: financial timestamping",
+            "kind": "comparison",
+            "objectiveIds": [
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32::precision-time-use-cases-financial-timestamping"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v3",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T13:23:59.216Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 85,
+            "pageEnd": 89,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 7,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "EC2 placement groups give you control over how instances are physically placed on AWS hardware, letting you trade latency against failure isolation. The section covers four strategies — cluster, spread, partition and precision time — each with a distinct limit and risk profile. For the exam, questions usually describe a workload requirement (low latency, high availability, rack-level isolation, accurate time) and expect you to pick the strategy and know its constraint numbers.",
+        "coreConcepts": [
+          {
+            "term": "Placement group",
+            "definition": "A logical grouping of EC2 instances that defines the placement strategy applied when the instances are launched."
+          },
+          {
+            "term": "Cluster placement group",
+            "definition": "Packs instances close together into a low-latency group within a single Availability Zone."
+          },
+          {
+            "term": "Spread placement group",
+            "definition": "Places instances on distinct underlying physical hardware, reducing the risk of simultaneous failure, and can span Availability Zones."
+          },
+          {
+            "term": "Partition placement group",
+            "definition": "Spreads instances across partitions that rely on different sets of racks within an AZ; a group can span multiple AZs in the same Region."
+          },
+          {
+            "term": "Partition",
+            "definition": "An isolated rack-set segment of a partition placement group; instances in one partition do not share racks with instances in other partitions."
+          },
+          {
+            "term": "Precision time placement group",
+            "definition": "Places instances on hardware with direct access to high-precision time sources such as enhanced Amazon Time Sync and a PTP hardware clock."
+          },
+          {
+            "term": "Enhanced Networking",
+            "definition": "Networking option recommended for cluster placement groups; enables up to 10 Gbps bandwidth between instances."
+          },
+          {
+            "term": "Amazon Time Sync Service",
+            "definition": "AWS time source; in precision time groups the enhanced version is more accurate than standard NTP."
+          },
+          {
+            "term": "PTP hardware clock",
+            "definition": "Precision Time Protocol hardware clock with hardware packet timestamping, available on Linux only, in precision time groups."
+          },
+          {
+            "term": "Partition metadata",
+            "definition": "Partition information that instances in a partition placement group can access as instance metadata."
+          }
+        ],
+        "mustRemember": [
+          "Cluster: instances are in a single Availability Zone; if the AZ fails, all instances in the group fail at the same time.",
+          "Cluster: up to 10 Gbps bandwidth between instances with Enhanced Networking enabled (recommended).",
+          "Spread: maximum 7 instances per group per Availability Zone.",
+          "Spread: instances sit on different physical hardware and the group can span Availability Zones.",
+          "Partition: up to 7 partitions per AZ, and a group can span multiple AZs in the same Region.",
+          "Partition: scales to hundreds of EC2 instances per group.",
+          "Partition: a partition failure can affect many EC2 instances but will not affect other partitions.",
+          "Partition instances can read their partition information as instance metadata.",
+          "Precision time: PTP hardware clock and hardware packet timestamping are Linux only.",
+          "When you create a placement group you must specify exactly one strategy."
+        ],
+        "keyComparisons": [
+          {
+            "items": "Cluster vs Spread",
+            "difference": "Cluster maximizes network performance inside one AZ but all instances fail if the AZ fails; Spread minimizes simultaneous failure by using distinct hardware, capped at 7 instances per AZ."
+          },
+          {
+            "items": "Spread vs Partition",
+            "difference": "Spread isolates every individual instance (limit 7 per AZ), while Partition isolates groups of instances by rack and scales to hundreds of instances."
+          },
+          {
+            "items": "Partition vs Cluster",
+            "difference": "Both are low-latency-friendly AZ-level placements, but Partition sacrifices close packing for rack isolation, while Cluster sacrifices failure isolation for 10 Gbps low latency."
+          },
+          {
+            "items": "Cluster vs Precision time",
+            "difference": "Cluster addresses latency and bandwidth; precision time addresses clock accuracy (enhanced Time Sync, PTP) not throughput."
+          },
+          {
+            "items": "Enhanced Time Sync vs standard NTP",
+            "difference": "The precision time group's enhanced Amazon Time Sync Service is more accurate than standard NTP, and it is paired with a Linux-only PTP hardware clock."
+          }
+        ],
+        "commonMisunderstandings": [
+          "Spread groups are not unlimited across AZs — the cap is 7 instances per AZ per group, but the group itself can span AZs.",
+          "Partition is not the same as Spread: isolation is at rack/partition level, so a partition failure impacts all the instances in that partition.",
+          "Cluster placement groups are not highly available — they deliberately concentrate instances in one AZ.",
+          "Precision time is not about low network latency; it is about accurate time sources and timestamping.",
+          "A partition placement group is not limited to a single AZ — it can span multiple AZs within the same Region."
+        ],
+        "mentalModels": [
+          "Cluster = one tightly packed rack room in one building: fast, but one fire takes everything.",
+          "Spread = each instance in its own separate building: maximum isolation, but only 7 per AZ.",
+          "Partition = several separate rack rooms: losing one room hurts that room only, not the others.",
+          "Precision time = a placement choice about clock accuracy, like giving instances a certified atomic watch.",
+          "Think of the placement strategy as deciding whether you are optimizing for speed, per-instance isolation, or failure-domain grouping."
+        ],
+        "edgeCases": [
+          "Cluster's 10 Gbps figure applies between instances with Enhanced Networking enabled; Enhanced Networking is recommended, not automatic.",
+          "Partition group spanning is limited to multiple AZs in the same Region.",
+          "Partition metadata is available to instances inside the placement group as instance metadata, enabling distributed applications to be rack-aware.",
+          "PTP hardware clock support exists only on Linux instances.",
+          "Each placement group gets exactly one strategy at creation — you cannot mix strategies inside a group."
+        ],
+        "whenToUse": [
+          {
+            "situation": "Big Data job that must complete fast, or an application needing extremely low latency and high network throughput",
+            "use": "Cluster placement group"
+          },
+          {
+            "situation": "Maximum high availability where each instance must be isolated from failures of the others",
+            "use": "Spread placement group"
+          },
+          {
+            "situation": "HDFS, HBase, Cassandra or Kafka needing rack-level isolation across hundreds of instances",
+            "use": "Partition placement group"
+          },
+          {
+            "situation": "Distributed database or financial workload needing accurate timestamps and event ordering",
+            "use": "Precision time placement group"
+          },
+          {
+            "situation": "Workload must survive a single AZ failure",
+            "use": "Spread or partition group (both can span AZs), not cluster"
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "\"10 Gbps between instances\", \"extremely low latency\", \"single AZ\"",
+            "indicates": "Cluster placement group"
+          },
+          {
+            "signal": "\"each instance isolated from failure of the others\", \"maximize high availability\", \"limited number of critical instances\"",
+            "indicates": "Spread placement group"
+          },
+          {
+            "signal": "\"rack-aware\", \"HDFS/Cassandra/Kafka\", \"hundreds of instances\", \"partition failure affects only that partition\"",
+            "indicates": "Partition placement group"
+          },
+          {
+            "signal": "\"accurate timestamps\", \"event ordering\", \"financial timestamping\", \"PTP\"",
+            "indicates": "Precision time placement group"
+          },
+          {
+            "signal": "\"if the AZ fails all instances fail\"",
+            "indicates": "Cluster placement group's known trade-off"
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "Cluster placement groups are the answer when the question demands both low latency and AZ-failure resilience.",
+            "correction": "Cluster is single-AZ; AZ failure fails every instance. Low-latency plus HA is not achievable with one cluster group."
+          },
+          {
+            "trap": "Spread groups can hold unlimited instances because they span AZs.",
+            "correction": "The limit is 7 instances per AZ per placement group; spanning AZs does not remove the per-AZ cap."
+          },
+          {
+            "trap": "Partition groups are limited to a single AZ like cluster groups.",
+            "correction": "Partition groups can span multiple AZs in the same Region, with up to 7 partitions per AZ and hundreds of instances."
+          },
+          {
+            "trap": "Precision time groups are the choice for high-throughput networking.",
+            "correction": "Precision time is about clock accuracy; low latency and throughput are cluster territory."
+          },
+          {
+            "trap": "Partition isolation means a failure hits only one instance.",
+            "correction": "A partition failure can affect many EC2 instances — but it will not affect other partitions."
+          }
+        ],
+        "beyondSource": [
+          "Placement groups do not by themselves guarantee instance-type or capacity availability; capacity reservations or launch templates are separate considerations.",
+          "Cluster groups are commonly paired with other low-latency features (for example, EFA networking on supported instance types), but the source only cites Enhanced Networking and 10 Gbps."
+        ]
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "b19c8b1d-d471-4791-b265-254e5ebed775",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T13:23:59.216Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
+          "revision": 3
+        },
+        "flashcards": {
+          "requestId": "16de4b56-13f7-4c09-98a8-84880248895c",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T13:24:07.516Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
+          "revision": 3
+        },
+        "quiz": {
+          "requestId": "e94606d0-5f14-4dbb-a68c-d3e9899a633f",
+          "promptVersion": 3,
+          "generatedAt": "2026-10-24T13:24:20.203Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
+          "revision": 3
+        }
+      }
     },
     {
       "id": "11e68d60-a3e8-4910-926e-e5b90c8522b4",
@@ -34622,9 +35724,154 @@
             }
           }
         ],
-        "quiz": [],
+        "quiz": [
+          {
+            "question": "A team runs a small inventory application on a t2.micro instance. It needs more processing capacity, but the code is a single-tier monolith with no shared state layer. Which action best describes scaling this application vertically?",
+            "options": [
+              "Add more t2.micro instances behind a Load Balancer and distribute traffic across them.",
+              "Resize the instance to a larger family, for example from t2.micro to t2.large.",
+              "Spread the existing t2.micro instance across two Availability Zones for resilience.",
+              "Place an Auto Scaling Group in front of the instance to add capacity on demand."
+            ],
+            "correctIndex": 1,
+            "explanation": "Vertical scaling means increasing the size of the instance, so moving from t2.micro to t2.large is the classic scale up. Adding instances behind a Load Balancer is horizontal scaling, not vertical. Spreading across two AZs is high availability, which does not increase per-instance capacity. An Auto Scaling Group changes instance count, which is horizontal, not vertical.",
+            "keyTopic": "EC2 vertical scaling (t2.nano to u-12tb1.metal)",
+            "kind": "scenario",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::ec2-vertical-scaling-t2-nano-to-u-12tb1-metal"
+            ]
+          },
+          {
+            "question": "A startup expects sudden traffic spikes for a web application. It wants to add and remove compute capacity automatically as demand changes. Which property of horizontal scalability does this describe?",
+            "options": [
+              "Elasticity: increase and decrease the number of instances to match load.",
+              "High availability: run the application in at least two Availability Zones.",
+              "Passive failover: keep a standby copy ready for failover.",
+              "Vertical scaling: replace the instance with a larger instance type."
+            ],
+            "correctIndex": 0,
+            "explanation": "Horizontal scalability is described in the source as elasticity, i.e. scaling out and in the number of instances. High availability is a different goal about surviving data-center loss across two AZs. Passive failover is a standby HA pattern such as RDS Multi AZ. Vertical scaling changes instance size, not instance count.",
+            "keyTopic": "Horizontal scalability as elasticity",
+            "kind": "concept",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::horizontal-scalability-as-elasticity"
+            ]
+          },
+          {
+            "question": "An application is being redesigned to run on many EC2 instances that share session state through a central store. Which architectural consequence should the team expect from adopting horizontal scaling?",
+            "options": [
+              "The application becomes a distributed system and must tolerate partial failures.",
+              "The application can rely on one large instance and avoid coordinating nodes.",
+              "The application no longer needs a Load Balancer to route requests.",
+              "The application is guaranteed high availability without any AZ design."
+            ],
+            "correctIndex": 0,
+            "explanation": "Horizontal scaling implies distributed systems, so the application must be designed to coordinate across multiple systems. Relying on one large instance is vertical scaling, the opposite approach. A Load Balancer is still needed to distribute traffic. Horizontal scaling alone does not give high availability unless the instances are placed across multiple AZs.",
+            "keyTopic": "Distributed systems",
+            "kind": "comparison",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::distributed-systems"
+            ]
+          },
+          {
+            "question": "A company must ensure its application survives the loss of a single AWS data center. What is the minimum requirement for high availability in this section?",
+            "options": [
+              "Run the application in at least two Availability Zones.",
+              "Run the application on at least two instance sizes.",
+              "Run the application with an Auto Scaling Group in one AZ.",
+              "Run the application with a Load Balancer in one AZ."
+            ],
+            "correctIndex": 0,
+            "explanation": "High availability means running the application in at least two data centers, which are Availability Zones, so losing one does not stop the service. Using two instance sizes is vertical sizing, not HA. An ASG or Load Balancer inside a single AZ still fails if that AZ is lost.",
+            "keyTopic": "High availability across AZs",
+            "kind": "concept",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::high-availability-across-azs"
+            ]
+          },
+          {
+            "question": "A relational workload on Amazon RDS requires resilience against the failure of its Availability Zone but the application team cannot modify the application. Which design fits the section's example of passive high availability?",
+            "options": [
+              "Deploy a database layer across several EC2 instances in multiple AZs and scale out.",
+              "Use Amazon RDS Multi AZ so a standby copy is available for failover.",
+              "Use an Auto Scaling Group to scale the database instances out and in.",
+              "Replace the database with a cache in a single AZ to reduce failure surface."
+            ],
+            "correctIndex": 1,
+            "explanation": "RDS Multi AZ is the section's named example of passive high availability, where a standby copy exists for failover without app changes. Running several EC2 database instances is active HA and would require application changes. An ASG is for EC2 horizontal scaling, not the managed database standby pattern. A single-AZ cache reduces resilience instead of improving it.",
+            "keyTopic": "Passive high availability (RDS Multi AZ)",
+            "kind": "scenario",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::passive-high-availability-rds-multi-az"
+            ]
+          },
+          {
+            "question": "A web application runs several identical EC2 instances in multiple Availability Zones and all of them serve traffic simultaneously. Which type of high availability does this represent?",
+            "options": [
+              "Passive high availability, because a standby is ready for failover.",
+              "Vertical high availability, because instance sizes are increased.",
+              "Active high availability, because the workload runs on multiple instances across AZs.",
+              "Elasticity, because instances are removed when traffic decreases."
+            ],
+            "correctIndex": 2,
+            "explanation": "Active high availability means the workload is actively served by several instances across AZs, as with horizontal scaling. Passive HA keeps a standby rather than serving traffic. Vertical scaling changes instance size and is not an HA type. Elasticity describes scaling out and in, not the HA posture itself.",
+            "keyTopic": "Active high availability",
+            "kind": "concept",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::active-high-availability"
+            ]
+          },
+          {
+            "question": "A team already has an Auto Scaling Group and Load Balancer for a web tier. It must additionally survive the loss of one Availability Zone without changing the application. What should it do?",
+            "options": [
+              "Increase the maximum instance size in the Auto Scaling Group launch configuration.",
+              "Move the Auto Scaling Group into a single AZ and increase desired capacity.",
+              "Keep the Load Balancer in one AZ and rely on the Auto Scaling Group for failover.",
+              "Configure the Auto Scaling Group and the Load Balancer to span multiple AZs."
+            ],
+            "correctIndex": 3,
+            "explanation": "For EC2, high availability is achieved by running the same application across multiple AZs through an ASG multi AZ and a Load Balancer multi AZ. Increasing instance size is vertical scaling and does not protect against AZ loss. Confining the ASG to one AZ reduces HA. A single-AZ Load Balancer remains a single point of failure.",
+            "keyTopic": "Load balancer multi-AZ",
+            "kind": "scenario",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::load-balancer-multi-az"
+            ]
+          },
+          {
+            "question": "Which statement correctly distinguishes scaling out from scaling up in the context of EC2?",
+            "options": [
+              "Scaling out changes instance count via an ASG, while scaling up changes instance size.",
+              "Scaling out changes instance size, while scaling up changes instance count.",
+              "Scaling out adds AZs, while scaling up adds Load Balancers.",
+              "Scaling out and scaling up are both achieved by resizing the same instance."
+            ],
+            "correctIndex": 0,
+            "explanation": "Scale out and in refer to the number of instances and are handled by the Auto Scaling Group, while scale up and down refer to instance size. The reversed pairing is the trap. AZs are an HA concern, not what scaling out changes, and Load Balancers are added for traffic distribution. Scaling up does not add instances, so the two are not the same operation.",
+            "keyTopic": "ASG scale out and scale in",
+            "kind": "comparison",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::asg-scale-out-and-scale-in"
+            ]
+          },
+          {
+            "question": "An architect proposes handling all growth by vertically scaling a single EC2 instance from t2.nano up through larger families. Which constraint from the section makes this strategy unsuitable as the only long-term approach?",
+            "options": [
+              "Vertical scaling is only possible for RDS and ElastiCache, not for EC2.",
+              "There is usually a hardware limit to how far an instance can be vertically scaled.",
+              "Vertical scaling requires a distributed system, which this design lacks.",
+              "Vertical scaling requires a Load Balancer, which single instances cannot use."
+            ],
+            "correctIndex": 1,
+            "explanation": "The source states there is usually a limit to how much you can vertically scale, a hardware ceiling, so it cannot absorb unlimited growth. Vertical scaling is available for EC2 as well as RDS and ElastiCache. It is the typical choice for non-distributed systems, so it does not require a distributed design. A Load Balancer is not a prerequisite for vertical scaling.",
+            "keyTopic": "Vertical scalability",
+            "kind": "scenario",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::vertical-scalability"
+            ]
+          }
+        ],
         "provider": "copilot",
-        "model": "Tutor model · flashcards prompt v1",
+        "model": "Tutor model · quiz prompt v3",
         "authorship": "model",
         "generatedAt": "2026-10-24T13:07:52.779Z",
         "evidence": [
@@ -34840,6 +36087,14 @@
           "generatedAt": "2026-10-24T13:07:59.705Z",
           "model": "deepseek-chat",
           "familiarity": "new",
+          "revision": 3
+        },
+        "quiz": {
+          "requestId": "6f0157a2-bb78-4dfd-8fdc-a6bf14beb142",
+          "promptVersion": 3,
+          "generatedAt": "2026-10-24T13:22:12.358Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
           "revision": 3
         }
       }
@@ -35099,6 +36354,144 @@
       "cardId": "01f04b44-c94a-4d3c-9aee-d81ca291e76c",
       "sectionId": "c4e16720-595d-46c6-a53c-3142fa56a845",
       "date": "2026-10-24T11:49:50.061Z",
+      "rating": 4
+    },
+    {
+      "cardId": "8d4f0734-793a-406c-805e-004b80a8ec4b",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:32:41.647Z",
+      "rating": 3
+    },
+    {
+      "cardId": "4fcf33a2-b4ec-47c8-afb7-90a6bc780d3c",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:33:26.657Z",
+      "rating": 4
+    },
+    {
+      "cardId": "d7fa4347-69d1-4d05-bee5-f83cbc3eee62",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:34:50.389Z",
+      "rating": 3
+    },
+    {
+      "cardId": "e00878b6-de4b-47ea-9999-514d2265f56e",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:35:39.673Z",
+      "rating": 3
+    },
+    {
+      "cardId": "7ccb7ac2-73b5-49ff-8767-7b7190f81b90",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:38:07.258Z",
+      "rating": 3
+    },
+    {
+      "cardId": "a0e8be79-ba89-4e33-8171-ce099e405b6c",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:38:22.434Z",
+      "rating": 3
+    },
+    {
+      "cardId": "ea19dcbc-fe76-4a3c-b820-4e0ea0b9c4e9",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:39:04.462Z",
+      "rating": 3
+    },
+    {
+      "cardId": "31d065ff-6f1e-4fe0-9fc0-bc8ef618b8ec",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:39:11.075Z",
+      "rating": 4
+    },
+    {
+      "cardId": "374c6739-edd6-4048-a56e-a55e2d638713",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:39:17.889Z",
+      "rating": 4
+    },
+    {
+      "cardId": "52d0c893-b7e7-4e67-9865-d0734f1d69de",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:39:25.623Z",
+      "rating": 4
+    },
+    {
+      "cardId": "557b8fa3-a34a-4ebd-8fab-2e28442c0d8e",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:39:38.011Z",
+      "rating": 4
+    },
+    {
+      "cardId": "443753d2-35e0-4fca-a0b9-f5551fa38fdb",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:41:06.579Z",
+      "rating": 4
+    },
+    {
+      "cardId": "a5a3e85f-f131-4b40-a14e-811cd54ac82a",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:41:50.740Z",
+      "rating": 4
+    },
+    {
+      "cardId": "9c3050cf-5e15-415f-aac4-dd8bc95ad4c3",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:42:19.501Z",
+      "rating": 4
+    },
+    {
+      "cardId": "8d4f0734-793a-406c-805e-004b80a8ec4b",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:43:27.106Z",
+      "rating": 4
+    },
+    {
+      "cardId": "5643727b-9f2d-43d8-ba8a-9f48f8d6e335",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:44:03.483Z",
+      "rating": 4
+    },
+    {
+      "cardId": "71469102-c4c3-4fd3-9ada-5e53c0c87f3e",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:44:15.490Z",
+      "rating": 3
+    },
+    {
+      "cardId": "46e06bf1-92f9-4720-a930-3b31e4a485ab",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:44:27.643Z",
+      "rating": 3
+    },
+    {
+      "cardId": "d7fa4347-69d1-4d05-bee5-f83cbc3eee62",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:45:09.909Z",
+      "rating": 4
+    },
+    {
+      "cardId": "b004fd32-84a0-4f61-9526-b0eca0235839",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:45:29.991Z",
+      "rating": 2
+    },
+    {
+      "cardId": "e00878b6-de4b-47ea-9999-514d2265f56e",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:46:42.890Z",
+      "rating": 4
+    },
+    {
+      "cardId": "29a98c4e-0519-4d0e-ae97-efa125f63def",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:47:18.304Z",
+      "rating": 2
+    },
+    {
+      "cardId": "c638de60-d182-46c6-b7bc-fd2420f38973",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:47:28.722Z",
       "rating": 4
     }
   ],
@@ -37760,6 +39153,50 @@
         "At least half of the questions must be scenario-based."
       ],
       "completedAt": "2026-10-24T13:08:10.511Z"
+    },
+    {
+      "id": "6f0157a2-bb78-4dfd-8fdc-a6bf14beb142",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "quiz",
+      "targetId": "2834eea0-13ca-40c4-a776-f14ae35b1417",
+      "status": "done",
+      "promptVersion": 3,
+      "createdAt": "2026-10-24T13:21:59.864Z",
+      "model": "deepseek-chat",
+      "completedAt": "2026-10-24T13:22:12.637Z"
+    },
+    {
+      "id": "b19c8b1d-d471-4791-b265-254e5ebed775",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "summary",
+      "targetId": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32",
+      "status": "done",
+      "promptVersion": 2,
+      "createdAt": "2026-10-24T13:23:47.150Z",
+      "model": "deepseek-chat",
+      "completedAt": "2026-10-24T13:23:59.539Z"
+    },
+    {
+      "id": "16de4b56-13f7-4c09-98a8-84880248895c",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "flashcards",
+      "targetId": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32",
+      "status": "done",
+      "promptVersion": 1,
+      "createdAt": "2026-10-24T13:23:59.607Z",
+      "model": "deepseek-chat",
+      "completedAt": "2026-10-24T13:24:07.838Z"
+    },
+    {
+      "id": "e94606d0-5f14-4dbb-a68c-d3e9899a633f",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "quiz",
+      "targetId": "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32",
+      "status": "done",
+      "promptVersion": 3,
+      "createdAt": "2026-10-24T13:24:07.902Z",
+      "model": "deepseek-chat",
+      "completedAt": "2026-10-24T13:24:20.503Z"
     }
   ]
 }

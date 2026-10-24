@@ -4787,6 +4787,144 @@
       "sectionId": "c4e16720-595d-46c6-a53c-3142fa56a845",
       "date": "2026-10-24T11:49:50.061Z",
       "rating": 4
+    },
+    {
+      "cardId": "8d4f0734-793a-406c-805e-004b80a8ec4b",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:32:41.647Z",
+      "rating": 3
+    },
+    {
+      "cardId": "4fcf33a2-b4ec-47c8-afb7-90a6bc780d3c",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:33:26.657Z",
+      "rating": 4
+    },
+    {
+      "cardId": "d7fa4347-69d1-4d05-bee5-f83cbc3eee62",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:34:50.389Z",
+      "rating": 3
+    },
+    {
+      "cardId": "e00878b6-de4b-47ea-9999-514d2265f56e",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:35:39.673Z",
+      "rating": 3
+    },
+    {
+      "cardId": "7ccb7ac2-73b5-49ff-8767-7b7190f81b90",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:38:07.258Z",
+      "rating": 3
+    },
+    {
+      "cardId": "a0e8be79-ba89-4e33-8171-ce099e405b6c",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:38:22.434Z",
+      "rating": 3
+    },
+    {
+      "cardId": "ea19dcbc-fe76-4a3c-b820-4e0ea0b9c4e9",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:39:04.462Z",
+      "rating": 3
+    },
+    {
+      "cardId": "31d065ff-6f1e-4fe0-9fc0-bc8ef618b8ec",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:39:11.075Z",
+      "rating": 4
+    },
+    {
+      "cardId": "374c6739-edd6-4048-a56e-a55e2d638713",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:39:17.889Z",
+      "rating": 4
+    },
+    {
+      "cardId": "52d0c893-b7e7-4e67-9865-d0734f1d69de",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:39:25.623Z",
+      "rating": 4
+    },
+    {
+      "cardId": "557b8fa3-a34a-4ebd-8fab-2e28442c0d8e",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:39:38.011Z",
+      "rating": 4
+    },
+    {
+      "cardId": "443753d2-35e0-4fca-a0b9-f5551fa38fdb",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:41:06.579Z",
+      "rating": 4
+    },
+    {
+      "cardId": "a5a3e85f-f131-4b40-a14e-811cd54ac82a",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:41:50.740Z",
+      "rating": 4
+    },
+    {
+      "cardId": "9c3050cf-5e15-415f-aac4-dd8bc95ad4c3",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:42:19.501Z",
+      "rating": 4
+    },
+    {
+      "cardId": "8d4f0734-793a-406c-805e-004b80a8ec4b",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:43:27.106Z",
+      "rating": 4
+    },
+    {
+      "cardId": "5643727b-9f2d-43d8-ba8a-9f48f8d6e335",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:44:03.483Z",
+      "rating": 4
+    },
+    {
+      "cardId": "71469102-c4c3-4fd3-9ada-5e53c0c87f3e",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:44:15.490Z",
+      "rating": 3
+    },
+    {
+      "cardId": "46e06bf1-92f9-4720-a930-3b31e4a485ab",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:44:27.643Z",
+      "rating": 3
+    },
+    {
+      "cardId": "d7fa4347-69d1-4d05-bee5-f83cbc3eee62",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:45:09.909Z",
+      "rating": 4
+    },
+    {
+      "cardId": "b004fd32-84a0-4f61-9526-b0eca0235839",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:45:29.991Z",
+      "rating": 2
+    },
+    {
+      "cardId": "e00878b6-de4b-47ea-9999-514d2265f56e",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:46:42.890Z",
+      "rating": 4
+    },
+    {
+      "cardId": "29a98c4e-0519-4d0e-ae97-efa125f63def",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:47:18.304Z",
+      "rating": 2
+    },
+    {
+      "cardId": "c638de60-d182-46c6-b7bc-fd2420f38973",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-24T13:47:28.722Z",
+      "rating": 4
     }
   ],
   "attempts": [

@@ -128,9 +128,12 @@ test.describe.serial('prompt-driven exam workflow', () => {
     await page.getByRole('tab', { name: /Quiz/ }).click();
     await respond(page.request, 'quiz', quiz);
     await check(page);
-    const questions = page.locator('.quiz-question');
-    await expect(questions).toHaveCount(3);
-    for (let index = 0; index < 3; index++) await questions.nth(index).getByRole('radio').nth(quiz.questions[index].correctIndex).check();
+    for (let index = 0; index < quiz.questions.length; index++) {
+      const question = page.locator('.quiz-question');
+      await question.getByRole('radio').nth(quiz.questions[index].correctIndex).check();
+      if (index < quiz.questions.length - 1)
+        await page.getByRole('button', { name: 'Next', exact: true }).click();
+    }
     await page.getByRole('button', { name: 'Submit quiz' }).click();
     await expect(page.locator('.quiz-result')).toContainText('3 / 3');
     await page.getByRole('tab', { name: 'Summary', exact: true }).click();

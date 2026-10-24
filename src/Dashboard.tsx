@@ -248,6 +248,7 @@ export function Dashboard({
                               await api(`/requests/${request.id}/run`, send({}));
                           },
                           'Study materials requested for this chapter',
+                          'Generating study materials…',
                         )
                       }
                     >

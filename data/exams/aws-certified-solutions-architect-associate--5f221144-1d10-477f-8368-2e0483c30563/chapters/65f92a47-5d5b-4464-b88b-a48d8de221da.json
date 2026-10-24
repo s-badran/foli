@@ -12,8 +12,1465 @@
       "Task 2.1: scalable web architectures",
       "Task 2.2: removing single points of failure"
     ],
-    "objectives": [],
-    "coverageStatus": "draft"
+    "objectives": [
+      {
+        "id": "78550d02-e3e9-4335-a8c9-1b885f11e55b::section-intro-and-case-study-roadmap",
+        "title": "Section intro and case study roadmap",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 228,
+        "pageEnd": 240,
+        "assessment": "recall"
+      },
+      {
+        "id": "78550d02-e3e9-4335-a8c9-1b885f11e55b::elastic-ip-with-single-public-ec2",
+        "title": "Elastic IP with single public EC2",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 228,
+        "pageEnd": 240,
+        "assessment": "recall"
+      },
+      {
+        "id": "78550d02-e3e9-4335-a8c9-1b885f11e55b::vertical-scaling-with-downtime",
+        "title": "Vertical scaling with downtime",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 228,
+        "pageEnd": 240,
+        "assessment": "recall"
+      },
+      {
+        "id": "78550d02-e3e9-4335-a8c9-1b885f11e55b::horizontal-scaling-without-elastic-ip",
+        "title": "Horizontal scaling without Elastic IP",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 228,
+        "pageEnd": 240,
+        "assessment": "recall"
+      },
+      {
+        "id": "78550d02-e3e9-4335-a8c9-1b885f11e55b::route-53-a-record-and-ttl",
+        "title": "Route 53 A record and TTL",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 228,
+        "pageEnd": 240,
+        "assessment": "recall"
+      },
+      {
+        "id": "78550d02-e3e9-4335-a8c9-1b885f11e55b::instance-replacement-breaks-dns-a-records",
+        "title": "Instance replacement breaks DNS A records",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 228,
+        "pageEnd": 240,
+        "assessment": "recall"
+      },
+      {
+        "id": "78550d02-e3e9-4335-a8c9-1b885f11e55b::elb-with-alias-record-and-health-checks",
+        "title": "ELB with Alias record and health checks",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 228,
+        "pageEnd": 240,
+        "assessment": "recall"
+      },
+      {
+        "id": "78550d02-e3e9-4335-a8c9-1b885f11e55b::auto-scaling-group-with-private-instances",
+        "title": "Auto Scaling group with private instances",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 228,
+        "pageEnd": 240,
+        "assessment": "recall"
+      },
+      {
+        "id": "78550d02-e3e9-4335-a8c9-1b885f11e55b::multi-az-across-three-azs",
+        "title": "Multi-AZ across three AZs",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 228,
+        "pageEnd": 240,
+        "assessment": "recall"
+      },
+      {
+        "id": "78550d02-e3e9-4335-a8c9-1b885f11e55b::reserved-capacity-for-cost-savings",
+        "title": "Reserved capacity for cost savings",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 228,
+        "pageEnd": 240,
+        "assessment": "recall"
+      },
+      {
+        "id": "57e66a52-d1f7-4d0f-86db-6ac983af5022::shopping-cart-state-problem",
+        "title": "Shopping cart state problem",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 241,
+        "pageEnd": 251,
+        "assessment": "recall"
+      },
+      {
+        "id": "57e66a52-d1f7-4d0f-86db-6ac983af5022::elb-stickiness-session-affinity",
+        "title": "ELB stickiness (session affinity)",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 241,
+        "pageEnd": 251,
+        "assessment": "recall"
+      },
+      {
+        "id": "57e66a52-d1f7-4d0f-86db-6ac983af5022::user-cookies-trade-offs",
+        "title": "User cookies trade-offs",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 241,
+        "pageEnd": 251,
+        "assessment": "recall"
+      },
+      {
+        "id": "57e66a52-d1f7-4d0f-86db-6ac983af5022::cookie-size-limit-4kb",
+        "title": "Cookie size limit 4KB",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 241,
+        "pageEnd": 251,
+        "assessment": "recall"
+      },
+      {
+        "id": "57e66a52-d1f7-4d0f-86db-6ac983af5022::server-session-with-session-id",
+        "title": "Server session with session_id",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 241,
+        "pageEnd": 251,
+        "assessment": "recall"
+      },
+      {
+        "id": "57e66a52-d1f7-4d0f-86db-6ac983af5022::elasticache-vs-dynamodb-for-sessions",
+        "title": "ElastiCache vs DynamoDB for sessions",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 241,
+        "pageEnd": 251,
+        "assessment": "recall"
+      },
+      {
+        "id": "57e66a52-d1f7-4d0f-86db-6ac983af5022::rds-for-user-data",
+        "title": "RDS for user data",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 241,
+        "pageEnd": 251,
+        "assessment": "recall"
+      },
+      {
+        "id": "57e66a52-d1f7-4d0f-86db-6ac983af5022::rds-read-replicas-for-scaling-reads",
+        "title": "RDS read replicas for scaling reads",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 241,
+        "pageEnd": 251,
+        "assessment": "recall"
+      },
+      {
+        "id": "57e66a52-d1f7-4d0f-86db-6ac983af5022::lazy-loading-cache-pattern",
+        "title": "Lazy loading cache pattern",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 241,
+        "pageEnd": 251,
+        "assessment": "recall"
+      },
+      {
+        "id": "57e66a52-d1f7-4d0f-86db-6ac983af5022::security-groups-referencing-each-other",
+        "title": "Security groups referencing each other",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 241,
+        "pageEnd": 251,
+        "assessment": "recall"
+      },
+      {
+        "id": "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::fully-scalable-wordpress-architecture",
+        "title": "Fully scalable WordPress architecture",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 252,
+        "pageEnd": 258,
+        "assessment": "recall"
+      },
+      {
+        "id": "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::rds-mysql-multi-az-layer",
+        "title": "RDS MySQL multi-AZ layer",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 252,
+        "pageEnd": 258,
+        "assessment": "recall"
+      },
+      {
+        "id": "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::aurora-multi-az-and-read-replicas",
+        "title": "Aurora multi-AZ and read replicas",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 252,
+        "pageEnd": 258,
+        "assessment": "recall"
+      },
+      {
+        "id": "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::storing-images-on-ebs-volume",
+        "title": "Storing images on EBS volume",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 252,
+        "pageEnd": 258,
+        "assessment": "recall"
+      },
+      {
+        "id": "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-single-instance-limitation",
+        "title": "EBS single-instance limitation",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 252,
+        "pageEnd": 258,
+        "assessment": "recall"
+      },
+      {
+        "id": "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::efs-with-enis-across-azs",
+        "title": "EFS with ENIs across AZs",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 252,
+        "pageEnd": 258,
+        "assessment": "recall"
+      },
+      {
+        "id": "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-vs-efs-for-distributed-apps",
+        "title": "EBS vs EFS for distributed apps",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 252,
+        "pageEnd": 258,
+        "assessment": "recall"
+      },
+      {
+        "id": "25b484c9-9f38-471b-971f-812820dea11c::full-stack-launch-bottlenecks",
+        "title": "Full stack launch bottlenecks",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 259,
+        "pageEnd": 261,
+        "assessment": "recall"
+      },
+      {
+        "id": "25b484c9-9f38-471b-971f-812820dea11c::golden-ami-for-ec2",
+        "title": "Golden AMI for EC2",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 259,
+        "pageEnd": 261,
+        "assessment": "recall"
+      },
+      {
+        "id": "25b484c9-9f38-471b-971f-812820dea11c::user-data-bootstrapping",
+        "title": "User Data bootstrapping",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 259,
+        "pageEnd": 261,
+        "assessment": "recall"
+      },
+      {
+        "id": "25b484c9-9f38-471b-971f-812820dea11c::golden-ami-plus-user-data-hybrid",
+        "title": "Golden AMI plus User Data hybrid",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 259,
+        "pageEnd": 261,
+        "assessment": "recall"
+      },
+      {
+        "id": "25b484c9-9f38-471b-971f-812820dea11c::rds-restore-from-snapshot",
+        "title": "RDS restore from snapshot",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 259,
+        "pageEnd": 261,
+        "assessment": "recall"
+      },
+      {
+        "id": "25b484c9-9f38-471b-971f-812820dea11c::ebs-restore-from-snapshot",
+        "title": "EBS restore from snapshot",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 259,
+        "pageEnd": 261,
+        "assessment": "recall"
+      },
+      {
+        "id": "25b484c9-9f38-471b-971f-812820dea11c::three-tier-subnet-design",
+        "title": "Three-tier subnet design",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 259,
+        "pageEnd": 261,
+        "assessment": "recall"
+      },
+      {
+        "id": "25b484c9-9f38-471b-971f-812820dea11c::public-private-and-data-subnets",
+        "title": "Public, private and data subnets",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 259,
+        "pageEnd": 261,
+        "assessment": "recall"
+      },
+      {
+        "id": "4a8acf0d-3e8f-401c-b245-f08d710876a3::developer-pain-points-on-aws",
+        "title": "Developer pain points on AWS",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 262,
+        "pageEnd": 267,
+        "assessment": "recall"
+      },
+      {
+        "id": "4a8acf0d-3e8f-401c-b245-f08d710876a3::beanstalk-as-managed-service",
+        "title": "Beanstalk as managed service",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 262,
+        "pageEnd": 267,
+        "assessment": "recall"
+      },
+      {
+        "id": "4a8acf0d-3e8f-401c-b245-f08d710876a3::developer-owns-only-application-code",
+        "title": "Developer owns only application code",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 262,
+        "pageEnd": 267,
+        "assessment": "recall"
+      },
+      {
+        "id": "4a8acf0d-3e8f-401c-b245-f08d710876a3::application-and-application-version",
+        "title": "Application and application version",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 262,
+        "pageEnd": 267,
+        "assessment": "recall"
+      },
+      {
+        "id": "4a8acf0d-3e8f-401c-b245-f08d710876a3::environment-and-environment-tiers",
+        "title": "Environment and environment tiers",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 262,
+        "pageEnd": 267,
+        "assessment": "recall"
+      },
+      {
+        "id": "4a8acf0d-3e8f-401c-b245-f08d710876a3::supported-platforms-list",
+        "title": "Supported platforms list",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 262,
+        "pageEnd": 267,
+        "assessment": "recall"
+      },
+      {
+        "id": "4a8acf0d-3e8f-401c-b245-f08d710876a3::web-server-tier-vs-worker-tier",
+        "title": "Web server tier vs worker tier",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 262,
+        "pageEnd": 267,
+        "assessment": "recall"
+      },
+      {
+        "id": "4a8acf0d-3e8f-401c-b245-f08d710876a3::worker-tier-sqs-scaling",
+        "title": "Worker tier SQS scaling",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 262,
+        "pageEnd": 267,
+        "assessment": "recall"
+      },
+      {
+        "id": "4a8acf0d-3e8f-401c-b245-f08d710876a3::single-instance-vs-ha-deployment-mode",
+        "title": "Single instance vs HA deployment mode",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 262,
+        "pageEnd": 267,
+        "assessment": "recall"
+      },
+      {
+        "id": "4a8acf0d-3e8f-401c-b245-f08d710876a3::beanstalk-costs-underlying-resources",
+        "title": "Beanstalk costs underlying resources",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 262,
+        "pageEnd": 267,
+        "assessment": "recall"
+      }
+    ],
+    "coverageStatus": "source-audited"
   },
-  "sections": []
+  "sections": [
+    {
+      "id": "78550d02-e3e9-4335-a8c9-1b885f11e55b",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "65f92a47-5d5b-4464-b88b-a48d8de221da",
+      "title": "Stateless Web App: WhatIsTheTime.com — Scaling from Single EC2 to Multi-AZ",
+      "objective": "Choose the right combination of Elastic IP, Route 53 alias records, ELB, Auto Scaling groups and multi-AZ deployment to make a stateless web app horizontally scalable and highly available without downtime.",
+      "keyTopics": [
+        "Section intro and case study roadmap",
+        "Elastic IP with single public EC2",
+        "Vertical scaling with downtime",
+        "Horizontal scaling without Elastic IP",
+        "Route 53 A record and TTL",
+        "Instance replacement breaks DNS A records",
+        "ELB with Alias record and health checks",
+        "Auto Scaling group with private instances",
+        "Multi-AZ across three AZs",
+        "Reserved capacity for cost savings"
+      ],
+      "pageStart": 228,
+      "pageEnd": 240,
+      "text": "[Page 228]\nClassic Solutions Architecture\n\n[Page 229]\nSection Introduction\n• \tThese solutions architectures are the best part of this course\n• \tLet’s understand how all the technologies we’ve seen work together\n• \tThis is a section you need to be 100% comfortable with\n• \tWe’ll see the progression of a Solution’s architect mindset through many\nsample case studies:\n• \tWhatIsTheTime.Com\n• \tMyClothes.Com\n• \tMyWordPress.Com\n• \tInstantiating applications quickly\n• \tBeanstalk\n\n[Page 230]\nStateless Web App: WhatIsTheTime.com\n• \tWhatIsTheTime.com \tallows people to know what time it is\n• \tWe don’t need a database\n• \tWe want to start small and can accept downtime\n• \tWe want to fully scale vertically and horizontally, no downtime\n• \tLet’s go through the Solutions Architect journey for this app\n• \tLet’s see how we can proceed!\n\n[Page 231]\nStateless web app: What time is it?\nStarting simple\nPublic EC2\nElastic IP Address\nUser\nWhat time is it?\n5:30 pm!\n\n[Page 232]\nStateless web app: What time is it?\nScaling vertically\nPublic EC2\nElastic IP Address\nUser\nWhat time is it?\n5:30 pm!\nWhat time is it?\n6:30 pm!\nWhat time is it?\n7:30 pm!\nDowntime while upgrading to M5\n\n[Page 233]\nStateless web app: What time is it?\nScaling horizontally\nUser\nWhat time is it?\n5:30 pm!\nWhat time is it?\n6:30 pm!\nWhat time is it?\n7:30 pm!\n\n[Page 234]\nStateless web app: What time is it?\nScaling horizontally\nWhat time is it?\n5:30 pm!\nWhat time is it?\n6:30 pm!\nWhat time is it?\n7:30 pm!\nPublic EC2 instance,\nNo Elastic IP\nDNS Query\nFor api.whatisthetime.com\nA Record\nTTL 1 hour\n\n[Page 235]\nStateless web app: What time is it?\nScaling horizontally, adding and removing instances\nWhat time is it?\n5:30 pm!\nWhat time is it?\n6:30 pm!\nWhat time is it?\n7:30 pm!\nPublic EC2 instance,\nNo Elastic IP\nDNS Query\nFor api.whatisthetime.com\nA Record\nTTL 1 hour\nINSTANCE IS GONE!\n\n[Page 236]\nStateless web app: What time is it?\nScaling horizontally, with a load balancer\nWhat time is it?\nPrivate\nEC2 instances\nDNS Query\nFor api.whatisthetime.com\nAlias Record\nAvailability zone 1 \tAvailability zone 1\nELB +\nHealth Checks\nRestricted\nSecurity groups rules\n\n[Page 237]\nStateless web app: What time is it?\nScaling horizontally, with an auto-scaling group\nWhat time is it?\nPrivate\nEC2 instances\nDNS Query\nFor api.whatisthetime.com\nAlias Record\nAvailability zone 1 \tAvailability zone 1\nELB +\nHealth Checks\nAuto Scaling group\n\n[Page 238]\nStateless web app: What time is it?\nMaking our app multi-AZ\nWhat time is it?\nDNS Query\nFor api.whatisthetime.com\nAlias Record\nAvailability zone 1 to 3 \tAvailability zone 1\nELB +\nHealth Checks\n+ Multi AZ\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\n\n[Page 239]\nMinimum 2 AZ => Let’s reserve capacity\nDNS Query\nFor api.whatisthetime.com\nAlias Record\nAvailability zone 1 to 3 \tAvailability zone 1\nELB +\nHealth Checks\n+ Multi AZ\nAuto Scaling group\nAvailability zone 2\nMinimum capacity\n= reserved instances\n= cost savings\n\n[Page 240]\nIn this lecture we’ve discussed…\n• \tPublic vs Private IP and EC2 instances\n• \tElastic IP vs Route 53 vs Load Balancers\n• \tRoute 53 TTL, A records and Alias Records\n• \tMaintaining EC2 instances manually vs Auto Scaling Groups\n• \tMulti AZ to survive disasters\n• \tELB Health Checks\n• \tSecurity Group Rules\n• \tReservation of capacity for costing savings when possible",
+      "read": false
+    },
+    {
+      "id": "57e66a52-d1f7-4d0f-86db-6ac983af5022",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "65f92a47-5d5b-4464-b88b-a48d8de221da",
+      "title": "Stateful Web App: MyClothes.com — Sessions, Caching, RDS and Security Groups",
+      "objective": "Design a 3-tier stateful web architecture that keeps EC2 stateless using ElastiCache or DynamoDB sessions, scales reads with replicas or caching, and restricts traffic with chained security groups.",
+      "keyTopics": [
+        "Shopping cart state problem",
+        "ELB stickiness (session affinity)",
+        "User cookies trade-offs",
+        "Cookie size limit 4KB",
+        "Server session with session_id",
+        "ElastiCache vs DynamoDB for sessions",
+        "RDS for user data",
+        "RDS read replicas for scaling reads",
+        "Lazy loading cache pattern",
+        "Security groups referencing each other"
+      ],
+      "pageStart": 241,
+      "pageEnd": 251,
+      "text": "[Page 241]\nStateful Web App: \tMyClothes.com\n• \tMyClothes.com \tallows people to buy clothes online.\n• \tThere’s a shopping cart\n• \tOur website is having hundreds of users at the same time\n• \tWe need to scale, maintain horizontal scalability and keep our web\napplication as stateless as possible\n• \tUsers should not lose their shopping cart\n• \tUsers should have their details (address, etc) in a database\n• \tLet’s see how we can proceed!\n\n[Page 242]\nStateful Web App: \tMyClothes.com\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\n\n[Page 243]\nStateful Web App: \tMyClothes.com\nIntroduce Stickiness (Session Affinity)\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nELB Stickiness\n\n[Page 244]\nStateful Web App: \tMyClothes.com\nIntroduce User Cookies\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nSend shopping cart\ncontent in Web Cookies\nStateless\nHTTP requests are heavier\nSecurity risk\n(cookies can be altered)\nCookies must be validated\nCookies must be less than 4KB\n\n[Page 245]\nStateful Web App: \tMyClothes.com\nIntroduce Server Session\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nSend session_id in\nWeb Cookies\nElastiCache\nStore / retrieve\nsession data\nAmazon DynamoDB\n(alternative)\n\n[Page 246]\nStateful Web App: \tMyClothes.com\nStoring User Data in a database\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nAmazon RDS\nStore / retrieve user data\n(address, name, etc)\n\n[Page 247]\nStateful Web App: \tMyClothes.com\nScaling Reads\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nRDS\nRead Replicas\nRDS\nMaster\n(writes)\nreplication\n\n[Page 248]\nStateful Web App: \tMyClothes.com\nScaling Reads (Alternative) \t– \tLazy Loading\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nRDS\nRead/write\ncache\nRead from cache\nhit\n\n[Page 249]\nStateful Web App: \tMyClothes.com\nMulti AZ \t– \tSurvive disasters\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nMulti AZ\nRDS\nMulti AZ\n\n[Page 250]\nStateful Web App: \tMyClothes.com\nSecurity Groups\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nRDS\nRestrict traffic to EC2\nSecurity group from the LB\nRestrict traffic to RDS\nSecurity group from the\nEC2 security group\nRestrict traffic to ElastiCache\nSecurity group from the\nEC2 security group\nOpen HTTP / HTTPS\nto 0.0.0.0/0\n\n[Page 251]\nIn this lecture we’ve discussed…\n3-tier architectures for web applications\n• \tELB sticky sessions\n• \tWeb clients for storing cookies and making our web app stateless\n• \tElastiCache\n• \tFor storing sessions (alternative: DynamoDB)\n• \tFor caching data from RDS\n• \tMulti AZ\n• \tRDS\n• \tFor storing user data\n• \tRead replicas for scaling reads\n• \tMulti AZ for disaster recovery\n• \tTight Security with security groups referencing each other",
+      "read": false
+    },
+    {
+      "id": "2e00c817-c25a-4341-9fc6-6ef5524b5f1d",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "65f92a47-5d5b-4464-b88b-a48d8de221da",
+      "title": "Stateful Web App: MyWordPress.com — Aurora, EBS vs EFS for Images",
+      "objective": "Distinguish when to store uploaded content on EBS (single instance) versus EFS (shared across a multi-AZ Auto Scaling group), and explain Aurora's multi-AZ and read replica benefits.",
+      "keyTopics": [
+        "Fully scalable WordPress architecture",
+        "RDS MySQL multi-AZ layer",
+        "Aurora multi-AZ and read replicas",
+        "Storing images on EBS volume",
+        "EBS single-instance limitation",
+        "EFS with ENIs across AZs",
+        "EBS vs EFS for distributed apps"
+      ],
+      "pageStart": 252,
+      "pageEnd": 258,
+      "text": "[Page 252]\nStateful Web App: \tMyWordPress.com\n• \tWe are trying to create a fully scalable WordPress website\n• \tWe want that website to access and correctly display picture uploads\n• \tOur user data, and the blog content should be stored in a MySQL database.\n• \tLet’s see how we can achieve this!\n\n[Page 253]\nStateful Web App: \tMyWordPress.com\nRDS layer\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nRDS\nMulti AZ\n\n[Page 254]\nStateful Web App: \tMyWordPress.com\nScaling with Aurora: Multi AZ & Read Replicas\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nAurora MySQL\nMulti AZ\nRead Replicas\n\n[Page 255]\nStateful Web App: \tMyWordPress.com\nStoring images with EBS\nMulti AZ\nAmazon EBS\nVolume\nAvailability zone 1\nSend image\n\n[Page 256]\nStateful Web App: \tMyWordPress.com\nStoring images with EBS\nMulti AZ\nAmazon EBS\nVolume\nAmazon EBS\nVolume\nAvailability zone 1\nAvailability zone 2\nSend image\n\n[Page 257]\nStateful Web App: \tMyWordPress.com\nStoring images with EFS\nMulti AZ\nAvailability zone 1\nAvailability zone 2\nEFS\nENI\nENI\nSend image\n\n[Page 258]\nIn this lecture we’ve discussed…\n• \tAurora Database to have easy Multi-AZ and Read-Replicas\n• \tStoring data in EBS (single instance application)\n• \tVs Storing data in EFS (distributed application)",
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nThis section builds a fully scalable WordPress site (MyWordPress.com) that must serve picture uploads and keep user data and blog content in MySQL. It walks through the database layer (RDS Multi-AZ, then Aurora Multi-AZ with Read Replicas) and then the storage decision for uploaded images: an EBS volume attached to one instance versus EFS shared across the Auto Scaling group's instances in multiple Availability Zones. The exam tests this as the canonical \"stateful app needs shared storage\" scenario: recognise the EBS single-instance limitation and pick EFS for a distributed multi-AZ application.\n\n## Core Concepts\n\n- **Fully scalable WordPress architecture:** A WordPress deployment in an Auto Scaling group across multiple Availability Zones, with content in MySQL and images on shared storage, so any instance can serve any user.\n- **Stateful web application:** An application that keeps data or files on its instances (such as uploaded images), which conflicts with a stateless fleet behind Auto Scaling and a load balancer.\n- **Auto Scaling group (multi-AZ):** The web tier: EC2 instances launched across Availability Zones 1, 2 and 3 that scale on demand and receive traffic from a load balancer.\n- **RDS MySQL Multi-AZ layer:** The database layer for user data and blog content, deployed as RDS Multi-AZ so a standby in another AZ takes over if the primary fails.\n- **RDS Multi-AZ:** A synchronous standby replica in a second Availability Zone, used for failover / high availability, not for scaling reads.\n- **Aurora MySQL Multi-AZ:** Aurora keeps the same data in multiple AZs and provides easy Multi-AZ high availability without you managing replication.\n- **Aurora Read Replicas:** Additional Aurora read endpoints that offload read traffic and improve read scaling; the section pairs them with Multi-AZ for scaling the database layer.\n- **Storing images with EBS:** Images are written to an Amazon EBS volume attached to the instance; EBS is block storage tied to a single instance (and a single AZ).\n- **EBS volume:** A block-storage volume attached to one EC2 instance; it exists in one Availability Zone and cannot be shared by instances in other AZs.\n- **EBS single-instance limitation:** With an EBS volume, an image uploaded to instance A is invisible to instance B, so users hitting another instance in the Auto Scaling group see broken images.\n- **EBS vs EFS for distributed apps:** EBS suits a single-instance application; EFS is a shared file system for distributed applications whose instances span AZs.\n- **Storing images with EFS:** Uploaded images go to Amazon EFS, which is mounted by every instance, so any instance in any AZ can display any uploaded image.\n- **EFS ENIs across AZs:** Each instance mounts EFS through an elastic network interface (ENI) in its own Availability Zone, giving all instances one shared file system.\n- **Amazon EFS:** A managed, shared file system that multiple EC2 instances across Availability Zones can mount at the same time — the fix for distributed upload storage.\n- **Block storage vs file storage:** EBS provides block storage attached to one instance; EFS provides a shared network file system mounted by many instances, which is why EFS fits the distributed case.\n\n## Key Comparisons\n\n- **EBS vs EFS for uploaded images:** EBS is a block volume attached to one instance in one AZ, so other instances can't see the upload; EFS is a shared file system mounted by all instances across AZs.\n- **EBS single-instance vs distributed Auto Scaling application:** If the app runs on one instance, EBS works; once an Auto Scaling group spreads instances across AZs, the images must live on EFS.\n- **RDS MySQL Multi-AZ vs Aurora with Multi-AZ and Read Replicas:** RDS Multi-AZ gives a synchronous standby for failover only; Aurora adds easy Multi-AZ plus Read Replicas for read scaling.\n- **Multi-AZ (RDS/Aurora) vs Read Replica:** Multi-AZ is for high availability / failover; Read Replicas are for offloading reads and read scaling.\n- **Block storage (EBS) vs file storage (EFS):** Block storage attaches to a single instance; file storage is mountable by many instances simultaneously, which is what a distributed app needs.\n\n## Common Misunderstandings\n\n- EBS is not shared storage: an EBS volume cannot be mounted by instances in different Availability Zones, so it cannot back a multi-AZ Auto Scaling image upload.\n- Multi-AZ is not for read scaling: the standby is for failover; read scaling needs Read Replicas (Aurora Read Replicas in this section).\n- Adding more instances does not fix the image problem — without EFS, each new instance has its own EBS volume and misses previously uploaded images.\n- EFS does not require all instances in one AZ: instances in different AZs each mount the shared file system through an ENI.\n\n## Mental Models\n\n- Think of EBS as a USB drive plugged into one server — only that server sees the file.\n- Think of EFS as a shared network drive every server in every AZ can mount — uploads follow the user to any instance.\n- Think of Multi-AZ as the spare tire (failover) and Read Replicas as extra lanes (read throughput).\n\n## Exceptions & Edge Cases\n\n- If the application is genuinely single-instance, EBS for images is acceptable; the problem appears only when Auto Scaling distributes instances across AZs.\n- The database layer can be either RDS MySQL Multi-AZ or Aurora MySQL Multi-AZ with Read Replicas — the storage decision for images is independent of that choice.\n- WordPress needs a writable shared location for uploads; EFS provides it for every instance behind the load balancer.\n\n## When to Use Which\n\n- Uploaded images must be visible to any EC2 instance in an Auto Scaling group spanning multiple AZs → **Amazon EFS mounted by every instance**\n- Application runs on a single EC2 instance and stores files locally → **Amazon EBS volume**\n- MySQL database must survive an AZ failure → **RDS MySQL Multi-AZ or Aurora Multi-AZ**\n- Database must also serve heavy read traffic → **Aurora with Read Replicas**\n- Need a fully scalable WordPress site with user data, blog content and images → **ALB + Auto Scaling group across AZs + multi-AZ MySQL database + EFS for images**\n\n## Patterns to Recognize\n\n- \"Users sometimes see broken or missing images after new instances launch\" → **Images stored on EBS instead of a shared file system — move to EFS**\n- \"Auto Scaling group across multiple Availability Zones storing user uploads\" → **EFS is the expected answer; EBS is the distractor**\n- \"Database must be highly available and handle read-heavy traffic\" → **Aurora Multi-AZ plus Read Replicas**\n- \"High availability with automatic failover to another AZ\" → **Multi-AZ deployment, not read replicas**\n\n## Exam Traps\n\n- “\"Use an EBS volume for uploads because it's attached to the instance and fast\"” — EBS is single-instance and single-AZ; instances elsewhere in the Auto Scaling group cannot see those images. Use EFS for the distributed case.\n- “\"Multi-AZ RDS improves read performance\"” — The Multi-AZ standby is for failover only; read scaling comes from Read Replicas.\n- “\"Attach the same EBS volume to instances in all AZs\"” — That is the EFS pattern; EBS volumes cannot be shared across Availability Zones.\n- “\"Aurora Multi-AZ makes Read Replicas unnecessary for scaling reads\"” — Multi-AZ addresses availability; Read Replicas address read scaling — the section uses both.\n\n## Beyond the Source (tutor knowledge)\n\n- EFS is a Regional, multi-AZ file system with mount targets per AZ; instances mount it over NFS through those targets.\n- EBS volumes are AZ-scoped and replicated within that AZ; multi-attach io1/io2 volumes are limited to the same AZ and are not a substitute for EFS.\n- Amazon S3 is a common alternative for WordPress media in a stateless design, but this section's comparison is EBS vs EFS.",
+        "keyPoints": [
+          "EBS is attached to a single instance and lives in one Availability Zone — the canonical reason it fails for a multi-AZ Auto Scaling image-upload design.",
+          "EFS is the shared file system: every instance mounts it (each via an ENI in its own AZ), so any instance can serve any uploaded image.",
+          "The section's rule: EBS = single-instance application; EFS = distributed application.",
+          "RDS MySQL Multi-AZ provides a high-availability standby in a second AZ for failover — not a read-scaling mechanism.",
+          "Aurora gives Multi-AZ easily and adds Read Replicas — use it when the database must both survive AZ failure and scale reads.",
+          "The architecture spans an Auto Scaling group over Availability Zones 1, 2 and 3, an Elastic Load Balancer in front, and a multi-AZ database behind.",
+          "User data and blog content belong in the MySQL-compatible database (RDS MySQL or Aurora MySQL); images belong in EBS (single instance) or EFS (distributed)."
+        ],
+        "supplement": "- EFS is a Regional, multi-AZ file system with mount targets per AZ; instances mount it over NFS through those targets.\n- EBS volumes are AZ-scoped and replicated within that AZ; multi-attach io1/io2 volumes are limited to the same AZ and are not a substitute for EFS.\n- Amazon S3 is a common alternative for WordPress media in a stateless design, but this section's comparison is EBS vs EFS.",
+        "cards": [
+          {
+            "id": "43ee1227-160e-4a07-8a6b-a57f8799e2bd",
+            "question": "In the MyWordPress.com design, where should user data and blog content be stored?",
+            "answer": "In a MySQL database",
+            "group": "MyWordPress.com architecture",
+            "keyTopic": "Fully scalable WordPress architecture",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::fully-scalable-wordpress-architecture"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "2187a81e-0368-44b3-a139-431b351b91ab",
+            "question": "What does the MyWordPress.com design aim to make fully scalable?",
+            "answer": "A WordPress website that displays picture uploads",
+            "group": "MyWordPress.com architecture",
+            "keyTopic": "Fully scalable WordPress architecture",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::fully-scalable-wordpress-architecture"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "5cbc8b78-c26b-4a04-a5e1-ed17846d5fad",
+            "question": "Which three tiers make up the fully scalable WordPress design?",
+            "answer": "Auto Scaling group across AZs\nMulti-AZ MySQL database\nShared storage for images",
+            "group": "MyWordPress.com architecture",
+            "keyTopic": "Fully scalable WordPress architecture",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::fully-scalable-wordpress-architecture"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "cf1ecd96-7467-41f5-a712-d56dc17cba44",
+            "question": "Which deployment gives the MySQL database layer a standby in another AZ?",
+            "answer": "RDS Multi-AZ",
+            "group": "RDS MySQL Multi-AZ layer",
+            "keyTopic": "RDS MySQL multi-AZ layer",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::rds-mysql-multi-az-layer"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7a5a076d-9323-483d-b3f8-37cca25a1073",
+            "question": "Which database option is used for MyWordPress.com before scaling is introduced?",
+            "answer": "RDS MySQL Multi-AZ",
+            "group": "RDS MySQL Multi-AZ layer",
+            "keyTopic": "RDS MySQL multi-AZ layer",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::rds-mysql-multi-az-layer"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "81bfaf0e-e32d-4879-8f86-3af5e80697e3",
+            "question": "Is RDS Multi-AZ a read-scaling mechanism, yes or no?",
+            "answer": "No — it is for failover/high availability",
+            "group": "RDS MySQL Multi-AZ layer",
+            "keyTopic": "RDS MySQL multi-AZ layer",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::rds-mysql-multi-az-layer"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "efbe195c-bd23-43dd-b8a5-a2deca1668ff",
+            "question": "Which Aurora feature offloads read traffic from the database layer?",
+            "answer": "Read Replicas",
+            "group": "Aurora Multi-AZ and Read Replicas",
+            "keyTopic": "Aurora multi-AZ and read replicas",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::aurora-multi-az-and-read-replicas"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d7229a71-62ea-4f42-9107-0a539704bc7c",
+            "question": "Which database gives easy Multi-AZ plus Read Replicas for scaling?",
+            "answer": "Aurora MySQL",
+            "group": "Aurora Multi-AZ and Read Replicas",
+            "keyTopic": "Aurora multi-AZ and read replicas",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::aurora-multi-az-and-read-replicas"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "15386cfa-3457-4237-91e7-bd3cd0031a9d",
+            "question": "Which is for read scaling: Aurora Multi-AZ or Aurora Read Replicas?",
+            "answer": "Aurora Read Replicas",
+            "group": "Aurora Multi-AZ and Read Replicas",
+            "keyTopic": "Aurora multi-AZ and read replicas",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::aurora-multi-az-and-read-replicas"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "5e15e0fc-3921-482b-8c23-e148f0ad55c0",
+            "question": "How are uploaded images stored in the EBS variant of the design?",
+            "answer": "On an Amazon EBS volume attached to the instance",
+            "group": "Storing images with EBS",
+            "keyTopic": "Storing images on EBS volume",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::storing-images-on-ebs-volume"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "3b3a4860-3154-448b-b995-ce5282a2841a",
+            "question": "What kind of storage is an Amazon EBS volume?",
+            "answer": "Block storage attached to one EC2 instance",
+            "group": "Storing images with EBS",
+            "keyTopic": "Storing images on EBS volume",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::storing-images-on-ebs-volume"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "4796ef82-e2d2-4950-a320-a121c8a22c88",
+            "question": "An EBS volume belongs to how many Availability Zones?",
+            "answer": "One",
+            "group": "Storing images with EBS",
+            "keyTopic": "Storing images on EBS volume",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::storing-images-on-ebs-volume"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "3568752f-5e20-4a37-9273-782af2013753",
+            "question": "When is storing images on EBS acceptable?",
+            "answer": "For a single-instance application",
+            "group": "Storing images with EBS",
+            "keyTopic": "EBS vs EFS for distributed apps",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-vs-efs-for-distributed-apps"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "13428889-25f5-44b1-974f-9bf39ecd3f7a",
+            "question": "An image is uploaded to instance A with its own EBS volume. What does instance B see?",
+            "answer": "Nothing — the image is missing",
+            "group": "EBS single-instance limitation",
+            "keyTopic": "EBS single-instance limitation",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-single-instance-limitation"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "cf1327a5-d92e-4b3b-8326-d3d7825e5440",
+            "question": "Why do users see broken images in the EBS multi-AZ design?",
+            "answer": "Uploads land on one instance's EBS volume only",
+            "group": "EBS single-instance limitation",
+            "keyTopic": "EBS single-instance limitation",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-single-instance-limitation"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "48e31b98-5e8f-4345-9cc8-a8dd5be627ad",
+            "question": "Does adding more instances fix the EBS image visibility problem?",
+            "answer": "No",
+            "group": "EBS single-instance limitation",
+            "keyTopic": "EBS single-instance limitation",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-single-instance-limitation"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "4ef39370-e406-4efd-b6e8-50ce1b3984fb",
+            "question": "Which service gives all instances one shared file system for uploaded images?",
+            "answer": "Amazon EFS",
+            "group": "EFS with ENIs across AZs",
+            "keyTopic": "EFS with ENIs across AZs",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::efs-with-enis-across-azs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a78ac07f-88e2-41d1-a418-a02a437b9e15",
+            "question": "In the EFS design, what does each instance use to mount the file system?",
+            "answer": "An ENI in its Availability Zone",
+            "group": "EFS with ENIs across AZs",
+            "keyTopic": "EFS with ENIs across AZs",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::efs-with-enis-across-azs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "5c3b463d-0fcc-4002-8286-7323a3cfe6f4",
+            "question": "Which storage lets images uploaded to any instance be displayed by any other?",
+            "answer": "Amazon EFS",
+            "group": "EFS with ENIs across AZs",
+            "keyTopic": "EFS with ENIs across AZs",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::efs-with-enis-across-azs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "0d98f5a9-0d17-4da3-b069-da53991c3664",
+            "question": "Can instances in different Availability Zones mount the same EFS file system?",
+            "answer": "Yes, each through an ENI",
+            "group": "EFS with ENIs across AZs",
+            "keyTopic": "EFS with ENIs across AZs",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::efs-with-enis-across-azs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d0437da1-67d1-4bb3-b69c-c1de21b8f046",
+            "question": "EBS is for which kind of application: single-instance or distributed?",
+            "answer": "Single-instance",
+            "group": "EBS vs EFS for distributed applications",
+            "keyTopic": "EBS vs EFS for distributed apps",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-vs-efs-for-distributed-apps"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a846a7a5-8638-488e-b3fc-0ccd2832f83e",
+            "question": "EFS is for which kind of application: single-instance or distributed?",
+            "answer": "Distributed",
+            "group": "EBS vs EFS for distributed applications",
+            "keyTopic": "EBS vs EFS for distributed apps",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-vs-efs-for-distributed-apps"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "37a720f7-cd59-44bb-b2c0-3402fa0993bd",
+            "question": "Which is shared file storage mountable by many instances: EBS or EFS?",
+            "answer": "EFS",
+            "group": "EBS vs EFS for distributed applications",
+            "keyTopic": "EBS vs EFS for distributed apps",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-vs-efs-for-distributed-apps"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "10218281-d340-417c-a59c-d2d65228fca5",
+            "question": "Which is block storage tied to a single instance: EBS or EFS?",
+            "answer": "EBS",
+            "group": "EBS vs EFS for distributed applications",
+            "keyTopic": "EBS vs EFS for distributed apps",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-vs-efs-for-distributed-apps"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a11a7a84-4043-454e-825a-6c7378a1805b",
+            "question": "Uploads must be visible to any instance in an Auto Scaling group across AZs. Which storage do you choose?",
+            "answer": "Amazon EFS",
+            "group": "EBS vs EFS for distributed applications",
+            "keyTopic": "EBS vs EFS for distributed apps",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-vs-efs-for-distributed-apps"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "de3472c1-f2c6-495d-960e-f58730bde52b",
+            "question": "A WordPress site runs on one EC2 instance storing files locally. Which storage fits?",
+            "answer": "Amazon EBS",
+            "group": "EBS vs EFS for distributed applications",
+            "keyTopic": "EBS vs EFS for distributed apps",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-vs-efs-for-distributed-apps"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a7c7efbe-86af-4b38-a8a0-3c9ac7b2c131",
+            "question": "Users see missing images after new instances launch. What is the architectural fix?",
+            "answer": "Move image storage from EBS to EFS",
+            "group": "EBS vs EFS for distributed applications",
+            "keyTopic": "EBS vs EFS for distributed apps",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-vs-efs-for-distributed-apps"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "3c959770-a214-401b-acdc-ea15f864d1e4",
+            "question": "Can an EBS volume be attached to instances in all Availability Zones?",
+            "answer": "No",
+            "group": "EBS vs EFS for distributed applications",
+            "keyTopic": "EBS vs EFS for distributed apps",
+            "origin": "source",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-vs-efs-for-distributed-apps"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:40:09.201Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A company runs WordPress on an Auto Scaling group spread across three Availability Zones behind a load balancer. Users report that images uploaded moments ago sometimes appear as broken images, and the problem gets worse as more instances launch. The database is unaffected. What is the most likely cause?",
+            "options": [
+              "Images are stored on an EBS volume attached to each instance, so other instances cannot see them",
+              "Images are stored in Amazon EFS but the mount targets are only in one Availability Zone",
+              "The Multi-AZ RDS standby is not being used to serve image reads",
+              "The load balancer is not sticky enough to route each user to the instance holding their upload"
+            ],
+            "correctIndex": 0,
+            "explanation": "EBS is block storage attached to a single instance in a single AZ, so an upload written on one instance is invisible to the others in the Auto Scaling group. EFS would be visible to all instances, so it is not the cause; the RDS standby is for failover and never serves image reads; stickiness would not help because new instances still lack previously uploaded files.",
+            "keyTopic": "EBS single-instance limitation",
+            "kind": "scenario",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-single-instance-limitation"
+            ]
+          },
+          {
+            "question": "Which statement best describes the difference between Amazon EBS and Amazon EFS in the context of uploaded images in a distributed application?",
+            "options": [
+              "EBS is a shared file system; EFS is block storage attached to one instance",
+              "EBS is block storage attached to one instance; EFS is a file system many instances can mount",
+              "Both are AZ-scoped block volumes, but EFS allows multi-attach across AZs",
+              "Both are Regional file systems, but EBS has lower latency for uploads"
+            ],
+            "correctIndex": 1,
+            "explanation": "EBS provides block storage attached to a single instance, while EFS is a shared network file system mountable by many instances. The reversed option swaps the two; EFS is not block storage and can be mounted across AZs; and EBS is not Regional nor a file system.",
+            "keyTopic": "EBS vs EFS for distributed apps",
+            "kind": "comparison",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-vs-efs-for-distributed-apps"
+            ]
+          },
+          {
+            "question": "A WordPress site runs on EC2 instances in an Auto Scaling group across Availability Zones 1, 2 and 3, and user uploads must be readable by any instance. How should the images be stored?",
+            "options": [
+              "On an EBS volume in Availability Zone 1 and shared with the other zones",
+              "On an EBS volume attached to each instance, synchronized between instances",
+              "On Amazon EFS, mounted by every instance in the Auto Scaling group",
+              "On the root EBS volume of the instance that receives the upload"
+            ],
+            "correctIndex": 2,
+            "explanation": "EFS is the shared file system all instances across AZs can mount, so any instance can serve any upload. EBS volumes cannot be shared across Availability Zones; per-instance EBS with synchronization is not the section's design and does not provide shared storage; and a root volume is likewise single-instance.",
+            "keyTopic": "EFS with ENIs across AZs",
+            "kind": "scenario",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::efs-with-enis-across-azs"
+            ]
+          },
+          {
+            "question": "How do EC2 instances in different Availability Zones mount the same Amazon EFS file system?",
+            "options": [
+              "Each instance mounts it through an elastic network interface (ENI) in its own Availability Zone",
+              "Only the instance in Availability Zone 1 mounts it and the others copy the files over EBS",
+              "Instances attach the same EBS volume to reach the EFS mount point",
+              "All instances must be launched in a single Availability Zone to use one EFS file system"
+            ],
+            "correctIndex": 0,
+            "explanation": "In the section's design every instance mounts EFS via an ENI located in its own Availability Zone, giving all instances one shared file system. EFS does not rely on a single mounting instance or on EBS volumes, and it does not require all instances to be in one AZ.",
+            "keyTopic": "EFS with ENIs across AZs",
+            "kind": "concept",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::efs-with-enis-across-azs"
+            ]
+          },
+          {
+            "question": "A single EC2 instance runs a small internal WordPress site with no Auto Scaling and stores uploaded images locally. What is the appropriate storage choice for those images?",
+            "options": [
+              "Amazon EFS, because file storage is always preferred over block storage",
+              "Amazon EBS, because the application is single-instance",
+              "Amazon Aurora Read Replicas, because they offload image reads",
+              "An EBS volume replicated across three Availability Zones"
+            ],
+            "correctIndex": 1,
+            "explanation": "The EBS single-instance limitation only matters once instances span AZs, so for a genuinely single-instance application an EBS volume is acceptable. EFS is unnecessary here; Read Replicas scale database reads and hold no image files; and a single EBS volume exists in one Availability Zone.",
+            "keyTopic": "Storing images on EBS volume",
+            "kind": "scenario",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::storing-images-on-ebs-volume"
+            ]
+          },
+          {
+            "question": "A WordPress deployment uses RDS MySQL Multi-AZ for user data and blog content. The team notices high read traffic on the database and asks whether the Multi-AZ standby can absorb it. What is the correct assessment?",
+            "options": [
+              "Yes — the Multi-AZ standby serves read traffic, so no other change is needed",
+              "No — the Multi-AZ standby is for failover; read scaling needs Read Replicas or Aurora Read Replicas",
+              "Yes — but only if the standby is promoted first, which doubles cost",
+              "No — Multi-AZ must be disabled before any read traffic can be scaled"
+            ],
+            "correctIndex": 1,
+            "explanation": "In RDS Multi-AZ the standby exists for failover / high availability, not read scaling. The standby does not serve reads; promotion is a failover action, not a scaling mechanism; and disabling Multi-AZ reduces availability rather than enabling read scaling.",
+            "keyTopic": "RDS MySQL multi-AZ layer",
+            "kind": "scenario",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::rds-mysql-multi-az-layer"
+            ]
+          },
+          {
+            "question": "A database layer must both survive an Availability Zone failure and handle a read-heavy WordPress workload with the least operational effort. Which design does this section recommend?",
+            "options": [
+              "A single RDS MySQL instance with snapshots taken every hour",
+              "RDS MySQL Multi-AZ only, relying on the standby for read traffic",
+              "Amazon Aurora MySQL Multi-AZ with Read Replicas",
+              "Amazon EFS mounted by the database instances to share read load"
+            ],
+            "correctIndex": 2,
+            "explanation": "Aurora provides easy Multi-AZ high availability and Read Replicas for read scaling, matching both requirements with minimal management. A single instance with snapshots is not highly available; RDS Multi-AZ alone gives failover but no read scaling; and EFS is file storage for uploaded images, not a database read-scaling mechanism.",
+            "keyTopic": "Aurora multi-AZ and read replicas",
+            "kind": "scenario",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::aurora-multi-az-and-read-replicas"
+            ]
+          },
+          {
+            "question": "A team proposes attaching the same EBS volume to every instance of a multi-AZ Auto Scaling group so all instances can read uploaded images. Why does this fail to meet the requirement?",
+            "options": [
+              "EBS volumes can be attached to only one instance at a time and exist in a single Availability Zone",
+              "EBS volumes cannot store image files, only database files",
+              "EBS volumes are Regional and too slow for uploads from multiple AZs",
+              "EBS volumes require an EFS mount point before they can be attached"
+            ],
+            "correctIndex": 0,
+            "explanation": "An EBS volume is AZ-scoped and attached to one instance, so it cannot be shared by instances in different Availability Zones — that is the EFS pattern. EBS can store any files including images; it is not Regional; and attaching an EFS mount point to an EBS volume is not a real configuration.",
+            "keyTopic": "EBS single-instance limitation",
+            "kind": "concept",
+            "objectiveIds": [
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d::ebs-single-instance-limitation"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v3",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T14:40:02.035Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 252,
+            "pageEnd": 258,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "This section builds a fully scalable WordPress site (MyWordPress.com) that must serve picture uploads and keep user data and blog content in MySQL. It walks through the database layer (RDS Multi-AZ, then Aurora Multi-AZ with Read Replicas) and then the storage decision for uploaded images: an EBS volume attached to one instance versus EFS shared across the Auto Scaling group's instances in multiple Availability Zones. The exam tests this as the canonical \"stateful app needs shared storage\" scenario: recognise the EBS single-instance limitation and pick EFS for a distributed multi-AZ application.",
+        "coreConcepts": [
+          {
+            "term": "Fully scalable WordPress architecture",
+            "definition": "A WordPress deployment in an Auto Scaling group across multiple Availability Zones, with content in MySQL and images on shared storage, so any instance can serve any user."
+          },
+          {
+            "term": "Stateful web application",
+            "definition": "An application that keeps data or files on its instances (such as uploaded images), which conflicts with a stateless fleet behind Auto Scaling and a load balancer."
+          },
+          {
+            "term": "Auto Scaling group (multi-AZ)",
+            "definition": "The web tier: EC2 instances launched across Availability Zones 1, 2 and 3 that scale on demand and receive traffic from a load balancer."
+          },
+          {
+            "term": "RDS MySQL Multi-AZ layer",
+            "definition": "The database layer for user data and blog content, deployed as RDS Multi-AZ so a standby in another AZ takes over if the primary fails."
+          },
+          {
+            "term": "RDS Multi-AZ",
+            "definition": "A synchronous standby replica in a second Availability Zone, used for failover / high availability, not for scaling reads."
+          },
+          {
+            "term": "Aurora MySQL Multi-AZ",
+            "definition": "Aurora keeps the same data in multiple AZs and provides easy Multi-AZ high availability without you managing replication."
+          },
+          {
+            "term": "Aurora Read Replicas",
+            "definition": "Additional Aurora read endpoints that offload read traffic and improve read scaling; the section pairs them with Multi-AZ for scaling the database layer."
+          },
+          {
+            "term": "Storing images with EBS",
+            "definition": "Images are written to an Amazon EBS volume attached to the instance; EBS is block storage tied to a single instance (and a single AZ)."
+          },
+          {
+            "term": "EBS volume",
+            "definition": "A block-storage volume attached to one EC2 instance; it exists in one Availability Zone and cannot be shared by instances in other AZs."
+          },
+          {
+            "term": "EBS single-instance limitation",
+            "definition": "With an EBS volume, an image uploaded to instance A is invisible to instance B, so users hitting another instance in the Auto Scaling group see broken images."
+          },
+          {
+            "term": "EBS vs EFS for distributed apps",
+            "definition": "EBS suits a single-instance application; EFS is a shared file system for distributed applications whose instances span AZs."
+          },
+          {
+            "term": "Storing images with EFS",
+            "definition": "Uploaded images go to Amazon EFS, which is mounted by every instance, so any instance in any AZ can display any uploaded image."
+          },
+          {
+            "term": "EFS ENIs across AZs",
+            "definition": "Each instance mounts EFS through an elastic network interface (ENI) in its own Availability Zone, giving all instances one shared file system."
+          },
+          {
+            "term": "Amazon EFS",
+            "definition": "A managed, shared file system that multiple EC2 instances across Availability Zones can mount at the same time — the fix for distributed upload storage."
+          },
+          {
+            "term": "Block storage vs file storage",
+            "definition": "EBS provides block storage attached to one instance; EFS provides a shared network file system mounted by many instances, which is why EFS fits the distributed case."
+          }
+        ],
+        "mustRemember": [
+          "EBS is attached to a single instance and lives in one Availability Zone — the canonical reason it fails for a multi-AZ Auto Scaling image-upload design.",
+          "EFS is the shared file system: every instance mounts it (each via an ENI in its own AZ), so any instance can serve any uploaded image.",
+          "The section's rule: EBS = single-instance application; EFS = distributed application.",
+          "RDS MySQL Multi-AZ provides a high-availability standby in a second AZ for failover — not a read-scaling mechanism.",
+          "Aurora gives Multi-AZ easily and adds Read Replicas — use it when the database must both survive AZ failure and scale reads.",
+          "The architecture spans an Auto Scaling group over Availability Zones 1, 2 and 3, an Elastic Load Balancer in front, and a multi-AZ database behind.",
+          "User data and blog content belong in the MySQL-compatible database (RDS MySQL or Aurora MySQL); images belong in EBS (single instance) or EFS (distributed)."
+        ],
+        "keyComparisons": [
+          {
+            "items": "EBS vs EFS for uploaded images",
+            "difference": "EBS is a block volume attached to one instance in one AZ, so other instances can't see the upload; EFS is a shared file system mounted by all instances across AZs."
+          },
+          {
+            "items": "EBS single-instance vs distributed Auto Scaling application",
+            "difference": "If the app runs on one instance, EBS works; once an Auto Scaling group spreads instances across AZs, the images must live on EFS."
+          },
+          {
+            "items": "RDS MySQL Multi-AZ vs Aurora with Multi-AZ and Read Replicas",
+            "difference": "RDS Multi-AZ gives a synchronous standby for failover only; Aurora adds easy Multi-AZ plus Read Replicas for read scaling."
+          },
+          {
+            "items": "Multi-AZ (RDS/Aurora) vs Read Replica",
+            "difference": "Multi-AZ is for high availability / failover; Read Replicas are for offloading reads and read scaling."
+          },
+          {
+            "items": "Block storage (EBS) vs file storage (EFS)",
+            "difference": "Block storage attaches to a single instance; file storage is mountable by many instances simultaneously, which is what a distributed app needs."
+          }
+        ],
+        "commonMisunderstandings": [
+          "EBS is not shared storage: an EBS volume cannot be mounted by instances in different Availability Zones, so it cannot back a multi-AZ Auto Scaling image upload.",
+          "Multi-AZ is not for read scaling: the standby is for failover; read scaling needs Read Replicas (Aurora Read Replicas in this section).",
+          "Adding more instances does not fix the image problem — without EFS, each new instance has its own EBS volume and misses previously uploaded images.",
+          "EFS does not require all instances in one AZ: instances in different AZs each mount the shared file system through an ENI."
+        ],
+        "mentalModels": [
+          "Think of EBS as a USB drive plugged into one server — only that server sees the file.",
+          "Think of EFS as a shared network drive every server in every AZ can mount — uploads follow the user to any instance.",
+          "Think of Multi-AZ as the spare tire (failover) and Read Replicas as extra lanes (read throughput)."
+        ],
+        "edgeCases": [
+          "If the application is genuinely single-instance, EBS for images is acceptable; the problem appears only when Auto Scaling distributes instances across AZs.",
+          "The database layer can be either RDS MySQL Multi-AZ or Aurora MySQL Multi-AZ with Read Replicas — the storage decision for images is independent of that choice.",
+          "WordPress needs a writable shared location for uploads; EFS provides it for every instance behind the load balancer."
+        ],
+        "whenToUse": [
+          {
+            "situation": "Uploaded images must be visible to any EC2 instance in an Auto Scaling group spanning multiple AZs",
+            "use": "Amazon EFS mounted by every instance"
+          },
+          {
+            "situation": "Application runs on a single EC2 instance and stores files locally",
+            "use": "Amazon EBS volume"
+          },
+          {
+            "situation": "MySQL database must survive an AZ failure",
+            "use": "RDS MySQL Multi-AZ or Aurora Multi-AZ"
+          },
+          {
+            "situation": "Database must also serve heavy read traffic",
+            "use": "Aurora with Read Replicas"
+          },
+          {
+            "situation": "Need a fully scalable WordPress site with user data, blog content and images",
+            "use": "ALB + Auto Scaling group across AZs + multi-AZ MySQL database + EFS for images"
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "\"Users sometimes see broken or missing images after new instances launch\"",
+            "indicates": "Images stored on EBS instead of a shared file system — move to EFS"
+          },
+          {
+            "signal": "\"Auto Scaling group across multiple Availability Zones storing user uploads\"",
+            "indicates": "EFS is the expected answer; EBS is the distractor"
+          },
+          {
+            "signal": "\"Database must be highly available and handle read-heavy traffic\"",
+            "indicates": "Aurora Multi-AZ plus Read Replicas"
+          },
+          {
+            "signal": "\"High availability with automatic failover to another AZ\"",
+            "indicates": "Multi-AZ deployment, not read replicas"
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "\"Use an EBS volume for uploads because it's attached to the instance and fast\"",
+            "correction": "EBS is single-instance and single-AZ; instances elsewhere in the Auto Scaling group cannot see those images. Use EFS for the distributed case."
+          },
+          {
+            "trap": "\"Multi-AZ RDS improves read performance\"",
+            "correction": "The Multi-AZ standby is for failover only; read scaling comes from Read Replicas."
+          },
+          {
+            "trap": "\"Attach the same EBS volume to instances in all AZs\"",
+            "correction": "That is the EFS pattern; EBS volumes cannot be shared across Availability Zones."
+          },
+          {
+            "trap": "\"Aurora Multi-AZ makes Read Replicas unnecessary for scaling reads\"",
+            "correction": "Multi-AZ addresses availability; Read Replicas address read scaling — the section uses both."
+          }
+        ],
+        "beyondSource": [
+          "EFS is a Regional, multi-AZ file system with mount targets per AZ; instances mount it over NFS through those targets.",
+          "EBS volumes are AZ-scoped and replicated within that AZ; multi-attach io1/io2 volumes are limited to the same AZ and are not a substitute for EFS.",
+          "Amazon S3 is a common alternative for WordPress media in a stateless design, but this section's comparison is EBS vs EFS."
+        ]
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "0cb098a5-7b8e-4db7-a708-0a4af97a3df1",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T14:40:02.035Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
+          "revision": 3
+        },
+        "flashcards": {
+          "requestId": "d22a8c68-9d27-43a0-9018-55bde86a4d49",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T14:40:09.201Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
+          "revision": 3
+        },
+        "quiz": {
+          "requestId": "f366c499-b361-4a69-a01c-fae3a13145c3",
+          "promptVersion": 3,
+          "generatedAt": "2026-10-24T14:40:20.996Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
+          "revision": 3
+        }
+      }
+    },
+    {
+      "id": "25b484c9-9f38-471b-971f-812820dea11c",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "65f92a47-5d5b-4464-b88b-a48d8de221da",
+      "title": "Instantiating Applications Quickly and the Typical 3-Tier Web App",
+      "objective": "Select the fastest way to instantiate EC2, RDS and EBS resources (Golden AMI, User Data, snapshots) and describe the standard 3-tier architecture with public, private and data subnets.",
+      "keyTopics": [
+        "Full stack launch bottlenecks",
+        "Golden AMI for EC2",
+        "User Data bootstrapping",
+        "Golden AMI plus User Data hybrid",
+        "RDS restore from snapshot",
+        "EBS restore from snapshot",
+        "Three-tier subnet design",
+        "Public, private and data subnets"
+      ],
+      "pageStart": 259,
+      "pageEnd": 261,
+      "text": "[Page 259]\nInstantiating Applications quickly\n• \tWhen launching a full stack (EC2, EBS, RDS), it can take time to:\n• \tInstall applications\n• \tInsert initial (or recovery) data\n• \tConfigure everything\n• \tLaunch the application\n• \tWe can take advantage of the cloud to speed that up!\n\n[Page 260]\nInstantiating Applications quickly\n• \tEC2 Instances:\n• \tUse a Golden AMI: Install your applications, OS dependencies etc.. beforehand\nand launch your EC2 instance from the Golden AMI\n• \tBootstrap using User Data: For dynamic configuration, use User Data scripts\n• \tHybrid: mix Golden AMI and User Data (Elastic Beanstalk)\n• \tRDS Databases:\n• \tRestore from a snapshot: the database will have schemas and data ready!\n• \tEBS Volumes:\n• \tRestore from a snapshot: the disk will already be formatted and have data!\n\n[Page 261]\nTypical architecture: Web App 3-tier\nMulti AZ\nAvailability zone 1\nAuto Scaling group\nAvailability zone 2\nAvailability zone 3\nElastiCache\nStore / retrieve\nsession data\n+ Cached data\nPUBLIC SUBNET \tPRIVATE SUBNET \tDATA SUBNET\nAmazon RDS\nRead / write data\nELB\nRoute 53",
+      "read": false
+    },
+    {
+      "id": "4a8acf0d-3e8f-401c-b245-f08d710876a3",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "65f92a47-5d5b-4464-b88b-a48d8de221da",
+      "title": "Elastic Beanstalk — Overview, Components, Platforms and Deployment Modes",
+      "objective": "Explain what Elastic Beanstalk manages versus what the developer owns, and distinguish web server tier, worker tier, and single instance versus load-balanced deployment modes.",
+      "keyTopics": [
+        "Developer pain points on AWS",
+        "Beanstalk as managed service",
+        "Developer owns only application code",
+        "Application and application version",
+        "Environment and environment tiers",
+        "Supported platforms list",
+        "Web server tier vs worker tier",
+        "Worker tier SQS scaling",
+        "Single instance vs HA deployment mode",
+        "Beanstalk costs underlying resources"
+      ],
+      "pageStart": 262,
+      "pageEnd": 267,
+      "text": "[Page 262]\nDeveloper problems on AWS\n• \tManaging infrastructure\n• \tDeploying Code\n• \tConfiguring all the databases, load balancers, etc\n• \tScaling concerns\n• \tMost web apps have the same architecture (ALB + ASG)\n• \tAll the developers want is for their code to run!\n• \tPossibly, consistently across different applications and environments\n\n[Page 263]\nElastic Beanstalk \t– \tOverview\n• \tElastic Beanstalk is a developer centric view of deploying an application\non AWS\n• \tIt uses all the component’s we’ve seen before: EC2, ASG, ELB, RDS, …\n• \tManaged service\n• \tAutomatically handles capacity provisioning, load balancing, scaling, application\nhealth monitoring, instance configuration, …\n• \tJust the application code is the responsibility of the developer\n• \tWe still have full control over the configuration\n• \tBeanstalk is free but you pay for the underlying instances\n\n[Page 264]\nElastic Beanstalk \t– \tComponents\n• \tApplication: collection of Elastic Beanstalk components (environments,\nversions, configurations, …)\n• \tApplication Version: an iteration of your application code\n• \tEnvironment\n• \tCollection of AWS resources running an application version (only one application\nversion at a time)\n• \tTiers: Web Server Environment Tier & Worker Environment Tier\n• \tYou can create multiple environments (dev, test, prod, …)\nCreate\nApplication\nUpload\nVersion\nLaunch\nEnvironment\nManage\nEnvironment\nupdate version\ndeploy new version\n\n[Page 265]\nElastic Beanstalk \t– \tSupported Platforms\n• \tGo\n• \tJava SE\n• \tJava with Tomcat\n• \t.NET Core on Linux\n• \t.NET on Windows Server\n• \tNode.js\n• \tPHP\n• \tPython\n• \tRuby\n• \tPacker Builder\n• \tSingle Container Docker\n• \tMulti-container Docker\n• \tPreconfigured Docker\n\n[Page 266]\nWeb Server Tier vs. Worker Tier\nAuto Scaling group\nWeb Environment\n(myapp.us-east-1.elasticbeanstalk.com)\nSecurity Group\nAvailability Zone 1 \tAvailability Zone 2\nEC2 Instance\n(Web Server)\nELB\nSecurity Group\nEC2 Instance\n(Web Server)\nAuto Scaling group\nWorker Environment\nAvailability Zone 1 \tAvailability Zone 2\nSQS Queue\nSQS message \tSQS message\npull\nmessages\nEC2 Instance\n(Worker)\nEC2 Instance\n(Worker)\n• \tScale based on the number of SQS messages\n• \tCan push messages to SQS queue from\nanother Web Server Tier\n\n[Page 267]\nElastic Beanstalk Deployment Modes\nSingle Instance\nGreat for dev\nHigh Availability with Load Balancer\nGreat for prod\nAvailability Zone 1\nAuto Scaling Group\nAvailability Zone 2\nRDS Master \tRDS Standby\nEC2 Instance \tEC2 Instance\nALBAvailability Zone 1\nRDS Master\nEC2 Instance\nElastic IP",
+      "read": false
+    }
+  ]
 }

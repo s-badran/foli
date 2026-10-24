@@ -861,6 +861,14 @@ button {
   border-radius: 5px;
   font-size: 12px;
 }
+.busy-banner svg {
+  animation: folio-spin 1s linear infinite;
+}
+@keyframes folio-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .busy-banner .muted {
   margin-left: auto;
   font-size: 10px;
@@ -3093,9 +3101,27 @@ a:focus-visible {
 /* ============================================================
    Focus mode — dim the chrome, single-column reading, less motion
    ============================================================ */
+.focus-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: #fff;
+}
+.focus-toggle:hover {
+  background: var(--green-soft);
+  color: var(--green-dark);
+}
 .focus-toggle.active {
   background: var(--green-soft);
   color: var(--green-dark);
+  border-color: #c3d4b6;
 }
 body.focus-mode .sidebar {
   opacity: 0.08;
@@ -3113,12 +3139,4 @@ body.focus-mode .summary-layout {
 body.focus-mode .summary-layout .key-points {
   padding-top: 26px;
   border-top: 1px solid var(--line);
-}
-body.focus-mode *,
-body.focus-mode *::before,
-body.focus-mode *::after {
-  transition-duration: 0s !important;
-  animation-duration: 0s !important;
-  animation-iteration-count: 1 !important;
-  scroll-behavior: auto !important;
 }

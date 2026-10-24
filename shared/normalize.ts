@@ -76,21 +76,55 @@ export function normalizeQuiz(raw: unknown): unknown {
   return { ...value, questions };
 }
 
-/** Models occasionally dump a long essay into the optional `notes` field; clamp it. */
-function truncateNotes(raw: unknown, max: number): unknown {
+/** Truncate an oversized string to the schema limit; pass anything else through. */
+function truncateText(value: unknown, max: number): unknown {
+  return typeof value === 'string' && value.length > max ? value.slice(0, max) : value;
+}
+
+/**
+ * Clamp sections to their schema limits. Models frequently over-produce key topics
+ * or run a title/objective long; dropping the overflow is safe and keeps generation
+ * from failing per chapter.
+ */
+export function normalizeSections(raw: unknown): unknown {
   const value = record(raw);
   if (!value) return raw;
-  if (typeof value.notes === 'string' && value.notes.length > max)
-    return { ...value, notes: value.notes.slice(0, max) };
-  return value;
+  const next: Record<string, unknown> = { ...value };
+  next.notes = truncateText(next.notes, 1000);
+  if (Array.isArray(next.sections))
+    next.sections = next.sections.map((item) => {
+      const section = record(item);
+      if (!section) return item;
+      const fixed: Record<string, unknown> = { ...section };
+      fixed.title = truncateText(fixed.title, 160);
+      fixed.objective = truncateText(fixed.objective, 300);
+      if (Array.isArray(fixed.keyTopics))
+        fixed.keyTopics = fixed.keyTopics.map((topic) => truncateText(topic, 80)).slice(0, 10);
+      return fixed;
+    });
+  return next;
 }
 
-export function normalizeSections(raw: unknown): unknown {
-  return truncateNotes(raw, 1000);
-}
-
+/** Clamp outline chapters and notes to their schema limits. */
 export function normalizeOutline(raw: unknown): unknown {
-  return truncateNotes(raw, 1500);
+  const value = record(raw);
+  if (!value) return raw;
+  const next: Record<string, unknown> = { ...value };
+  next.notes = truncateText(next.notes, 1500);
+  if (Array.isArray(next.chapters))
+    next.chapters = next.chapters.map((item) => {
+      const chapter = record(item);
+      if (!chapter) return item;
+      const fixed: Record<string, unknown> = { ...chapter };
+      fixed.title = truncateText(fixed.title, 160);
+      fixed.description = truncateText(fixed.description, 400);
+      if (Array.isArray(fixed.examFocus))
+        fixed.examFocus = fixed.examFocus
+          .map((focus) => truncateText(focus, 240))
+          .slice(0, 6);
+      return fixed;
+    });
+  return next;
 }
 
 export function normalizeArtifact(kind: ArtifactKind, raw: unknown): unknown {

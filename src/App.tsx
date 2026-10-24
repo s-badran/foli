@@ -141,12 +141,13 @@ export function App() {
     localStorage.setItem('folio-focus', focus ? '1' : '0');
   }, [focus]);
 
-  const run: RunTask = async (action, success) => {
+  const run: RunTask = async (action, success, busyLabel) => {
     if (busy) return;
     setBusy(
-      success?.startsWith('Imported')
-        ? 'Importing and checking sources...'
-        : 'Saving exam workspace...',
+      busyLabel ??
+        (success?.startsWith('Imported')
+          ? 'Importing and checking sources...'
+          : 'Saving exam workspace...'),
     );
     setError('');
     setNotice('');
@@ -319,13 +320,14 @@ export function App() {
                 />
               </label>
               <button
-                className={`icon-button focus-toggle ${focus ? 'active' : ''}`}
+                className={`focus-toggle ${focus ? 'active' : ''}`}
                 title={focus ? 'Exit focus mode' : 'Focus mode'}
                 aria-label={focus ? 'Exit focus mode' : 'Enter focus mode'}
                 aria-pressed={focus}
                 onClick={() => setFocus(!focus)}
               >
-                {focus ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
+                {focus ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
+                {focus ? 'Exit focus' : 'Focus'}
               </button>
             </div>
           )}

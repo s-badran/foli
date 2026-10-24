@@ -1,7 +1,7 @@
 {
   "examDate": "2027-01-05",
   "dailyMinutes": 60,
-  "createdAt": "2026-10-24T14:20:52.322Z",
+  "createdAt": "2026-10-24T14:40:21.345Z",
   "familiarity": "basic",
   "days": [
     {
@@ -146,7 +146,7 @@
       "date": "2026-11-08",
       "sectionIds": [
         "9cb86741-88eb-45ed-805c-13b9001e5a9f",
-        "65f92a47-5d5b-4464-b88b-a48d8de221da"
+        "78550d02-e3e9-4335-a8c9-1b885f11e55b"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -154,8 +154,8 @@
     {
       "date": "2026-11-09",
       "sectionIds": [
-        "65f92a47-5d5b-4464-b88b-a48d8de221da",
-        "65f92a47-5d5b-4464-b88b-a48d8de221da"
+        "57e66a52-d1f7-4d0f-86db-6ac983af5022",
+        "2e00c817-c25a-4341-9fc6-6ef5524b5f1d"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -163,8 +163,8 @@
     {
       "date": "2026-11-10",
       "sectionIds": [
-        "65f92a47-5d5b-4464-b88b-a48d8de221da",
-        "65f92a47-5d5b-4464-b88b-a48d8de221da"
+        "25b484c9-9f38-471b-971f-812820dea11c",
+        "4a8acf0d-3e8f-401c-b245-f08d710876a3"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -625,7 +625,7 @@
       "studyMinutes": 0
     }
   ],
-  "warning": "This schedule exceeds your daily budget. Increase your time or move the exam date. Each lesson budgets 15 minutes plus daily review. 24 chapter(s) are not yet split into sections; their time is estimated from page counts and refines once sections are generated.",
+  "warning": "This schedule exceeds your daily budget. Increase your time or move the exam date. Each lesson budgets 15 minutes plus daily review. 23 chapter(s) are not yet split into sections; their time is estimated from page counts and refines once sections are generated.",
   "chapterIds": [
     "6b5defc4-5307-4875-85b3-2f7b8ba00fff",
     "1a7eab28-c656-485a-8c23-f06891ebbbf5",

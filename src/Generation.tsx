@@ -172,6 +172,7 @@ export function GenerateAction({
                   await api(`/requests/${queued.id}/run`, send({}));
                 },
                 `${label} requested again`,
+                `Generating ${label.toLowerCase()}…`,
               )
             }
           >
@@ -195,6 +196,7 @@ export function GenerateAction({
             await api(`/requests/${request.id}/run`, send({}));
           },
           `${label} requested`,
+          `Generating ${label.toLowerCase()}…`,
         )
       }
     >

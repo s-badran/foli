@@ -22,7 +22,11 @@ import { renderSummary } from '../shared/artifacts';
 import { sectionNumber } from '../shared/sections';
 import { latestRequest, RequestStatus } from './Generation';
 
-export type RunTask = (action: () => Promise<unknown>, success?: string) => Promise<void>;
+export type RunTask = (
+  action: () => Promise<unknown>,
+  success?: string,
+  busyLabel?: string,
+) => Promise<void>;
 type Tab = 'summary' | 'cards' | 'quiz' | 'source';
 
 export function StudyView({
@@ -86,6 +90,7 @@ export function StudyView({
         await api(`/requests/${request.id}/run`, send({}));
       },
       `${label} regenerated`,
+      `Generating ${label.toLowerCase()}…`,
     );
   const generate = (kind: 'summary' | 'flashcards' | 'quiz', label: string, hint: string) => {
     const request = latestRequest(state, section.folderId, kind, section.id);
@@ -202,6 +207,7 @@ export function StudyView({
                   }
                 },
                 'Study materials generated',
+                'Generating study materials…',
               )
             }
           >

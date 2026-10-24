@@ -43,6 +43,8 @@ The active index is `data/exams/index.json`. If absent, the store reads the lega
 
 `server/tutor.ts` renders versioned prompts from `prompts/*.md`, queues requests and validates/applies responses. `shared/artifacts.ts` owns the schemas and coverage/quality checks. `server/curriculum.ts` produces the provisional outline. `shared/learning.ts` operates only on key-topic coverage and assessment evidence; exam-specific content never appears in preparation thresholds or baseline policies.
 
+`server/ai/model.ts` is the single AI import surface. `AiModel.create(id?)` resolves a registry entry (id → provider, base URL, model name, key env var, JSON-mode support), throws when the key is missing, and exposes `complete({ prompt })`. Providers sit behind an `AiProvider` interface so tests inject a mock and new vendors register in one place; `GET /api/models` serves the picker list and a `configured` flag, never the key. `pnpm tutor run` uses the same class and then writes a normal response file, so generated output passes the same validation as hand-written output.
+
 `Section.keyTopics` is the main-source topic inventory. Cards/quiz questions list the key topics they cover; the UI distinguishes assessment coverage from learner demonstration. An unaudited section cannot claim preparation even when all its current questions are passed. IAM was generated against PDF pages 24-40, not inferred to be complete from its card count. This remains a limited authored assessment, not official or validated exam readiness.
 
 ## Supplement Commonness
@@ -73,6 +75,7 @@ FSRS owns due dates. Reading is an independent marker. Chapter preparation requi
 | `PUT /api/folders/:id/main-source`            | Same-exam source ID plus `confirmRebuild: true`                                                     |
 | `PATCH /api/folders/:id/sources/:sourceId`    | Explicitly accept or exclude a supplement                                                           |
 | `GET /api/prompts`                            | List versioned generation prompts                                                                    |
+| `GET /api/models`                             | Supported AI models, default id and credential-present flags (never key values)                       |
 | `POST /api/folders/:id/requests`              | Queue an outline request                                                                            |
 | `POST /api/chapters/:id/materials`            | Queue summary/flashcards/quiz requests for a chapter's sections                                      |
 | `GET /api/requests/:id/prompt`                | The rendered prompt text for a request                                                               |
@@ -91,4 +94,4 @@ Generation requests are one artifact per request (outline, sections, summary, fl
 
 ## Deliberate Limits
 
-Localhost only, no auth/profiles, no OCR, no external file paths, no public deployment, no automatic semantic chapter generation for arbitrary textbooks, no live model call (generation is file-based and learner-triggered), no cross-process transactions. These remain explicit future phases rather than simulated features.
+Localhost only, no auth/profiles, no OCR, no external file paths, no public deployment, no automatic semantic chapter generation for arbitrary textbooks, no cross-process transactions. Model calls are opt-in (`pnpm tutor run`, one request at a time) rather than a background queue. These remain explicit future phases rather than simulated features.

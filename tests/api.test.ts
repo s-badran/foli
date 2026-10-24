@@ -209,3 +209,19 @@ describe.sequential('complete local study workflow', () => {
     expect(state.attempts).toHaveLength(0);
   });
 });
+
+describe('supported models', () => {
+  it('lists models without exposing credentials', async () => {
+    const result = await json('/api/models');
+    expect(result.status).toBe(200);
+    const body = result.data as {
+      default: string;
+      models: { id: string; configured: boolean; default: boolean }[];
+    };
+    expect(body.default).toBe('deepseek-chat');
+    expect(body.models.map((item) => item.id)).toContain('deepseek-chat');
+    expect(body.models.map((item) => item.id)).not.toContain('mock');
+    expect(body.models.find((item) => item.default)?.id).toBe('deepseek-chat');
+    expect(JSON.stringify(body)).not.toMatch(/sk-[a-z0-9]/i);
+  });
+});

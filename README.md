@@ -54,9 +54,31 @@ Each section shows its key topics, source pages, and which cards/quiz questions 
 ```sh
 pnpm tutor pending   # list open requests with their prompt/response paths
 pnpm tutor ingest    # validate and apply every response file that exists
+pnpm tutor run       # answer one pending request with an AI model, then ingest it
+pnpm tutor run --limit 3 --model gpt-4o-mini
 ```
 
 Per-artifact requests are deliberate: a single request that emits summary + cards + quiz at once splits the model's attention, mixes formats in one completion, and fails all-or-nothing. Separate prompts give each artifact a focused schema and isolated validation/retry, and match RemNote's separate "Generate cards" / "Generate quiz" buttons.
+
+## AI Models
+
+All AI access goes through one class, `AiModel`, in `server/ai/model.ts`. Callers never import a provider:
+
+```ts
+const model = AiModel.create(); // FOLIO_AI_MODEL, else deepseek-chat
+const text = await model.complete({ prompt });
+```
+
+Keys live in `.env` (gitignored) and are read only by the server process; `GET /api/models` reports which providers are configured without exposing any secret.
+
+| Setting            | Purpose                                                              |
+| ------------------ | -------------------------------------------------------------------- |
+| `DEEPSEEK_API_KEY` | Enables `deepseek-chat` (default) and `deepseek-reasoner`             |
+| `OPENAI_API_KEY`   | Enables `gpt-4o-mini`                                                 |
+| `FOLIO_AI_MODEL`   | Default model id when none is passed                                  |
+| Ollama             | `ollama-local` needs no key and calls `http://127.0.0.1:11434/v1`     |
+
+`pnpm tutor run` writes the model's reply to the same response file a human would write, then goes through the identical validation and application path. A bad or over-long response is rejected with its problems listed, never applied.
 
 ## Learner Setup
 

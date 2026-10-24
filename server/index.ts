@@ -1,9 +1,11 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createApp } from './app';
+import { loadEnvironment } from './env';
 import { Store } from './store';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+loadEnvironment(path.join(root, '.env'));
 const port = Number(process.env.PORT ?? 3001);
 const dataDirectory = path.resolve(root, process.env.FOLIO_DATA_DIR ?? 'data');
 if (!dataDirectory.startsWith(`${root}${path.sep}`))

@@ -6,6 +6,7 @@ import path from 'node:path';
 import { z } from 'zod';
 import { learnerSchema, type Section, type Source, type StudyState } from '../shared/models';
 import { artifactKinds } from '../shared/artifacts';
+import { DEFAULT_MODEL_ID, listModels } from './ai/model';
 import { Store } from './store';
 import { extractDocument } from './documents';
 import { createPlan, planItems, replanExam, reviewCard } from './study';
@@ -282,6 +283,9 @@ export function createApp(
         })),
       ),
     );
+  });
+  app.get('/api/models', (_request, response) => {
+    response.json({ default: DEFAULT_MODEL_ID, models: listModels() });
   });
   app.post('/api/folders/:id/requests', async (request, response) => {
     const { kind, targetId } = z

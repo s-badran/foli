@@ -2,18 +2,26 @@
 
 :root {
   font-family: 'DM Sans', sans-serif;
-  color: #292e32;
+  color: #262d29;
   background: #fff;
   font-synthesis: none;
   --green: #456c45;
   --green-dark: #2d4e31;
   --green-soft: #edf3ea;
   --blue: #447ca2;
-  --muted: #81878a;
+  --muted: #626d66;
   --line: #e8ebea;
   --surface: #f7f8f7;
+  --text: #2b332e;
+  --text-strong: #1c241f;
+  --text-muted: #5b665f;
+  --text-faint: #6f7a71;
+  --line-strong: #d8ded8;
+  --focus: #2d6a3f;
+  --radius: 8px;
+  --radius-sm: 6px;
   letter-spacing: 0;
-  font-size: 14px;
+  font-size: 15px;
 }
 * {
   box-sizing: border-box;
@@ -68,24 +76,20 @@ h3,
 p {
   margin: 0;
 }
-h1,
-h2,
-h3,
-.brand {
-  font-family: 'Manrope', sans-serif;
-}
 h1 {
-  font-size: 29px;
-  line-height: 1.4;
-  font-weight: 750;
+  font-size: 30px;
+  line-height: 1.35;
+  font-weight: 760;
+  color: var(--text-strong);
 }
 h2 {
-  font-size: 17px;
-  line-height: 1.5;
-  font-weight: 750;
+  font-size: 19px;
+  line-height: 1.45;
+  font-weight: 740;
+  color: var(--text-strong);
 }
 p {
-  line-height: 1.7;
+  line-height: 1.75;
 }
 svg {
   flex-shrink: 0;
@@ -2838,4 +2842,250 @@ textarea:focus {
   .reader-footer {
     gap: 15px;
   }
+}
+
+/* ============================================================
+   Readability refresh — ADHD-focused
+   Larger, higher-contrast type; clear focus; calm hierarchy.
+   ============================================================ */
+
+/* Buttons & links */
+.button {
+  min-height: 40px;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 600;
+}
+.button.secondary {
+  border-color: var(--line-strong);
+  color: #3f4a43;
+}
+.button.secondary:hover:not(:disabled) {
+  background: var(--green-soft);
+}
+.text-button {
+  font-size: 13px;
+  color: #4c6644;
+}
+.icon-button {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+}
+
+/* Labels & helpers */
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #66705f;
+}
+.muted {
+  color: var(--text-faint);
+}
+.badge {
+  font-size: 12px;
+  padding: 6px 11px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+.badge.success {
+  color: #527844;
+}
+.form-note {
+  font-size: 12px;
+  color: var(--text-faint);
+  line-height: 1.65;
+}
+
+/* Progress */
+.progress-track {
+  height: 8px;
+  border-radius: 8px;
+  background: #e3e8e3;
+}
+.progress-track > div {
+  background: #57814e;
+}
+
+/* Sidebar */
+.main-nav button {
+  font-size: 14px;
+  min-height: 44px;
+  color: #56615a;
+}
+.main-nav button.active {
+  color: var(--green-dark);
+  background: #e7eee3;
+}
+.sidebar-heading {
+  font-size: 11px;
+  color: #77827a;
+}
+.workspace-label strong {
+  font-size: 13px;
+}
+.workspace-label span {
+  font-size: 11px;
+}
+
+/* Dashboard */
+.exam-section p {
+  font-size: 12px;
+}
+.exam-section .button {
+  font-size: 12px;
+}
+.exam-tile h2 {
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--text-strong);
+}
+.exam-tile p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.exam-tile > div:last-child:not(.tile-icon) {
+  font-size: 12px;
+  color: #4f6549;
+}
+.stats strong {
+  font-size: 32px;
+}
+.stat-label {
+  font-size: 11px;
+}
+.stats small {
+  font-size: 13px;
+}
+.exam-brief strong {
+  font-size: 12px;
+}
+.exam-brief p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.curriculum-note {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.chapter h2 {
+  font-size: 15px;
+  color: #35403a;
+}
+.chapter summary p {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.chapter-number {
+  font-size: 13px;
+  color: #6c7d60;
+}
+.chapter-status {
+  font-size: 11px;
+  color: #5c6a58;
+}
+.chapter-description {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.lesson-row strong {
+  font-size: 14px;
+  color: #3d4c3e;
+  line-height: 1.55;
+}
+.lesson-row span {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.lesson-row {
+  padding: 20px 18px;
+}
+
+/* Reader */
+.source-caption {
+  font-size: 12px;
+}
+.reader-title h1 {
+  font-size: 28px;
+}
+.reader-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.reader-meta > span:last-child:not(.dot) {
+  font-size: 11px;
+}
+.tab-row button {
+  font-size: 13px;
+  color: #66725f;
+}
+.tab-row button.active {
+  color: #476c3d;
+}
+.tab-row button > span {
+  font-size: 11px;
+}
+.markdown {
+  font-size: 15px;
+  line-height: 1.85;
+  color: #39433e;
+}
+.markdown h2 {
+  font-size: 21px;
+  color: var(--text-strong);
+}
+.markdown h3 {
+  font-size: 17px;
+}
+.key-topics p {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.topic-chip {
+  font-size: 12px;
+}
+.lesson-row .lesson-topics {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.request-status {
+  font-size: 13px;
+}
+.request-status strong {
+  font-size: 13px;
+}
+.request-status span {
+  font-size: 12px;
+}
+.outline-banner {
+  font-size: 13px;
+}
+.outline-banner p {
+  font-size: 13px;
+}
+
+/* Forms */
+textarea {
+  font-size: 14px;
+}
+.checkbox-label {
+  font-size: 12px;
+}
+
+/* Empty states */
+.empty h2 {
+  font-size: 18px;
+  color: var(--text-strong);
+}
+.empty p {
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+/* Stronger, clearer focus ring */
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
 }

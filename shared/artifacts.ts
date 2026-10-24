@@ -122,6 +122,20 @@ export const artifactSchemas = {
 const same = (left: string, right: string) =>
   left.trim().toLowerCase() === right.trim().toLowerCase();
 
+const normalizeKey = (value: string) =>
+  value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim();
+
+/**
+ * Loose key-topic match: exact, or one normalized string contains the other.
+ * Models often split a combined section topic ("A; B") into its components.
+ */
+export function sameTopic(left: string, right: string): boolean {
+  if (same(left, right)) return true;
+  const a = normalizeKey(left);
+  const b = normalizeKey(right);
+  return !!a && !!b && (a.includes(b) || b.includes(a));
+}
+
 export function checkRanges(
   ranges: { title?: string; pageStart: number; pageEnd: number }[],
   min: number,
@@ -150,10 +164,10 @@ export function checkFlashcards(cards: Flashcards, keyTopics: string[]) {
     );
   if (all.length > 45) problems.push(`Too many cards: ${all.length} (max 45 per section).`);
   for (const card of all)
-    if (!keyTopics.some((topic) => same(topic, card.keyTopic)))
+    if (!keyTopics.some((topic) => sameTopic(topic, card.keyTopic)))
       problems.push(`Unknown keyTopic "${card.keyTopic}" on: ${card.question}`);
   for (const topic of keyTopics)
-    if (!all.some((card) => same(card.keyTopic, topic)))
+    if (!all.some((card) => sameTopic(card.keyTopic, topic)))
       problems.push(`Key topic not covered by any card: ${topic}`);
   const questions = all.map((card) => card.question.toLowerCase());
   if (new Set(questions).size !== questions.length) problems.push('Duplicate card questions.');
@@ -168,16 +182,18 @@ export function checkFlashcards(cards: Flashcards, keyTopics: string[]) {
 export function checkQuiz(quiz: Quiz, keyTopics: string[]) {
   const problems: string[] = [];
   for (const question of quiz.questions) {
-    if (!keyTopics.some((topic) => same(topic, question.keyTopic)))
+    if (!keyTopics.some((topic) => sameTopic(topic, question.keyTopic)))
       problems.push(`Unknown keyTopic "${question.keyTopic}".`);
     if (new Set(question.options.map((option) => option.toLowerCase())).size !== 4)
       problems.push(`Duplicate options in: ${question.question.slice(0, 80)}`);
     if (question.options.some((option) => /all of the above|none of the above/i.test(option)))
       problems.push('Avoid "all/none of the above" options.');
   }
-  const covered = new Set(quiz.questions.map((question) => question.keyTopic.toLowerCase()));
-  if (covered.size < Math.min(quiz.questions.length, Math.ceil(keyTopics.length / 2)))
-    problems.push(`Quiz covers only ${covered.size} of ${keyTopics.length} key topics.`);
+  const covered = keyTopics.filter((topic) =>
+    quiz.questions.some((question) => sameTopic(topic, question.keyTopic)),
+  );
+  if (covered.length < Math.min(quiz.questions.length, Math.ceil(keyTopics.length / 2)))
+    problems.push(`Quiz covers only ${covered.length} of ${keyTopics.length} key topics.`);
   const positions = new Set(quiz.questions.map((question) => question.correctIndex));
   if (quiz.questions.length >= 4 && positions.size < 2)
     problems.push('Correct answers all use the same option position.');

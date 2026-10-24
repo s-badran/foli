@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { emptyState, type StudyState } from '../shared/models';
 import { chapterPreparation, sectionPractice } from '../shared/learning';
-import { renderSummary } from '../shared/artifacts';
+import { renderSummary, sameTopic } from '../shared/artifacts';
 import {
   applyResponse,
   loadPrompt,
@@ -324,6 +324,36 @@ describe('response validation and application', () => {
     const positions = section.content!.quiz.map((item) => item.correctIndex);
     expect(new Set(positions).size).toBeGreaterThan(1);
   });
+  it('accepts cards whose key topic is a component of a combined section topic', () => {
+    const { state, section } = sectioned();
+    section.keyTopics = ['Default EC2 private + public IP; SSH via public IP', 'Elastic IP limit'];
+    const cards = {
+      groups: [
+        {
+          concept: 'IPs',
+          cards: [
+            { question: 'Which two IPs does a default EC2 instance come with?', answer: 'Private and public IP', keyTopic: 'Default EC2 private + public IP' },
+            { question: 'For SSH from outside, which IP must you use?', answer: 'The public IP', keyTopic: 'SSH via public IP' },
+            { question: 'Why cannot you SSH via the private IP?', answer: 'It is not reachable from the internet', keyTopic: 'SSH via public IP' },
+            { question: 'How many Elastic IPs per account by default?', answer: 'Five', keyTopic: 'Elastic IP limit' },
+          ],
+        },
+      ],
+    };
+    expect(applyResponse(state, request('flashcards', section.id), cards)).toEqual([]);
+    const stored = section.content!.cards;
+    expect(stored.some((item) => item.keyTopic === 'Default EC2 private + public IP; SSH via public IP')).toBe(true);
+    expect(stored.some((item) => item.keyTopic === 'Elastic IP limit')).toBe(true);
+  });
+
+describe('sameTopic', () => {
+  it('matches split components to a combined topic', () => {
+    const topic = 'Default EC2 private + public IP; SSH via public IP';
+    expect(sameTopic(topic, 'SSH via public IP')).toBe(true);
+    expect(sameTopic(topic, 'Default EC2 private + public IP')).toBe(true);
+    expect(sameTopic(topic, 'IPv6')).toBe(false);
+  });
+});
   it('requires recall and current-quiz evidence for chapter preparation', () => {
     const { state, chapter, section } = sectioned();
     applyResponse(state, request('flashcards', section.id), goodCards);

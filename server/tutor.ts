@@ -10,6 +10,7 @@ import {
   checkQuiz,
   checkRanges,
   renderSummary,
+  sameTopic,
   type ArtifactKind,
   type Flashcards,
   type Outline,
@@ -297,7 +298,7 @@ const slug = (value: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 const matchTopic = (topics: string[], value: string) =>
-  topics.find((topic) => topic.trim().toLowerCase() === value.trim().toLowerCase()) ?? value;
+  topics.find((topic) => sameTopic(topic, value)) ?? value;
 const objectiveId = (section: Section, topic: string) => `${section.id}::${slug(topic)}`;
 const modelLabel = (request: GenerationRequest) =>
   `Tutor model · ${request.kind} prompt v${request.promptVersion}`;

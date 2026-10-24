@@ -3089,3 +3089,36 @@ a:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
+
+/* ============================================================
+   Focus mode — dim the chrome, single-column reading, less motion
+   ============================================================ */
+.focus-toggle.active {
+  background: var(--green-soft);
+  color: var(--green-dark);
+}
+body.focus-mode .sidebar {
+  opacity: 0.08;
+  pointer-events: none;
+  filter: grayscale(0.5);
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+body.focus-mode .topbar {
+  opacity: 0.75;
+}
+body.focus-mode .summary-layout {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 22px;
+}
+body.focus-mode .summary-layout .key-points {
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+body.focus-mode *,
+body.focus-mode *::before,
+body.focus-mode *::after {
+  transition-duration: 0s !important;
+  animation-duration: 0s !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+}

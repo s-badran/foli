@@ -17,7 +17,7 @@
       "plan": {
         "examDate": "2027-01-05",
         "dailyMinutes": 60,
-        "createdAt": "2026-10-24T13:47:28.722Z",
+        "createdAt": "2026-10-24T14:20:52.322Z",
         "familiarity": "basic",
         "days": [
           {
@@ -36143,7 +36143,1437 @@
       "pageStart": 131,
       "pageEnd": 142,
       "text": "[Page 131]\nClassic Load Balancers (v1)\nClient \tCLB \tEC2\nlistener \tinternal\n• \tSupports TCP (Layer 4), HTTP &\nHTTPS (Layer 7)\n• \tHealth checks are TCP or HTTP\nbased\n• \tFixed hostname\nXXX.region.elb.amazonaws.com\n\n[Page 132]\nApplication Load Balancer (v2)\n• \tApplication load balancers is Layer 7 (HTTP)\n• \tLoad balancing to multiple HTTP applications across machines\n(target groups)\n• \tLoad balancing to multiple applications on the same machine\n(ex: containers)\n• \tSupport for HTTP/2 and WebSocket\n• \tSupport redirects (from HTTP to HTTPS for example)\n\n[Page 133]\nApplication Load Balancer (v2)\n• \tRouting tables to different target groups:\n• \tRouting based on path in URL \t(example.com/users & example.com/posts)\n• \tRouting based on hostname in URL (one.example.com & other.example.com)\n• \tRouting based on Query String, Headers\n(example.com/users?id=123&order=false)\n• \tALB are a great fit for micro services & container-based application\n(example: Docker & Amazon ECS)\n• \tHas a port mapping feature to redirect to a dynamic port in ECS\n• \tIn comparison, we’d need multiple Classic Load Balancer per application\n\n[Page 134]\nTarget Group\nfor\nUsers\napplication\nApplication Load Balancer (v2)\nHTTP Based Traffic\nExternal\nApplication\nLoad Balancer\n(v2)\nHTTP\nWWW Route /user\nTarget Group\nfor\nSearch\napplication\nHTTP\nWWW Route /search\nHealth Check\nHealth Check\n\n[Page 135]\nApplication Load Balancer (v2)\nTarget Groups\n• \tEC2 instances (can be managed by an Auto Scaling Group) \t– \tHTTP\n• \tECS tasks (managed by ECS itself) \t– \tHTTP\n• \tLambda functions \t– \tHTTP request is translated into a JSON event\n• \tIP Addresses \t– \tmust be private IPs\n• \tALB can route to multiple target groups\n• \tHealth checks are at the target group level\n\n[Page 136]\nTarget Group 1\nAWS – EC2 based\nApplication Load Balancer (v2)\nQuery Strings/Parameters Routing\nExternal\nApplication\nLoad Balancer\n(v2)\n?Platform=Mobile\nWWW Requests\nTarget Group 2\nOn-premises – Private IP routing\t?Platform=Desktop\n\n[Page 137]\nApplication Load Balancer (v2)\nGood to Know\n• \tFixed hostname (XXX.region.elb.amazonaws.com)\n• \tThe application servers don’t see the IP of the client directly\n• \tThe true IP of the client is inserted in the header X-Forwarded-For\n• \tWe can also get Port (X-Forwarded-Port) and proto (X-Forwarded-Proto)\nEC2\nInstance\nClient IP\n12.34.56.78\nLoad Balancer IP\n(Private IP)\nConnection termination\n\n[Page 138]\nNetwork Load Balancer (v2)\n• \tNetwork load balancers (Layer 4) allow to:\n• \tForward TCP & UDP traffic to your instances\n• \tHandle millions of request per seconds\n• \tUltra-low latency\n• \tNLB has \tone static IP per AZ, and supports assigning Elastic IP\n(helpful for whitelisting specific IP)\n• \tNLB are used for extreme performance, TCP or UDP traffic\n\n[Page 139]\nNetwork Load Balancer (v2)\nTCP (Layer 4) Based Traffic\nTarget Group\nfor\nUsers\napplication\nExternal\nNetwork Load\nBalancer (v2)\nTCP\nWWW TCP + Rules\nTarget Group\nfor\nSearch\napplication\nHTTP\nWWW TCP + Rules\nHealth Check\nHealth Check\n\n[Page 140]\nNetwork Load Balancer \t– Target Groups\n• \tEC2 instances\n• \tIP Addresses – must be private IPs\n• \tApplication Load Balancer\n• \tHealth Checks support the TCP, HTTP and HTTPS Protocols\nTarget Group\n(EC2 Instances)\ni-1234567890abcdef0 \ti-1234567890abcdef0\nNetwork\nLoad Balancer\nTarget Group\n(IP Addresses)\n192.168.1.118 \t10.0.4.21\nNetwork\nLoad Balancer\nTarget Group\n(Application Load Balancer)\nNetwork\nLoad Balancer\n\n[Page 141]\nGateway Load Balancer\n• \tDeploy, scale, and manage a fleet of 3rd party\nnetwork virtual appliances in AWS\n• \tExample: Firewalls, Intrusion Detection and\nPrevention Systems, Deep Packet Inspection\nSystems, payload manipulation, …\n• \tOperates at Layer 3 (Network Layer) – IP\nPackets\n• \tCombines the following functions:\n• \tTransparent Network Gateway – single entry/exit\nfor all traffic\n• \tLoad Balancer – distributes traffic to your virtual\nappliances\n• \tUses the GENEVE protocol on port 6081\nUsers\n(source)\nGateway\nLoad Balancer\nApplication\n(destination)\nTarget Group\n3rd Party Security\nVirtual Appliances\ntraffic \ttraffic\nRoute\nTable\n\n[Page 142]\nGateway \tLoad Balancer \t– Target Groups\n• \tEC2 instances\n• \tIP Addresses \t– \tmust be private IPs\nTarget Group\n(EC2 Instances)\ni-1234567890abcdef0 \ti-1234567890abcdef0\nGateway\nLoad Balancer\nTarget Group\n(IP Addresses)\n192.168.1.118 \t10.0.4.21\nGateway\nLoad Balancer",
-      "read": false
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nThis section covers the four Elastic Load Balancing types: Classic Load Balancer (v1), Application Load Balancer (v2, Layer 7), Network Load Balancer (v2, Layer 4) and Gateway Load Balancer (Layer 3). The exam repeatedly asks you to pick the right type from scenario clues such as protocol (HTTP/HTTPS vs TCP/UDP vs IP packets), need for advanced routing, need for static IPs, extreme performance, or third-party appliance inspection — so learn each type's layer, features and limits as a decision matrix, not a list.\n\n## Core Concepts\n\n- **Classic Load Balancer (CLB, v1):** Legacy load balancer that supports TCP (Layer 4) and HTTP/HTTPS (Layer 7) with TCP- or HTTP-based health checks and a fixed hostname XXX.region.elb.amazonaws.com.\n- **Application Load Balancer (ALB, v2):** Layer 7 (HTTP) load balancer for routing HTTP/HTTPS traffic to multiple applications and target groups, with support for HTTP/2, WebSocket and redirects such as HTTP to HTTPS.\n- **ALB routing rules:** ALB routes requests to different target groups based on path in the URL, hostname in the URL, query string parameters, or headers.\n- **Path-based routing:** Routing on the URL path, e.g. example.com/users to one target group and example.com/posts to another.\n- **Hostname-based routing:** Routing on the hostname in the URL, e.g. one.example.com vs other.example.com to different target groups.\n- **Query string / header routing:** Routing on query string parameters (e.g. example.com/users?id=123&order=false) or HTTP headers, e.g. ?Platform=Mobile vs ?Platform=Desktop to different target groups.\n- **ALB target group types:** EC2 instances (optionally in an Auto Scaling Group), ECS tasks, Lambda functions (HTTP request translated into a JSON event) and IP addresses (must be private IPs).\n- **Target group level health checks:** For an ALB, health checks are configured at the target group level, not per load balancer.\n- **ALB port mapping:** ALB feature that redirects to a dynamic port in ECS, enabling load balancing to multiple applications/containers on the same machine.\n- **X-Forwarded-For:** Header inserted by the ALB carrying the true client IP, because application servers only see the load balancer's private IP (connection termination). X-Forwarded-Port and X-Forwarded-Proto give port and protocol.\n- **Network Load Balancer (NLB, v2):** Layer 4 load balancer that forwards TCP and UDP traffic, handles millions of requests per second with ultra-low latency, and has one static IP per AZ with support for Elastic IPs.\n- **NLB target group types:** EC2 instances, IP addresses (must be private IPs) and an Application Load Balancer; NLB health checks support TCP, HTTP and HTTPS.\n- **Gateway Load Balancer (GWLB):** Layer 3 (IP packet) load balancer that deploys, scales and manages fleets of third-party network virtual appliances such as firewalls, IDS/IPS and deep packet inspection systems.\n- **GWLB functions:** Combines a transparent network gateway (a single entry/exit point for all traffic, used with route tables) with a load balancer that distributes traffic to the virtual appliances.\n- **GENEVE:** The encapsulation protocol used by Gateway Load Balancer on port 6081 to send traffic to the appliances.\n- **GWLB target group types:** EC2 instances and IP addresses (must be private IPs).\n- **Fixed hostname:** Both CLB and ALB expose a fixed DNS name of the form XXX.region.elb.amazonaws.com.\n- **Connection termination:** The load balancer terminates the client connection, so backend EC2 instances do not see the client IP directly.\n\n## Key Comparisons\n\n- **ALB vs NLB:** ALB is Layer 7 with content-based routing and HTTP/2/WebSocket; NLB is Layer 4 for TCP/UDP at extreme performance with static IPs per AZ.\n- **CLB vs ALB:** CLB is the legacy v1 with one application per load balancer and fixed hostname, whereas ALB gives path/hostname/query string/header routing to multiple target groups.\n- **ALB vs GWLB:** ALB distributes HTTP requests to application targets; GWLB sends IP packets (Layer 3) through third-party security appliances using GENEVE on port 6081.\n- **NLB vs GWLB:** Both are non-HTTP, but NLB (Layer 4, TCP/UDP) balances traffic to your applications while GWLB (Layer 3) inserts virtual appliances transparently into the traffic path via route tables.\n- **ALB vs NLB target groups:** ALB supports EC2, ECS tasks, Lambda and private IPs; NLB supports EC2, private IPs and an ALB; GWLB supports EC2 and private IPs.\n- **ALB vs CLB client IP visibility:** Both terminate connections so backends see the load balancer IP, but only the ALB/documented header approach (X-Forwarded-For, X-Forwarded-Port, X-Forwarded-Proto) is called out in this section for recovering client IP, port and protocol.\n- **ALB vs NLB for IP whitelisting:** NLB offers one static IP per AZ and Elastic IP assignment for whitelisting; ALB exposes only a fixed DNS hostname whose IPs are not static.\n\n## Common Misunderstandings\n\n- NLB is not HTTP-aware for routing: it forwards TCP and UDP traffic, so path- or hostname-based routing belongs to ALB.\n- ALB does not let backend servers see the client IP directly; the client IP must be read from the X-Forwarded-For header.\n- Target group IP addresses must be private IPs — you cannot register public IPs as ALB, NLB or GWLB targets.\n- Yes, an NLB can target an ALB — NLB target groups are not limited to EC2 and IP addresses.\n- Lambda cannot be a target of an NLB or GWLB in this section; Lambda target groups are an ALB feature.\n- GWLB is not a Layer 4 TCP/UDP balancer for your app tier — it operates at Layer 3 on IP packets to insert appliances.\n- ALB health checks are defined at the target group level, so different target groups can be checked independently.\n\n## Mental Models\n\n- Think of CLB as the old single-lane highway, ALB as a traffic officer reading the URL sign, NLB as a high-speed rail for raw packets, and GWLB as a security checkpoint every packet must pass through.\n- ALB = look inside the request (path, host, query, header); NLB = look only at the packet (TCP/UDP); GWLB = look at the IP packet and detour it to appliances.\n- X-Forwarded-For is the envelope the ALB sticks on the request so the backend can see who really sent it.\n- NLB static IP per AZ = one doorman per building entrance, ideal when partners must whitelist your address.\n\n## Exceptions & Edge Cases\n\n- ALB port mapping redirects to a dynamic port in ECS, which is what lets one ALB serve many container tasks instead of needing one CLB per application.\n- ALB supports redirects (for example HTTP to HTTPS), HTTP/2 and WebSocket.\n- NLB health checks may be TCP, HTTP or HTTPS even though traffic forwarding is TCP/UDP.\n- GWLB combines two roles: transparent network gateway (single entry/exit) plus load balancer to the appliance fleet; route tables direct traffic to it.\n- ALB query string routing can select targets on application-level values such as ?Platform=Mobile vs ?Platform=Desktop, even routing to on-premises private IPs.\n\n## When to Use Which\n\n- Legacy application needing simple TCP or HTTP/HTTPS balancing with a fixed hostname → **Classic Load Balancer**\n- Microservices or container apps needing routing by path, hostname, query string or header → **Application Load Balancer**\n- Need to route to Lambda, or to a mix of EC2, ECS tasks and private IPs → **Application Load Balancer target groups**\n- Requirements for millions of requests per second, ultra-low latency, TCP or UDP → **Network Load Balancer**\n- Partners must whitelist specific IPs; need one static IP per AZ / Elastic IP → **Network Load Balancer**\n- Need third-party firewalls, IDS/IPS or deep packet inspection in the traffic path → **Gateway Load Balancer**\n- Need a static IP entry point in front of Layer 7 routing → **NLB with an ALB as its target group**\n\n## Patterns to Recognize\n\n- The backend must know the client's IP address → **X-Forwarded-For header with an ALB**\n- Route example.com/users to one service and example.com/posts to another → **ALB path-based routing**\n- Routing by one.example.com vs other.example.com → **ALB hostname routing**\n- Route on ?Platform=Mobile vs ?Platform=Desktop → **ALB query string routing**\n- Whitelist specific IPs or static IP per AZ → **Network Load Balancer with Elastic IPs**\n- Millions of requests per second, ultra-low latency, UDP → **Network Load Balancer**\n- Deploy firewalls / IDS / IPS virtual appliances, GENEVE port 6081 → **Gateway Load Balancer**\n- One load balancer serving multiple Docker containers with dynamic ports on ECS → **ALB with port mapping**\n- HTTP request turned into a JSON event → **ALB target group with Lambda**\n- Multiple applications per Classic Load Balancer → **Wrong — a CLB per application; use ALB instead**\n\n## Exam Traps\n\n- “Using a CLB for path-based routing to microservices” — Only the ALB supports path/hostname/query string/header routing; a CLB would need one load balancer per application.\n- “Choosing NLB because it 'supports HTTP routing'” — NLB is Layer 4 TCP/UDP; content-based HTTP routing is ALB. NLB may sit in front of an ALB for static IPs.\n- “Registering a public IP as an ALB/NLB target IP” — Target group IP addresses must be private IPs.\n- “Reading the client IP directly from the packet at the application server behind an ALB” — Connection termination means the server sees the load balancer IP; use X-Forwarded-For (plus X-Forwarded-Port/Proto).\n- “Picking GWLB for ordinary TCP/UDP application balancing” — GWLB is Layer 3 for inserting third-party virtual appliances; use NLB for TCP/UDP application traffic.\n- “Confusing health-check protocols: assuming NLB only does TCP checks” — NLB health checks support TCP, HTTP and HTTPS.\n- “Assuming ALB health checks are per load balancer” — ALB health checks are configured at the target group level.\n- “Expecting X-Forwarded-For from a Gateway Load Balancer appliance flow” — X-Forwarded-For is an ALB (HTTP) feature; GWLB works on Layer 3 IP packets via GENEVE on port 6081.\n\n## Beyond the Source (tutor knowledge)\n\n- SAA-C03 exam guide (Domain 3, Task 3.4, and Domain 4, Task 4.2) explicitly frames load balancing as 'selecting the appropriate load balancing strategy', and contrasts ALB (Layer 7) vs NLB (Layer 4) vs Gateway Load Balancer — matching the four-type decision focus of this section. [background]",
+        "keyPoints": [
+          "CLB is the only type described as supporting both TCP (Layer 4) and HTTP/HTTPS (Layer 7); ALB is Layer 7 only; NLB is Layer 4 (TCP and UDP); GWLB is Layer 3 (IP packets).",
+          "NLB provides one static IP per AZ and supports assigning Elastic IPs — the choice when a customer must whitelist specific IPs.",
+          "NLB handles millions of requests per second with ultra-low latency — the choice for extreme performance and TCP/UDP.",
+          "ALB routing can be based on path, hostname, query string and headers — CLB cannot do this; you would need multiple CLBs per application.",
+          "ALB target groups can be EC2 instances, ECS tasks, Lambda functions, or IP addresses; IP addresses in ALB, NLB and GWLB target groups must be private IPs.",
+          "For Lambda targets, the ALB translates the HTTP request into a JSON event.",
+          "Application servers behind an ALB see the load balancer's private IP, not the client IP; the true client IP is in the X-Forwarded-For header (plus X-Forwarded-Port and X-Forwarded-Proto).",
+          "ALB health checks are at the target group level; NLB health checks support TCP, HTTP and HTTPS.",
+          "GWLB uses the GENEVE protocol on port 6081 and acts as a transparent network gateway (single entry/exit) combined with a load balancer for third-party virtual appliances.",
+          "GWLB appliances are examples like firewalls, intrusion detection and prevention systems, and deep packet inspection / payload manipulation systems.",
+          "CLB health checks are TCP or HTTP based; CLB and ALB both have a fixed hostname XXX.region.elb.amazonaws.com.",
+          "NLB can have an ALB as a target group — a common pattern for static IP/private connectivity in front of Layer 7 routing."
+        ],
+        "supplement": "- SAA-C03 exam guide (Domain 3, Task 3.4, and Domain 4, Task 4.2) explicitly frames load balancing as 'selecting the appropriate load balancing strategy', and contrasts ALB (Layer 7) vs NLB (Layer 4) vs Gateway Load Balancer — matching the four-type decision focus of this section. [background]",
+        "cards": [
+          {
+            "id": "53a50c41-ea2e-4108-b48d-b04c450517d6",
+            "question": "Which Elastic Load Balancing type supports both TCP (Layer 4) and HTTP/HTTPS (Layer 7)?",
+            "answer": "Classic Load Balancer",
+            "group": "Classic Load Balancer (v1)",
+            "keyTopic": "Classic Load Balancer layer 4 and 7",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::classic-load-balancer-layer-4-and-7"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "5858ca9c-bf4b-4a9e-a1c6-30d673502a63",
+            "question": "What health check protocols does a Classic Load Balancer support?",
+            "answer": "TCP or HTTP based",
+            "group": "Classic Load Balancer (v1)",
+            "keyTopic": "Classic Load Balancer layer 4 and 7",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::classic-load-balancer-layer-4-and-7"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ccfc0167-2cd6-4a2a-9671-6f49bd4c23eb",
+            "question": "What is the fixed hostname format of a Classic Load Balancer?",
+            "answer": "XXX.region.elb.amazonaws.com",
+            "group": "Classic Load Balancer (v1)",
+            "keyTopic": "Classic Load Balancer layer 4 and 7",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::classic-load-balancer-layer-4-and-7"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "6e5aba9f-3565-47a7-96e9-fa42b6332e90",
+            "question": "To serve multiple HTTP applications with a Classic Load Balancer, how many CLBs do you need?",
+            "answer": "One CLB per application",
+            "group": "Classic Load Balancer (v1)",
+            "keyTopic": "Classic Load Balancer layer 4 and 7",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::classic-load-balancer-layer-4-and-7"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "8a86393e-c3a9-4ebb-9461-84f3f7abc13c",
+            "question": "At which OSI layer does the Application Load Balancer operate?",
+            "answer": "Layer 7 (HTTP)",
+            "group": "Application Load Balancer (v2) Basics",
+            "keyTopic": "ALB layer 7 routing rules",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-layer-7-routing-rules"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7b53d718-461a-4574-ab68-7b2122826d85",
+            "question": "Which ALB feature redirects traffic to a dynamic port in ECS?",
+            "answer": "Port mapping",
+            "group": "Application Load Balancer (v2) Basics",
+            "keyTopic": "ALB layer 7 routing rules",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-layer-7-routing-rules"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "037d978d-f9e6-4050-888b-ee4277870a50",
+            "question": "Which two modern protocols does the ALB support besides HTTP/1.1?",
+            "answer": "HTTP/2 and WebSocket",
+            "group": "Application Load Balancer (v2) Basics",
+            "keyTopic": "ALB layer 7 routing rules",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-layer-7-routing-rules"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "6b0d7dd8-1aae-479e-ab9b-3c313a90b05e",
+            "question": "Which load balancer type would you choose for microservices and Docker/ECS container apps?",
+            "answer": "Application Load Balancer",
+            "group": "Application Load Balancer (v2) Basics",
+            "keyTopic": "ALB layer 7 routing rules",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-layer-7-routing-rules"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7f33beb0-17ec-4277-a29e-d37de0c09578",
+            "question": "What redirect type does ALB support?",
+            "answer": "HTTP to HTTPS redirects",
+            "group": "Application Load Balancer (v2) Basics",
+            "keyTopic": "ALB layer 7 routing rules",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-layer-7-routing-rules"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "672a37c5-2b55-4c99-9d91-111e24a80975",
+            "question": "Which ALB routing rule sends example.com/users and example.com/posts to different target groups?",
+            "answer": "Path-based routing (path in URL)",
+            "group": "ALB Routing: Path and Hostname",
+            "keyTopic": "ALB path and hostname routing",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-path-and-hostname-routing"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "0654a9f8-9a39-43a4-9c2c-72e1ca1bb272",
+            "question": "Which ALB routing rule sends one.example.com and other.example.com to different target groups?",
+            "answer": "Hostname-based routing",
+            "group": "ALB Routing: Path and Hostname",
+            "keyTopic": "ALB path and hostname routing",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-path-and-hostname-routing"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "75288295-460b-4a39-bb94-ecd345e112be",
+            "question": "Which load balancer type supports path-based routing, ALB or CLB?",
+            "answer": "ALB (CLB needs one LB per app)",
+            "group": "ALB Routing: Path and Hostname",
+            "keyTopic": "ALB path and hostname routing",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-path-and-hostname-routing"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1f481971-dcf4-4a4b-8f9d-e4e60234d9f2",
+            "question": "Which ALB condition matches ?Platform=Mobile vs ?Platform=Desktop?",
+            "answer": "Query string routing",
+            "group": "ALB Routing: Query String and Headers",
+            "keyTopic": "ALB query string and header routing",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-query-string-and-header-routing"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "31206647-f0f9-483a-9fc4-215c952133af",
+            "question": "Besides path, hostname and query string, what else can ALB routing rules match on?",
+            "answer": "HTTP headers",
+            "group": "ALB Routing: Query String and Headers",
+            "keyTopic": "ALB query string and header routing",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-query-string-and-header-routing"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "649392a4-ec06-4ac8-874e-1b0d905b7d6d",
+            "question": "ALB query string routing can target on-premises servers via which address type?",
+            "answer": "Private IPs",
+            "group": "ALB Routing: Query String and Headers",
+            "keyTopic": "ALB query string and header routing",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-query-string-and-header-routing"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7e6d51a7-d805-422f-a66f-704cf04ac756",
+            "question": "Name the four target types an ALB target group can contain.",
+            "answer": "EC2 instances (optionally in an ASG)\nECS tasks\nLambda functions\nIP addresses (private IPs only)",
+            "group": "ALB Target Groups",
+            "keyTopic": "ALB target groups (EC2, ECS, Lambda, IPs)",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-target-groups-ec2-ecs-lambda-ips"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "928f770a-d19d-4caf-b178-cc48a9c283da",
+            "question": "What must IP addresses in an ALB target group be?",
+            "answer": "Private IPs",
+            "group": "ALB Target Groups",
+            "keyTopic": "ALB target groups (EC2, ECS, Lambda, IPs)",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-target-groups-ec2-ecs-lambda-ips"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "db64e674-7790-41d9-a6a0-8941b2c30146",
+            "question": "At what level are ALB health checks configured?",
+            "answer": "Target group level",
+            "group": "ALB Target Groups",
+            "keyTopic": "ALB target groups (EC2, ECS, Lambda, IPs)",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-target-groups-ec2-ecs-lambda-ips"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "6e4601ef-5c59-424d-a028-c4b5e396c8ad",
+            "question": "How does an ALB pass an HTTP request to a Lambda target?",
+            "answer": "Translates it into a JSON event",
+            "group": "ALB Target Groups",
+            "keyTopic": "ALB target groups (EC2, ECS, Lambda, IPs)",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-target-groups-ec2-ecs-lambda-ips"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "84c5c512-6b13-4ca3-a23a-58b1f1bd2422",
+            "question": "Can Lambda functions be targets of an NLB or GWLB target group?",
+            "answer": "No — Lambda targets are ALB only",
+            "group": "ALB Target Groups",
+            "keyTopic": "ALB target groups (EC2, ECS, Lambda, IPs)",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-target-groups-ec2-ecs-lambda-ips"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "fca4960b-ab25-41ea-9255-a82d6b6dd998",
+            "question": "In which header does an ALB insert the true client IP?",
+            "answer": "X-Forwarded-For",
+            "group": "Client IP Behind a Load Balancer",
+            "keyTopic": "X-Forwarded-For client IP",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::x-forwarded-for-client-ip"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "e6144398-5dc9-4acb-8b24-66035c3cff79",
+            "question": "Why do backend servers behind an ALB not see the client IP directly?",
+            "answer": "Connection termination — they see the LB private IP",
+            "group": "Client IP Behind a Load Balancer",
+            "keyTopic": "X-Forwarded-For client IP",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::x-forwarded-for-client-ip"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f86ec730-0f25-4de9-ae1e-0ec0c49ce383",
+            "question": "Which two ALB headers give the original client port and protocol?",
+            "answer": "X-Forwarded-Port and X-Forwarded-Proto",
+            "group": "Client IP Behind a Load Balancer",
+            "keyTopic": "X-Forwarded-For client IP",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::x-forwarded-for-client-ip"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "790af5b4-1c5c-465b-8e90-ae101eecc64d",
+            "question": "Which load balancer feature recovers the client IP: X-Forwarded-For from ALB or GENEVE from GWLB?",
+            "answer": "X-Forwarded-For from ALB",
+            "group": "Client IP Behind a Load Balancer",
+            "keyTopic": "X-Forwarded-For client IP",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::x-forwarded-for-client-ip"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b9081d61-0ce8-4807-9887-5562bcc94018",
+            "question": "Which protocols does the Network Load Balancer forward?",
+            "answer": "TCP and UDP",
+            "group": "Network Load Balancer (v2)",
+            "keyTopic": "NLB static IP per AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-static-ip-per-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "4ef2f5e5-9930-4600-9033-336240536146",
+            "question": "How many static IPs does an NLB provide per AZ?",
+            "answer": "One static IP per AZ",
+            "group": "Network Load Balancer (v2)",
+            "keyTopic": "NLB static IP per AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-static-ip-per-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "9289a9b4-bca2-419d-821c-6103f580fd19",
+            "question": "Why would a customer choose NLB for IP whitelisting?",
+            "answer": "Static IP per AZ, plus Elastic IP assignment",
+            "group": "Network Load Balancer (v2)",
+            "keyTopic": "NLB static IP per AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-static-ip-per-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "41dbbe39-2f0f-4469-98ae-3eb61f9e6459",
+            "question": "Which load balancer is chosen for millions of requests per second with ultra-low latency?",
+            "answer": "Network Load Balancer",
+            "group": "Network Load Balancer (v2)",
+            "keyTopic": "NLB static IP per AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-static-ip-per-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "0dd6f774-2dba-4fa3-9e33-ae0083aa6876",
+            "question": "Name the three target types of an NLB target group.",
+            "answer": "EC2 instances\nIP addresses (private IPs only)\nApplication Load Balancer",
+            "group": "NLB Target Groups and Health Checks",
+            "keyTopic": "NLB target groups",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-target-groups"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "15777cd7-db66-4ba0-97ed-e1aeda1268e7",
+            "question": "Which protocols do NLB health checks support?",
+            "answer": "TCP, HTTP and HTTPS",
+            "group": "NLB Target Groups and Health Checks",
+            "keyTopic": "NLB target groups",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-target-groups"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7294882d-6ced-446d-89ca-80519a30c961",
+            "question": "Which pattern gives a static IP entry point in front of Layer 7 routing?",
+            "answer": "NLB with an ALB as target group",
+            "group": "NLB Target Groups and Health Checks",
+            "keyTopic": "NLB target groups",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-target-groups"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "9717927b-0a05-4bd6-906b-7b282b8a1f73",
+            "question": "Does an NLB perform path-based HTTP routing itself?",
+            "answer": "No — Layer 4 TCP/UDP; use ALB for routing",
+            "group": "NLB Target Groups and Health Checks",
+            "keyTopic": "NLB target groups",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-target-groups"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c5354c8d-937d-47c6-be74-afb5cc902de3",
+            "question": "At which OSI layer does the Gateway Load Balancer operate?",
+            "answer": "Layer 3 (IP packets)",
+            "group": "Gateway Load Balancer (Layer 3)",
+            "keyTopic": "Gateway Load Balancer layer 3",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::gateway-load-balancer-layer-3"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a29f1c70-0cfa-4879-8327-c4e11a6a682a",
+            "question": "Which appliances does GWLB deploy and scale?",
+            "answer": "Third-party network virtual appliances (firewalls, IDS/IPS, deep packet inspection)",
+            "group": "Gateway Load Balancer (Layer 3)",
+            "keyTopic": "Gateway Load Balancer layer 3",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::gateway-load-balancer-layer-3"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "909b5474-5514-4d38-990e-e8391990d410",
+            "question": "What two functions does Gateway Load Balancer combine?",
+            "answer": "Transparent network gateway (single entry/exit) plus load balancer",
+            "group": "Gateway Load Balancer (Layer 3)",
+            "keyTopic": "Gateway Load Balancer layer 3",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::gateway-load-balancer-layer-3"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "4d7addf4-6167-4726-ae0d-ed2dc76d3e65",
+            "question": "What directs traffic into a Gateway Load Balancer for appliance inspection?",
+            "answer": "Route tables",
+            "group": "Gateway Load Balancer (Layer 3)",
+            "keyTopic": "Gateway Load Balancer layer 3",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::gateway-load-balancer-layer-3"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d858c503-5f91-4d5c-a5f8-dbe378ee21dd",
+            "question": "For plain TCP/UDP app balancing, GWLB or NLB?",
+            "answer": "NLB",
+            "group": "Gateway Load Balancer (Layer 3)",
+            "keyTopic": "Gateway Load Balancer layer 3",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::gateway-load-balancer-layer-3"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7e3b6851-c573-4161-8d63-f86a18cbdb85",
+            "question": "Name the two GWLB target group types.",
+            "answer": "EC2 instances\nIP addresses (private IPs only)",
+            "group": "Gateway Load Balancer (Layer 3)",
+            "keyTopic": "Gateway Load Balancer layer 3",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::gateway-load-balancer-layer-3"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1c3428f6-c7d1-4e2d-bfca-955054330015",
+            "question": "Which encapsulation protocol does Gateway Load Balancer use?",
+            "answer": "GENEVE",
+            "group": "GENEVE Encapsulation",
+            "keyTopic": "GENEVE port 6081",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::geneve-port-6081"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b2a3a799-4c31-4385-a975-a7ea52a0c217",
+            "question": "On which port does GWLB send traffic via GENEVE?",
+            "answer": "6081",
+            "group": "GENEVE Encapsulation",
+            "keyTopic": "GENEVE port 6081",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::geneve-port-6081"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "589baa22-73b2-4c93-911f-9cabf3bcc622",
+            "question": "Legacy app needing simple TCP or HTTP/HTTPS balancing with a fixed hostname — which LB type?",
+            "answer": "Classic Load Balancer",
+            "group": "Choosing the Right Load Balancer",
+            "keyTopic": "Classic Load Balancer layer 4 and 7",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::classic-load-balancer-layer-4-and-7"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d2b33c9f-5bcf-4fd9-aa6e-38a7157f5694",
+            "question": "Backend must know the client's original IP address — which LB and feature?",
+            "answer": "ALB with X-Forwarded-For",
+            "group": "Choosing the Right Load Balancer",
+            "keyTopic": "X-Forwarded-For client IP",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::x-forwarded-for-client-ip"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ab67536b-510e-4670-bae5-cf082d15afef",
+            "question": "Need firewalls and deep packet inspection in the traffic path — which LB type?",
+            "answer": "Gateway Load Balancer",
+            "group": "Choosing the Right Load Balancer",
+            "keyTopic": "Gateway Load Balancer layer 3",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::gateway-load-balancer-layer-3"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "fcf4b368-781b-4431-be87-70d90a926758",
+            "question": "Which two load balancer types expose a fixed hostname XXX.region.elb.amazonaws.com?",
+            "answer": "CLB and ALB",
+            "group": "Choosing the Right Load Balancer",
+            "keyTopic": "Classic Load Balancer layer 4 and 7",
+            "origin": "source",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::classic-load-balancer-layer-4-and-7"
+            ],
+            "schedule": {
+              "due": "2026-10-24T14:20:39.161Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A company runs a monolithic application on EC2 behind a Classic Load Balancer. The team now wants to split the application into microservices and route requests so that example.com/users goes to one service and example.com/posts goes to another, using a single load balancer. What should they do?",
+            "options": [
+              "Keep the Classic Load Balancer and add listeners for each URL path",
+              "Replace it with an Application Load Balancer using path-based routing to separate target groups",
+              "Replace it with a Network Load Balancer and use TCP rules to split the paths",
+              "Replace it with a Gateway Load Balancer and route the paths to virtual appliances"
+            ],
+            "correctIndex": 1,
+            "explanation": "An ALB supports routing rules based on the path in the URL, sending each path to its own target group, so one ALB replaces multiple CLBs. Keeping the CLB fails because a CLB cannot do path-based routing and would need one load balancer per application. An NLB forwards TCP/UDP only and is not HTTP-path-aware. A GWLB operates at Layer 3 to insert appliances, not to route application URLs.",
+            "keyTopic": "ALB path and hostname routing",
+            "kind": "scenario",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-path-and-hostname-routing"
+            ]
+          },
+          {
+            "question": "A web application runs on EC2 instances behind an Application Load Balancer. The application must log the real public IP address of each visitor for fraud analysis, but the servers currently record only a private 10.x address. What is the correct explanation and fix?",
+            "options": [
+              "The load balancer terminates the connection, so the client IP is available in the X-Forwarded-For header",
+              "The security group is masking the source address, so allow inbound traffic from 0.0.0.0/0",
+              "The instances need public IPs so that the client address is preserved in the packet header",
+              "The ALB should be replaced by a Classic Load Balancer, which passes the client IP in the packet"
+            ],
+            "correctIndex": 0,
+            "explanation": "Because the ALB terminates the client connection, backends see the load balancer's private IP; the ALB inserts the true client IP in X-Forwarded-For (with X-Forwarded-Port and X-Forwarded-Proto for port and protocol). Security groups do not rewrite source IPs, so allowing 0.0.0.0/0 changes nothing. Public IPs on instances do not restore the client address. A CLB also terminates connections and does not solve this.",
+            "keyTopic": "X-Forwarded-For client IP",
+            "kind": "scenario",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::x-forwarded-for-client-ip"
+            ]
+          },
+          {
+            "question": "A trading platform must accept both TCP and UDP traffic, sustain millions of requests per second with ultra-low latency, and give each partner a fixed address to whitelist per Availability Zone. Which load balancer type meets these requirements?",
+            "options": [
+              "Classic Load Balancer with HTTP and TCP listeners",
+              "Application Load Balancer with host-based routing rules",
+              "Network Load Balancer with a static IP per AZ and Elastic IPs",
+              "Gateway Load Balancer with GENEVE encapsulation"
+            ],
+            "correctIndex": 2,
+            "explanation": "The NLB is the Layer 4 load balancer for TCP and UDP at millions of requests per second with ultra-low latency, and it provides one static IP per AZ with Elastic IP support for whitelisting. A CLB supports TCP but not UDP and offers no static per-AZ IPs. An ALB is Layer 7 HTTP only. A GWLB is Layer 3 for third-party appliances, not application traffic balancing.",
+            "keyTopic": "NLB static IP per AZ",
+            "kind": "scenario",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-static-ip-per-az"
+            ]
+          },
+          {
+            "question": "A solutions architect wants a single entry point with static IP addresses for external partners, but the backend services still need HTTP routing by hostname and path. Which design achieves this?",
+            "options": [
+              "An Application Load Balancer with Elastic IP addresses attached to its nodes",
+              "A Gateway Load Balancer in front of an Application Load Balancer target group",
+              "An Application Load Balancer with IP-address target groups pointing to partner networks",
+              "A Network Load Balancer with an Application Load Balancer as its target group"
+            ],
+            "correctIndex": 3,
+            "explanation": "An NLB target group can contain an ALB, giving static IPs for whitelisting in front of Layer 7 routing. An ALB does not offer static per-AZ IP assignment, so attaching Elastic IPs to it is not the described option. A GWLB is for Layer 3 appliance insertion, not application routing. ALB IP target groups must be private IPs and do not provide the static front-end IPs.",
+            "keyTopic": "NLB target groups",
+            "kind": "scenario",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-target-groups"
+            ]
+          },
+          {
+            "question": "A security team must insert third-party firewall and intrusion-prevention virtual appliances transparently into all traffic entering and leaving a VPC, scaling the appliance fleet as needed. Which load balancer should be used?",
+            "options": [
+              "Gateway Load Balancer, operating at Layer 3 on IP packets",
+              "Network Load Balancer, operating at Layer 4 on TCP and UDP",
+              "Application Load Balancer, operating at Layer 7 on HTTP requests",
+              "Classic Load Balancer, operating at Layer 4 and Layer 7"
+            ],
+            "correctIndex": 0,
+            "explanation": "The GWLB deploys, scales and manages fleets of third-party virtual appliances such as firewalls, IDS/IPS and deep packet inspection systems, operating at Layer 3 on IP packets. The NLB balances TCP/UDP application traffic and does not insert appliances into the path. The ALB balances HTTP requests. A CLB is a legacy application balancer and has no appliance-insertion role.",
+            "keyTopic": "Gateway Load Balancer layer 3",
+            "kind": "scenario",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::gateway-load-balancer-layer-3"
+            ]
+          },
+          {
+            "question": "Which statement about the encapsulation used by Gateway Load Balancer is correct?",
+            "options": [
+              "It uses GRE on port 4789 to tunnel IP packets to the appliances",
+              "It uses GENEVE on port 6081 to send traffic to the virtual appliances",
+              "It uses VXLAN on port 8472 to send traffic to the virtual appliances",
+              "It uses TLS on port 443 to send HTTP requests to the virtual appliances"
+            ],
+            "correctIndex": 1,
+            "explanation": "The GWLB uses the GENEVE protocol on port 6081 to send traffic to the appliances. GRE, VXLAN and TLS are not the GWLB encapsulation described in the source, and TLS on 443 is an application-layer protocol inconsistent with Layer 3 packet handling.",
+            "keyTopic": "GENEVE port 6081",
+            "kind": "concept",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::geneve-port-6081"
+            ]
+          },
+          {
+            "question": "An application runs as many Docker containers on Amazon ECS, each exposing a different dynamic host port on the same EC2 instance. The team wants one load balancer to route to all of these containers. Which capability makes this possible?",
+            "options": [
+              "Classic Load Balancer with one listener per container port",
+              "Network Load Balancer with static IPs per Availability Zone",
+              "Application Load Balancer port mapping to dynamic ports in ECS",
+              "Gateway Load Balancer with GENEVE on port 6081"
+            ],
+            "correctIndex": 2,
+            "explanation": "The ALB's port mapping feature redirects to a dynamic port in ECS, so one ALB can serve many container tasks on the same machine. A CLB would require one load balancer per application. An NLB is Layer 4 and does not provide the ECS dynamic port mapping described here. A GWLB is for Layer 3 appliance insertion, not container routing.",
+            "keyTopic": "ALB target groups (EC2, ECS, Lambda, IPs)",
+            "kind": "scenario",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-target-groups-ec2-ecs-lambda-ips"
+            ]
+          },
+          {
+            "question": "A team wants requests for a mobile client to reach an EC2-based target group and requests from desktop clients to reach an on-premises service reachable by private IP, all through one load balancer. The clients include the value ?Platform=Mobile or ?Platform=Desktop in each request. Which configuration fits?",
+            "options": [
+              "An Application Load Balancer with query string routing rules to two target groups",
+              "A Network Load Balancer with TCP listener rules that inspect the query string",
+              "A Classic Load Balancer with two listeners distinguished by the query string",
+              "A Gateway Load Balancer that forwards query strings to virtual appliances"
+            ],
+            "correctIndex": 0,
+            "explanation": "An ALB can route on query string parameters, sending ?Platform=Mobile to one target group and ?Platform=Desktop to another, and ALB IP target groups can be private on-premises IPs. An NLB operates at Layer 4 and does not inspect query strings. A CLB cannot route on query strings. A GWLB works on IP packets for appliances, not on HTTP query strings.",
+            "keyTopic": "ALB query string and header routing",
+            "kind": "scenario",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-query-string-and-header-routing"
+            ]
+          },
+          {
+            "question": "Which statement about health checks and supported target types across the load balancer types is correct?",
+            "options": [
+              "An NLB can only perform TCP health checks because it forwards only TCP traffic",
+              "An ALB configures health checks per load balancer, applying the same check to all target groups",
+              "An NLB supports TCP, HTTP and HTTPS health checks, and an ALB configures health checks at the target group level",
+              "A Gateway Load Balancer can register a public IP address as a target for its appliances"
+            ],
+            "correctIndex": 2,
+            "explanation": "NLB health checks support TCP, HTTP and HTTPS, and ALB health checks are configured at the target group level so different groups can be checked independently. The claim that an NLB only performs TCP checks is a common misconception. ALB checks are per target group, not per load balancer. GWLB IP targets must be private IPs, not public.",
+            "keyTopic": "NLB target groups",
+            "kind": "concept",
+            "objectiveIds": [
+              "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-target-groups"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v3",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T14:20:28.929Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 131,
+            "pageEnd": 142,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "This section covers the four Elastic Load Balancing types: Classic Load Balancer (v1), Application Load Balancer (v2, Layer 7), Network Load Balancer (v2, Layer 4) and Gateway Load Balancer (Layer 3). The exam repeatedly asks you to pick the right type from scenario clues such as protocol (HTTP/HTTPS vs TCP/UDP vs IP packets), need for advanced routing, need for static IPs, extreme performance, or third-party appliance inspection — so learn each type's layer, features and limits as a decision matrix, not a list.",
+        "coreConcepts": [
+          {
+            "term": "Classic Load Balancer (CLB, v1)",
+            "definition": "Legacy load balancer that supports TCP (Layer 4) and HTTP/HTTPS (Layer 7) with TCP- or HTTP-based health checks and a fixed hostname XXX.region.elb.amazonaws.com."
+          },
+          {
+            "term": "Application Load Balancer (ALB, v2)",
+            "definition": "Layer 7 (HTTP) load balancer for routing HTTP/HTTPS traffic to multiple applications and target groups, with support for HTTP/2, WebSocket and redirects such as HTTP to HTTPS."
+          },
+          {
+            "term": "ALB routing rules",
+            "definition": "ALB routes requests to different target groups based on path in the URL, hostname in the URL, query string parameters, or headers."
+          },
+          {
+            "term": "Path-based routing",
+            "definition": "Routing on the URL path, e.g. example.com/users to one target group and example.com/posts to another."
+          },
+          {
+            "term": "Hostname-based routing",
+            "definition": "Routing on the hostname in the URL, e.g. one.example.com vs other.example.com to different target groups."
+          },
+          {
+            "term": "Query string / header routing",
+            "definition": "Routing on query string parameters (e.g. example.com/users?id=123&order=false) or HTTP headers, e.g. ?Platform=Mobile vs ?Platform=Desktop to different target groups."
+          },
+          {
+            "term": "ALB target group types",
+            "definition": "EC2 instances (optionally in an Auto Scaling Group), ECS tasks, Lambda functions (HTTP request translated into a JSON event) and IP addresses (must be private IPs)."
+          },
+          {
+            "term": "Target group level health checks",
+            "definition": "For an ALB, health checks are configured at the target group level, not per load balancer."
+          },
+          {
+            "term": "ALB port mapping",
+            "definition": "ALB feature that redirects to a dynamic port in ECS, enabling load balancing to multiple applications/containers on the same machine."
+          },
+          {
+            "term": "X-Forwarded-For",
+            "definition": "Header inserted by the ALB carrying the true client IP, because application servers only see the load balancer's private IP (connection termination). X-Forwarded-Port and X-Forwarded-Proto give port and protocol."
+          },
+          {
+            "term": "Network Load Balancer (NLB, v2)",
+            "definition": "Layer 4 load balancer that forwards TCP and UDP traffic, handles millions of requests per second with ultra-low latency, and has one static IP per AZ with support for Elastic IPs."
+          },
+          {
+            "term": "NLB target group types",
+            "definition": "EC2 instances, IP addresses (must be private IPs) and an Application Load Balancer; NLB health checks support TCP, HTTP and HTTPS."
+          },
+          {
+            "term": "Gateway Load Balancer (GWLB)",
+            "definition": "Layer 3 (IP packet) load balancer that deploys, scales and manages fleets of third-party network virtual appliances such as firewalls, IDS/IPS and deep packet inspection systems."
+          },
+          {
+            "term": "GWLB functions",
+            "definition": "Combines a transparent network gateway (a single entry/exit point for all traffic, used with route tables) with a load balancer that distributes traffic to the virtual appliances."
+          },
+          {
+            "term": "GENEVE",
+            "definition": "The encapsulation protocol used by Gateway Load Balancer on port 6081 to send traffic to the appliances."
+          },
+          {
+            "term": "GWLB target group types",
+            "definition": "EC2 instances and IP addresses (must be private IPs)."
+          },
+          {
+            "term": "Fixed hostname",
+            "definition": "Both CLB and ALB expose a fixed DNS name of the form XXX.region.elb.amazonaws.com."
+          },
+          {
+            "term": "Connection termination",
+            "definition": "The load balancer terminates the client connection, so backend EC2 instances do not see the client IP directly."
+          }
+        ],
+        "mustRemember": [
+          "CLB is the only type described as supporting both TCP (Layer 4) and HTTP/HTTPS (Layer 7); ALB is Layer 7 only; NLB is Layer 4 (TCP and UDP); GWLB is Layer 3 (IP packets).",
+          "NLB provides one static IP per AZ and supports assigning Elastic IPs — the choice when a customer must whitelist specific IPs.",
+          "NLB handles millions of requests per second with ultra-low latency — the choice for extreme performance and TCP/UDP.",
+          "ALB routing can be based on path, hostname, query string and headers — CLB cannot do this; you would need multiple CLBs per application.",
+          "ALB target groups can be EC2 instances, ECS tasks, Lambda functions, or IP addresses; IP addresses in ALB, NLB and GWLB target groups must be private IPs.",
+          "For Lambda targets, the ALB translates the HTTP request into a JSON event.",
+          "Application servers behind an ALB see the load balancer's private IP, not the client IP; the true client IP is in the X-Forwarded-For header (plus X-Forwarded-Port and X-Forwarded-Proto).",
+          "ALB health checks are at the target group level; NLB health checks support TCP, HTTP and HTTPS.",
+          "GWLB uses the GENEVE protocol on port 6081 and acts as a transparent network gateway (single entry/exit) combined with a load balancer for third-party virtual appliances.",
+          "GWLB appliances are examples like firewalls, intrusion detection and prevention systems, and deep packet inspection / payload manipulation systems.",
+          "CLB health checks are TCP or HTTP based; CLB and ALB both have a fixed hostname XXX.region.elb.amazonaws.com.",
+          "NLB can have an ALB as a target group — a common pattern for static IP/private connectivity in front of Layer 7 routing."
+        ],
+        "keyComparisons": [
+          {
+            "items": "ALB vs NLB",
+            "difference": "ALB is Layer 7 with content-based routing and HTTP/2/WebSocket; NLB is Layer 4 for TCP/UDP at extreme performance with static IPs per AZ."
+          },
+          {
+            "items": "CLB vs ALB",
+            "difference": "CLB is the legacy v1 with one application per load balancer and fixed hostname, whereas ALB gives path/hostname/query string/header routing to multiple target groups."
+          },
+          {
+            "items": "ALB vs GWLB",
+            "difference": "ALB distributes HTTP requests to application targets; GWLB sends IP packets (Layer 3) through third-party security appliances using GENEVE on port 6081."
+          },
+          {
+            "items": "NLB vs GWLB",
+            "difference": "Both are non-HTTP, but NLB (Layer 4, TCP/UDP) balances traffic to your applications while GWLB (Layer 3) inserts virtual appliances transparently into the traffic path via route tables."
+          },
+          {
+            "items": "ALB vs NLB target groups",
+            "difference": "ALB supports EC2, ECS tasks, Lambda and private IPs; NLB supports EC2, private IPs and an ALB; GWLB supports EC2 and private IPs."
+          },
+          {
+            "items": "ALB vs CLB client IP visibility",
+            "difference": "Both terminate connections so backends see the load balancer IP, but only the ALB/documented header approach (X-Forwarded-For, X-Forwarded-Port, X-Forwarded-Proto) is called out in this section for recovering client IP, port and protocol."
+          },
+          {
+            "items": "ALB vs NLB for IP whitelisting",
+            "difference": "NLB offers one static IP per AZ and Elastic IP assignment for whitelisting; ALB exposes only a fixed DNS hostname whose IPs are not static."
+          }
+        ],
+        "commonMisunderstandings": [
+          "NLB is not HTTP-aware for routing: it forwards TCP and UDP traffic, so path- or hostname-based routing belongs to ALB.",
+          "ALB does not let backend servers see the client IP directly; the client IP must be read from the X-Forwarded-For header.",
+          "Target group IP addresses must be private IPs — you cannot register public IPs as ALB, NLB or GWLB targets.",
+          "Yes, an NLB can target an ALB — NLB target groups are not limited to EC2 and IP addresses.",
+          "Lambda cannot be a target of an NLB or GWLB in this section; Lambda target groups are an ALB feature.",
+          "GWLB is not a Layer 4 TCP/UDP balancer for your app tier — it operates at Layer 3 on IP packets to insert appliances.",
+          "ALB health checks are defined at the target group level, so different target groups can be checked independently."
+        ],
+        "mentalModels": [
+          "Think of CLB as the old single-lane highway, ALB as a traffic officer reading the URL sign, NLB as a high-speed rail for raw packets, and GWLB as a security checkpoint every packet must pass through.",
+          "ALB = look inside the request (path, host, query, header); NLB = look only at the packet (TCP/UDP); GWLB = look at the IP packet and detour it to appliances.",
+          "X-Forwarded-For is the envelope the ALB sticks on the request so the backend can see who really sent it.",
+          "NLB static IP per AZ = one doorman per building entrance, ideal when partners must whitelist your address."
+        ],
+        "edgeCases": [
+          "ALB port mapping redirects to a dynamic port in ECS, which is what lets one ALB serve many container tasks instead of needing one CLB per application.",
+          "ALB supports redirects (for example HTTP to HTTPS), HTTP/2 and WebSocket.",
+          "NLB health checks may be TCP, HTTP or HTTPS even though traffic forwarding is TCP/UDP.",
+          "GWLB combines two roles: transparent network gateway (single entry/exit) plus load balancer to the appliance fleet; route tables direct traffic to it.",
+          "ALB query string routing can select targets on application-level values such as ?Platform=Mobile vs ?Platform=Desktop, even routing to on-premises private IPs."
+        ],
+        "whenToUse": [
+          {
+            "situation": "Legacy application needing simple TCP or HTTP/HTTPS balancing with a fixed hostname",
+            "use": "Classic Load Balancer"
+          },
+          {
+            "situation": "Microservices or container apps needing routing by path, hostname, query string or header",
+            "use": "Application Load Balancer"
+          },
+          {
+            "situation": "Need to route to Lambda, or to a mix of EC2, ECS tasks and private IPs",
+            "use": "Application Load Balancer target groups"
+          },
+          {
+            "situation": "Requirements for millions of requests per second, ultra-low latency, TCP or UDP",
+            "use": "Network Load Balancer"
+          },
+          {
+            "situation": "Partners must whitelist specific IPs; need one static IP per AZ / Elastic IP",
+            "use": "Network Load Balancer"
+          },
+          {
+            "situation": "Need third-party firewalls, IDS/IPS or deep packet inspection in the traffic path",
+            "use": "Gateway Load Balancer"
+          },
+          {
+            "situation": "Need a static IP entry point in front of Layer 7 routing",
+            "use": "NLB with an ALB as its target group"
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "The backend must know the client's IP address",
+            "indicates": "X-Forwarded-For header with an ALB"
+          },
+          {
+            "signal": "Route example.com/users to one service and example.com/posts to another",
+            "indicates": "ALB path-based routing"
+          },
+          {
+            "signal": "Routing by one.example.com vs other.example.com",
+            "indicates": "ALB hostname routing"
+          },
+          {
+            "signal": "Route on ?Platform=Mobile vs ?Platform=Desktop",
+            "indicates": "ALB query string routing"
+          },
+          {
+            "signal": "Whitelist specific IPs or static IP per AZ",
+            "indicates": "Network Load Balancer with Elastic IPs"
+          },
+          {
+            "signal": "Millions of requests per second, ultra-low latency, UDP",
+            "indicates": "Network Load Balancer"
+          },
+          {
+            "signal": "Deploy firewalls / IDS / IPS virtual appliances, GENEVE port 6081",
+            "indicates": "Gateway Load Balancer"
+          },
+          {
+            "signal": "One load balancer serving multiple Docker containers with dynamic ports on ECS",
+            "indicates": "ALB with port mapping"
+          },
+          {
+            "signal": "HTTP request turned into a JSON event",
+            "indicates": "ALB target group with Lambda"
+          },
+          {
+            "signal": "Multiple applications per Classic Load Balancer",
+            "indicates": "Wrong — a CLB per application; use ALB instead"
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "Using a CLB for path-based routing to microservices",
+            "correction": "Only the ALB supports path/hostname/query string/header routing; a CLB would need one load balancer per application."
+          },
+          {
+            "trap": "Choosing NLB because it 'supports HTTP routing'",
+            "correction": "NLB is Layer 4 TCP/UDP; content-based HTTP routing is ALB. NLB may sit in front of an ALB for static IPs."
+          },
+          {
+            "trap": "Registering a public IP as an ALB/NLB target IP",
+            "correction": "Target group IP addresses must be private IPs."
+          },
+          {
+            "trap": "Reading the client IP directly from the packet at the application server behind an ALB",
+            "correction": "Connection termination means the server sees the load balancer IP; use X-Forwarded-For (plus X-Forwarded-Port/Proto)."
+          },
+          {
+            "trap": "Picking GWLB for ordinary TCP/UDP application balancing",
+            "correction": "GWLB is Layer 3 for inserting third-party virtual appliances; use NLB for TCP/UDP application traffic."
+          },
+          {
+            "trap": "Confusing health-check protocols: assuming NLB only does TCP checks",
+            "correction": "NLB health checks support TCP, HTTP and HTTPS."
+          },
+          {
+            "trap": "Assuming ALB health checks are per load balancer",
+            "correction": "ALB health checks are configured at the target group level."
+          },
+          {
+            "trap": "Expecting X-Forwarded-For from a Gateway Load Balancer appliance flow",
+            "correction": "X-Forwarded-For is an ALB (HTTP) feature; GWLB works on Layer 3 IP packets via GENEVE on port 6081."
+          }
+        ],
+        "beyondSource": [
+          "SAA-C03 exam guide (Domain 3, Task 3.4, and Domain 4, Task 4.2) explicitly frames load balancing as 'selecting the appropriate load balancing strategy', and contrasts ALB (Layer 7) vs NLB (Layer 4) vs Gateway Load Balancer — matching the four-type decision focus of this section. [background]"
+        ]
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "41e0d3a5-a3e9-44b5-b79f-550ed907951d",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T14:20:28.929Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
+          "revision": 3
+        },
+        "flashcards": {
+          "requestId": "ef64520d-e096-4c95-aa1f-2d896c3d1ff9",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T14:20:39.161Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
+          "revision": 3
+        },
+        "quiz": {
+          "requestId": "5c21c4e0-62d6-4408-894e-e90a5533a4b9",
+          "promptVersion": 3,
+          "generatedAt": "2026-10-24T14:20:51.967Z",
+          "model": "deepseek-chat",
+          "familiarity": "basic",
+          "revision": 3
+        }
+      }
     },
     {
       "id": "b8069b75-9dfa-4a26-afbb-c1f8b41dc756",
@@ -39197,6 +40627,39 @@
       "createdAt": "2026-10-24T13:24:07.902Z",
       "model": "deepseek-chat",
       "completedAt": "2026-10-24T13:24:20.503Z"
+    },
+    {
+      "id": "41e0d3a5-a3e9-44b5-b79f-550ed907951d",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "summary",
+      "targetId": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4",
+      "status": "done",
+      "promptVersion": 2,
+      "createdAt": "2026-10-24T14:20:11.135Z",
+      "model": "deepseek-chat",
+      "completedAt": "2026-10-24T14:20:29.293Z"
+    },
+    {
+      "id": "ef64520d-e096-4c95-aa1f-2d896c3d1ff9",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "flashcards",
+      "targetId": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4",
+      "status": "done",
+      "promptVersion": 1,
+      "createdAt": "2026-10-24T14:20:29.369Z",
+      "model": "deepseek-chat",
+      "completedAt": "2026-10-24T14:20:39.505Z"
+    },
+    {
+      "id": "5c21c4e0-62d6-4408-894e-e90a5533a4b9",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "quiz",
+      "targetId": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4",
+      "status": "done",
+      "promptVersion": 3,
+      "createdAt": "2026-10-24T14:20:39.568Z",
+      "model": "deepseek-chat",
+      "completedAt": "2026-10-24T14:20:52.323Z"
     }
   ]
 }

@@ -11,7 +11,9 @@ import {
   Layers2,
   LayoutGrid,
   LoaderCircle,
+  Maximize2,
   Menu,
+  Minimize2,
   Plus,
   Search,
   Settings2,
@@ -89,6 +91,7 @@ export function App() {
   const [notice, setNotice] = useState('');
   const [search, setSearch] = useState('');
   const [mobile, setMobile] = useState(false);
+  const [focus, setFocus] = useState(() => localStorage.getItem('folio-focus') === '1');
   const fileInput = useRef<HTMLInputElement>(null);
   const route = hash.replace(/^#/, '').split('/');
   const folder =
@@ -132,6 +135,11 @@ export function App() {
       window.removeEventListener('hashchange', changed);
     };
   }, []);
+
+  useEffect(() => {
+    document.body.classList.toggle('focus-mode', focus);
+    localStorage.setItem('folio-focus', focus ? '1' : '0');
+  }, [focus]);
 
   const run: RunTask = async (action, success) => {
     if (busy) return;
@@ -297,18 +305,29 @@ export function App() {
             )}
           </div>
           {folder && (
-            <label className="search-box">
-              <Search size={16} />
-              <input
-                aria-label="Search chapters and lessons"
-                placeholder="Search chapters..."
-                value={search}
-                onChange={(event) => {
-                  setSearch(event.target.value);
-                  if (view !== 'chapters' || section) navigate('chapters');
-                }}
-              />
-            </label>
+            <div className="topbar-tools">
+              <label className="search-box">
+                <Search size={16} />
+                <input
+                  aria-label="Search chapters and lessons"
+                  placeholder="Search chapters..."
+                  value={search}
+                  onChange={(event) => {
+                    setSearch(event.target.value);
+                    if (view !== 'chapters' || section) navigate('chapters');
+                  }}
+                />
+              </label>
+              <button
+                className={`icon-button focus-toggle ${focus ? 'active' : ''}`}
+                title={focus ? 'Exit focus mode' : 'Focus mode'}
+                aria-label={focus ? 'Exit focus mode' : 'Enter focus mode'}
+                aria-pressed={focus}
+                onClick={() => setFocus(!focus)}
+              >
+                {focus ? <Minimize2 size={18} /> : <Maximize2 size={18} />}
+              </button>
+            </div>
           )}
         </header>
         {error && (

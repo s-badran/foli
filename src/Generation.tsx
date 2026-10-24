@@ -1,9 +1,56 @@
 import { useEffect, useState } from 'react';
 import { CircleAlert, Clock3, FileText, RefreshCw, Sparkles, X } from 'lucide-react';
 import type { ArtifactKind } from '../shared/artifacts';
-import type { GenerationRequest, StudyState } from '../shared/models';
+import type { Folder, GenerationRequest, StudyState } from '../shared/models';
 import { api, displayDate, send } from './api';
 import type { RunTask } from './StudyView';
+
+export interface ModelSummary {
+  id: string;
+  label: string;
+  configured: boolean;
+  default: boolean;
+}
+
+export function ModelPicker({
+  folder,
+  busy,
+  onSave,
+}: {
+  folder: Folder;
+  busy: string;
+  onSave: (modelId: string) => void;
+}) {
+  const [models, setModels] = useState<ModelSummary[]>([]);
+  useEffect(() => {
+    let active = true;
+    void api<{ models: ModelSummary[] }>('/models').then((data) => {
+      if (active) setModels(data.models);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+  const defaultLabel = models.find((model) => model.default)?.label ?? 'DeepSeek Chat';
+  return (
+    <label>
+      AI model
+      <select value={folder.modelId ?? ''} disabled={!!busy} onChange={(event) => onSave(event.target.value)}>
+        <option value="">Default ({defaultLabel})</option>
+        {models.map((model) => (
+          <option key={model.id} value={model.id}>
+            {model.label}
+            {model.configured ? '' : ' (no key)'}
+          </option>
+        ))}
+      </select>
+      <span className="form-note">
+        Used for new and regenerated materials. Changing it (or the baseline/sources) enables
+        Regenerate on existing content.
+      </span>
+    </label>
+  );
+}
 
 export function latestRequest(
   state: StudyState,
@@ -178,9 +225,7 @@ export function PromptLibrary({
     };
   }, []);
   const open = state.requests.filter(
-    (request) =>
-      request.folderId === folderId &&
-      (request.status === 'pending' || request.status === 'failed'),
+    (request) => request.folderId === folderId && request.status === 'pending',
   );
   return (
     <div className="prompt-library">

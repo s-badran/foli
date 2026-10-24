@@ -28,7 +28,7 @@ test.describe.serial('auto-run generation with the mock model', () => {
     await expect(lesson).toBeVisible();
     await lesson.click();
 
-    await page.getByRole('button', { name: 'Generate summary' }).click();
+    await page.getByRole('button', { name: 'Generate all study materials' }).click();
     // The mock model always returns an invalid object, so the run is rejected and surfaced.
     await expect(page.locator('.request-status').first()).toContainText(
       'did not pass validation',

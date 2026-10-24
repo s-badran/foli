@@ -1,6 +1,12 @@
 import { access, copyFile, mkdir, readFile, rename, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { emptyState, type Folder, type StudyState } from '../shared/models';
+import {
+  DEFAULT_MODEL_ID,
+  emptyState,
+  type ArtifactMeta,
+  type Folder,
+  type StudyState,
+} from '../shared/models';
 
 export function workspaceDirectory(folder: Folder): string {
   const slug =
@@ -13,8 +19,7 @@ export function workspaceDirectory(folder: Folder): string {
 }
 
 export class Store {
-  private queue: Promise<unknown> = Promise.resolve();
-  constructor(readonly directory: string) {}
+  private queue: Promise<unknown> = Promise.resolve();  constructor(readonly directory: string) {}
 
   async read(): Promise<StudyState> {
     await this.queue;
@@ -155,6 +160,36 @@ export class Store {
     });
   }
 
+  /** Backfill provenance on artifacts generated before model selection existed. */
+  async migrate(): Promise<void> {
+    const operation = this.queue.then(async () => {
+      const state = await this.load();
+      let changed = false;
+      for (const folder of state.folders) {
+        const effective = folder.modelId ?? DEFAULT_MODEL_ID;
+        const familiarity = folder.learner?.familiarity;
+        const revision = folder.curriculumRevision;
+        const backfill = (meta?: ArtifactMeta) => {
+          if (meta && meta.model === undefined) {
+            meta.model = effective;
+            meta.familiarity = familiarity;
+            meta.revision = revision;
+            changed = true;
+          }
+        };
+        backfill(folder.outline);
+        for (const section of state.sections.filter((item) => item.folderId === folder.id)) {
+          backfill(section.artifacts?.summary);
+          backfill(section.artifacts?.flashcards);
+          backfill(section.artifacts?.quiz);
+        }
+      }
+      if (changed) await this.persist(state);
+    });
+    this.queue = operation.catch(() => undefined);
+    await operation;
+  }
+
   update<Result>(mutate: (state: StudyState) => Result): Promise<Result> {
     const operation = this.queue.then(async () => {
       const state = await this.load();
@@ -163,6 +198,6 @@ export class Store {
       return result;
     });
     this.queue = operation.catch(() => undefined);
-    return operation;
+    return operation as Promise<Result>;
   }
 }

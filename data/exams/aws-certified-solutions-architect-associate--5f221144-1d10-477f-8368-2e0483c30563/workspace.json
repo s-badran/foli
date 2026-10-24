@@ -17,7 +17,7 @@
       "plan": {
         "examDate": "2027-01-05",
         "dailyMinutes": 60,
-        "createdAt": "2026-10-24T12:16:44.220Z",
+        "createdAt": "2026-10-24T12:36:57.715Z",
         "familiarity": "new",
         "days": [
           {
@@ -680,7 +680,10 @@
       "outline": {
         "requestId": "010eced4-81f0-491a-bbff-bd9100079816",
         "promptVersion": 1,
-        "generatedAt": "2026-10-24T10:20:43.163Z"
+        "generatedAt": "2026-10-24T10:20:43.163Z",
+        "model": "deepseek-chat",
+        "familiarity": "new",
+        "revision": 3
       }
     }
   ],
@@ -25057,17 +25060,26 @@
         "summary": {
           "requestId": "292089cf-6533-4a39-87e2-32a5af558475",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:42.679Z"
+          "generatedAt": "2026-10-24T10:24:42.679Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "flashcards": {
           "requestId": "bf452fac-8af6-4683-9a3d-41d5724d64bd",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:42.754Z"
+          "generatedAt": "2026-10-24T10:24:42.754Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "quiz": {
           "requestId": "f9f42fb9-9ef8-4f85-91f0-8f9e2aee4f15",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:42.822Z"
+          "generatedAt": "2026-10-24T10:24:42.822Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       }
     },
@@ -25810,17 +25822,26 @@
         "summary": {
           "requestId": "8b53cbec-ad08-4862-a84b-b2643373d95b",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:42.893Z"
+          "generatedAt": "2026-10-24T10:24:42.893Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "flashcards": {
           "requestId": "37a74f47-8bc9-4d6e-8e8e-129d1569784a",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:42.974Z"
+          "generatedAt": "2026-10-24T10:24:42.974Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "quiz": {
           "requestId": "6ab65694-c255-4b36-998e-b8d0c2bdb4b5",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:43.060Z"
+          "generatedAt": "2026-10-24T10:24:43.060Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       }
     },
@@ -26602,17 +26623,26 @@
         "summary": {
           "requestId": "d4f1a314-7e13-42a8-a3d7-4f609119cf3a",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:43.143Z"
+          "generatedAt": "2026-10-24T10:24:43.143Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "flashcards": {
           "requestId": "5c683265-6a56-487f-9e71-ffd8656fe9be",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:43.259Z"
+          "generatedAt": "2026-10-24T10:24:43.259Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "quiz": {
           "requestId": "8ccef23f-e8b3-4354-8855-f6ab40e864b8",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:43.353Z"
+          "generatedAt": "2026-10-24T10:24:43.353Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       }
     },
@@ -27447,17 +27477,26 @@
         "summary": {
           "requestId": "6c6e5d0d-9aa9-4898-a507-a2559e070a4b",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:43.451Z"
+          "generatedAt": "2026-10-24T10:24:43.451Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "flashcards": {
           "requestId": "fa345a30-b437-4b1a-9bc3-488a6cac9dab",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:43.572Z"
+          "generatedAt": "2026-10-24T10:24:43.572Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "quiz": {
           "requestId": "b52144d6-8169-4a3a-bf03-a670523499c6",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:43.687Z"
+          "generatedAt": "2026-10-24T10:24:43.687Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       }
     },
@@ -28056,17 +28095,26 @@
         "summary": {
           "requestId": "1e02ba69-904b-438d-92ce-f6db46241859",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:43.820Z"
+          "generatedAt": "2026-10-24T10:24:43.820Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "flashcards": {
           "requestId": "2e402faa-6272-4040-9e31-acee12d95fee",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:43.954Z"
+          "generatedAt": "2026-10-24T10:24:43.954Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "quiz": {
           "requestId": "aa12df91-aaa7-4f2f-a263-4ee70e64dd3c",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T10:24:44.092Z"
+          "generatedAt": "2026-10-24T10:24:44.092Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       }
     },
@@ -29210,17 +29258,26 @@
         "summary": {
           "requestId": "d6066ab5-07fb-4847-bcc6-c6094ab63f79",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T11:48:23.983Z"
+          "generatedAt": "2026-10-24T11:48:23.983Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "flashcards": {
           "requestId": "f283c09e-ea05-4f7e-b73a-3f18a38ec69f",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T11:48:50.844Z"
+          "generatedAt": "2026-10-24T11:48:50.844Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "quiz": {
           "requestId": "5385ba14-5369-4e9c-bc5e-b2d3fdbacf6c",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T11:52:16.654Z"
+          "generatedAt": "2026-10-24T11:52:16.654Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       }
     },
@@ -30431,12 +30488,18 @@
         "summary": {
           "requestId": "18ead175-672a-4d02-b1cc-7e8ad16d9391",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T12:08:57.318Z"
+          "generatedAt": "2026-10-24T12:08:57.318Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "flashcards": {
           "requestId": "54ad5735-463a-468a-b15e-856952702ce1",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T12:09:09.405Z"
+          "generatedAt": "2026-10-24T12:09:09.405Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       }
     },
@@ -31748,17 +31811,26 @@
         "summary": {
           "requestId": "7b9a7a6c-a22d-43f4-b59e-5172fb38d55e",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T12:01:26.072Z"
+          "generatedAt": "2026-10-24T12:01:26.072Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "flashcards": {
           "requestId": "e917e9a4-946a-4b2d-81e8-a7d7b5f3f6d8",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T12:07:06.017Z"
+          "generatedAt": "2026-10-24T12:07:06.017Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "quiz": {
           "requestId": "00a475a7-5b4c-4100-9542-c9213efcf1d6",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T12:07:32.529Z"
+          "generatedAt": "2026-10-24T12:07:32.529Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       }
     },
@@ -32296,17 +32368,26 @@
         "flashcards": {
           "requestId": "8933be31-1012-4fc4-b5c9-9ad9af655476",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T12:14:09.040Z"
+          "generatedAt": "2026-10-24T12:14:09.040Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "summary": {
           "requestId": "c401cca6-f29d-456a-bdda-70c39efe2c08",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T12:14:23.265Z"
+          "generatedAt": "2026-10-24T12:14:23.265Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "quiz": {
           "requestId": "7213a1d0-8915-4ffa-9c05-602625a94b2c",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T12:14:37.911Z"
+          "generatedAt": "2026-10-24T12:14:37.911Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       },
       "summaryData": {
@@ -32515,7 +32596,1288 @@
       "pageStart": 94,
       "pageEnd": 100,
       "text": "[Page 94]\nAmazon EC2 \t– \tInstance Storage\n\n[Page 95]\nWhat’s an EBS Volume?\n• \tAn \tEBS (Elastic Block Store) Volume \tis a \tnetwork \tdrive you can attach\nto your instances while they run\n• \tIt allows your instances to persist data, even after their termination\n• \tThey can only be mounted to one instance at a time (at the CCP level)\n• \tThey are bound to \ta specific availability zone\n• \tAnalogy: Think of them as a “network USB stick”\n\n[Page 96]\nEBS Volume\n• \tIt’s a network drive (i.e. not a physical drive)\n• \tIt uses the network to communicate the instance, which means there might be a bit of\nlatency\n• \tIt can be detached from an EC2 instance and attached to another one quickly\n• \tIt’s locked to an Availability Zone (AZ)\n• \tAn EBS Volume in us-east-1a cannot be attached to us-east-1b\n• \tTo move a volume across, you first need to snapshot it\n• \tHave a provisioned capacity (size in GBs, and IOPS)\n• \tYou get billed for all the provisioned capacity\n• \tYou can increase the capacity of the drive over time\n\n[Page 97]\nUS-EAST-1B\tUS-EAST-1A\nEBS Volume \t- \tExample\nEBS\n(10 GB)\nEBS\n(100 GB)\nEBS\n(50 GB)\nEBS\n(50 GB)\nEBS\n(10 GB)\nunattached\n\n[Page 98]\nEBS \t– \tDelete on Termination attribute\n• \tControls the EBS behaviour when an EC2 instance terminates\n• \tBy default, the root EBS volume is deleted (attribute enabled)\n• \tBy default, any other attached EBS volume is not deleted (attribute disabled)\n• \tThis can be controlled by the AWS console / AWS CLI\n• \tUse case: preserve root volume when instance is terminated\n\n[Page 99]\nEBS Snapshots\n• \tMake a backup (snapshot) of your EBS volume at a point in time\n• \tNot necessary to detach volume to do snapshot, but recommended\n• \tCan copy snapshots across AZ or Region\nUS-EAST-1A\nEBS\n(50 GB)\nUS-EAST-1B\nEBS\n(50 GB)\nEBS Snapshot\nsnapshot \trestore\n\n[Page 100]\nEBS Snapshots Features\n• \tEBS Snapshot Archive\n• \tMove a Snapshot to an ”archive tier” that is\n75% cheaper\n• \tTakes within 24 to 72 hours for restoring the\narchive\n• \tRecycle Bin for EBS Snapshots\n• \tSetup rules to retain deleted snapshots so you\ncan recover them after an accidental deletion\n• \tSpecify retention (from 1 day to 1 year)\n• \tFast Snapshot Restore (FSR)\n• \tForce full initialization of snapshot to have no\nlatency on the first use ($$$)\nEBS Snapshot EBS Snapshot\nArchive\narchive\nEBS Snapshot \tRecycle Bin\ndelete",
-      "read": false
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nEBS (Elastic Block Store) is a network-attached block drive for EC2 that persists data independently of instance lifetime, but is locked to a single Availability Zone and mounted to one instance at a time. The exam tests the consequences of those constraints: how you bill provisioned size and IOPS, why a snapshot is the only path to move or copy a volume across AZs or Regions, and what happens to volumes when an instance terminates. On top of snapshots sit three features — Archive (cheap, slow restore), Recycle Bin (recover deleted snapshots for 1 day to 1 year) and Fast Snapshot Restore (remove first-use latency for a price) — that are classic cost-vs-latency and recovery scenarios.\n\n## Core Concepts\n\n- **EBS Volume:** A network drive (not a physical drive) that you attach to an EC2 instance while it runs, letting the instance persist data even after termination; often described as a \"network USB stick\".\n- **Network drive latency:** Because EBS communicates with the instance over the network, there may be a bit of latency compared with instance storage.\n- **Attach/detach behavior:** An EBS volume can be detached from one EC2 instance and attached to another quickly; at the CCP level it can only be mounted to one instance at a time.\n- **AZ-bound volume:** An EBS volume is locked to a specific Availability Zone — a volume in us-east-1a cannot be attached to an instance in us-east-1b; moving across AZs requires a snapshot.\n- **Provisioned capacity:** A volume has provisioned capacity (size in GB and IOPS) that you choose up front; capacity can be increased over time.\n- **Provisioned-capacity billing:** You are billed for all the provisioned capacity, regardless of how much of it the instance actually uses.\n- **EBS Snapshot:** A point-in-time backup of an EBS volume; detaching the volume first is not necessary but is recommended.\n- **Snapshot copy across AZ or Region:** Snapshots can be copied across Availability Zones or Regions, and restoring a snapshot in another AZ creates a volume there — the standard way to move a volume.\n- **Delete on Termination attribute:** An EBS attribute controlling what happens to the volume when the attached EC2 instance terminates; controllable via AWS console or AWS CLI.\n- **Root volume default deletion:** By default the root EBS volume is deleted on instance termination (attribute enabled); by default any other attached EBS volume is not deleted (attribute disabled).\n- **EBS Snapshot Archive:** Moves a snapshot to an \"archive tier\" that is 75% cheaper, with restore taking within 24 to 72 hours.\n- **Recycle Bin for EBS Snapshots:** Rules that retain deleted snapshots so you can recover them after an accidental deletion; retention is specified from 1 day to 1 year.\n- **Fast Snapshot Restore (FSR):** Forces full initialization of a snapshot so a restored volume has no latency on first use; costs extra ($$$).\n\n## Key Comparisons\n\n- **EBS volume vs instance store:** EBS is a network drive that persists independently of the instance; an instance store is tied to the physical host and does not survive the way a detachable network drive does.\n- **Same-AZ attach vs cross-AZ move:** Within one AZ a volume can be detached and re-attached quickly; across AZs you must snapshot and restore.\n- **Root volume vs non-root volume on termination:** Root volume is deleted by default; additional data volumes are kept by default.\n- **EBS Snapshot vs EBS Snapshot Archive:** Standard snapshots restore quickly; archive copies are 75% cheaper but take 24-72 hours to restore.\n- **EBS Snapshot Archive vs Recycle Bin:** Archive is a cheap long-term storage tier for snapshots you keep; Recycle Bin retains snapshots you deleted so they can be recovered (1 day-1 year).\n- **Recycle Bin vs Fast Snapshot Restore:** Recycle Bin answers \"I deleted it by accident\"; FSR answers \"restore is too slow on first use\" and is paid for with extra cost.\n- **Snapshot taken without detach vs after detach:** Both are possible — detaching is optional but recommended for a clean point-in-time backup.\n- **Provisioned vs used capacity:** Billing follows provisioned GB and IOPS, so over-provisioning costs money even when idle.\n\n## Common Misunderstandings\n\n- An EBS volume can be attached to instances in any AZ in the Region — it cannot; it is locked to its AZ.\n- You only pay for the storage you fill up — you pay for all provisioned capacity, including provisioned IOPS.\n- All attached volumes are deleted when the instance terminates — only the root volume is deleted by default.\n- You must detach a volume before you can snapshot it — you need not, though it is recommended.\n- Snapshots are AZ-bound like volumes — snapshots can be copied across AZs and Regions.\n- Deleting a snapshot is always final — a Recycle Bin rule can retain deleted snapshots from 1 day to 1 year.\n- Archive tier is just cheaper snapshots with the same restore time — restore from archive takes 24 to 72 hours.\n- FSR makes the snapshot smaller or cheaper — FSR forces full initialization to remove first-use latency and costs extra.\n\n## Mental Models\n\n- Think of EBS as a \"network USB stick\": you plug it into an instance, unplug and move it — but only within the same AZ.\n- Think of the AZ as the building the drive is physically locked inside; to get it into another building you ship a copy (the snapshot).\n- Think of billing as renting a parking space by size and speed, not by how often you park.\n- Think of Delete on Termination as a checkbox on each volume: on for the root by default, off for the others.\n- Think of Snapshot Archive as the cold warehouse, Recycle Bin as the trash can with an undo window, and FSR as paying to pre-warm the engine.\n\n## Exceptions & Edge Cases\n\n- A volume can be unattached entirely (shown as unattached alongside instances in different AZs) — an unattached volume still incurs provisioned-capacity billing.\n- Delete on Termination is per-volume, so you can run a non-root volume with it enabled or a root volume with it disabled.\n- Use case for disabling it on the root volume: preserve the root volume when the instance is terminated.\n- Archive restore time is a range (24 to 72 hours), not a fixed value, and cannot be shortened by FSR.\n- Recycle Bin must be set up with rules in advance — retention of 1 day to 1 year applies only to snapshots covered by a rule.\n- Snapshotting a live volume is allowed without detaching, so an exam option that makes detaching mandatory is wrong.\n- FSR costs extra ($$$), so it is a latency-requirement choice, not a cost-optimization choice.\n\n## When to Use Which\n\n- Data must survive the termination of the EC2 instance it is attached to → **EBS volume instead of ephemeral instance storage**\n- A volume must be used by an instance in a different Availability Zone → **Snapshot the volume and restore it as a new volume in the target AZ**\n- Copy a workload's volume to another Region → **Copy the snapshot across the Region, then restore**\n- Keep the root volume after the instance is terminated → **Disable the Delete on Termination attribute on the root volume**\n- Keep a rarely accessed backup at minimum cost and slow restore is acceptable → **Move the snapshot to EBS Snapshot Archive (75% cheaper, restore in 24-72 hours)**\n- Protect against accidental deletion of snapshots for a defined period → **Recycle Bin for EBS Snapshots with a retention of 1 day to 1 year**\n- Restored volumes must have no latency on first use → **Enable Fast Snapshot Restore, accepting the extra cost**\n\n## Patterns to Recognize\n\n- \"Volume in us-east-1a must be used by an instance in us-east-1b\" → **EBS is AZ-bound; snapshot + restore**\n- \"Move data to another Region\" → **Snapshot copy across Regions, then restore**\n- \"Billed for capacity not used\" → **Provisioned GB and IOPS billing**\n- \"Instance was terminated and the data volume disappeared\" → **Delete on Termination on the root volume (default enabled)**\n- \"Cheapest backup of snapshots that are rarely restored\" → **EBS Snapshot Archive**\n- \"Snapshot was deleted by mistake — recover it\" → **Recycle Bin for EBS Snapshots (retention 1 day-1 year)**\n- \"High latency on first read after restoring from snapshot\" → **Fast Snapshot Restore (full initialization, extra cost)**\n- \"Within 24 to 72 hours\" → **Archive tier restore time**\n- \"Backup needs a clean point-in-time, no downtime required\" → **Snapshot without detaching (detach recommended, not required)**\n\n## Exam Traps\n\n- “Pick a volume in another AZ and attach it directly.” — A volume cannot cross AZs; snapshot it and restore in the target AZ.\n- “Choose the smallest volume to save money.” — Billing is on provisioned size and IOPS, so size/IOPS should match the requirement, not be minimized.\n- “Assume all volumes are deleted at termination.” — Only the root volume is deleted by default; other volumes persist (attribute disabled).\n- “Say snapshotting requires the volume to be detached first.” — Detaching is not necessary, only recommended.\n- “Use Archive for a workload needing fast restore.” — Archive restore takes 24 to 72 hours; use a standard snapshot (or FSR) when speed matters.\n- “Use Fast Snapshot Restore to reduce snapshot storage cost.” — FSR removes first-use latency and costs extra; use Archive for cost reduction.\n- “Expect Recycle Bin to retain snapshots indefinitely.” — Retention is set by rule and ranges from 1 day to 1 year.\n- “Assume an unattached volume is free.” — Provisioned capacity is billed whether or not the volume is attached.\n\n## Beyond the Source (tutor knowledge)\n\n- (Tutor knowledge) The source says one instance at a time \"at the CCP level\"; on the SAA exam, multi-attach is a fact for specific EBS volume types (io1/io2) in the same AZ, and is still not a way to cross AZs.\n- (Tutor knowledge) EBS volume types (gp2/gp3, io1/io2, st1, sc1) are examinable under SAA \"block storage options (HDD vs SSD)\" and \"selecting the appropriate storage tier\"; the AZ lock and snapshot mechanics on this page apply to all of them.",
+        "keyPoints": [
+          "An EBS volume is bound to exactly one Availability Zone; a us-east-1a volume cannot attach to us-east-1b.",
+          "To move a volume across AZs (or copy to another Region), snapshot it and restore/copy the snapshot.",
+          "You are billed for the full provisioned capacity (GBs and IOPS), not for the portion used.",
+          "Volume capacity can be increased over time; provisioned size/IOPS is a chosen quantity, not a ceiling on usage.",
+          "By default, the root EBS volume IS deleted when the instance terminates (Delete on Termination enabled).",
+          "By default, non-root attached EBS volumes are NOT deleted when the instance terminates (attribute disabled).",
+          "Delete on Termination can be changed via the AWS console or AWS CLI — e.g. to preserve the root volume.",
+          "Detaching a volume before snapshotting is not required, but is recommended.",
+          "EBS Snapshot Archive is 75% cheaper and restores within 24 to 72 hours.",
+          "Recycle Bin retention for deleted snapshots is from 1 day to 1 year.",
+          "Fast Snapshot Restore removes first-use latency by full initialization of the snapshot, and costs extra."
+        ],
+        "supplement": "- (Tutor knowledge) The source says one instance at a time \"at the CCP level\"; on the SAA exam, multi-attach is a fact for specific EBS volume types (io1/io2) in the same AZ, and is still not a way to cross AZs.\n- (Tutor knowledge) EBS volume types (gp2/gp3, io1/io2, st1, sc1) are examinable under SAA \"block storage options (HDD vs SSD)\" and \"selecting the appropriate storage tier\"; the AZ lock and snapshot mechanics on this page apply to all of them.",
+        "cards": [
+          {
+            "id": "9818a4cc-bf6a-466d-b25e-7e29b77151fa",
+            "question": "What kind of drive is an EBS volume?",
+            "answer": "A network drive (not a physical drive)",
+            "group": "What an EBS volume is",
+            "keyTopic": "EBS as network drive",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-as-network-drive"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "84a7df1b-476e-42bd-b9a0-18b7d75766f0",
+            "question": "What common analogy describes an EBS volume?",
+            "answer": "A \"network USB stick\"",
+            "group": "What an EBS volume is",
+            "keyTopic": "EBS as network drive",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-as-network-drive"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "e07c8430-cce6-46e9-b3d6-15450ab741fe",
+            "question": "How does an EBS volume communicate with an EC2 instance, and what does that imply for performance?",
+            "answer": "Over the network; there may be a bit of latency",
+            "group": "What an EBS volume is",
+            "keyTopic": "EBS as network drive",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-as-network-drive"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "2b78b528-27d8-4a7c-864b-52b1dc94e01c",
+            "question": "Which storage choice lets an instance persist data even after the instance is terminated: instance store or EBS?",
+            "answer": "EBS volume",
+            "group": "What an EBS volume is",
+            "keyTopic": "EBS as network drive",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-as-network-drive"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c51f518c-b3bc-44cf-a939-9a8899ed993d",
+            "question": "Can an EBS volume be detached from one instance and attached to another quickly?",
+            "answer": "Yes, it can be re-attached quickly",
+            "group": "What an EBS volume is",
+            "keyTopic": "EBS as network drive",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-as-network-drive"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "fb234b20-b446-4a7c-9fd4-8286502d213c",
+            "question": "What is an EBS volume bound to?",
+            "answer": "A specific Availability Zone",
+            "group": "AZ and instance binding",
+            "keyTopic": "EBS bound to one AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-bound-to-one-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "7e792baa-7a53-4926-94f2-622437be3b7a",
+            "question": "Can a volume in us-east-1a be attached to an instance in us-east-1b?",
+            "answer": "No — the volume is locked to its AZ",
+            "group": "AZ and instance binding",
+            "keyTopic": "EBS bound to one AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-bound-to-one-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "36de2bd5-a8d7-4628-b8f2-ead27bcdfa82",
+            "question": "An instance in us-east-1b needs an existing us-east-1a volume. What must you do?",
+            "answer": "Snapshot the volume, then restore it in us-east-1b",
+            "group": "AZ and instance binding",
+            "keyTopic": "EBS bound to one AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-bound-to-one-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f0624cee-f161-4198-9ca8-ce70d1b5607d",
+            "question": "At the CCP level, how many instances can an EBS volume be mounted to at a time?",
+            "answer": "One instance at a time",
+            "group": "AZ and instance binding",
+            "keyTopic": "EBS attached to one instance",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-attached-to-one-instance"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "9e2698c0-b2a1-4f75-ad58-0c559b712b7b",
+            "question": "An instance in us-east-1a needs the volume while an instance in us-east-1b keeps it mounted. Is that possible?",
+            "answer": "No — one instance at a time, and the volume stays in one AZ",
+            "group": "AZ and instance binding",
+            "keyTopic": "EBS attached to one instance",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-attached-to-one-instance"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "f476337f-8e0f-4d53-b4c8-413b82c76680",
+            "question": "What two capacity dimensions does an EBS volume have provisioned up front?",
+            "answer": "Size in GBs and IOPS",
+            "group": "Provisioned capacity and billing",
+            "keyTopic": "Provisioned capacity and IOPS billing",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::provisioned-capacity-and-iops-billing"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "19d3dce0-a4fc-4e99-a2cd-24efeb43a9c1",
+            "question": "How is EBS billing calculated relative to usage?",
+            "answer": "You are billed for all the provisioned capacity",
+            "group": "Provisioned capacity and billing",
+            "keyTopic": "Provisioned capacity and IOPS billing",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::provisioned-capacity-and-iops-billing"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "8f910807-d896-482e-873d-70395d69ff72",
+            "question": "A 100 GB volume is only 10% full. How much capacity are you billed for?",
+            "answer": "All 100 GB (and provisioned IOPS)",
+            "group": "Provisioned capacity and billing",
+            "keyTopic": "Provisioned capacity and IOPS billing",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::provisioned-capacity-and-iops-billing"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "4a04cded-2d47-4a1c-b09a-31cedae5a478",
+            "question": "Does an unattached EBS volume avoid provisioned-capacity billing?",
+            "answer": "No — an unattached volume still incurs provisioned-capacity billing",
+            "group": "Provisioned capacity and billing",
+            "keyTopic": "Provisioned capacity and IOPS billing",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::provisioned-capacity-and-iops-billing"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "5fa4c037-c00d-47e0-b495-4b459f647b26",
+            "question": "Can an EBS volume's capacity be changed after creation?",
+            "answer": "Yes, you can increase capacity over time",
+            "group": "Provisioned capacity and billing",
+            "keyTopic": "Provisioned capacity and IOPS billing",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::provisioned-capacity-and-iops-billing"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "4cd99ecd-a5b3-4c5e-9d9d-20fd1ff870c9",
+            "question": "What is an EBS snapshot?",
+            "answer": "A point-in-time backup of an EBS volume",
+            "group": "Snapshots and moving volumes",
+            "keyTopic": "Snapshot to move volume across AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::snapshot-to-move-volume-across-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "bcc94780-5235-4518-bb78-2ed2c3a5c078",
+            "question": "Is detaching a volume required before taking a snapshot?",
+            "answer": "Not necessary, but recommended",
+            "group": "Snapshots and moving volumes",
+            "keyTopic": "Snapshot to move volume across AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::snapshot-to-move-volume-across-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b5d805ba-68ec-4fcc-a156-aebd18e55b05",
+            "question": "What is the standard way to move a volume across Availability Zones?",
+            "answer": "Snapshot it, then restore the snapshot in the target AZ",
+            "group": "Snapshots and moving volumes",
+            "keyTopic": "Snapshot to move volume across AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::snapshot-to-move-volume-across-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "6f548a93-9083-48c7-9af6-f5d5af843c0f",
+            "question": "Besides AZs, what else can EBS snapshots be copied across?",
+            "answer": "Regions",
+            "group": "Snapshots and moving volumes",
+            "keyTopic": "Snapshot to move volume across AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::snapshot-to-move-volume-across-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "0c19e65b-7fb6-4fdb-90ff-7ef981025688",
+            "question": "A volume must be moved across AZs. Which is used: detach and attach, or snapshot and restore?",
+            "answer": "Snapshot and restore",
+            "group": "Snapshots and moving volumes",
+            "keyTopic": "Snapshot to move volume across AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::snapshot-to-move-volume-across-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "e0d3be87-6068-407c-8df3-5c7ea7808709",
+            "question": "What does the Delete on Termination attribute control?",
+            "answer": "Whether the EBS volume is deleted when the attached instance terminates",
+            "group": "Delete on Termination",
+            "keyTopic": "Delete on Termination attribute",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::delete-on-termination-attribute"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d8ccd6f7-e42d-4d8a-9a85-ca1291b19eb3",
+            "question": "Through which interfaces can Delete on Termination be controlled?",
+            "answer": "AWS console or AWS CLI",
+            "group": "Delete on Termination",
+            "keyTopic": "Delete on Termination attribute",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::delete-on-termination-attribute"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b134069b-449b-4466-a547-aea04bd4e070",
+            "question": "What is the main use case for disabling Delete on Termination on the root volume?",
+            "answer": "Preserve the root volume when the instance is terminated",
+            "group": "Delete on Termination",
+            "keyTopic": "Delete on Termination attribute",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::delete-on-termination-attribute"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1b20d485-c699-4bd8-89a2-748857d94e44",
+            "question": "By default, what happens to the root EBS volume when an EC2 instance terminates?",
+            "answer": "It is deleted (attribute enabled)",
+            "group": "Delete on Termination",
+            "keyTopic": "Root volume deleted by default",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::root-volume-deleted-by-default"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "28f04de1-9da9-44db-9291-0306fbb71993",
+            "question": "By default, what happens to non-root attached EBS volumes when the instance terminates?",
+            "answer": "They are not deleted (attribute disabled)",
+            "group": "Delete on Termination",
+            "keyTopic": "Root volume deleted by default",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::root-volume-deleted-by-default"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a82c5175-1d00-4362-9fc7-8800008b61cd",
+            "question": "Which volumes are deleted by default at termination: root only, or all attached volumes?",
+            "answer": "Root volume only",
+            "group": "Delete on Termination",
+            "keyTopic": "Root volume deleted by default",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::root-volume-deleted-by-default"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "244a5500-22fc-4942-848f-ca27c19e43aa",
+            "question": "How much cheaper is EBS Snapshot Archive than standard snapshots?",
+            "answer": "75% cheaper",
+            "group": "Snapshot features: Archive, Recycle Bin, FSR",
+            "keyTopic": "EBS Snapshot Archive",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-snapshot-archive"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "120e06ef-29bd-4deb-b86e-24ad82972b7f",
+            "question": "How long does restoring a snapshot from EBS Snapshot Archive take?",
+            "answer": "Within 24 to 72 hours",
+            "group": "Snapshot features: Archive, Recycle Bin, FSR",
+            "keyTopic": "EBS Snapshot Archive",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-snapshot-archive"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b3226990-f693-4c6a-9cc9-06f14a5ccaab",
+            "question": "Rarely restored backups need minimum cost and slow restore is acceptable. Which feature?",
+            "answer": "EBS Snapshot Archive",
+            "group": "Snapshot features: Archive, Recycle Bin, FSR",
+            "keyTopic": "EBS Snapshot Archive",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-snapshot-archive"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "dc207485-fc1d-4fe2-b447-5dcd77901930",
+            "question": "A workload needs fast restore. Is Archive the right choice?",
+            "answer": "No — archive restore takes 24 to 72 hours",
+            "group": "Snapshot features: Archive, Recycle Bin, FSR",
+            "keyTopic": "EBS Snapshot Archive",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-snapshot-archive"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "e12e86fe-ff48-4c47-a1d8-5ff60ecbeb83",
+            "question": "What is the Recycle Bin for EBS Snapshots used for?",
+            "answer": "Retain deleted snapshots so they can be recovered after accidental deletion",
+            "group": "Snapshot features: Archive, Recycle Bin, FSR",
+            "keyTopic": "Snapshot Recycle Bin retention",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::snapshot-recycle-bin-retention"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "45346a3e-5697-4748-9049-2d87b5f3205b",
+            "question": "What retention range can you specify in Recycle Bin for EBS Snapshots?",
+            "answer": "From 1 day to 1 year",
+            "group": "Snapshot features: Archive, Recycle Bin, FSR",
+            "keyTopic": "Snapshot Recycle Bin retention",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::snapshot-recycle-bin-retention"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "77a18032-f4b3-4236-a1d9-d0b1e747230c",
+            "question": "A snapshot was deleted by mistake. Which feature allows recovery?",
+            "answer": "Recycle Bin for EBS Snapshots",
+            "group": "Snapshot features: Archive, Recycle Bin, FSR",
+            "keyTopic": "Snapshot Recycle Bin retention",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::snapshot-recycle-bin-retention"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "76c240fc-84cd-46d5-af9f-013a39f8a49e",
+            "question": "Which feature answers \"first read from a restored volume is too slow\": Recycle Bin or FSR?",
+            "answer": "Fast Snapshot Restore (FSR)",
+            "group": "Snapshot features: Archive, Recycle Bin, FSR",
+            "keyTopic": "Fast Snapshot Restore",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::fast-snapshot-restore"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a7347748-939f-4ea5-9852-82e83d2d5e83",
+            "question": "What does Fast Snapshot Restore do to the snapshot?",
+            "answer": "Forces full initialization so there is no latency on first use",
+            "group": "Snapshot features: Archive, Recycle Bin, FSR",
+            "keyTopic": "Fast Snapshot Restore",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::fast-snapshot-restore"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "4fdb0669-9514-4557-847e-92769883348e",
+            "question": "How does Fast Snapshot Restore affect cost?",
+            "answer": "It costs extra ($$$)",
+            "group": "Snapshot features: Archive, Recycle Bin, FSR",
+            "keyTopic": "Fast Snapshot Restore",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::fast-snapshot-restore"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "869c0d69-1bcb-4e87-b3b5-0ff98c0f64b8",
+            "question": "Which feature reduces snapshot cost: Fast Snapshot Restore or EBS Snapshot Archive?",
+            "answer": "EBS Snapshot Archive",
+            "group": "Snapshot features: Archive, Recycle Bin, FSR",
+            "keyTopic": "Fast Snapshot Restore",
+            "origin": "source",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::fast-snapshot-restore"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "94e9e314-2076-4db8-a66d-409824de79ee",
+            "question": "On the SAA exam, is EBS multi-attach a way to use a volume from a different AZ?",
+            "answer": "No — multi-attach (io1/io2) is same-AZ only",
+            "group": "Tutor knowledge for SAA depth",
+            "keyTopic": "EBS attached to one instance",
+            "origin": "background",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-attached-to-one-instance"
+            ],
+            "schedule": {
+              "due": "2026-10-24T12:36:46.339Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [
+          {
+            "question": "A company runs a database on an EC2 instance in us-east-1a. A new analytics instance is launched in us-east-1b and must use the same data. What is the correct approach?",
+            "options": [
+              "Detach the volume and attach it to the instance in us-east-1b",
+              "Take a snapshot of the volume and restore it as a new volume in us-east-1b",
+              "Create a new empty volume in us-east-1b and copy files over the network",
+              "Enable Delete on Termination on the volume so it can be recreated in us-east-1b"
+            ],
+            "correctIndex": 1,
+            "explanation": "An EBS volume is locked to its Availability Zone, so the only supported way to move data across AZs is to snapshot it and restore the snapshot as a new volume in the target AZ. Detaching and re-attaching keeps the volume in us-east-1a and it cannot attach in us-east-1b; a new empty volume plus network copy is not the standard mechanism and adds avoidable work; Delete on Termination controls deletion at instance termination and has nothing to do with AZ placement.",
+            "keyTopic": "EBS bound to one AZ",
+            "kind": "scenario",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-bound-to-one-az"
+            ]
+          },
+          {
+            "question": "Which statement best describes an EBS volume?",
+            "options": [
+              "A physical disk that is part of the host running the instance",
+              "A network drive attached to an instance that persists data after termination",
+              "An object store bucket mountable by many instances simultaneously",
+              "A local buffer that is erased whenever the instance stops"
+            ],
+            "correctIndex": 1,
+            "explanation": "EBS is a network drive ('network USB stick') attached to an instance over the network, and it persists data even after the instance terminates. It is not a physical drive on the host; S3 is the object store, and EBS is block storage bound to one instance at a time at the foundational level; it is not an ephemeral local buffer.",
+            "keyTopic": "EBS as network drive",
+            "kind": "concept",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-as-network-drive"
+            ]
+          },
+          {
+            "question": "A team provisioned a 1 TB EBS volume with high provisioned IOPS but the application only fills 200 GB and rarely drives IOPS. How is billing calculated?",
+            "options": [
+              "For the 200 GB actually stored and the IOPS actually consumed",
+              "For the full provisioned size and provisioned IOPS",
+              "For provisioned size only, with IOPS included at no charge",
+              "For used capacity only, since an unattached volume is free"
+            ],
+            "correctIndex": 1,
+            "explanation": "EBS bills all provisioned capacity — both provisioned GB and provisioned IOPS — regardless of actual use, so over-provisioning costs money even when idle. Billing is not based on stored data or consumed IOPS; IOPS are not free with a volume; and an unattached or lightly used volume is still billed for its provisioned capacity.",
+            "keyTopic": "Provisioned capacity and IOPS billing",
+            "kind": "scenario",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::provisioned-capacity-and-iops-billing"
+            ]
+          },
+          {
+            "question": "A web server instance is terminated and the team notices that its root volume disappeared while a separately attached data volume remained. Which behaviour explains this?",
+            "options": [
+              "The root volume had Delete on Termination enabled by default; the data volume had it disabled by default",
+              "All attached volumes are deleted on termination unless they are re-attached within an hour",
+              "The data volume survived only because it was larger than the root volume",
+              "Volumes survive termination only if an EBS snapshot was taken in the last 24 hours"
+            ],
+            "correctIndex": 0,
+            "explanation": "Delete on Termination is enabled by default on the root volume (so it is deleted) and disabled by default on other attached volumes (so they persist); the attribute can be changed via the console or AWS CLI. There is no re-attach grace period; volume size does not determine deletion; and snapshots do not change the termination behaviour of a volume.",
+            "keyTopic": "Root volume deleted by default",
+            "kind": "scenario",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::root-volume-deleted-by-default"
+            ]
+          },
+          {
+            "question": "An architect must keep the root volume of an EC2 instance after the instance is terminated. What is the recommended action?",
+            "options": [
+              "Copy the root volume to a snapshot before each boot",
+              "Disable the Delete on Termination attribute on the root volume",
+              "Attach the root volume to a second instance as a data volume",
+              "Enable Fast Snapshot Restore on the root volume's snapshot"
+            ],
+            "correctIndex": 1,
+            "explanation": "Delete on Termination is a per-volume attribute, and disabling it on the root volume is the documented use case for preserving the root volume when the instance terminates. Snapshotting before each boot is unnecessary overhead and not a guarantee of preservation; a root volume cannot simply be attached as a data volume of another instance; FSR reduces first-use restore latency and does not affect termination.",
+            "keyTopic": "Delete on Termination attribute",
+            "kind": "scenario",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::delete-on-termination-attribute"
+            ]
+          },
+          {
+            "question": "A company needs a long-term backup of a rarely restored EBS volume and wants the lowest storage cost, accepting that recovery may take a day or more. Which option fits?",
+            "options": [
+              "Keep a standard EBS snapshot in the Region",
+              "Move the snapshot to EBS Snapshot Archive",
+              "Enable Fast Snapshot Restore on the snapshot",
+              "Configure a Recycle Bin rule for deleted snapshots"
+            ],
+            "correctIndex": 1,
+            "explanation": "EBS Snapshot Archive moves the snapshot to an archive tier that is 75% cheaper, at the cost of a restore time of within 24 to 72 hours — acceptable when speed is not required. A standard snapshot costs more to keep; FSR removes first-use latency and costs extra, the opposite of cost saving; Recycle Bin retains deleted snapshots and does not reduce storage cost of a snapshot you intend to keep.",
+            "keyTopic": "EBS Snapshot Archive",
+            "kind": "scenario",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-snapshot-archive"
+            ]
+          },
+          {
+            "question": "An administrator accidentally deleted a production EBS snapshot yesterday. What should have been configured in advance to recover it?",
+            "options": [
+              "A Recycle Bin rule retaining deleted snapshots for a chosen period between 1 day and 1 year",
+              "EBS Snapshot Archive on the snapshot with a 24 to 72 hour restore window",
+              "Fast Snapshot Restore on the volume that was restored from the snapshot",
+              "Delete on Termination disabled on the snapshot's source volume"
+            ],
+            "correctIndex": 0,
+            "explanation": "Recycle Bin for EBS Snapshots uses rules that retain deleted snapshots so they can be recovered, with a retention period from 1 day to 1 year, and the rules must be set up before the deletion. Archive is a cheaper storage tier, not an undelete mechanism; FSR addresses first-use latency of restored volumes; Delete on Termination governs volumes at instance termination, not snapshots.",
+            "keyTopic": "Snapshot Recycle Bin retention",
+            "kind": "scenario",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::snapshot-recycle-bin-retention"
+            ]
+          },
+          {
+            "question": "After restoring a volume from a snapshot, an application shows high latency on its first reads until the data is fully accessed. Which feature addresses this requirement?",
+            "options": [
+              "EBS Snapshot Archive, which pre-loads the snapshot to the target AZ",
+              "Fast Snapshot Restore, which forces full initialization at extra cost",
+              "A Recycle Bin rule that keeps the snapshot for 1 year",
+              "Delete on Termination enabled on the restored volume"
+            ],
+            "correctIndex": 1,
+            "explanation": "Fast Snapshot Restore forces full initialization of the snapshot so the restored volume has no latency on first use, and it costs extra ($$$). Archive is a cheaper tier with a 24 to 72 hour restore and does not pre-load data; Recycle Bin only retains deleted snapshots; Delete on Termination has no effect on read latency.",
+            "keyTopic": "Fast Snapshot Restore",
+            "kind": "scenario",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::fast-snapshot-restore"
+            ]
+          },
+          {
+            "question": "Which comparison between EBS Snapshot Archive and Fast Snapshot Restore is correct?",
+            "options": [
+              "Archive reduces storage cost but slows restore; FSR removes first-use latency but increases cost",
+              "Archive removes first-use latency; FSR reduces storage cost by 75%",
+              "Both reduce cost, and both restore within 24 to 72 hours",
+              "Both require the volume to be detached before use"
+            ],
+            "correctIndex": 0,
+            "explanation": "Archive trades restore speed for cost (75% cheaper, restore within 24 to 72 hours), while FSR trades money for speed (full initialization, no first-use latency, extra cost) — they solve opposite problems. The roles are not reversed; neither option describes two cost reducers or a common 24 to 72 hour window; and detaching is not required for snapshots in either case, only recommended.",
+            "keyTopic": "EBS Snapshot Archive",
+            "kind": "comparison",
+            "objectiveIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495::ebs-snapshot-archive"
+            ]
+          }
+        ],
+        "provider": "copilot",
+        "model": "Tutor model · quiz prompt v2",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T12:36:37.742Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 94,
+            "pageEnd": 100,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "EBS (Elastic Block Store) is a network-attached block drive for EC2 that persists data independently of instance lifetime, but is locked to a single Availability Zone and mounted to one instance at a time. The exam tests the consequences of those constraints: how you bill provisioned size and IOPS, why a snapshot is the only path to move or copy a volume across AZs or Regions, and what happens to volumes when an instance terminates. On top of snapshots sit three features — Archive (cheap, slow restore), Recycle Bin (recover deleted snapshots for 1 day to 1 year) and Fast Snapshot Restore (remove first-use latency for a price) — that are classic cost-vs-latency and recovery scenarios.",
+        "coreConcepts": [
+          {
+            "term": "EBS Volume",
+            "definition": "A network drive (not a physical drive) that you attach to an EC2 instance while it runs, letting the instance persist data even after termination; often described as a \"network USB stick\"."
+          },
+          {
+            "term": "Network drive latency",
+            "definition": "Because EBS communicates with the instance over the network, there may be a bit of latency compared with instance storage."
+          },
+          {
+            "term": "Attach/detach behavior",
+            "definition": "An EBS volume can be detached from one EC2 instance and attached to another quickly; at the CCP level it can only be mounted to one instance at a time."
+          },
+          {
+            "term": "AZ-bound volume",
+            "definition": "An EBS volume is locked to a specific Availability Zone — a volume in us-east-1a cannot be attached to an instance in us-east-1b; moving across AZs requires a snapshot."
+          },
+          {
+            "term": "Provisioned capacity",
+            "definition": "A volume has provisioned capacity (size in GB and IOPS) that you choose up front; capacity can be increased over time."
+          },
+          {
+            "term": "Provisioned-capacity billing",
+            "definition": "You are billed for all the provisioned capacity, regardless of how much of it the instance actually uses."
+          },
+          {
+            "term": "EBS Snapshot",
+            "definition": "A point-in-time backup of an EBS volume; detaching the volume first is not necessary but is recommended."
+          },
+          {
+            "term": "Snapshot copy across AZ or Region",
+            "definition": "Snapshots can be copied across Availability Zones or Regions, and restoring a snapshot in another AZ creates a volume there — the standard way to move a volume."
+          },
+          {
+            "term": "Delete on Termination attribute",
+            "definition": "An EBS attribute controlling what happens to the volume when the attached EC2 instance terminates; controllable via AWS console or AWS CLI."
+          },
+          {
+            "term": "Root volume default deletion",
+            "definition": "By default the root EBS volume is deleted on instance termination (attribute enabled); by default any other attached EBS volume is not deleted (attribute disabled)."
+          },
+          {
+            "term": "EBS Snapshot Archive",
+            "definition": "Moves a snapshot to an \"archive tier\" that is 75% cheaper, with restore taking within 24 to 72 hours."
+          },
+          {
+            "term": "Recycle Bin for EBS Snapshots",
+            "definition": "Rules that retain deleted snapshots so you can recover them after an accidental deletion; retention is specified from 1 day to 1 year."
+          },
+          {
+            "term": "Fast Snapshot Restore (FSR)",
+            "definition": "Forces full initialization of a snapshot so a restored volume has no latency on first use; costs extra ($$$)."
+          }
+        ],
+        "mustRemember": [
+          "An EBS volume is bound to exactly one Availability Zone; a us-east-1a volume cannot attach to us-east-1b.",
+          "To move a volume across AZs (or copy to another Region), snapshot it and restore/copy the snapshot.",
+          "You are billed for the full provisioned capacity (GBs and IOPS), not for the portion used.",
+          "Volume capacity can be increased over time; provisioned size/IOPS is a chosen quantity, not a ceiling on usage.",
+          "By default, the root EBS volume IS deleted when the instance terminates (Delete on Termination enabled).",
+          "By default, non-root attached EBS volumes are NOT deleted when the instance terminates (attribute disabled).",
+          "Delete on Termination can be changed via the AWS console or AWS CLI — e.g. to preserve the root volume.",
+          "Detaching a volume before snapshotting is not required, but is recommended.",
+          "EBS Snapshot Archive is 75% cheaper and restores within 24 to 72 hours.",
+          "Recycle Bin retention for deleted snapshots is from 1 day to 1 year.",
+          "Fast Snapshot Restore removes first-use latency by full initialization of the snapshot, and costs extra."
+        ],
+        "keyComparisons": [
+          {
+            "items": "EBS volume vs instance store",
+            "difference": "EBS is a network drive that persists independently of the instance; an instance store is tied to the physical host and does not survive the way a detachable network drive does."
+          },
+          {
+            "items": "Same-AZ attach vs cross-AZ move",
+            "difference": "Within one AZ a volume can be detached and re-attached quickly; across AZs you must snapshot and restore."
+          },
+          {
+            "items": "Root volume vs non-root volume on termination",
+            "difference": "Root volume is deleted by default; additional data volumes are kept by default."
+          },
+          {
+            "items": "EBS Snapshot vs EBS Snapshot Archive",
+            "difference": "Standard snapshots restore quickly; archive copies are 75% cheaper but take 24-72 hours to restore."
+          },
+          {
+            "items": "EBS Snapshot Archive vs Recycle Bin",
+            "difference": "Archive is a cheap long-term storage tier for snapshots you keep; Recycle Bin retains snapshots you deleted so they can be recovered (1 day-1 year)."
+          },
+          {
+            "items": "Recycle Bin vs Fast Snapshot Restore",
+            "difference": "Recycle Bin answers \"I deleted it by accident\"; FSR answers \"restore is too slow on first use\" and is paid for with extra cost."
+          },
+          {
+            "items": "Snapshot taken without detach vs after detach",
+            "difference": "Both are possible — detaching is optional but recommended for a clean point-in-time backup."
+          },
+          {
+            "items": "Provisioned vs used capacity",
+            "difference": "Billing follows provisioned GB and IOPS, so over-provisioning costs money even when idle."
+          }
+        ],
+        "commonMisunderstandings": [
+          "An EBS volume can be attached to instances in any AZ in the Region — it cannot; it is locked to its AZ.",
+          "You only pay for the storage you fill up — you pay for all provisioned capacity, including provisioned IOPS.",
+          "All attached volumes are deleted when the instance terminates — only the root volume is deleted by default.",
+          "You must detach a volume before you can snapshot it — you need not, though it is recommended.",
+          "Snapshots are AZ-bound like volumes — snapshots can be copied across AZs and Regions.",
+          "Deleting a snapshot is always final — a Recycle Bin rule can retain deleted snapshots from 1 day to 1 year.",
+          "Archive tier is just cheaper snapshots with the same restore time — restore from archive takes 24 to 72 hours.",
+          "FSR makes the snapshot smaller or cheaper — FSR forces full initialization to remove first-use latency and costs extra."
+        ],
+        "mentalModels": [
+          "Think of EBS as a \"network USB stick\": you plug it into an instance, unplug and move it — but only within the same AZ.",
+          "Think of the AZ as the building the drive is physically locked inside; to get it into another building you ship a copy (the snapshot).",
+          "Think of billing as renting a parking space by size and speed, not by how often you park.",
+          "Think of Delete on Termination as a checkbox on each volume: on for the root by default, off for the others.",
+          "Think of Snapshot Archive as the cold warehouse, Recycle Bin as the trash can with an undo window, and FSR as paying to pre-warm the engine."
+        ],
+        "edgeCases": [
+          "A volume can be unattached entirely (shown as unattached alongside instances in different AZs) — an unattached volume still incurs provisioned-capacity billing.",
+          "Delete on Termination is per-volume, so you can run a non-root volume with it enabled or a root volume with it disabled.",
+          "Use case for disabling it on the root volume: preserve the root volume when the instance is terminated.",
+          "Archive restore time is a range (24 to 72 hours), not a fixed value, and cannot be shortened by FSR.",
+          "Recycle Bin must be set up with rules in advance — retention of 1 day to 1 year applies only to snapshots covered by a rule.",
+          "Snapshotting a live volume is allowed without detaching, so an exam option that makes detaching mandatory is wrong.",
+          "FSR costs extra ($$$), so it is a latency-requirement choice, not a cost-optimization choice."
+        ],
+        "whenToUse": [
+          {
+            "situation": "Data must survive the termination of the EC2 instance it is attached to",
+            "use": "EBS volume instead of ephemeral instance storage"
+          },
+          {
+            "situation": "A volume must be used by an instance in a different Availability Zone",
+            "use": "Snapshot the volume and restore it as a new volume in the target AZ"
+          },
+          {
+            "situation": "Copy a workload's volume to another Region",
+            "use": "Copy the snapshot across the Region, then restore"
+          },
+          {
+            "situation": "Keep the root volume after the instance is terminated",
+            "use": "Disable the Delete on Termination attribute on the root volume"
+          },
+          {
+            "situation": "Keep a rarely accessed backup at minimum cost and slow restore is acceptable",
+            "use": "Move the snapshot to EBS Snapshot Archive (75% cheaper, restore in 24-72 hours)"
+          },
+          {
+            "situation": "Protect against accidental deletion of snapshots for a defined period",
+            "use": "Recycle Bin for EBS Snapshots with a retention of 1 day to 1 year"
+          },
+          {
+            "situation": "Restored volumes must have no latency on first use",
+            "use": "Enable Fast Snapshot Restore, accepting the extra cost"
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "\"Volume in us-east-1a must be used by an instance in us-east-1b\"",
+            "indicates": "EBS is AZ-bound; snapshot + restore"
+          },
+          {
+            "signal": "\"Move data to another Region\"",
+            "indicates": "Snapshot copy across Regions, then restore"
+          },
+          {
+            "signal": "\"Billed for capacity not used\"",
+            "indicates": "Provisioned GB and IOPS billing"
+          },
+          {
+            "signal": "\"Instance was terminated and the data volume disappeared\"",
+            "indicates": "Delete on Termination on the root volume (default enabled)"
+          },
+          {
+            "signal": "\"Cheapest backup of snapshots that are rarely restored\"",
+            "indicates": "EBS Snapshot Archive"
+          },
+          {
+            "signal": "\"Snapshot was deleted by mistake — recover it\"",
+            "indicates": "Recycle Bin for EBS Snapshots (retention 1 day-1 year)"
+          },
+          {
+            "signal": "\"High latency on first read after restoring from snapshot\"",
+            "indicates": "Fast Snapshot Restore (full initialization, extra cost)"
+          },
+          {
+            "signal": "\"Within 24 to 72 hours\"",
+            "indicates": "Archive tier restore time"
+          },
+          {
+            "signal": "\"Backup needs a clean point-in-time, no downtime required\"",
+            "indicates": "Snapshot without detaching (detach recommended, not required)"
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "Pick a volume in another AZ and attach it directly.",
+            "correction": "A volume cannot cross AZs; snapshot it and restore in the target AZ."
+          },
+          {
+            "trap": "Choose the smallest volume to save money.",
+            "correction": "Billing is on provisioned size and IOPS, so size/IOPS should match the requirement, not be minimized."
+          },
+          {
+            "trap": "Assume all volumes are deleted at termination.",
+            "correction": "Only the root volume is deleted by default; other volumes persist (attribute disabled)."
+          },
+          {
+            "trap": "Say snapshotting requires the volume to be detached first.",
+            "correction": "Detaching is not necessary, only recommended."
+          },
+          {
+            "trap": "Use Archive for a workload needing fast restore.",
+            "correction": "Archive restore takes 24 to 72 hours; use a standard snapshot (or FSR) when speed matters."
+          },
+          {
+            "trap": "Use Fast Snapshot Restore to reduce snapshot storage cost.",
+            "correction": "FSR removes first-use latency and costs extra; use Archive for cost reduction."
+          },
+          {
+            "trap": "Expect Recycle Bin to retain snapshots indefinitely.",
+            "correction": "Retention is set by rule and ranges from 1 day to 1 year."
+          },
+          {
+            "trap": "Assume an unattached volume is free.",
+            "correction": "Provisioned capacity is billed whether or not the volume is attached."
+          }
+        ],
+        "beyondSource": [
+          "(Tutor knowledge) The source says one instance at a time \"at the CCP level\"; on the SAA exam, multi-attach is a fact for specific EBS volume types (io1/io2) in the same AZ, and is still not a way to cross AZs.",
+          "(Tutor knowledge) EBS volume types (gp2/gp3, io1/io2, st1, sc1) are examinable under SAA \"block storage options (HDD vs SSD)\" and \"selecting the appropriate storage tier\"; the AZ lock and snapshot mechanics on this page apply to all of them."
+        ]
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "146318a5-a416-4d44-a88d-1f6b4e8e182a",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T12:36:37.742Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
+        },
+        "flashcards": {
+          "requestId": "2d4a622c-3f87-443b-9d45-44b4281ea3e9",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T12:36:46.339Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
+        },
+        "quiz": {
+          "requestId": "899f19ee-3a7b-44cb-b994-9ff82e782c8c",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T12:36:57.478Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
+        }
+      }
     },
     {
       "id": "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc",
@@ -34876,6 +36238,36 @@
       "promptVersion": 3,
       "createdAt": "2026-10-24T12:16:37.909Z",
       "completedAt": "2026-10-24T12:16:44.221Z"
+    },
+    {
+      "id": "146318a5-a416-4d44-a88d-1f6b4e8e182a",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "summary",
+      "targetId": "afef90a5-a64e-435c-a6e7-d7fa3a572495",
+      "status": "done",
+      "promptVersion": 2,
+      "createdAt": "2026-10-24T12:36:20.960Z",
+      "completedAt": "2026-10-24T12:36:37.985Z"
+    },
+    {
+      "id": "2d4a622c-3f87-443b-9d45-44b4281ea3e9",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "flashcards",
+      "targetId": "afef90a5-a64e-435c-a6e7-d7fa3a572495",
+      "status": "done",
+      "promptVersion": 1,
+      "createdAt": "2026-10-24T12:36:38.056Z",
+      "completedAt": "2026-10-24T12:36:46.564Z"
+    },
+    {
+      "id": "899f19ee-3a7b-44cb-b994-9ff82e782c8c",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "kind": "quiz",
+      "targetId": "afef90a5-a64e-435c-a6e7-d7fa3a572495",
+      "status": "done",
+      "promptVersion": 2,
+      "createdAt": "2026-10-24T12:36:46.647Z",
+      "completedAt": "2026-10-24T12:36:57.716Z"
     }
   ]
 }

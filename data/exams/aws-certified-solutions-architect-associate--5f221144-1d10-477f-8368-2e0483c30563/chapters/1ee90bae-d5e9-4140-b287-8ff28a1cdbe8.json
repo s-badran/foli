@@ -1517,17 +1517,26 @@
         "summary": {
           "requestId": "7b9a7a6c-a22d-43f4-b59e-5172fb38d55e",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T12:01:26.072Z"
+          "generatedAt": "2026-10-24T12:01:26.072Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "flashcards": {
           "requestId": "e917e9a4-946a-4b2d-81e8-a7d7b5f3f6d8",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T12:07:06.017Z"
+          "generatedAt": "2026-10-24T12:07:06.017Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "quiz": {
           "requestId": "00a475a7-5b4c-4100-9542-c9213efcf1d6",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T12:07:32.529Z"
+          "generatedAt": "2026-10-24T12:07:32.529Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       }
     },
@@ -2065,17 +2074,26 @@
         "flashcards": {
           "requestId": "8933be31-1012-4fc4-b5c9-9ad9af655476",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T12:14:09.040Z"
+          "generatedAt": "2026-10-24T12:14:09.040Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "summary": {
           "requestId": "c401cca6-f29d-456a-bdda-70c39efe2c08",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T12:14:23.265Z"
+          "generatedAt": "2026-10-24T12:14:23.265Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "quiz": {
           "requestId": "7213a1d0-8915-4ffa-9c05-602625a94b2c",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T12:14:37.911Z"
+          "generatedAt": "2026-10-24T12:14:37.911Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       },
       "summaryData": {

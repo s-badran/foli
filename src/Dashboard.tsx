@@ -19,7 +19,7 @@ import { Empty, ProgressBar, SourceIcon, useNow } from './components';
 import { LearnerFields } from './App';
 import type { RunTask } from './StudyView';
 import { baselinePolicy, chapterPreparation, sectionPractice } from '../shared/learning';
-import { GenerateAction, latestRequest, PromptLibrary, RequestStatus } from './Generation';
+import { GenerateAction, latestRequest, ModelPicker, PromptLibrary, RequestStatus } from './Generation';
 import { sectionNumber } from '../shared/sections';
 
 export type View = 'chapters' | 'sources' | 'plan' | 'progress' | 'settings';
@@ -656,6 +656,16 @@ export function Dashboard({
           >
             <h2>Learning baseline</h2>
             <LearnerFields learner={folder.learner} />
+            <ModelPicker
+              folder={folder}
+              busy={busy}
+              onSave={(modelId) =>
+                void run(
+                  () => api(`/folders/${folder.id}`, send({ modelId: modelId || '' }, 'PATCH')),
+                  'AI model saved',
+                )
+              }
+            />
             <div className="baseline-impact">
               <strong>Current plan policy</strong>
               <p>{baselinePolicy(folder.learner?.familiarity).label}</p>

@@ -6,6 +6,9 @@
  */
 import { MockProvider } from './providers/mock';
 import { OpenAiCompatibleProvider } from './providers/openai-compatible';
+import { DEFAULT_MODEL_ID } from '../../shared/models';
+
+export { DEFAULT_MODEL_ID };
 
 export type ProviderKind = 'openai-compatible' | 'mock';
 
@@ -48,7 +51,6 @@ export interface AiProvider {
 }
 
 /** Used whenever no model is injected explicitly. */
-export const DEFAULT_MODEL_ID = 'deepseek-chat';
 
 export const SUPPORTED_MODELS: readonly ModelInfo[] = [
   {

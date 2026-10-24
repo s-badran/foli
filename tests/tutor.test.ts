@@ -293,6 +293,8 @@ describe('response validation and application', () => {
     expect(section.content!.summary).toContain('## Core Concepts');
     expect(section.content!.summary).toContain('## Exam Traps');
     expect(renderSummary(section.summaryData!)).not.toContain('## Key Comparisons');
+    expect(section.artifacts?.summary?.model).toBe('deepseek-chat');
+    expect(section.artifacts?.summary?.familiarity).toBe('basic');
   });
   it('normalizes keyComparisons item arrays before validating a summary', () => {
     const { state, section } = sectioned();

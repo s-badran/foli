@@ -273,3 +273,19 @@ describe.sequential('auto-run route', () => {
     expect((run.data.problems as string[]).length).toBeGreaterThan(0);
   });
 });
+
+describe('model selection', () => {
+  it('saves a supported model and rejects an unsupported one', async () => {
+    const created = await json('/api/folders', 'POST', { name: 'Model tests' });
+    expect(created.status).toBe(201);
+    const id = created.data.id as string;
+    const saved = await json(`/api/folders/${id}`, 'PATCH', { modelId: 'deepseek-chat' });
+    expect(saved.status).toBe(200);
+    expect(saved.data.modelId).toBe('deepseek-chat');
+    const cleared = await json(`/api/folders/${id}`, 'PATCH', { modelId: '' });
+    expect(cleared.data.modelId).toBeUndefined();
+    const bad = await json(`/api/folders/${id}`, 'PATCH', { modelId: 'not-a-model' });
+    expect(bad.status).toBe(400);
+    await json(`/api/folders/${id}`, 'DELETE');
+  });
+});

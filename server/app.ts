@@ -6,7 +6,7 @@ import path from 'node:path';
 import { z } from 'zod';
 import { learnerSchema, type Section, type Source, type StudyState } from '../shared/models';
 import { artifactKinds } from '../shared/artifacts';
-import { DEFAULT_MODEL_ID, listModels, modelConfigured } from './ai/model';
+import { DEFAULT_MODEL_ID, listModels, modelConfigured, SUPPORTED_MODELS } from './ai/model';
 import { answerRequest } from './ai/run';
 import { Store } from './store';
 import { extractDocument } from './documents';
@@ -173,12 +173,23 @@ export function createApp(
   });
   app.patch('/api/folders/:id', async (request, response) => {
     const settings = z
-      .object({ learner: learnerSchema.optional(), prompt: z.string().max(16000).optional() })
+      .object({
+        learner: learnerSchema.optional(),
+        prompt: z.string().max(16000).optional(),
+        modelId: z.string().optional(),
+      })
       .parse(request.body);
+    if (
+      settings.modelId &&
+      !SUPPORTED_MODELS.some((item) => item.id === settings.modelId && !item.hidden)
+    )
+      throw new Error('Unsupported AI model.');
     const folder = await store.update((state) => {
       const current = required(state.folders, request.params.id);
       const previousFamiliarity = current.learner?.familiarity;
-      Object.assign(current, settings);
+      const { modelId, ...rest } = settings;
+      Object.assign(current, rest);
+      if (modelId !== undefined) current.modelId = modelId || undefined;
       if (settings.learner && settings.learner.familiarity !== previousFamiliarity)
         replanExam(state, current);
       return current;
@@ -324,7 +335,11 @@ export function createApp(
   app.post('/api/requests/:id/run', async (request, response) => {
     const id = z.string().parse(request.params.id);
     const { model } = z.object({ model: z.string().optional() }).parse(request.body ?? {});
-    if (!modelConfigured(model)) {
+    const state = await store.read();
+    const target = required(state.requests, id);
+    const folder = required(state.folders, target.folderId);
+    const resolved = model ?? folder.modelId;
+    if (!modelConfigured(resolved)) {
       response.json({
         skipped: true,
         reason:
@@ -332,7 +347,7 @@ export function createApp(
       });
       return;
     }
-    response.json(await answerRequest(store, id, model));
+    response.json(await answerRequest(store, id, resolved));
   });
   app.post('/api/folders/:id/requests/ingest', async (request, response) => {
     const pending = (await store.read()).requests.filter(

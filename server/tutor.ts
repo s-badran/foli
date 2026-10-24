@@ -19,13 +19,14 @@ import {
   type Summary,
 } from '../shared/artifacts';
 import { normalizeArtifact } from '../shared/normalize';
-import type {
-  ArtifactMeta,
-  Folder,
-  GeneratedContent,
-  GenerationRequest,
-  Section,
-  StudyState,
+import {
+  DEFAULT_MODEL_ID,
+  type ArtifactMeta,
+  type Folder,
+  type GeneratedContent,
+  type GenerationRequest,
+  type Section,
+  type StudyState,
 } from '../shared/models';
 import { refreshSupplementLinks } from './curriculum';
 import type { Store } from './store';
@@ -258,11 +259,14 @@ export function parseResponse(raw: string) {
   }
 }
 
-function meta(request: GenerationRequest): ArtifactMeta {
+function meta(request: GenerationRequest, folder: Folder): ArtifactMeta {
   return {
     requestId: request.id,
     promptVersion: request.promptVersion,
     generatedAt: new Date().toISOString(),
+    model: request.model ?? folder.modelId ?? DEFAULT_MODEL_ID,
+    familiarity: folder.learner?.familiarity,
+    revision: folder.curriculumRevision,
   };
 }
 
@@ -348,7 +352,7 @@ export function applyResponse(
         coverageStatus: 'draft',
       }),
     );
-    folder.outline = meta(request);
+    folder.outline = meta(request, folder);
     folder.curriculumRevision = (folder.curriculumRevision ?? 0) + 1;
     folder.curriculumNote = outline.notes || undefined;
   } else if (request.kind === 'sections') {
@@ -443,7 +447,7 @@ export function applyResponse(
         return { ...question, keyTopic: topic, objectiveIds: [objectiveId(section, topic)] };
       });
     }
-    section.artifacts = { ...section.artifacts, [request.kind]: meta(request) };
+    section.artifacts = { ...section.artifacts, [request.kind]: meta(request, folder) };
   }
   refreshSupplementLinks(state, folder);
   replanExam(state, folder);

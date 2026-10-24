@@ -26,6 +26,9 @@ export async function answerRequest(
     return { request, problems: [], applied: false };
   const folder = required(state.folders, request.folderId);
   const model = AiModel.create(modelId ?? process.env.FOLIO_AI_MODEL);
+  await store.update((current) => {
+    required(current.requests, requestId).model = model.id;
+  });
   const prompt = await readFile(store.generationPath(folder, `${request.id}.prompt.md`), 'utf8');
   const text = await model.complete({ prompt });
   const file = store.generationPath(folder, `${request.id}.response.json`);

@@ -2,6 +2,9 @@ import { z } from 'zod';
 import type { Card } from 'ts-fsrs';
 import type { ArtifactKind, Summary } from './artifacts';
 
+/** Model used when a folder has not picked one. */
+export const DEFAULT_MODEL_ID = 'deepseek-chat';
+
 export const providerSchema = z.object({
   provider: z.enum(['offline', 'openai', 'copilot']).default('offline'),
   model: z.string().max(120).default('gpt-4o-mini'),
@@ -95,6 +98,9 @@ export interface ArtifactMeta {
   requestId: string;
   promptVersion: number;
   generatedAt: string;
+  model?: string;
+  familiarity?: Learner['familiarity'];
+  revision?: number;
 }
 export interface GenerationRequest {
   id: string;
@@ -106,6 +112,7 @@ export interface GenerationRequest {
   createdAt: string;
   completedAt?: string;
   problems?: string[];
+  model?: string;
 }
 export interface Section {
   id: string;
@@ -162,6 +169,7 @@ export interface Folder {
   mainSourceId?: string;
   learner?: Learner;
   prompt?: string;
+  modelId?: string;
   curriculumRevision?: number;
   curriculumNote?: string;
   outline?: ArtifactMeta;
@@ -190,6 +198,21 @@ export interface StudyState {
   reviews: Review[];
   chapters: Chapter[];
   requests: GenerationRequest[];
+}
+
+/**
+ * True when regenerating would actually change the artifact: the selected model,
+ * learning baseline or source curriculum differs from what produced it. Missing
+ * provenance is treated as "unchanged" to avoid suggesting a wasteful regen.
+ */
+export function needsRegenerate(folder: Folder, meta?: ArtifactMeta): boolean {
+  if (!meta) return true;
+  const effectiveModel = folder.modelId ?? DEFAULT_MODEL_ID;
+  return (
+    (meta.model !== undefined && meta.model !== effectiveModel) ||
+    (meta.familiarity !== undefined && meta.familiarity !== folder.learner?.familiarity) ||
+    (meta.revision !== undefined && meta.revision !== folder.curriculumRevision)
+  );
 }
 export function emptyState(): StudyState {
   return {

@@ -10,7 +10,9 @@ const port = Number(process.env.PORT ?? 3001);
 const dataDirectory = path.resolve(root, process.env.FOLIO_DATA_DIR ?? 'data');
 if (!dataDirectory.startsWith(`${root}${path.sep}`))
   throw new Error('Data directory must be inside the project root.');
-const server = createApp(root, new Store(dataDirectory)).listen(port, '127.0.0.1', () => {
+const store = new Store(dataDirectory);
+await store.migrate();
+const server = createApp(root, store).listen(port, '127.0.0.1', () => {
   console.log(`Folio API: http://127.0.0.1:${port}`);
 });
 for (const signal of ['SIGINT', 'SIGTERM'] as const)

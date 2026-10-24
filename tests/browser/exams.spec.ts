@@ -107,18 +107,17 @@ test.describe.serial('prompt-driven exam workflow', () => {
     await expect(page.locator('.topic-chip')).toHaveCount(2);
   });
 
-  test('generates each artifact separately and surfaces rejected responses', async ({ page }) => {
+  test('generates all materials at once and surfaces rejected responses', async ({ page }) => {
     const current = await state(page.request);
     const section = current.sections.find((item) => !item.archived && item.chapterId)!;
     await page.goto(`/#exam/${section.folderId}/section/${section.id}`);
+
+    await page.getByRole('button', { name: 'Generate all study materials' }).click();
     await page.getByRole('tab', { name: /Flashcards/ }).click();
-    await page.getByRole('button', { name: 'Generate flashcards' }).click();
     await expect(page.locator('.request-status').first()).toContainText('waiting for the tutor');
     await respond(page.request, 'flashcards', { groups: [{ concept: 'IAM', cards: [{ question: 'Explain IAM?', answer: 'IAM is a global service that manages users, groups, roles and permissions for every account in the organisation', keyTopic: 'IAM groups' }] }] });
     await check(page);
     await expect(page.locator('.request-status.failed')).toContainText('did not pass validation');
-    await page.getByRole('button', { name: 'Request again' }).click();
-    await expect(page.locator('.request-status').first()).toContainText('waiting for the tutor');
     await respond(page.request, 'flashcards', { groups: [{ concept: 'Groups and policies', cards }] });
     await check(page);
     await page.getByRole('button', { name: 'Reveal answer', exact: true }).click();
@@ -126,8 +125,6 @@ test.describe.serial('prompt-driven exam workflow', () => {
     await page.getByRole('button', { name: 'Good', exact: true }).click();
     await expect(page.getByRole('status').filter({ hasText: 'Review saved' })).toBeVisible();
     await page.getByRole('tab', { name: /Quiz/ }).click();
-    await page.getByRole('button', { name: 'Generate quiz' }).click();
-    await expect(page.locator('.request-status').first()).toContainText('waiting for the tutor');
     await respond(page.request, 'quiz', quiz);
     await check(page);
     const questions = page.locator('.quiz-question');
@@ -136,8 +133,6 @@ test.describe.serial('prompt-driven exam workflow', () => {
     await page.getByRole('button', { name: 'Submit quiz' }).click();
     await expect(page.locator('.quiz-result')).toContainText('3 / 3');
     await page.getByRole('tab', { name: 'Summary', exact: true }).click();
-    await page.getByRole('button', { name: 'Generate summary' }).click();
-    await expect(page.locator('.request-status').first()).toContainText('waiting for the tutor');
     await respond(page.request, 'summary', {
       overview: 'IAM groups collect users, and JSON policies attached to them grant permissions.',
       coreConcepts: [{ term: 'IAM group', definition: 'A collection of users.' }, { term: 'IAM policy', definition: 'A JSON permissions document.' }],

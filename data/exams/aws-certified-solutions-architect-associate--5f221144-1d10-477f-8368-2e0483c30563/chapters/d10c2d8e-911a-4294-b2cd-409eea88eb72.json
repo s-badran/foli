@@ -1390,17 +1390,26 @@
         "summary": {
           "requestId": "d6066ab5-07fb-4847-bcc6-c6094ab63f79",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T11:48:23.983Z"
+          "generatedAt": "2026-10-24T11:48:23.983Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "flashcards": {
           "requestId": "f283c09e-ea05-4f7e-b73a-3f18a38ec69f",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T11:48:50.844Z"
+          "generatedAt": "2026-10-24T11:48:50.844Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "quiz": {
           "requestId": "5385ba14-5369-4e9c-bc5e-b2d3fdbacf6c",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T11:52:16.654Z"
+          "generatedAt": "2026-10-24T11:52:16.654Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       }
     },
@@ -2611,12 +2620,18 @@
         "summary": {
           "requestId": "18ead175-672a-4d02-b1cc-7e8ad16d9391",
           "promptVersion": 2,
-          "generatedAt": "2026-10-24T12:08:57.318Z"
+          "generatedAt": "2026-10-24T12:08:57.318Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         },
         "flashcards": {
           "requestId": "54ad5735-463a-468a-b15e-856952702ce1",
           "promptVersion": 1,
-          "generatedAt": "2026-10-24T12:09:09.405Z"
+          "generatedAt": "2026-10-24T12:09:09.405Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
         }
       }
     },

@@ -45,6 +45,8 @@ The active index is `data/exams/index.json`. If absent, the store reads the lega
 
 `server/ai/model.ts` is the single AI import surface. `AiModel.create(id?)` resolves a registry entry (id → provider, base URL, model name, key env var, JSON-mode support), throws when the key is missing, and exposes `complete({ prompt })`. Providers sit behind an `AiProvider` interface so tests inject a mock and new vendors register in one place; `GET /api/models` serves the picker list and a `configured` flag, never the key. `pnpm tutor run` uses the same class and then writes a normal response file, so generated output passes the same validation as hand-written output.
 
+Each exam can pin a model (`Folder.modelId`, chosen in Exam settings). Every generated artifact records its provenance — the model id, learning baseline and source curriculum revision — in `ArtifactMeta`. The UI offers **Regenerate** only when the current settings differ from that provenance, so regenerating identical content under identical settings is never offered (and never wastes a call). A startup migration backfills provenance for materials generated before model selection existed.
+
 `Section.keyTopics` is the main-source topic inventory. Cards/quiz questions list the key topics they cover; the UI distinguishes assessment coverage from learner demonstration. An unaudited section cannot claim preparation even when all its current questions are passed. IAM was generated against PDF pages 24-40, not inferred to be complete from its card count. This remains a limited authored assessment, not official or validated exam readiness.
 
 ## Supplement Commonness

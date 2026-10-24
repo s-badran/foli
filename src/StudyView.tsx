@@ -8,17 +8,19 @@ import {
   CheckCircle2,
   ExternalLink,
   Layers,
+  RefreshCw,
   RotateCcw,
   Sparkles,
   Target,
 } from 'lucide-react';
+import { needsRegenerate } from '../shared/models';
 import type { GenerationRequest, QuizAttempt, Section, Source, StudyState } from '../shared/models';
 import { api, displayDate, send } from './api';
 import { Empty, SourceIcon, useNow } from './components';
 import { sectionPractice } from '../shared/learning';
 import { renderSummary } from '../shared/artifacts';
 import { sectionNumber } from '../shared/sections';
-import { GenerateAction } from './Generation';
+import { latestRequest, RequestStatus } from './Generation';
 
 export type RunTask = (action: () => Promise<unknown>, success?: string) => Promise<void>;
 type Tab = 'summary' | 'cards' | 'quiz' | 'source';
@@ -72,25 +74,53 @@ export function StudyView({
     }),
     {},
   );
-  const generate = (kind: 'summary' | 'flashcards' | 'quiz', label: string, hint: string) => (
-    <Empty
-      icon={<Sparkles size={28} />}
-      title={`No ${label.toLowerCase()} yet`}
-      action={
-        <GenerateAction
-          state={state}
-          folderId={section.folderId}
-          kind={kind}
-          targetId={section.id}
-          label={`Generate ${label.toLowerCase()}`}
-          run={run}
-          busy={busy}
-        />
-      }
-    >
-      {hint}
-    </Empty>
-  );
+  const folder = state.folders.find((item) => item.id === section.folderId);
+  const generate = (kind: 'summary' | 'flashcards' | 'quiz', label: string, hint: string) => {
+    const request = latestRequest(state, section.folderId, kind, section.id);
+    const open = request && (request.status === 'pending' || request.status === 'failed');
+    return (
+      <Empty icon={<Sparkles size={28} />} title={`No ${label.toLowerCase()} yet`}>
+        {hint} Use “Generate all study materials” to create it.
+        {open && <RequestStatus request={request} run={run} busy={busy} />}
+      </Empty>
+    );
+  };
+  const regenerate = (kind: 'summary' | 'flashcards' | 'quiz', label: string) => {
+    const meta = section.artifacts?.[kind];
+    const stale = folder ? needsRegenerate(folder, meta) : false;
+    return (
+      <div className="artifact-toolbar">
+        <span className="form-note">
+          {stale
+            ? 'Generated with different settings — regenerate to update.'
+            : 'Matches your current settings.'}
+        </span>
+        <button
+          className="button secondary"
+          disabled={!!busy || !stale}
+          title={
+            stale
+              ? `Regenerate ${label.toLowerCase()}`
+              : 'Nothing changed — regeneration not needed'
+          }
+          onClick={() =>
+            void run(
+              async () => {
+                const request = await api<GenerationRequest>(
+                  `/folders/${section.folderId}/requests`,
+                  send({ kind, targetId: section.id }),
+                );
+                await api(`/requests/${request.id}/run`, send({}));
+              },
+              `${label} regenerated`,
+            )
+          }
+        >
+          <RefreshCw size={14} /> Regenerate {label.toLowerCase()}
+        </button>
+      </div>
+    );
+  };
   const tabs: { id: Tab; label: string; count?: number }[] = [
     { id: 'summary', label: 'Summary' },
     { id: 'cards', label: 'Flashcards', count: content?.cards.length },
@@ -191,28 +221,17 @@ export function StudyView({
 
       {tab === 'summary' &&
         !hasSummary &&
-        generate(
-          'summary',
-          'Summary',
-          'An exam-focused study sheet: core concepts, must-remember facts, comparisons, traps.',
-        )}
+        generate('summary', 'Summary', 'An exam-focused study sheet: core concepts, must-remember facts, comparisons, traps.')}
       {tab === 'cards' &&
         !hasCards &&
-        generate(
-          'flashcards',
-          'Flashcards',
-          'Short single-fact cards grouped by concept, covering every key topic.',
-        )}
+        generate('flashcards', 'Flashcards', 'Short single-fact cards grouped by concept, covering every key topic.')}
       {tab === 'quiz' &&
         !hasQuiz &&
-        generate(
-          'quiz',
-          'Quiz',
-          'Exam-style multiple-choice questions, mostly scenarios, with explained distractors.',
-        )}
+        generate('quiz', 'Quiz', 'Exam-style multiple-choice questions, mostly scenarios, with explained distractors.')}
 
       {tab === 'summary' && content && hasSummary && (
         <div className="summary-layout">
+          {regenerate('summary', 'Summary')}
           <article className="markdown">
             <Markdown>
               {section.summaryData
@@ -263,6 +282,7 @@ export function StudyView({
 
       {tab === 'cards' && content && hasCards && (
         <div className="practice">
+          {regenerate('flashcards', 'Flashcards')}
           <div className="practice-top">
             <span className="eyebrow">Active Recall</span>
             <span>
@@ -347,6 +367,7 @@ export function StudyView({
 
       {tab === 'quiz' && content && hasQuiz && (
         <div className="quiz-view">
+          {regenerate('quiz', 'Quiz')}
           <div className="section-heading">
             <div>
               <span className="eyebrow">Knowledge Check</span>

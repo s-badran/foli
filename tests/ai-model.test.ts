@@ -1,5 +1,11 @@
 import { describe, expect, it, vi } from 'vitest';
-import { AiModel, DEFAULT_MODEL_ID, listModels, SUPPORTED_MODELS } from '../server/ai/model';
+import {
+  AiModel,
+  DEFAULT_MODEL_ID,
+  listModels,
+  modelConfigured,
+  SUPPORTED_MODELS,
+} from '../server/ai/model';
 import { MockProvider } from '../server/ai/providers/mock';
 import { OpenAiCompatibleProvider } from '../server/ai/providers/openai-compatible';
 
@@ -18,6 +24,14 @@ describe('AiModel registry', () => {
     expect(without.find((item) => item.id === 'ollama-local')?.configured).toBe(true);
     const withKey = listModels({ DEEPSEEK_API_KEY: 'test' });
     expect(withKey.find((item) => item.id === 'deepseek-chat')?.configured).toBe(true);
+  });
+
+  it('reports whether a model can run without a missing-key error', () => {
+    expect(modelConfigured('deepseek-chat', {})).toBe(false);
+    expect(modelConfigured('deepseek-chat', { DEEPSEEK_API_KEY: 'x' })).toBe(true);
+    expect(modelConfigured('ollama-local', {})).toBe(true);
+    expect(modelConfigured('mock', {})).toBe(true);
+    expect(modelConfigured('unknown', { DEEPSEEK_API_KEY: 'x' })).toBe(false);
   });
 
   it('rejects unknown model ids and missing keys', () => {

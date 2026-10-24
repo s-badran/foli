@@ -29,6 +29,7 @@ export function StudyView({
   busy,
   run,
   onBack,
+  onPrev,
   onNext,
   initialTab = 'summary',
 }: {
@@ -38,6 +39,7 @@ export function StudyView({
   busy: string;
   run: RunTask;
   onBack: () => void;
+  onPrev?: () => void;
   onNext?: () => void;
   initialTab?: 'summary' | 'cards' | 'quiz';
 }) {
@@ -441,10 +443,19 @@ export function StudyView({
           </details>
         </div>
       )}
-      {onNext && (
-        <button className="next-section text-button" onClick={onNext}>
-          Next section <ArrowRight size={16} />
-        </button>
+      {(onPrev || onNext) && (
+        <div className="section-nav">
+          {onPrev && (
+            <button className="prev-section text-button" onClick={onPrev}>
+              <ArrowLeft size={16} /> Previous section
+            </button>
+          )}
+          {onNext && (
+            <button className="next-section text-button" onClick={onNext}>
+              Next section <ArrowRight size={16} />
+            </button>
+          )}
+        </div>
       )}
     </div>
   );

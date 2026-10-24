@@ -1157,11 +1157,22 @@ button {
   flex-wrap: wrap;
   align-items: center;
 }
-.next-section {
+.section-nav {
   margin-top: 34px;
-  margin-left: auto;
   display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.section-nav .prev-section,
+.section-nav .next-section {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   width: fit-content;
+}
+.section-nav .next-section {
+  margin-left: auto;
 }
 .practice {
   max-width: 680px;

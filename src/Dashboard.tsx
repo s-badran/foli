@@ -13,7 +13,7 @@ import {
   Target,
   Upload,
 } from 'lucide-react';
-import type { Folder, Section, Source, StudyState } from '../shared/models';
+import type { Folder, GenerationRequest, Section, Source, StudyState } from '../shared/models';
 import { api, displayDate, send } from './api';
 import { Empty, ProgressBar, SourceIcon, useNow } from './components';
 import { LearnerFields } from './App';
@@ -236,7 +236,14 @@ export function Dashboard({
                       disabled={!!busy}
                       onClick={() =>
                         void run(
-                          () => api(`/chapters/${chapter.id}/materials`, send({})),
+                          async () => {
+                            const queued = await api<GenerationRequest[]>(
+                              `/chapters/${chapter.id}/materials`,
+                              send({}),
+                            );
+                            for (const request of queued)
+                              await api(`/requests/${request.id}/run`, send({}));
+                          },
                           'Study materials requested for this chapter',
                         )
                       }

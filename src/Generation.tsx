@@ -117,7 +117,13 @@ export function GenerateAction({
             disabled={!!busy}
             onClick={() =>
               void run(
-                () => api(`/folders/${folderId}/requests`, send({ kind, targetId })),
+                async () => {
+                  const queued = await api<GenerationRequest>(
+                    `/folders/${folderId}/requests`,
+                    send({ kind, targetId }),
+                  );
+                  await api(`/requests/${queued.id}/run`, send({}));
+                },
                 `${label} requested again`,
               )
             }
@@ -134,7 +140,13 @@ export function GenerateAction({
       disabled={!!busy}
       onClick={() =>
         void run(
-          () => api(`/folders/${folderId}/requests`, send({ kind, targetId })),
+          async () => {
+            const request = await api<GenerationRequest>(
+              `/folders/${folderId}/requests`,
+              send({ kind, targetId }),
+            );
+            await api(`/requests/${request.id}/run`, send({}));
+          },
           `${label} requested`,
         )
       }

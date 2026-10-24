@@ -12,7 +12,7 @@ export default defineConfig({
     trace: 'retain-on-failure',
   },
   webServer: {
-    command: 'PORT=43127 FOLIO_DATA_DIR=.cache/e2e-data pnpm start',
+    command: 'pnpm build && FOLIO_ENV_FILE= PORT=43127 FOLIO_DATA_DIR=.cache/e2e-data pnpm start',
     url: 'http://127.0.0.1:43127/api/health',
     reuseExistingServer: false,
   },

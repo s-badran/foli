@@ -410,6 +410,11 @@ export function App() {
             busy={busy}
             run={run}
             onBack={() => navigate('chapters')}
+            onPrev={
+              sections.indexOf(section) > 0
+                ? () => openSection(sections[sections.indexOf(section) - 1].id)
+                : undefined
+            }
             onNext={
               sections.indexOf(section) < sections.length - 1
                 ? () => openSection(sections[sections.indexOf(section) + 1].id)

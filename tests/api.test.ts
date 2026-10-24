@@ -225,3 +225,51 @@ describe('supported models', () => {
     expect(JSON.stringify(body)).not.toMatch(/sk-[a-z0-9]/i);
   });
 });
+
+describe.sequential('auto-run route', () => {
+  let runFolderId: string;
+  beforeAll(() => {
+    delete process.env.DEEPSEEK_API_KEY;
+  });
+
+  it('creates a workspace with a markdown source', async () => {
+    const created = await json('/api/folders', 'POST', { name: 'Run route tests' });
+    expect(created.status).toBe(201);
+    runFolderId = created.data.id;
+    const form = new FormData();
+    form.append(
+      'files',
+      new Blob(['# Network\n## Availability Zone\nAZs are isolated locations.'], {
+        type: 'text/markdown',
+      }),
+      'run.md',
+    );
+    const upload = await fetch(`${base}/api/folders/${runFolderId}/upload`, {
+      method: 'POST',
+      body: form,
+    });
+    expect(upload.status).toBe(201);
+  });
+
+  it('skips inline generation when no model is configured', async () => {
+    const state = (await json('/api/state')).data as StudyState;
+    const outline = state.requests.find(
+      (item) => item.folderId === runFolderId && item.kind === 'outline' && item.status === 'pending',
+    );
+    expect(outline).toBeTruthy();
+    const run = await json(`/api/requests/${outline!.id}/run`, 'POST', {});
+    expect(run.status).toBe(200);
+    expect(run.data.skipped).toBe(true);
+  });
+
+  it('answers with the mock model and rejects the invalid response', async () => {
+    const state = (await json('/api/state')).data as StudyState;
+    const outline = state.requests.find(
+      (item) => item.folderId === runFolderId && item.kind === 'outline',
+    );
+    const run = await json(`/api/requests/${outline!.id}/run`, 'POST', { model: 'mock' });
+    expect(run.status).toBe(200);
+    expect(run.data.applied).toBe(false);
+    expect((run.data.problems as string[]).length).toBeGreaterThan(0);
+  });
+});

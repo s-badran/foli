@@ -182,3 +182,13 @@ export function listModels(env: NodeJS.ProcessEnv = process.env): ModelSummary[]
     jsonMode: info.jsonMode,
   }));
 }
+
+/** True when `AiModel.create(id)` would succeed without throwing a missing-key error. */
+export function modelConfigured(
+  id: string = process.env.FOLIO_AI_MODEL ?? DEFAULT_MODEL_ID,
+  env: NodeJS.ProcessEnv = process.env,
+): boolean {
+  const info = SUPPORTED_MODELS.find((item) => item.id === id);
+  if (!info) return false;
+  return info.apiKeyEnv === null || Boolean(env[info.apiKeyEnv]);
+}

@@ -6,7 +6,8 @@ import path from 'node:path';
 import { z } from 'zod';
 import { learnerSchema, type Section, type Source, type StudyState } from '../shared/models';
 import { artifactKinds } from '../shared/artifacts';
-import { DEFAULT_MODEL_ID, listModels } from './ai/model';
+import { DEFAULT_MODEL_ID, listModels, modelConfigured } from './ai/model';
+import { answerRequest } from './ai/run';
 import { Store } from './store';
 import { extractDocument } from './documents';
 import { createPlan, planItems, replanExam, reviewCard } from './study';
@@ -285,7 +286,7 @@ export function createApp(
     );
   });
   app.get('/api/models', (_request, response) => {
-    response.json({ default: DEFAULT_MODEL_ID, models: listModels() });
+    response.json({ default: DEFAULT_MODEL_ID, auto: modelConfigured(), models: listModels() });
   });
   app.post('/api/folders/:id/requests', async (request, response) => {
     const { kind, targetId } = z
@@ -319,6 +320,19 @@ export function createApp(
   });
   app.post('/api/requests/:id/ingest', async (request, response) => {
     response.json(await ingestRequest(store, z.string().parse(request.params.id)));
+  });
+  app.post('/api/requests/:id/run', async (request, response) => {
+    const id = z.string().parse(request.params.id);
+    const { model } = z.object({ model: z.string().optional() }).parse(request.body ?? {});
+    if (!modelConfigured(model)) {
+      response.json({
+        skipped: true,
+        reason:
+          'No AI model configured. Add DEEPSEEK_API_KEY to .env and restart, or answer the request manually.',
+      });
+      return;
+    }
+    response.json(await answerRequest(store, id, model));
   });
   app.post('/api/folders/:id/requests/ingest', async (request, response) => {
     const pending = (await store.read()).requests.filter(

@@ -149,6 +149,16 @@ function sectioned() {
   return { state, chapter, section };
 }
 
+describe('request lifecycle', () => {
+  it('supersedes queued per-section requests when sections are replaced', () => {
+    const { state, chapter, section } = sectioned();
+    const summary = request('summary', section.id);
+    state.requests.push(summary);
+    expect(applyResponse(state, request('sections', chapter.id), sectionPlan)).toEqual([]);
+    expect(state.requests.find((item) => item.id === summary.id)?.status).toBe('superseded');
+  });
+});
+
 describe('prompt files', () => {
   it('are versioned and every template variable is supplied', async () => {
     for (const id of ['system', 'outline', 'sections', 'summary', 'flashcards', 'quiz'])

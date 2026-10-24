@@ -322,6 +322,13 @@ export function applyResponse(
     if (problems.length) return problems;
     for (const section of state.sections.filter((item) => item.folderId === folder.id))
       section.archived = true;
+    for (const pending of state.requests)
+      if (
+        pending.folderId === folder.id &&
+        pending.id !== request.id &&
+        pending.status === 'pending'
+      )
+        pending.status = 'superseded';
     state.chapters = state.chapters.filter((chapter) => chapter.folderId !== folder.id);
     outline.chapters.forEach((chapter, index) =>
       state.chapters.push({
@@ -350,8 +357,21 @@ export function applyResponse(
       chapter.pageEnd ?? chapter.pageStart ?? 1,
     );
     if (problems.length) return problems;
+    const replaced = new Set(
+      state.sections
+        .filter((item) => item.chapterId === chapter.id)
+        .map((item) => item.id),
+    );
     for (const section of state.sections.filter((item) => item.chapterId === chapter.id))
       section.archived = true;
+    for (const pending of state.requests)
+      if (
+        pending.folderId === folder.id &&
+        pending.status === 'pending' &&
+        pending.targetId &&
+        replaced.has(pending.targetId)
+      )
+        pending.status = 'superseded';
     chapter.objectives = [];
     for (const item of plan.sections) {
       const section: Section = {

@@ -1,6 +1,6 @@
 ---
 id: summary
-version: 1
+version: 2
 input: one section's pages, keyTopics, objective, supplementary objectives
 output: summarySchema
 ---
@@ -17,7 +17,7 @@ Fill each field as follows (omit an optional field rather than padding it):
 - overview: 2-4 sentences on what the section is about and why it matters for the exam.
 - coreConcepts: every key topic as term + one-sentence definition, plus other terms a question could use.
 - mustRemember: the facts that are most likely to be tested — numbers, limits, defaults, "only/always/never" rules.
-- keyComparisons: pairs or groups the exam likes to contrast (A vs B: the difference that decides the answer).
+- keyComparisons: pairs or groups the exam likes to contrast. `items` is a short "A vs B" label naming the two or more things being compared (for example "EBS vs Instance Store"); `difference` is the one sentence that decides the answer.
 - commonMisunderstandings: statements learners typically get wrong, each phrased as the correct rule.
 - mentalModels: short intuitions that make the concepts easy to reason about ("Think of X as ...").
 - edgeCases: exceptions, optional elements, limits and special cases.

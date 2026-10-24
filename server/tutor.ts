@@ -17,6 +17,7 @@ import {
   type SectionPlan,
   type Summary,
 } from '../shared/artifacts';
+import { normalizeArtifact } from '../shared/normalize';
 import type {
   ArtifactMeta,
   Folder,
@@ -307,6 +308,7 @@ export function applyResponse(
   request: GenerationRequest,
   data: unknown,
 ): string[] {
+  data = normalizeArtifact(request.kind, data);
   const parsed = artifactSchemas[request.kind].safeParse(data);
   if (!parsed.success)
     return parsed.error.issues

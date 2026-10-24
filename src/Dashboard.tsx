@@ -20,6 +20,7 @@ import { LearnerFields } from './App';
 import type { RunTask } from './StudyView';
 import { baselinePolicy, chapterPreparation, sectionPractice } from '../shared/learning';
 import { GenerateAction, latestRequest, PromptLibrary, RequestStatus } from './Generation';
+import { sectionNumber } from '../shared/sections';
 
 export type View = 'chapters' | 'sources' | 'plan' | 'progress' | 'settings';
 export function Dashboard({
@@ -210,7 +211,9 @@ export function Dashboard({
                       <BookOpen size={17} />
                     )}
                     <div>
-                      <strong>{section.title}</strong>
+                      <strong>
+                        {sectionNumber(state, section)} · {section.title}
+                      </strong>
                       {section.keyTopics?.length ? (
                         <span className="lesson-topics">{section.keyTopics.join(' · ')}</span>
                       ) : null}

@@ -294,6 +294,22 @@ describe('response validation and application', () => {
     expect(section.content!.summary).toContain('## Exam Traps');
     expect(renderSummary(section.summaryData!)).not.toContain('## Key Comparisons');
   });
+  it('normalizes keyComparisons item arrays before validating a summary', () => {
+    const { state, section } = sectioned();
+    const summary = {
+      overview: 'Storage choices decide durability, latency and cost.',
+      coreConcepts: [
+        { term: 'EBS', definition: 'Network-attached block storage.' },
+        { term: 'Instance Store', definition: 'Local ephemeral storage.' },
+      ],
+      mustRemember: ['EBS survives stop/start.', 'Instance Store is lost on stop.'],
+      keyComparisons: [
+        { items: ['EBS', 'Instance Store'], difference: 'Network-attached versus local hardware.' },
+      ],
+    };
+    expect(applyResponse(state, request('summary', section.id), summary)).toEqual([]);
+    expect(section.content!.summary).toContain('**EBS vs Instance Store:** Network-attached versus local hardware.');
+  });
   it('requires recall and current-quiz evidence for chapter preparation', () => {
     const { state, chapter, section } = sectioned();
     applyResponse(state, request('flashcards', section.id), goodCards);

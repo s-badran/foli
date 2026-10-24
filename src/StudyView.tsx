@@ -17,6 +17,7 @@ import { api, displayDate, send } from './api';
 import { Empty, SourceIcon, useNow } from './components';
 import { sectionPractice } from '../shared/learning';
 import { renderSummary } from '../shared/artifacts';
+import { sectionNumber } from '../shared/sections';
 import { GenerateAction } from './Generation';
 
 export type RunTask = (action: () => Promise<unknown>, success?: string) => Promise<void>;
@@ -109,6 +110,7 @@ export function StudyView({
         )}
       </div>
       <div className="reader-title">
+        <span className="eyebrow">Section {sectionNumber(state, section)}</span>
         <h1>{section.title}</h1>
         <button
           disabled={!!busy}

@@ -75,13 +75,39 @@ export function StudyView({
     {},
   );
   const folder = state.folders.find((item) => item.id === section.folderId);
+  const runRegenerate = (kind: 'summary' | 'flashcards' | 'quiz', label: string) => () =>
+    void run(
+      async () => {
+        const request = await api<GenerationRequest>(
+          `/folders/${section.folderId}/requests`,
+          send({ kind, targetId: section.id }),
+        );
+        await api(`/requests/${request.id}/run`, send({}));
+      },
+      `${label} regenerated`,
+    );
   const generate = (kind: 'summary' | 'flashcards' | 'quiz', label: string, hint: string) => {
     const request = latestRequest(state, section.folderId, kind, section.id);
-    const open = request && (request.status === 'pending' || request.status === 'failed');
+    const failed = request?.status === 'failed';
+    const pending = request?.status === 'pending';
     return (
-      <Empty icon={<Sparkles size={28} />} title={`No ${label.toLowerCase()} yet`}>
+      <Empty
+        icon={<Sparkles size={28} />}
+        title={`No ${label.toLowerCase()} yet`}
+        action={
+          <>
+            {(pending || failed) && (
+              <RequestStatus request={request!} run={run} busy={busy} />
+            )}
+            {failed && (
+              <button className="button primary" onClick={runRegenerate(kind, label)}>
+                <RefreshCw size={14} /> Regenerate {label.toLowerCase()}
+              </button>
+            )}
+          </>
+        }
+      >
         {hint} Use “Generate all study materials” to create it.
-        {open && <RequestStatus request={request} run={run} busy={busy} />}
       </Empty>
     );
   };
@@ -103,18 +129,7 @@ export function StudyView({
               ? `Regenerate ${label.toLowerCase()}`
               : 'Nothing changed — regeneration not needed'
           }
-          onClick={() =>
-            void run(
-              async () => {
-                const request = await api<GenerationRequest>(
-                  `/folders/${section.folderId}/requests`,
-                  send({ kind, targetId: section.id }),
-                );
-                await api(`/requests/${request.id}/run`, send({}));
-              },
-              `${label} regenerated`,
-            )
-          }
+          onClick={runRegenerate(kind, label)}
         >
           <RefreshCw size={14} /> Regenerate {label.toLowerCase()}
         </button>
@@ -219,6 +234,10 @@ export function StudyView({
         ))}
       </div>
 
+      {tab === 'summary' && hasSummary && regenerate('summary', 'Summary')}
+      {tab === 'cards' && hasCards && regenerate('flashcards', 'Flashcards')}
+      {tab === 'quiz' && hasQuiz && regenerate('quiz', 'Quiz')}
+
       {tab === 'summary' &&
         !hasSummary &&
         generate('summary', 'Summary', 'An exam-focused study sheet: core concepts, must-remember facts, comparisons, traps.')}
@@ -231,7 +250,6 @@ export function StudyView({
 
       {tab === 'summary' && content && hasSummary && (
         <div className="summary-layout">
-          {regenerate('summary', 'Summary')}
           <article className="markdown">
             <Markdown>
               {section.summaryData
@@ -282,7 +300,6 @@ export function StudyView({
 
       {tab === 'cards' && content && hasCards && (
         <div className="practice">
-          {regenerate('flashcards', 'Flashcards')}
           <div className="practice-top">
             <span className="eyebrow">Active Recall</span>
             <span>
@@ -367,7 +384,6 @@ export function StudyView({
 
       {tab === 'quiz' && content && hasQuiz && (
         <div className="quiz-view">
-          {regenerate('quiz', 'Quiz')}
           <div className="section-heading">
             <div>
               <span className="eyebrow">Knowledge Check</span>

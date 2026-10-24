@@ -179,7 +179,11 @@ export function checkFlashcards(cards: Flashcards, keyTopics: string[]) {
   return problems;
 }
 
-export function checkQuiz(quiz: Quiz, keyTopics: string[]) {
+export function checkQuiz(
+  quiz: Quiz,
+  keyTopics: string[],
+  scenarioFloor = Math.ceil(quiz.questions.length / 2),
+) {
   const problems: string[] = [];
   for (const question of quiz.questions) {
     if (!keyTopics.some((topic) => sameTopic(topic, question.keyTopic)))
@@ -197,11 +201,11 @@ export function checkQuiz(quiz: Quiz, keyTopics: string[]) {
   const positions = new Set(quiz.questions.map((question) => question.correctIndex));
   if (quiz.questions.length >= 4 && positions.size < 2)
     problems.push('Correct answers all use the same option position.');
-  if (
-    quiz.questions.filter((question) => question.kind === 'scenario').length <
-    Math.ceil(quiz.questions.length / 2)
-  )
-    problems.push('At least half of the questions must be scenario-based.');
+  const scenario = quiz.questions.filter((question) => question.kind === 'scenario').length;
+  if (scenario < scenarioFloor)
+    problems.push(
+      `Not enough scenario questions: ${scenario} of ${quiz.questions.length} (need ${scenarioFloor}).`,
+    );
   return problems;
 }
 

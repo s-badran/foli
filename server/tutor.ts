@@ -440,7 +440,15 @@ export function applyResponse(
       );
     } else {
       const quiz = parsed.data as Quiz;
-      const problems = checkQuiz(quiz, topics);
+      const familiarity = folder.learner?.familiarity ?? 'basic';
+      const count = quiz.questions.length;
+      const scenarioFloor =
+        familiarity === 'refresh'
+          ? Math.ceil(count * 0.5)
+          : familiarity === 'basic'
+            ? Math.ceil(count * 0.4)
+            : Math.max(1, Math.floor(count * 0.25));
+      const problems = checkQuiz(quiz, topics, scenarioFloor);
       if (problems.length) return problems;
       ensureContent(section, modelLabel(request)).quiz = quiz.questions.map((question) => {
         const topic = matchTopic(topics, question.keyTopic);

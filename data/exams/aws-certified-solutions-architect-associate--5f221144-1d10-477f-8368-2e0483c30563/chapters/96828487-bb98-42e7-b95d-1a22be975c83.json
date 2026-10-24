@@ -13,8 +13,1454 @@
       "Task 2.2: highly available designs",
       "Task 3.2: elastic compute"
     ],
-    "objectives": [],
-    "coverageStatus": "draft"
+    "objectives": [
+      {
+        "id": "2834eea0-13ca-40c4-a776-f14ae35b1417::vertical-scalability",
+        "title": "Vertical scalability",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 119,
+        "pageEnd": 124,
+        "assessment": "recall"
+      },
+      {
+        "id": "2834eea0-13ca-40c4-a776-f14ae35b1417::horizontal-scalability-as-elasticity",
+        "title": "Horizontal scalability as elasticity",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 119,
+        "pageEnd": 124,
+        "assessment": "recall"
+      },
+      {
+        "id": "2834eea0-13ca-40c4-a776-f14ae35b1417::distributed-systems",
+        "title": "Distributed systems",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 119,
+        "pageEnd": 124,
+        "assessment": "recall"
+      },
+      {
+        "id": "2834eea0-13ca-40c4-a776-f14ae35b1417::high-availability-across-azs",
+        "title": "High availability across AZs",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 119,
+        "pageEnd": 124,
+        "assessment": "recall"
+      },
+      {
+        "id": "2834eea0-13ca-40c4-a776-f14ae35b1417::passive-high-availability-rds-multi-az",
+        "title": "Passive high availability (RDS Multi AZ)",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 119,
+        "pageEnd": 124,
+        "assessment": "recall"
+      },
+      {
+        "id": "2834eea0-13ca-40c4-a776-f14ae35b1417::active-high-availability",
+        "title": "Active high availability",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 119,
+        "pageEnd": 124,
+        "assessment": "recall"
+      },
+      {
+        "id": "2834eea0-13ca-40c4-a776-f14ae35b1417::ec2-vertical-scaling-t2-nano-to-u-12tb1-metal",
+        "title": "EC2 vertical scaling (t2.nano to u-12tb1.metal)",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 119,
+        "pageEnd": 124,
+        "assessment": "recall"
+      },
+      {
+        "id": "2834eea0-13ca-40c4-a776-f14ae35b1417::asg-scale-out-and-scale-in",
+        "title": "ASG scale out and scale in",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 119,
+        "pageEnd": 124,
+        "assessment": "recall"
+      },
+      {
+        "id": "2834eea0-13ca-40c4-a776-f14ae35b1417::load-balancer-multi-az",
+        "title": "Load balancer multi-AZ",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 119,
+        "pageEnd": 124,
+        "assessment": "recall"
+      },
+      {
+        "id": "c3cb5b55-1dee-4790-bbe8-ad39473737e1::load-balancer-single-dns-access-point",
+        "title": "Load balancer single DNS access point",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 125,
+        "pageEnd": 130,
+        "assessment": "recall"
+      },
+      {
+        "id": "c3cb5b55-1dee-4790-bbe8-ad39473737e1::health-checks-on-port-and-route",
+        "title": "Health checks on port and route",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 125,
+        "pageEnd": 130,
+        "assessment": "recall"
+      },
+      {
+        "id": "c3cb5b55-1dee-4790-bbe8-ad39473737e1::200-ok-health-response",
+        "title": "200 OK health response",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 125,
+        "pageEnd": 130,
+        "assessment": "recall"
+      },
+      {
+        "id": "c3cb5b55-1dee-4790-bbe8-ad39473737e1::managed-elb-vs-self-managed",
+        "title": "Managed ELB vs self-managed",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 125,
+        "pageEnd": 130,
+        "assessment": "recall"
+      },
+      {
+        "id": "c3cb5b55-1dee-4790-bbe8-ad39473737e1::elb-service-integrations",
+        "title": "ELB service integrations",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 125,
+        "pageEnd": 130,
+        "assessment": "recall"
+      },
+      {
+        "id": "c3cb5b55-1dee-4790-bbe8-ad39473737e1::internal-vs-external-elb",
+        "title": "Internal vs external ELB",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 125,
+        "pageEnd": 130,
+        "assessment": "recall"
+      },
+      {
+        "id": "c3cb5b55-1dee-4790-bbe8-ad39473737e1::lb-security-group-referencing",
+        "title": "LB security group referencing",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 125,
+        "pageEnd": 130,
+        "assessment": "recall"
+      },
+      {
+        "id": "c3cb5b55-1dee-4790-bbe8-ad39473737e1::application-security-group-restricting-to-lb",
+        "title": "Application security group restricting to LB",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 125,
+        "pageEnd": 130,
+        "assessment": "recall"
+      },
+      {
+        "id": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::classic-load-balancer-layer-4-and-7",
+        "title": "Classic Load Balancer layer 4 and 7",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 131,
+        "pageEnd": 142,
+        "assessment": "recall"
+      },
+      {
+        "id": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-layer-7-routing-rules",
+        "title": "ALB layer 7 routing rules",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 131,
+        "pageEnd": 142,
+        "assessment": "recall"
+      },
+      {
+        "id": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-path-and-hostname-routing",
+        "title": "ALB path and hostname routing",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 131,
+        "pageEnd": 142,
+        "assessment": "recall"
+      },
+      {
+        "id": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-query-string-and-header-routing",
+        "title": "ALB query string and header routing",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 131,
+        "pageEnd": 142,
+        "assessment": "recall"
+      },
+      {
+        "id": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::alb-target-groups-ec2-ecs-lambda-ips",
+        "title": "ALB target groups (EC2, ECS, Lambda, IPs)",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 131,
+        "pageEnd": 142,
+        "assessment": "recall"
+      },
+      {
+        "id": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::x-forwarded-for-client-ip",
+        "title": "X-Forwarded-For client IP",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 131,
+        "pageEnd": 142,
+        "assessment": "recall"
+      },
+      {
+        "id": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-static-ip-per-az",
+        "title": "NLB static IP per AZ",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 131,
+        "pageEnd": 142,
+        "assessment": "recall"
+      },
+      {
+        "id": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::nlb-target-groups",
+        "title": "NLB target groups",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 131,
+        "pageEnd": 142,
+        "assessment": "recall"
+      },
+      {
+        "id": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::gateway-load-balancer-layer-3",
+        "title": "Gateway Load Balancer layer 3",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 131,
+        "pageEnd": 142,
+        "assessment": "recall"
+      },
+      {
+        "id": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4::geneve-port-6081",
+        "title": "GENEVE port 6081",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 131,
+        "pageEnd": 142,
+        "assessment": "recall"
+      },
+      {
+        "id": "b8069b75-9dfa-4a26-afbb-c1f8b41dc756::sticky-sessions-cookie-affinity",
+        "title": "Sticky sessions cookie affinity",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 143,
+        "pageEnd": 150,
+        "assessment": "recall"
+      },
+      {
+        "id": "b8069b75-9dfa-4a26-afbb-c1f8b41dc756::custom-cookie-vs-application-cookie",
+        "title": "Custom cookie vs application cookie",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 143,
+        "pageEnd": 150,
+        "assessment": "recall"
+      },
+      {
+        "id": "b8069b75-9dfa-4a26-afbb-c1f8b41dc756::duration-based-cookie-names",
+        "title": "Duration-based cookie names",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 143,
+        "pageEnd": 150,
+        "assessment": "recall"
+      },
+      {
+        "id": "b8069b75-9dfa-4a26-afbb-c1f8b41dc756::cross-zone-load-balancing-default-per-elb",
+        "title": "Cross-zone load balancing default per ELB",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 143,
+        "pageEnd": 150,
+        "assessment": "recall"
+      },
+      {
+        "id": "b8069b75-9dfa-4a26-afbb-c1f8b41dc756::inter-az-data-charges",
+        "title": "Inter-AZ data charges",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 143,
+        "pageEnd": 150,
+        "assessment": "recall"
+      },
+      {
+        "id": "b8069b75-9dfa-4a26-afbb-c1f8b41dc756::ssl-vs-tls-certificates",
+        "title": "SSL vs TLS certificates",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 143,
+        "pageEnd": 150,
+        "assessment": "recall"
+      },
+      {
+        "id": "b8069b75-9dfa-4a26-afbb-c1f8b41dc756::acm-certificate-management",
+        "title": "ACM certificate management",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 143,
+        "pageEnd": 150,
+        "assessment": "recall"
+      },
+      {
+        "id": "b8069b75-9dfa-4a26-afbb-c1f8b41dc756::sni-multiple-certificates",
+        "title": "SNI multiple certificates",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 143,
+        "pageEnd": 150,
+        "assessment": "recall"
+      },
+      {
+        "id": "b8069b75-9dfa-4a26-afbb-c1f8b41dc756::clb-single-certificate-limit",
+        "title": "CLB single certificate limit",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 143,
+        "pageEnd": 150,
+        "assessment": "recall"
+      },
+      {
+        "id": "031eb81a-e15c-4c38-9073-dc29c9268317::connection-draining-vs-deregistration-delay",
+        "title": "Connection draining vs deregistration delay",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 151,
+        "pageEnd": 156,
+        "assessment": "recall"
+      },
+      {
+        "id": "031eb81a-e15c-4c38-9073-dc29c9268317::in-flight-request-range-1-3600s",
+        "title": "In-flight request range 1-3600s",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 151,
+        "pageEnd": 156,
+        "assessment": "recall"
+      },
+      {
+        "id": "031eb81a-e15c-4c38-9073-dc29c9268317::asg-min-desired-max-capacity",
+        "title": "ASG min desired max capacity",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 151,
+        "pageEnd": 156,
+        "assessment": "recall"
+      },
+      {
+        "id": "031eb81a-e15c-4c38-9073-dc29c9268317::asg-re-creation-of-unhealthy-instances",
+        "title": "ASG re-creation of unhealthy instances",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 151,
+        "pageEnd": 156,
+        "assessment": "recall"
+      },
+      {
+        "id": "031eb81a-e15c-4c38-9073-dc29c9268317::asg-free-pay-for-ec2",
+        "title": "ASG free, pay for EC2",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 151,
+        "pageEnd": 156,
+        "assessment": "recall"
+      },
+      {
+        "id": "031eb81a-e15c-4c38-9073-dc29c9268317::asg-with-load-balancer-health-checks",
+        "title": "ASG with load balancer health checks",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 151,
+        "pageEnd": 156,
+        "assessment": "recall"
+      },
+      {
+        "id": "031eb81a-e15c-4c38-9073-dc29c9268317::launch-templates",
+        "title": "Launch templates",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 151,
+        "pageEnd": 156,
+        "assessment": "recall"
+      },
+      {
+        "id": "031eb81a-e15c-4c38-9073-dc29c9268317::launch-template-contents",
+        "title": "Launch template contents",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 151,
+        "pageEnd": 156,
+        "assessment": "recall"
+      },
+      {
+        "id": "031eb81a-e15c-4c38-9073-dc29c9268317::asg-scaling-policies-attribute",
+        "title": "ASG scaling policies attribute",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 151,
+        "pageEnd": 156,
+        "assessment": "recall"
+      },
+      {
+        "id": "8c397699-667f-4295-9e77-39a7e4084f2f::target-tracking-scaling",
+        "title": "Target tracking scaling",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 157,
+        "pageEnd": 160,
+        "assessment": "recall"
+      },
+      {
+        "id": "8c397699-667f-4295-9e77-39a7e4084f2f::simple-and-step-scaling",
+        "title": "Simple and step scaling",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 157,
+        "pageEnd": 160,
+        "assessment": "recall"
+      },
+      {
+        "id": "8c397699-667f-4295-9e77-39a7e4084f2f::scheduled-scaling",
+        "title": "Scheduled scaling",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 157,
+        "pageEnd": 160,
+        "assessment": "recall"
+      },
+      {
+        "id": "8c397699-667f-4295-9e77-39a7e4084f2f::predictive-scaling",
+        "title": "Predictive scaling",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 157,
+        "pageEnd": 160,
+        "assessment": "recall"
+      },
+      {
+        "id": "8c397699-667f-4295-9e77-39a7e4084f2f::cpuutilization-metric",
+        "title": "CPUUtilization metric",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 157,
+        "pageEnd": 160,
+        "assessment": "recall"
+      },
+      {
+        "id": "8c397699-667f-4295-9e77-39a7e4084f2f::requestcountpertarget-metric",
+        "title": "RequestCountPerTarget metric",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 157,
+        "pageEnd": 160,
+        "assessment": "recall"
+      },
+      {
+        "id": "8c397699-667f-4295-9e77-39a7e4084f2f::average-network-in-out-metric",
+        "title": "Average network in/out metric",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 157,
+        "pageEnd": 160,
+        "assessment": "recall"
+      },
+      {
+        "id": "8c397699-667f-4295-9e77-39a7e4084f2f::custom-cloudwatch-metrics",
+        "title": "Custom CloudWatch metrics",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 157,
+        "pageEnd": 160,
+        "assessment": "recall"
+      },
+      {
+        "id": "8c397699-667f-4295-9e77-39a7e4084f2f::scaling-cooldown-default-300s",
+        "title": "Scaling cooldown default 300s",
+        "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+        "pageStart": 157,
+        "pageEnd": 160,
+        "assessment": "recall"
+      }
+    ],
+    "coverageStatus": "source-audited"
   },
-  "sections": []
+  "sections": [
+    {
+      "id": "2834eea0-13ca-40c4-a776-f14ae35b1417",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "96828487-bb98-42e7-b95d-1a22be975c83",
+      "title": "Scalability vs High Availability: Vertical, Horizontal and Multi-AZ",
+      "objective": "Distinguish vertical scaling, horizontal scaling and high availability, and select the correct EC2 mechanism (instance resizing, Auto Scaling Group, multi-AZ deployment) for a given load or failure-tolerance requirement.",
+      "keyTopics": [
+        "Vertical scalability",
+        "Horizontal scalability as elasticity",
+        "Distributed systems",
+        "High availability across AZs",
+        "Passive high availability (RDS Multi AZ)",
+        "Active high availability",
+        "EC2 vertical scaling (t2.nano to u-12tb1.metal)",
+        "ASG scale out and scale in",
+        "Load balancer multi-AZ"
+      ],
+      "pageStart": 119,
+      "pageEnd": 124,
+      "text": "[Page 119]\nHigh Availability & Scalability\n\n[Page 120]\nScalability & High Availability\n• \tScalability means that an application / system can handle greater loads\nby adapting.\n• \tThere are two kinds of scalability:\n• \tVertical Scalability\n• \tHorizontal Scalability (= elasticity)\n• \tScalability is linked but different to High Availability\n• \tLet’s deep dive into the distinction, using a call center as an example\n\n[Page 121]\nVertical Scalability\n• \tVertically scalability means increasing the size\nof the instance\n• \tFor example, your application runs on a\nt2.micro\n• \tScaling that application vertically means\nrunning it on a t2.large\n• \tVertical scalability is very common for non\ndistributed systems, such as a database.\n• \tRDS, ElastiCache are services that can scale\nvertically.\n• \tThere’s usually a limit to how much you can\nvertically scale (hardware limit)\njunior operator \tsenior operator\n\n[Page 122]\nHorizontal Scalability\n• \tHorizontal Scalability means increasing the\nnumber of instances / systems for your\napplication\n• \tHorizontal scaling implies distributed systems.\n• \tThis is very common for web applications /\nmodern applications\n• \tIt’s easy to horizontally scale thanks to the cloud\nofferings such as Amazon EC2\noperator \toperator \toperator\noperator \toperator \toperator\n\n[Page 123]\nsecond building in San Francisco\nfirst building in New York\nHigh Availability\n• \tHigh Availability usually goes hand in\nhand with horizontal scaling\n• \tHigh availability means running your\napplication / system in at least 2 data\ncenters (== Availability Zones)\n• \tThe goal of high availability is to survive\na data center loss\n• \tThe high availability can be passive (for\nRDS Multi AZ for example)\n• \tThe high availability can be active (for\nhorizontal scaling)\n\n[Page 124]\nHigh Availability & Scalability For EC2\n• \tVertical Scaling: Increase instance size (= scale up / down)\n• \tFrom: t2.nano - 0.5G of RAM, 1 vCPU\n• \tTo: u-12tb1.metal – 12.3 TB of RAM, 448 vCPUs\n• \tHorizontal Scaling: Increase number of instances (= scale out / in)\n• \tAuto Scaling Group\n• \tLoad Balancer\n• \tHigh Availability: Run instances for the same application across multi AZ\n• \tAuto Scaling Group multi AZ\n• \tLoad Balancer multi AZ",
+      "read": false,
+      "content": {
+        "summary": "## Overview\n\nThis section separates three ideas the exam constantly mixes up: scalability (handling greater load by adapting), its two flavours (vertical = bigger instance, horizontal = more instances / elasticity), and high availability (surviving the loss of a data centre by running in at least two Availability Zones). Scalability is linked to but different from high availability. For EC2 the mapping is explicit: vertical = resize the instance (t2.nano up to u-12tb1.metal), horizontal = Auto Scaling Group plus Load Balancer (scale out / scale in), high availability = the same application across multiple AZs via ASG multi-AZ and Load Balancer multi-AZ.\n\n## Core Concepts\n\n- **Scalability:** An application or system can handle greater loads by adapting (scaling up/down or out/in).\n- **Vertical scalability (scale up / down):** Increasing the size of the instance — e.g. moving an application from t2.micro to t2.large.\n- **Horizontal scalability (elasticity, scale out / in):** Increasing the number of instances or systems for your application; implies distributed systems.\n- **Distributed system:** An application spread over multiple instances/systems, which is what horizontal scaling requires and produces.\n- **High availability:** Running your application/system in at least 2 data centers (== Availability Zones) so it can survive a data center loss.\n- **Availability Zone (AZ):** A data center (as used in this section); high availability means spanning at least two of them.\n- **Passive high availability:** Standby-style HA, e.g. RDS Multi AZ, where a second copy exists for failover rather than serving traffic.\n- **Active high availability:** HA achieved by running the workload actively on several instances/AZs, as with horizontal scaling.\n- **Auto Scaling Group (ASG):** The EC2 mechanism to increase/decrease the number of instances (scale out / scale in).\n- **Load Balancer:** Distributes traffic across instances; multi-AZ placement makes it part of the HA design.\n- **RDS Multi AZ:** The section's named example of passive high availability for a database.\n- **ElastiCache / RDS vertical scaling:** Database/cache services that can be scaled vertically (increasing instance size).\n\n## Key Comparisons\n\n- **Vertical scalability vs Horizontal scalability:** Vertical changes the size of one instance (t2.micro → t2.large); horizontal changes the number of instances and therefore implies a distributed system.\n- **Scalability vs High Availability:** Scalability handles greater load by adapting; high availability survives a data center loss by running in at least 2 AZs — linked but different goals.\n- **Passive HA vs Active HA:** Passive keeps a standby (RDS Multi AZ); active runs the workload on multiple instances/ AZs (horizontal scaling).\n- **Scale up/down vs Scale out/in:** Up/down = instance resizing (vertical); out/in = adding or removing instances via the Auto Scaling Group (horizontal).\n- **ASG (horizontal) vs ASG multi AZ (HA):** An ASG alone changes instance count for load; spreading that ASG across AZs is what gives high availability.\n\n## Common Misunderstandings\n\n- Scaling vertically does not require a distributed system — it is the typical choice for non-distributed workloads such as a database.\n- Horizontal scaling is not just 'more power': it implies a distributed architecture, which is why it suits web/modern applications.\n- Scalability and high availability are not the same thing; being able to handle more load does not by itself mean you survive an AZ loss.\n- High availability requires at least two Availability Zones, not merely more instances in the same one.\n- Vertical scaling is not unlimited — there is usually a hardware ceiling.\n- Adding an Auto Scaling Group does not by itself deliver HA unless it spans multiple AZs (and the load balancer does too).\n\n## Mental Models\n\n- Think of vertical scaling as promoting one call-centre operator to a more senior (bigger) one; horizontal scaling as hiring more operators.\n- Think of HA as having a second building in another city so losing one building doesn't stop the business.\n- Think of an ASG as a headcount dial and multi-AZ as where those heads sit.\n- Think of RDS Multi AZ as a spare tire (passive) and horizontal scaling as a convoy of cars (active).\n\n## Exceptions & Edge Cases\n\n- Vertical scaling 'up' also has a 'down' direction (scale up / scale down) — resizing, not adding capacity.\n- The t2.nano to u-12tb1.metal range is the source's stated span of EC2 instance sizes, not a per-family guarantee.\n- Passive HA (RDS Multi AZ) is an example, not the only form of passive HA.\n- Load balancer and ASG must both be multi-AZ for the full EC2 HA pattern as described.\n\n## When to Use Which\n\n- Workload is a non-distributed database needing more capacity → **Vertical scaling (e.g. resize RDS / ElastiCache instance)**\n- Web/modern application must absorb variable traffic by adding instances → **Horizontal scaling with an Auto Scaling Group**\n- Application must survive the loss of a data center → **Run across multiple AZs (ASG multi AZ + Load Balancer multi AZ)**\n- Database needs standby-level resilience without app changes → **Passive HA such as RDS Multi AZ**\n- Instance is simply undersized for one workload → **Vertical scaling: increase the instance size (scale up)**\n\n## Patterns to Recognize\n\n- 'increase the size of the instance' / t2.micro to t2.large → **Vertical scalability**\n- 'increase the number of instances' / elasticity → **Horizontal scalability**\n- 'survive a data center loss' / 'at least 2 Availability Zones' → **High availability**\n- 'RDS Multi AZ' → **Passive high availability**\n- 'scale out / scale in' → **Auto Scaling Group (horizontal scaling on EC2)**\n- 'non-distributed system, such as a database' → **Vertical scaling**\n- 'Load Balancer multi AZ' → **High availability on EC2**\n\n## Exam Traps\n\n- “'To handle more load, always scale vertically.'” — Vertical scaling hits a hardware limit and suits non-distributed systems; horizontal scaling is common for web/modern applications.\n- “'High availability means running more instances.'” — HA specifically means running in at least two Availability Zones to survive a data center loss.\n- “'Multi-AZ is the same as horizontal scaling.'” — HA goes hand in hand with horizontal scaling but is a distinct goal; passive HA (RDS Multi AZ) is not horizontal scaling.\n- “'u-12tb1.metal is a database instance size cited by the section.'” — u-12tb1.metal (12.3 TB RAM, 448 vCPUs) is cited as the top of the EC2 vertical scaling range; RDS/ElastiCache are named as vertically scalable services.\n- “'Scaling out and scaling up are synonyms.'” — Scale out/in = number of instances (ASG); scale up/down = instance size.\n\n## Beyond the Source (tutor knowledge)\n\n- Exam guide lists 'Horizontal scaling and vertical scaling' and 'Determining scaling strategies' under Design Resilient Architectures, and 'horizontal compared with vertical' scaling under cost-optimized compute — expect trade-off wording about cost and elasticity.\n- Exam guide also emphasises mitigating single points of failure and failover strategies, so questions may combine multi-AZ with load balancing rather than testing definitions alone.",
+        "keyPoints": [
+          "High availability = running in at least 2 data centers (== Availability Zones); its goal is to survive a data center loss.",
+          "Vertical scaling is very common for non-distributed systems such as a database; RDS and ElastiCache can scale vertically.",
+          "Horizontal scaling implies distributed systems and is very common for web applications / modern applications.",
+          "EC2 vertical scaling range in the source: from t2.nano (0.5 GB RAM, 1 vCPU) to u-12tb1.metal (12.3 TB RAM, 448 vCPUs).",
+          "There is usually a hardware limit to how far you can vertically scale.",
+          "Horizontal scaling on EC2 = Auto Scaling Group; high availability on EC2 = ASG multi AZ plus Load Balancer multi AZ.",
+          "Horizontal scalability equals elasticity; scalability is linked to but different from high availability.",
+          "HA can be passive (RDS Multi AZ) or active (horizontal scaling)."
+        ],
+        "supplement": "- Exam guide lists 'Horizontal scaling and vertical scaling' and 'Determining scaling strategies' under Design Resilient Architectures, and 'horizontal compared with vertical' scaling under cost-optimized compute — expect trade-off wording about cost and elasticity.\n- Exam guide also emphasises mitigating single points of failure and failover strategies, so questions may combine multi-AZ with load balancing rather than testing definitions alone.",
+        "cards": [
+          {
+            "id": "cddfc057-8d5e-4901-b6f6-5b7bda9b999b",
+            "question": "What does scalability mean for an application or system?",
+            "answer": "It can handle greater loads by adapting",
+            "group": "Scalability fundamentals",
+            "keyTopic": "Horizontal scalability as elasticity",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::horizontal-scalability-as-elasticity"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a5dcafa5-ab5d-4729-aea0-77ee9aab7ffa",
+            "question": "Scalability is linked to but different from which other concept?",
+            "answer": "High availability",
+            "group": "Scalability fundamentals",
+            "keyTopic": "High availability across AZs",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::high-availability-across-azs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "67dad99d-ed00-4a4a-a77b-e6e31a603427",
+            "question": "Which two kinds of scalability does the source name?",
+            "answer": "Vertical scalability\nHorizontal scalability (= elasticity)",
+            "group": "Scalability fundamentals",
+            "keyTopic": "Vertical scalability",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::vertical-scalability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "185f7f85-03a8-4c53-9544-4df04a001f0b",
+            "question": "What does vertical scalability increase?",
+            "answer": "The size of the instance",
+            "group": "Vertical scalability",
+            "keyTopic": "Vertical scalability",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::vertical-scalability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "51ac5aea-2e26-41da-a69a-119587d9eb66",
+            "question": "Running an app on t2.micro, then moving it to t2.large, is which type of scaling?",
+            "answer": "Vertical scalability",
+            "group": "Vertical scalability",
+            "keyTopic": "Vertical scalability",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::vertical-scalability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "e69a2616-81a4-45a2-8b33-5d56985a9bae",
+            "question": "Vertical scalability is very common for which kind of system?",
+            "answer": "Non-distributed systems, such as a database",
+            "group": "Vertical scalability",
+            "keyTopic": "Vertical scalability",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::vertical-scalability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "1a701507-8bec-496d-a7cf-f44afa75c1e3",
+            "question": "Which two AWS services does the source cite as able to scale vertically?",
+            "answer": "RDS\nElastiCache",
+            "group": "Vertical scalability",
+            "keyTopic": "Vertical scalability",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::vertical-scalability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ab413ce4-1e7f-4818-b8fb-b17d605e53be",
+            "question": "What usually limits how far you can vertically scale?",
+            "answer": "A hardware limit",
+            "group": "Vertical scalability",
+            "keyTopic": "Vertical scalability",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::vertical-scalability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "d22a9bd0-03a1-4ebb-b0b6-a033f79661ee",
+            "question": "Scale up and scale down refer to which type of scaling?",
+            "answer": "Vertical scaling (instance size)",
+            "group": "Vertical scalability",
+            "keyTopic": "Vertical scalability",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::vertical-scalability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "31d04584-b965-454e-8958-9966c3aace08",
+            "question": "What does horizontal scalability increase?",
+            "answer": "The number of instances / systems for your application",
+            "group": "Horizontal scalability and distributed systems",
+            "keyTopic": "Horizontal scalability as elasticity",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::horizontal-scalability-as-elasticity"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ee82b0a8-c63f-45f0-bacc-911e530fe5ea",
+            "question": "Horizontal scaling implies which type of system?",
+            "answer": "Distributed systems",
+            "group": "Horizontal scalability and distributed systems",
+            "keyTopic": "Distributed systems",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::distributed-systems"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "528cd0eb-e7ba-4343-8d13-691af9dc3b7c",
+            "question": "Horizontal scalability is very common for which type of applications?",
+            "answer": "Web applications / modern applications",
+            "group": "Horizontal scalability and distributed systems",
+            "keyTopic": "Horizontal scalability as elasticity",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::horizontal-scalability-as-elasticity"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "cee0389d-cd90-4936-b2c9-7e89430fa64e",
+            "question": "Which type of scaling does the source equate with elasticity?",
+            "answer": "Horizontal scalability",
+            "group": "Horizontal scalability and distributed systems",
+            "keyTopic": "Horizontal scalability as elasticity",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::horizontal-scalability-as-elasticity"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "925e3ef1-8198-482d-bd41-2f72f2b8cb70",
+            "question": "Which cloud offering makes it easy to horizontally scale, according to the source?",
+            "answer": "Amazon EC2",
+            "group": "Horizontal scalability and distributed systems",
+            "keyTopic": "Horizontal scalability as elasticity",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::horizontal-scalability-as-elasticity"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "40ad9cea-9b2f-4774-a58b-a3798cc83fc7",
+            "question": "Scale out and scale in refer to which type of scaling?",
+            "answer": "Horizontal scaling (number of instances)",
+            "group": "Horizontal scalability and distributed systems",
+            "keyTopic": "ASG scale out and scale in",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::asg-scale-out-and-scale-in"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "a9715e8d-0806-4975-a1cd-d2114ddaeb35",
+            "question": "High availability means running your application in at least how many data centers?",
+            "answer": "At least 2 data centers (== Availability Zones)",
+            "group": "High availability",
+            "keyTopic": "High availability across AZs",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::high-availability-across-azs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "8726cb3f-2001-458a-afa4-844dbb707a09",
+            "question": "What is the goal of high availability?",
+            "answer": "To survive a data center loss",
+            "group": "High availability",
+            "keyTopic": "High availability across AZs",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::high-availability-across-azs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "c3b7ecdb-5323-4d67-92f9-ed0048cb1a33",
+            "question": "High availability usually goes hand in hand with which scaling approach?",
+            "answer": "Horizontal scaling",
+            "group": "High availability",
+            "keyTopic": "High availability across AZs",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::high-availability-across-azs"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "b0866556-0d7a-4fbd-acd7-4aba5bbdfe29",
+            "question": "Which two forms of high availability does the source name?",
+            "answer": "Passive\nActive",
+            "group": "High availability",
+            "keyTopic": "Active high availability",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::active-high-availability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "ebd8a58e-2c41-4205-819f-95f273607658",
+            "question": "Which form of high availability is RDS Multi AZ an example of?",
+            "answer": "Passive high availability",
+            "group": "High availability",
+            "keyTopic": "Passive high availability (RDS Multi AZ)",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::passive-high-availability-rds-multi-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "357e0e71-3e21-46cc-94e9-e3ea7d2dc773",
+            "question": "Horizontal scaling is given as the example of which form of high availability?",
+            "answer": "Active high availability",
+            "group": "High availability",
+            "keyTopic": "Active high availability",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::active-high-availability"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "bda1668d-6be8-4236-95b7-81f65f129fba",
+            "question": "On EC2, which service provides horizontal scaling?",
+            "answer": "The Auto Scaling Group",
+            "group": "EC2 scaling and availability mapping",
+            "keyTopic": "ASG scale out and scale in",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::asg-scale-out-and-scale-in"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "178aa595-fc36-446d-8daf-460f574c835d",
+            "question": "On EC2, what is the RAM and vCPU size of t2.nano, the bottom of the vertical scaling range?",
+            "answer": "0.5 GB of RAM, 1 vCPU",
+            "group": "EC2 scaling and availability mapping",
+            "keyTopic": "EC2 vertical scaling (t2.nano to u-12tb1.metal)",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::ec2-vertical-scaling-t2-nano-to-u-12tb1-metal"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "afa5cda8-68b4-489f-a944-3cffa02acba9",
+            "question": "What is the top of the EC2 vertical scaling range cited in the source?",
+            "answer": "u-12tb1.metal",
+            "group": "EC2 scaling and availability mapping",
+            "keyTopic": "EC2 vertical scaling (t2.nano to u-12tb1.metal)",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::ec2-vertical-scaling-t2-nano-to-u-12tb1-metal"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "52de6549-1a33-4720-8f3c-9e1c98ded944",
+            "question": "What RAM and vCPU count does u-12tb1.metal have in the source?",
+            "answer": "12.3 TB of RAM, 448 vCPUs",
+            "group": "EC2 scaling and availability mapping",
+            "keyTopic": "EC2 vertical scaling (t2.nano to u-12tb1.metal)",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::ec2-vertical-scaling-t2-nano-to-u-12tb1-metal"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "83a10216-edaa-4194-b9b2-65b4b12b9c01",
+            "question": "Which two EC2 components give high availability across multi AZ, per the source?",
+            "answer": "Auto Scaling Group multi AZ\nLoad Balancer multi AZ",
+            "group": "EC2 scaling and availability mapping",
+            "keyTopic": "Load balancer multi-AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::load-balancer-multi-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "8c9c72f8-3317-4910-ad6e-4163433c76f6",
+            "question": "On EC2, which component spreads traffic across instances as part of horizontal scaling?",
+            "answer": "The Load Balancer",
+            "group": "EC2 scaling and availability mapping",
+            "keyTopic": "Load balancer multi-AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::load-balancer-multi-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "11321757-d4de-4eff-8c2c-4fcc67dd8988",
+            "question": "Which EC2 mechanism increases and decreases the number of instances?",
+            "answer": "Auto Scaling Group (scale out / scale in)",
+            "group": "EC2 scaling and availability mapping",
+            "keyTopic": "ASG scale out and scale in",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::asg-scale-out-and-scale-in"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          },
+          {
+            "id": "9d35963a-fd76-4647-b55e-d7500963aabd",
+            "question": "An Auto Scaling Group without multi-AZ placement delivers which goal only?",
+            "answer": "Horizontal scaling for load, not high availability",
+            "group": "EC2 scaling and availability mapping",
+            "keyTopic": "Load balancer multi-AZ",
+            "origin": "source",
+            "objectiveIds": [
+              "2834eea0-13ca-40c4-a776-f14ae35b1417::load-balancer-multi-az"
+            ],
+            "schedule": {
+              "due": "2026-10-24T13:07:59.705Z",
+              "stability": 0,
+              "difficulty": 0,
+              "elapsed_days": 0,
+              "scheduled_days": 0,
+              "reps": 0,
+              "lapses": 0,
+              "learning_steps": 0,
+              "state": 0
+            }
+          }
+        ],
+        "quiz": [],
+        "provider": "copilot",
+        "model": "Tutor model · flashcards prompt v1",
+        "authorship": "model",
+        "generatedAt": "2026-10-24T13:07:52.779Z",
+        "evidence": [
+          {
+            "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+            "pageStart": 119,
+            "pageEnd": 124,
+            "note": "Main-source pages given to the tutor for this section."
+          },
+          {
+            "sourceId": "094d9768-1e08-40d1-9c72-4658e827e2e1",
+            "pageStart": 1,
+            "pageEnd": 4,
+            "note": "Related supplementary reading selected by topic overlap; not a claim that this source verifies every statement."
+          }
+        ]
+      },
+      "summaryData": {
+        "overview": "This section separates three ideas the exam constantly mixes up: scalability (handling greater load by adapting), its two flavours (vertical = bigger instance, horizontal = more instances / elasticity), and high availability (surviving the loss of a data centre by running in at least two Availability Zones). Scalability is linked to but different from high availability. For EC2 the mapping is explicit: vertical = resize the instance (t2.nano up to u-12tb1.metal), horizontal = Auto Scaling Group plus Load Balancer (scale out / scale in), high availability = the same application across multiple AZs via ASG multi-AZ and Load Balancer multi-AZ.",
+        "coreConcepts": [
+          {
+            "term": "Scalability",
+            "definition": "An application or system can handle greater loads by adapting (scaling up/down or out/in)."
+          },
+          {
+            "term": "Vertical scalability (scale up / down)",
+            "definition": "Increasing the size of the instance — e.g. moving an application from t2.micro to t2.large."
+          },
+          {
+            "term": "Horizontal scalability (elasticity, scale out / in)",
+            "definition": "Increasing the number of instances or systems for your application; implies distributed systems."
+          },
+          {
+            "term": "Distributed system",
+            "definition": "An application spread over multiple instances/systems, which is what horizontal scaling requires and produces."
+          },
+          {
+            "term": "High availability",
+            "definition": "Running your application/system in at least 2 data centers (== Availability Zones) so it can survive a data center loss."
+          },
+          {
+            "term": "Availability Zone (AZ)",
+            "definition": "A data center (as used in this section); high availability means spanning at least two of them."
+          },
+          {
+            "term": "Passive high availability",
+            "definition": "Standby-style HA, e.g. RDS Multi AZ, where a second copy exists for failover rather than serving traffic."
+          },
+          {
+            "term": "Active high availability",
+            "definition": "HA achieved by running the workload actively on several instances/AZs, as with horizontal scaling."
+          },
+          {
+            "term": "Auto Scaling Group (ASG)",
+            "definition": "The EC2 mechanism to increase/decrease the number of instances (scale out / scale in)."
+          },
+          {
+            "term": "Load Balancer",
+            "definition": "Distributes traffic across instances; multi-AZ placement makes it part of the HA design."
+          },
+          {
+            "term": "RDS Multi AZ",
+            "definition": "The section's named example of passive high availability for a database."
+          },
+          {
+            "term": "ElastiCache / RDS vertical scaling",
+            "definition": "Database/cache services that can be scaled vertically (increasing instance size)."
+          }
+        ],
+        "mustRemember": [
+          "High availability = running in at least 2 data centers (== Availability Zones); its goal is to survive a data center loss.",
+          "Vertical scaling is very common for non-distributed systems such as a database; RDS and ElastiCache can scale vertically.",
+          "Horizontal scaling implies distributed systems and is very common for web applications / modern applications.",
+          "EC2 vertical scaling range in the source: from t2.nano (0.5 GB RAM, 1 vCPU) to u-12tb1.metal (12.3 TB RAM, 448 vCPUs).",
+          "There is usually a hardware limit to how far you can vertically scale.",
+          "Horizontal scaling on EC2 = Auto Scaling Group; high availability on EC2 = ASG multi AZ plus Load Balancer multi AZ.",
+          "Horizontal scalability equals elasticity; scalability is linked to but different from high availability.",
+          "HA can be passive (RDS Multi AZ) or active (horizontal scaling)."
+        ],
+        "keyComparisons": [
+          {
+            "items": "Vertical scalability vs Horizontal scalability",
+            "difference": "Vertical changes the size of one instance (t2.micro → t2.large); horizontal changes the number of instances and therefore implies a distributed system."
+          },
+          {
+            "items": "Scalability vs High Availability",
+            "difference": "Scalability handles greater load by adapting; high availability survives a data center loss by running in at least 2 AZs — linked but different goals."
+          },
+          {
+            "items": "Passive HA vs Active HA",
+            "difference": "Passive keeps a standby (RDS Multi AZ); active runs the workload on multiple instances/ AZs (horizontal scaling)."
+          },
+          {
+            "items": "Scale up/down vs Scale out/in",
+            "difference": "Up/down = instance resizing (vertical); out/in = adding or removing instances via the Auto Scaling Group (horizontal)."
+          },
+          {
+            "items": "ASG (horizontal) vs ASG multi AZ (HA)",
+            "difference": "An ASG alone changes instance count for load; spreading that ASG across AZs is what gives high availability."
+          }
+        ],
+        "commonMisunderstandings": [
+          "Scaling vertically does not require a distributed system — it is the typical choice for non-distributed workloads such as a database.",
+          "Horizontal scaling is not just 'more power': it implies a distributed architecture, which is why it suits web/modern applications.",
+          "Scalability and high availability are not the same thing; being able to handle more load does not by itself mean you survive an AZ loss.",
+          "High availability requires at least two Availability Zones, not merely more instances in the same one.",
+          "Vertical scaling is not unlimited — there is usually a hardware ceiling.",
+          "Adding an Auto Scaling Group does not by itself deliver HA unless it spans multiple AZs (and the load balancer does too)."
+        ],
+        "mentalModels": [
+          "Think of vertical scaling as promoting one call-centre operator to a more senior (bigger) one; horizontal scaling as hiring more operators.",
+          "Think of HA as having a second building in another city so losing one building doesn't stop the business.",
+          "Think of an ASG as a headcount dial and multi-AZ as where those heads sit.",
+          "Think of RDS Multi AZ as a spare tire (passive) and horizontal scaling as a convoy of cars (active)."
+        ],
+        "edgeCases": [
+          "Vertical scaling 'up' also has a 'down' direction (scale up / scale down) — resizing, not adding capacity.",
+          "The t2.nano to u-12tb1.metal range is the source's stated span of EC2 instance sizes, not a per-family guarantee.",
+          "Passive HA (RDS Multi AZ) is an example, not the only form of passive HA.",
+          "Load balancer and ASG must both be multi-AZ for the full EC2 HA pattern as described."
+        ],
+        "whenToUse": [
+          {
+            "situation": "Workload is a non-distributed database needing more capacity",
+            "use": "Vertical scaling (e.g. resize RDS / ElastiCache instance)"
+          },
+          {
+            "situation": "Web/modern application must absorb variable traffic by adding instances",
+            "use": "Horizontal scaling with an Auto Scaling Group"
+          },
+          {
+            "situation": "Application must survive the loss of a data center",
+            "use": "Run across multiple AZs (ASG multi AZ + Load Balancer multi AZ)"
+          },
+          {
+            "situation": "Database needs standby-level resilience without app changes",
+            "use": "Passive HA such as RDS Multi AZ"
+          },
+          {
+            "situation": "Instance is simply undersized for one workload",
+            "use": "Vertical scaling: increase the instance size (scale up)"
+          }
+        ],
+        "patternsToRecognize": [
+          {
+            "signal": "'increase the size of the instance' / t2.micro to t2.large",
+            "indicates": "Vertical scalability"
+          },
+          {
+            "signal": "'increase the number of instances' / elasticity",
+            "indicates": "Horizontal scalability"
+          },
+          {
+            "signal": "'survive a data center loss' / 'at least 2 Availability Zones'",
+            "indicates": "High availability"
+          },
+          {
+            "signal": "'RDS Multi AZ'",
+            "indicates": "Passive high availability"
+          },
+          {
+            "signal": "'scale out / scale in'",
+            "indicates": "Auto Scaling Group (horizontal scaling on EC2)"
+          },
+          {
+            "signal": "'non-distributed system, such as a database'",
+            "indicates": "Vertical scaling"
+          },
+          {
+            "signal": "'Load Balancer multi AZ'",
+            "indicates": "High availability on EC2"
+          }
+        ],
+        "examTraps": [
+          {
+            "trap": "'To handle more load, always scale vertically.'",
+            "correction": "Vertical scaling hits a hardware limit and suits non-distributed systems; horizontal scaling is common for web/modern applications."
+          },
+          {
+            "trap": "'High availability means running more instances.'",
+            "correction": "HA specifically means running in at least two Availability Zones to survive a data center loss."
+          },
+          {
+            "trap": "'Multi-AZ is the same as horizontal scaling.'",
+            "correction": "HA goes hand in hand with horizontal scaling but is a distinct goal; passive HA (RDS Multi AZ) is not horizontal scaling."
+          },
+          {
+            "trap": "'u-12tb1.metal is a database instance size cited by the section.'",
+            "correction": "u-12tb1.metal (12.3 TB RAM, 448 vCPUs) is cited as the top of the EC2 vertical scaling range; RDS/ElastiCache are named as vertically scalable services."
+          },
+          {
+            "trap": "'Scaling out and scaling up are synonyms.'",
+            "correction": "Scale out/in = number of instances (ASG); scale up/down = instance size."
+          }
+        ],
+        "beyondSource": [
+          "Exam guide lists 'Horizontal scaling and vertical scaling' and 'Determining scaling strategies' under Design Resilient Architectures, and 'horizontal compared with vertical' scaling under cost-optimized compute — expect trade-off wording about cost and elasticity.",
+          "Exam guide also emphasises mitigating single points of failure and failover strategies, so questions may combine multi-AZ with load balancing rather than testing definitions alone."
+        ]
+      },
+      "artifacts": {
+        "summary": {
+          "requestId": "39fe5177-db68-456c-bd40-554ee7383754",
+          "promptVersion": 2,
+          "generatedAt": "2026-10-24T13:07:52.780Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
+        },
+        "flashcards": {
+          "requestId": "05fbf34b-ce45-4152-8d83-a5381a9ff1d0",
+          "promptVersion": 1,
+          "generatedAt": "2026-10-24T13:07:59.705Z",
+          "model": "deepseek-chat",
+          "familiarity": "new",
+          "revision": 3
+        }
+      }
+    },
+    {
+      "id": "c3cb5b55-1dee-4790-bbe8-ad39473737e1",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "96828487-bb98-42e7-b95d-1a22be975c83",
+      "title": "Elastic Load Balancer Fundamentals: Purpose, Health Checks and Security Groups",
+      "objective": "Explain why a managed Elastic Load Balancer is used and how health checks and chained security groups keep traffic flowing only to healthy instances from the load balancer.",
+      "keyTopics": [
+        "Load balancer single DNS access point",
+        "Health checks on port and route",
+        "200 OK health response",
+        "Managed ELB vs self-managed",
+        "ELB service integrations",
+        "Internal vs external ELB",
+        "LB security group referencing",
+        "Application security group restricting to LB"
+      ],
+      "pageStart": 125,
+      "pageEnd": 130,
+      "text": "[Page 125]\nWhat is load balancing?\nElastic Load Balancer EC2 Instance\nEC2 Instance\nEC2 Instance\n• \tLoad Balances are servers that forward traffic to multiple\nservers (e.g., EC2 instances) downstream\n\n[Page 126]\nWhy use a load balancer?\n• \tSpread load across multiple downstream instances\n• \tExpose a single point of access (DNS) to your application\n• \tSeamlessly handle failures of downstream instances\n• \tDo regular health checks to your instances\n• \tProvide SSL termination (HTTPS) for your websites\n• \tEnforce stickiness with cookies\n• \tHigh availability across zones\n• \tSeparate public traffic from private traffic\n\n[Page 127]\nWhy use an Elastic Load Balancer?\n• \tAn Elastic Load Balancer is a \tmanaged load balancer\n• \tAWS guarantees that it will be working\n• \tAWS takes care of upgrades, maintenance, high availability\n• \tAWS provides only a few configuration knobs\n• \tIt costs less to setup your own load balancer but it will be a lot more effort\non your end\n• \tIt is integrated with many AWS offerings / services\n• \tEC2, EC2 Auto Scaling Groups, Amazon ECS\n• \tAWS Certificate Manager (ACM), CloudWatch\n• \tRoute 53, AWS WAF, AWS Global Accelerator\n\n[Page 128]\nHealth Checks\n• \tHealth Checks are crucial for Load Balancers\n• \tThey enable the load balancer to know if instances it forwards traffic to\nare available to reply to requests\n• \tThe health check is done on a port and a route (/health is common)\n• \tIf the response is not 200 (OK), then the instance is unhealthy\nElastic Load Balancer EC2 Instance\nHealth Checks\nProtocol: HTTP\nPort: 4567\nEndpoint: /health\n\n[Page 129]\nTypes of load balancer on AWS\n• \tAWS has 4 kinds of managed Load Balancers\n• \tClassic Load Balancer (v1 - old generation) – 2009 – CLB\n• \tHTTP, HTTPS, TCP, SSL (secure TCP)\n• \tApplication Load Balancer (v2 - new generation) – 2016 – ALB\n• \tHTTP, HTTPS, WebSocket\n• \tNetwork Load Balancer (v2 - new generation) – 2017 – NLB\n• \tTCP, TLS (secure TCP), UDP\n• \tGateway Load Balancer – 2020 – GWLB\n• \tOperates at layer 3 (Network layer) – IP Protocol\n• \tOverall, it is recommended to use the newer generation load balancers as they\nprovide more features\n• \tSome load balancers can be setup as internal (private) or external (public) ELBs\n\n[Page 130]\nLoad Balancer Security Groups\nUsers\nHTTPS / HTTP\nFrom anywhere\nHTTP Restricted\nto Load balancer\nLOAD BALANCER\nLoad Balancer Security Group:\nApplication Security Group: Allow traffic only from Load Balancer\nEC2",
+      "read": false
+    },
+    {
+      "id": "a84a5df6-6365-45c9-ae56-a9ef6958eeb4",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "96828487-bb98-42e7-b95d-1a22be975c83",
+      "title": "Load Balancer Types: Classic, ALB, NLB and Gateway",
+      "objective": "Choose the appropriate load balancer type (CLB, ALB, NLB, GWLB) for a scenario based on protocol, layer, performance, static IP and appliance-inspection requirements.",
+      "keyTopics": [
+        "Classic Load Balancer layer 4 and 7",
+        "ALB layer 7 routing rules",
+        "ALB path and hostname routing",
+        "ALB query string and header routing",
+        "ALB target groups (EC2, ECS, Lambda, IPs)",
+        "X-Forwarded-For client IP",
+        "NLB static IP per AZ",
+        "NLB target groups",
+        "Gateway Load Balancer layer 3",
+        "GENEVE port 6081"
+      ],
+      "pageStart": 131,
+      "pageEnd": 142,
+      "text": "[Page 131]\nClassic Load Balancers (v1)\nClient \tCLB \tEC2\nlistener \tinternal\n• \tSupports TCP (Layer 4), HTTP &\nHTTPS (Layer 7)\n• \tHealth checks are TCP or HTTP\nbased\n• \tFixed hostname\nXXX.region.elb.amazonaws.com\n\n[Page 132]\nApplication Load Balancer (v2)\n• \tApplication load balancers is Layer 7 (HTTP)\n• \tLoad balancing to multiple HTTP applications across machines\n(target groups)\n• \tLoad balancing to multiple applications on the same machine\n(ex: containers)\n• \tSupport for HTTP/2 and WebSocket\n• \tSupport redirects (from HTTP to HTTPS for example)\n\n[Page 133]\nApplication Load Balancer (v2)\n• \tRouting tables to different target groups:\n• \tRouting based on path in URL \t(example.com/users & example.com/posts)\n• \tRouting based on hostname in URL (one.example.com & other.example.com)\n• \tRouting based on Query String, Headers\n(example.com/users?id=123&order=false)\n• \tALB are a great fit for micro services & container-based application\n(example: Docker & Amazon ECS)\n• \tHas a port mapping feature to redirect to a dynamic port in ECS\n• \tIn comparison, we’d need multiple Classic Load Balancer per application\n\n[Page 134]\nTarget Group\nfor\nUsers\napplication\nApplication Load Balancer (v2)\nHTTP Based Traffic\nExternal\nApplication\nLoad Balancer\n(v2)\nHTTP\nWWW Route /user\nTarget Group\nfor\nSearch\napplication\nHTTP\nWWW Route /search\nHealth Check\nHealth Check\n\n[Page 135]\nApplication Load Balancer (v2)\nTarget Groups\n• \tEC2 instances (can be managed by an Auto Scaling Group) \t– \tHTTP\n• \tECS tasks (managed by ECS itself) \t– \tHTTP\n• \tLambda functions \t– \tHTTP request is translated into a JSON event\n• \tIP Addresses \t– \tmust be private IPs\n• \tALB can route to multiple target groups\n• \tHealth checks are at the target group level\n\n[Page 136]\nTarget Group 1\nAWS – EC2 based\nApplication Load Balancer (v2)\nQuery Strings/Parameters Routing\nExternal\nApplication\nLoad Balancer\n(v2)\n?Platform=Mobile\nWWW Requests\nTarget Group 2\nOn-premises – Private IP routing\t?Platform=Desktop\n\n[Page 137]\nApplication Load Balancer (v2)\nGood to Know\n• \tFixed hostname (XXX.region.elb.amazonaws.com)\n• \tThe application servers don’t see the IP of the client directly\n• \tThe true IP of the client is inserted in the header X-Forwarded-For\n• \tWe can also get Port (X-Forwarded-Port) and proto (X-Forwarded-Proto)\nEC2\nInstance\nClient IP\n12.34.56.78\nLoad Balancer IP\n(Private IP)\nConnection termination\n\n[Page 138]\nNetwork Load Balancer (v2)\n• \tNetwork load balancers (Layer 4) allow to:\n• \tForward TCP & UDP traffic to your instances\n• \tHandle millions of request per seconds\n• \tUltra-low latency\n• \tNLB has \tone static IP per AZ, and supports assigning Elastic IP\n(helpful for whitelisting specific IP)\n• \tNLB are used for extreme performance, TCP or UDP traffic\n\n[Page 139]\nNetwork Load Balancer (v2)\nTCP (Layer 4) Based Traffic\nTarget Group\nfor\nUsers\napplication\nExternal\nNetwork Load\nBalancer (v2)\nTCP\nWWW TCP + Rules\nTarget Group\nfor\nSearch\napplication\nHTTP\nWWW TCP + Rules\nHealth Check\nHealth Check\n\n[Page 140]\nNetwork Load Balancer \t– Target Groups\n• \tEC2 instances\n• \tIP Addresses – must be private IPs\n• \tApplication Load Balancer\n• \tHealth Checks support the TCP, HTTP and HTTPS Protocols\nTarget Group\n(EC2 Instances)\ni-1234567890abcdef0 \ti-1234567890abcdef0\nNetwork\nLoad Balancer\nTarget Group\n(IP Addresses)\n192.168.1.118 \t10.0.4.21\nNetwork\nLoad Balancer\nTarget Group\n(Application Load Balancer)\nNetwork\nLoad Balancer\n\n[Page 141]\nGateway Load Balancer\n• \tDeploy, scale, and manage a fleet of 3rd party\nnetwork virtual appliances in AWS\n• \tExample: Firewalls, Intrusion Detection and\nPrevention Systems, Deep Packet Inspection\nSystems, payload manipulation, …\n• \tOperates at Layer 3 (Network Layer) – IP\nPackets\n• \tCombines the following functions:\n• \tTransparent Network Gateway – single entry/exit\nfor all traffic\n• \tLoad Balancer – distributes traffic to your virtual\nappliances\n• \tUses the GENEVE protocol on port 6081\nUsers\n(source)\nGateway\nLoad Balancer\nApplication\n(destination)\nTarget Group\n3rd Party Security\nVirtual Appliances\ntraffic \ttraffic\nRoute\nTable\n\n[Page 142]\nGateway \tLoad Balancer \t– Target Groups\n• \tEC2 instances\n• \tIP Addresses \t– \tmust be private IPs\nTarget Group\n(EC2 Instances)\ni-1234567890abcdef0 \ti-1234567890abcdef0\nGateway\nLoad Balancer\nTarget Group\n(IP Addresses)\n192.168.1.118 \t10.0.4.21\nGateway\nLoad Balancer",
+      "read": false
+    },
+    {
+      "id": "b8069b75-9dfa-4a26-afbb-c1f8b41dc756",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "96828487-bb98-42e7-b95d-1a22be975c83",
+      "title": "Sticky Sessions, Cross-Zone Load Balancing and SSL/TLS Certificates",
+      "objective": "Apply stickiness, cross-zone load balancing and SNI-based multi-certificate HTTPS configurations, and identify which ELB types support each feature and where extra costs apply.",
+      "keyTopics": [
+        "Sticky sessions cookie affinity",
+        "Custom cookie vs application cookie",
+        "Duration-based cookie names",
+        "Cross-zone load balancing default per ELB",
+        "Inter-AZ data charges",
+        "SSL vs TLS certificates",
+        "ACM certificate management",
+        "SNI multiple certificates",
+        "CLB single certificate limit"
+      ],
+      "pageStart": 143,
+      "pageEnd": 150,
+      "text": "[Page 143]\nSticky Sessions (Session Affinity)\n• \tIt is possible to implement stickiness so that the\nsame client is always redirected to the same\ninstance behind a load balancer\n• \tThis works for Classic Load Balancer, Application\nLoad Balancer, and Network Load Balancer\n• \tFor both CLB & ALB, the “cookie” used for\nstickiness has an expiration date you control\n• \tUse case: make sure the user doesn’t lose his\nsession data\n• \tEnabling stickiness may bring imbalance to the\nload over the backend EC2 instances\nEC2 Instance \tEC2 Instance\nClient 1 \tClient 2 \tClient 3\n\n[Page 144]\nSticky Sessions \t– \tCookie Names\n• \tApplication-based \tCookies\n• \tCustom cookie\n• \tGenerated by the target\n• \tCan include any custom attributes required by the application\n• \tCookie name must be specified individually for each target group\n• \tDon’t use AWSALB, AWSALBAPP, or AWSALBTG (reserved for use by the ELB)\n• \tApplication cookie\n• \tGenerated by the load balancer\n• \tCookie name is AWSALBAPP\n• \tDuration-based \tCookies\n• \tCookie generated by the load balancer\n• \tCookie name is AWSALB for ALB, AWSELB for CLB\n\n[Page 145]\nCross-Zone Load Balancing\nAvailability Zone 1 \tAvailability Zone 2\n10 \t10 10 \t10 \t10 \t10\n10 \t10 \t10 \t10\nAvailability Zone 1 \tAvailability Zone 2\n25 \t25 6.25 \t6.25 \t6.25 \t6.25\n6.25 \t6.25 \t6.25 \t6.25\nWith Cross Zone Load Balancing:\neach load balancer instance distributes evenly\nacross all registered instances in all AZ\nWithout Cross Zone Load Balancing:\nRequests are distributed in the instances of the\nnode of the Elastic Load Balancer\n50 \t50\t50 \t50\n\n[Page 146]\nCross-Zone Load Balancing\n• \tApplication Load Balancer\n• \tEnabled by default (can be disabled at the Target Group level)\n• \tNo charges for inter AZ data\n• \tNetwork Load Balancer & Gateway Load Balancer\n• \tDisabled by default\n• \tYou pay charges ($) for inter AZ data if enabled\n• \tClassic Load Balancer\n• \tDisabled by default\n• \tNo charges for inter AZ data if enabled\n\n[Page 147]\nSSL/TLS \t- \tBasics\n• \tAn SSL Certificate allows traffic between your clients and your load balancer\nto be encrypted in transit (in-flight encryption)\n• \tSSL refers to Secure Sockets Layer, used to encrypt connections\n• \tTLS refers to Transport Layer Security, which is a newer version\n• \tNowadays, TLS certificates are mainly used, but people still refer as SSL\n• \tPublic SSL certificates are issued by Certificate Authorities (CA)\n• \tComodo, Symantec, GoDaddy, GlobalSign, Digicert, Letsencrypt, etc…\n• \tSSL certificates have an expiration date (you set) and must be renewed\n\n[Page 148]\nLoad Balancer \t- \tSSL Certificates\n• \tThe load balancer uses an X.509 certificate (SSL/TLS server certificate)\n• \tYou can manage certificates using ACM (AWS Certificate Manager)\n• \tYou can create upload your own certificates alternatively\n• \tHTTPS listener:\n• \tYou must specify a default certificate\n• \tYou can add an optional list of certs to support multiple domains\n• \tClients can use SNI (Server Name Indication) to specify the hostname they reach\n• \tAbility to specify a security policy to support older versions of SSL / TLS (legacy clients)\nEC2\nInstance\tUsers\nHTTPS (encrypted)\nOver www\nHTTP\nOver private VPC\nLOAD BALANCER\n\n[Page 149]\nSSL \t– \tServer Name Indication (SNI)\n• \tSNI solves the problem of loading multiple SSL\ncertificates onto one web server (to serve\nmultiple websites)\n• \tIt’s a “newer” protocol, and requires the client\nto indicate the hostname of the target server\nin the initial SSL handshake\n• \tThe server will then find the correct\ncertificate, or return the default one\nNote:\n• \tOnly works for ALB & NLB (newer\ngeneration), CloudFront\n• \tDoes not work for CLB (older gen)\nClient \tALB\nSSL Cert:\nDomain1.example.com\nSSL Cert:\nwww.mycorp.com\nI would like\nwww.mycorp.com\nTarget group for\nwww.mycorp.com\nTarget group for\nDomain1.example.com\n….\nUse the correct\nSSL cert\n\n[Page 150]\nElastic Load Balancers \t– \tSSL Certificates\n• \tClassic Load Balancer (v1)\n• \tSupport only one SSL certificate\n• \tMust use multiple CLB for multiple hostname with multiple SSL certificates\n• \tApplication Load Balancer (v2)\n• \tSupports multiple listeners with multiple SSL certificates\n• \tUses Server Name Indication (SNI) to make it work\n• \tNetwork Load Balancer (v2)\n• \tSupports multiple listeners with multiple SSL certificates\n• \tUses Server Name Indication (SNI) to make it work",
+      "read": false
+    },
+    {
+      "id": "031eb81a-e15c-4c38-9073-dc29c9268317",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "96828487-bb98-42e7-b95d-1a22be975c83",
+      "title": "Connection Draining and Auto Scaling Groups",
+      "objective": "Explain connection draining behaviour and configure Auto Scaling Group capacities, launch templates and load balancer registration to keep capacity matched to demand and replace unhealthy instances.",
+      "keyTopics": [
+        "Connection draining vs deregistration delay",
+        "In-flight request range 1-3600s",
+        "ASG min desired max capacity",
+        "ASG re-creation of unhealthy instances",
+        "ASG free, pay for EC2",
+        "ASG with load balancer health checks",
+        "Launch templates",
+        "Launch template contents",
+        "ASG scaling policies attribute"
+      ],
+      "pageStart": 151,
+      "pageEnd": 156,
+      "text": "[Page 151]\nConnection Draining\n• \tFeature naming\n• \tConnection Draining – for CLB\n• \tDeregistration Delay – for ALB & NLB\n• \tTime to complete “in-flight requests” while the\ninstance is de-registering or unhealthy\n• \tStops sending new requests to the EC2\ninstance which is de-registering\n• \tBetween 1 to 3600 seconds (default: 300\nseconds)\n• \tCan be disabled (set value to 0)\n• \tSet to a low value if your requests are short\nELB\nwaiting for existing\nconnections to complete\nnew connections\nestablished to all other instances\nUsers\nEC2 Instance\nDRAINING\nEC2 Instance\nEC2 Instance\n\n[Page 152]\nWhat’s an Auto Scaling Group?\n• \tIn real-life, the load on your websites and application can change\n• \tIn the cloud, you can create and get rid of servers very quickly\n• \tThe goal of an Auto Scaling Group (ASG) is to:\n• \tScale out (add EC2 instances) to match an increased load\n• \tScale in (remove EC2 instances) to match a decreased load\n• \tEnsure we have a minimum and a maximum number of EC2 instances running\n• \tAutomatically register new instances to a load balancer\n• \tRe-create an EC2 instance in case a previous one is terminated (ex: if unhealthy)\n• \tASG are free (you only pay for the underlying EC2 instances)\n\n[Page 153]\nAuto Scaling Group in AWS\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nAuto Scaling Group\nMinimum Capacity\nDesired Capacity\nMaximum Capacity\nScale Out as Needed\n\n[Page 154]\nAuto Scaling Group in AWS With Load Balancer\nElastic Load Balancer\nUsers\nELB can check the health of your EC2 instances!\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nAuto Scaling Group\n\n[Page 155]\nAuto Scaling Group Attributes\n• \tA \tLaunch Template \t(older “Launch Configurations” are deprecated)\n• \tAMI + Instance Type\n• \tEC2 User Data\n• \tEBS Volumes\n• \tSecurity Groups\n• \tSSH Key Pair\n• \tIAM Roles for your EC2 Instances\n• \tNetwork + Subnets Information\n• \tLoad Balancer Information\n• \tMin Size / Max Size / Initial Capacity\n• \tScaling Policies\nASG Launch Template\nAMI \tInstance\nType\nEBS Volumes\nSecurity\nGroups \tSSH Key Pair \tIAM Role\nVPC + Subnets\n…\nLoad\nBalancer\n\n[Page 156]\nAuto Scaling \t- \tCloudWatch Alarms & Scaling\n• \tIt is possible to scale an ASG based on CloudWatch alarms\n• \tAn alarm monitors a metric (such as \tAverage CPU, or a custom metric)\n• \tMetrics such as Average CPU are computed for the overall ASG instances\n• \tBased on the alarm:\n• \tWe can create scale-out policies (increase the number of instances)\n• \tWe can create scale-in policies (decrease the number of instances)\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nEC2\nInstance\nAuto Scaling Group\nCloudWatch\nAlarm\ntrigger Scaling",
+      "read": false
+    },
+    {
+      "id": "8c397699-667f-4295-9e77-39a7e4084f2f",
+      "folderId": "5f221144-1d10-477f-8368-2e0483c30563",
+      "sourceId": "cda3eb6a-e19d-4fcd-8144-4923851f1e11",
+      "chapterId": "96828487-bb98-42e7-b95d-1a22be975c83",
+      "title": "Auto Scaling Policies, Metrics and Cooldowns",
+      "objective": "Select the right scaling policy and metric for a workload scenario, and explain how cooldown periods and AMI readiness affect how quickly an ASG stabilizes.",
+      "keyTopics": [
+        "Target tracking scaling",
+        "Simple and step scaling",
+        "Scheduled scaling",
+        "Predictive scaling",
+        "CPUUtilization metric",
+        "RequestCountPerTarget metric",
+        "Average network in/out metric",
+        "Custom CloudWatch metrics",
+        "Scaling cooldown default 300s"
+      ],
+      "pageStart": 157,
+      "pageEnd": 160,
+      "text": "[Page 157]\nAuto Scaling Groups \t– \tScaling Policies\n• \tDynamic Scaling\n• \tTarget Tracking Scaling\n• \tSimple to set-up\n• \tExample: I want the average ASG CPU to stay at around 40%\n• \tSimple / Step Scaling\n• \tWhen a CloudWatch alarm is triggered (example CPU > 70%), then add 2 units\n• \tWhen a CloudWatch alarm is triggered (example CPU < 30%), then remove 1\n• \tScheduled Scaling\n• \tAnticipate a scaling based on known usage patterns\n• \tExample: increase the min capacity to 10 at 5 pm on Fridays\n\n[Page 158]\nAuto Scaling Groups \t– \tScaling Policies\n• \tPredictive scaling: \tcontinuously forecast load and schedule scaling ahead\n\n[Page 159]\nGood metrics to scale on\n• \tCPUUtilization: Average CPU utilization\nacross your instances\n• \tRequestCountPerTarget: to make sure\nthe number of requests per EC2\ninstances is stable\n• \tAverage Network In / Out \t(if you’re\napplication is network bound)\n• \tAny custom metric \t(that you push\nusing CloudWatch)\nAuto Scaling group\nUsers\nApplication\nLoad Balancer\nRequestCountPerTarget\nTarget Value: 3\n\n[Page 160]\nAuto Scaling Groups \t- \tScaling Cooldowns\n• \tAfter a scaling activity happens, you are in\nthe \tcooldown period (default 300\nseconds)\n• \tDuring the cooldown period, the ASG will\nnot launch or terminate additional\ninstances (to allow for metrics to stabilize)\n• \tAdvice: Use a ready-to-use AMI to reduce\nconfiguration time in order to be serving\nrequest fasters and reduce the cooldown\nperiod\nScaling Action\nOccurs\nDefault\nCooldown\nin effect?\nIgnore Action\nLaunch or\nTeminate Instance\nNo\nYes",
+      "read": false
+    }
+  ]
 }

@@ -118,6 +118,7 @@ test.describe.serial('prompt-driven exam workflow', () => {
     await respond(page.request, 'flashcards', { groups: [{ concept: 'IAM', cards: [{ question: 'Explain IAM?', answer: 'IAM is a global service that manages users, groups, roles and permissions for every account in the organisation', keyTopic: 'IAM groups' }] }] });
     await check(page);
     await expect(page.locator('.request-status.failed')).toContainText('did not pass validation');
+    await expect(page.getByRole('button', { name: 'Regenerate flashcards' })).toBeVisible();
     await respond(page.request, 'flashcards', { groups: [{ concept: 'Groups and policies', cards }] });
     await check(page);
     await page.getByRole('button', { name: 'Reveal answer', exact: true }).click();

@@ -11,12 +11,12 @@ import {
   Layers2,
   LayoutGrid,
   LoaderCircle,
-  Maximize2,
   Menu,
-  Minimize2,
+  Moon,
   Plus,
   Search,
   Settings2,
+  Sun,
   Trash2,
   TrendingUp,
   Upload,
@@ -91,7 +91,10 @@ export function App() {
   const [notice, setNotice] = useState('');
   const [search, setSearch] = useState('');
   const [mobile, setMobile] = useState(false);
-  const [focus, setFocus] = useState(() => localStorage.getItem('folio-focus') === '1');
+  const [theme, setTheme] = useState(() => localStorage.getItem('folio-theme') ?? 'light');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(
+    () => localStorage.getItem('folio-sidebar') === '1',
+  );
   const fileInput = useRef<HTMLInputElement>(null);
   const route = hash.replace(/^#/, '').split('/');
   const folder =
@@ -137,9 +140,14 @@ export function App() {
   }, []);
 
   useEffect(() => {
-    document.body.classList.toggle('focus-mode', focus);
-    localStorage.setItem('folio-focus', focus ? '1' : '0');
-  }, [focus]);
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem('folio-theme', theme);
+  }, [theme]);
+
+  useEffect(() => {
+    document.body.classList.toggle('sidebar-collapsed', sidebarCollapsed);
+    localStorage.setItem('folio-sidebar', sidebarCollapsed ? '1' : '0');
+  }, [sidebarCollapsed]);
 
   const run: RunTask = async (action, success, busyLabel) => {
     if (busy) return;
@@ -287,6 +295,15 @@ export function App() {
             >
               <Menu size={20} />
             </button>
+            <button
+              className="icon-button sidebar-toggle"
+              title={sidebarCollapsed ? 'Show navigation' : 'Hide navigation'}
+              aria-label={sidebarCollapsed ? 'Show navigation' : 'Hide navigation'}
+              aria-pressed={sidebarCollapsed}
+              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+            >
+              <Menu size={20} />
+            </button>
             <a className="workspace-crumb" href="#workspaces">
               Workspaces
             </a>
@@ -305,8 +322,8 @@ export function App() {
               </>
             )}
           </div>
-          {folder && (
-            <div className="topbar-tools">
+          <div className="topbar-tools">
+            {folder && (
               <label className="search-box">
                 <Search size={16} />
                 <input
@@ -319,18 +336,16 @@ export function App() {
                   }}
                 />
               </label>
-              <button
-                className={`focus-toggle ${focus ? 'active' : ''}`}
-                title={focus ? 'Exit focus mode' : 'Focus mode'}
-                aria-label={focus ? 'Exit focus mode' : 'Enter focus mode'}
-                aria-pressed={focus}
-                onClick={() => setFocus(!focus)}
-              >
-                {focus ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
-                {focus ? 'Exit focus' : 'Focus'}
-              </button>
-            </div>
-          )}
+            )}
+            <button
+              className="icon-button theme-toggle"
+              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            >
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </div>
         </header>
         {error && (
           <div className="toast error" role="alert">

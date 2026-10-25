@@ -194,4 +194,23 @@ test.describe.serial('prompt-driven exam workflow', () => {
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
     await page.screenshot({ path: '.cache/screenshots/v3-plan-mobile.png' });
   });
+
+  test('keeps the sidebar toggle inside the rail and restores a collapsed sidebar on load', async ({ page }) => {
+    await page.setViewportSize({ width: 801, height: 900 });
+    await page.goto('/#workspaces');
+    const rail = (await page.locator('.sidebar').boundingBox())!;
+    const toggle = (await page.locator('.sidebar-toggle').boundingBox())!;
+    expect(toggle.x + toggle.width).toBeLessThanOrEqual(rail.x + rail.width);
+    await page.locator('.sidebar-toggle').click();
+    await page.reload();
+    await expect
+      .poll(() => page.evaluate(() => document.body.classList.contains('sidebar-collapsed')))
+      .toBe(true);
+    expect((await page.locator('.main-area').boundingBox())!.x).toBeLessThanOrEqual(1);
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.getByRole('button', { name: 'Open navigation' }).click();
+    await expect
+      .poll(async () => Math.round((await page.locator('.sidebar').boundingBox())!.x))
+      .toBe(0);
+  });
 });

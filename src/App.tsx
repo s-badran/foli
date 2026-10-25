@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
   ArrowDownToLine,
   ArrowRight,
@@ -143,12 +143,12 @@ export function App() {
     };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem('folio-theme', theme);
   }, [theme]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.body.classList.toggle('sidebar-collapsed', sidebarCollapsed);
     localStorage.setItem('folio-sidebar', sidebarCollapsed ? '1' : '0');
   }, [sidebarCollapsed]);

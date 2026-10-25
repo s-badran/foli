@@ -20,6 +20,7 @@
   --focus: #2d6a3f;
   --radius: 8px;
   --radius-sm: 6px;
+  --sidebar-width: 252px;
   letter-spacing: 0;
   font-size: 15px;
 }
@@ -114,7 +115,7 @@ button {
   min-height: 100vh;
 }
 .sidebar {
-  width: 252px;
+  width: var(--sidebar-width);
   flex-shrink: 0;
   border-right: 1px solid var(--line);
   background: #f8f9f8;
@@ -336,8 +337,8 @@ button {
   background: var(--green);
 }
 .main-area {
-  margin-left: 252px;
-  width: calc(100% - 252px);
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -2356,14 +2357,12 @@ textarea:focus {
   }
 }
 @media (max-width: 1200px) {
+  :root {
+    --sidebar-width: 225px;
+  }
   .sidebar {
-    width: 225px;
     padding-left: 12px;
     padding-right: 12px;
-  }
-  .main-area {
-    margin-left: 225px;
-    width: calc(100% - 225px);
   }
   .dashboard,
   .reader {
@@ -2414,12 +2413,8 @@ textarea:focus {
   }
 }
 @media (max-width: 950px) {
-  .sidebar {
-    width: 205px;
-  }
-  .main-area {
-    margin-left: 205px;
-    width: calc(100% - 205px);
+  :root {
+    --sidebar-width: 205px;
   }
   .dashboard,
   .reader {
@@ -2556,12 +2551,16 @@ textarea:focus {
   }
 }
 @media (max-width: 700px) {
+  :root {
+    --sidebar-width: 260px;
+  }
   .sidebar {
     transform: translateX(-100%);
-    width: 260px;
+    width: var(--sidebar-width);
     padding: 25px 17px 15px;
   }
-  .sidebar.mobile-open {
+  .sidebar.mobile-open,
+  body.sidebar-collapsed .sidebar.mobile-open {
     transform: translateX(0);
   }
   .sidebar-scrim {
@@ -3120,22 +3119,41 @@ a:focus-visible {
 .sidebar-toggle {
   position: fixed;
   top: 20px;
-  left: 202px;
+  left: calc(var(--sidebar-width) - 50px);
   z-index: 40;
   width: 34px;
   height: 34px;
   border-radius: var(--radius-sm);
-  transition: left 0.25s ease;
+  transition:
+    left 0.25s ease,
+    background 0.2s ease;
+}
+.topbar {
+  transition: padding-left 0.25s ease;
 }
 body.sidebar-collapsed .sidebar {
   transform: translateX(-100%);
 }
 body.sidebar-collapsed .sidebar-toggle {
   left: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+body.sidebar-collapsed .sidebar-toggle:hover {
+  background: var(--green-soft);
+  color: var(--green-dark);
 }
 body.sidebar-collapsed .main-area {
   margin-left: 0;
   width: 100%;
+}
+body.sidebar-collapsed .topbar {
+  padding-left: 60px;
+}
+@media (max-width: 700px) {
+  body.sidebar-collapsed .topbar {
+    padding-left: 16px;
+  }
 }
 @media (max-width: 700px) {
   .sidebar-toggle {

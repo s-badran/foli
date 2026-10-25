@@ -22,17 +22,37 @@ function joinItems(value: unknown): string | undefined {
   return parts.length ? parts.join(' vs ') : undefined;
 }
 
+const MISTAKE_KEYS = ['mistake', 'misconception', 'claim', 'myth', 'wrong'];
+const CORRECTION_KEYS = ['correction', 'correct', 'truth', 'reality', 'right'];
+
+/** Normalize a misunderstanding to `{ mistake, correction }` from common key variants. */
+function normalizeMisunderstanding(item: unknown): unknown {
+  const entry = record(item);
+  if (!entry) return item;
+  const mistake = MISTAKE_KEYS.map((key) => entry[key]).find(
+    (value): value is string => typeof value === 'string' && value.trim() !== '',
+  );
+  const correction = CORRECTION_KEYS.map((key) => entry[key]).find(
+    (value): value is string => typeof value === 'string' && value.trim() !== '',
+  );
+  return mistake && correction ? { mistake, correction } : item;
+}
+
 /** Models commonly return `keyComparisons[].items` as a list of the compared things. */
 export function normalizeSummary(raw: unknown): unknown {
   const value = record(raw);
-  if (!value || !Array.isArray(value.keyComparisons)) return raw;
-  const keyComparisons = value.keyComparisons.map((item) => {
-    const entry = record(item);
-    if (!entry) return item;
-    const items = joinItems(entry.items);
-    return items === undefined ? item : { ...entry, items };
-  });
-  return { ...value, keyComparisons };
+  if (!value) return raw;
+  const next: Record<string, unknown> = { ...value };
+  if (Array.isArray(next.keyComparisons))
+    next.keyComparisons = next.keyComparisons.map((item) => {
+      const entry = record(item);
+      if (!entry) return item;
+      const items = joinItems(entry.items);
+      return items === undefined ? item : { ...entry, items };
+    });
+  if (Array.isArray(next.commonMisunderstandings))
+    next.commonMisunderstandings = next.commonMisunderstandings.map(normalizeMisunderstanding);
+  return next;
 }
 
 /** Move the correct option to a rotating position, preserving the option set and answer. */

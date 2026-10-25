@@ -28,6 +28,26 @@ describe('normalizeSummary', () => {
     const bad = { keyComparisons: [{ items: 42, difference: 'x' }] };
     expect(normalizeSummary(bad)).toEqual(bad);
   });
+
+  it('normalizes misunderstanding key variants to mistake and correction', () => {
+    const normalized = normalizeSummary({
+      commonMisunderstandings: [
+        {
+          misconception: 'Users must belong to a group',
+          correction: 'Users do not have to belong to a group',
+        },
+        { mistake: 'A wrong claim', correction: 'The right rule' },
+      ],
+    }) as { commonMisunderstandings: { mistake: string; correction: string }[] };
+    expect(normalized.commonMisunderstandings[0]).toEqual({
+      mistake: 'Users must belong to a group',
+      correction: 'Users do not have to belong to a group',
+    });
+    expect(normalized.commonMisunderstandings[1]).toEqual({
+      mistake: 'A wrong claim',
+      correction: 'The right rule',
+    });
+  });
 });
 
 describe('normalizeArtifact', () => {

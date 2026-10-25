@@ -296,6 +296,27 @@ describe('response validation and application', () => {
     expect(section.artifacts?.summary?.model).toBe('deepseek-chat');
     expect(section.artifacts?.summary?.familiarity).toBe('basic');
   });
+  it('renders misunderstandings with an explicit mistake and correction', () => {
+    const { state, section } = sectioned();
+    const summary = {
+      overview: 'IAM groups collect users, and policies grant permissions to them.',
+      coreConcepts: [
+        { term: 'IAM group', definition: 'A collection of users.' },
+        { term: 'IAM policy', definition: 'A JSON permissions document.' },
+      ],
+      mustRemember: ['Groups contain users only.', 'Effect is Allow or Deny.'],
+      commonMisunderstandings: [
+        {
+          mistake: 'Users must belong to a group',
+          correction: 'Users do not have to belong to a group',
+        },
+      ],
+    };
+    expect(applyResponse(state, request('summary', section.id), summary)).toEqual([]);
+    expect(section.content!.summary).toContain(
+      '✕ Users must belong to a group — ✅ Users do not have to belong to a group',
+    );
+  });
   it('normalizes keyComparisons item arrays before validating a summary', () => {
     const { state, section } = sectioned();
     const summary = {

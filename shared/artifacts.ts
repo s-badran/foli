@@ -57,7 +57,15 @@ export const summarySchema = z.object({
     .array(z.object({ items: text(3, 140), difference: text(5, 320) }))
     .max(8)
     .default([]),
-  commonMisunderstandings: z.array(text(5, 320)).max(10).default([]),
+  commonMisunderstandings: z
+    .array(
+      z.union([
+        text(5, 320),
+        z.object({ mistake: text(3, 320), correction: text(3, 320) }),
+      ]),
+    )
+    .max(10)
+    .default([]),
   mentalModels: z.array(text(5, 320)).max(8).default([]),
   edgeCases: z.array(text(5, 320)).max(8).default([]),
   whenToUse: z
@@ -209,6 +217,11 @@ export function checkQuiz(
   return problems;
 }
 
+/** Render a misunderstanding as an explicit wrong claim plus its correction. */
+function renderMisunderstanding(item: string | { mistake: string; correction: string }) {
+  return typeof item === 'string' ? item : `✕ ${item.mistake} — ✅ ${item.correction}`;
+}
+
 export function renderSummary(summary: Summary, options = { mustRemember: true }) {
   const list = (items: string[]) => items.map((item) => `- ${item}`).join('\n');
   const blocks: [string, string][] = [
@@ -222,7 +235,7 @@ export function renderSummary(summary: Summary, options = { mustRemember: true }
       'Key Comparisons',
       list(summary.keyComparisons.map((item) => `**${item.items}:** ${item.difference}`)),
     ],
-    ['Common Misunderstandings', list(summary.commonMisunderstandings)],
+    ['Common Misunderstandings', list(summary.commonMisunderstandings.map(renderMisunderstanding))],
     ['Mental Models', list(summary.mentalModels)],
     ['Exceptions & Edge Cases', list(summary.edgeCases)],
     [

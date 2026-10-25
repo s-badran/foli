@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Markdown from 'react-markdown';
 import {
   ArrowLeft,
@@ -58,6 +58,16 @@ export function StudyView({
   const [result, setResult] = useState<QuizAttempt | null>(null);
   const [reviewAll, setReviewAll] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
+  const [promptVersions, setPromptVersions] = useState<Record<string, number>>({});
+  useEffect(() => {
+    let active = true;
+    void api<{ id: string; version: number }[]>('/prompts').then((data) => {
+      if (active) setPromptVersions(Object.fromEntries(data.map((item) => [item.id, item.version])));
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
   const content = section.content;
   const preparation = sectionPractice(section, state);
   const dueCards =
@@ -122,13 +132,19 @@ export function StudyView({
   };
   const regenerate = (kind: 'summary' | 'flashcards' | 'quiz', label: string) => {
     const meta = section.artifacts?.[kind];
-    const stale = folder ? needsRegenerate(folder, meta) : false;
+    const settingsChanged = folder ? needsRegenerate(folder, meta) : false;
+    const currentVersion = promptVersions[kind];
+    const promptChanged =
+      meta !== undefined && currentVersion !== undefined && meta.promptVersion < currentVersion;
+    const stale = settingsChanged || promptChanged;
     return (
       <div className="artifact-toolbar">
         <span className="form-note">
-          {stale
-            ? 'Generated with different settings — regenerate to update.'
-            : 'Matches your current settings.'}
+          {promptChanged
+            ? 'A newer prompt is available — regenerate to update.'
+            : settingsChanged
+              ? 'Generated with different settings — regenerate to update.'
+              : 'Matches your current settings.'}
         </span>
         <button
           className="button secondary"

@@ -143,6 +143,10 @@ test.describe.serial('prompt-driven exam workflow', () => {
     const firstOrder = await displayOrder();
     for (let index = 0; index < quiz.questions.length; index++) {
       await choose(quiz.questions[index].options[quiz.questions[index].correctIndex]);
+      if (index === 0)
+        await expect(page.locator('.quiz-selection')).toContainText(
+          quiz.questions[0].options[quiz.questions[0].correctIndex],
+        );
       if (index < quiz.questions.length - 1)
         await page.getByRole('button', { name: 'Next', exact: true }).click();
     }
@@ -161,6 +165,8 @@ test.describe.serial('prompt-driven exam workflow', () => {
     await expect(page.locator('.quiz-result')).toContainText('0 / 3');
     await expect(page.locator('.quiz-scores')).toContainText('Latest 0%');
     await expect(page.locator('.quiz-scores')).toContainText('Best 100%');
+    await expect(page.locator('.quiz-misses li')).toHaveCount(3);
+    await expect(page.locator('.quiz-misses')).toContainText('You chose');
     await page.getByRole('tab', { name: 'Summary', exact: true }).click();
     await respond(page.request, 'summary', {
       overview: 'IAM groups collect users, and JSON policies attached to them grant permissions.',

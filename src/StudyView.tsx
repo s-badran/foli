@@ -90,6 +90,11 @@ export function StudyView({
   const cards = reviewAll ? (content?.cards ?? []) : dueCards;
   const card = reviewAll ? cards[reviewIndex] : cards[0];
   const attempts = state.attempts.filter((attempt) => attempt.sectionId === section.id);
+  const missed = result
+    ? (content?.quiz
+        .map((question, index) => ({ question, index, chosen: result.answers[index] }))
+        .filter((item) => item.chosen !== item.question.correctIndex) ?? [])
+    : [];
   const quizVersion = section.artifacts?.quiz?.requestId;
   const scoredAttempts = attempts.filter(
     (attempt) => !quizVersion || attempt.quizRequestId === quizVersion,
@@ -510,6 +515,19 @@ export function StudyView({
               </button>
             </div>
           )}
+          {result && missed.length > 0 && (
+            <div className="quiz-misses">
+              <strong>What went wrong</strong>
+              <ul>
+                {missed.map(({ question, index, chosen }) => (
+                  <li key={index}>
+                    <span>Q{index + 1}</span> You chose “{question.options[chosen] ?? 'nothing'}”;
+                    correct is “{question.options[question.correctIndex]}”.
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
           {result ? (
             content.quiz.map((question, index) => (
               <fieldset className="quiz-question" key={index} disabled>
@@ -588,6 +606,11 @@ export function StudyView({
                     </label>
                   ))}
                 </div>
+                <p className="quiz-selection">
+                  {answers[quizIndex] === undefined
+                    ? 'Nothing selected yet.'
+                    : `Selected: ${content.quiz[quizIndex].options[answers[quizIndex]]}`}
+                </p>
               </fieldset>
               <div className="quiz-nav">
                 <button

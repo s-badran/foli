@@ -56,13 +56,16 @@ export function StudyView({
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [quizIndex, setQuizIndex] = useState(0);
   const [result, setResult] = useState<QuizAttempt | null>(null);
+  const [reviewAll, setReviewAll] = useState(false);
+  const [reviewIndex, setReviewIndex] = useState(0);
   const content = section.content;
   const preparation = sectionPractice(section, state);
-  const cards =
+  const dueCards =
     content?.cards.filter(
       (card) => card.schedule.reps === 0 || new Date(card.schedule.due).getTime() <= now,
     ) ?? [];
-  const card = cards[0];
+  const cards = reviewAll ? (content?.cards ?? []) : dueCards;
+  const card = reviewAll ? cards[reviewIndex] : cards[0];
   const attempts = state.attempts.filter((attempt) => attempt.sectionId === section.id);
   const hasSummary = !!content?.summary;
   const hasCards = !!content?.cards.length;
@@ -310,8 +313,21 @@ export function StudyView({
           <div className="practice-top">
             <span className="eyebrow">Active Recall</span>
             <span>
-              {cards.length} due / {content.cards.length} cards
+              {reviewAll
+                ? `Reviewing ${cards.length} cards`
+                : `${dueCards.length} due / ${content.cards.length} cards`}
             </span>
+            {reviewAll && (
+              <button
+                className="text-button"
+                onClick={() => {
+                  setReviewAll(false);
+                  setReviewIndex(0);
+                }}
+              >
+                <RotateCcw size={14} /> Back to due cards
+              </button>
+            )}
           </div>
           {card ? (
             <>
@@ -345,6 +361,8 @@ export function StudyView({
                           send({ rating: grade.rating }),
                         );
                         setRevealed(false);
+                        if (reviewAll)
+                          setReviewIndex((index) => (index + 1) % content.cards.length);
                       }, 'Review saved')
                     }
                   >
@@ -358,9 +376,20 @@ export function StudyView({
               icon={<CheckCircle2 size={32} />}
               title="You're all caught up"
               action={
-                <button className="button primary" onClick={() => setTab('quiz')}>
-                  <Target size={16} /> Take the quiz
-                </button>
+                <>
+                  <button
+                    className="button primary"
+                    onClick={() => {
+                      setReviewAll(true);
+                      setReviewIndex(0);
+                    }}
+                  >
+                    <RotateCcw size={16} /> Review all cards
+                  </button>
+                  <button className="button secondary" onClick={() => setTab('quiz')}>
+                    <Target size={16} /> Take the quiz
+                  </button>
+                </>
               }
             >
               Your cards will return when they are due.

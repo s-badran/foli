@@ -1231,8 +1231,8 @@ button {
 }
 .flashcard-text {
   font-family: 'Manrope', sans-serif;
-  font-size: 22px;
-  line-height: 1.75;
+  font-size: 25px;
+  line-height: 1.65;
   color: #526641;
   max-width: 100%;
   margin: 22px 0;
@@ -1285,7 +1285,7 @@ details summary {
 .card-reference {
   border-top: 1px solid var(--line);
   padding: 17px 0;
-  font-size: 12px;
+  font-size: 13px;
   color: #778869;
 }
 .card-reference p {
@@ -1314,7 +1314,7 @@ details summary {
   min-width: 0;
 }
 .quiz-question legend {
-  font-size: 13px;
+  font-size: 16px;
   color: #5d6f4f;
   font-weight: 550;
   line-height: 1.8;
@@ -1339,8 +1339,8 @@ details summary {
   border: 1px solid var(--line);
   border-radius: 5px;
   min-height: 54px;
-  padding: 13px;
-  font-size: 11px;
+  padding: 14px;
+  font-size: 13px;
   color: #8c987e;
   cursor: pointer;
   line-height: 1.7;
@@ -1367,11 +1367,11 @@ details summary {
   background: #f3f5f0;
   border: 1px solid #e7ecdf;
   border-radius: 4px;
-  width: 23px;
-  height: 23px;
+  width: 25px;
+  height: 25px;
   display: grid;
   place-items: center;
-  font-size: 9px;
+  font-size: 11px;
   flex-shrink: 0;
 }
 .quiz-option.selected {
@@ -3396,4 +3396,62 @@ body.sidebar-collapsed .main-area {
 :root[data-theme='dark'] dialog input,
 :root[data-theme='dark'] dialog select {
   color: #d5ddd7;
+}
+
+/* Dark theme — flashcard & quiz legibility */
+:root[data-theme='dark'] .flashcard {
+  background: radial-gradient(ellipse at top, #1c261e, #141a16 90%);
+  border-color: #2e3b31;
+}
+:root[data-theme='dark'] .flashcard.revealed {
+  background: #1c261e;
+  border-color: #4c5a50;
+}
+:root[data-theme='dark'] .flashcard-text {
+  color: #eef4ef;
+}
+:root[data-theme='dark'] .flashcard-hint {
+  color: #8b978f;
+}
+:root[data-theme='dark'] .quiz-question legend {
+  color: #e2eae4;
+}
+:root[data-theme='dark'] .quiz-question legend > span {
+  color: #7e8a82;
+}
+:root[data-theme='dark'] .quiz-view > .section-heading h2 {
+  color: #d5e0d8;
+}
+:root[data-theme='dark'] .card-group h3 {
+  color: #b7d3ac;
+}
+:root[data-theme='dark'] .card-reference {
+  color: #a8b3ab;
+  border-color: var(--line);
+}
+:root[data-theme='dark'] .card-reference p {
+  color: #86928a;
+}
+:root[data-theme='dark'] .all-cards {
+  border-color: var(--line);
+}
+:root[data-theme='dark'] .grade {
+  background: #141a16;
+  border-color: var(--line-strong);
+}
+:root[data-theme='dark'] .grade-1 {
+  color: #d0a295;
+}
+:root[data-theme='dark'] .grade-2 {
+  color: #c7b98a;
+}
+:root[data-theme='dark'] .grade-3 {
+  color: #b7d3ac;
+}
+:root[data-theme='dark'] .grade-4 {
+  color: #9cc4d8;
+}
+:root[data-theme='dark'] .grade:hover:not(:disabled) {
+  background: #1e2721;
+  border-color: #4c5a50;
 }

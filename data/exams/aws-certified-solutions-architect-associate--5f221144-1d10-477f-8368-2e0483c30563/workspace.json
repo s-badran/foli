@@ -17,11 +17,11 @@
       "plan": {
         "examDate": "2027-01-05",
         "dailyMinutes": 60,
-        "createdAt": "2026-10-24T16:22:07.882Z",
+        "createdAt": "2026-10-25T10:14:29.920Z",
         "familiarity": "basic",
         "days": [
           {
-            "date": "2026-10-24",
+            "date": "2026-10-25",
             "sectionIds": [
               "8ffd8b43-b876-44a8-818a-baa82a696e3b",
               "3c961255-81ad-4762-8057-270e380a5f4a",
@@ -31,7 +31,7 @@
             "studyMinutes": 45
           },
           {
-            "date": "2026-10-25",
+            "date": "2026-10-26",
             "sectionIds": [
               "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138",
               "c4e16720-595d-46c6-a53c-3142fa56a845"
@@ -40,7 +40,7 @@
             "studyMinutes": 30
           },
           {
-            "date": "2026-10-26",
+            "date": "2026-10-27",
             "sectionIds": [
               "42b79261-6e53-4757-a0fb-e636fc5a8576",
               "cdd97b84-b9db-4ee6-bba8-15de32be5e76"
@@ -49,7 +49,7 @@
             "studyMinutes": 30
           },
           {
-            "date": "2026-10-27",
+            "date": "2026-10-28",
             "sectionIds": [
               "bec0fb5a-5643-4c7f-b86f-b4b35d9e47d7",
               "83c28431-4feb-4df1-8600-56639c24f6f3"
@@ -58,7 +58,7 @@
             "studyMinutes": 30
           },
           {
-            "date": "2026-10-28",
+            "date": "2026-10-29",
             "sectionIds": [
               "63ab6513-1d6b-4177-bcbe-71b34242de22",
               "a636c89b-6856-4d4b-9e9e-f1f76cef1f19"
@@ -67,26 +67,26 @@
             "studyMinutes": 30
           },
           {
-            "date": "2026-10-29",
-            "sectionIds": [
-              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32",
-              "11e68d60-a3e8-4910-926e-e5b90c8522b4"
-            ],
-            "reviewMinutes": 21,
-            "studyMinutes": 30
-          },
-          {
             "date": "2026-10-30",
             "sectionIds": [
-              "9d0c6fe5-2593-4c55-838c-09bef6eacf88",
-              "afef90a5-a64e-435c-a6e7-d7fa3a572495",
-              "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc"
+              "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32",
+              "11e68d60-a3e8-4910-926e-e5b90c8522b4",
+              "9d0c6fe5-2593-4c55-838c-09bef6eacf88"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 45
           },
           {
             "date": "2026-10-31",
+            "sectionIds": [
+              "afef90a5-a64e-435c-a6e7-d7fa3a572495",
+              "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc"
+            ],
+            "reviewMinutes": 21,
+            "studyMinutes": 30
+          },
+          {
+            "date": "2026-11-01",
             "sectionIds": [
               "ed33fcd5-70d5-4e71-abe7-1d9675526507",
               "ce3b1758-c794-4125-ada4-98e0c2231e33"
@@ -95,7 +95,7 @@
             "studyMinutes": 30
           },
           {
-            "date": "2026-11-01",
+            "date": "2026-11-02",
             "sectionIds": [
               "2834eea0-13ca-40c4-a776-f14ae35b1417",
               "c3cb5b55-1dee-4790-bbe8-ad39473737e1"
@@ -104,7 +104,7 @@
             "studyMinutes": 30
           },
           {
-            "date": "2026-11-02",
+            "date": "2026-11-03",
             "sectionIds": [
               "a84a5df6-6365-45c9-ae56-a9ef6958eeb4",
               "b8069b75-9dfa-4a26-afbb-c1f8b41dc756"
@@ -113,38 +113,29 @@
             "studyMinutes": 30
           },
           {
-            "date": "2026-11-03",
-            "sectionIds": [
-              "031eb81a-e15c-4c38-9073-dc29c9268317",
-              "8c397699-667f-4295-9e77-39a7e4084f2f"
-            ],
-            "reviewMinutes": 21,
-            "studyMinutes": 30
-          },
-          {
             "date": "2026-11-04",
             "sectionIds": [
-              "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
-              "a2b93f44-0ec9-49cb-911b-511813cf1cfa"
-            ],
-            "reviewMinutes": 21,
-            "studyMinutes": 30
-          },
-          {
-            "date": "2026-11-05",
-            "sectionIds": [
-              "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
-              "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
+              "031eb81a-e15c-4c38-9073-dc29c9268317",
+              "8c397699-667f-4295-9e77-39a7e4084f2f",
               "a2b93f44-0ec9-49cb-911b-511813cf1cfa"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 45
           },
           {
+            "date": "2026-11-05",
+            "sectionIds": [
+              "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
+              "a2b93f44-0ec9-49cb-911b-511813cf1cfa"
+            ],
+            "reviewMinutes": 21,
+            "studyMinutes": 30
+          },
+          {
             "date": "2026-11-06",
             "sectionIds": [
-              "9cb86741-88eb-45ed-805c-13b9001e5a9f",
-              "9cb86741-88eb-45ed-805c-13b9001e5a9f"
+              "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
+              "a2b93f44-0ec9-49cb-911b-511813cf1cfa"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 30
@@ -162,7 +153,7 @@
             "date": "2026-11-08",
             "sectionIds": [
               "9cb86741-88eb-45ed-805c-13b9001e5a9f",
-              "78550d02-e3e9-4335-a8c9-1b885f11e55b"
+              "9cb86741-88eb-45ed-805c-13b9001e5a9f"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 30
@@ -170,17 +161,18 @@
           {
             "date": "2026-11-09",
             "sectionIds": [
-              "57e66a52-d1f7-4d0f-86db-6ac983af5022",
-              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d"
+              "9cb86741-88eb-45ed-805c-13b9001e5a9f",
+              "78550d02-e3e9-4335-a8c9-1b885f11e55b",
+              "57e66a52-d1f7-4d0f-86db-6ac983af5022"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-11-10",
             "sectionIds": [
-              "25b484c9-9f38-471b-971f-812820dea11c",
-              "4a8acf0d-3e8f-401c-b245-f08d710876a3"
+              "2e00c817-c25a-4341-9fc6-6ef5524b5f1d",
+              "25b484c9-9f38-471b-971f-812820dea11c"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 30
@@ -188,7 +180,7 @@
           {
             "date": "2026-11-11",
             "sectionIds": [
-              "820bfa62-b869-4ff2-82fb-b291718287aa",
+              "4a8acf0d-3e8f-401c-b245-f08d710876a3",
               "820bfa62-b869-4ff2-82fb-b291718287aa"
             ],
             "reviewMinutes": 21,
@@ -198,17 +190,16 @@
             "date": "2026-11-12",
             "sectionIds": [
               "820bfa62-b869-4ff2-82fb-b291718287aa",
-              "820bfa62-b869-4ff2-82fb-b291718287aa",
-              "5bbbe7fe-a877-4795-ac85-b61da40e4a40"
+              "820bfa62-b869-4ff2-82fb-b291718287aa"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 45
+            "studyMinutes": 30
           },
           {
             "date": "2026-11-13",
             "sectionIds": [
-              "13b47f9f-b63e-432d-9dfe-9f3d229aec05",
-              "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede"
+              "820bfa62-b869-4ff2-82fb-b291718287aa",
+              "5bbbe7fe-a877-4795-ac85-b61da40e4a40"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 30
@@ -216,11 +207,12 @@
           {
             "date": "2026-11-14",
             "sectionIds": [
-              "6c9da1f0-c7c5-4a6c-be84-d0413557ac01",
-              "5aa6c1a1-c93b-4c46-8977-2195ee6c3ebd"
+              "13b47f9f-b63e-432d-9dfe-9f3d229aec05",
+              "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede",
+              "6c9da1f0-c7c5-4a6c-be84-d0413557ac01"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-11-15",
@@ -234,7 +226,7 @@
           {
             "date": "2026-11-16",
             "sectionIds": [
-              "80b157bf-7589-428d-bd28-b0543fec2dd3",
+              "5aa6c1a1-c93b-4c46-8977-2195ee6c3ebd",
               "80b157bf-7589-428d-bd28-b0543fec2dd3"
             ],
             "reviewMinutes": 21,
@@ -243,7 +235,7 @@
           {
             "date": "2026-11-17",
             "sectionIds": [
-              "c6d49c16-ac0e-4b38-9c8b-501d16c9d3b1",
+              "80b157bf-7589-428d-bd28-b0543fec2dd3",
               "c6d49c16-ac0e-4b38-9c8b-501d16c9d3b1"
             ],
             "reviewMinutes": 21,
@@ -253,20 +245,20 @@
             "date": "2026-11-18",
             "sectionIds": [
               "c6d49c16-ac0e-4b38-9c8b-501d16c9d3b1",
-              "c6d49c16-ac0e-4b38-9c8b-501d16c9d3b1",
-              "6adb590f-75d0-4bc7-adf6-4d5dbe512e04"
+              "c6d49c16-ac0e-4b38-9c8b-501d16c9d3b1"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 45
+            "studyMinutes": 30
           },
           {
             "date": "2026-11-19",
             "sectionIds": [
+              "c6d49c16-ac0e-4b38-9c8b-501d16c9d3b1",
               "6adb590f-75d0-4bc7-adf6-4d5dbe512e04",
               "6adb590f-75d0-4bc7-adf6-4d5dbe512e04"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-11-20",
@@ -280,7 +272,7 @@
           {
             "date": "2026-11-21",
             "sectionIds": [
-              "a6fa94d5-42b5-4ade-b03a-49a0156d358f",
+              "6adb590f-75d0-4bc7-adf6-4d5dbe512e04",
               "a6fa94d5-42b5-4ade-b03a-49a0156d358f"
             ],
             "reviewMinutes": 21,
@@ -298,7 +290,7 @@
           {
             "date": "2026-11-23",
             "sectionIds": [
-              "c50ffb6e-95f0-40fd-97dd-846fb4ee3825",
+              "a6fa94d5-42b5-4ade-b03a-49a0156d358f",
               "c50ffb6e-95f0-40fd-97dd-846fb4ee3825"
             ],
             "reviewMinutes": 21,
@@ -326,7 +318,7 @@
           {
             "date": "2026-11-26",
             "sectionIds": [
-              "cf8e0718-dcc2-497f-b3d7-b5cdc9eea894",
+              "c50ffb6e-95f0-40fd-97dd-846fb4ee3825",
               "cf8e0718-dcc2-497f-b3d7-b5cdc9eea894"
             ],
             "reviewMinutes": 21,
@@ -336,7 +328,7 @@
             "date": "2026-11-27",
             "sectionIds": [
               "cf8e0718-dcc2-497f-b3d7-b5cdc9eea894",
-              "9235b9fe-f3d2-4098-9a35-4631aafaa3a3"
+              "cf8e0718-dcc2-497f-b3d7-b5cdc9eea894"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 30
@@ -345,7 +337,7 @@
             "date": "2026-11-28",
             "sectionIds": [
               "9235b9fe-f3d2-4098-9a35-4631aafaa3a3",
-              "9b490ee9-c8f6-49f6-9204-8d413b7ff433"
+              "9235b9fe-f3d2-4098-9a35-4631aafaa3a3"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 30
@@ -363,20 +355,20 @@
             "date": "2026-11-30",
             "sectionIds": [
               "9b490ee9-c8f6-49f6-9204-8d413b7ff433",
+              "9b490ee9-c8f6-49f6-9204-8d413b7ff433",
               "9b490ee9-c8f6-49f6-9204-8d413b7ff433"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-12-01",
             "sectionIds": [
               "74c2d935-6b30-45fb-8793-bcbb5aa99812",
-              "74c2d935-6b30-45fb-8793-bcbb5aa99812",
-              "c76ee3f2-f92d-4292-8f89-b74f41e96aff"
+              "74c2d935-6b30-45fb-8793-bcbb5aa99812"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 45
+            "studyMinutes": 30
           },
           {
             "date": "2026-12-02",
@@ -400,7 +392,7 @@
             "date": "2026-12-04",
             "sectionIds": [
               "c76ee3f2-f92d-4292-8f89-b74f41e96aff",
-              "f0ea10a3-6a98-4992-8017-b030eb912ebd"
+              "c76ee3f2-f92d-4292-8f89-b74f41e96aff"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 30
@@ -409,10 +401,11 @@
             "date": "2026-12-05",
             "sectionIds": [
               "f0ea10a3-6a98-4992-8017-b030eb912ebd",
+              "f0ea10a3-6a98-4992-8017-b030eb912ebd",
               "f0ea10a3-6a98-4992-8017-b030eb912ebd"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-12-06",
@@ -436,17 +429,16 @@
             "date": "2026-12-08",
             "sectionIds": [
               "7d9aadc6-70ed-40e1-88b5-b266f2767ad7",
-              "7d9aadc6-70ed-40e1-88b5-b266f2767ad7",
               "7d9aadc6-70ed-40e1-88b5-b266f2767ad7"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 45
+            "studyMinutes": 30
           },
           {
             "date": "2026-12-09",
             "sectionIds": [
               "7d9aadc6-70ed-40e1-88b5-b266f2767ad7",
-              "5af06994-de14-4a3b-aa93-e0fef7202e28"
+              "7d9aadc6-70ed-40e1-88b5-b266f2767ad7"
             ],
             "reviewMinutes": 21,
             "studyMinutes": 30
@@ -455,10 +447,11 @@
             "date": "2026-12-10",
             "sectionIds": [
               "5af06994-de14-4a3b-aa93-e0fef7202e28",
+              "5af06994-de14-4a3b-aa93-e0fef7202e28",
               "5af06994-de14-4a3b-aa93-e0fef7202e28"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-12-11",
@@ -491,20 +484,20 @@
             "date": "2026-12-14",
             "sectionIds": [
               "5af06994-de14-4a3b-aa93-e0fef7202e28",
-              "dbbbba77-ef34-4f67-af5d-61542803a264",
               "dbbbba77-ef34-4f67-af5d-61542803a264"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 45
+            "studyMinutes": 30
           },
           {
             "date": "2026-12-15",
             "sectionIds": [
               "dbbbba77-ef34-4f67-af5d-61542803a264",
+              "dbbbba77-ef34-4f67-af5d-61542803a264",
               "dbbbba77-ef34-4f67-af5d-61542803a264"
             ],
             "reviewMinutes": 21,
-            "studyMinutes": 30
+            "studyMinutes": 45
           },
           {
             "date": "2026-12-16",
@@ -25220,16 +25213,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
             ],
             "schedule": {
-              "due": "2026-10-24T13:48:07.258Z",
-              "stability": 2.3065,
-              "difficulty": 2.11810397,
-              "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 1,
+              "due": "2026-11-01T10:00:16.278Z",
+              "stability": 7.31530068,
+              "difficulty": 2.11121424,
+              "elapsed_days": 1,
+              "scheduled_days": 7,
+              "reps": 2,
               "lapses": 0,
-              "learning_steps": 1,
-              "state": 1,
-              "last_review": "2026-10-24T13:38:07.258Z"
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-25T10:00:16.278Z"
             }
           },
           {
@@ -25243,16 +25236,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
             ],
             "schedule": {
-              "due": "2026-10-24T13:48:22.434Z",
-              "stability": 2.3065,
-              "difficulty": 2.11810397,
-              "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 1,
+              "due": "2026-11-06T10:00:24.569Z",
+              "stability": 11.6874828,
+              "difficulty": 1,
+              "elapsed_days": 1,
+              "scheduled_days": 12,
+              "reps": 2,
               "lapses": 0,
-              "learning_steps": 1,
-              "state": 1,
-              "last_review": "2026-10-24T13:38:22.434Z"
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-25T10:00:24.569Z"
             }
           },
           {
@@ -25266,16 +25259,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::choosing-a-region"
             ],
             "schedule": {
-              "due": "2026-10-24T13:49:04.462Z",
-              "stability": 2.3065,
-              "difficulty": 2.11810397,
-              "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 1,
+              "due": "2026-11-06T10:00:33.165Z",
+              "stability": 11.6874828,
+              "difficulty": 1,
+              "elapsed_days": 1,
+              "scheduled_days": 12,
+              "reps": 2,
               "lapses": 0,
-              "learning_steps": 1,
-              "state": 1,
-              "last_review": "2026-10-24T13:39:04.462Z"
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-25T10:00:33.165Z"
             }
           },
           {
@@ -25473,16 +25466,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::edge-locations"
             ],
             "schedule": {
-              "due": "2026-10-24T13:54:15.490Z",
-              "stability": 2.3065,
-              "difficulty": 2.11810397,
-              "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 1,
+              "due": "2026-11-06T10:00:40.970Z",
+              "stability": 11.6874828,
+              "difficulty": 1,
+              "elapsed_days": 1,
+              "scheduled_days": 12,
+              "reps": 2,
               "lapses": 0,
-              "learning_steps": 1,
-              "state": 1,
-              "last_review": "2026-10-24T13:44:15.490Z"
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-25T10:00:40.970Z"
             }
           },
           {
@@ -25496,16 +25489,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::edge-locations"
             ],
             "schedule": {
-              "due": "2026-10-24T13:54:27.643Z",
-              "stability": 2.3065,
-              "difficulty": 2.11810397,
-              "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 1,
+              "due": "2026-11-06T10:00:54.154Z",
+              "stability": 11.6874828,
+              "difficulty": 1,
+              "elapsed_days": 1,
+              "scheduled_days": 12,
+              "reps": 2,
               "lapses": 0,
-              "learning_steps": 1,
-              "state": 1,
-              "last_review": "2026-10-24T13:44:27.643Z"
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-25T10:00:54.154Z"
             }
           },
           {
@@ -25519,16 +25512,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::global-vs-region-scoped-services"
             ],
             "schedule": {
-              "due": "2026-10-24T13:51:29.991Z",
-              "stability": 1.2931,
-              "difficulty": 5.11217071,
-              "elapsed_days": 0,
+              "due": "2026-10-25T10:12:08.683Z",
+              "stability": 4.54602939,
+              "difficulty": 5.10228691,
+              "elapsed_days": 1,
               "scheduled_days": 0,
-              "reps": 1,
+              "reps": 2,
               "lapses": 0,
-              "learning_steps": 0,
+              "learning_steps": 1,
               "state": 1,
-              "last_review": "2026-10-24T13:45:29.991Z"
+              "last_review": "2026-10-25T10:02:08.683Z"
             }
           },
           {
@@ -25542,16 +25535,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::global-vs-region-scoped-services"
             ],
             "schedule": {
-              "due": "2026-10-24T13:53:18.304Z",
-              "stability": 1.2931,
-              "difficulty": 5.11217071,
-              "elapsed_days": 0,
+              "due": "2026-10-25T10:08:34.346Z",
+              "stability": 3.24941173,
+              "difficulty": 6.74045952,
+              "elapsed_days": 1,
               "scheduled_days": 0,
-              "reps": 1,
+              "reps": 2,
               "lapses": 0,
               "learning_steps": 0,
               "state": 1,
-              "last_review": "2026-10-24T13:47:18.304Z"
+              "last_review": "2026-10-25T10:02:34.346Z"
             }
           },
           {
@@ -25911,15 +25904,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::root-account"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:11:49.542Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:11:49.542Z"
             }
           },
           {
@@ -25933,15 +25927,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::root-account"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:12:06.889Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:12:06.889Z"
             }
           },
           {
@@ -25955,15 +25950,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-users"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:12:40.055Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:12:40.055Z"
             }
           },
           {
@@ -25977,15 +25973,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-users"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:12:45.369Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:12:45.369Z"
             }
           },
           {
@@ -25999,15 +25996,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-groups"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:12:55.532Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:12:55.532Z"
             }
           },
           {
@@ -26021,15 +26019,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-groups"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:13:18.083Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:13:18.083Z"
             }
           },
           {
@@ -26043,15 +26042,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-groups"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:13:22.988Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:13:22.988Z"
             }
           },
           {
@@ -26065,15 +26065,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-policies"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:13:28.989Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:13:28.989Z"
             }
           },
           {
@@ -26087,15 +26088,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-policies"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:13:44.695Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:13:44.695Z"
             }
           },
           {
@@ -26109,15 +26111,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-policies"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:13:56.556Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:13:56.556Z"
             }
           },
           {
@@ -26131,15 +26134,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::least-privilege"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:14:07.808Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:14:07.808Z"
             }
           },
           {
@@ -26153,15 +26157,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::least-privilege"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:14:29.919Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:14:29.919Z"
             }
           },
           {
@@ -40007,6 +40012,24 @@
       "correct": 4,
       "total": 4,
       "quizRequestId": "f9f42fb9-9ef8-4f85-91f0-8f9e2aee4f15"
+    },
+    {
+      "id": "2df0ca3a-3985-4c9f-b998-21aac4d5ce36",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T10:11:22.186Z",
+      "answers": [
+        1,
+        2,
+        0,
+        1,
+        2,
+        1,
+        2,
+        2
+      ],
+      "correct": 8,
+      "total": 8,
+      "quizRequestId": "6ab65694-c255-4b36-998e-b8d0c2bdb4b5"
     }
   ],
   "reviews": [
@@ -40260,6 +40283,120 @@
       "cardId": "c638de60-d182-46c6-b7bc-fd2420f38973",
       "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
       "date": "2026-10-24T13:47:28.722Z",
+      "rating": 4
+    },
+    {
+      "cardId": "7ccb7ac2-73b5-49ff-8767-7b7190f81b90",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T10:00:16.279Z",
+      "rating": 3
+    },
+    {
+      "cardId": "a0e8be79-ba89-4e33-8171-ce099e405b6c",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T10:00:24.569Z",
+      "rating": 4
+    },
+    {
+      "cardId": "ea19dcbc-fe76-4a3c-b820-4e0ea0b9c4e9",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T10:00:33.165Z",
+      "rating": 4
+    },
+    {
+      "cardId": "71469102-c4c3-4fd3-9ada-5e53c0c87f3e",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T10:00:40.970Z",
+      "rating": 4
+    },
+    {
+      "cardId": "46e06bf1-92f9-4720-a930-3b31e4a485ab",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T10:00:54.154Z",
+      "rating": 4
+    },
+    {
+      "cardId": "b004fd32-84a0-4f61-9526-b0eca0235839",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T10:02:08.683Z",
+      "rating": 3
+    },
+    {
+      "cardId": "29a98c4e-0519-4d0e-ae97-efa125f63def",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T10:02:34.346Z",
+      "rating": 2
+    },
+    {
+      "cardId": "ffc00b72-e7b8-4a60-89b5-6acd9dcad6ff",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:11:49.542Z",
+      "rating": 4
+    },
+    {
+      "cardId": "71620f88-ffbb-4300-8f52-2ed21d180d2f",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:12:06.889Z",
+      "rating": 4
+    },
+    {
+      "cardId": "618c6386-4fd1-4c55-b2ca-cf02d54dd708",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:12:40.055Z",
+      "rating": 4
+    },
+    {
+      "cardId": "f668aae0-8bfa-48f3-bf16-4d558b39a005",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:12:45.370Z",
+      "rating": 4
+    },
+    {
+      "cardId": "038811d5-a04c-468a-b554-9feeed73ab4e",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:12:55.532Z",
+      "rating": 4
+    },
+    {
+      "cardId": "6bf95cab-1db4-4874-9fe3-b0d5f3a71b7b",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:13:18.083Z",
+      "rating": 4
+    },
+    {
+      "cardId": "75450afa-4681-4e41-b578-0071f483f748",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:13:22.988Z",
+      "rating": 4
+    },
+    {
+      "cardId": "bace5ed4-5ec0-4aad-b595-505675efc897",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:13:28.989Z",
+      "rating": 4
+    },
+    {
+      "cardId": "5d2d6487-fa9e-452d-8154-444c8a3a20c5",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:13:44.695Z",
+      "rating": 4
+    },
+    {
+      "cardId": "785eeb32-c844-4e80-ba7b-455268559a2a",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:13:56.556Z",
+      "rating": 4
+    },
+    {
+      "cardId": "f926e82d-60e4-4e63-a3b1-ffd89e974f43",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:14:07.808Z",
+      "rating": 4
+    },
+    {
+      "cardId": "7c525d0c-1554-4213-b854-4788b4843288",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:14:29.920Z",
       "rating": 4
     }
   ],

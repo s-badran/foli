@@ -206,15 +206,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::root-account"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:11:49.542Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:11:49.542Z"
             }
           },
           {
@@ -228,15 +229,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::root-account"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:12:06.889Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:12:06.889Z"
             }
           },
           {
@@ -250,15 +252,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-users"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:12:40.055Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:12:40.055Z"
             }
           },
           {
@@ -272,15 +275,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-users"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:12:45.369Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:12:45.369Z"
             }
           },
           {
@@ -294,15 +298,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-groups"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:12:55.532Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:12:55.532Z"
             }
           },
           {
@@ -316,15 +321,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-groups"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:13:18.083Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:13:18.083Z"
             }
           },
           {
@@ -338,15 +344,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-groups"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:13:22.988Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:13:22.988Z"
             }
           },
           {
@@ -360,15 +367,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-policies"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:13:28.989Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:13:28.989Z"
             }
           },
           {
@@ -382,15 +390,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-policies"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:13:44.695Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:13:44.695Z"
             }
           },
           {
@@ -404,15 +413,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::iam-policies"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:13:56.556Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:13:56.556Z"
             }
           },
           {
@@ -426,15 +436,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::least-privilege"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:14:07.808Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:14:07.808Z"
             }
           },
           {
@@ -448,15 +459,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::least-privilege"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:14:29.919Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:14:29.919Z"
             }
           },
           {

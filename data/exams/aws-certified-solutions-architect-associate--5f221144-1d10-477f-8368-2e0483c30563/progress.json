@@ -4558,7 +4558,7 @@
     },
     {
       "id": "3c961255-81ad-4762-8057-270e380a5f4a",
-      "read": false
+      "read": true
     },
     {
       "id": "b6442afe-98d8-4032-a385-118aced7961d",
@@ -5189,6 +5189,18 @@
       "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
       "date": "2026-10-25T12:04:08.607Z",
       "rating": 4
+    },
+    {
+      "cardId": "b9ede6e3-1000-45e6-a718-fdb88a4c210a",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T12:04:23.637Z",
+      "rating": 4
+    },
+    {
+      "cardId": "df42f9e0-20e6-4b65-bcb2-7b44b6a7e63d",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T12:04:37.179Z",
+      "rating": 4
     }
   ],
   "attempts": [
@@ -5301,6 +5313,24 @@
       "correct": 7,
       "total": 8,
       "quizRequestId": "6ab65694-c255-4b36-998e-b8d0c2bdb4b5"
+    },
+    {
+      "id": "56db1d53-ba10-4721-ab94-5d3717f66ae6",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T12:12:14.677Z",
+      "answers": [
+        1,
+        1,
+        0,
+        2,
+        2,
+        1,
+        1,
+        0
+      ],
+      "correct": 8,
+      "total": 8,
+      "quizRequestId": "8ccef23f-e8b3-4354-8855-f6ab40e864b8"
     }
   ]
 }

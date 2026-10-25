@@ -180,7 +180,7 @@
       "pageStart": 24,
       "pageEnd": 28,
       "text": "[Page 24]\nAWS Identity and Access\nManagement (AWS IAM)\n\n[Page 25]\nIAM: Users & Groups\n• \tIAM = Identity and Access Management, Global service\n• \tRoot account created by default, shouldn’t be used or shared\n• \tUsers are people within your organization, and can be grouped\n• \tGroups only contain users, not other groups\n• \tUsers don’t have to belong to a group, and user can belong to multiple groups\nAlice \tBob \tCharles \tDavid \tEdward\nGroup: Developers \tGroup: Operations\nGroup\nAudit Team\nFred\n\n[Page 26]\nIAM: Permissions\n• \tUsers or Groups \tcan be\nassigned JSON documents\ncalled policies\n• \tThese policies define the\npermissions \tof the users\n• \tIn AWS you apply the \tleast\nprivilege principle: don’t give\nmore permissions than a user\nneeds\n{\n\"Version\": \t\"2012-10-17\",\n\"Statement\": [\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"ec2:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": \t\"elasticloadbalancing:Describe*\",\n\"Resource\": \t\"*\"\n},\n{\n\"Effect\": \t\"Allow\",\n\"Action\": [\n\"cloudwatch:ListMetrics\",\n\"cloudwatch:GetMetricStatistics\",\n\"cloudwatch:Describe*\"\n],\n\"Resource\": \t\"*\"\n}\n]\n}\n\n[Page 27]\nIAM Policies inheritance\nAlice \tBob \tCharles \tDavid \tEdward\nDevelopers \tOperations\nAudit Team\nFred\ninline\n\n[Page 28]\nIAM Policies Structure\n• \tConsists of\n• \tVersion: policy language version, always include “2012-10-\n17”\n• \tId: an identifier for the policy (optional)\n• \tStatement: one or more individual statements (required)\n• \tStatements consists of\n• \tSid: an identifier for the statement (optional)\n• \tEffect: whether the statement allows or denies access\n(Allow, Deny)\n• \tPrincipal: account/user/role to which this policy applied to\n• \tAction: list of actions this policy allows or denies\n• \tResource: list of resources to which the actions applied to\n• \tCondition: conditions for when this policy is in effect\n(optional)",
-      "read": false,
+      "read": true,
       "content": {
         "summary": "## Overview\n\nIAM is the global service that controls who can do what in an AWS account. This section covers the root account, IAM users, groups, JSON policies, least privilege, policy inheritance and the structure of a policy statement. SAA questions routinely ask you to pick the correct principal-to-policy assignment or to identify a malformed or mis-scoped policy statement.\n\n## Core Concepts\n\n- **AWS IAM:** Identity and Access Management — a global service used to manage users, groups and the JSON policies that grant permissions.\n- **Root account:** The account created by default when the AWS account is set up; it should not be used or shared for everyday work.\n- **IAM user:** An identity representing a person within your organization; users can be grouped and can hold policies.\n- **IAM group:** A container for IAM users that makes it easier to assign policies; groups contain only users, not other groups.\n- **IAM policy:** A JSON document assigned to a user or group that defines what actions are allowed or denied.\n- **Least privilege:** The principle of not giving more permissions than a user needs to do the job.\n- **Policy inheritance:** Permissions flow from a group policy to every user in that group, in addition to any policy attached directly to the user.\n- **Inline policy:** A policy attached directly to a single user (as opposed to being attached via a group), shown in the inheritance diagram.\n- **Version element:** The policy language version; it must always include \"2012-10-17\".\n- **Id element:** An optional identifier for the policy as a whole.\n- **Statement:** One or more individual statements inside a policy; the Statement element is required.\n- **Sid:** An optional identifier for an individual statement.\n- **Effect:** Whether the statement allows or denies access — the only values are Allow and Deny.\n- **Principal:** The account, user or role to which the policy applies.\n- **Action:** The list of actions (for example ec2:Describe* or elasticloadbalancing:Describe*) that the policy allows or denies.\n- **Resource:** The list of resources to which the actions apply.\n- **Condition:** Optional conditions that determine when the policy statement is in effect.\n\n## Key Comparisons\n\n- **IAM user vs IAM group:** A user is an identity for a person that can hold policies directly; a group is only a container for users that passes its policies on to them.\n- **Group membership vs direct (inline) user policy:** Group membership grants the group's policies to everyone in the group; an inline policy grants permissions to that one user only.\n- **Required vs optional policy elements:** Version and Statement are required (and each statement needs Effect, Action, Resource); Id, Sid, Principal and Condition are optional in the structure shown.\n- **Effect Allow vs Effect Deny:** Effect states whether the statement allows or denies access; those are the only two values.\n\n## Common Misunderstandings\n\n- ✕ A group can contain another group to nest permissions. — ✅ Groups only contain users, not other groups.\n- ✕ Every IAM user must belong to at least one group. — ✅ Users don't have to belong to a group, and a user can belong to multiple groups.\n- ✕ You can only attach policies to groups; users cannot have their own policies. — ✅ Users or groups can be assigned JSON documents called policies; inline policies can be attached directly to users.\n- ✕ IAM is a regional service, so users must be recreated per Region. — ✅ IAM is a Global service.\n- ✕ The root account is the normal day-to-day admin identity. — ✅ The root account is created by default and shouldn't be used or shared.\n- ✕ The policy Version is optional and can be omitted. — ✅ Version is part of the policy and must always include \"2012-10-17\".\n- ✕ Effect can be any verb such as Permit or Grant. — ✅ Effect is only Allow or Deny.\n\n## Mental Models\n\n- Think of a group as a role in the org chart: give the group the policy once and everyone in it inherits it.\n- Think of a policy as a JSON allow/deny list: Effect says yes or no, Action says what, Resource says on what.\n- Think of least privilege as starting with zero permissions and adding only what the task requires.\n\n## Exceptions & Edge Cases\n\n- Id is optional at the policy level and Sid is optional at the statement level.\n- Principal and Condition are listed with the statement fields but are optional in the structure given.\n- Statement can hold one or more separate statements, and a single Action can be a list of actions.\n- A user with both group-inherited policies and an inline policy receives the union of those permissions.\n- The sample policy uses Resource \"*\" with Describe/List actions — read-style permissions on all resources.\n\n## When to Use Which\n\n- A whole team needs the same permissions → **Create an IAM group, add the users, attach the policy to the group.**\n- One user needs an extra permission nobody else on the team needs → **Attach an inline policy to that user.**\n- You are deciding how much access to grant → **Grant only what the user needs — least privilege.**\n- You are reading or writing a policy document → **Set Version \"2012-10-17\", then in each Statement set Effect (Allow/Deny), Action, Resource and optional Condition.**\n\n## Patterns to Recognize\n\n- Question says the service is global / 'not Region-specific' → **IAM itself is global.**\n- Question asks how to give many people the same permissions → **Put the users in a group and attach the policy to the group.**\n- Question asks which part of a policy says what is permitted → **Effect plus Action plus Resource in a Statement.**\n- Question shows an element with values Allow or Deny → **The Effect element.**\n- Question says 'minimum permissions needed' → **Least privilege principle.**\n\n## Exam Traps\n\n- “A group nested inside another group passes permissions down.” — Groups only contain users, not other groups.\n- “A user's permissions come only from groups.” — A user can also have an inline policy attached directly, and inherits all group policies.\n- “Policies are attached to resources in this model.” — In this section policies are JSON documents assigned to users or groups.\n- “Effect can be 'Permit'.” — Effect is only Allow or Deny.\n- “Sid is a required field.” — Sid is an optional identifier for the statement.\n\n## Beyond the Source (tutor knowledge)\n\n- The SAA-C03 guide's Task 1.1 emphasizes applying best practices to IAM users and root users (for example MFA) and designing flexible authorization that includes IAM roles and policies — roles are absent from this source section but are in scope, so don't assume policies attach only to users and groups.\n- Task 1.1 also lists resource policies for AWS services and federated access / IAM Identity Center; be ready to contrast these with identity policies attached to users and groups.\n- The guide lists cross-account access and role switching (AWS STS) as part of role-based access control, which is the usual architect's answer where this source would suggest users.",
         "keyPoints": [
@@ -669,16 +669,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
             ],
             "schedule": {
-              "due": "2026-10-25T10:24:31.707Z",
-              "stability": 1.2931,
-              "difficulty": 5.11217071,
+              "due": "2026-10-27T12:04:23.637Z",
+              "stability": 2.29815136,
+              "difficulty": 3.4641143,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 1,
+              "scheduled_days": 2,
+              "reps": 2,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 1,
-              "last_review": "2026-10-25T10:18:31.707Z"
+              "state": 2,
+              "last_review": "2026-10-25T12:04:23.637Z"
             }
           },
           {
@@ -692,16 +692,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
             ],
             "schedule": {
-              "due": "2026-10-25T10:28:49.160Z",
-              "stability": 2.3065,
-              "difficulty": 2.11810397,
+              "due": "2026-10-29T12:04:37.179Z",
+              "stability": 3.94605407,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 1,
+              "scheduled_days": 4,
+              "reps": 2,
               "lapses": 0,
-              "learning_steps": 1,
-              "state": 1,
-              "last_review": "2026-10-25T10:18:49.160Z"
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-25T12:04:37.179Z"
             }
           }
         ],

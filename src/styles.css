@@ -3400,12 +3400,13 @@ body.sidebar-collapsed .main-area {
 
 /* Dark theme — flashcard & quiz legibility */
 :root[data-theme='dark'] .flashcard {
-  background: radial-gradient(ellipse at top, #1c261e, #141a16 90%);
-  border-color: #2e3b31;
+  background: radial-gradient(ellipse at top, #2c3a30, #22302a 90%);
+  border-color: #3d4f42;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 :root[data-theme='dark'] .flashcard.revealed {
-  background: #1c261e;
-  border-color: #4c5a50;
+  background: #2c3a30;
+  border-color: #55684f;
 }
 :root[data-theme='dark'] .flashcard-text {
   color: #eef4ef;

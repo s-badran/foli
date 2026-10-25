@@ -17,7 +17,7 @@
       "plan": {
         "examDate": "2027-01-05",
         "dailyMinutes": 60,
-        "createdAt": "2026-10-25T10:14:29.920Z",
+        "createdAt": "2026-10-25T10:18:49.160Z",
         "familiarity": "basic",
         "days": [
           {
@@ -26180,15 +26180,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::policy-inheritance"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:14:41.398Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:14:41.398Z"
             }
           },
           {
@@ -26202,15 +26203,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::policy-inheritance"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-25T10:26:36.393Z",
+              "stability": 2.3065,
+              "difficulty": 2.11810397,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
-              "learning_steps": 0,
-              "state": 0
+              "learning_steps": 1,
+              "state": 1,
+              "last_review": "2026-10-25T10:16:36.393Z"
             }
           },
           {
@@ -26224,15 +26226,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-25T10:22:56.315Z",
+              "stability": 1.2931,
+              "difficulty": 5.11217071,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 1,
+              "last_review": "2026-10-25T10:16:56.315Z"
             }
           },
           {
@@ -26246,15 +26249,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-11-02T10:17:21.348Z",
+              "stability": 8.2956,
+              "difficulty": 1,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 0,
+              "scheduled_days": 8,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 2,
+              "last_review": "2026-10-25T10:17:21.348Z"
             }
           },
           {
@@ -26268,15 +26272,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-25T10:23:35.532Z",
+              "stability": 1.2931,
+              "difficulty": 5.11217071,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 1,
+              "last_review": "2026-10-25T10:17:35.532Z"
             }
           },
           {
@@ -26290,15 +26295,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-25T10:27:52.225Z",
+              "stability": 2.3065,
+              "difficulty": 2.11810397,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
-              "learning_steps": 0,
-              "state": 0
+              "learning_steps": 1,
+              "state": 1,
+              "last_review": "2026-10-25T10:17:52.225Z"
             }
           },
           {
@@ -26312,15 +26318,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-25T10:24:02.445Z",
+              "stability": 1.2931,
+              "difficulty": 5.11217071,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 1,
+              "last_review": "2026-10-25T10:18:02.445Z"
             }
           },
           {
@@ -26334,15 +26341,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-25T10:24:10.967Z",
+              "stability": 1.2931,
+              "difficulty": 5.11217071,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 1,
+              "last_review": "2026-10-25T10:18:10.967Z"
             }
           },
           {
@@ -26356,15 +26364,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-25T10:24:31.707Z",
+              "stability": 1.2931,
+              "difficulty": 5.11217071,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
               "learning_steps": 0,
-              "state": 0
+              "state": 1,
+              "last_review": "2026-10-25T10:18:31.707Z"
             }
           },
           {
@@ -26378,15 +26387,16 @@
               "3c961255-81ad-4762-8057-270e380a5f4a::policy-structure"
             ],
             "schedule": {
-              "due": "2026-10-24T10:24:43.259Z",
-              "stability": 0,
-              "difficulty": 0,
+              "due": "2026-10-25T10:28:49.160Z",
+              "stability": 2.3065,
+              "difficulty": 2.11810397,
               "elapsed_days": 0,
               "scheduled_days": 0,
-              "reps": 0,
+              "reps": 1,
               "lapses": 0,
-              "learning_steps": 0,
-              "state": 0
+              "learning_steps": 1,
+              "state": 1,
+              "last_review": "2026-10-25T10:18:49.160Z"
             }
           }
         ],
@@ -40398,6 +40408,66 @@
       "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
       "date": "2026-10-25T10:14:29.920Z",
       "rating": 4
+    },
+    {
+      "cardId": "084e920f-1723-46cc-b02f-53c125228d17",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:14:41.398Z",
+      "rating": 4
+    },
+    {
+      "cardId": "72fcba90-4b28-45e5-9344-f0e9dcd96fba",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:16:36.393Z",
+      "rating": 3
+    },
+    {
+      "cardId": "d2836d02-acd1-4556-a6d0-e65997d68b30",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:16:56.315Z",
+      "rating": 2
+    },
+    {
+      "cardId": "da74bbcc-648c-4b2c-9144-2627bbc9b7b2",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:17:21.348Z",
+      "rating": 4
+    },
+    {
+      "cardId": "c8158c5c-ec66-48b4-a45f-2eb4488c75a4",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:17:35.533Z",
+      "rating": 2
+    },
+    {
+      "cardId": "5eacc520-0cf1-4fee-afea-6d6edf5cb0e8",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:17:52.225Z",
+      "rating": 3
+    },
+    {
+      "cardId": "8d92c41e-dc6b-4476-8e2a-d0492d2e1831",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:18:02.445Z",
+      "rating": 2
+    },
+    {
+      "cardId": "926a0256-a086-4690-aede-5a8f818be262",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:18:10.967Z",
+      "rating": 2
+    },
+    {
+      "cardId": "b9ede6e3-1000-45e6-a718-fdb88a4c210a",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:18:31.707Z",
+      "rating": 2
+    },
+    {
+      "cardId": "df42f9e0-20e6-4b65-bcb2-7b44b6a7e63d",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T10:18:49.160Z",
+      "rating": 3
     }
   ],
   "chapters": [

@@ -77,6 +77,16 @@ export function StudyView({
   const cards = reviewAll ? (content?.cards ?? []) : dueCards;
   const card = reviewAll ? cards[reviewIndex] : cards[0];
   const attempts = state.attempts.filter((attempt) => attempt.sectionId === section.id);
+  const quizVersion = section.artifacts?.quiz?.requestId;
+  const scoredAttempts = attempts.filter(
+    (attempt) => !quizVersion || attempt.quizRequestId === quizVersion,
+  );
+  const latestAttempt = scoredAttempts.at(-1);
+  const bestScore = scoredAttempts.length
+    ? Math.max(
+        ...scoredAttempts.map((attempt) => Math.round((attempt.correct / attempt.total) * 100)),
+      )
+    : null;
   const hasSummary = !!content?.summary;
   const hasCards = !!content?.cards.length;
   const hasQuiz = !!content?.quiz.length;
@@ -188,6 +198,11 @@ export function StudyView({
         <button
           disabled={!!busy}
           className={`button ${section.read ? 'soft' : 'secondary'}`}
+          title={
+            section.read
+              ? 'Reading bookmark only. Clear it if you have not read this section yet.'
+              : 'Bookmark this section as read. Reading is tracked separately from practice completion.'
+          }
           onClick={() =>
             void run(
               () => api(`/sections/${section.id}`, send({ read: !section.read }, 'PATCH')),
@@ -441,14 +456,18 @@ export function StudyView({
               <span className="eyebrow">Knowledge Check</span>
               <h2>{content.quiz.length} questions. Make it count.</h2>
             </div>
-            {attempts.length > 0 && (
-              <span className="badge">
-                Best{' '}
-                {Math.max(
-                  ...attempts.map((attempt) => Math.round((attempt.correct / attempt.total) * 100)),
-                )}
-                %
-              </span>
+            {latestAttempt && bestScore !== null && (
+              <div className="quiz-scores">
+                <span
+                  className="badge"
+                  title="Most recent attempt on this quiz — section practice uses this one"
+                >
+                  Latest {Math.round((latestAttempt.correct / latestAttempt.total) * 100)}%
+                </span>
+                <span className="badge" title="Highest attempt on this quiz version">
+                  Best {bestScore}%
+                </span>
+              </div>
             )}
           </div>
           {result && (
@@ -494,7 +513,9 @@ export function StudyView({
                         name={`question-${index}`}
                         value={optionIndex}
                         checked={answers[index] === optionIndex}
-                        onChange={() => setAnswers({ ...answers, [index]: optionIndex })}
+                        onChange={() =>
+                          setAnswers((current) => ({ ...current, [index]: optionIndex }))
+                        }
                       />
                       <span className="option-letter">{String.fromCharCode(65 + optionIndex)}</span>
                       <span>{option}</span>
@@ -543,7 +564,9 @@ export function StudyView({
                         name={`question-${quizIndex}`}
                         value={optionIndex}
                         checked={answers[quizIndex] === optionIndex}
-                        onChange={() => setAnswers({ ...answers, [quizIndex]: optionIndex })}
+                        onChange={() =>
+                          setAnswers((current) => ({ ...current, [quizIndex]: optionIndex }))
+                        }
                       />
                       <span className="option-letter">{String.fromCharCode(65 + optionIndex)}</span>
                       <span>{option}</span>

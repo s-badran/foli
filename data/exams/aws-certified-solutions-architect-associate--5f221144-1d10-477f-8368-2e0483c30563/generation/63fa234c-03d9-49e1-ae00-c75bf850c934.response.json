@@ -1,0 +1,87 @@
+{
+  "overview": "IAM is the global service that controls who can do what in an AWS account. This section covers the root account, IAM users, groups, JSON policies, least privilege, policy inheritance and the structure of a policy statement. SAA questions routinely ask you to pick the correct principal-to-policy assignment or to identify a malformed or mis-scoped policy statement.",
+  "coreConcepts": [
+    { "term": "AWS IAM", "definition": "Identity and Access Management — a global service used to manage users, groups and the JSON policies that grant permissions." },
+    { "term": "Root account", "definition": "The account created by default when the AWS account is set up; it should not be used or shared for everyday work." },
+    { "term": "IAM user", "definition": "An identity representing a person within your organization; users can be grouped and can hold policies." },
+    { "term": "IAM group", "definition": "A container for IAM users that makes it easier to assign policies; groups contain only users, not other groups." },
+    { "term": "IAM policy", "definition": "A JSON document assigned to a user or group that defines what actions are allowed or denied." },
+    { "term": "Least privilege", "definition": "The principle of not giving more permissions than a user needs to do the job." },
+    { "term": "Policy inheritance", "definition": "Permissions flow from a group policy to every user in that group, in addition to any policy attached directly to the user." },
+    { "term": "Inline policy", "definition": "A policy attached directly to a single user (as opposed to being attached via a group), shown in the inheritance diagram." },
+    { "term": "Version element", "definition": "The policy language version; it must always include \"2012-10-17\"." },
+    { "term": "Id element", "definition": "An optional identifier for the policy as a whole." },
+    { "term": "Statement", "definition": "One or more individual statements inside a policy; the Statement element is required." },
+    { "term": "Sid", "definition": "An optional identifier for an individual statement." },
+    { "term": "Effect", "definition": "Whether the statement allows or denies access — the only values are Allow and Deny." },
+    { "term": "Principal", "definition": "The account, user or role to which the policy applies." },
+    { "term": "Action", "definition": "The list of actions (for example ec2:Describe* or elasticloadbalancing:Describe*) that the policy allows or denies." },
+    { "term": "Resource", "definition": "The list of resources to which the actions apply." },
+    { "term": "Condition", "definition": "Optional conditions that determine when the policy statement is in effect." }
+  ],
+  "mustRemember": [
+    "IAM is a global service — it is not scoped to a Region.",
+    "The root account is created by default and should not be used or shared.",
+    "Groups contain only users; a group cannot contain another group.",
+    "A user does not have to belong to a group, and a user can belong to multiple groups.",
+    "Users and groups can both be assigned JSON policy documents; policies define the permissions of the users.",
+    "Apply least privilege: never grant more permissions than the user needs.",
+    "Permissions from group policies are inherited by the users in the group, and inline user policies add to them.",
+    "Version must always include \"2012-10-17\".",
+    "In a policy, Id and Statement: Sid, Condition are optional; Statement is required, and each statement has Effect, Action and Resource.",
+    "Effect accepts only Allow or Deny.",
+    "Action and Resource are lists; the example uses wildcards such as ec2:Describe* and Resource \"*\"."
+  ],
+  "keyComparisons": [
+    { "items": "IAM user vs IAM group", "difference": "A user is an identity for a person that can hold policies directly; a group is only a container for users that passes its policies on to them." },
+    { "items": "Group membership vs direct (inline) user policy", "difference": "Group membership grants the group's policies to everyone in the group; an inline policy grants permissions to that one user only." },
+    { "items": "Required vs optional policy elements", "difference": "Version and Statement are required (and each statement needs Effect, Action, Resource); Id, Sid, Principal and Condition are optional in the structure shown." },
+    { "items": "Effect Allow vs Effect Deny", "difference": "Effect states whether the statement allows or denies access; those are the only two values." }
+  ],
+  "commonMisunderstandings": [
+    { "mistake": "A group can contain another group to nest permissions.", "correction": "Groups only contain users, not other groups." },
+    { "mistake": "Every IAM user must belong to at least one group.", "correction": "Users don't have to belong to a group, and a user can belong to multiple groups." },
+    { "mistake": "You can only attach policies to groups; users cannot have their own policies.", "correction": "Users or groups can be assigned JSON documents called policies; inline policies can be attached directly to users." },
+    { "mistake": "IAM is a regional service, so users must be recreated per Region.", "correction": "IAM is a Global service." },
+    { "mistake": "The root account is the normal day-to-day admin identity.", "correction": "The root account is created by default and shouldn't be used or shared." },
+    { "mistake": "The policy Version is optional and can be omitted.", "correction": "Version is part of the policy and must always include \"2012-10-17\"." },
+    { "mistake": "Effect can be any verb such as Permit or Grant.", "correction": "Effect is only Allow or Deny." }
+  ],
+  "mentalModels": [
+    "Think of a group as a role in the org chart: give the group the policy once and everyone in it inherits it.",
+    "Think of a policy as a JSON allow/deny list: Effect says yes or no, Action says what, Resource says on what.",
+    "Think of least privilege as starting with zero permissions and adding only what the task requires."
+  ],
+  "edgeCases": [
+    "Id is optional at the policy level and Sid is optional at the statement level.",
+    "Principal and Condition are listed with the statement fields but are optional in the structure given.",
+    "Statement can hold one or more separate statements, and a single Action can be a list of actions.",
+    "A user with both group-inherited policies and an inline policy receives the union of those permissions.",
+    "The sample policy uses Resource \"*\" with Describe/List actions — read-style permissions on all resources."
+  ],
+  "whenToUse": [
+    { "situation": "A whole team needs the same permissions", "use": "Create an IAM group, add the users, attach the policy to the group." },
+    { "situation": "One user needs an extra permission nobody else on the team needs", "use": "Attach an inline policy to that user." },
+    { "situation": "You are deciding how much access to grant", "use": "Grant only what the user needs — least privilege." },
+    { "situation": "You are reading or writing a policy document", "use": "Set Version \"2012-10-17\", then in each Statement set Effect (Allow/Deny), Action, Resource and optional Condition." }
+  ],
+  "patternsToRecognize": [
+    { "signal": "Question says the service is global / 'not Region-specific'", "indicates": "IAM itself is global." },
+    { "signal": "Question asks how to give many people the same permissions", "indicates": "Put the users in a group and attach the policy to the group." },
+    { "signal": "Question asks which part of a policy says what is permitted", "indicates": "Effect plus Action plus Resource in a Statement." },
+    { "signal": "Question shows an element with values Allow or Deny", "indicates": "The Effect element." },
+    { "signal": "Question says 'minimum permissions needed'", "indicates": "Least privilege principle." }
+  ],
+  "examTraps": [
+    { "trap": "A group nested inside another group passes permissions down.", "correction": "Groups only contain users, not other groups." },
+    { "trap": "A user's permissions come only from groups.", "correction": "A user can also have an inline policy attached directly, and inherits all group policies." },
+    { "trap": "Policies are attached to resources in this model.", "correction": "In this section policies are JSON documents assigned to users or groups." },
+    { "trap": "Effect can be 'Permit'.", "correction": "Effect is only Allow or Deny." },
+    { "trap": "Sid is a required field.", "correction": "Sid is an optional identifier for the statement." }
+  ],
+  "beyondSource": [
+    "The SAA-C03 guide's Task 1.1 emphasizes applying best practices to IAM users and root users (for example MFA) and designing flexible authorization that includes IAM roles and policies — roles are absent from this source section but are in scope, so don't assume policies attach only to users and groups.",
+    "Task 1.1 also lists resource policies for AWS services and federated access / IAM Identity Center; be ready to contrast these with identity policies attached to users and groups.",
+    "The guide lists cross-account access and role switching (AWS STS) as part of role-based access control, which is the usual architect's answer where this source would suggest users."
+  ]
+}

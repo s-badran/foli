@@ -103,6 +103,7 @@ export function Dashboard({
       <div className="chapter-list">
         {matches.map((chapter, index) => {
           const lessons = sections.filter((section) => section.chapterId === chapter.id);
+          const readCount = lessons.filter((section) => section.read).length;
           const preparation = chapterPreparation(chapter, sections, state);
           const chapterAttempts = attempts.filter((attempt) =>
             lessons.some((section) => section.id === attempt.sectionId),
@@ -137,6 +138,7 @@ export function Dashboard({
                   <p>
                     {lessons.length ? `${lessons.length} sections` : 'Sections not generated'}
                     {chapter.pageStart ? ` · pp. ${chapter.pageStart}-${chapter.pageEnd}` : ''}
+                    {readCount ? ` · ${readCount}/${lessons.length} read` : ''}
                     {dates?.length
                       ? ` · ${displayDate(dates[0])}${dates.length > 1 ? ` to ${displayDate(dates.at(-1)!)}` : ''}`
                       : ''}
@@ -185,8 +187,13 @@ export function Dashboard({
                 </div>
               )}
               {lessons.map((section) => {
+                const version = section.artifacts?.quiz?.requestId;
                 const latest = attempts
-                  .filter((attempt) => attempt.sectionId === section.id)
+                  .filter(
+                    (attempt) =>
+                      attempt.sectionId === section.id &&
+                      (!version || attempt.quizRequestId === version),
+                  )
                   .at(-1);
                 const reviewed =
                   section.content?.cards.filter((card) => card.schedule.reps > 0).length ?? 0;
@@ -213,6 +220,7 @@ export function Dashboard({
                     <div>
                       <strong>
                         {sectionNumber(state, section)} · {section.title}
+                        {section.read ? <span className="badge read-tag">Read</span> : null}
                       </strong>
                       {section.keyTopics?.length ? (
                         <span className="lesson-topics">{section.keyTopics.join(' · ')}</span>

@@ -4550,11 +4550,11 @@
     },
     {
       "id": "c7e61f4d-d3f8-44ee-bfbb-c9978687f202",
-      "read": false
+      "read": true
     },
     {
       "id": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
-      "read": false
+      "read": true
     },
     {
       "id": "3c961255-81ad-4762-8057-270e380a5f4a",
@@ -5135,6 +5135,60 @@
       "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
       "date": "2026-10-25T10:18:49.160Z",
       "rating": 3
+    },
+    {
+      "cardId": "b004fd32-84a0-4f61-9526-b0eca0235839",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T11:38:59.314Z",
+      "rating": 2
+    },
+    {
+      "cardId": "29a98c4e-0519-4d0e-ae97-efa125f63def",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T11:41:29.092Z",
+      "rating": 3
+    },
+    {
+      "cardId": "b004fd32-84a0-4f61-9526-b0eca0235839",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T11:46:01.146Z",
+      "rating": 3
+    },
+    {
+      "cardId": "72fcba90-4b28-45e5-9344-f0e9dcd96fba",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T12:02:50.100Z",
+      "rating": 4
+    },
+    {
+      "cardId": "d2836d02-acd1-4556-a6d0-e65997d68b30",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T12:03:04.142Z",
+      "rating": 4
+    },
+    {
+      "cardId": "c8158c5c-ec66-48b4-a45f-2eb4488c75a4",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T12:03:38.681Z",
+      "rating": 3
+    },
+    {
+      "cardId": "5eacc520-0cf1-4fee-afea-6d6edf5cb0e8",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T12:03:49.257Z",
+      "rating": 4
+    },
+    {
+      "cardId": "8d92c41e-dc6b-4476-8e2a-d0492d2e1831",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T12:03:58.314Z",
+      "rating": 4
+    },
+    {
+      "cardId": "926a0256-a086-4690-aede-5a8f818be262",
+      "sectionId": "3c961255-81ad-4762-8057-270e380a5f4a",
+      "date": "2026-10-25T12:04:08.607Z",
+      "rating": 4
     }
   ],
   "attempts": [
@@ -5177,6 +5231,74 @@
         2
       ],
       "correct": 8,
+      "total": 8,
+      "quizRequestId": "6ab65694-c255-4b36-998e-b8d0c2bdb4b5"
+    },
+    {
+      "id": "bd144c0b-d236-42ac-80a5-d1e9180c858d",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T11:31:50.491Z",
+      "answers": [
+        1,
+        0,
+        0,
+        1,
+        2,
+        1,
+        2,
+        2
+      ],
+      "correct": 7,
+      "total": 8,
+      "quizRequestId": "6ab65694-c255-4b36-998e-b8d0c2bdb4b5"
+    },
+    {
+      "id": "0926f952-e865-4ca1-8356-aecb91eb00b2",
+      "sectionId": "c7e61f4d-d3f8-44ee-bfbb-c9978687f202",
+      "date": "2026-10-25T11:33:02.046Z",
+      "answers": [
+        0,
+        1,
+        2,
+        0
+      ],
+      "correct": 4,
+      "total": 4,
+      "quizRequestId": "f9f42fb9-9ef8-4f85-91f0-8f9e2aee4f15"
+    },
+    {
+      "id": "6e1c09cf-ff37-4c74-9be3-0bb6a6a59ce9",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T11:48:08.573Z",
+      "answers": [
+        1,
+        0,
+        0,
+        1,
+        2,
+        1,
+        2,
+        2
+      ],
+      "correct": 7,
+      "total": 8,
+      "quizRequestId": "6ab65694-c255-4b36-998e-b8d0c2bdb4b5"
+    },
+    {
+      "id": "e86b6d64-5f9e-4eb5-9008-355fabf4bd1d",
+      "sectionId": "8ffd8b43-b876-44a8-818a-baa82a696e3b",
+      "date": "2026-10-25T11:48:58.415Z",
+      "answers": [
+        1,
+        0,
+        0,
+        1,
+        2,
+        1,
+        2,
+        2
+      ],
+      "correct": 7,
       "total": 8,
       "quizRequestId": "6ab65694-c255-4b36-998e-b8d0c2bdb4b5"
     }

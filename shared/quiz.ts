@@ -9,6 +9,7 @@
 
 export interface ShuffleSource {
   options: string[];
+  correctIndex: number;
 }
 
 function permutation(length: number): number[] {
@@ -31,7 +32,9 @@ function sameOrder(left: number[], right: number[]): boolean {
 /**
  * One display order per question, e.g. `[[2, 0, 3, 1], [1, 0]]`.
  * A retry is guaranteed to differ from its previous order for every question
- * with at least two options, so answers never sit in the same slots twice.
+ * with at least two options, and the correct option is moved to a new display
+ * slot when it would otherwise land in the same place. That keeps position
+ * memory ("the answer is always C") from inflating a retry score.
  */
 export function shuffleQuizOptions(
   quiz: ShuffleSource[],
@@ -41,9 +44,18 @@ export function shuffleQuizOptions(
   return quiz.map((question, questionIndex) => {
     const base = permutation(question.options.length);
     if (base.length < 2) return base;
+    const prior = previous?.[questionIndex];
     const order = shuffled(base, random);
-    if (previous?.[questionIndex] && sameOrder(order, previous[questionIndex])) {
+    if (prior && sameOrder(order, prior)) {
       [order[0], order[1]] = [order[1], order[0]];
+    }
+    const correct = question.correctIndex;
+    if (prior && prior.length === order.length && correct >= 0 && correct < order.length) {
+      const slot = order.indexOf(correct);
+      if (slot === prior.indexOf(correct)) {
+        const swap = (slot + 1) % order.length;
+        [order[slot], order[swap]] = [order[swap], order[slot]];
+      }
     }
     return order;
   });

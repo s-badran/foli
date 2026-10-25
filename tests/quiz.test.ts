@@ -2,9 +2,9 @@ import { describe, expect, it } from 'vitest';
 import { shuffleQuizOptions } from '../shared/quiz';
 
 const quiz = [
-  { options: ['A', 'B', 'C', 'D'] },
-  { options: ['A', 'B'] },
-  { options: ['only one'] },
+  { options: ['A', 'B', 'C', 'D'], correctIndex: 1 },
+  { options: ['A', 'B'], correctIndex: 0 },
+  { options: ['only one'], correctIndex: 0 },
 ];
 
 describe('shuffleQuizOptions', () => {
@@ -25,6 +25,20 @@ describe('shuffleQuizOptions', () => {
     expect(second[0]).not.toEqual(first[0]);
     expect(second[1]).not.toEqual(first[1]);
     expect(second[2]).toEqual([0]);
+  });
+
+  it('moves the correct answer to a different slot on every retry', () => {
+    let previous = shuffleQuizOptions(quiz);
+    for (let run = 0; run < 40; run += 1) {
+      const next = shuffleQuizOptions(quiz, previous);
+      expect(next[0].indexOf(quiz[0].correctIndex)).not.toBe(
+        previous[0].indexOf(quiz[0].correctIndex),
+      );
+      expect(next[1].indexOf(quiz[1].correctIndex)).not.toBe(
+        previous[1].indexOf(quiz[1].correctIndex),
+      );
+      previous = next;
+    }
   });
 
   it('handles missing quiz content', () => {

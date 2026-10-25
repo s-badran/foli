@@ -91,7 +91,11 @@ export function App() {
   const [notice, setNotice] = useState('');
   const [search, setSearch] = useState('');
   const [mobile, setMobile] = useState(false);
-  const [theme, setTheme] = useState(() => localStorage.getItem('folio-theme') ?? 'light');
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('folio-theme');
+    if (saved) return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
   const [sidebarCollapsed, setSidebarCollapsed] = useState(
     () => localStorage.getItem('folio-sidebar') === '1',
   );
@@ -284,6 +288,15 @@ export function App() {
           </a>
         </div>
       </aside>
+      <button
+        className="icon-button sidebar-toggle"
+        title={sidebarCollapsed ? 'Show navigation' : 'Hide navigation'}
+        aria-label={sidebarCollapsed ? 'Show navigation' : 'Hide navigation'}
+        aria-pressed={sidebarCollapsed}
+        onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+      >
+        <Menu size={20} />
+      </button>
       <main className="main-area">
         <header className="topbar">
           <div className="breadcrumbs">
@@ -292,15 +305,6 @@ export function App() {
               title="Open navigation"
               aria-label="Open navigation"
               onClick={() => setMobile(true)}
-            >
-              <Menu size={20} />
-            </button>
-            <button
-              className="icon-button sidebar-toggle"
-              title={sidebarCollapsed ? 'Show navigation' : 'Hide navigation'}
-              aria-label={sidebarCollapsed ? 'Show navigation' : 'Hide navigation'}
-              aria-pressed={sidebarCollapsed}
-              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
             >
               <Menu size={20} />
             </button>

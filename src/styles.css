@@ -3105,10 +3105,20 @@ a:focus-visible {
   transition: transform 0.25s ease;
 }
 .sidebar-toggle {
-  display: inline-flex;
+  position: fixed;
+  top: 20px;
+  left: 202px;
+  z-index: 40;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  transition: left 0.25s ease;
 }
 body.sidebar-collapsed .sidebar {
   transform: translateX(-100%);
+}
+body.sidebar-collapsed .sidebar-toggle {
+  left: 14px;
 }
 body.sidebar-collapsed .main-area {
   margin-left: 0;

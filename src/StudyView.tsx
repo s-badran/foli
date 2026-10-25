@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Markdown from 'react-markdown';
 import {
   ArrowLeft,
@@ -20,6 +20,7 @@ import { Empty, SourceIcon, useNow } from './components';
 import { sectionPractice } from '../shared/learning';
 import { renderSummary } from '../shared/artifacts';
 import { sectionNumber } from '../shared/sections';
+import { shuffleQuizOptions } from '../shared/quiz';
 import { latestRequest, RequestStatus } from './Generation';
 
 export type RunTask = (
@@ -58,7 +59,17 @@ export function StudyView({
   const [result, setResult] = useState<QuizAttempt | null>(null);
   const [reviewAll, setReviewAll] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
+  const [optionOrders, setOptionOrders] = useState<number[][]>(() =>
+    shuffleQuizOptions(section.content?.quiz ?? []),
+  );
+  const optionVersion = useRef<string | undefined>(section.artifacts?.quiz?.requestId);
   const [promptVersions, setPromptVersions] = useState<Record<string, number>>({});
+  useEffect(() => {
+    const version = section.artifacts?.quiz?.requestId;
+    if (optionVersion.current === version) return;
+    optionVersion.current = version;
+    setOptionOrders(shuffleQuizOptions(section.content?.quiz ?? []));
+  }, [section.artifacts?.quiz?.requestId, section.content?.quiz]);
   useEffect(() => {
     let active = true;
     void api<{ id: string; version: number }[]>('/prompts').then((data) => {
@@ -69,6 +80,8 @@ export function StudyView({
     };
   }, []);
   const content = section.content;
+  const optionOrder = (index: number) =>
+    optionOrders[index] ?? content?.quiz[index]?.options.map((_, position) => position) ?? [];
   const preparation = sectionPractice(section, state);
   const dueCards =
     content?.cards.filter(
@@ -455,6 +468,7 @@ export function StudyView({
             <div>
               <span className="eyebrow">Knowledge Check</span>
               <h2>{content.quiz.length} questions. Make it count.</h2>
+              <span className="muted">Answer options are reshuffled on every attempt.</span>
             </div>
             {latestAttempt && bestScore !== null && (
               <div className="quiz-scores">
@@ -489,6 +503,7 @@ export function StudyView({
                   setResult(null);
                   setAnswers({});
                   setQuizIndex(0);
+                  setOptionOrders(shuffleQuizOptions(content.quiz, optionOrders));
                 }}
               >
                 <RotateCcw size={15} /> Try again
@@ -503,7 +518,7 @@ export function StudyView({
                   {question.question}
                 </legend>
                 <div className="quiz-options">
-                  {question.options.map((option, optionIndex) => (
+                  {optionOrder(index).map((optionIndex, displayIndex) => (
                     <label
                       key={optionIndex}
                       className={`quiz-option ${answers[index] === optionIndex ? 'selected' : ''} ${optionIndex === question.correctIndex ? 'correct' : ''} ${answers[index] === optionIndex && optionIndex !== question.correctIndex ? 'incorrect' : ''}`}
@@ -517,8 +532,8 @@ export function StudyView({
                           setAnswers((current) => ({ ...current, [index]: optionIndex }))
                         }
                       />
-                      <span className="option-letter">{String.fromCharCode(65 + optionIndex)}</span>
-                      <span>{option}</span>
+                      <span className="option-letter">{String.fromCharCode(65 + displayIndex)}</span>
+                      <span>{question.options[optionIndex]}</span>
                       {optionIndex === question.correctIndex && <Check size={16} />}
                     </label>
                   ))}
@@ -554,7 +569,7 @@ export function StudyView({
                   {content.quiz[quizIndex].question}
                 </legend>
                 <div className="quiz-options">
-                  {content.quiz[quizIndex].options.map((option, optionIndex) => (
+                  {optionOrder(quizIndex).map((optionIndex, displayIndex) => (
                     <label
                       key={optionIndex}
                       className={`quiz-option ${answers[quizIndex] === optionIndex ? 'selected' : ''}`}
@@ -568,8 +583,8 @@ export function StudyView({
                           setAnswers((current) => ({ ...current, [quizIndex]: optionIndex }))
                         }
                       />
-                      <span className="option-letter">{String.fromCharCode(65 + optionIndex)}</span>
-                      <span>{option}</span>
+                      <span className="option-letter">{String.fromCharCode(65 + displayIndex)}</span>
+                      <span>{content.quiz[quizIndex].options[optionIndex]}</span>
                     </label>
                   ))}
                 </div>

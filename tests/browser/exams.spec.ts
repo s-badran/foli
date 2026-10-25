@@ -128,9 +128,21 @@ test.describe.serial('prompt-driven exam workflow', () => {
     await page.getByRole('tab', { name: /Quiz/ }).click();
     await respond(page.request, 'quiz', quiz);
     await check(page);
+    const displayOrder = () =>
+      page
+        .locator('.quiz-question input[type=radio]')
+        .evaluateAll((inputs) => inputs.map((input) => (input as HTMLInputElement).value));
+    const choose = async (optionText: string) => {
+      const value = await page
+        .locator('.quiz-question label')
+        .filter({ hasText: optionText })
+        .locator('input')
+        .getAttribute('value');
+      await page.locator(`.quiz-question input[value="${value}"]`).check();
+    };
+    const firstOrder = await displayOrder();
     for (let index = 0; index < quiz.questions.length; index++) {
-      const question = page.locator('.quiz-question');
-      await question.getByRole('radio').nth(quiz.questions[index].correctIndex).check();
+      await choose(quiz.questions[index].options[quiz.questions[index].correctIndex]);
       if (index < quiz.questions.length - 1)
         await page.getByRole('button', { name: 'Next', exact: true }).click();
     }
@@ -139,9 +151,9 @@ test.describe.serial('prompt-driven exam workflow', () => {
     await expect(page.locator('.quiz-scores')).toContainText('Latest 100%');
     await expect(page.locator('.quiz-scores')).toContainText('Best 100%');
     await page.getByRole('button', { name: 'Try again' }).click();
+    expect(await displayOrder()).not.toEqual(firstOrder);
     for (let index = 0; index < quiz.questions.length; index++) {
-      const question = page.locator('.quiz-question');
-      await question.getByRole('radio').nth((quiz.questions[index].correctIndex + 1) % 4).check();
+      await choose(quiz.questions[index].options[(quiz.questions[index].correctIndex + 1) % 4]);
       if (index < quiz.questions.length - 1)
         await page.getByRole('button', { name: 'Next', exact: true }).click();
     }

@@ -803,16 +803,16 @@
               "8ffd8b43-b876-44a8-818a-baa82a696e3b::global-vs-region-scoped-services"
             ],
             "schedule": {
-              "due": "2026-10-25T11:51:29.092Z",
+              "due": "2026-10-28T15:39:22.211Z",
               "stability": 3.24941173,
-              "difficulty": 6.72894743,
+              "difficulty": 6.71744685,
               "elapsed_days": 0,
-              "scheduled_days": 0,
-              "reps": 3,
+              "scheduled_days": 3,
+              "reps": 4,
               "lapses": 0,
-              "learning_steps": 1,
-              "state": 1,
-              "last_review": "2026-10-25T11:41:29.092Z"
+              "learning_steps": 0,
+              "state": 2,
+              "last_review": "2026-10-25T15:39:22.211Z"
             }
           },
           {

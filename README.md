@@ -2,7 +2,7 @@
 
 Local, single-user **exam preparation**. One workspace per exam, one main source defining the chapter roadmap, and related supplementary sources in the same exam directory.
 
-**Prompt-driven, tutor-in-the-loop.** Study materials are produced by versioned prompts (outline, sections, summary, flashcards, quiz) stored in the repository. There is no live model call: the app queues a request, writes the fully rendered prompt to disk, and you (or a future provider integration) answer by writing a response file, which the app validates against a strict schema and applies. Prompt quality is the product, so prompts are first-class files you revise without touching code.
+**Prompt-driven, tutor-in-the-loop.** Study materials are produced by versioned prompts (outline, sections, summary, flashcards, quiz) stored in the repository. Generation is request/response: the app queues a request and writes the fully rendered prompt to disk; a configured model (`pnpm tutor run` or the UI) or a person writes the response file, which the app validates against a strict schema before applying it. Prompt quality is the product, so prompts are first-class files you revise without touching code.
 
 ## Run
 
@@ -48,7 +48,7 @@ Each section shows its key topics, source pages, and which cards/quiz questions 
 
 1. The app queues a generation request (outline, sections, summary, flashcards or quiz). A single request targets one artifact for one chapter or section - never "everything at once".
 2. The rendered prompt (system + task + the exact JSON schema + source pages + exam brief) is written to `data/exams/<id>/generation/<requestId>.prompt.md`.
-3. You answer as the model by writing `.../<requestId>.response.json`, then run `pnpm tutor ingest` (or click **Check** in the UI).
+3. Answer it with `pnpm tutor run` (or **Generate/Regenerate** in the UI, which uses the same pipeline), or write `.../<requestId>.response.json` yourself and run `pnpm tutor ingest` (or click **Check**).
 4. The response is validated against the schema plus topic-coverage and range checks. Invalid responses are rejected with the problems listed; valid responses are applied, superseding previous pending requests for the same target.
 
 ```sh
@@ -100,7 +100,7 @@ Saving a changed familiarity **automatically rebuilds an existing plan** without
 
 Role and goal are saved context only. Changing student/professional/career changer does not change the plan or questions, and does not imply prior subject knowledge. They are injected into generation prompts as context only.
 
-**Exam settings** saves the baseline and an editable exam tutor brief to the exam directory. Changing the brief does not silently rewrite existing lessons. It is stored for tutor work and later prompt integration. A main-source change still requires an explicit new dated plan, while a familiarity change automatically replans the existing one.
+**Exam settings** saves the baseline and an editable exam tutor brief to the exam directory. Changing the brief does not silently rewrite existing lessons; it is injected into generation prompts as context. A main-source change still requires an explicit new dated plan, while a familiarity change automatically replans the existing one.
 
 The baseline wording is grounded in RemNote's public [Guided Learn Mode article](https://help.remnote.com/en/articles/15724936-guided-learn-mode). It documents “how well do you know this content?” with “Haven't learned it yet,” “I have a basic understanding,” and “Know it well and just want to review.” It says priority changes, not the underlying facts/cards. Exact role-onboarding wording could not be verified; the role labels here are Folio's own.
 
@@ -146,7 +146,7 @@ PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm exec playwright install chrom
 PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e
 ```
 
-`pnpm check` runs lint, strict types, **48 unit/API tests** and a production build. **Five Chromium workflows** cover the prompt pipeline end to end with isolated test data. See [verification](docs/VERIFICATION.md) and [RemNote analysis](docs/remnote-analysis.md).
+`pnpm check` runs lint, strict types, **89 unit/API tests** and a production build. **Six Chromium workflows** cover the prompt pipeline end to end with isolated test data. See [verification](docs/VERIFICATION.md) and [RemNote analysis](docs/remnote-analysis.md).
 
 ## Structure And Limits
 
@@ -167,7 +167,9 @@ See [architecture and API contracts](docs/ARCHITECTURE.md) and [implementation h
 
 This remains a local single-user MVP: no accounts, public hosting controls, cloud sync, OCR, robust arbitrary-book topic extraction, diagnostic item calibration or multi-user transactions. Generation is request/response via files; a response can be written by `pnpm tutor run` (DeepSeek, OpenAI-compatible or Ollama) or by a human, and both paths share the same validation. PDF uploads are limited to 60 MB each and 12 files per request. Dates use UTC days. Fonts are optional external downloads with local fallback.
 
-Git commits are local development milestones. The user has configured the remote; **never push without explicit permission**.
+## Contributing
+
+Feedback and focused fixes are welcome. [CONTRIBUTING.md](CONTRIBUTING.md) covers setup, quality gates and pull request expectations. Contributions are accepted under the project license and the [Contributor License Agreement](CLA.md).
 
 ## License
 

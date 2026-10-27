@@ -2,11 +2,11 @@
 
 ## Final Gates
 
-- `pnpm check`: lint, strict TypeScript, 48 unit/API tests and production build pass.
-- `PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e`: five passing Chromium workflows using isolated `.cache/e2e-data`.
+- `pnpm check`: lint, strict TypeScript, 89 unit/API tests and production build pass.
+- `PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e`: six passing Chromium workflows using isolated `.cache/e2e-data`.
 - `pnpm tutor pending` / `pnpm tutor ingest` exercise the request/response pipeline end to end.
 - Desktop chapter screenshot inspected at 1440 x 1000; mobile chapter plan at 390 x 844. Mobile plan/progress overflow assertions pass.
-- No AI-provider call, authentication or subscription usage was performed; generation is answered out-of-band via response files.
+- Provider calls are opt-in and credential-gated; the automated suites use a mock provider and need no account, subscription or real key.
 - Development app remains at http://127.0.0.1:5173/ with the API on port 43126.
 
 ## Real AWS Migration
@@ -53,10 +53,9 @@ Public source checked: [Guided Learn Mode](https://help.remnote.com/en/articles/
 - Vocabulary overlap is not semantic relevance or contradiction detection. Short or multilingual files need manual judgment.
 - The tutor-authored pack is original foundational practice, not a professionally certified or exhaustive exam question bank. Chapter ranges are verified; every sentence is not independently source-checked.
 - Arbitrary new exams receive a source outline, not invented tutor lessons. Replacing the main source invalidates the plan and starts a new active curriculum; history remains archived.
-- Learner role/goal and the brief are saved context. The brief is injected into generation prompts; nothing executes automatically, and responses are validated before application.
+- Learner role/goal and the brief are saved context. The brief is injected into generation prompts; generation runs only when triggered from the UI or CLI, and responses are validated before application.
 - Single-process per-exam writes are not a full transactional database; projection/index updates can be interrupted. Complete backups remain necessary.
 - Current harmless Zod/Rollup annotation notices do not fail the production build.
-- No push was performed. The user-configured remote remains unchanged.
 
 ## Screenshot Artifacts
 

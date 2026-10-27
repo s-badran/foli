@@ -39,7 +39,7 @@ The active index is `data/exams/index.json`. If absent, the store reads the lega
 3. Chapter sections and their key-topic inventory, flashcards and quizzes are produced by the prompt pipeline, not by fixed quotas or code. The AWS example has chapters 1-2 generated as a worked example; the rest generate on request.
 4. Generic Markdown groups H2/H3 sections under their H1 chapter. Other sources use explicit Chapter/Domain/Part boundaries when present. An unreliable outline is labelled provisional; arbitrary exam questions are not fabricated.
 5. Main-source changes require explicit confirmation. Active lessons are archived, chapter records are replaced and the dated plan is invalidated. Historical records are retained.
-6. Generation is request/response via files. The app never calls a model; it writes the rendered prompt and you (or a future provider integration) write the response file, which is validated before application.
+6. Generation is request/response via files. A request writes the rendered prompt; the response is written by `pnpm tutor run` (any configured model) or by hand, and is validated before application.
 
 `server/tutor.ts` renders versioned prompts from `prompts/*.md`, queues requests and validates/applies responses. Raw model output is normalized per artifact kind (`shared/normalize.ts`) before schema validation, so a provider only has to speak its own API — not Folio's exact JSON shape. `shared/artifacts.ts` owns the schemas and coverage/quality checks. `server/curriculum.ts` produces the provisional outline. `shared/learning.ts` operates only on key-topic coverage and assessment evidence; exam-specific content never appears in preparation thresholds or baseline policies. Section labels like `3.2` are derived in `shared/sections.ts`.
 
@@ -96,4 +96,4 @@ Generation requests are one artifact per request (outline, sections, summary, fl
 
 ## Deliberate Limits
 
-Localhost only, no auth/profiles, no OCR, no external file paths, no public deployment, no automatic semantic chapter generation for arbitrary textbooks, no cross-process transactions. Model calls are opt-in (`pnpm tutor run`, one request at a time) rather than a background queue. These remain explicit future phases rather than simulated features.
+Localhost only, no auth/profiles, no OCR, no external file paths, no public deployment, no automatic semantic chapter generation for arbitrary textbooks, no cross-process transactions. Model calls are opt-in per request (`pnpm tutor run` or the UI's generate/regenerate action) rather than a background queue. These remain explicit future phases rather than simulated features.

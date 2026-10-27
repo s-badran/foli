@@ -7,13 +7,13 @@
 - ✅ Base chapter preparation on audited coverage and demonstrated practice, never reading ticks. Mark the other 27 chapter inventories as drafts rather than claiming exhaustive coverage.
 - ✅ Make baseline workflow/time policies explicit, automatically replan on familiarity changes and practice evidence, and make the target date affect spacing. Leave role/goal contextual rather than inferring knowledge from occupation.
 - ✅ Upgrade the real workspace idempotently, preserve old practice in the archive and retain its saved learner baseline and date.
-- ✅ Final regression run, methodology documentation and local commit. No push authorized.
+- ✅ Final regression run, methodology documentation and local commit.
 
 Remaining content work: source-audit the other 27 chapter inventories and add missing objectives/assessments. This is authored coverage work, not evidence that the generic completion rule needs an AWS-specific exception.
 
 ## Exam Workspace Revision
 
-The original single-PDF extraction demo is superseded by the exam-scoped revision requested on 2026-10-23. AI-provider integration is paused; no runtime model calls are made by the current application routes.
+The original single-PDF extraction demo is superseded by the exam-scoped revision requested on 2026-10-23. AI-provider access is implemented behind `server/ai/model.ts`; model calls are opt-in per request, and offline request/response files remain supported.
 
 - ✅ Directory-owned exam state, source copies, prompts, chapter packs, plans and progress; legacy records preserved.
 - ✅ Main-source selection controls the chapter outline. Source changes require confirmation and archive previous curriculum/progress.
@@ -21,7 +21,7 @@ The original single-PDF extraction demo is superseded by the exam-scoped revisio
 - ✅ Verified AWS slide-divider map: 28 chapters, 56 original tutor lessons, 112 conceptual cards and 56 scenario questions. No cloze fillers.
 - ✅ Linked workspace index, upload-created workspaces, learner baseline/role/goal and saved exam brief.
 - ✅ Chapter-first plan/progress UI, familiarity-aware priorities and time budgets, mobile browser verification.
-- ✅ Final handover docs and local stage commits. Remote is configured by the user; never push without explicit permission.
+- ✅ Final handover docs and local stage commits.
 
 The sections below retain the original build record for history. Current behavior and limitations are described in the revised README and exam architecture document.
 

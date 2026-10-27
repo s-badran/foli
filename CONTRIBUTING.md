@@ -43,7 +43,8 @@ Add or update tests for behaviour changes. Check UI changes at desktop and mobil
 
 ## Data, secrets and licensing
 
-- Never commit `.env` files, API keys, source PDFs or personal exam material. `.gitignore` already excludes them.
+- Never commit `.env` files, API keys, source PDFs or personal exam material. `.gitignore` already excludes them; use the committed `.env.example` as the template.
+- Force-added `.env` files are encrypted by git-crypt via `.gitattributes`. Keep that filter in place and export the key (`git-crypt export-key <secure-path>`) before committing any encrypted file; without the key the file cannot be recovered.
 - Do not submit third-party course content or exam dumps.
 - Report security issues privately through GitHub Security Advisories, not in a public issue.
 

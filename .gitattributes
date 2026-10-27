@@ -1,0 +1,7 @@
+# Never store env secrets as plaintext blobs, even if one is force-added.
+# The working-tree file stays readable; git blobs are encrypted by git-crypt.
+.env filter=git-crypt diff=git-crypt
+.env.* filter=git-crypt diff=git-crypt
+
+# The committed template is intentionally plaintext.
+.env.example !filter !diff

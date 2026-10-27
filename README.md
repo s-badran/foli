@@ -10,6 +10,7 @@ Requires Node.js 24+ and pnpm:
 
 ```sh
 pnpm install
+cp .env.example .env   # optional: add provider keys
 pnpm dev
 ```
 
@@ -69,7 +70,7 @@ const model = AiModel.create(); // FOLIO_AI_MODEL, else deepseek-chat
 const text = await model.complete({ prompt });
 ```
 
-Keys live in `.env` (gitignored) and are read only by the server process; `GET /api/models` reports which providers are configured without exposing any secret.
+Keys live in `.env` (gitignored) and are read only by the server process; `GET /api/models` reports which providers are configured without exposing any secret. Start from the committed `.env.example`. If a `.env` file is ever force-added, `.gitattributes` routes it through git-crypt so the stored blob is encrypted; export and store the key (`git-crypt export-key <secure-path>`) before committing any encrypted file, or it cannot be recovered.
 
 | Setting            | Purpose                                                              |
 | ------------------ | -------------------------------------------------------------------- |

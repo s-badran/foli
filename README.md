@@ -165,9 +165,15 @@ See [architecture and API contracts](docs/ARCHITECTURE.md) and [implementation h
 - `src/Generation.tsx`: generate/check controls, request status and prompt library.
 - `src/StudyView.tsx`: lesson summaries, cards, quiz feedback and source reader.
 
-This remains a local single-user MVP: no accounts, public hosting controls, cloud sync, OCR, robust arbitrary-book topic extraction, diagnostic item calibration or multi-user transactions. Generation is request/response via files, with no live provider call yet. PDF uploads are limited to 60 MB each and 12 files per request. Dates use UTC days. Fonts are optional external downloads with local fallback.
+This remains a local single-user MVP: no accounts, public hosting controls, cloud sync, OCR, robust arbitrary-book topic extraction, diagnostic item calibration or multi-user transactions. Generation is request/response via files; a response can be written by `pnpm tutor run` (DeepSeek, OpenAI-compatible or Ollama) or by a human, and both paths share the same validation. PDF uploads are limited to 60 MB each and 12 files per request. Dates use UTC days. Fonts are optional external downloads with local fallback.
 
 Git commits are local development milestones. The user has configured the remote; **never push without explicit permission**.
+
+## License
+
+Folio is released under the [GNU Affero General Public License v3.0](LICENSE) (`AGPL-3.0-only`).
+
+You may run, study, modify and share it. If you run a modified version as a network service, you must offer the corresponding source under the same license. For different commercial terms, contact the author via [GitHub](https://github.com/s-badran).
 
 ## Next Steps
 

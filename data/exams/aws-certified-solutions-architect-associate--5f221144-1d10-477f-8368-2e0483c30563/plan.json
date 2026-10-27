@@ -1,15 +1,15 @@
 {
   "examDate": "2027-01-05",
   "dailyMinutes": 60,
-  "createdAt": "2026-10-25T15:39:22.212Z",
+  "createdAt": "2026-10-25T21:53:00.852Z",
   "familiarity": "basic",
   "days": [
     {
       "date": "2026-10-25",
       "sectionIds": [
-        "8ffd8b43-b876-44a8-818a-baa82a696e3b",
         "b6442afe-98d8-4032-a385-118aced7961d",
-        "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138"
+        "eb25dd1c-4152-4cb3-85cb-ff1d4f1fb138",
+        "c4e16720-595d-46c6-a53c-3142fa56a845"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 45
@@ -17,8 +17,8 @@
     {
       "date": "2026-10-26",
       "sectionIds": [
-        "c4e16720-595d-46c6-a53c-3142fa56a845",
-        "42b79261-6e53-4757-a0fb-e636fc5a8576"
+        "42b79261-6e53-4757-a0fb-e636fc5a8576",
+        "cdd97b84-b9db-4ee6-bba8-15de32be5e76"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -26,8 +26,8 @@
     {
       "date": "2026-10-27",
       "sectionIds": [
-        "cdd97b84-b9db-4ee6-bba8-15de32be5e76",
-        "bec0fb5a-5643-4c7f-b86f-b4b35d9e47d7"
+        "bec0fb5a-5643-4c7f-b86f-b4b35d9e47d7",
+        "83c28431-4feb-4df1-8600-56639c24f6f3"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -35,8 +35,8 @@
     {
       "date": "2026-10-28",
       "sectionIds": [
-        "83c28431-4feb-4df1-8600-56639c24f6f3",
-        "63ab6513-1d6b-4177-bcbe-71b34242de22"
+        "63ab6513-1d6b-4177-bcbe-71b34242de22",
+        "a636c89b-6856-4d4b-9e9e-f1f76cef1f19"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -44,8 +44,8 @@
     {
       "date": "2026-10-29",
       "sectionIds": [
-        "a636c89b-6856-4d4b-9e9e-f1f76cef1f19",
-        "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32"
+        "6c1e3ac0-46c8-42f2-b62e-7038d6a0da32",
+        "11e68d60-a3e8-4910-926e-e5b90c8522b4"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -53,27 +53,27 @@
     {
       "date": "2026-10-30",
       "sectionIds": [
-        "11e68d60-a3e8-4910-926e-e5b90c8522b4",
         "9d0c6fe5-2593-4c55-838c-09bef6eacf88",
         "afef90a5-a64e-435c-a6e7-d7fa3a572495"
-      ],
-      "reviewMinutes": 21,
-      "studyMinutes": 45
-    },
-    {
-      "date": "2026-10-31",
-      "sectionIds": [
-        "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc",
-        "ed33fcd5-70d5-4e71-abe7-1d9675526507"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
     },
     {
+      "date": "2026-10-31",
+      "sectionIds": [
+        "4ea8f8ad-aa00-45a4-b5de-9d578135f1fc",
+        "ed33fcd5-70d5-4e71-abe7-1d9675526507",
+        "ce3b1758-c794-4125-ada4-98e0c2231e33"
+      ],
+      "reviewMinutes": 21,
+      "studyMinutes": 45
+    },
+    {
       "date": "2026-11-01",
       "sectionIds": [
-        "ce3b1758-c794-4125-ada4-98e0c2231e33",
-        "2834eea0-13ca-40c4-a776-f14ae35b1417"
+        "2834eea0-13ca-40c4-a776-f14ae35b1417",
+        "c3cb5b55-1dee-4790-bbe8-ad39473737e1"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -81,8 +81,8 @@
     {
       "date": "2026-11-02",
       "sectionIds": [
-        "c3cb5b55-1dee-4790-bbe8-ad39473737e1",
-        "a84a5df6-6365-45c9-ae56-a9ef6958eeb4"
+        "a84a5df6-6365-45c9-ae56-a9ef6958eeb4",
+        "b8069b75-9dfa-4a26-afbb-c1f8b41dc756"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -90,8 +90,8 @@
     {
       "date": "2026-11-03",
       "sectionIds": [
-        "b8069b75-9dfa-4a26-afbb-c1f8b41dc756",
-        "031eb81a-e15c-4c38-9073-dc29c9268317"
+        "031eb81a-e15c-4c38-9073-dc29c9268317",
+        "8c397699-667f-4295-9e77-39a7e4084f2f"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -99,7 +99,7 @@
     {
       "date": "2026-11-04",
       "sectionIds": [
-        "8c397699-667f-4295-9e77-39a7e4084f2f",
+        "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
         "a2b93f44-0ec9-49cb-911b-511813cf1cfa"
       ],
       "reviewMinutes": 21,
@@ -109,20 +109,20 @@
       "date": "2026-11-05",
       "sectionIds": [
         "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
-        "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
         "a2b93f44-0ec9-49cb-911b-511813cf1cfa"
       ],
       "reviewMinutes": 21,
-      "studyMinutes": 45
+      "studyMinutes": 30
     },
     {
       "date": "2026-11-06",
       "sectionIds": [
         "a2b93f44-0ec9-49cb-911b-511813cf1cfa",
+        "9cb86741-88eb-45ed-805c-13b9001e5a9f",
         "9cb86741-88eb-45ed-805c-13b9001e5a9f"
       ],
       "reviewMinutes": 21,
-      "studyMinutes": 30
+      "studyMinutes": 45
     },
     {
       "date": "2026-11-07",
@@ -137,7 +137,7 @@
       "date": "2026-11-08",
       "sectionIds": [
         "9cb86741-88eb-45ed-805c-13b9001e5a9f",
-        "9cb86741-88eb-45ed-805c-13b9001e5a9f"
+        "78550d02-e3e9-4335-a8c9-1b885f11e55b"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -145,8 +145,8 @@
     {
       "date": "2026-11-09",
       "sectionIds": [
-        "78550d02-e3e9-4335-a8c9-1b885f11e55b",
-        "57e66a52-d1f7-4d0f-86db-6ac983af5022"
+        "57e66a52-d1f7-4d0f-86db-6ac983af5022",
+        "2e00c817-c25a-4341-9fc6-6ef5524b5f1d"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -154,8 +154,8 @@
     {
       "date": "2026-11-10",
       "sectionIds": [
-        "2e00c817-c25a-4341-9fc6-6ef5524b5f1d",
-        "25b484c9-9f38-471b-971f-812820dea11c"
+        "25b484c9-9f38-471b-971f-812820dea11c",
+        "4a8acf0d-3e8f-401c-b245-f08d710876a3"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -163,12 +163,11 @@
     {
       "date": "2026-11-11",
       "sectionIds": [
-        "4a8acf0d-3e8f-401c-b245-f08d710876a3",
         "820bfa62-b869-4ff2-82fb-b291718287aa",
         "820bfa62-b869-4ff2-82fb-b291718287aa"
       ],
       "reviewMinutes": 21,
-      "studyMinutes": 45
+      "studyMinutes": 30
     },
     {
       "date": "2026-11-12",
@@ -183,16 +182,17 @@
       "date": "2026-11-13",
       "sectionIds": [
         "5bbbe7fe-a877-4795-ac85-b61da40e4a40",
-        "13b47f9f-b63e-432d-9dfe-9f3d229aec05"
+        "13b47f9f-b63e-432d-9dfe-9f3d229aec05",
+        "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede"
       ],
       "reviewMinutes": 21,
-      "studyMinutes": 30
+      "studyMinutes": 45
     },
     {
       "date": "2026-11-14",
       "sectionIds": [
-        "b3e2f4f7-9a72-4c39-8c0c-b1d62d883ede",
-        "6c9da1f0-c7c5-4a6c-be84-d0413557ac01"
+        "6c9da1f0-c7c5-4a6c-be84-d0413557ac01",
+        "5aa6c1a1-c93b-4c46-8977-2195ee6c3ebd"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -209,12 +209,11 @@
     {
       "date": "2026-11-16",
       "sectionIds": [
-        "5aa6c1a1-c93b-4c46-8977-2195ee6c3ebd",
         "80b157bf-7589-428d-bd28-b0543fec2dd3",
         "80b157bf-7589-428d-bd28-b0543fec2dd3"
       ],
       "reviewMinutes": 21,
-      "studyMinutes": 45
+      "studyMinutes": 30
     },
     {
       "date": "2026-11-17",
@@ -238,10 +237,11 @@
       "date": "2026-11-19",
       "sectionIds": [
         "6adb590f-75d0-4bc7-adf6-4d5dbe512e04",
+        "6adb590f-75d0-4bc7-adf6-4d5dbe512e04",
         "6adb590f-75d0-4bc7-adf6-4d5dbe512e04"
       ],
       "reviewMinutes": 21,
-      "studyMinutes": 30
+      "studyMinutes": 45
     },
     {
       "date": "2026-11-20",
@@ -255,7 +255,7 @@
     {
       "date": "2026-11-21",
       "sectionIds": [
-        "6adb590f-75d0-4bc7-adf6-4d5dbe512e04",
+        "a6fa94d5-42b5-4ade-b03a-49a0156d358f",
         "a6fa94d5-42b5-4ade-b03a-49a0156d358f"
       ],
       "reviewMinutes": 21,
@@ -265,11 +265,10 @@
       "date": "2026-11-22",
       "sectionIds": [
         "a6fa94d5-42b5-4ade-b03a-49a0156d358f",
-        "a6fa94d5-42b5-4ade-b03a-49a0156d358f",
         "a6fa94d5-42b5-4ade-b03a-49a0156d358f"
       ],
       "reviewMinutes": 21,
-      "studyMinutes": 45
+      "studyMinutes": 30
     },
     {
       "date": "2026-11-23",
@@ -293,15 +292,16 @@
       "date": "2026-11-25",
       "sectionIds": [
         "c50ffb6e-95f0-40fd-97dd-846fb4ee3825",
+        "c50ffb6e-95f0-40fd-97dd-846fb4ee3825",
         "c50ffb6e-95f0-40fd-97dd-846fb4ee3825"
       ],
       "reviewMinutes": 21,
-      "studyMinutes": 30
+      "studyMinutes": 45
     },
     {
       "date": "2026-11-26",
       "sectionIds": [
-        "c50ffb6e-95f0-40fd-97dd-846fb4ee3825",
+        "cf8e0718-dcc2-497f-b3d7-b5cdc9eea894",
         "cf8e0718-dcc2-497f-b3d7-b5cdc9eea894"
       ],
       "reviewMinutes": 21,
@@ -311,7 +311,7 @@
       "date": "2026-11-27",
       "sectionIds": [
         "cf8e0718-dcc2-497f-b3d7-b5cdc9eea894",
-        "cf8e0718-dcc2-497f-b3d7-b5cdc9eea894"
+        "9235b9fe-f3d2-4098-9a35-4631aafaa3a3"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 30
@@ -320,11 +320,10 @@
       "date": "2026-11-28",
       "sectionIds": [
         "9235b9fe-f3d2-4098-9a35-4631aafaa3a3",
-        "9235b9fe-f3d2-4098-9a35-4631aafaa3a3",
         "9b490ee9-c8f6-49f6-9204-8d413b7ff433"
       ],
       "reviewMinutes": 21,
-      "studyMinutes": 45
+      "studyMinutes": 30
     },
     {
       "date": "2026-11-29",
@@ -357,20 +356,20 @@
       "date": "2026-12-02",
       "sectionIds": [
         "c76ee3f2-f92d-4292-8f89-b74f41e96aff",
-        "c76ee3f2-f92d-4292-8f89-b74f41e96aff"
-      ],
-      "reviewMinutes": 21,
-      "studyMinutes": 30
-    },
-    {
-      "date": "2026-12-03",
-      "sectionIds": [
-        "c76ee3f2-f92d-4292-8f89-b74f41e96aff",
         "c76ee3f2-f92d-4292-8f89-b74f41e96aff",
         "c76ee3f2-f92d-4292-8f89-b74f41e96aff"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 45
+    },
+    {
+      "date": "2026-12-03",
+      "sectionIds": [
+        "c76ee3f2-f92d-4292-8f89-b74f41e96aff",
+        "c76ee3f2-f92d-4292-8f89-b74f41e96aff"
+      ],
+      "reviewMinutes": 21,
+      "studyMinutes": 30
     },
     {
       "date": "2026-12-04",
@@ -412,20 +411,20 @@
       "date": "2026-12-08",
       "sectionIds": [
         "7d9aadc6-70ed-40e1-88b5-b266f2767ad7",
+        "7d9aadc6-70ed-40e1-88b5-b266f2767ad7",
         "7d9aadc6-70ed-40e1-88b5-b266f2767ad7"
       ],
       "reviewMinutes": 21,
-      "studyMinutes": 30
+      "studyMinutes": 45
     },
     {
       "date": "2026-12-09",
       "sectionIds": [
         "7d9aadc6-70ed-40e1-88b5-b266f2767ad7",
-        "7d9aadc6-70ed-40e1-88b5-b266f2767ad7",
         "5af06994-de14-4a3b-aa93-e0fef7202e28"
       ],
       "reviewMinutes": 21,
-      "studyMinutes": 45
+      "studyMinutes": 30
     },
     {
       "date": "2026-12-10",
@@ -467,20 +466,20 @@
       "date": "2026-12-14",
       "sectionIds": [
         "5af06994-de14-4a3b-aa93-e0fef7202e28",
-        "dbbbba77-ef34-4f67-af5d-61542803a264"
-      ],
-      "reviewMinutes": 21,
-      "studyMinutes": 30
-    },
-    {
-      "date": "2026-12-15",
-      "sectionIds": [
-        "dbbbba77-ef34-4f67-af5d-61542803a264",
         "dbbbba77-ef34-4f67-af5d-61542803a264",
         "dbbbba77-ef34-4f67-af5d-61542803a264"
       ],
       "reviewMinutes": 21,
       "studyMinutes": 45
+    },
+    {
+      "date": "2026-12-15",
+      "sectionIds": [
+        "dbbbba77-ef34-4f67-af5d-61542803a264",
+        "dbbbba77-ef34-4f67-af5d-61542803a264"
+      ],
+      "reviewMinutes": 21,
+      "studyMinutes": 30
     },
     {
       "date": "2026-12-16",

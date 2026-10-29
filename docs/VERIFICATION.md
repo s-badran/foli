@@ -3,7 +3,7 @@
 ## Final Gates
 
 - `pnpm check`: lint, strict TypeScript, 89 unit/API tests and production build pass.
-- `PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e`: six passing Chromium workflows using isolated `.cache/e2e-data`.
+- `PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e`: seven passing Chromium workflows using isolated `.cache/e2e-data`.
 - `pnpm tutor pending` / `pnpm tutor ingest` exercise the request/response pipeline end to end.
 - Desktop chapter screenshot inspected at 1440 x 1000; mobile chapter plan at 390 x 844. Mobile plan/progress overflow assertions pass.
 - Provider calls are opt-in and credential-gated; the automated suites use a mock provider and need no account, subscription or real key.

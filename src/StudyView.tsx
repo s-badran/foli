@@ -13,8 +13,16 @@ import {
   Sparkles,
   Target,
 } from 'lucide-react';
-import { needsRegenerate } from '../shared/models';
-import type { GenerationRequest, QuizAttempt, Section, Source, StudyState } from '../shared/models';
+import { DEFAULT_MODEL_ID, needsRegenerate } from '../shared/models';
+import type {
+  ArtifactMeta,
+  Folder,
+  GenerationRequest,
+  QuizAttempt,
+  Section,
+  Source,
+  StudyState,
+} from '../shared/models';
 import { api, displayDate, send } from './api';
 import { Empty, SourceIcon, useNow } from './components';
 import { sectionPractice } from '../shared/learning';
@@ -29,6 +37,27 @@ export type RunTask = (
   busyLabel?: string,
 ) => Promise<void>;
 type Tab = 'summary' | 'cards' | 'quiz' | 'source';
+
+/**
+ * Explains why a regenerate button is actionable. Silence is the signal that the
+ * generated material still matches the current model, baseline and curriculum.
+ */
+function regenerateReason(
+  folder: Folder | undefined,
+  meta: ArtifactMeta | undefined,
+  currentVersion: number | undefined,
+): string | null {
+  if (!folder || !meta) return null;
+  if (currentVersion !== undefined && meta.promptVersion < currentVersion)
+    return 'A newer prompt is available. Regenerate to update.';
+  if (!needsRegenerate(folder, meta)) return null;
+  const model = folder.modelId ?? DEFAULT_MODEL_ID;
+  if (meta.model && meta.model !== model)
+    return `Generated with ${meta.model}. Current model is ${model}.`;
+  if (meta.familiarity !== folder.learner?.familiarity)
+    return 'The learner baseline changed. Regenerate to update.';
+  return 'The curriculum changed. Regenerate to update.';
+}
 
 export function StudyView({
   section,
@@ -158,35 +187,20 @@ export function StudyView({
       </Empty>
     );
   };
-  const regenerate = (kind: 'summary' | 'flashcards' | 'quiz', label: string) => {
-    const meta = section.artifacts?.[kind];
-    const settingsChanged = folder ? needsRegenerate(folder, meta) : false;
-    const currentVersion = promptVersions[kind];
-    const promptChanged =
-      meta !== undefined && currentVersion !== undefined && meta.promptVersion < currentVersion;
-    const stale = settingsChanged || promptChanged;
+  const regenerateControl = (kind: 'summary' | 'flashcards' | 'quiz', label: string) => {
+    const reason = regenerateReason(folder, section.artifacts?.[kind], promptVersions[kind]);
     return (
-      <div className="artifact-toolbar">
-        <span className="form-note">
-          {promptChanged
-            ? 'A newer prompt is available — regenerate to update.'
-            : settingsChanged
-              ? 'Generated with different settings — regenerate to update.'
-              : 'Matches your current settings.'}
-        </span>
+      <>
+        {reason && <span className="form-note">{reason}</span>}
         <button
           className="button secondary"
-          disabled={!!busy || !stale}
-          title={
-            stale
-              ? `Regenerate ${label.toLowerCase()}`
-              : 'Nothing changed — regeneration not needed'
-          }
+          disabled={!!busy || !reason}
+          title={reason ?? 'Nothing changed since this was generated.'}
           onClick={runRegenerate(kind, label)}
         >
           <RefreshCw size={14} /> Regenerate {label.toLowerCase()}
         </button>
-      </div>
+      </>
     );
   };
   const tabs: { id: Tab; label: string; count?: number }[] = [
@@ -293,10 +307,6 @@ export function StudyView({
         ))}
       </div>
 
-      {tab === 'summary' && hasSummary && regenerate('summary', 'Summary')}
-      {tab === 'cards' && hasCards && regenerate('flashcards', 'Flashcards')}
-      {tab === 'quiz' && hasQuiz && regenerate('quiz', 'Quiz')}
-
       {tab === 'summary' &&
         !hasSummary &&
         generate('summary', 'Summary', 'An exam-focused study sheet: core concepts, must-remember facts, comparisons, traps.')}
@@ -319,6 +329,7 @@ export function StudyView({
               <button className="button primary" onClick={() => setTab('cards')}>
                 <Layers size={16} /> Practice flashcards <ArrowRight size={16} />
               </button>
+              {regenerateControl('summary', 'Summary')}
             </div>
             {content.evidence && (
               <div className="evidence-list">
@@ -464,6 +475,9 @@ export function StudyView({
               </div>
             ))}
           </details>
+          <div className="artifact-footer">
+            {regenerateControl('flashcards', 'Flashcards')}
+          </div>
         </div>
       )}
 
@@ -650,6 +664,9 @@ export function StudyView({
               </div>
             </div>
           )}
+          <div className="artifact-footer">
+            {regenerateControl('quiz', 'Quiz')}
+          </div>
         </div>
       )}
 

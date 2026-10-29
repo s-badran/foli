@@ -147,7 +147,7 @@ PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm exec playwright install chrom
 PLAYWRIGHT_BROWSERS_PATH=.cache/ms-playwright pnpm test:e2e
 ```
 
-`pnpm check` runs lint, strict types, **89 unit/API tests** and a production build. **Six Chromium workflows** cover the prompt pipeline end to end with isolated test data. See [verification](docs/VERIFICATION.md) and [RemNote analysis](docs/remnote-analysis.md).
+`pnpm check` runs lint, strict types, **89 unit/API tests** and a production build. **Seven Chromium workflows** cover the prompt pipeline end to end with isolated test data. See [verification](docs/VERIFICATION.md) and [RemNote analysis](docs/remnote-analysis.md).
 
 ## Structure And Limits
 

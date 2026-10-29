@@ -14,7 +14,14 @@ import {
   Target,
 } from 'lucide-react';
 import { needsRegenerate } from '../shared/models';
-import type { GenerationRequest, QuizAttempt, Section, Source, StudyState } from '../shared/models';
+import type {
+  GeneratedContent,
+  GenerationRequest,
+  QuizAttempt,
+  Section,
+  Source,
+  StudyState,
+} from '../shared/models';
 import { api, displayDate, send } from './api';
 import { Empty, SourceIcon, useNow } from './components';
 import { sectionPractice } from '../shared/learning';
@@ -29,6 +36,35 @@ export type RunTask = (
   busyLabel?: string,
 ) => Promise<void>;
 type Tab = 'summary' | 'cards' | 'quiz' | 'source';
+
+const MATERIAL_KINDS = ['summary', 'flashcards', 'quiz'] as const;
+
+/**
+ * WHY
+ *   The header must say which model made the study material without guessing. A hardcoded name
+ *   would lie when the learner switches to OpenAI or Copilot, and the prompt versions were
+ *   crowding the header though they only matter on hover.
+ *
+ * INPUT
+ *   section — Section, the section currently open in the reader
+ *   content — GeneratedContent or undefined, the section material, absent until generated
+ *
+ * OUTPUT
+ *   { label, title } — label is the visible line; title is the tooltip text or undefined
+ */
+function describeMaterial(section: Section, content: GeneratedContent | undefined) {
+  const versions = MATERIAL_KINDS.flatMap((kind) => {
+    const meta = section.artifacts?.[kind];
+    return meta ? [`${kind} v${meta.promptVersion}`] : [];
+  });
+  const title = versions.length ? `Prompt versions: ${versions.join(', ')}` : undefined;
+  if (!content) return { label: 'Source reading · study materials not generated yet', title };
+  if (content.provider === 'offline') return { label: content.model, title };
+  const models = [
+    ...new Set(MATERIAL_KINDS.flatMap((kind) => section.artifacts?.[kind]?.model ?? [])),
+  ];
+  return { label: `AI-generated · ${models.join(', ') || content.model}`, title };
+}
 
 export function StudyView({
   section,
@@ -83,6 +119,7 @@ export function StudyView({
   const optionOrder = (index: number) =>
     optionOrders[index] ?? content?.quiz[index]?.options.map((_, position) => position) ?? [];
   const preparation = sectionPractice(section, state);
+  const model = describeMaterial(section, content);
   const dueCards =
     content?.cards.filter(
       (card) => card.schedule.reps === 0 || new Date(card.schedule.due).getTime() <= now,
@@ -201,18 +238,18 @@ export function StudyView({
       <button className="text-button back" onClick={onBack}>
         <ArrowLeft size={16} /> All chapters
       </button>
-      <div className="source-caption">
-        <SourceIcon kind={source.kind} />
-        <span>{source.name}</span>
-        {section.pageStart && (
-          <span className="badge">
-            pp. {section.pageStart}–{section.pageEnd}
-          </span>
-        )}
+      <div className="reader-top">
+        <span className="badge">Section {sectionNumber(state, section)}</span>
+        <span className="reader-source" title={source.name}>
+          <SourceIcon kind={source.kind} />
+          {source.name}
+        </span>
+        {content && <span className="reader-date">Updated {displayDate(content.generatedAt)}</span>}
       </div>
-      <div className="reader-title">
-        <span className="eyebrow">Section {sectionNumber(state, section)}</span>
+      <div className="reader-heading">
         <h1>{section.title}</h1>
+      </div>
+      <div className="reader-meta">
         <button
           disabled={!!busy}
           className={`button ${section.read ? 'soft' : 'secondary'}`}
@@ -233,14 +270,13 @@ export function StudyView({
           <Check size={16} />
           {section.read ? 'Read' : 'Mark as read'}
         </button>
-      </div>
-      <div className="reader-meta">
         <span className={`badge ${preparation.complete ? 'success' : ''}`}>
           {preparation.complete ? 'Practice passed' : 'Practice pending'}
         </span>
         <span className={`dot ${content ? 'green' : ''}`} />
-        {content ? content.model : 'Source reading · study materials not generated yet'}
-        {content && <span>Updated {displayDate(content.generatedAt)}</span>}
+        <span className="reader-model" title={model.title}>
+          {model.label}
+        </span>
       </div>
       {missingKinds.length > 0 && (
         <div className="generate-all">
